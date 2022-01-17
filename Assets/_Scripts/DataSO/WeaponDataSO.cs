@@ -17,7 +17,7 @@ public class WeaponDataSO : ScriptableObject
     public bool AutomaticFire { get; set; } = false;
 
     [field: SerializeField]
-    [field: Range(0.1f, 2f)]
+    [field: Range(0.05f, 2f)]
     public float WeaponDelay { get; set; } = 0.1f;
 
     [field: SerializeField]
@@ -25,7 +25,7 @@ public class WeaponDataSO : ScriptableObject
     public float ReloadSpeed { get; set; } = 1;
 
     [field: SerializeField]
-    [field: Range(0, 10)]
+    [field: Range(0, 25)]
     public float SpreadAngle { get; set; } = 5;
 
     [SerializeField]

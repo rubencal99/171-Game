@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8960519738105143102}
   - component: {fileID: 8960519738105143103}
   m_Layer: 0
-  m_Name: Assault_Rifle
+  m_Name: Uzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzle: {fileID: 8960519739286643315}
   ammo: 100
-  weaponData: {fileID: 11400000, guid: b04eaefcbb20d69458fca1e64c60e738, type: 2}
+  weaponData: {fileID: 11400000, guid: 04c16df80bc95244586da8824adf317d, type: 2}
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   <OnShoot>k__BackingField:

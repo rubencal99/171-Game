@@ -34,6 +34,14 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
+    // Calls SceneManager.RestartScene
+    [field: SerializeField]
+    public UnityEvent OnRestartButtonPressed { get; set; }
+
+    // Calls SceneManager.RestartScene
+    [field: SerializeField]
+    public UnityEvent OnRespawnButtonPressed { get; set; }
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -45,6 +53,8 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetPointerInput();
         GetFireInput();
         GetReloadInput();
+        // GetRestartInput();
+        GetRespawnInput();
     }
 
     private void GetFireInput()
@@ -72,6 +82,25 @@ public class AgentInput : MonoBehaviour, IAgentInput
         if (Input.GetAxisRaw("Reload") > 0)
         {
             OnReloadButtonPressed?.Invoke();
+        }
+    }
+
+    private void GetRestartInput()
+    {
+        if (Input.GetAxisRaw("Space") > 0)
+        {
+            // This will restart the entire scene
+            OnRestartButtonPressed?.Invoke();
+        }
+    }
+
+    private void GetRespawnInput()
+    {
+        if (Input.GetAxisRaw("Space") > 0)
+        {
+            Debug.Log("In Respawn Input");
+            // This will respawn the player to their original position at start of scene
+            OnRespawnButtonPressed?.Invoke();
         }
     }
 
