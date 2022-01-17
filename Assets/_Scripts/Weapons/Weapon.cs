@@ -49,7 +49,9 @@ public class Weapon : MonoBehaviour
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
 
-
+    public float getReloadSpeed() {
+        return weaponData.ReloadSpeed;
+    }
     public void TryShooting()
     {
         isShooting = true;
@@ -62,6 +64,7 @@ public class Weapon : MonoBehaviour
     public void Reload()
     {
         StartCoroutine(ReloadCoroutine());
+        Debug.Log("Reload eta: " + weaponData.ReloadSpeed);
         Ammo = weaponData.AmmoCapacity;
     }
 
@@ -70,6 +73,7 @@ public class Weapon : MonoBehaviour
         // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
         reloadCoroutine = true;
         yield return new WaitForSeconds(weaponData.ReloadSpeed);
+         Debug.Log("Reload eta: " + weaponData.ReloadSpeed);
         // rateOfFireCoroutine = false;
         reloadCoroutine = false;
     }
@@ -122,7 +126,7 @@ public class Weapon : MonoBehaviour
     private void ShootBullet()
     {
         SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
-        Debug.Log("Bullet shot");
+       // Debug.Log("Bullet shot");
     }
 
     private void SpawnBullet(Vector3 position, Quaternion rotation)
