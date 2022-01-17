@@ -18,6 +18,13 @@ public class Player : MonoBehaviour, IAgent
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
 
+    private Vector3 SpawnPosition;
+
+    private void Start()
+    {
+        SpawnPosition = transform.position;
+    }
+
     public void GetHit(int damage, GameObject damageDealer)
     {
         Health--;
@@ -30,5 +37,10 @@ public class Player : MonoBehaviour, IAgent
             Destroy(gameObject);
             // Play End Game Screen here
         }
+    }
+
+    public void Respawn()
+    {
+        transform.position = SpawnPosition;
     }
 }

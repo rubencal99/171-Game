@@ -19,7 +19,7 @@ public class AgentWeapon : MonoBehaviour
         AssignWeapon();
     }
 
-    private void AssignWeapon()
+    public void AssignWeapon()
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
         weapon = GetComponentInChildren<Weapon>();
@@ -42,12 +42,12 @@ public class AgentWeapon : MonoBehaviour
     // Changes sortingOrder if angle is too high
     private void AdjustWeaponRendering()
     {
-        // Explicitly check for null instead of using ?
-        // This prevents bugs if weaponRenderer is deleted mid-game
+        // weaponRenderer?.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
+        // weaponRenderer?.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
         if (weaponRenderer != null)     
         {
-            // weaponRenderer?.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
-            // weaponRenderer?.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
+            // Explicitly check for null instead of using ?
+            // This prevents bugs if weaponRenderer is deleted mid-game
             weaponRenderer.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
             weaponRenderer.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
         }

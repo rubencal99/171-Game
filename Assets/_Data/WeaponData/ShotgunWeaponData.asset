@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ShotgunWeaponData
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 1f6765ebc90c9fb4ba90dec252a848e3, type: 2}
-  <AmmoCapacity>k__BackingField: 100
+  <AmmoCapacity>k__BackingField: 10
   <AutomaticFire>k__BackingField: 0
-  <WeaponDelay>k__BackingField: 2
-  <ReloadSpeed>k__BackingField: 5
+  <WeaponDelay>k__BackingField: 0.65
+  <ReloadSpeed>k__BackingField: 3
   <SpreadAngle>k__BackingField: 10
   multiBulletShot: 1
   bulletCount: 5
