@@ -64,7 +64,6 @@ public class Weapon : MonoBehaviour
     public void Reload()
     {
         StartCoroutine(ReloadCoroutine());
-        Debug.Log("Reload eta: " + weaponData.ReloadSpeed);
         Ammo = weaponData.AmmoCapacity;
     }
 
@@ -73,7 +72,6 @@ public class Weapon : MonoBehaviour
         // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
         reloadCoroutine = true;
         yield return new WaitForSeconds(weaponData.ReloadSpeed);
-         Debug.Log("Reload eta: " + weaponData.ReloadSpeed);
         // rateOfFireCoroutine = false;
         reloadCoroutine = false;
     }
