@@ -9,6 +9,7 @@ public class LinearChaseAction : AIAction
         var direction = enemyBrain.Target.transform.position - transform.position;
         aiMovementData.Direction = direction.normalized;
         aiMovementData.PointOfInterest = enemyBrain.Target.transform.position;
-        enemyBrain.Move(aiMovementData.Direction, aiMovementData.PointOfInterest);
+        enemyBrain.Move(aiMovementData.Direction);
+        enemyBrain.Aim(aiMovementData.PointOfInterest);
     }
 }

@@ -11,7 +11,15 @@ public class WeaponDataSO : ScriptableObject
 
     [field: SerializeField]
     [field: Range(0,100)]
-    public int AmmoCapacity { get; set; } = 100;
+    public int MagazineCapacity { get; set; } = 30;
+
+    [field: SerializeField]
+    [field: Range(20,400)]
+    public int MaxAmmoCapacity { get; set; } = 100;
+
+    /* [field: SerializeField]
+    [field: Range(100,400)]
+    public int TotalAmmo { get; set; } = 100;*/
 
     [field: SerializeField]
     public bool AutomaticFire { get; set; } = false;

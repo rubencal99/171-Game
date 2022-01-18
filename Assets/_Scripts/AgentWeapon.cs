@@ -56,7 +56,7 @@ public class AgentWeapon : MonoBehaviour
 
     public void Reload()
     {
-        if (weapon != null)
+        if (weapon != null && weapon.TotalAmmo > 0)
         {
             weapon.Reload();
         }

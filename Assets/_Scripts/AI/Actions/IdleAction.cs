@@ -7,7 +7,8 @@ public class IdleAction : AIAction
     public override void TakeAction()
     {
         aiMovementData.Direction = Vector2.zero;
-        aiMovementData.PointOfInterest = transform.position;
-        enemyBrain.Move(aiMovementData.Direction, aiMovementData.PointOfInterest);
+        // aiMovementData.PointOfInterest = transform.position;
+        enemyBrain.Move(aiMovementData.Direction);
+        enemyBrain.Aim(aiMovementData.PointOfInterest);
     }
 }

@@ -16,6 +16,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public int Damage { get; private set; }
 
     [field: SerializeField]
+    public float Range { get; private set; }
+
+    [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
 
     [field: SerializeField]
@@ -25,6 +28,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         Health = EnemyData.MaxHealth;
         Damage = EnemyData.Damage;
+        Range = EnemyData.Range;
     }
 
     public void GetHit(int damage, GameObject damageDealer)
@@ -35,8 +39,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         else
         {
             OnDie?.Invoke();
-            Destroy(gameObject);
+            StartCoroutine(WaitToDie());
         }
+    }
+
+    IEnumerator WaitToDie(){
+        gameObject.layer = 0;
+        yield return new WaitForSeconds(0.55f);
+        Destroy(gameObject);
     }
 
 }

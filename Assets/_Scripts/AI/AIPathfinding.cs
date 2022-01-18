@@ -76,7 +76,8 @@ public class AIPathfinding : MonoBehaviour
         Debug.Log(direction);
         aiMovementData.Direction = direction;
         aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
-        brain.Move(aiMovementData.Direction = direction, aiMovementData.PointOfInterest);
+        brain.Move(aiMovementData.Direction);
+        brain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

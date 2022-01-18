@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // IAgent has not been implemented for player yet
-public class Player : MonoBehaviour, IAgent
+public class Player : MonoBehaviour, IAgent, IHittable
 {
     [field: SerializeField]
-    public int Health { get; private set; }
+    public int Health { get; private set; } = 6;
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -34,9 +34,15 @@ public class Player : MonoBehaviour, IAgent
         else
         {
             OnDie?.Invoke();
-            Destroy(gameObject);
+            StartCoroutine(WaitToDie());
             // Play End Game Screen here
         }
+    }
+
+    IEnumerator WaitToDie(){
+        gameObject.layer = 0;
+        yield return new WaitForSeconds(0.55f);
+        Destroy(gameObject);
     }
 
     public void Respawn()
