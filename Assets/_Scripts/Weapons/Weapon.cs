@@ -13,7 +13,10 @@ public class Weapon : MonoBehaviour
     protected GameObject muzzle;
 
     [SerializeField]
-    protected int ammo = 10;
+    protected int ammo;
+
+    [SerializeField]
+    protected int totalAmmo;
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
@@ -23,12 +26,20 @@ public class Weapon : MonoBehaviour
     {
         get { return ammo; }
         set {
-            ammo = Mathf.Clamp(value, 0, weaponData.AmmoCapacity);
+            ammo = Mathf.Clamp(value, 0, weaponData.MagazineCapacity);
+        }
+    }
+
+    public int TotalAmmo
+    {
+        get { return totalAmmo; }
+        set {
+            totalAmmo = Mathf.Clamp(value, 0, weaponData.MaxAmmoCapacity);
         }
     }
 
     // Returns true if ammo full
-    public bool AmmoFull { get => Ammo >= weaponData.AmmoCapacity; }
+    public bool AmmoFull { get => Ammo >= weaponData.MagazineCapacity; }
 
     protected bool isShooting = false;
 
@@ -40,7 +51,8 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        Ammo = weaponData.AmmoCapacity;
+        Ammo = weaponData.MagazineCapacity;
+        TotalAmmo = weaponData.MaxAmmoCapacity;
     }
 
     [field: SerializeField]
@@ -66,7 +78,9 @@ public class Weapon : MonoBehaviour
     public void Reload()
     {
         StartCoroutine(ReloadCoroutine());
-        Ammo = weaponData.AmmoCapacity;
+        var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+        Ammo += neededAmmo;
+        TotalAmmo -= neededAmmo;
     }
 
     protected IEnumerator ReloadCoroutine()

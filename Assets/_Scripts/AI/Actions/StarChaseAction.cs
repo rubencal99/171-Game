@@ -23,9 +23,15 @@ public class StarChaseAction : AIAction
         rb = transform.root.GetComponent<Rigidbody2D>();
         target = enemyBrain.Target;
 
+        aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+
         // This calls our UpdatePath func on 0.5 sec loop
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
+
+    private void Update() {
+        aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+    }    
 
     private void UpdatePath()
     {
@@ -67,8 +73,9 @@ public class StarChaseAction : AIAction
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         // Debug.Log(direction);
         aiMovementData.Direction = direction;
-        aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
-        enemyBrain.Move(aiMovementData.Direction = direction, aiMovementData.PointOfInterest);
+        // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
+        enemyBrain.Move(aiMovementData.Direction);
+        enemyBrain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

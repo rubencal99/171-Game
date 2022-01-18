@@ -8,7 +8,8 @@ public class AttackAction : AIAction
     {
         aiMovementData.Direction = Vector2.zero;
         aiMovementData.PointOfInterest = enemyBrain.Target.transform.position;
-        enemyBrain.Move(aiMovementData.Direction, aiMovementData.PointOfInterest);
+        enemyBrain.Move(aiMovementData.Direction);
+        enemyBrain.Aim(aiMovementData.PointOfInterest);
         aiActionData.Attack = true;
         enemyBrain.Attack();
     }

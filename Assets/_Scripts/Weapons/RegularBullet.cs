@@ -20,7 +20,7 @@ public class RegularBullet : Bullet
         }
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if(rigidbody2D != null && BulletData != null)
         {
@@ -31,7 +31,7 @@ public class RegularBullet : Bullet
 
     // There's a bug where the bullets collide with themselves if using multishot,
     // which is why Destroy() is inside the if instead of at the end on the func
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
@@ -46,14 +46,14 @@ public class RegularBullet : Bullet
         
     }
 
-    private void HitEnemy(Collider2D collision)
+    public void HitEnemy(Collider2D collision)
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.GetComponent<IHittable>();
         hittable?.GetHit(BulletData.Damage, gameObject);
     }
 
-    private void HitObstacle()
+    public void HitObstacle()
     {
         Debug.Log("Hitting obstacle");
     }
