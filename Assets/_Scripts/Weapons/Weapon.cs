@@ -61,6 +61,8 @@ public class Weapon : MonoBehaviour
         isShooting = false;
     }
 
+    // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
+    // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
     public void Reload()
     {
         StartCoroutine(ReloadCoroutine());
