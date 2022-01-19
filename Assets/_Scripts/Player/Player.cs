@@ -18,11 +18,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
 
+    public GameObject DeathMenuUI;
+
     private Vector3 SpawnPosition;
 
     private void Start()
     {
         SpawnPosition = transform.position;
+        DeathMenuUI.SetActive(false);
     }
 
     public void GetHit(int damage, GameObject damageDealer)
@@ -35,7 +38,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         {
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
-            // Play End Game Screen here
+            
+            
         }
     }
 
@@ -43,6 +47,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         gameObject.layer = 0;
         yield return new WaitForSeconds(0.55f);
         Destroy(gameObject);
+        // Play End Game Screen here
+        DeathMenuUI.SetActive(true);
     }
 
     public void Respawn()
