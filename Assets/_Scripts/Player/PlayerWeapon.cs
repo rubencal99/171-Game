@@ -12,11 +12,11 @@ public class PlayerWeapon : AgentWeapon
     // that extends AgentWeapon
     // But basic aiming and shooting logic should be inhereted from the same parent class
 
-    /*public void displayReloadProgressBar() {
+    public void displayReloadProgressBar() {
        var reloadBar = this.transform.parent.GetComponentInChildren<PlayerReload>();
        reloadBar.displayReloadProgressBar();
        
-    }*/
+    }
 
     public int selectedWeapon = 0;
 
