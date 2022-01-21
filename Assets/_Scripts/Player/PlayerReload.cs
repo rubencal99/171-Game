@@ -16,7 +16,7 @@ public class PlayerReload : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(timeToReload > 0.0f) {
+       if(timeToReload > 0.1f) {
             timeToReload -= Time.deltaTime;    
         }
        else {
@@ -26,7 +26,7 @@ public class PlayerReload : MonoBehaviour
             this.transform.GetChild(1).GetComponent<Canvas>().enabled = false;
        }
 
-          Debug.Log("time to reload = " + timeToReload /  this.transform.parent.GetComponentInChildren<Weapon>().getReloadSpeed());
+         // Debug.Log("time to reload = " + timeToReload /  this.transform.parent.GetComponentInChildren<Weapon>().getReloadSpeed());
         
           reloadBar.transform.GetChild(0).localScale = new Vector3( 2.0f * timeToReload / this.transform.parent.GetComponentInChildren<Weapon>().getReloadSpeed(), 1.0f, 1.0f);
 
