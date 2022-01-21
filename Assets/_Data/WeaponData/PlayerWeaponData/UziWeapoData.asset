@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: UziWeapoData
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 1f6765ebc90c9fb4ba90dec252a848e3, type: 2}
-  <AmmoCapacity>k__BackingField: 31
+  <MagazineCapacity>k__BackingField: 30
+  <MaxAmmoCapacity>k__BackingField: 150
   <AutomaticFire>k__BackingField: 1
   <WeaponDelay>k__BackingField: 0.05
   <ReloadSpeed>k__BackingField: 1
