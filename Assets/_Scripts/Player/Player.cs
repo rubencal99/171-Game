@@ -22,15 +22,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
 
+    private AgentRenderer agentRender;
+
     private void Start()
     {
         SpawnPosition = transform.position;
         DeathMenuUI.SetActive(false);
+        agentRender = GetComponentInChildren<AgentRenderer>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
     {
-        Health--;
+        Health -= damage;
         // This function is supposed to play a damage animation / deliver knockback
         if (Health >= 0)    
             OnGetHit?.Invoke();
@@ -45,7 +48,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
-        yield return new WaitForSeconds(0.55f);
+        agentRender.isDying = true;
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         // Play End Game Screen here
         DeathMenuUI.SetActive(true);

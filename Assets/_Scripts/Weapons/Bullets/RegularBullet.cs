@@ -41,7 +41,9 @@ public class RegularBullet : Bullet
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             HitEnemy(collision);
-            Destroy(gameObject);
+            // This check is for bullets that go through enemies like snipers or lasers etc.
+            if (!BulletData.GoThroughHittable)
+                Destroy(gameObject);
         }
         
     }

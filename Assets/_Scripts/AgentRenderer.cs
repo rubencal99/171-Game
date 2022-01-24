@@ -7,13 +7,28 @@ public class AgentRenderer : MonoBehaviour
 {
     protected SpriteRenderer spriteRenderer;
 
+    protected Material material;
+    float fade = 1f;
+    public bool isDying = false;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // Debug.Log("Right Cross Product " + Vector3.Cross(Vector2.up, Vector2.right));
-        // Debug.Log("Left Cross Product " + Vector3.Cross(Vector2.up, -Vector2.right));
+        material = GetComponent<SpriteRenderer>().material;
     }
 
+    void Update(){
+        if (isDying){
+            fade -= Time.deltaTime;
+            if (fade <= 0f){
+                fade = 0f;
+                isDying = false;
+            }
+
+            material.SetFloat("_Fade", fade);
+        }
+    }
+    
     public void FaceDirection(Vector2 pointerInput)
     {
         var direction = (Vector3)pointerInput - transform.position;
