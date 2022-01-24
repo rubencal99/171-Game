@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfiniteAmmoPassive : MonoBehaviour
+public class InfiniteAmmoPassive : _BasePassive
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    protected float multiplier;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private PlayerWeapon weaponParent;
+
+    [SerializeField]
+    private Weapon selectedWeapon;
+
+
+
+    public override IEnumerator Pickup(Collider2D player)
     {
-        
+        weaponParent = player.gameObject.GetComponentInChildren<PlayerWeapon>();
+        weaponParent.InfAmmo = true;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        weaponParent.InfAmmo = false;
+
+        Destroy(gameObject);
     }
 }

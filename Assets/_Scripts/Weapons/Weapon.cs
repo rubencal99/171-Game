@@ -12,11 +12,16 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected GameObject muzzle;
 
+    protected PlayerWeapon weaponParent;
+
     [SerializeField]
     public int ammo;
 
     [SerializeField]
     public int totalAmmo;
+
+    [SerializeField]
+    public bool infAmmo;
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
@@ -53,6 +58,8 @@ public class Weapon : MonoBehaviour
     {
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
+        weaponParent = transform.parent.GetComponent<PlayerWeapon>();
+        infAmmo = weaponParent.InfAmmo;
     }
 
     [field: SerializeField]
@@ -95,6 +102,7 @@ public class Weapon : MonoBehaviour
     private void Update()
     {
         UseWeapon();
+        infAmmo = weaponParent.InfAmmo;
     }
 
     private void UseWeapon()
@@ -104,6 +112,9 @@ public class Weapon : MonoBehaviour
             if (Ammo > 0)
             {
                 Ammo--;
+                //I'd like the UI of this to show the ammo decreasing & increasing rapidly
+                if (infAmmo)
+                    Ammo++;
                 OnShoot?.Invoke();
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {

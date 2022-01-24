@@ -9,12 +9,15 @@ public class SpeedPassive : _BasePassive
 
     public override IEnumerator Pickup(Collider2D player)
     {
-        MovementDataSO movementData = player.GetComponent<AgentMovement>().MovementData;
-        movementData.maxSpeed *= multiplier;
+        PlayerPassives passiveMult = player.GetComponent<PlayerPassives>();
+        passiveMult.SpeedMultiplier *= multiplier;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CircleCollider2D>().enabled = false;
 
         yield return new WaitForSeconds(duration);
 
-        movementData.maxSpeed /= multiplier;
+        passiveMult.SpeedMultiplier /= multiplier;
 
         Destroy(gameObject);
     }
