@@ -12,7 +12,7 @@ public class AgentWeapon : MonoBehaviour
     protected WeaponRenderer weaponRenderer;
 
     [SerializeField]
-    protected Weapon weapon;
+    public Weapon weapon;
 
     private void Awake()
     {
