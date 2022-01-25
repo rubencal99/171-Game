@@ -46,7 +46,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         yield return new WaitForSeconds(0.55f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         // Play End Game Screen here
         DeathMenuUI.SetActive(true);
     }
