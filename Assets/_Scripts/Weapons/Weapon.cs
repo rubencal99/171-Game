@@ -15,6 +15,9 @@ public class Weapon : MonoBehaviour
     protected PlayerWeapon weaponParent;
 
     [SerializeField]
+    protected PlayerPassives passives;
+
+    [SerializeField]
     public int ammo;
 
     [SerializeField]
@@ -59,6 +62,7 @@ public class Weapon : MonoBehaviour
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
         weaponParent = transform.parent.GetComponent<PlayerWeapon>();
+        passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
     }
 
@@ -69,7 +73,7 @@ public class Weapon : MonoBehaviour
     public UnityEvent OnShootNoAmmo { get; set; }
 
     public float getReloadSpeed() {
-        return weaponData.ReloadSpeed;
+        return weaponData.ReloadSpeed / passives.ReloadMultiplier;
     }
     public void TryShooting()
     {
@@ -94,7 +98,7 @@ public class Weapon : MonoBehaviour
     {
         // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
         reloadCoroutine = true;
-        yield return new WaitForSeconds(weaponData.ReloadSpeed);
+        yield return new WaitForSeconds(weaponData.ReloadSpeed / passives.ReloadMultiplier);
         // rateOfFireCoroutine = false;
         reloadCoroutine = false;
     }
@@ -144,7 +148,7 @@ public class Weapon : MonoBehaviour
     protected IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
-        yield return new WaitForSeconds(weaponData.WeaponDelay);
+        yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
 
