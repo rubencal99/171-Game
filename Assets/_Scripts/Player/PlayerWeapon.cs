@@ -56,6 +56,7 @@ public class PlayerWeapon : AgentWeapon
         if (previousSelectedWeapon != selectedWeapon)
         {
             SelectWeapon();
+            DisplayWeapon.Instance.UpdateWeapon();
         }
     }
 
@@ -74,7 +75,7 @@ public class PlayerWeapon : AgentWeapon
             }
             i++;
         }
-        DisplayWeapon.Instance.UpdateWeapon();
+
 
         AssignWeapon();
     }

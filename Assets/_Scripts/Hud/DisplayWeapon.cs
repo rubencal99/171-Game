@@ -25,7 +25,7 @@ public class DisplayWeapon : MonoBehaviour
     {
         w = obj.GetComponent<PlayerWeapon>();
         weaponImage = this.gameObject.GetComponent<Image>();
-
+        UpdateWeapon();
     }
 
     public void UpdateWeapon()
