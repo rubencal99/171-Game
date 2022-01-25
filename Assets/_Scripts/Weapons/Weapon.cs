@@ -13,10 +13,10 @@ public class Weapon : MonoBehaviour
     protected GameObject muzzle;
 
     [SerializeField]
-    protected int ammo;
+    public int ammo;
 
     [SerializeField]
-    protected int totalAmmo;
+    public int totalAmmo;
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
