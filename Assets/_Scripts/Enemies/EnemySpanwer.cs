@@ -8,7 +8,8 @@ public class EnemySpanwer : MonoBehaviour
     public bool stopSpawn = false;
     public float spawnTime;
     public float spawnDelay;
-
+    
+    public List<GameObject> clones;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,10 @@ public class EnemySpanwer : MonoBehaviour
 
     public void SpawnObject(){
         var clone = Instantiate(Enemy, transform.position, Quaternion.identity);
+        clones.Add(clone);
+        if(clones.Count > 2){
+            stopSpawn = true;
+        }
         if(stopSpawn){
             CancelInvoke("SpawnObject");
         }
