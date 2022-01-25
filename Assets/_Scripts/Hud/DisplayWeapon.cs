@@ -16,8 +16,8 @@ public class DisplayWeapon : MonoBehaviour
 
     public GameObject obj;
     public PlayerWeapon w;
-    public Image weaponImage;
-    public SpriteRenderer SR;
+    private Image weaponImage;
+    private SpriteRenderer SR;
     public Sprite weaponSprite;
 
     // Start is called before the first frame update
