@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6196113241872680666}
   - component: {fileID: 890520252095959510}
   - component: {fileID: 7478996201851335686}
-  - component: {fileID: 5607224893946808906}
+  - component: {fileID: -134014491641170299}
   m_Layer: 0
-  m_Name: ReloadPassive
+  m_Name: ROFPassive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1648441835
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5624660547005597877, guid: 4f4e95b34d9c7f842a2a810504f24617, type: 3}
+  m_Sprite: {fileID: 7248217441977204840, guid: 4f4e95b34d9c7f842a2a810504f24617, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &5607224893946808906
+--- !u!114 &-134014491641170299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4886039924621977508}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f065d9a5ed8be245a136ad1de29d092, type: 3}
+  m_Script: {fileID: 11500000, guid: 068f954034109574e8fe4fec09bf1b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 10
