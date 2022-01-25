@@ -74,6 +74,8 @@ public class PlayerWeapon : AgentWeapon
             }
             i++;
         }
+        DisplayWeapon.Instance.UpdateWeapon();
+
         AssignWeapon();
     }
 }
