@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be31c037722d8d04494cd23d80547684, type: 3}
-  m_Name: FirstBossData
+  m_Script: {fileID: 11500000, guid: 778427c1d310e1e4398f4143f2616f86, type: 3}
+  m_Name: SwordUpgradedData
   m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
-  <Damage>k__BackingField: 1
-  Range: 10
+  <Damage>k__BackingField: 20

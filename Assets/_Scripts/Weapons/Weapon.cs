@@ -30,6 +30,9 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected WeaponDataSO weaponData;
 
+    [SerializeField]
+    protected MeleeDataSO swordData;
+
     public int Ammo
     {
         get { return ammo; }

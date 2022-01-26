@@ -7,10 +7,6 @@ using UnityEngine;
 public class PlayerWeapon : AgentWeapon
 {
     private float timeToReload = 0.0f;
-    // Nothing in here because Player is the only one with weapons for now
-    // If we want to give enemies weapons that behave differently, we'd make an EnemyWeapon class
-    // that extends AgentWeapon
-    // But basic aiming and shooting logic should be inhereted from the same parent class
 
     public void displayReloadProgressBar() {
        var reloadBar = this.transform.parent.GetComponentInChildren<PlayerReload>();
@@ -19,7 +15,10 @@ public class PlayerWeapon : AgentWeapon
     }
 
     public int selectedWeapon = 0;
+    public int numGrenades = 5;
+    public GameObject Grenade;
 
+    Vector3 mousePos;
 
 
     private void Start()
@@ -78,5 +77,21 @@ public class PlayerWeapon : AgentWeapon
             i++;
         }
         AssignWeapon();
+    }
+
+    public void ThrowItem()
+    {
+        if (numGrenades > 0)
+        {
+            Debug.Log("Item Thrown");
+            SpawnItem(transform.position, transform.rotation);
+        }
+    }
+
+    private void SpawnItem(Vector3 position, Quaternion rotation)
+    {
+        Debug.Log("Before instantiate");
+        var itemPrefab = Instantiate(Grenade, position, rotation);
+        Debug.Log("After instantiate");
     }
 }

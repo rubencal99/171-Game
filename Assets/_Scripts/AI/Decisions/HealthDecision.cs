@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HealthDecision : AIDecision
+{
+    [field: SerializeField]
+    [field: Range(10, 100)]
+    public int healthThreshold { get; set; } = 50;
+
+    public override bool MakeADecision()
+    {
+        int health = transform.root.GetComponent<Enemy>().Health;
+        if (health < healthThreshold)
+        {
+            return true;
+        }
+        return false;
+    }
+}

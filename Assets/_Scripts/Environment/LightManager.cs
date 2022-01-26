@@ -35,11 +35,11 @@ public class LightManager : MonoBehaviour
     public bool Chase{
         get {return chase;}
         set{
-            Debug.Log("In Set Chase");
+            // Debug.Log("In Set Chase");
             if (chase == value) return;
-            Debug.Log("chase = " + chase);
+            // Debug.Log("chase = " + chase);
             chase = value;
-            Debug.Log("chase cahnged to " + chase);
+            // Debug.Log("chase cahnged to " + chase);
             SetChase(chase);
         }
     }

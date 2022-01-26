@@ -10,6 +10,7 @@ public class AgentRenderer : MonoBehaviour
     protected Material material;
     float fade = 1f;
     public bool isDying = false;
+    public bool enraged = false;
 
     private void Awake()
     {
@@ -26,6 +27,10 @@ public class AgentRenderer : MonoBehaviour
             }
 
             material.SetFloat("_Fade", fade);
+        }
+        if (enraged)
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
         }
     }
     

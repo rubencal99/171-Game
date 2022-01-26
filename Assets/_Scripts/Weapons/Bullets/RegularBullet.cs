@@ -57,6 +57,6 @@ public class RegularBullet : Bullet
 
     public void HitObstacle()
     {
-        Debug.Log("Hitting obstacle");
+        // Debug.Log("Hitting obstacle");
     }
 }
