@@ -24,16 +24,19 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
 
+    private AgentRenderer agentRender;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
         Damage = EnemyData.Damage;
         Range = EnemyData.Range;
+        agentRender = GetComponentInChildren<AgentRenderer>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
     {
-        Health--;
+        Health -= damage;
         if (Health >= 0)
             OnGetHit?.Invoke();
         else
@@ -45,6 +48,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
+        agentRender.isDying = true;
         yield return new WaitForSeconds(0.55f);
         Destroy(gameObject);
     }

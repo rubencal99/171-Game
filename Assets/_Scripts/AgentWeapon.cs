@@ -14,6 +14,9 @@ public class AgentWeapon : MonoBehaviour
     [SerializeField]
     public Weapon weapon;
 
+    [SerializeField]
+    public bool InfAmmo;
+
     private void Awake()
     {
         AssignWeapon();

@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 6638867989798731448}
   - component: {fileID: 2447108988747857650}
   - component: {fileID: 1334037856497830754}
+  - component: {fileID: 6422503928126320801}
   m_Layer: 8
   m_Name: LinearAttackEnemy
   m_TagString: Enemy
@@ -564,6 +565,23 @@ MonoBehaviour:
   <OnReloadButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6422503928126320801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638867989798731449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff1e2291a85eb34aad8f63de16fe82c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedMultiplier: 0
+  ReloadMultiplier: 0
+  ROFMultiplier: 0
+  BulletCountMultiplier: 0
+  DamageMultiplier: 0
 --- !u!1 &6638867990098400945
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7389a755ace8b544a0334d7ed321a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDying: 0
+  enraged: 0
 --- !u!114 &6638867990098400911
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,15 +13,18 @@ public class DisplayAmmo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        w = obj.GetComponent<PlayerWeapon>(); // 
+        w = obj.GetComponentInChildren<PlayerWeapon>(); // 
     }
 
     // Update is called once per frame
     void Update()
     {
-        ammo = w.weapon.ammo;
-        totalAmmo = w.weapon.TotalAmmo;
-        AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
+        if (w != null){
+            ammo = w.weapon.ammo;
+            totalAmmo = w.weapon.TotalAmmo;
+            // AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
+        }
+
 
     }
 }
