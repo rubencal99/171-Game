@@ -12,7 +12,7 @@ public class EnemySpanwer : MonoBehaviour
     public int numToSpawn = 1;
     public int enemyCount;
 
-    private bool spawned = false;
+    public bool spawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,10 @@ public class EnemySpanwer : MonoBehaviour
         }
     }
 
-    void Update() {
-        if(spawned)
-            oneStepCloser();
-    }
+    // void Update() {
+    //     if(spawned)
+    //         oneStepCloser();
+    // }
 
     public void SpawnObject(){
         Vector3 offsetPosition = transform.position;

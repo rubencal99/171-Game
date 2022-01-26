@@ -6,31 +6,51 @@ public class RoomClearCheck : MonoBehaviour
 {
 
     private int enemyCount;
-    private GameObject[] spawners;
+    private List<GameObject> spawners;
     // Start is called before the first frame update
     void Start()
     {
         foreach(Transform child in transform) {
            if(child.tag == "Spawner")
            {
-               // child.GetComponent<EnemySpanwer>().enabled = true;
-               enemyCount += child.GetComponent<EnemySpanwer>().enemyCount;
+              // child.GetComponent<EnemySpanwer>().enabled = true;
+               enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
+               spawners.Add(child.gameObject);
               }
         }
-        Debug.Log("Enemy count = " + enemyCount);
+        Debug.Log(" Room Enemy count = " + enemyCount);
+    }
+
+     void Update() {
+         foreach(GameObject sp in spawners)
+            if(sp.GetComponent<EnemySpanwer>().spawned)
+                oneStepCloser();
     }
 
 
-
     // Update is called once per frame
-   public void oneStepCloser() {
-       enemyCount --;
-       Debug.Log("One step closer, " + enemyCount + "enemies remaining");
-       checkIfClear();
+//    public void oneStepCloser() {
+//        enemyCount --;
+//        Debug.Log("One step closer, " + enemyCount + "enemies remaining");
+//        checkIfClear();
+       
+//    }
+
+ public void oneStepCloser() {
+      enemyCount = 0;
+       foreach(Transform child in transform)
+       { 
+           if(child.tag == "Enemy") {
+                enemyCount++;
+           }
+             Debug.Log("current enemy count = " + enemyCount); 
+        }
+        if(enemyCount <= 0)
+            checkIfClear();
        
    }
     public void checkIfClear() {
-          foreach(Transform child in transform.parent)
+          foreach(Transform child in transform)
         {
         if(child.tag == "Spawner" || child.tag == "Door")
             Destroy(child.gameObject);
@@ -38,5 +58,16 @@ public class RoomClearCheck : MonoBehaviour
 
         Debug.Log("room cleared");
  
+    }
+
+    public void setRoomActive() {
+        foreach(Transform child in transform) {
+           if(child.tag == "Door"){
+                   child.GetChild(0).gameObject.SetActive(true);
+                   child.GetComponent<EntryCollider>().toggleGuarded();
+           }
+           if(child.tag == "Spawner")
+                child.GetComponent<EnemySpanwer>().enabled = true;
+              }
     }
 }
