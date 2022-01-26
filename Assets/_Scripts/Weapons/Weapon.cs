@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected GameObject muzzle;
 
-    protected PlayerWeapon weaponParent;
+    protected AgentWeapon weaponParent;
 
     [SerializeField]
     protected PlayerPassives passives;
@@ -61,7 +61,7 @@ public class Weapon : MonoBehaviour
     {
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
-        weaponParent = transform.parent.GetComponent<PlayerWeapon>();
+        weaponParent = transform.parent.GetComponent<AgentWeapon>();
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
     }

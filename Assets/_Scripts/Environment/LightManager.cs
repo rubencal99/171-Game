@@ -74,7 +74,7 @@ public class LightManager : MonoBehaviour
     private void SetChase(bool value){
         if(indoor){
             if(value){
-                Debug.Log("Red Mode!");
+                // Debug.Log("Red Mode!");
                 lightSource.color = Color.Lerp(lightSource.color, Color.red, smooth * Time.deltaTime); //smooth * Time.deltaTime);
                 lightLevel = 2;
             }

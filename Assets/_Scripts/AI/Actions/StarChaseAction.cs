@@ -31,6 +31,7 @@ public class StarChaseAction : AIAction
 
     private void Update() {
         aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+        // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
 
     private void UpdatePath()
@@ -74,6 +75,7 @@ public class StarChaseAction : AIAction
         // Debug.Log(direction);
         aiMovementData.Direction = direction;
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
+        Debug.Log("Direction: " + aiMovementData.Direction);
         enemyBrain.Move(aiMovementData.Direction);
         enemyBrain.Aim(aiMovementData.PointOfInterest);
 

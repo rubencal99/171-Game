@@ -20,8 +20,7 @@ public class PlayerWeapon : AgentWeapon
 
     public int selectedWeapon = 0;
 
-    [SerializeField]
-    public bool InfAmmo;
+
 
     private void Start()
     {
