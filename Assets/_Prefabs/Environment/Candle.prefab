@@ -116,6 +116,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baa185c0e960c8d4194c4825add56e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <LightData>k__BackingField: {fileID: 11400000, guid: a2cb94cf909914447b80fecfbab57f3c, type: 2}
+  lightIntensity: 0
+  lightLevel: 0
+  innerRadius: 0
+  outerRadius: 0
+  indoor: 0
+  chase: 0
+  smooth: 0
+  triggerRadius: 0
 --- !u!1 &2098239702095650722
 GameObject:
   m_ObjectHideFlags: 0
