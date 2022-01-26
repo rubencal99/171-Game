@@ -31,6 +31,7 @@ public class StarChaseAction : AIAction
 
     private void Update() {
         aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+        // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
 
     private void UpdatePath()
@@ -52,15 +53,15 @@ public class StarChaseAction : AIAction
 
     public override void TakeAction()
     {
-        Debug.Log("In StarChase");
+        // Debug.Log("In StarChase");
         if (path == null)
         {
-            Debug.Log("path = null");
+            // Debug.Log("path = null");
             return;
         }
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            Debug.Log("currentWaypoint >= path.vectorPath.Count");
+            // Debug.Log("currentWaypoint >= path.vectorPath.Count");
             reachedEnd = true;
             return;
         }
@@ -74,7 +75,10 @@ public class StarChaseAction : AIAction
         // Debug.Log(direction);
         aiMovementData.Direction = direction;
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
+        // Debug.Log("Direction: " + aiMovementData.Direction);
+        Debug.Log("About to Move to " + aiMovementData.Direction);
         enemyBrain.Move(aiMovementData.Direction);
+        Debug.Log("About to Aim at " + aiMovementData.PointOfInterest);
         enemyBrain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

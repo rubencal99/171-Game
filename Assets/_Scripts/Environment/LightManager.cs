@@ -35,11 +35,11 @@ public class LightManager : MonoBehaviour
     public bool Chase{
         get {return chase;}
         set{
-            Debug.Log("In Set Chase");
+            // Debug.Log("In Set Chase");
             if (chase == value) return;
-            Debug.Log("chase = " + chase);
+            // Debug.Log("chase = " + chase);
             chase = value;
-            Debug.Log("chase cahnged to " + chase);
+            // Debug.Log("chase cahnged to " + chase);
             SetChase(chase);
         }
     }
@@ -74,7 +74,7 @@ public class LightManager : MonoBehaviour
     private void SetChase(bool value){
         if(indoor){
             if(value){
-                Debug.Log("Red Mode!");
+                // Debug.Log("Red Mode!");
                 lightSource.color = Color.Lerp(lightSource.color, Color.red, smooth * Time.deltaTime); //smooth * Time.deltaTime);
                 lightLevel = 2;
             }

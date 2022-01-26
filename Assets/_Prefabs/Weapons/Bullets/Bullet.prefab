@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7916410930458580664}
   - component: {fileID: 172703149306745795}
   - component: {fileID: 1466190958414042892}
-  - component: {fileID: -821682400125908292}
+  - component: {fileID: 7330565569697134389}
   m_Layer: 6
-  m_Name: EnemyBullet
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1722504919
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7075503562967444540, guid: 4f4e95b34d9c7f842a2a810504f24617, type: 3}
+  m_Sprite: {fileID: -6051064961186182539, guid: 4f4e95b34d9c7f842a2a810504f24617, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-821682400125908292
+--- !u!114 &7330565569697134389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7916410930458580671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8663ac341ed0174586ca02db77cfaa1, type: 3}
+  m_Script: {fileID: 11500000, guid: 168e49f3698a15140a5c60e71983c856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: ca00283b322aacf4fa25433b189ab8e4, type: 2}
+  <BulletData>k__BackingField: {fileID: 0}

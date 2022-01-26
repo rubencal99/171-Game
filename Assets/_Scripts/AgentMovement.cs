@@ -10,6 +10,8 @@ public class AgentMovement : MonoBehaviour
 {
     protected Rigidbody2D rigidbody2D;
 
+    protected PlayerPassives Passives;
+
     // MovementData is a scriptable object that contains data regarding movement
     [field: SerializeField]
     public MovementDataSO MovementData { get; set; }
@@ -18,6 +20,8 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     protected float currentVelocity = 0;
     protected Vector2 movementDirection;
+
+    protected float DefaultSpeed = 5f;
 
     // This passes currentVelocity to AgentAnimations.AnimatePlayer
     // Hence SerializeField
@@ -29,6 +33,12 @@ public class AgentMovement : MonoBehaviour
     {
         // Grabs RigidBody that the script is attached to
         rigidbody2D = GetComponent<Rigidbody2D>();
+
+        // Grabs PlayerPassives script
+        Passives = GetComponent<PlayerPassives>();
+
+        // Resets MovementData from previous plays
+        // MovementData.maxSpeed = DefaultSpeed;
     }
 
     // Takes Vector2 from AgentInput OnMovementKeyPressed
@@ -43,7 +53,7 @@ public class AgentMovement : MonoBehaviour
             */
             movementDirection = movementInput.normalized;
         }
-        currentVelocity = calculateSpeed(movementInput);
+        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
     }
     
     // this function integrates acceleration

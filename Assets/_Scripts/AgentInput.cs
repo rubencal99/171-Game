@@ -10,6 +10,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private Camera mainCamera;
 
     private bool fireButtonDown = false;
+    private bool throwButtonDown = false;
 
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
@@ -34,6 +35,10 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
+    // Calls Player.ThowItem
+    [field: SerializeField]
+    public UnityEvent OnThrowButtonPressed { get; set; }
+
     // Calls SceneManager.RestartScene
     [field: SerializeField]
     public UnityEvent OnRestartButtonPressed { get; set; }
@@ -52,6 +57,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetMovementInput();
         GetPointerInput();
         GetFireInput();
+        GetThrowInput();
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
@@ -82,6 +88,26 @@ public class AgentInput : MonoBehaviour, IAgentInput
         if (Input.GetAxisRaw("Reload") > 0)
         {
             OnReloadButtonPressed?.Invoke();
+        }
+    }
+
+    private void GetThrowInput()
+    {
+        if (Input.GetAxisRaw("Fire2") > 0)
+        {
+            if (throwButtonDown == false)
+            {
+                Debug.Log("In throw");
+                throwButtonDown = true;
+                OnThrowButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (throwButtonDown == true)
+            {
+                throwButtonDown = false;
+            }
         }
     }
 
