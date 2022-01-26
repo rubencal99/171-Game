@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 190606970279311257}
   m_Layer: 8
   m_Name: StarAttackEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
   <Health>k__BackingField: 2
   <Damage>k__BackingField: 0
+  <Range>k__BackingField: 0
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -410,7 +411,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32696
+  m_InstanceId: 114660
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0
