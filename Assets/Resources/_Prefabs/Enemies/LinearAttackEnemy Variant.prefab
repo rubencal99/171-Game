@@ -63,9 +63,41 @@ PrefabInstance:
       propertyPath: <EnemyData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 7d8a3c248d96b114099612ca0accdcf7, type: 3}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AgentAudioPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638867989798731448, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6638867989798731449, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_Name
       value: LinearAttackEnemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638867989798731449, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990098400909, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_Enabled
@@ -81,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990098400911, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_InstanceId
-      value: -46960
+      value: -95716
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990841983292, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_Enabled
