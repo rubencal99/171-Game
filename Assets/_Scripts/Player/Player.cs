@@ -12,12 +12,16 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public int Damage { get; private set; }
 
+    [field: SerializeField]                         
+    public bool isDead;                             //For debug
+
     [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
 
+    [field: SerializeField]
     public GameObject DeathMenuUI;
 
     private Vector3 SpawnPosition;
@@ -29,6 +33,15 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         DeathMenuUI.SetActive(false);
         agentRender = GetComponentInChildren<AgentRenderer>();
+        isDead = false;
+    }
+    private void Update()
+    {
+        if (isDead==true){                      //For Debug
+            Health = 0;
+            OnDie?.Invoke();
+            StartCoroutine(WaitToDie());
+        }
     }
 
     public void GetHit(int damage, GameObject damageDealer)
