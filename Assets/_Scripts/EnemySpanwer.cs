@@ -10,7 +10,7 @@ public class EnemySpanwer : MonoBehaviour
     public float spawnTime = 1.0f;
     public float spawnDelay = 1.0f;
     public int numToSpawn = 1;
-    private int enemyCount;
+    public int enemyCount;
 
     private bool spawned = false;
 
@@ -41,7 +41,7 @@ public class EnemySpanwer : MonoBehaviour
         offsetPosition.x += Random.Range(-1.5f, 1.5f);
         offsetPosition.y += Random.Range(-1.5f, 1.5f);
         var clone = Instantiate(Enemies[Random.Range(0, Enemies.Length)], offsetPosition, Quaternion.identity);
-        clone.transform.parent = this.gameObject.transform;
+        clone.transform.parent = this.gameObject.transform.parent.transform;
         if(stopSpawn){
             CancelInvoke("SpawnObject");
         }
@@ -60,19 +60,19 @@ public class EnemySpanwer : MonoBehaviour
            }
              Debug.Log("current enemy count = " + enemyCount); 
         }
-        if(enemyCount <= 0)
-            checkIfClear();
+        // if(enemyCount <= 0)
+        //     checkIfClear();
        
    }
-    public void checkIfClear() {
-        foreach(Transform child in transform.parent)
-        {
-        if(child.tag == "Spawner" || child.tag == "Door")
-            Destroy(child.gameObject);
-        }
+//     public void checkIfClear() {
+//         foreach(Transform child in transform.parent)
+//         {
+//         if(child.tag == "Spawner" || child.tag == "Door")
+//             Destroy(child.gameObject);
+//         }
 
-        Debug.Log("room cleared");
+//         Debug.Log("room cleared");
  
-    }
+//     }
     
-}
+ }

@@ -5,14 +5,22 @@ using UnityEngine;
 public class RoomClearCheck : MonoBehaviour
 {
 
-    private int enemyCount = 0;
-    public GameObject spawner;
+    private int enemyCount;
+    private GameObject[] spawners;
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount = spawner.GetComponent<EnemySpanwer>().numToSpawn;
+        foreach(Transform child in transform) {
+           if(child.tag == "Spawner")
+           {
+               // child.GetComponent<EnemySpanwer>().enabled = true;
+               enemyCount += child.GetComponent<EnemySpanwer>().enemyCount;
+              }
+        }
         Debug.Log("Enemy count = " + enemyCount);
     }
+
+
 
     // Update is called once per frame
    public void oneStepCloser() {
@@ -22,16 +30,13 @@ public class RoomClearCheck : MonoBehaviour
        
    }
     public void checkIfClear() {
-        if(enemyCount <= 0) {
-               foreach(Transform child in transform)
-                {
-                if(child.tag == "Spawner")
-                    Destroy(child.gameObject);
-                }
-
-                Debug.Log("room cleared");
- 
+          foreach(Transform child in transform.parent)
+        {
+        if(child.tag == "Spawner" || child.tag == "Door")
+            Destroy(child.gameObject);
         }
 
+        Debug.Log("room cleared");
+ 
     }
 }
