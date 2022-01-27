@@ -6,7 +6,7 @@ public class RoomClearCheck : MonoBehaviour
 {
 
     private int enemyCount;
-    private List<GameObject> spawners;
+    private List<GameObject> spawners = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +18,17 @@ public class RoomClearCheck : MonoBehaviour
                spawners.Add(child.gameObject);
               }
         }
-        Debug.Log(" Room Enemy count = " + enemyCount);
+        Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
     }
 
      void Update() {
+         Debug.Log("hello " +  spawners.Count);
          foreach(GameObject sp in spawners)
+         {
+            Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
             if(sp.GetComponent<EnemySpanwer>().spawned)
                 oneStepCloser();
+         }
     }
 
 
@@ -61,6 +65,7 @@ public class RoomClearCheck : MonoBehaviour
     }
 
     public void setRoomActive() {
+        Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    child.GetChild(0).gameObject.SetActive(true);
