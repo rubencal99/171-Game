@@ -325,11 +325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
-  <CurrentState>k__BackingField: {fileID: 0}
+  <CurrentState>k__BackingField: {fileID: 6932574753163038890}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6610084018179168394}
         m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
         m_MethodName: Shoot
         m_Mode: 1
@@ -344,7 +344,7 @@ MonoBehaviour:
   <OnFireButtonReleased>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6610084018179168394}
         m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
         m_MethodName: StopShooting
         m_Mode: 1
@@ -386,7 +386,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6610084018179168394}
         m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
         m_MethodName: AimWeapon
         m_Mode: 0
@@ -401,7 +401,7 @@ MonoBehaviour:
   <OnReloadButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6610084018179168394}
         m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
         m_MethodName: Reload
         m_Mode: 1
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867989798731449}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d1cd339f41456543b428ddf4b1e51b2, type: 3}
   m_Name: 
@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDying: 0
+  enraged: 0
 --- !u!114 &6638867990098400911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +609,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23642
+  m_InstanceId: 67964
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0
@@ -886,7 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Decisions>k__BackingField:
   - {fileID: 1874489740710565125}
-  <PositiveResult>k__BackingField: {fileID: 0}
+  <PositiveResult>k__BackingField: {fileID: 1286649467137972483}
   <NegativeResult>k__BackingField: {fileID: 0}
 --- !u!114 &1874489740710565125
 MonoBehaviour:
