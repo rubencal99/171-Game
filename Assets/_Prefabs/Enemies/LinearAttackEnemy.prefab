@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 6422503928126320801}
   m_Layer: 8
   m_Name: LinearAttackEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -717,7 +717,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 37794
+  m_InstanceId: 113824
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0
