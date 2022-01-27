@@ -1,0 +1,47 @@
+fileFormatVersion: 2
+guid: 309f8714d23613d448461f17cc7fdd56
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 1fa25d03934ea624a82bf2fcee6f0873, type: 3}
+  missingFiles: []
+  errors: []
+  warnings:
+  - Tileset 'PrisonFloor1' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonFloor2' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonFloor3' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonFloor4' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonWall1' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonWall2' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonWall3' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonWall4' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonWall5' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'PrisonWall6' is an embedded tileset. Exported tilesets are preferred.
+  - Tileset 'Candle1' is an embedded tileset. Exported tilesets are preferred.
+  missingSortingLayers: []
+  missingLayers: []
+  missingTags: []
+  importerVersion: 24
+  pixelsPerUnit: 16
+  edgesPerEllipse: 32
+  numberOfObjectsImported: 222
+  tilesAsObjects: 0
+  sortingMode: 0
+  isIsometric: 0
+  customImporterClassName: 
+  internalTilesets:
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
+  - {instanceID: 0}
