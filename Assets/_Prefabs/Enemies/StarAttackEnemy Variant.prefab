@@ -951,7 +951,7 @@ MonoBehaviour:
   <TargetSpotted>k__BackingField: 0
   <Arrived>k__BackingField: 0
   <Attack>k__BackingField: 0
-  Range: 10
+  Range: 100
 --- !u!114 &6308342188343331138
 MonoBehaviour:
   m_ObjectHideFlags: 0
