@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
-  m_Name: RegularBullet
+  m_Name: RegularBullet 1
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 464e81c341ac3b84aa14554889934ffc, type: 3}
   <BulletSpeed>k__BackingField: 30.1
