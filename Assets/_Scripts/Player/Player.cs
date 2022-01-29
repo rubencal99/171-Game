@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public UnityEvent OnDie { get; set; }
 
     [field: SerializeField]
-    public GameObject DeathMenuUI;
+    //public GameObject DeathMenuUI;
 
     private Vector3 SpawnPosition;
 
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Start()
     {
         SpawnPosition = transform.position;
-        DeathMenuUI.SetActive(false);
+        //DeathMenuUI.SetActive(false);
         agentRender = GetComponentInChildren<AgentRenderer>();
         isDead = false;
     }
@@ -59,13 +59,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
     }
 
+    public void Heal()
+    {
+        Health += 2;
+    }
+
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRender.isDying = true;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         // Play End Game Screen here
-        DeathMenuUI.SetActive(true);
+        //DeathMenuUI.SetActive(true);
     }
 
     public void Respawn()

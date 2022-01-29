@@ -66,6 +66,11 @@ public class AgentWeapon : MonoBehaviour
 
     }
 
+    public void Fill()
+    {
+        weapon.AmmoFill();
+    }
+
     public void Shoot()
     {
         if (weapon != null)

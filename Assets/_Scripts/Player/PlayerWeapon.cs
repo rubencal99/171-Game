@@ -9,8 +9,8 @@ public class PlayerWeapon : AgentWeapon
     private float timeToReload = 0.0f;
 
     public void displayReloadProgressBar() {
-       var reloadBar = this.transform.parent.GetComponentInChildren<PlayerReload>();
-       reloadBar.displayReloadProgressBar();
+       //var reloadBar = this.transform.parent.GetComponentInChildren<PlayerReload>();
+      // reloadBar.displayReloadProgressBar();
        
     }
 
