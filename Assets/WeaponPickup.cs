@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AssaultRiflePickup : MonoBehaviour
+public class WeaponPickup : MonoBehaviour
 {
     public GameObject FireArm;
 

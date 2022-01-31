@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dec948719747f2846ba3f6a0151a9eb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3102f3fae1f650744b6da2a137caa830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,8 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 8960519739286643315}
+  passives: {fileID: 0}
   ammo: 100
+  totalAmmo: 0
+  infAmmo: 0
   weaponData: {fileID: 11400000, guid: 04c16df80bc95244586da8824adf317d, type: 2}
+  swordData: {fileID: 0}
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   <OnShoot>k__BackingField:
