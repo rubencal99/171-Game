@@ -11,8 +11,13 @@ public class AssaultRiflePickup : MonoBehaviour
         if (collision.tag == "Player")
         {
             Destroy(gameObject);
-            GameObject thisFireArm = Instantiate(FireArm, new Vector3(0.574f, 0f, 0f), Quaternion.identity) as GameObject;
+            GameObject thisFireArm = Instantiate(FireArm) as GameObject;
             thisFireArm.transform.parent = GameObject.Find("WeaponParent").transform;
+            thisFireArm.transform.localPosition = new Vector3(0.574f, 0f, 0f);
+            thisFireArm.transform.localRotation = Quaternion.identity;
+            //SpriteRenderer sprite = thisFireArm.GetComponent<SpriteRenderer>();
+            //sprite.enabled = false;
+            thisFireArm.SetActive(false);
         }
     }
 }
