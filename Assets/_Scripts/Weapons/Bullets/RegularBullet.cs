@@ -26,6 +26,7 @@ public class RegularBullet : Bullet
         {
             // this moves our bullet in the direction that it is facing
             rigidbody2D.MovePosition(transform.position + BulletData.BulletSpeed * transform.right * Time.fixedDeltaTime);
+            
         }
     }
 

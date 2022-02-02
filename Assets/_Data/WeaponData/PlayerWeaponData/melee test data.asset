@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 778427c1d310e1e4398f4143f2616f86, type: 3}
-  m_Name: 
+  m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
+  m_Name: melee test data
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 10
   <BulletData>k__BackingField: {fileID: 11400000, guid: 30a3279d7bd0a6a4abdc1715e06032d6, type: 2}
-  <RecoveryLength>k__BackingField: 0
-  <KnockbackPower>k__BackingField: 5.72
-  <KnockbackDelay>k__BackingField: 0.1
+  <MagazineCapacity>k__BackingField: 1
+  <MaxAmmoCapacity>k__BackingField: 20
+  <AutomaticFire>k__BackingField: 0
+  <WeaponDelay>k__BackingField: 0.253
+  <ReloadSpeed>k__BackingField: 1.4
+  <SpreadAngle>k__BackingField: 2
+  multiBulletShot: 0
+  bulletCount: 1

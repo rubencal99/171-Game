@@ -11,6 +11,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private bool fireButtonDown = false;
     private bool throwButtonDown = false;
+    private bool meleeButtonDown = false;
 
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
@@ -47,6 +48,10 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 
+    // Calls PlayerWeapon.UseMelee
+    [field: SerializeField]
+    public UnityEvent OnMeleeButtonPressed { get; set; }
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -58,6 +63,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetPointerInput();
         GetFireInput();
         GetThrowInput();
+        GetMeleeInput();
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
@@ -93,7 +99,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private void GetThrowInput()
     {
-        if (Input.GetAxisRaw("Fire2") > 0)
+        if (Input.GetAxisRaw("Fire3") > 0)
         {
             if (throwButtonDown == false)
             {
@@ -107,6 +113,26 @@ public class AgentInput : MonoBehaviour, IAgentInput
             if (throwButtonDown == true)
             {
                 throwButtonDown = false;
+            }
+        }
+    }
+
+     private void GetMeleeInput()
+    {
+        if (Input.GetAxisRaw("Fire2") > 0)
+        {
+            if (meleeButtonDown == false)
+            {
+                Debug.Log("In melee");
+                meleeButtonDown = true;
+                OnMeleeButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (meleeButtonDown == true)
+            {
+                meleeButtonDown = false;
             }
         }
     }

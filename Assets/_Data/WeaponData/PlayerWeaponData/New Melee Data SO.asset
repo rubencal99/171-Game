@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 778427c1d310e1e4398f4143f2616f86, type: 3}
-  m_Name: 
+  m_Name: New Melee Data SO
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 10
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 30a3279d7bd0a6a4abdc1715e06032d6, type: 2}
+  <MeleeSprite>k__BackingField: {fileID: 0}
   <RecoveryLength>k__BackingField: 0
-  <KnockbackPower>k__BackingField: 5.72
+  <KnockbackPower>k__BackingField: 5
   <KnockbackDelay>k__BackingField: 0.1
