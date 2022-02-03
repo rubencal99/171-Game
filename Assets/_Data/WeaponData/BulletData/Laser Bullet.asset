@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
   m_Name: Laser Bullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: c29ed59394f488944a3244c6e9d217fd, type: 3}
-  <BulletSpeed>k__BackingField: 100
-  <Damage>k__BackingField: 10
-  <Friction>k__BackingField: 0.1
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 63c1beb30be22d84b8b4c7159322229e, type: 3}
+  <BulletSpeed>k__BackingField: 59
+  <Damage>k__BackingField: 3
+  <Friction>k__BackingField: 0
   <Bounce>k__BackingField: 0
   <GoThroughHittable>k__BackingField: 1
   <IsRaycast>k__BackingField: 1
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
   <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
-  <KnockbackPower>k__BackingField: 2.09
+  <KnockbackPower>k__BackingField: 1.9
   <KnockbackDelay>k__BackingField: 0.054
+  <hasDecay>k__BackingField: 0
+  <decayTime>k__BackingField: 5
