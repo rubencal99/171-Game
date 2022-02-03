@@ -7,13 +7,62 @@ public class AgentRenderer : MonoBehaviour
 {
     protected SpriteRenderer spriteRenderer;
 
+    protected Material material;
+    float fade = 1f;
+    public bool isDying = false;
+    public bool isEnraged = false;
+    /*public bool Enrage
+    {
+        get {return isEnraged;}
+        set {
+            if (isEnraged == value) return;
+            isEnraged = value;
+            if (RevertColor != null){
+                RevertColor(spriteRenderer.color);
+            }
+        }
+    }*/
+
+    public bool isBuffed = false;
+
+    private Color originalColor;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        // Debug.Log("Right Cross Product " + Vector3.Cross(Vector2.up, Vector2.right));
-        // Debug.Log("Left Cross Product " + Vector3.Cross(Vector2.up, -Vector2.right));
+        material = GetComponent<SpriteRenderer>().material;
+        originalColor = spriteRenderer.color;
     }
 
+    void Update(){
+        if (isDying){
+            fade -= Time.deltaTime;
+            if (fade <= 0f){
+                fade = 0f;
+                isDying = false;
+            }
+
+            material.SetFloat("_Fade", fade);
+        }
+
+        AdjustColors();
+    }
+
+    void AdjustColors()
+    {
+        if (isEnraged)
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
+        }
+        if (isBuffed)
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 0.1f);
+        }
+        else{
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
+        }
+    }
+    
     public void FaceDirection(Vector2 pointerInput)
     {
         var direction = (Vector3)pointerInput - transform.position;

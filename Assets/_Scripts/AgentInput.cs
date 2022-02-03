@@ -10,6 +10,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private Camera mainCamera;
 
     private bool fireButtonDown = false;
+    private bool throwButtonDown = false;
 
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
@@ -34,6 +35,18 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
+    // Calls Player.ThowItem
+    [field: SerializeField]
+    public UnityEvent OnThrowButtonPressed { get; set; }
+
+    // Calls SceneManager.RestartScene
+    [field: SerializeField]
+    public UnityEvent OnRestartButtonPressed { get; set; }
+
+    // Calls SceneManager.RestartScene
+    [field: SerializeField]
+    public UnityEvent OnRespawnButtonPressed { get; set; }
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -44,7 +57,10 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetMovementInput();
         GetPointerInput();
         GetFireInput();
+        GetThrowInput();
         GetReloadInput();
+        // GetRestartInput();
+        GetRespawnInput();
     }
 
     private void GetFireInput()
@@ -72,6 +88,45 @@ public class AgentInput : MonoBehaviour, IAgentInput
         if (Input.GetAxisRaw("Reload") > 0)
         {
             OnReloadButtonPressed?.Invoke();
+        }
+    }
+
+    private void GetThrowInput()
+    {
+        if (Input.GetAxisRaw("Fire2") > 0)
+        {
+            if (throwButtonDown == false)
+            {
+                Debug.Log("In throw");
+                throwButtonDown = true;
+                OnThrowButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (throwButtonDown == true)
+            {
+                throwButtonDown = false;
+            }
+        }
+    }
+
+    private void GetRestartInput()
+    {
+        if (Input.GetAxisRaw("Space") > 0)
+        {
+            // This will restart the entire scene
+            OnRestartButtonPressed?.Invoke();
+        }
+    }
+
+    private void GetRespawnInput()
+    {
+        if (Input.GetAxisRaw("Space") > 0)
+        {
+            Debug.Log("In Respawn Input");
+            // This will respawn the player to their original position at start of scene
+            OnRespawnButtonPressed?.Invoke();
         }
     }
 

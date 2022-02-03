@@ -12,17 +12,20 @@ public class AgentWeapon : MonoBehaviour
     protected WeaponRenderer weaponRenderer;
 
     [SerializeField]
-    protected Weapon weapon;
+    public Gun weapon;
+
+    [SerializeField]
+    public bool InfAmmo;
 
     private void Awake()
     {
         AssignWeapon();
     }
 
-    private void AssignWeapon()
+    public void AssignWeapon()
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
-        weapon = GetComponentInChildren<Weapon>();
+        weapon = GetComponentInChildren<Gun>();
     }
 
     public virtual void AimWeapon(Vector2 pointerPosition)
@@ -42,12 +45,12 @@ public class AgentWeapon : MonoBehaviour
     // Changes sortingOrder if angle is too high
     private void AdjustWeaponRendering()
     {
-        // Explicitly check for null instead of using ?
-        // This prevents bugs if weaponRenderer is deleted mid-game
+        // weaponRenderer?.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
+        // weaponRenderer?.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
         if (weaponRenderer != null)     
         {
-            // weaponRenderer?.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
-            // weaponRenderer?.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
+            // Explicitly check for null instead of using ?
+            // This prevents bugs if weaponRenderer is deleted mid-game
             weaponRenderer.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
             weaponRenderer.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
         }
@@ -56,7 +59,7 @@ public class AgentWeapon : MonoBehaviour
 
     public void Reload()
     {
-        if (weapon != null)
+        if (weapon != null && weapon.TotalAmmo > 0)
         {
             weapon.Reload();
         }

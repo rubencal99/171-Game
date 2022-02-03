@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 // Dictates what should happen when we enter a state
 public abstract class AIAction : MonoBehaviour
