@@ -28,12 +28,12 @@ public class PlayerReload : MonoBehaviour
 
          // Debug.Log("time to reload = " + timeToReload /  this.transform.parent.GetComponentInChildren<Weapon>().getReloadSpeed());
         
-          reloadBar.transform.GetChild(0).localScale = new Vector3( 2.0f * timeToReload / this.transform.parent.GetComponentInChildren<Weapon>().getReloadSpeed(), 1.0f, 1.0f);
+          reloadBar.transform.GetChild(0).localScale = new Vector3( 2.0f * timeToReload / this.transform.parent.GetComponentInChildren<Gun>().getReloadSpeed(), 1.0f, 1.0f);
 
     }
 
     public void displayReloadProgressBar() {
-        timeToReload = this.transform.parent.GetComponentInChildren<Weapon>().getReloadSpeed();
+        timeToReload = this.transform.parent.GetComponentInChildren<Gun>().getReloadSpeed();
         reloadBar.enabled = true;
         this.transform.GetChild(1).GetComponent<Canvas>().enabled = true;
       

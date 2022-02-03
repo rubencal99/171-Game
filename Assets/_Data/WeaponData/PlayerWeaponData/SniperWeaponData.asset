@@ -21,3 +21,6 @@ MonoBehaviour:
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
   bulletCount: 0
+  recoilIntensity: 4
+  recoilFrequency: 1
+  recoilTime: 0.1

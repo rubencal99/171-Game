@@ -10,12 +10,28 @@ public class AgentRenderer : MonoBehaviour
     protected Material material;
     float fade = 1f;
     public bool isDying = false;
-    public bool enraged = false;
+    public bool isEnraged = false;
+    /*public bool Enrage
+    {
+        get {return isEnraged;}
+        set {
+            if (isEnraged == value) return;
+            isEnraged = value;
+            if (RevertColor != null){
+                RevertColor(spriteRenderer.color);
+            }
+        }
+    }*/
+
+    public bool isBuffed = false;
+
+    private Color originalColor;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = GetComponent<SpriteRenderer>().material;
+        originalColor = spriteRenderer.color;
     }
 
     void Update(){
@@ -28,9 +44,22 @@ public class AgentRenderer : MonoBehaviour
 
             material.SetFloat("_Fade", fade);
         }
-        if (enraged)
+
+        AdjustColors();
+    }
+
+    void AdjustColors()
+    {
+        if (isEnraged)
         {
             spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
+        }
+        if (isBuffed)
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 0.1f);
+        }
+        else{
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
         }
     }
     

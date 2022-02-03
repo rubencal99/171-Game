@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 // This script is responsible for firing bullets from the selected weapon
-public class Weapon : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     // This gives us a place to instantiate the bullet ie reference to our gun
     [SerializeField]
@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
     protected WeaponDataSO weaponData;
 
     [SerializeField]
-    protected MeleeDataSO swordData;
+    public bool isPlayer;
 
     public int Ammo
     {
@@ -60,8 +60,11 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected bool reloadCoroutine = false;
 
-    private void Start()
+    protected void Start()
     {
+        if (transform.root.gameObject.tag == "Player"){
+            isPlayer = true;
+        }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
         weaponParent = transform.parent.GetComponent<AgentWeapon>();
@@ -74,6 +77,9 @@ public class Weapon : MonoBehaviour
 
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
+
+    /*[field: SerializeField]
+    public UnityEvent<float, float> OnCameraShake { get; set; }*/
 
     public float getReloadSpeed() {
         return weaponData.ReloadSpeed / passives.ReloadMultiplier;
@@ -106,13 +112,13 @@ public class Weapon : MonoBehaviour
         reloadCoroutine = false;
     }
 
-    private void Update()
+    protected void Update()
     {
         UseWeapon();
         infAmmo = weaponParent.InfAmmo;
     }
 
-    private void UseWeapon()
+    protected void UseWeapon()
     {
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
@@ -139,7 +145,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void FinishShooting()
+    protected void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
         if (weaponData.AutomaticFire == false)
@@ -148,27 +154,33 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    protected IEnumerator DelayNextShootCoroutine()
+    // Virtual so it can be overridden in EnemyGun class
+    protected virtual IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
         yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
 
-    private void ShootBullet()
+    protected void ShootBullet()
     {
         SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
+       if (isPlayer)
+       {
+           // OnCameraShake?.Invoke(weaponData.recoilIntensity, weaponData.recoilTime);
+           CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
+       }
     }
 
-    private void SpawnBullet(Vector3 position, Quaternion rotation)
+    protected void SpawnBullet(Vector3 position, Quaternion rotation)
     {
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }
 
     // Here we add some randomness for weapon spread
-    private Quaternion CalculateAngle(GameObject muzzle)
+    protected Quaternion CalculateAngle(GameObject muzzle)
     {
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));

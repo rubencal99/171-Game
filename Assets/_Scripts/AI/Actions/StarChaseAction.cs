@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Pathfinding;
+using UnityEngine;
 
 public class StarChaseAction : AIAction
 {
-    Path path;
-    int currentWaypoint = 0;
-    bool reachedEnd = false;
+    protected Path path;
+    protected int currentWaypoint = 0;
+    protected bool reachedEnd = false;
 
     public GameObject target;
 
-    public float nextWaypointDistance = 3;
+    public float nextWaypointDistance = 0.5f;
 
-    Seeker seeker;
-    Rigidbody2D rb;
+    protected Seeker seeker;
+    protected Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         seeker = transform.root.GetComponent<Seeker>();
         rb = transform.root.GetComponent<Rigidbody2D>();
@@ -26,15 +26,15 @@ public class StarChaseAction : AIAction
         aiMovementData.PointOfInterest = (Vector2)target.transform.position;
 
         // This calls our UpdatePath func on 0.5 sec loop
-        InvokeRepeating("UpdatePath", 0f, 0.5f);
+        InvokeRepeating("UpdatePath", 0f, 0.1f);
     }
 
-    private void Update() {
+    public virtual void Update() {
         aiMovementData.PointOfInterest = (Vector2)target.transform.position;
         // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
 
-    private void UpdatePath()
+    protected void UpdatePath()
     {
         if (seeker.IsDone())
         {
@@ -42,7 +42,7 @@ public class StarChaseAction : AIAction
         }
     }
 
-    private void OnPathComplete(Path p)
+    protected void OnPathComplete(Path p)
     {
         if (!p.error)
         {
@@ -53,15 +53,12 @@ public class StarChaseAction : AIAction
 
     public override void TakeAction()
     {
-        // Debug.Log("In StarChase");
         if (path == null)
         {
-            // Debug.Log("path = null");
             return;
         }
         if (currentWaypoint >= path.vectorPath.Count)
         {
-            // Debug.Log("currentWaypoint >= path.vectorPath.Count");
             reachedEnd = true;
             return;
         }
@@ -70,15 +67,11 @@ public class StarChaseAction : AIAction
             reachedEnd = false;
         }
 
-        // try transform.position instead of Parent<Transform>().position
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        // Debug.Log(direction);
         aiMovementData.Direction = direction;
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
-        // Debug.Log("Direction: " + aiMovementData.Direction);
-        Debug.Log("About to Move to " + aiMovementData.Direction);
+
         enemyBrain.Move(aiMovementData.Direction);
-        Debug.Log("About to Aim at " + aiMovementData.PointOfInterest);
         enemyBrain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
