@@ -20,13 +20,22 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
 
+    public GameObject obj; // game odject for agent input
+    private AgentInput w; // var to hold agent input 
+
     private void Start()
     {
         SpawnPosition = transform.position;
+        w = obj.GetComponent<AgentInput>(); //get player gameobj
     }
 
     public void GetHit(int damage, GameObject damageDealer)
-    {
+    {    
+        //check if player is Dodging, if true, dont decrement health
+        if (w.dodging) {
+            return;
+        }
+
         Health--;
         // This function is supposed to play a damage animation / deliver knockback
         if (Health >= 0)    

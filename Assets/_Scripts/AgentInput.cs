@@ -11,6 +11,8 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private bool fireButtonDown = false;
 
+    public bool dodging = false; // bool to check if dodging
+
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
     // Passes the Vector2 to AgentMovement.MoveAgent hence SerializeField
@@ -21,6 +23,13 @@ public class AgentInput : MonoBehaviour, IAgentInput
     // This funciton is used to aim the weapon and change player direction
     [field: SerializeField]
     public UnityEvent<Vector2> OnPointerPositionChange { get; set; }
+
+    // Dodge Mechanic
+    // Vector2 Corresponds towards the movement of where the dodge roll happens
+    // *************************
+    [field: SerializeField]
+    public UnityEvent<Vector2> OnDodgeKeyPressed { get; set; }
+    // *************************
 
     // Calls PlayerWeapon.shoot
     [field: SerializeField]
@@ -42,6 +51,9 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 
+    [SerializeField]
+    private float DodgeTimer;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -55,6 +67,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
+        GetDodgeImput();
     }
 
     private void GetFireInput()
@@ -117,5 +130,34 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private void GetMovementInput()
     {
         OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+    }
+
+    private void GetDodgeImput()
+    {   
+        if (DodgeTimer > 0) {
+            DodgeTimer -= Time.deltaTime;
+        }
+
+        // Create new Vector2 when dodge button (Left shift) pressed
+        if (Input.GetAxisRaw("Dodge") > 0) {
+            dodging = true;
+            if (DodgeTimer <= 0) {
+                DodgeTimer = .3f;
+            }
+            Debug.Log("DODGE");
+            OnDodgeKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        }
+
+        if (DodgeTimer <= 0) {
+            dodging = false;
+        }
+    }
+
+    IEnumerator wait()
+    {
+        Debug.Log("Before Wait");
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+         Debug.Log("After Wait");
     }
 }
