@@ -24,6 +24,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public GameObject DeathMenuUI;
 
+    [field: SerializeField]
+    public GameObject PauseMenuUI;
+
     private Vector3 SpawnPosition;
 
     private AgentRenderer agentRender;
@@ -32,13 +35,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
     {
         SpawnPosition = transform.position;
         DeathMenuUI.SetActive(false);
+        PauseMenuUI.SetActive(false);
         agentRender = GetComponentInChildren<AgentRenderer>();
         isDead = false;
     }
     private void Update()
     {
         if (isDead==true){                      //For Debug
-            Health = 0;
+            Health -= Health;                   //make a instance kill 
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
         }
@@ -54,8 +58,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
         {
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
-            
-            
         }
     }
 
