@@ -12,15 +12,26 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected GameObject muzzle;
 
+    protected AgentWeapon weaponParent;
+
+    [SerializeField]
+    protected PlayerPassives passives;
+
     [SerializeField]
     public int ammo;
 
     [SerializeField]
     public int totalAmmo;
 
+    [SerializeField]
+    public bool infAmmo;
+
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
     protected WeaponDataSO weaponData;
+
+    [SerializeField]
+    protected MeleeDataSO swordData;
 
     public int Ammo
     {
@@ -43,26 +54,37 @@ public class Weapon : MonoBehaviour
 
     protected bool isShooting = false;
 
+    protected bool isMelee = false;
+
     [SerializeField]
     protected bool rateOfFireCoroutine = false;
 
     [SerializeField]
     protected bool reloadCoroutine = false;
 
+    [SerializeField]
+    protected bool meleeCoroutine = false;
+
     private void Start()
     {
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
+        weaponParent = transform.parent.GetComponent<AgentWeapon>();
+        passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
+        infAmmo = weaponParent.InfAmmo;
     }
 
     [field: SerializeField]
     public UnityEvent OnShoot { get; set; }
 
+     [field: SerializeField]
+    public UnityEvent OnMelee { get; set; }
+
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
 
     public float getReloadSpeed() {
-        return weaponData.ReloadSpeed;
+        return weaponData.ReloadSpeed / passives.ReloadMultiplier;
     }
     public void TryShooting()
     {
@@ -71,6 +93,15 @@ public class Weapon : MonoBehaviour
     public void StopShooting()
     {
         isShooting = false;
+    }
+
+     public void TryMelee()
+    {
+        isMelee = true;
+    }
+    public void StopMelee()
+    {
+        isMelee = false;
     }
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
@@ -87,7 +118,7 @@ public class Weapon : MonoBehaviour
     {
         // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
         reloadCoroutine = true;
-        yield return new WaitForSeconds(weaponData.ReloadSpeed);
+        yield return new WaitForSeconds(weaponData.ReloadSpeed / passives.ReloadMultiplier);
         // rateOfFireCoroutine = false;
         reloadCoroutine = false;
     }
@@ -95,6 +126,8 @@ public class Weapon : MonoBehaviour
     private void Update()
     {
         UseWeapon();
+        UseMelee();
+        infAmmo = weaponParent.InfAmmo;
     }
 
     private void UseWeapon()
@@ -104,6 +137,9 @@ public class Weapon : MonoBehaviour
             if (Ammo > 0)
             {
                 Ammo--;
+                //I'd like the UI of this to show the ammo decreasing & increasing rapidly
+                if (infAmmo)
+                    Ammo++;
                 OnShoot?.Invoke();
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
@@ -121,6 +157,22 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    public void UseMelee()
+    {
+        if (isMelee)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
+        {
+            OnMelee?.Invoke();
+            SpawnMelee(muzzle.transform.position, CalculateAngle(muzzle));
+            }
+            else
+            {
+                isMelee = false;
+                // Reload();                 // Use this if we want to reload automatically
+                return;
+            }
+            FinishMelee();
+        }
+
     private void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
@@ -130,17 +182,42 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private void FinishMelee()
+    {
+        StartCoroutine(DelayNextMeleeCoroutine());
+        
+        isMelee = false;
+    }
+
     protected IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
-        yield return new WaitForSeconds(weaponData.WeaponDelay);
+        yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
+
+     protected IEnumerator DelayNextMeleeCoroutine()
+    {
+        meleeCoroutine = true;
+        yield return new WaitForSeconds(swordData.RecoveryLength / passives.ROFMultiplier);
+        meleeCoroutine = false;
+    }
+
 
     private void ShootBullet()
     {
         SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
+    }
+
+    private void SpawnMelee(Vector3 position, Quaternion rotation)
+    {
+        Debug.Log("Melee");
+
+
+        var meleePrefab = Instantiate(swordData.BulletData.BulletPrefab, position, rotation);
+       // meleePrefab.transform.parent = this.transform;
+       meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }
 
     private void SpawnBullet(Vector3 position, Quaternion rotation)

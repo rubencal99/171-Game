@@ -10,6 +10,8 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private Camera mainCamera;
 
     private bool fireButtonDown = false;
+    private bool throwButtonDown = false;
+    private bool meleeButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
 
@@ -43,6 +45,10 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
+    // Calls Player.ThowItem
+    [field: SerializeField]
+    public UnityEvent OnThrowButtonPressed { get; set; }
+
     // Calls SceneManager.RestartScene
     [field: SerializeField]
     public UnityEvent OnRestartButtonPressed { get; set; }
@@ -51,8 +57,14 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 
+
     [SerializeField]
     private float DodgeTimer;
+
+    // Calls PlayerWeapon.UseMelee
+    [field: SerializeField]
+    public UnityEvent OnMeleeButtonPressed { get; set; }
+
 
     private void Awake()
     {
@@ -64,6 +76,8 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetMovementInput();
         GetPointerInput();
         GetFireInput();
+        GetThrowInput();
+        GetMeleeInput();
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
@@ -95,6 +109,46 @@ public class AgentInput : MonoBehaviour, IAgentInput
         if (Input.GetAxisRaw("Reload") > 0)
         {
             OnReloadButtonPressed?.Invoke();
+        }
+    }
+
+    private void GetThrowInput()
+    {
+        if (Input.GetAxisRaw("Fire3") > 0)
+        {
+            if (throwButtonDown == false)
+            {
+                Debug.Log("In throw");
+                throwButtonDown = true;
+                OnThrowButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (throwButtonDown == true)
+            {
+                throwButtonDown = false;
+            }
+        }
+    }
+
+     private void GetMeleeInput()
+    {
+        if (Input.GetAxisRaw("Fire2") > 0)
+        {
+            if (meleeButtonDown == false)
+            {
+                Debug.Log("In melee");
+                meleeButtonDown = true;
+                OnMeleeButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (meleeButtonDown == true)
+            {
+                meleeButtonDown = false;
+            }
         }
     }
 

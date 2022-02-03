@@ -19,7 +19,10 @@ public class DisplayHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {      
-        health = p1.Health; // set health int to player health
-        healthText.text = "HP: " + health.ToString(); //Display player health
+        if (p1 != null){
+            health = p1.Health; // set health int to player health
+             healthText.text = "HP: " + health.ToString(); //Display player health
+        }
+
     }
 }

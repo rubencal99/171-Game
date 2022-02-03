@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778427c1d310e1e4398f4143f2616f86, type: 3}
+  m_Name: New Melee Data SO
+  m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 10
+  <MeleeSprite>k__BackingField: {fileID: 0}
+  <RecoveryLength>k__BackingField: 0
+  <KnockbackPower>k__BackingField: 5
+  <KnockbackDelay>k__BackingField: 0.1

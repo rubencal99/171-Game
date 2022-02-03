@@ -17,6 +17,12 @@ public class AgentAnimations : MonoBehaviour
         agentAnimator.SetBool("Walk", val);
     }
 
+    public void SetTakeDamageAnimation()
+    {
+        agentAnimator.SetTrigger("Got hit");
+        Debug.Log("triggering animatoin");
+    }
+
     public void AnimatePlayer(float velocity)
     {
         SetWalkAnimation(velocity > 0);

@@ -14,6 +14,9 @@ public class AgentWeapon : MonoBehaviour
     [SerializeField]
     public Weapon weapon;
 
+    [SerializeField]
+    public bool InfAmmo;
+
     private void Awake()
     {
         AssignWeapon();
@@ -68,6 +71,15 @@ public class AgentWeapon : MonoBehaviour
         if (weapon != null)
         {
             weapon.TryShooting();
+        }
+
+    }
+
+    public void MeleeAttack()
+    {
+        if (weapon != null)
+        {
+            weapon.TryMelee();
         }
 
     }

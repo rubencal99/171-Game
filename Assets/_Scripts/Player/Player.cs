@@ -12,16 +12,26 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public int Damage { get; private set; }
 
+    [field: SerializeField]                         
+    public bool isDead;                             //For debug
+
     [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
 
+    [field: SerializeField]
+    public GameObject DeathMenuUI;
+
     private Vector3 SpawnPosition;
+
 
     public GameObject obj; // game odject for agent input
     private AgentInput w; // var to hold agent input 
+// =======
+//     private AgentRenderer agentRender;
+// >>>>>>> master
 
     private void Start()
     {
@@ -37,6 +47,24 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health--;
+// =======
+//         DeathMenuUI.SetActive(false);
+//         agentRender = GetComponentInChildren<AgentRenderer>();
+//         isDead = false;
+//     }
+//     private void Update()
+//     {
+//         if (isDead==true){                      //For Debug
+//             Health = 0;
+//             OnDie?.Invoke();
+//             StartCoroutine(WaitToDie());
+//         }
+//     }
+
+//     public void GetHit(int damage, GameObject damageDealer)
+//     {
+//         Health -= damage;
+// >>>>>>> master
         // This function is supposed to play a damage animation / deliver knockback
         if (Health >= 0)    
             OnGetHit?.Invoke();
@@ -44,14 +72,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
         {
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
-            // Play End Game Screen here
+            
+            
         }
     }
 
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
-        yield return new WaitForSeconds(0.55f);
+        agentRender.isDying = true;
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
+        // Play End Game Screen here
+        DeathMenuUI.SetActive(true);
     }
 
     public void Respawn()
