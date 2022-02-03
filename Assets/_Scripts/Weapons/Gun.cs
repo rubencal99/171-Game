@@ -199,7 +199,7 @@ public class Gun : MonoBehaviour
         isMelee = false;
     }
 
-    protected IEnumerator DelayNextShootCoroutine()
+    protected virtual IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
         yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
