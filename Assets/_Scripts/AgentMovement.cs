@@ -21,13 +21,24 @@ public class AgentMovement : MonoBehaviour
     protected float currentVelocity = 0;
     protected Vector2 movementDirection;
 
-    protected float DefaultSpeed = 5f;
+    // Modifyable field for Dodge
+    // **************
+    [SerializeField]
+    protected float dodgeVelocity = 2;
+
 
     // This passes currentVelocity to AgentAnimations.AnimatePlayer
     // Hence SerializeField
     [field: SerializeField]
     public UnityEvent<float> OnVelocityChange { get; set; }
 
+    private GameObject obj; 
+
+    private void Start()
+    {
+        obj = GameObject.FindWithTag("Player");
+        Debug.Log(obj);
+    }
 
     private void Awake()
     {
@@ -67,13 +78,26 @@ public class AgentMovement : MonoBehaviour
         {
             currentVelocity -= MovementData.decceleration * Time.deltaTime;
         }
+        // Check if player is dodging
+        if (obj.GetComponent<AgentInput>().dodging) {
+            return Mathf.Clamp((currentVelocity * dodgeVelocity), 0, MovementData.maxDodgeSpeed);
+        }
         // Returns velocity between 0 and maxSpeed
-        return Mathf.Clamp(currentVelocity, 0, MovementData.maxSpeed);
+        return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
 
     private void FixedUpdate()
-    {
+    {   
         OnVelocityChange?.Invoke(currentVelocity);
         rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
     }
+
+    //********** Dodge function
+    // Should player be able to dodge when not moving??
+    public void dodge(Vector2 dodgeDirection) {
+        Debug.Log(dodgeDirection);
+        rigidbody2D.velocity = Vector2.zero; // set speed to zero
+        rigidbody2D.velocity += dodgeDirection.normalized * dodgeVelocity; // create dodge
+    }
+
 }

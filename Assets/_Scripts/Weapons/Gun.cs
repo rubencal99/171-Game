@@ -30,6 +30,10 @@ public class Gun : MonoBehaviour
     [SerializeField]
     protected WeaponDataSO weaponData;
 
+    // WeaponDataSO Holds all our weapon data
+    [SerializeField]
+    protected MeleeDataSO swordData;
+
     [SerializeField]
     public bool isPlayer;
 
@@ -54,13 +58,18 @@ public class Gun : MonoBehaviour
 
     protected bool isShooting = false;
 
+    protected bool isMelee = false;
+
     [SerializeField]
     protected bool rateOfFireCoroutine = false;
 
     [SerializeField]
     protected bool reloadCoroutine = false;
 
-    protected void Start()
+    [SerializeField]
+    protected bool meleeCoroutine = false;
+
+    private void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
@@ -74,6 +83,9 @@ public class Gun : MonoBehaviour
 
     [field: SerializeField]
     public UnityEvent OnShoot { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnMelee { get; set; }
 
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
@@ -91,6 +103,15 @@ public class Gun : MonoBehaviour
     public void StopShooting()
     {
         isShooting = false;
+    }
+
+     public void TryMelee()
+    {
+        isMelee = true;
+    }
+    public void StopMelee()
+    {
+        isMelee = false;
     }
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
@@ -115,6 +136,7 @@ public class Gun : MonoBehaviour
     protected void Update()
     {
         UseWeapon();
+        UseMelee();
         infAmmo = weaponParent.InfAmmo;
     }
 
@@ -145,7 +167,23 @@ public class Gun : MonoBehaviour
         }
     }
 
-    protected void FinishShooting()
+    public void UseMelee()
+    {
+        if (isMelee)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
+        {
+            OnMelee?.Invoke();
+            SpawnMelee(muzzle.transform.position, CalculateAngle(muzzle));
+            }
+            else
+            {
+                isMelee = false;
+                // Reload();                 // Use this if we want to reload automatically
+                return;
+            }
+            FinishMelee();
+        }
+
+    private void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
         if (weaponData.AutomaticFire == false)
@@ -154,15 +192,29 @@ public class Gun : MonoBehaviour
         }
     }
 
-    // Virtual so it can be overridden in EnemyGun class
-    protected virtual IEnumerator DelayNextShootCoroutine()
+    private void FinishMelee()
+    {
+        StartCoroutine(DelayNextMeleeCoroutine());
+        
+        isMelee = false;
+    }
+
+    protected IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
         yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
 
-    protected void ShootBullet()
+     protected IEnumerator DelayNextMeleeCoroutine()
+    {
+        meleeCoroutine = true;
+        yield return new WaitForSeconds(swordData.RecoveryLength / passives.ROFMultiplier);
+        meleeCoroutine = false;
+    }
+
+
+    private void ShootBullet()
     {
         SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
@@ -173,7 +225,17 @@ public class Gun : MonoBehaviour
        }
     }
 
-    protected void SpawnBullet(Vector3 position, Quaternion rotation)
+    private void SpawnMelee(Vector3 position, Quaternion rotation)
+    {
+        Debug.Log("Melee");
+
+
+        var meleePrefab = Instantiate(swordData.BulletData.BulletPrefab, position, rotation);
+       // meleePrefab.transform.parent = this.transform;
+       meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+    }
+
+    private void SpawnBullet(Vector3 position, Quaternion rotation)
     {
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
