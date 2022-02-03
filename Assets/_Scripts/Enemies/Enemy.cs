@@ -50,6 +50,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         gameObject.layer = 0;
         agentRender.isDying = true;
         yield return new WaitForSeconds(0.55f);
+        Player player = FindObjectOfType<Player>();
+        player?.AddBounty(10);
         Destroy(gameObject);
     }
 

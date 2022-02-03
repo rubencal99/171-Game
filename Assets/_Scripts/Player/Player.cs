@@ -10,6 +10,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int Health { get; private set; } = 6;
 
     [field: SerializeField]
+    public int Wallet { get; private set; } = 0;
+
+    [field: SerializeField]
     public int Damage { get; private set; }
 
     [field: SerializeField]                         
@@ -62,6 +65,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public void Heal()
     {
         Health += 2;
+    }
+
+    public void AddBounty(int funds)
+    {
+        Wallet += funds;
     }
 
     IEnumerator WaitToDie(){
