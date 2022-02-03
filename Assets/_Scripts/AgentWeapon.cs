@@ -75,6 +75,15 @@ public class AgentWeapon : MonoBehaviour
 
     }
 
+    public void MeleeAttack()
+    {
+        if (weapon != null)
+        {
+            weapon.TryMelee();
+        }
+
+    }
+
     public void StopShooting()
     {
         if (weapon != null)
