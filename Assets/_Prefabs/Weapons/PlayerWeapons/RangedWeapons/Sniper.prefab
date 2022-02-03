@@ -112,9 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 8960519739286643315}
+  passives: {fileID: 0}
   ammo: 100
   totalAmmo: 0
+  infAmmo: 0
   weaponData: {fileID: 11400000, guid: 1714a42a0bcfe854ab51d3b9d3737f38, type: 2}
+  swordData: {fileID: 11400000, guid: 58ad808893d827542b32f230c6fb9e7d, type: 2}
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   <OnShoot>k__BackingField:

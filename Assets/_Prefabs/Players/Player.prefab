@@ -282,7 +282,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: f53a08be0fe9e944ca34735c25a14c2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -357,6 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7389a755ace8b544a0334d7ed321a77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDying: 0
+  enraged: 0
 --- !u!114 &7261923253008125778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +521,7 @@ GameObject:
   - component: {fileID: 7261923253359743250}
   - component: {fileID: 7261923253359743251}
   - component: {fileID: 7261923253359743260}
+  - component: {fileID: 5065862439272653460}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -577,11 +580,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: -0, y: -0.06}
+  m_Size: {x: 0.59, y: 1.06}
   m_Direction: 0
 --- !u!114 &7261923253359743250
 MonoBehaviour:
@@ -683,12 +686,27 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7261923253362023577}
-        m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: PlayerWeapon, Assembly-CSharp
+        m_MethodName: displayReloadProgressBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnThrowButtonPressed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7261923253362023577}
+        m_TargetAssemblyTypeName: PlayerWeapon, Assembly-CSharp
+        m_MethodName: ThrowItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -699,7 +717,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneRestart, Assembly-CSharp
-        m_MethodName: RestartScene
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -711,7 +729,19 @@ MonoBehaviour:
         m_CallState: 2
   <OnRespawnButtonPressed>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7261923253359743260}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Respawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7261923253359743251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,8 +783,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f9f634b5d579488525203ac936218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
+  <Health>k__BackingField: 1000
   <Damage>k__BackingField: 0
+  isDead: 0
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -785,6 +816,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  DeathMenuUI: {fileID: 0}
+--- !u!114 &5065862439272653460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261923253359743249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff1e2291a85eb34aad8f63de16fe82c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedMultiplier: 0
+  ReloadMultiplier: 0
+  ROFMultiplier: 0
+  BulletCountMultiplier: 0
+  DamageMultiplier: 0
 --- !u!1 &7261923253362023583
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +879,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
   weapon: {fileID: 0}
+  InfAmmo: 0
   selectedWeapon: 0
+  numGrenades: 5
+  Grenade: {fileID: 4749110423052994011, guid: fbd6cbaab64c87343b44244e56518638, type: 3}
 --- !u!1 &7261923254287780930
 GameObject:
   m_ObjectHideFlags: 0

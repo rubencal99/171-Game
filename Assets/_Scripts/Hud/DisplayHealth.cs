@@ -21,7 +21,7 @@ public class DisplayHealth : MonoBehaviour
     {      
         if (p1 != null){
             health = p1.Health; // set health int to player health
-            // healthText.text = "HP: " + health.ToString(); //Display player health
+             healthText.text = "HP: " + health.ToString(); //Display player health
         }
 
     }
