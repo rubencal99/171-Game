@@ -26,27 +26,45 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
 
-    private AgentRenderer agentRender;
+
+    public GameObject obj; // game odject for agent input
+    private AgentInput w; // var to hold agent input 
+// =======
+//     private AgentRenderer agentRender;
+// >>>>>>> master
 
     private void Start()
     {
         SpawnPosition = transform.position;
-        DeathMenuUI.SetActive(false);
-        agentRender = GetComponentInChildren<AgentRenderer>();
-        isDead = false;
-    }
-    private void Update()
-    {
-        if (isDead==true){                      //For Debug
-            Health = 0;
-            OnDie?.Invoke();
-            StartCoroutine(WaitToDie());
-        }
+        w = obj.GetComponent<AgentInput>(); //get player gameobj
     }
 
     public void GetHit(int damage, GameObject damageDealer)
-    {
-        Health -= damage;
+    {    
+        //check if player is Dodging, if true, dont decrement health
+        if (w.dodging) {
+            return;
+        }
+
+        Health--;
+// =======
+//         DeathMenuUI.SetActive(false);
+//         agentRender = GetComponentInChildren<AgentRenderer>();
+//         isDead = false;
+//     }
+//     private void Update()
+//     {
+//         if (isDead==true){                      //For Debug
+//             Health = 0;
+//             OnDie?.Invoke();
+//             StartCoroutine(WaitToDie());
+//         }
+//     }
+
+//     public void GetHit(int damage, GameObject damageDealer)
+//     {
+//         Health -= damage;
+// >>>>>>> master
         // This function is supposed to play a damage animation / deliver knockback
         if (Health >= 0)    
             OnGetHit?.Invoke();
