@@ -15,13 +15,10 @@ public class Spikes : MonoBehaviour
     {
         
     }
-    void OnCollisonEnter2D(Collider2D col){
-        Debug.Log("OnCollision2d hit!");
-        Destroy(this.gameObject);
-    }
-
+    
     void OnTriggerEnter2D(Collider2D col){
         Debug.Log("OnTriggerEnter2d hit!");
+        //Should add damage to player here
         Destroy(this.gameObject);
     }
 }
