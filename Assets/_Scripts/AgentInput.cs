@@ -67,6 +67,10 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
+<<<<<<< Updated upstream
+=======
+        GetDodgeInput();
+>>>>>>> Stashed changes
     }
 
     private void GetFireInput()
@@ -170,4 +174,36 @@ public class AgentInput : MonoBehaviour, IAgentInput
     {
         OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
     }
+<<<<<<< Updated upstream
+=======
+
+    private void GetDodgeInput()
+    {   
+        if (DodgeTimer > 0) {
+            DodgeTimer -= Time.deltaTime;
+        }
+
+        // Create new Vector2 when dodge button (Left shift) pressed
+        if (Input.GetAxisRaw("Dodge") > 0) {
+            dodging = true;
+            if (DodgeTimer <= 0) {
+                DodgeTimer = .3f;
+            }
+            Debug.Log("DODGE");
+            OnDodgeKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        }
+
+        if (DodgeTimer <= 0) {
+            dodging = false;
+        }
+    }
+
+    IEnumerator wait()
+    {
+        Debug.Log("Before Wait");
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+         Debug.Log("After Wait");
+    }
+>>>>>>> Stashed changes
 }

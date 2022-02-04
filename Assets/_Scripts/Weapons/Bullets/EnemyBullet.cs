@@ -17,7 +17,7 @@ public class EnemyBullet : RegularBullet
         {
             Debug.Log("Hitting player!");
             HitEnemy(collision);
-            Destroy(gameObject);
+           // Destroy(gameObject);
         }
         
     }

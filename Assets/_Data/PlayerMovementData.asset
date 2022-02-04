@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e01acebfaabbb7478a926635131ac60, type: 3}
   m_Name: PlayerMovementData
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   maxSpeed: 7.78
   acceleration: 50
   decceleration: 52
+=======
+  maxDodgeSpeed: 17.2
+  maxRunSpeed: 5
+  acceleration: 82.9
+  decceleration: 50
+>>>>>>> Stashed changes

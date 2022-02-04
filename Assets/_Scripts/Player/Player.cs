@@ -26,14 +26,27 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
 
+<<<<<<< Updated upstream
     private AgentRenderer agentRender;
+=======
+
+   // public GameObject obj; // game odject for agent input
+    private AgentInput w; // var to hold agent input 
+// =======
+     private AgentRenderer agentRender;
+// >>>>>>> master
+>>>>>>> Stashed changes
 
     private void Start()
     {
         SpawnPosition = transform.position;
+<<<<<<< Updated upstream
         DeathMenuUI.SetActive(false);
         agentRender = GetComponentInChildren<AgentRenderer>();
         isDead = false;
+=======
+        w = this.GetComponent<AgentInput>(); //get player gameobj
+>>>>>>> Stashed changes
     }
     private void Update()
     {
@@ -44,10 +57,34 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
     }
 
+<<<<<<< Updated upstream
     public void GetHit(int damage, GameObject damageDealer)
     {
         Health -= damage;
+=======
+        Health--;
+// =======
+//         DeathMenuUI.SetActive(false);
+         agentRender = GetComponentInChildren<AgentRenderer>();
+//         isDead = false;
+//     }
+//     private void Update()
+//     {
+//         if (isDead==true){                      //For Debug
+//             Health = 0;
+//             OnDie?.Invoke();
+//             StartCoroutine(WaitToDie());
+//         }
+//     }
+
+//     public void GetHit(int damage, GameObject damageDealer)
+//     {
+//         Health -= damage;
+// >>>>>>> master
+>>>>>>> Stashed changes
         // This function is supposed to play a damage animation / deliver knockback
+
+        Destroy(damageDealer);
         if (Health >= 0)    
             OnGetHit?.Invoke();
         else
