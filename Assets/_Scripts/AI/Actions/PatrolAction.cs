@@ -35,7 +35,7 @@ public class PatrolAction : StarChaseAction
 
         Vector2 direction = (aiMovementData.PointOfInterest - rb.position).normalized;
         aiMovementData.Direction = direction;
-        Debug.Log("Patrol point: (" + aiMovementData.PointOfInterest.x + ", " + aiMovementData.PointOfInterest.y + ")");
+        // Debug.Log("Patrol point: (" + aiMovementData.PointOfInterest.x + ", " + aiMovementData.PointOfInterest.y + ")");
     }
 
     public override void TakeAction()

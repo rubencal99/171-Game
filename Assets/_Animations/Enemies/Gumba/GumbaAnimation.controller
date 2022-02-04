@@ -47,7 +47,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnemyAnimation
+  m_Name: GumbaAnimation
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Got hit
@@ -102,7 +102,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 6185022651186339424}
-    m_Position: {x: 510, y: 130, z: 0}
+    m_Position: {x: 470, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -18101176293101238}
     m_Position: {x: 180, y: 20, z: 0}

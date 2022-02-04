@@ -53,7 +53,7 @@ public class BuffAction : AIAction
 
     void BuffAlly(GameObject ally)
     {
-        Debug.Log("In buffAlly");
+        // Debug.Log("In buffAlly");
         // Here is where we'd want to call a coroutine or animation
         PlayerPassives allyPassives = ally.GetComponent<PlayerPassives>();
         // StartCoroutine(MutationProcess());
@@ -78,7 +78,7 @@ public class BuffAction : AIAction
     // If buffer dies, turn ally's Buffs turn off
     void OnDestroy()
     {
-        Debug.Log("Buffer Destroyed");
+        // Debug.Log("Buffer Destroyed");
         PlayerPassives allyPassives = null;
         if (allyToBuff != null)
         {
@@ -94,7 +94,7 @@ public class BuffAction : AIAction
 
     GameObject FindAlly()
     {
-        Debug.Log("In find ally");
+        // Debug.Log("In find ally");
         var allies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject allyReturn = allies[0];
         foreach (GameObject ally in allies){

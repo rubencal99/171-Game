@@ -14,6 +14,9 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private bool meleeButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
+    
+    [SerializeField]
+    public float DodgeTimer;
 
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
@@ -57,10 +60,6 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 
-
-    [SerializeField]
-    private float DodgeTimer;
-
     // Calls PlayerWeapon.UseMelee
     [field: SerializeField]
     public UnityEvent OnMeleeButtonPressed { get; set; }
@@ -81,7 +80,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
-        GetDodgeImput();
+        GetDodgeInput();
     }
 
     private void GetFireInput()
@@ -186,7 +185,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
     }
 
-    private void GetDodgeImput()
+    private void GetDodgeInput()
     {   
         if (DodgeTimer > 0) {
             DodgeTimer -= Time.deltaTime;
@@ -194,16 +193,20 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
         // Create new Vector2 when dodge button (Left shift) pressed
         if (Input.GetAxisRaw("Dodge") > 0) {
-            dodging = true;
-            if (DodgeTimer <= 0) {
+            if (dodging == false && DodgeTimer <= 0)
+            {
                 DodgeTimer = .3f;
+                dodging = true;
+                Debug.Log("DODGE");
+                OnDodgeKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
             }
-            Debug.Log("DODGE");
-            OnDodgeKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         }
-
-        if (DodgeTimer <= 0) {
-            dodging = false;
+        else
+        {
+            if (dodging == true || DodgeTimer <= 0)
+            {
+                dodging = false;
+            }
         }
     }
 

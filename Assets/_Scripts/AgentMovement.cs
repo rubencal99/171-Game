@@ -79,7 +79,7 @@ public class AgentMovement : MonoBehaviour
             currentVelocity -= MovementData.decceleration * Time.deltaTime;
         }
         // Check if player is dodging
-        if (obj.GetComponent<AgentInput>().dodging) {
+        if (obj.GetComponent<AgentInput>().DodgeTimer > 0) {
             return Mathf.Clamp((currentVelocity * dodgeVelocity), 0, MovementData.maxDodgeSpeed);
         }
         // Returns velocity between 0 and maxSpeed

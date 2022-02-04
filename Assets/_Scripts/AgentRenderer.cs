@@ -26,26 +26,32 @@ public class AgentRenderer : MonoBehaviour
     public bool isBuffed = false;
 
     private Color originalColor;
+    private Color deathColor;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = GetComponent<SpriteRenderer>().material;
         originalColor = spriteRenderer.color;
+        // Debug.Log("Original Color: " + originalColor);
+        deathColor = new Color(originalColor.r/2, originalColor.g/2, originalColor.b/2, 1);
     }
 
     void Update(){
         if (isDying){
-            fade -= Time.deltaTime;
+            /*fade -= Time.deltaTime;
             if (fade <= 0f){
                 fade = 0f;
                 isDying = false;
             }
 
-            material.SetFloat("_Fade", fade);
+            material.SetFloat("_Fade", fade);*/
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, deathColor, 0.01f);
         }
-
-        AdjustColors();
+        else
+        {
+            AdjustColors();
+        }
     }
 
     void AdjustColors()

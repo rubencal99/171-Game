@@ -25,6 +25,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public GameObject DeathMenuUI;
 
     private Vector3 SpawnPosition;
+    private AgentRenderer agentRenderer;
 
 
     public GameObject obj; // game odject for agent input
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     {
         SpawnPosition = transform.position;
         w = obj.GetComponent<AgentInput>(); //get player gameobj
+        agentRenderer = GetComponentInChildren<AgentRenderer>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
             return;
         }
 
-        Health--;
+        Health -= damage;
 // =======
 //         DeathMenuUI.SetActive(false);
 //         agentRender = GetComponentInChildren<AgentRenderer>();
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
-        agentRender.isDying = true;
+        agentRenderer.isDying = true;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         // Play End Game Screen here
