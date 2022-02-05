@@ -80,7 +80,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
-        GetDodgeInput();
+        // GetDodgeInput();
     }
 
     private void GetFireInput()
@@ -210,11 +210,11 @@ public class AgentInput : MonoBehaviour, IAgentInput
         }
     }
 
-    IEnumerator wait()
+    /* IEnumerator wait()
     {
         Debug.Log("Before Wait");
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(5);
          Debug.Log("After Wait");
-    }
+    }*/
 }
