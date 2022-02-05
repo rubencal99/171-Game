@@ -358,7 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDying: 0
-  enraged: 0
+  isEnraged: 0
+  isBuffed: 0
 --- !u!114 &7261923253008125778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c5e473853182f4396dbaa78386abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dodging: 0
+  DodgeTimer: 0
   <OnMovementKeyPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -640,6 +643,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnDodgeKeyPressed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -742,6 +748,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnMeleeButtonPressed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7261923253359743251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField: {fileID: 11400000, guid: 825850c263e940e44abd07210ffaba0a, type: 2}
   currentVelocity: 0
+  movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -817,6 +827,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   DeathMenuUI: {fileID: 0}
+  PlayerState: {fileID: 0}
 --- !u!114 &5065862439272653460
 MonoBehaviour:
   m_ObjectHideFlags: 0

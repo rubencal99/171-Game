@@ -56,6 +56,11 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
         Target = FindObjectOfType<Player>().gameObject;
     }
 
+    private void Start()
+    {
+        // Target = FindObjectOfType<Player>().gameObject;
+    }
+
     internal void ChangetoState(AIState State)
     {
         CurrentState = State;
