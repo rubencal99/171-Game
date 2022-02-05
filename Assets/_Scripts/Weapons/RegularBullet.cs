@@ -8,6 +8,9 @@ public class RegularBullet : Bullet
     // Need reference to our bullet's rigidbody
     protected Rigidbody2D rigidbody2D;
 
+    private ContactPoint2D[] CP2D;
+    public ContactPoint2D[] contacts = new ContactPoint2D[2];
+
     public override BulletDataSO BulletData
     {
         get => base.BulletData;
@@ -28,7 +31,7 @@ public class RegularBullet : Bullet
             rigidbody2D.MovePosition(transform.position + BulletData.BulletSpeed * transform.right * Time.fixedDeltaTime);
         }
     }
-
+    
     // There's a bug where the bullets collide with themselves if using multishot,
     // which is why Destroy() is inside the if instead of at the end on the func
     public virtual void OnTriggerEnter2D(Collider2D collision)
@@ -36,16 +39,21 @@ public class RegularBullet : Bullet
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
             HitObstacle();
+            //ContactPoint2D contact = collision.GetContacts(0);
+            //collision.GetContacts(contacts);
+            //Debug.Log(contacts[0].point);\
+            //Debug.Log(collision.name);
+            Debug.Log(collision.bounciness);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             HitEnemy(collision);
             Destroy(gameObject);
         }
         
     }
-
+    
     public void HitEnemy(Collider2D collision)
     {
         // This drops enemy health / destroys enemy
@@ -55,6 +63,9 @@ public class RegularBullet : Bullet
 
     public void HitObstacle()
     {
-        Debug.Log("Hitting obstacle");
+        Debug.Log("Hitting some obstacle?");
     }
+
+  
+
 }
