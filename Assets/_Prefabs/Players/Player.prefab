@@ -358,7 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDying: 0
-  enraged: 0
+  isEnraged: 0
+  isBuffed: 0
 --- !u!114 &7261923253008125778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +395,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 92044
+  m_InstanceId: 48914
 --- !u!82 &7261923253008125779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -546,6 +547,7 @@ Transform:
   - {fileID: 7261923254287780941}
   - {fileID: 7261923253362023582}
   - {fileID: 1000417936137025274}
+  - {fileID: 3840572206140344612}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -598,6 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c5e473853182f4396dbaa78386abdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dodging: 0
+  DodgeTimer: 0
   <OnMovementKeyPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -640,6 +644,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnDodgeKeyPressed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -742,6 +749,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnMeleeButtonPressed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7261923253359743251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField: {fileID: 11400000, guid: 825850c263e940e44abd07210ffaba0a, type: 2}
   currentVelocity: 0
+  dodgeVelocity: 2
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -817,6 +828,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   DeathMenuUI: {fileID: 0}
+  obj: {fileID: 0}
 --- !u!114 &5065862439272653460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,6 +967,50 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &8617891379859424215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3840572206140344612}
+  - component: {fileID: 1221071358570688164}
+  m_Layer: 0
+  m_Name: InventoryParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3840572206140344612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617891379859424215}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.747783, y: 3.4385188, z: -0.07292146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7261923253359743248}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221071358570688164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617891379859424215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542237f0b0c103c46b255e967f3616b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!1001 &2640685782103994329
 PrefabInstance:
   m_ObjectHideFlags: 0
