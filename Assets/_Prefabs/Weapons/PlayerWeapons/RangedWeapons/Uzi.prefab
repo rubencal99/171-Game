@@ -112,10 +112,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 8960519739286643315}
+  passives: {fileID: 0}
   ammo: 100
+  totalAmmo: 0
+  infAmmo: 0
   weaponData: {fileID: 11400000, guid: 04c16df80bc95244586da8824adf317d, type: 2}
+  swordData: {fileID: 0}
+  isPlayer: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
+  meleeCoroutine: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -131,6 +137,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnMelee>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -287,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitchRandomness: 0.05
-  shootBulletClip: {fileID: 8300000, guid: 1a475093b88a02d4dac2fa975738761f, type: 3}
+  shootBulletClip: {fileID: 8300000, guid: 0692626435b5142b59ee506fbb4186ce, type: 3}
   outOfBulletsClip: {fileID: 8300000, guid: 037ccb8647fa01145bb18b4967c50c5f, type: 3}
 --- !u!1 &8960519739286643315
 GameObject:
