@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 8977095406529770293}
   - component: {fileID: 8979388240249039164}
   - component: {fileID: 5510556728875342407}
-  - component: {fileID: 457360701300474396}
+  - component: {fileID: 4256470858328599626}
   m_Layer: 0
   m_Name: EnemyAR
   m_TagString: Untagged
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSortingOrder: 0
---- !u!114 &457360701300474396
+--- !u!114 &4256470858328599626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,11 +281,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8918393634435686408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7888232ccf4874898aa046ebe1a5fd, type: 3}
+  m_Script: {fileID: 11500000, guid: eadac6ccc5448864e90aa06c7ac32d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 8120652600635110448}
-  ammo: 100
+  passives: {fileID: 0}
+  ammo: 0
+  totalAmmo: 0
+  infAmmo: 0
   weaponData: {fileID: 11400000, guid: 2728cb34d68bc85459c3b7d80b4b2110, type: 2}
   rateOfFireCoroutine: 0
   reloadCoroutine: 0

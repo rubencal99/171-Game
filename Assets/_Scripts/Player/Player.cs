@@ -24,33 +24,49 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public GameObject DeathMenuUI;
 
-    [field: SerializeField]
-    public GameObject PauseMenuUI;
-
     private Vector3 SpawnPosition;
+    private AgentRenderer agentRenderer;
 
-    private AgentRenderer agentRender;
+
+    public PlayerStateManager PlayerState; // game odject for agent input
+    // private AgentInput w; // var to hold agent input 
+// =======
+//     private AgentRenderer agentRender;
+// >>>>>>> master
 
     private void Start()
     {
         SpawnPosition = transform.position;
-        DeathMenuUI.SetActive(false);
-        PauseMenuUI.SetActive(false);
-        agentRender = GetComponentInChildren<AgentRenderer>();
-        isDead = false;
-    }
-    private void Update()
-    {
-        if (isDead==true){                      //For Debug
-            Health -= Health;                   //make a instance kill 
-            OnDie?.Invoke();
-            StartCoroutine(WaitToDie());
-        }
+        PlayerState = GetComponent<PlayerStateManager>();
+        agentRenderer = GetComponentInChildren<AgentRenderer>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
-    {
+    {    
+        //check if player is Dodging, if true, dont decrement health
+        if (PlayerState.DiveState.diving) {
+            return;
+        }
+
         Health -= damage;
+// =======
+//         DeathMenuUI.SetActive(false);
+//         agentRender = GetComponentInChildren<AgentRenderer>();
+//         isDead = false;
+//     }
+//     private void Update()
+//     {
+//         if (isDead==true){                      //For Debug
+//             Health = 0;
+//             OnDie?.Invoke();
+//             StartCoroutine(WaitToDie());
+//         }
+//     }
+
+//     public void GetHit(int damage, GameObject damageDealer)
+//     {
+//         Health -= damage;
+// >>>>>>> master
         // This function is supposed to play a damage animation / deliver knockback
         if (Health >= 0)    
             OnGetHit?.Invoke();
@@ -58,12 +74,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
         {
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
+            
+            
         }
     }
 
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
-        agentRender.isDying = true;
+        agentRenderer.isDying = true;
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
         // Play End Game Screen here

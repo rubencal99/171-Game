@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dungeon : MonoBehaviour
 {
-    int[,] map;
+    TileNode[,] map;
     public MapGenerator BSP;
 
     public bool trim;

@@ -9,6 +9,9 @@ public class AIActionData : MonoBehaviour
     public bool TargetSpotted { get; set; }
 
     [field: SerializeField]
+    public bool IsAlone { get; set; }
+
+    [field: SerializeField]
     public bool Arrived { get; set; }
 
     [field: SerializeField]

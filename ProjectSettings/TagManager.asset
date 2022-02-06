@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Door
   - Avatar
+  - Gun Muzzle
   layers:
   - Default
   - TransparentFX

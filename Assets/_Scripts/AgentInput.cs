@@ -11,6 +11,12 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private bool fireButtonDown = false;
     private bool throwButtonDown = false;
+    private bool meleeButtonDown = false;
+
+    public bool dodging = false; // bool to check if dodging
+    
+    [SerializeField]
+    public float DodgeTimer;
 
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
@@ -22,6 +28,13 @@ public class AgentInput : MonoBehaviour, IAgentInput
     // This funciton is used to aim the weapon and change player direction
     [field: SerializeField]
     public UnityEvent<Vector2> OnPointerPositionChange { get; set; }
+
+    // Dodge Mechanic
+    // Vector2 Corresponds towards the movement of where the dodge roll happens
+    // *************************
+    [field: SerializeField]
+    public UnityEvent<Vector2> OnDodgeKeyPressed { get; set; }
+    // *************************
 
     // Calls PlayerWeapon.shoot
     [field: SerializeField]
@@ -47,6 +60,11 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 
+    // Calls PlayerWeapon.UseMelee
+    [field: SerializeField]
+    public UnityEvent OnMeleeButtonPressed { get; set; }
+
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -58,9 +76,11 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetPointerInput();
         GetFireInput();
         GetThrowInput();
+        GetMeleeInput();
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
+        // GetDodgeInput();
     }
 
     private void GetFireInput()
@@ -93,7 +113,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private void GetThrowInput()
     {
-        if (Input.GetAxisRaw("Fire2") > 0)
+        if (Input.GetAxisRaw("Fire3") > 0)
         {
             if (throwButtonDown == false)
             {
@@ -107,6 +127,26 @@ public class AgentInput : MonoBehaviour, IAgentInput
             if (throwButtonDown == true)
             {
                 throwButtonDown = false;
+            }
+        }
+    }
+
+     private void GetMeleeInput()
+    {
+        if (Input.GetAxisRaw("Fire2") > 0)
+        {
+            if (meleeButtonDown == false)
+            {
+                Debug.Log("In melee");
+                meleeButtonDown = true;
+                OnMeleeButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (meleeButtonDown == true)
+            {
+                meleeButtonDown = false;
             }
         }
     }
@@ -144,4 +184,37 @@ public class AgentInput : MonoBehaviour, IAgentInput
     {
         OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
     }
+
+    private void GetDodgeInput()
+    {   
+        if (DodgeTimer > 0) {
+            DodgeTimer -= Time.deltaTime;
+        }
+
+        // Create new Vector2 when dodge button (Left shift) pressed
+        if (Input.GetAxisRaw("Dodge") > 0) {
+            if (dodging == false && DodgeTimer <= 0)
+            {
+                DodgeTimer = .3f;
+                dodging = true;
+                Debug.Log("DODGE");
+                OnDodgeKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+            }
+        }
+        else
+        {
+            if (dodging == true || DodgeTimer <= 0)
+            {
+                dodging = false;
+            }
+        }
+    }
+
+    /* IEnumerator wait()
+    {
+        Debug.Log("Before Wait");
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+         Debug.Log("After Wait");
+    }*/
 }

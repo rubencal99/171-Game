@@ -10,27 +10,62 @@ public class AgentRenderer : MonoBehaviour
     protected Material material;
     float fade = 1f;
     public bool isDying = false;
-    public bool enraged = false;
+    public bool isEnraged = false;
+    /*public bool Enrage
+    {
+        get {return isEnraged;}
+        set {
+            if (isEnraged == value) return;
+            isEnraged = value;
+            if (RevertColor != null){
+                RevertColor(spriteRenderer.color);
+            }
+        }
+    }*/
+
+    public bool isBuffed = false;
+
+    private Color originalColor;
+    private Color deathColor;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = GetComponent<SpriteRenderer>().material;
+        originalColor = spriteRenderer.color;
+        // Debug.Log("Original Color: " + originalColor);
+        deathColor = new Color(originalColor.r/2, originalColor.g/2, originalColor.b/2, 1);
     }
 
     void Update(){
         if (isDying){
-            fade -= Time.deltaTime;
+            fade -= Time.deltaTime / 10;
             if (fade <= 0f){
                 fade = 0f;
-                isDying = false;
+                // isDying = false;
             }
 
             material.SetFloat("_Fade", fade);
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, deathColor, 0.01f);
         }
-        if (enraged)
+        else
+        {
+            AdjustColors();
+        }
+    }
+
+    void AdjustColors()
+    {
+        if (isEnraged)
         {
             spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
+        }
+        if (isBuffed)
+        {
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 0.1f);
+        }
+        else{
+            spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
         }
     }
     

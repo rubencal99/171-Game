@@ -19,17 +19,15 @@ public class AgentMovement : MonoBehaviour
     // This is only serialized for debugging purposes
     [SerializeField]
     protected float currentVelocity = 0;
+    [SerializeField]
     protected Vector2 movementDirection;
-
-    protected float DefaultSpeed = 5f;
 
     // This passes currentVelocity to AgentAnimations.AnimatePlayer
     // Hence SerializeField
     [field: SerializeField]
     public UnityEvent<float> OnVelocityChange { get; set; }
 
-
-    private void Awake()
+    protected void Awake()
     {
         // Grabs RigidBody that the script is attached to
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -57,7 +55,7 @@ public class AgentMovement : MonoBehaviour
     }
     
     // this function integrates acceleration
-    private float calculateSpeed(Vector2 movementInput)
+    protected virtual float calculateSpeed(Vector2 movementInput)
     {
         if (movementInput.magnitude > 0)
         {
@@ -68,11 +66,11 @@ public class AgentMovement : MonoBehaviour
             currentVelocity -= MovementData.decceleration * Time.deltaTime;
         }
         // Returns velocity between 0 and maxSpeed
-        return Mathf.Clamp(currentVelocity, 0, MovementData.maxSpeed);
+        return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
 
-    private void FixedUpdate()
-    {
+    protected void FixedUpdate()
+    {   
         OnVelocityChange?.Invoke(currentVelocity);
         rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
     }

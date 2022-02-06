@@ -23,15 +23,18 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
+    public bool isDying = false;
 
-    private AgentRenderer agentRender;
+    private AgentRenderer agentRenderer;
+    private EnemyBrain enemyBrain;
 
     private void Start()
     {
         Health = EnemyData.MaxHealth;
         Damage = EnemyData.Damage;
         Range = EnemyData.Range;
-        agentRender = GetComponentInChildren<AgentRenderer>();
+        agentRenderer = GetComponentInChildren<AgentRenderer>();
+        enemyBrain = GetComponent<EnemyBrain>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
@@ -47,10 +50,29 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     IEnumerator WaitToDie(){
-        gameObject.layer = 0;
-        agentRender.isDying = true;
-        yield return new WaitForSeconds(0.55f);
-        Destroy(gameObject);
+        isDying = true;
+        DeadOrAlive();
+        yield return new WaitForSeconds(10f);
+        if (isDying == true)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void DeadOrAlive()
+    {
+        if(isDying == true)
+        {
+            gameObject.layer = 0;
+            enemyBrain.enabled = false;
+            agentRenderer.isDying = true;
+        }
+        else
+        {
+            gameObject.layer = 8;
+            enemyBrain.enabled = true;
+            agentRenderer.isDying = false;
+        }
     }
 
 }

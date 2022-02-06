@@ -12,7 +12,7 @@ public class AgentWeapon : MonoBehaviour
     protected WeaponRenderer weaponRenderer;
 
     [SerializeField]
-    public Weapon weapon;
+    public Gun weapon;
 
     [SerializeField]
     public bool InfAmmo;
@@ -25,7 +25,7 @@ public class AgentWeapon : MonoBehaviour
     public void AssignWeapon()
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
-        weapon = GetComponentInChildren<Weapon>();
+        weapon = GetComponentInChildren<Gun>();
     }
 
     public virtual void AimWeapon(Vector2 pointerPosition)
@@ -71,6 +71,15 @@ public class AgentWeapon : MonoBehaviour
         if (weapon != null)
         {
             weapon.TryShooting();
+        }
+
+    }
+
+    public void MeleeAttack()
+    {
+        if (weapon != null)
+        {
+            weapon.TryMelee();
         }
 
     }

@@ -42,6 +42,14 @@ public class WeaponDataSO : ScriptableObject
     [SerializeField]
     private int bulletCount;
 
+    [SerializeField]
+    public float recoilIntensity;
+    [SerializeField]
+    public float recoilFrequency;
+
+    [SerializeField]
+    public float recoilTime;
+
     internal int GetBulletCountToSpawn()
     {
         if (multiBulletShot)

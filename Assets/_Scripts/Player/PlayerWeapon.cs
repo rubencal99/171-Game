@@ -58,7 +58,7 @@ public class PlayerWeapon : AgentWeapon
         if (previousSelectedWeapon != selectedWeapon)
         {
             SelectWeapon();
-            DisplayWeapon.Instance.UpdateWeapon();
+            // DisplayWeapon.Instance.UpdateWeapon();
         }
     }
 

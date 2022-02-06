@@ -9,6 +9,8 @@ public class EnrageAction : AIAction
     [SerializeField]
     public AIState chase;
     public AIState eChase;
+
+    public float enrageTimer;
     public override void TakeAction()
     {
         PlayerPassives passives = transform.root.GetComponent<PlayerPassives>();
@@ -24,7 +26,7 @@ public class EnrageAction : AIAction
     private IEnumerator Enrage()
     {
         var agentRenderer = transform.root.GetComponentInChildren<AgentRenderer>();
-        agentRenderer.enraged = true;
+        agentRenderer.isEnraged = true;
         yield return new WaitForSeconds(3f);
         Enraged = true;
         eChase.GetComponent<StarChaseAction>().enabled = true;
