@@ -18,8 +18,7 @@ public class PauseGameMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Debug.Log("Esc press");
-            var Menu = PauseMenu.GetComponent<Canvas>();
-            Menu.enabled = !Menu.enabled;
+
             if (isPause == true)
             {
                 OnResume();
@@ -34,12 +33,16 @@ public class PauseGameMenu : MonoBehaviour
 
     public void OnPause()
     {
+        var Menu = PauseMenu.GetComponent<Canvas>();
+        Menu.enabled = !Menu.enabled;
         Time.timeScale = 0;
 
     }
 
     public void OnResume()
     {
+        var Menu = PauseMenu.GetComponent<Canvas>();
+        Menu.enabled = !Menu.enabled;
         Time.timeScale = 1.0f;
     }
 
