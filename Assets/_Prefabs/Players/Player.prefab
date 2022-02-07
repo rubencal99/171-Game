@@ -395,7 +395,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 92044
+  m_InstanceId: 26172
 --- !u!82 &7261923253008125779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
-  weapon: {fileID: 0}
+  weapon: {fileID: 8960519738105143103, guid: e9f57b69ebde592418964205e514804a, type: 3}
   InfAmmo: 0
   selectedWeapon: 0
   numGrenades: 5

@@ -118,6 +118,7 @@ MonoBehaviour:
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: c0fc084cfa5842749b523ddb848f93a3, type: 2}
   swordData: {fileID: 11400000, guid: 36206c669af236549a8ec4c87b6714f6, type: 2}
+  isPlayer: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitchRandomness: 0.05
-  shootBulletClip: {fileID: 8300000, guid: 1a475093b88a02d4dac2fa975738761f, type: 3}
+  shootBulletClip: {fileID: 8300000, guid: 9a667661aa28a4eb7bb948ff8d415700, type: 3}
   outOfBulletsClip: {fileID: 8300000, guid: 037ccb8647fa01145bb18b4967c50c5f, type: 3}
 --- !u!1 &8960519739286643315
 GameObject:
