@@ -34,6 +34,7 @@ public class MapGenerator : MonoBehaviour
     private Queue<int[]> queue = new Queue<int[]>();
     private Queue<int[]> roomsList = new Queue<int[]>();
     private List<TileNode> roomTiles = new List<TileNode>();
+    private List<RoomNode> Rooms = new List<RoomNode>();
 
 
     public TileNode[,] GenerateMap()
@@ -48,7 +49,7 @@ public class MapGenerator : MonoBehaviour
         return map;
     }
     void DrawMap(){
-        // AutoTiler.Clear();
+        AutoTiler.Clear();
         AutoTiler.PaintFloorTiles(roomTiles);
     }
 
@@ -139,6 +140,7 @@ public class MapGenerator : MonoBehaviour
         while (roomsList.Count > 0)
         {
             int[] room = roomsList.Dequeue();
+            RoomNode NewRoom = new RoomNode();
 
             int x1 = (int)room[0];
             int y1 = (int)room[1];
@@ -153,10 +155,136 @@ public class MapGenerator : MonoBehaviour
                 {
                     map[i, j].value = 1;
                     roomTiles.Add(map[i, j]);
+                    NewRoom.tileList.Add(map[i, j]);
                 }
             }
             AddLights(x1, y1, x2, y2);
+            NewRoom.CalculateCenter();
+            Rooms.Add(NewRoom);
         }
+        AddCorridors();
+    }
+
+    void AddCorridors()
+    {
+        List<Vector2Int> roomCenters = new List<Vector2Int>();
+        foreach (RoomNode Room in Rooms)
+        {
+            roomCenters.Add(Room.roomCenter);
+        }
+
+        var currentCenter = roomCenters[Random.Range(0, roomCenters.Count)];
+        roomCenters.Remove(currentCenter);
+
+        int i = 0;
+        while(roomCenters.Count > 0)
+        {
+            if (i > 100)
+            {
+                Debug.Log("While loop timed out");
+                return;
+            }
+            Vector2Int closest = FindClosestPoint(currentCenter, roomCenters);
+            roomCenters.Remove(closest);
+            CreateCorridor(currentCenter, closest);
+
+            currentCenter = closest;
+            i++;
+        }
+    }
+
+    private void CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
+    {
+        var position = currentRoomCenter;
+        // Here we randomly choose a directional preference
+        if (Random.Range(0, 100) < 50)
+        {
+            while (position.y != destination.y)
+            {
+                if (destination.y > position.y)
+                {
+                    position += Vector2Int.up;
+                }
+                else
+                {
+                    position += Vector2Int.down;
+                }
+                if (map[position.x, position.y].value == 0)
+                {
+                    map[position.x, position.y].value = 2;
+                }
+            }
+            while (position.x != destination.x)
+            {
+                if (destination.x > position.x)
+                {
+                    position += Vector2Int.right;
+                }
+                else
+                {
+                    position += Vector2Int.left;
+                }
+                if (map[position.x, position.y].value == 0)
+                {
+                    map[position.x, position.y].value = 2;
+                }
+            }
+        }
+        else
+        {
+            while (position.x != destination.x)
+            {
+                if (destination.x > position.x)
+                {
+                    position += Vector2Int.right;
+                }
+                else
+                {
+                    position += Vector2Int.left;
+                }
+                if (map[position.x, position.y].value == 0)
+                {
+                    map[position.x, position.y].value = 2;
+                }
+            }
+            while (position.y != destination.y)
+            {
+                if (destination.y > position.y)
+                {
+                    position += Vector2Int.up;
+                }
+                else
+                {
+                    position += Vector2Int.down;
+                }
+                if (map[position.x, position.y].value == 0)
+                {
+                    map[position.x, position.y].value = 2;
+                }
+            }
+        }
+        
+    }
+
+    private Vector2Int FindClosestPoint(Vector2Int currentCenter, List<Vector2Int> roomCenters)
+    {
+        Vector2Int closest = Vector2Int.zero;
+        float distance = float.MaxValue;
+        foreach (var position in roomCenters)
+        {
+            float currentDistance = Vector2.Distance(position, currentCenter);
+            if (currentDistance < distance)
+            {
+                distance = currentDistance;
+                closest = position;
+            }
+        }
+        return closest;
+    }
+
+    void CreateRoom()
+    {
+
     }
 
     void AddLights(int x1, int y1, int x2, int y2)
@@ -198,11 +326,6 @@ public class MapGenerator : MonoBehaviour
 
         queue.Enqueue(room1);
         queue.Enqueue(room2);
-    }
-
-    void AddCorridors()
-    {
-        
     }
 
     void OnDrawGizmos()

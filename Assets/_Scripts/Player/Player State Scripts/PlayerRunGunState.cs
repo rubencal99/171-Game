@@ -225,6 +225,10 @@ public class PlayerRunGunState : PlayerBaseState
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Dodge") > 0) 
         {
+            if (playerInput.PlayerMovement.currentVelocity == 0)
+            {
+                return;
+            }
             if (dodging == false)
             {
                 dodging = true;
