@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{91aa726c-401c-49b0-b3b6-40e25cfe6a4d}">
+	<object class="AudioFile" id="{ce9994ac-8609-45b2-963c-13e7ddc46078}">
 		<property name="assetPath">
-			<value>Sounds/BIO-enemy/HURT/HURT/HURT4.wav</value>
+			<value>Sounds/BIO-enemy/HURT/HURT3.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.49151927437641724</value>
+			<value>0.62868480725623588</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{ba9d054d-3ec7-40ef-b694-2165312993f8}</destination>
