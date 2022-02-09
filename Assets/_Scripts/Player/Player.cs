@@ -13,6 +13,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int Wallet { get; private set; } = 0;
 
     [field: SerializeField]
+    public int AugmentationTokens { get; private set; } = 0;
+
+    [field: SerializeField]
     public int Damage { get; private set; }
 
     [field: SerializeField]                         
@@ -71,6 +74,35 @@ public class Player : MonoBehaviour, IAgent, IHittable
     {
         Wallet += funds;
     }
+
+    public bool CanPurchase(int cost)
+    {
+        if (cost > Wallet)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void Purchase(int cost)
+    {
+        Wallet -= cost;
+    }
+
+    public void CanAcuire(int cost)
+    {
+        if (AugmentationTokens < cost)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void Acquire(int cost)
+    {
+        AugmentationTokens -= cost;
+    }
+
 
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
