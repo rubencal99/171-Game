@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8327341853787068862
+--- !u!114 &-8419478298187741633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/WEP-LAS-L-Fire
+  m_Name: event:/WEP/LAS-L/WEP-LAS-L-Fire
   m_EditorClassIdentifier: 
-  Path: event:/WEP-LAS-L-Fire
+  Path: event:/WEP/LAS-L/WEP-LAS-L-Fire
   Guid:
-    Data1: -1234551045
-    Data2: 1112653958
-    Data3: 795298209
-    Data4: -1750165587
+    Data1: 799830752
+    Data2: 1217965606
+    Data3: -450723960
+    Data4: -292408254
   Banks:
   - {fileID: -7001592942936832019}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -42,38 +42,11 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
     Value: 1036
   Exists: 1
---- !u!114 &-7940407824328810899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BIO-S-Death
-  m_EditorClassIdentifier: 
-  Path: event:/BIO-S-Death
-  Guid:
-    Data1: -1913806975
-    Data2: 1315803229
-    Data3: -2062807889
-    Data4: 1738381283
-  Banks:
-  - {fileID: 1131116968165421158}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &-7274529317412820514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,10 +62,10 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
-    Value: 1328
+    Value: 1360
   Exists: 1
 --- !u!114 &-7001592942936832019
 MonoBehaviour:
@@ -109,12 +82,12 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/LAS-L.bank
   Name: LAS-L
   StudioPath: bank:/Weapons/LAS-L
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
-    Value: 6368
+    Value: 6112
   Exists: 1
---- !u!114 &-5845126707019855319
+--- !u!114 &-5355244614583814080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,24 +97,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/WEP-BAL-L-Fire
+  m_Name: event:/BIO-S/BIO-S-Death
   m_EditorClassIdentifier: 
-  Path: event:/WEP-BAL-L-Fire
+  Path: event:/BIO-S/BIO-S-Death
   Guid:
-    Data1: -1095782708
-    Data2: 1174581676
-    Data3: 1395996606
-    Data4: 708628719
+    Data1: -282551224
+    Data2: 1123922648
+    Data3: 623627917
+    Data4: -712787353
   Banks:
-  - {fileID: 6309964693615043963}
+  - {fileID: 1131116968165421158}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-4776758723365507265
+--- !u!114 &-5078435877819238261
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,18 +124,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BIO-S-Hurt
+  m_Name: event:/BIO-S/BIO-S-Hurt
   m_EditorClassIdentifier: 
-  Path: event:/BIO-S-Hurt
+  Path: event:/BIO-S/BIO-S-Hurt
   Guid:
-    Data1: 1970302906
-    Data2: 1233800684
-    Data3: -153329013
-    Data4: -1919461871
+    Data1: -830976992
+    Data2: 1244580679
+    Data3: -164810101
+    Data4: -492396689
   Banks:
   - {fileID: 1131116968165421158}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -183,12 +156,12 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-SG.bank
   Name: BAL-SG
   StudioPath: bank:/Weapons/BAL-SG
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
     Value: 494
   Exists: 1
---- !u!114 &-3708851439659853524
+--- !u!114 &-3108324512623743576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,18 +171,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BIO-L-Death
+  m_Name: event:/WEP/BAL-L/WEP-BAL-L-Fire
   m_EditorClassIdentifier: 
-  Path: event:/BIO-L-Death
+  Path: event:/WEP/BAL-L/WEP-BAL-L-Fire
   Guid:
-    Data1: -1628248528
-    Data2: 1193030869
-    Data3: -363543141
-    Data4: -817461101
+    Data1: 464072015
+    Data2: 1269425925
+    Data3: 1819750786
+    Data4: -1465140383
   Banks:
-  - {fileID: 248883390118398527}
+  - {fileID: 6309964693615043963}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -230,7 +203,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/LAS-H.bank
   Name: LAS-H
   StudioPath: bank:/Weapons/LAS-H
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -258,18 +231,18 @@ MonoBehaviour:
   - {fileID: -7001592942936832019}
   - {fileID: -8155350952945153809}
   EditorEvents:
-  - {fileID: -5845126707019855319}
-  - {fileID: -3708851439659853524}
-  - {fileID: 5203261319910879213}
-  - {fileID: -7940407824328810899}
-  - {fileID: -4776758723365507265}
-  - {fileID: -8327341853787068862}
+  - {fileID: -3108324512623743576}
+  - {fileID: 4653622500465753166}
+  - {fileID: 1112894002805048925}
+  - {fileID: -5078435877819238261}
+  - {fileID: -5355244614583814080}
+  - {fileID: -8419478298187741633}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8155350952945153809}
   StringsBanks:
   - {fileID: -7274529317412820514}
-  cacheTime: 637799849360000000
+  cacheTime: 637800043590000000
   cacheVersion: 10
 --- !u!114 &248883390118398527
 MonoBehaviour:
@@ -286,11 +259,38 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BIO-L.bank
   Name: BIO-L
   StudioPath: bank:/Enemies/BIO-L
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
-    Value: 183424
+    Value: 182880
   Exists: 1
+--- !u!114 &1112894002805048925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BIO-L/BIO-L-Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/BIO-L/BIO-L-Hurt
+  Guid:
+    Data1: 186790721
+    Data2: 1125780479
+    Data3: 1662313630
+    Data4: 1806289271
+  Banks:
+  - {fileID: 248883390118398527}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1131116968165421158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,12 +306,12 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BIO-S.bank
   Name: BIO-S
   StudioPath: bank:/Enemies/BIO-S
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
-    Value: 183424
+    Value: 182880
   Exists: 1
---- !u!114 &5203261319910879213
+--- !u!114 &4653622500465753166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,18 +321,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BIO-L-Hurt
+  m_Name: event:/BIO-L/BIO-L-Death
   m_EditorClassIdentifier: 
-  Path: event:/BIO-L-Hurt
+  Path: event:/BIO-L/BIO-L-Death
   Guid:
-    Data1: 1990607892
-    Data2: 1196906515
-    Data3: 182192532
-    Data4: -644535539
+    Data1: -876761826
+    Data2: 1164478784
+    Data3: -104633438
+    Data4: -506818153
   Banks:
   - {fileID: 248883390118398527}
   IsStream: 0
-  Is3D: 1
+  Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
@@ -353,10 +353,10 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-L.bank
   Name: BAL-L
   StudioPath: bank:/Weapons/BAL-L
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
-    Value: 9472
+    Value: 9216
   Exists: 1
 --- !u!114 &7439761069548757614
 MonoBehaviour:
@@ -373,7 +373,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-RF.bank
   Name: BAL-RF
   StudioPath: bank:/Weapons/BAL-RF
-  lastModified: 637799849360000000
+  lastModified: 637800043590000000
   FileSizes:
   - Name: Desktop
     Value: 494
