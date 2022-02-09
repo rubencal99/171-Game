@@ -1,5 +1,240 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8327341853787068862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WEP-LAS-L-Fire
+  m_EditorClassIdentifier: 
+  Path: event:/WEP-LAS-L-Fire
+  Guid:
+    Data1: -1234551045
+    Data2: 1112653958
+    Data3: 795298209
+    Data4: -1750165587
+  Banks:
+  - {fileID: -7001592942936832019}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-8155350952945153809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &-7940407824328810899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BIO-S-Death
+  m_EditorClassIdentifier: 
+  Path: event:/BIO-S-Death
+  Guid:
+    Data1: -1913806975
+    Data2: 1315803229
+    Data3: -2062807889
+    Data4: 1738381283
+  Banks:
+  - {fileID: 1131116968165421158}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-7274529317412820514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1328
+  Exists: 1
+--- !u!114 &-7001592942936832019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/LAS-L.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/LAS-L.bank
+  Name: LAS-L
+  StudioPath: bank:/Weapons/LAS-L
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 6368
+  Exists: 1
+--- !u!114 &-5845126707019855319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WEP-BAL-L-Fire
+  m_EditorClassIdentifier: 
+  Path: event:/WEP-BAL-L-Fire
+  Guid:
+    Data1: -1095782708
+    Data2: 1174581676
+    Data3: 1395996606
+    Data4: 708628719
+  Banks:
+  - {fileID: 6309964693615043963}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4776758723365507265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BIO-S-Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/BIO-S-Hurt
+  Guid:
+    Data1: 1970302906
+    Data2: 1233800684
+    Data3: -153329013
+    Data4: -1919461871
+  Banks:
+  - {fileID: 1131116968165421158}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-4381957183795586644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BAL-SG.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/BAL-SG.bank
+  Name: BAL-SG
+  StudioPath: bank:/Weapons/BAL-SG
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 494
+  Exists: 1
+--- !u!114 &-3708851439659853524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BIO-L-Death
+  m_EditorClassIdentifier: 
+  Path: event:/BIO-L-Death
+  Guid:
+    Data1: 1990607892
+    Data2: 1196906515
+    Data3: 182192532
+    Data4: -644535539
+  Banks:
+  - {fileID: 248883390118398527}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1120294212434081834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/LAS-H.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/LAS-H.bank
+  Name: LAS-H
+  StudioPath: bank:/Weapons/LAS-H
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 494
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +247,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
+  EditorBanks:
+  - {fileID: -7274529317412820514}
+  - {fileID: 6309964693615043963}
+  - {fileID: 7439761069548757614}
+  - {fileID: -4381957183795586644}
+  - {fileID: 248883390118398527}
+  - {fileID: 1131116968165421158}
+  - {fileID: -1120294212434081834}
+  - {fileID: -7001592942936832019}
+  - {fileID: -8155350952945153809}
+  EditorEvents:
+  - {fileID: -5845126707019855319}
+  - {fileID: -3708851439659853524}
+  - {fileID: 5203261319910879213}
+  - {fileID: -7940407824328810899}
+  - {fileID: -4776758723365507265}
+  - {fileID: -8327341853787068862}
   EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  cacheTime: 0
+  MasterBanks:
+  - {fileID: -8155350952945153809}
+  StringsBanks:
+  - {fileID: -7274529317412820514}
+  cacheTime: 637799836780000000
   cacheVersion: 10
+--- !u!114 &248883390118398527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BIO-L.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/BIO-L.bank
+  Name: BIO-L
+  StudioPath: bank:/Enemies/BIO-L
+  lastModified: 637799836780000000
+  FileSizes:
+  - Name: Desktop
+    Value: 183424
+  Exists: 1
+--- !u!114 &1131116968165421158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BIO-S.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/BIO-S.bank
+  Name: BIO-S
+  StudioPath: bank:/Enemies/BIO-S
+  lastModified: 637799836780000000
+  FileSizes:
+  - Name: Desktop
+    Value: 183424
+  Exists: 1
+--- !u!114 &5203261319910879213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BIO-L-Hurt
+  m_EditorClassIdentifier: 
+  Path: event:/BIO-L-Hurt
+  Guid:
+    Data1: -1628248528
+    Data2: 1193030869
+    Data3: -363543141
+    Data4: -817461101
+  Banks:
+  - {fileID: 248883390118398527}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6309964693615043963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BAL-L.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/BAL-L.bank
+  Name: BAL-L
+  StudioPath: bank:/Weapons/BAL-L
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 9472
+  Exists: 1
+--- !u!114 &7439761069548757614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BAL-RF.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/171-Game-FMOD/Build/Desktop/BAL-RF.bank
+  Name: BAL-RF
+  StudioPath: bank:/Weapons/BAL-RF
+  lastModified: 637799836770000000
+  FileSizes:
+  - Name: Desktop
+    Value: 494
+  Exists: 1

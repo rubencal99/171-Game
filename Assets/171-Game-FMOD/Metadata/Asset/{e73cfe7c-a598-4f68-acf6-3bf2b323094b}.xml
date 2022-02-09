@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{e73cfe7c-a598-4f68-acf6-3bf2b323094b}">
+		<property name="assetPath">
+			<value>Sounds/BIO-enemy/HURT/HURT/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ba9d054d-3ec7-40ef-b694-2165312993f8}</destination>
+		</relationship>
+	</object>
+</objects>
