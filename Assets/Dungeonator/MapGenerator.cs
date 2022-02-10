@@ -13,8 +13,18 @@ public class MapGenerator : MonoBehaviour
     TileNode[,] map;
 
     // Min dimensions of rooms
-    public int min_x_BSP;
-    public int min_y_BSP;
+    public Vector2Int minRoomDim;
+    public Vector2Int minEntryDim;
+    public Vector2Int maxEntryDim;
+
+    public Vector2Int minNormalDim;
+    public Vector2Int maxNormalDim;
+
+    public Vector2Int minLargeDim;
+    public Vector2Int maxLargeDim;
+
+    public Vector2Int minBossDim;
+    public Vector2Int maxBossDim;
 
     public bool UseCellular;
     public string Seed;
@@ -25,16 +35,19 @@ public class MapGenerator : MonoBehaviour
     
     public int Iterations;
 
+    public bool HasEntry = false;
+    public bool HasBoss = false;
     public int numLargeRooms;
     public int BossRoom = 1;
     public int normalRooms;
     public int overgrownRooms;
 
     // Queues for the BSP algorithm
-    private Queue<int[]> queue = new Queue<int[]>();
+    private List<int[]> queue = new List<int[]>();
     private Queue<int[]> roomsList = new Queue<int[]>();
     private List<TileNode> roomTiles = new List<TileNode>();
     private List<RoomNode> Rooms = new List<RoomNode>();
+    private List<CorridorNode> Corridors = new List<CorridorNode>();
 
 
     public TileNode[,] GenerateMap()
@@ -45,6 +58,7 @@ public class MapGenerator : MonoBehaviour
         BinarySpace();
 
         DrawMap();
+        OnDrawGizmos();
 
         return map;
     }
@@ -74,7 +88,7 @@ public class MapGenerator : MonoBehaviour
         temp[2] = columns - 1;
         temp[3] = rows - 1;
         // This will be our queue of room spaces
-        queue.Enqueue(temp);
+        queue.Add(temp);
 
         int count = 0;
         // Main loop that splits map
@@ -83,12 +97,24 @@ public class MapGenerator : MonoBehaviour
         {
             // print("Times looped: " + count);
             if (count > 200){
+                Debug.Log("Too many rooms created");
                 break;
             }
             // Debug.Log("In Binary Space splitting loop");
             // print("COUNT: " + queue.Count);
             // print("Times looped: " + count);
-            int[] space = queue.Dequeue();
+            int[] space;
+            if (HasEntry)
+            {
+                // note: This is not optimal, very slow
+                space = queue[0];
+                queue.RemoveAt(0);
+            }
+            else
+            {
+                space = queue[queue.Count - 1];
+                queue.RemoveAt(queue.Count - 1);
+            }
             var x1 = space[0];
             var y1 = space[1];
             var x2 = space[2];
@@ -99,37 +125,79 @@ public class MapGenerator : MonoBehaviour
             var width = x2 - x1;
             var height = y2 - y1;
 
-            if (width > min_x_BSP && height > min_y_BSP)
+            // This gives us larger rooms
+            if (UnityEngine.Random.Range(0, 100) < 20)
             {
-                // Randomly choose which split we prefer
-                if (UnityEngine.Random.Range(0, 100) < 50)
+                if (width > minNormalDim.x && height > minNormalDim.y)
                 {
-                    if (height >= min_y_BSP * 2)
+                    // Randomly choose which split we prefer
+                    if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        SplitHorizontal(space);
-                    }
-                    else if (width >= min_x_BSP * 2)
-                    {
-                        SplitVertical(space);
+                        if (height >= minNormalDim.y * 2)
+                        {
+                            SplitHorizontal(space);
+                        }
+                        else if (width >= minNormalDim.x * 2)
+                        {
+                            SplitVertical(space);
+                        }
+                        else
+                        {
+                            roomsList.Enqueue(space);
+                        }
                     }
                     else
                     {
-                        roomsList.Enqueue(space);
+                        if (width >= minNormalDim.x * 2)
+                        {
+                            SplitVertical(space);
+                        }
+                        else if (height >= minNormalDim.y * 2)
+                        {
+                            SplitHorizontal(space);
+                        }
+                        else
+                        {
+                            roomsList.Enqueue(space);
+                        }
                     }
                 }
-                else
+            }
+            // This gives us smaller rooms
+            else
+            {
+                if (width > minRoomDim.x && height > minRoomDim.y)
                 {
-                    if (width >= min_x_BSP * 2)
+                    // Randomly choose which split we prefer
+                    if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        SplitVertical(space);
-                    }
-                    else if (height >= min_y_BSP * 2)
-                    {
-                        SplitHorizontal(space);
+                        if (height >= minRoomDim.y * 2)
+                        {
+                            SplitHorizontal(space);
+                        }
+                        else if (width >= minRoomDim.x * 2)
+                        {
+                            SplitVertical(space);
+                        }
+                        else
+                        {
+                            roomsList.Enqueue(space);
+                        }
                     }
                     else
                     {
-                        roomsList.Enqueue(space);
+                        if (width >= minRoomDim.x * 2)
+                        {
+                            SplitVertical(space);
+                        }
+                        else if (height >= minRoomDim.y * 2)
+                        {
+                            SplitHorizontal(space);
+                        }
+                        else
+                        {
+                            roomsList.Enqueue(space);
+                        }
                     }
                 }
             }
@@ -140,12 +208,27 @@ public class MapGenerator : MonoBehaviour
         while (roomsList.Count > 0)
         {
             int[] room = roomsList.Dequeue();
-            RoomNode NewRoom = new RoomNode();
 
             int x1 = (int)room[0];
             int y1 = (int)room[1];
             int x2 = (int)room[2];
             int y2 = (int)room[3];
+
+            RoomNode NewRoom;
+            if (!HasEntry)
+            {
+                NewRoom = new RoomNode("Start");
+                HasEntry = true;
+            }
+            else if (!HasBoss && roomsList.Count == 0)
+            {
+                NewRoom = new RoomNode("Boss");
+                HasBoss = true;
+            }
+            else
+            {
+                NewRoom = new RoomNode("Normal");
+            }
 
             // Here we fill the negative space with empty space 
             // I.e. room creation
@@ -154,6 +237,7 @@ public class MapGenerator : MonoBehaviour
                 for (int j = y1 + 1; j < y2 - 1; j++)
                 {
                     map[i, j].value = 1;
+                    map[i,j].room = NewRoom;
                     roomTiles.Add(map[i, j]);
                     NewRoom.tileList.Add(map[i, j]);
                 }
@@ -162,12 +246,66 @@ public class MapGenerator : MonoBehaviour
             NewRoom.CalculateCenter();
             Rooms.Add(NewRoom);
         }
+        SortRooms();
         AddCorridors();
+        foreach(CorridorNode corridor in Corridors)
+        {
+            roomTiles.AddRange(corridor.tileList);
+        }
+    }
+
+    RoomNode CreateRoom(int x1, int y1, int x2, int y2)
+    {
+        RoomNode New = new RoomNode("Normal");
+
+        int area = (x2 - x1) * (y2 - y1);
+        // if (area)
+
+        return New;
+    }
+
+    // This function sorts all Rooms according to their distance from eachother
+    // This helps with optimizing corridor creation
+    void SortRooms()
+    {
+        // Go through every room
+        foreach(RoomNode room in Rooms)
+        {
+            // Go through all other rooms
+            foreach(RoomNode neighbor in Rooms)
+            {
+                // Not including itself
+                if (neighbor == room)
+                {
+                    continue;
+                }
+
+                SortByDistance(room, neighbor);
+            }
+        }
+    }
+
+    // This function goes through current list of rooms and inserts room in question accordingly
+    void SortByDistance(RoomNode room, RoomNode neighbor)
+    {
+        for(int i = 0; i < room.RoomsByDistance.Count; i++)
+        {
+            var check = room.RoomsByDistance[i];
+            var distance1 = Vector2.Distance(room.roomCenter, check.roomCenter);
+            var distance2 = Vector2.Distance(room.roomCenter, neighbor.roomCenter);
+            if (distance2 < distance1)
+            {
+                room.RoomsByDistance.Insert(i, neighbor);
+                return;
+            }
+        }
+        // If neighbor is furthest away out of all compared so far add it to back of list
+        room.RoomsByDistance.Add(neighbor);
     }
 
     void AddCorridors()
     {
-        List<Vector2Int> roomCenters = new List<Vector2Int>();
+        /* List<Vector2Int> roomCenters = new List<Vector2Int>();
         foreach (RoomNode Room in Rooms)
         {
             roomCenters.Add(Room.roomCenter);
@@ -182,7 +320,7 @@ public class MapGenerator : MonoBehaviour
             if (i > 100)
             {
                 Debug.Log("While loop timed out");
-                return;
+                return; 
             }
             Vector2Int closest = FindClosestPoint(currentCenter, roomCenters);
             roomCenters.Remove(closest);
@@ -190,12 +328,42 @@ public class MapGenerator : MonoBehaviour
 
             currentCenter = closest;
             i++;
+        }*/
+
+        foreach (RoomNode room in Rooms)
+        {
+            foreach (RoomNode neighbor in room.RoomsByDistance)
+            {
+                ConnectRooms(room, neighbor);
+            }
         }
     }
 
-    private void CreateCorridor(Vector2Int currentRoomCenter, Vector2Int destination)
+    void ConnectRooms(RoomNode room, RoomNode neighbor)
     {
+        if (room.NeighborCount >= room.MaxNeighbors)
+        {
+            return;
+        }
+        if (neighbor.NeighborCount >= neighbor.MaxNeighbors)
+        {
+            return;
+        }
+        CorridorNode corridor = CreateCorridor(room, neighbor);
+        if (corridor == null)
+        {
+            return;
+        }
+        Corridors.Add(corridor);
+
+    }
+
+    private CorridorNode CreateCorridor(RoomNode room, RoomNode neighbor)
+    {
+        Vector2Int currentRoomCenter = room.roomCenter;
+        Vector2Int destination = neighbor.roomCenter;
         var position = currentRoomCenter;
+        CorridorNode corridor = new CorridorNode();
         // Here we randomly choose a directional preference
         if (Random.Range(0, 100) < 50)
         {
@@ -212,6 +380,14 @@ public class MapGenerator : MonoBehaviour
                 if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x, position.y]);
+                }
+                else if (map[position.x, position.y].value == 1)
+                {
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
+                    {
+                        return null;
+                    }
                 }
             }
             while (position.x != destination.x)
@@ -227,6 +403,14 @@ public class MapGenerator : MonoBehaviour
                 if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x, position.y]);
+                }
+                else if (map[position.x, position.y].value == 1)
+                {
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
+                    {
+                        return null;
+                    }
                 }
             }
         }
@@ -245,6 +429,14 @@ public class MapGenerator : MonoBehaviour
                 if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x, position.y]);
+                }
+                else if (map[position.x, position.y].value == 1)
+                {
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
+                    {
+                        return null;
+                    }
                 }
             }
             while (position.y != destination.y)
@@ -260,10 +452,20 @@ public class MapGenerator : MonoBehaviour
                 if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x, position.y]);
+                }
+                else if (map[position.x, position.y].value == 1)
+                {
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
+                    {
+                        return null;
+                    }
                 }
             }
         }
-        
+        room.NeighborRooms.Add(neighbor);
+        neighbor.NeighborRooms.Add(room);
+        return corridor;
     }
 
     private Vector2Int FindClosestPoint(Vector2Int currentCenter, List<Vector2Int> roomCenters)
@@ -280,11 +482,6 @@ public class MapGenerator : MonoBehaviour
             }
         }
         return closest;
-    }
-
-    void CreateRoom()
-    {
-
     }
 
     void AddLights(int x1, int y1, int x2, int y2)
@@ -307,8 +504,16 @@ public class MapGenerator : MonoBehaviour
         var room1 = new int[] { x1, y1, x2, ySplit };
         var room2 = new int[] { x1, ySplit + 1, x2, y2 };
 
-        queue.Enqueue(room1);
-        queue.Enqueue(room2);
+        if (UnityEngine.Random.Range(0, 100) < 50)
+        {
+            queue.Add(room1);
+            queue.Add(room2);
+        }
+        else
+        {
+            queue.Add(room2);
+            queue.Add(room1);
+        }
     }
 
     // Splits map vertically
@@ -323,9 +528,17 @@ public class MapGenerator : MonoBehaviour
         var room2 = new int[] { xSplit + 1, y1, x2, y2 };
 
         // print("In vertical.");
+        if (UnityEngine.Random.Range(0, 100) < 50)
+        {
+            queue.Add(room1);
+            queue.Add(room2);
+        }
+        else
+        {
+            queue.Add(room2);
+            queue.Add(room1);
+        }
 
-        queue.Enqueue(room1);
-        queue.Enqueue(room2);
     }
 
     void OnDrawGizmos()
@@ -351,7 +564,19 @@ public class MapGenerator : MonoBehaviour
                 }
                 else if (map[x, y].value == 1)
                 {
-                    Gizmos.color = new Color(0, 255, 0, 1f);
+                    if (map[x, y].room.RoomType == "Start")
+                    {
+                        Gizmos.color = new Color(0, 255, 0, 1f);
+                    }
+                    else if (map[x, y].room.RoomType == "Boss")
+                    {
+                        Gizmos.color = new Color(255, 0, 0, 1f);
+                    }
+                    else
+                    {
+                        Gizmos.color = new Color(255, 255, 0, 1f);
+                    }
+                    
                 }
                 else
                 {

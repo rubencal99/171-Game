@@ -6,7 +6,41 @@ public class RoomNode
 {
     public List<TileNode> tileList= new List<TileNode>();
     public Vector2Int roomCenter;
+    public string RoomType;
+    public int MaxNeighbors;
     public List<RoomNode> NeighborRooms = new List<RoomNode>();
+    public List<RoomNode> RoomsByDistance = new List<RoomNode>();
+
+    public RoomNode()
+    {
+
+    }
+
+    public RoomNode(string roomType)
+    {
+        RoomType = roomType;
+        if (RoomType == "Start" || RoomType == "Reward")
+        {
+            MaxNeighbors = 1;
+        }
+        if (RoomType == "Boss")
+        {
+            MaxNeighbors = 2;
+        }
+        if(RoomType == "Normal")
+        {
+            MaxNeighbors = 3;
+        }
+        if(RoomType == "Large")
+        {
+            MaxNeighbors = 4;
+        }
+    }
+
+    public int NeighborCount {
+        get {return NeighborRooms.Count;}
+        set{}
+    }
 
     public void CalculateCenter()
     {
