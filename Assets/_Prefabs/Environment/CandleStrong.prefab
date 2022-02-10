@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2098239701316472063}
   - component: {fileID: 2098239701316472062}
   - component: {fileID: 2098239701316472061}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CandleStrong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098239701316472060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.44, y: 6.96, z: -1}
+  m_LocalPosition: {x: 7.44, y: 6.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2098239702095650723}
@@ -113,7 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2098239702095650723}
   - component: {fileID: 2098239702095650732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.619
   m_Color: {r: 1, g: 0.9380272, b: 0.2971698, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 1.34
-  m_PointLightOuterRadius: 5.92
+  m_PointLightInnerRadius: 0.15
+  m_PointLightOuterRadius: 6.63
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
