@@ -89,7 +89,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         Wallet -= cost;
     }
 
-    public void CanAcuire(int cost)
+    public bool CanAcuire(int cost)
     {
         if (AugmentationTokens < cost)
         {
