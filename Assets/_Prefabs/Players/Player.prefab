@@ -766,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField: {fileID: 11400000, guid: 825850c263e940e44abd07210ffaba0a, type: 2}
   currentVelocity: 0
-  dodgeVelocity: 2
+  movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -828,7 +828,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   DeathMenuUI: {fileID: 0}
-  obj: {fileID: 0}
+  PlayerState: {fileID: 0}
 --- !u!114 &5065862439272653460
 MonoBehaviour:
   m_ObjectHideFlags: 0

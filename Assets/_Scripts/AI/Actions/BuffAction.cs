@@ -75,7 +75,7 @@ public class BuffAction : AIAction
         yield return new WaitForSeconds(buffTimer);
     }*/
 
-    // If buffer dies, turn ally's Buffs turn off
+    // If buffer dies, ally's Buffs turn off
     void OnDestroy()
     {
         // Debug.Log("Buffer Destroyed");

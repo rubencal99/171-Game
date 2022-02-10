@@ -34,8 +34,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private AgentRenderer agentRenderer;
 
 
-    public GameObject obj; // game odject for agent input
-    private AgentInput w; // var to hold agent input 
+    public PlayerStateManager PlayerState; // game odject for agent input
+    // private AgentInput w; // var to hold agent input 
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Start()
     {
         SpawnPosition = transform.position;
-        w = obj.GetComponent<AgentInput>(); //get player gameobj
+        PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
     }
 
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public void GetHit(int damage, GameObject damageDealer)
     {    
         //check if player is Dodging, if true, dont decrement health
-        if (w.dodging) {
+        if (PlayerState.DiveState.diving) {
             return;
         }
 

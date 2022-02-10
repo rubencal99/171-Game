@@ -39,13 +39,13 @@ public class AgentRenderer : MonoBehaviour
 
     void Update(){
         if (isDying){
-            /*fade -= Time.deltaTime;
+            fade -= Time.deltaTime / 10;
             if (fade <= 0f){
                 fade = 0f;
-                isDying = false;
+                // isDying = false;
             }
 
-            material.SetFloat("_Fade", fade);*/
+            material.SetFloat("_Fade", fade);
             spriteRenderer.color = Color.Lerp(spriteRenderer.color, deathColor, 0.01f);
         }
         else

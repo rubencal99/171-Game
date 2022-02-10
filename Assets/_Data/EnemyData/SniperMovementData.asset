@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e01acebfaabbb7478a926635131ac60, type: 3}
   m_Name: SniperMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 3
+  maxDodgeSpeed: 4.8
+  maxRunSpeed: 3.07
   acceleration: 90.7
   decceleration: 52
