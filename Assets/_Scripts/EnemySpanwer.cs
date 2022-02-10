@@ -38,8 +38,8 @@ public class EnemySpanwer : MonoBehaviour
 
     public void SpawnObject(){
         Vector3 offsetPosition = transform.position;
-        offsetPosition.x += Random.Range(-1.5f, 1.5f);
-        offsetPosition.y += Random.Range(-1.5f, 1.5f);
+        offsetPosition.x += Random.Range(-5f, 5f);
+        offsetPosition.y += Random.Range(-5f, 5f);
         var clone = Instantiate(Enemies[Random.Range(0, Enemies.Length)], offsetPosition, Quaternion.identity);
         clone.transform.parent = this.gameObject.transform.parent.transform;
         if(stopSpawn){
@@ -50,7 +50,7 @@ public class EnemySpanwer : MonoBehaviour
 
     }
 
-     // Update is called once per frame
+    // Update is called once per frame
    public void oneStepCloser() {
       enemyCount = 0;
        foreach(Transform child in transform)
