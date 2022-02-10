@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Avatar
   - Gun Muzzle
+  - AStar
   layers:
   - Default
   - TransparentFX
