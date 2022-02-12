@@ -12,6 +12,7 @@ public class PlayerRunGunState : PlayerBaseState
     private bool meleeButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
+    public bool shopping = false; // bool to check if dodging
 
     public PlayerInput playerInput;
     
@@ -44,6 +45,11 @@ public class PlayerRunGunState : PlayerBaseState
         if (dodging)
         {
             Debug.Log("Switching to Dive State");
+            Player.SwitchState(Player.DiveState);
+        }
+        if (shopping)
+        {
+            Debug.Log("Switching to Shop State");
             Player.SwitchState(Player.DiveState);
         }
     }
@@ -225,10 +231,33 @@ public class PlayerRunGunState : PlayerBaseState
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Dodge") > 0) 
         {
+            if (playerInput.PlayerMovement.currentVelocity == 0)
+            {
+                return;
+            }
             if (dodging == false)
             {
                 dodging = true;
                 playerInput.OnDodgeKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+            }  
+        }
+        else{
+            if (dodging == true)
+            {
+                dodging = false;
+            }
+        }
+    }
+
+    private void GetInteractInput()
+    {
+        // Create new Vector2 when dodge button (left shift) pressed
+        if (Input.GetAxisRaw("Interact") > 0) 
+        {
+            if (shopping == false)
+            {
+                shopping = true;
+                playerInput.OnInteractKeyPressed?.Invoke();
             }  
         }
         else{

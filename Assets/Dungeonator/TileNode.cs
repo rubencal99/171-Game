@@ -4,8 +4,9 @@ using UnityEngine;
 
 // This class handles every tile in our map
 // We can expand it to include special tiles ie environmental hazards
-public class TileNode : MonoBehaviour
+public class TileNode
 {
+    public RoomNode room;
     // 0 == empty space / out of map
     // 1 = room
     // 2 = corridor

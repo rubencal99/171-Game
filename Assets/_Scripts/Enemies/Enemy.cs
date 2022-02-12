@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public EnemyDataSO EnemyData { get; set; }
 
     [field: SerializeField]
-    public int Health { get; private set; }
+    public int Health { get; set; }
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     private AgentRenderer agentRenderer;
     private EnemyBrain enemyBrain;
+    private AgentMovement agentMovement;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         Range = EnemyData.Range;
         agentRenderer = GetComponentInChildren<AgentRenderer>();
         enemyBrain = GetComponent<EnemyBrain>();
+        agentMovement = GetComponent<AgentMovement>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
@@ -52,7 +54,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     IEnumerator WaitToDie(){
         isDying = true;
         DeadOrAlive();
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         if (isDying == true)
         {
             Destroy(gameObject);
@@ -64,6 +66,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         if(isDying == true)
         {
             gameObject.layer = 0;
+            enemyBrain.Move(Vector2.zero);
+            agentMovement.currentVelocity = 0;
             enemyBrain.enabled = false;
             agentRenderer.isDying = true;
         }
