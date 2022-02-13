@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // This class is used for all audio systems
-[RequireComponent(typeof(AudioSource))]
+// [RequireComponent(typeof(AudioSource))]
 public abstract class AudioPlayer : MonoBehaviour
 {
     protected AudioSource audioSource;
