@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,6 +33,7 @@ public class LOSDecision : AIDecision
 
         RaycastHit2D hit = Physics2D.Raycast(pos, direction, layerMask);
         // Debug.Log("Hit point = " + hit.transform.position);
+        Debug.Log("Rayhit Name: " + hit.transform.name.ToString() + "  Rayhit Layer: " + hit.transform.gameObject.layer.ToString());
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){
             Debug.Log("Hitting player");
             collision = hit.point;
