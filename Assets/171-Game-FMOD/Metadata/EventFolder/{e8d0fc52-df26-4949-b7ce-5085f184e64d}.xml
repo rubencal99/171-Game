@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="EventFolder" id="{71c3c6f6-d7f9-4d6f-911d-2adebb0d7441}">
+	<object class="EventFolder" id="{e8d0fc52-df26-4949-b7ce-5085f184e64d}">
 		<property name="name">
-			<value>LAS-L</value>
+			<value>BAL</value>
 		</property>
 		<relationship name="folder">
 			<destination>{c28c3185-2a63-47bd-926d-3ae452a58d64}</destination>

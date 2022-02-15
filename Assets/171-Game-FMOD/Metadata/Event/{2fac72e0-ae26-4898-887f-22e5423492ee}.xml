@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{2fac72e0-ae26-4898-887f-22e5423492ee}">
 		<property name="name">
-			<value>WEP-LAS-L-Fire</value>
+			<value>L-Fire</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{71c3c6f6-d7f9-4d6f-911d-2adebb0d7441}</destination>
+			<destination>{c3dfab18-c3dc-4337-8a25-de8ecd2c7580}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{d5bc78f1-2ef1-44be-9af9-42e22fcba40a}</destination>

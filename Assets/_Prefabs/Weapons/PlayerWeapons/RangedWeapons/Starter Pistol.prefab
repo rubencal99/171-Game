@@ -164,6 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8960519738536017280}
+  - component: {fileID: 1241367849804538666}
   m_Layer: 0
   m_Name: WeaponAudio
   m_TagString: Untagged
@@ -185,6 +186,32 @@ Transform:
   m_Father: {fileID: 8960519738105143088}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1241367849804538666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960519738536017281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439acf8f38672e545a9baa47e32f69c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootBulletEvent:
+    Guid:
+      Data1: 799830752
+      Data2: 1217965606
+      Data3: -450723960
+      Data4: -292408254
+    Path: event:/WEP/LAS/L-Fire
+  outOfBulletsEvent:
+    Guid:
+      Data1: 1824021654
+      Data2: 1327393408
+      Data3: -713388392
+      Data4: -1272974844
+    Path: event:/WEP/Click
 --- !u!1 &8960519739286643315
 GameObject:
   m_ObjectHideFlags: 0
