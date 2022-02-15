@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerMovementData
   m_EditorClassIdentifier: 
   maxDodgeSpeed: 10.76
-  maxRunSpeed: 5
-  acceleration: 50
+  maxRunSpeed: 7.11
+  acceleration: 68.3
   decceleration: 50
