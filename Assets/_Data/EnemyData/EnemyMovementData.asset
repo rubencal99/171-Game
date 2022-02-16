@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyMovementData
   m_EditorClassIdentifier: 
   maxDodgeSpeed: 4.6
-  maxRunSpeed: 3.12
-  acceleration: 30
-  decceleration: 52
+  maxRunSpeed: 5.23
+  acceleration: 8.4
+  decceleration: 44.3

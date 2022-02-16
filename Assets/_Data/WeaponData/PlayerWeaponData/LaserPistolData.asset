@@ -10,17 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
-  m_Name: LaserRifleData
+  m_Name: LaserPistolData
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 24599a96356a9d7418424c7a5c513456, type: 2}
-  <MagazineCapacity>k__BackingField: 8
-  <MaxAmmoCapacity>k__BackingField: 64
+  <MagazineCapacity>k__BackingField: 30
+  <MaxAmmoCapacity>k__BackingField: 150
   <AutomaticFire>k__BackingField: 0
-  <WeaponDelay>k__BackingField: 1.257
-  <ReloadSpeed>k__BackingField: 1.65
+  <WeaponDelay>k__BackingField: 0.12
+  <ReloadSpeed>k__BackingField: 3.43
   <SpreadAngle>k__BackingField: 0.8
   multiBulletShot: 0
   bulletCount: 0
-  recoilIntensity: 0.91
-  recoilFrequency: 0
-  recoilTime: 0

@@ -3394,10 +3394,10 @@ MonoBehaviour:
   EntryCollider: {fileID: 7688404469582539259, guid: 32b18192863f2f542a442d9ef8bc0ce5, type: 3}
   columns: 150
   rows: 150
-  minRoomDim: {x: 15, y: 15}
+  minRoomDim: {x: 12, y: 12}
   minEntryDim: {x: 0, y: 0}
   maxEntryDim: {x: 0, y: 0}
-  minNormalDim: {x: 20, y: 20}
+  minNormalDim: {x: 12, y: 12}
   maxNormalDim: {x: 0, y: 0}
   minLargeDim: {x: 0, y: 0}
   maxLargeDim: {x: 0, y: 0}
@@ -4806,9 +4806,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 143112481}
     - target: {fileID: 7261923253359743260, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
-      propertyPath: <Health>k__BackingField
-      value: 6
+      propertyPath: <OnGetHit>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7261923253359743260, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: <OnGetHit>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 759457914}
     - target: {fileID: 7261923254015844537, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: weaponData
       value: 

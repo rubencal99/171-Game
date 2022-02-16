@@ -514,6 +514,21 @@ MonoBehaviour:
   movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5304084264254618942}
+        m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
+        m_MethodName: SetWalkAnimation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
+  <OnVelocityZero>k__BackingField:
+    m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1334037856497830754
 MonoBehaviour:
@@ -723,7 +738,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52686
+  m_InstanceId: 90146
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0

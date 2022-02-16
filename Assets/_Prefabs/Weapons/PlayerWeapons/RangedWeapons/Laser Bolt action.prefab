@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8960519738105143102}
   - component: {fileID: 8960519738105143103}
   m_Layer: 0
-  m_Name: Laser_Gun 1
+  m_Name: Laser Bolt action
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8960519738105143089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.574, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 8960519739286643314}
   - {fileID: 8960519738536017280}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8f886e8ee08e8014b8e2ff36652c6689, type: 3}
+  m_Sprite: {fileID: 431852216664804413, guid: b62ddda33fa718b47932cf51f6de2545, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,8 +116,9 @@ MonoBehaviour:
   ammo: 100
   totalAmmo: 0
   infAmmo: 0
-  weaponData: {fileID: 11400000, guid: c0fc084cfa5842749b523ddb848f93a3, type: 2}
+  weaponData: {fileID: 11400000, guid: 7d0e4ae64404ae94ba6050f33b8f4d5b, type: 2}
   swordData: {fileID: 11400000, guid: 36206c669af236549a8ec4c87b6714f6, type: 2}
+  isPlayer: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
