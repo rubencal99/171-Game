@@ -12,16 +12,16 @@ public class AgentAudioPlayer : MonoBehaviour
 
     public void PlayStepSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(stepEvent, transform.root.position);
+        FMODUnity.RuntimeManager.PlayOneShot(stepEvent, transform.position);
     }
 
     public void PlayDamageSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(damageTakenEvent, transform.root.position);
+        FMODUnity.RuntimeManager.PlayOneShot(damageTakenEvent, transform.position);
     }
 
     public void PlayDeathSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(deathEvent, transform.root.position);
+        FMODUnity.RuntimeManager.PlayOneShot(deathEvent, transform.position);
     }
 }
