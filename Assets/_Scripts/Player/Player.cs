@@ -7,7 +7,10 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     [field: SerializeField]
-    public int Health { get; private set; } = 6;
+    public int Health { get; set; } = 6;
+
+     [field: SerializeField]
+    public int MaxHealth { get; private set; } = 6;
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -20,6 +23,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnHeal { get; set; }
 
     [field: SerializeField]
     public GameObject DeathMenuUI;
@@ -51,6 +57,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
              StartCoroutine(WaitToDie());
          }
     }
+
+    public void Heal(int amount) {
+        Health += amount;
+        if(Health > MaxHealth)
+            Health = MaxHealth;
+    }
+
+    public void setMaxHp(int amount) {
+        MaxHealth = amount;
+
+    }
+
 
     public void GetHit(int damage, GameObject damageDealer)
     {    

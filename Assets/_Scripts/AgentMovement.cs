@@ -51,7 +51,9 @@ public class AgentMovement : MonoBehaviour
             */
             movementDirection = movementInput.normalized;
         }
-        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
+        currentVelocity = calculateSpeed(movementInput);
+        if(movementInput.magnitude > 0)
+            currentVelocity *= Passives.SpeedMultiplier;
     }
     
     // this function integrates acceleration
@@ -59,7 +61,7 @@ public class AgentMovement : MonoBehaviour
     {
         if (movementInput.magnitude > 0)
         {
-            currentVelocity += MovementData.acceleration * Time.deltaTime;
+            currentVelocity += MovementData.acceleration * Time.deltaTime ;
         }
         else
         {
