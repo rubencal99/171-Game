@@ -118,12 +118,14 @@ MonoBehaviour:
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: 3bbaafdcb9414fb4ab6cca259b4c2314, type: 2}
   swordData: {fileID: 0}
+  isPlayer: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
+  meleeCoroutine: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8960519738536017295}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
         m_MethodName: PlayShootSound
         m_Mode: 1
@@ -135,10 +137,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnMelee>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8960519738536017295}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
         m_MethodName: PlayNoBulletsSound
         m_Mode: 1
@@ -159,8 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8960519738536017280}
-  - component: {fileID: 8960519738536017294}
-  - component: {fileID: 8960519738536017295}
+  - component: {fileID: 1241367849804538666}
   m_Layer: 0
   m_Name: WeaponAudio
   m_TagString: Untagged
@@ -182,103 +186,7 @@ Transform:
   m_Father: {fileID: 8960519738105143088}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &8960519738536017294
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8960519738536017281}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.503
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &8960519738536017295
+--- !u!114 &1241367849804538666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,9 +198,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439acf8f38672e545a9baa47e32f69c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  shootBulletClip: {fileID: 8300000, guid: 1a475093b88a02d4dac2fa975738761f, type: 3}
-  outOfBulletsClip: {fileID: 8300000, guid: 037ccb8647fa01145bb18b4967c50c5f, type: 3}
+  shootBulletEvent:
+    Guid:
+      Data1: 799830752
+      Data2: 1217965606
+      Data3: -450723960
+      Data4: -292408254
+    Path: event:/WEP/LAS/L-Fire
+  outOfBulletsEvent:
+    Guid:
+      Data1: 1824021654
+      Data2: 1327393408
+      Data3: -713388392
+      Data4: -1272974844
+    Path: event:/WEP/Click
 --- !u!1 &8960519739286643315
 GameObject:
   m_ObjectHideFlags: 0

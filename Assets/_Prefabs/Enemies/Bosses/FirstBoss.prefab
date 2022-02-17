@@ -721,7 +721,7 @@ MonoBehaviour:
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3128835130343464155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDamageSound
         m_Mode: 1
@@ -736,7 +736,7 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3128835130343464155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDeathSound
         m_Mode: 1
@@ -1011,8 +1011,6 @@ GameObject:
   - component: {fileID: 6638867990098400908}
   - component: {fileID: 6638867990098400944}
   - component: {fileID: 6638867990098400911}
-  - component: {fileID: 1927202829762752866}
-  - component: {fileID: 3128835130343464155}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged

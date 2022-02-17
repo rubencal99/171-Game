@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2038115289616068951}
     m_Modifications:
+    - target: {fileID: 3517939016733372174, guid: 75f049e8acf54a94b89ae58b7beb20e6, type: 3}
+      propertyPath: shootBulletEvent.Path
+      value: event:/WEP/BAL/SG-Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 5516205167494534618, guid: 75f049e8acf54a94b89ae58b7beb20e6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -68,6 +72,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2038115289616068951}
     m_Modifications:
+    - target: {fileID: 5933921913812107941, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
+      propertyPath: shootBulletEvent.Path
+      value: event:/WEP/BAL/L-Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143088, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -129,6 +137,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2038115289616068951}
     m_Modifications:
+    - target: {fileID: 5228980908535081209, guid: 8600256244ab90d41a9514a059615c48, type: 3}
+      propertyPath: shootBulletEvent.Path
+      value: event:/WEP/BAL/RF-Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143088, guid: 8600256244ab90d41a9514a059615c48, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -214,6 +226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2038115289616068951}
     m_Modifications:
+    - target: {fileID: 1139292259108986804, guid: 428d34962cd88104caf5ffc79d5c5ad1, type: 3}
+      propertyPath: shootBulletEvent.Path
+      value: event:/WEP/BAL/AR-Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143088, guid: 428d34962cd88104caf5ffc79d5c5ad1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -276,20 +292,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
-      propertyPath: deathClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 77ad08fa1f2f4bb4684ae2d90dc5455c, type: 3}
+      propertyPath: stepEvent.Path
+      value: event:/BIO-S/S-Step
+      objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
-      propertyPath: damageTakenClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2541b89145d2d214fbdb27c555ed614b, type: 3}
+      propertyPath: deathEvent.Path
+      value: event:/BIO-S/S-Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: damageTakenEvent.Path
+      value: event:/BIO-S/S-Hurt
+      objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_InstanceId
-      value: -74420
+      value: -70474
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253359743248, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_RootOrder
