@@ -10,6 +10,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int Health { get; private set; } = 6;
 
     [field: SerializeField]
+    public int Wallet { get; private set; } = 0;
+
+    [field: SerializeField]
+    public int AugmentationTokens { get; private set; } = 0;
+
+    [field: SerializeField]
     public int Damage { get; private set; }
 
     [field: SerializeField]                         
@@ -91,6 +97,44 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
     }
 
+
+    public void Heal()
+    {
+        Health += 2;
+    }
+
+    public void AddBounty(int funds)
+    {
+        Wallet += funds;
+    }
+
+    public bool CanPurchase(int cost)
+    {
+        if (cost > Wallet)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void Purchase(int cost)
+    {
+        Wallet -= cost;
+    }
+
+    public bool CanAcuire(int cost)
+    {
+        if (AugmentationTokens < cost)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void Acquire(int cost)
+    {
+        AugmentationTokens -= cost;
+    }
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
