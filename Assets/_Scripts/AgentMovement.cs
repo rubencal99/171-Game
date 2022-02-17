@@ -18,7 +18,7 @@ public class AgentMovement : MonoBehaviour
 
     // This is only serialized for debugging purposes
     [SerializeField]
-    protected float currentVelocity = 0;
+    public float currentVelocity = 0;
     [SerializeField]
     protected Vector2 movementDirection;
 

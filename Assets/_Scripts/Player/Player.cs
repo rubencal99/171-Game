@@ -45,6 +45,17 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        DeathMenuUI.SetActive(false);
+        isDead = false;                                         //Debuging death 
+    }
+
+    private void Update()
+    {
+         if (isDead==true){                      //For Debug the instance kill 
+             Health -= Health;
+             OnDie?.Invoke();
+             StartCoroutine(WaitToDie());
+         }
     }
 
     public void Heal(int amount) {
@@ -68,9 +79,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         Health -= damage;
 // =======
+//         
 //         DeathMenuUI.SetActive(false);
 //         agentRender = GetComponentInChildren<AgentRenderer>();
-//         isDead = false;
+//         isDead = false;   
 //     }
 //     private void Update()
 //     {
@@ -105,6 +117,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         // Play End Game Screen here
         DeathMenuUI.SetActive(true);
     }
+
 
     public void Respawn()
     {
