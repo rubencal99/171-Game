@@ -4,24 +4,29 @@ using UnityEngine;
 
 // NOTE: It might be better to seperate this class into individual audio players
 // because the required Audio Source component might only play one clip at a time
-public class AgentAudioPlayer : MonoBehaviour
+public class AgentAudioPlayer : AudioPlayer
 {
-    public FMODUnity.EventReference damageTakenEvent;
-    public FMODUnity.EventReference deathEvent;
-    public FMODUnity.EventReference stepEvent;
+    [SerializeField]
+    protected AudioClip damageTakenClip;
+
+    [SerializeField]
+    protected AudioClip deathClip;
+
+    [SerializeField]
+    protected AudioClip stepClip;
 
     public void PlayStepSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(stepEvent, transform.position);
+        PlayClipWithvariablePitch(stepClip);
     }
 
     public void PlayDamageSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(damageTakenEvent, transform.position);
+        PlayClipWithvariablePitch(damageTakenClip);
     }
 
     public void PlayDeathSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(deathEvent, transform.position);
+        PlayClip(deathClip);
     }
 }

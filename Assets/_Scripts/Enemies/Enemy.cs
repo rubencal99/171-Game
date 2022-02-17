@@ -25,8 +25,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public UnityEvent OnDie { get; set; }
     public bool isDying = false;
 
-    public GameObject[] Loot;
-
     private AgentRenderer agentRenderer;
     private EnemyBrain enemyBrain;
     private AgentMovement agentMovement;
@@ -54,31 +52,11 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     IEnumerator WaitToDie(){
-        gameObject.layer = 0;
         isDying = true;
-        int odds = Random.Range(1, 20);
-        yield return new WaitForSeconds(0.2f);
-        if (isDying)
+        DeadOrAlive();
+        yield return new WaitForSeconds(5f);
+        if (isDying == true)
         {
-            if (odds == 1)
-            {
-                int item;
-                GameObject thisLoot;
-                item = Random.Range(1, 20);
-                if(item < 5)
-                {
-                    thisLoot = Instantiate(Loot[1]) as GameObject;
-                    thisLoot.transform.position = gameObject.transform.position;
-                }
-                thisLoot = Instantiate(Loot[0]) as GameObject;
-                thisLoot.transform.position = gameObject.transform.position;
-            }
-            else
-            {
-                Player player = FindObjectOfType<Player>();
-                player?.AddBounty(10);
-            }
-
             // Call function that adds health to player if player passsive active
             Debug.Log("Before Epi Boost");
             PlayerSignaler.CallPlayerEpiBoost();

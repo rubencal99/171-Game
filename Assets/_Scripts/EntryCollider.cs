@@ -13,8 +13,8 @@ public class EntryCollider : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(!guarded) {
             if(other.tag == "Player") {
-               // this.GetComponent<Collider2D>().isTrigger = true;
-                //this.transform.GetChild(0).gameObject.SetActive(false);
+                this.GetComponent<Collider2D>().isTrigger = true;
+                this.transform.GetChild(0).gameObject.SetActive(false);
                 Debug.Log("made contact with player");
             }
         }
@@ -26,9 +26,9 @@ public class EntryCollider : MonoBehaviour
             this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
             this.GetComponent<Collider2D>().isTrigger = false;
             this.transform.GetChild(0).gameObject.SetActive(true);
-             Debug.Log("leaving collider");
+
         }
     //    this.transform.parent.Find("Exit Collider").GetChild(0).gameObject.SetActive(true);
-       
+        Debug.Log("leaving collider");
     }
 }

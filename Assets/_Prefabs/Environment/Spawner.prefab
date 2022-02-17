@@ -51,7 +51,7 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 8
+  numToSpawn: 5
   enemyCount: 0
   spawned: 0
 --- !u!212 &3392075588759141863

@@ -170,9 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasAlly: 0
-  buffTimer: 0
-  speedBuff: 0
-  ROFBuff: 0
 --- !u!1 &1727527804034731296
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +415,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isDying: 0
 --- !u!114 &4224652976851562825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField: {fileID: 11400000, guid: 81187357337f4584f92d8f2c47da5352, type: 2}
   currentVelocity: 0
-  movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -754,8 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDying: 0
-  isEnraged: 0
-  isBuffed: 0
+  enraged: 0
 --- !u!114 &5148991599991413044
 MonoBehaviour:
   m_ObjectHideFlags: 0

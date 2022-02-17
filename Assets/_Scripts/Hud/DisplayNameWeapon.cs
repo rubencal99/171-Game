@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DisplayNameWeapon : MonoBehaviour
 {
-    /*public GameObject obj;
+    public GameObject obj;
     public PlayerWeapon w;
     public Text WeaponName;
     // Start is called before the first frame update
@@ -18,5 +18,5 @@ public class DisplayNameWeapon : MonoBehaviour
     void Update()
     {
         //WeaponName.text =  w.
-    }*/
+    }
 }

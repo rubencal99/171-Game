@@ -19,10 +19,6 @@ public class PlayerProneState : PlayerBaseState
     {
         mainCamera = Camera.main;
     }
-    // private bool standing;
-    private float standTime;
-    // public PlayerInput playerInput;
-
     public override void EnterState(PlayerStateManager Player)
     {
         // Debug.Log("Entered Prone State");
@@ -33,8 +29,6 @@ public class PlayerProneState : PlayerBaseState
         playerInput = Player.playerInput;
         mainCamera = Camera.main;
         playerInput.PlayerMovement.ResetSpeed();
-        standTime = playerInput.PlayerMovement.MovementData.standingDelay;
-
     }
 
     public override void UpdateState(PlayerStateManager Player)
@@ -45,18 +39,8 @@ public class PlayerProneState : PlayerBaseState
         GetFireInput();
         GetReloadInput();
         if (standing == true)
-        CalculateStandTime();
-        if (standing == true && standTime <= 0)
         {
             Player.SwitchState(Player.RunGunState);
-        }
-    }
-
-    private void CalculateStandTime()
-    {
-        if (standTime > 0)
-        {
-            standTime -= Time.deltaTime;
         }
     }
 

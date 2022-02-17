@@ -27,7 +27,7 @@ public class RoomClearCheck : MonoBehaviour
          {
             if (sp!= null)
             {
-                Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+                // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
                 if(sp.GetComponent<EnemySpanwer>().spawned)
                     oneStepCloser();
             }
@@ -48,8 +48,7 @@ public class RoomClearCheck : MonoBehaviour
        foreach(Transform child in transform)
        { 
            if(child.tag == "Enemy") {
-               if(!child.GetComponent<Enemy>().isDying)
-                    enemyCount++;
+                enemyCount++;
            }
              Debug.Log("current enemy count = " + enemyCount); 
         }

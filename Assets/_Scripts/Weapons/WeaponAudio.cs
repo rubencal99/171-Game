@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponAudio : MonoBehaviour
+public class WeaponAudio : AudioPlayer
 {
-
-    public FMODUnity.EventReference shootBulletEvent; 
-    public FMODUnity.EventReference outOfBulletsEvent;
+    [SerializeField]
+    private AudioClip shootBulletClip = null, outOfBulletsClip = null;
 
     public void PlayShootSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(shootBulletEvent, transform.position);
+        PlayClip(shootBulletClip);
     }
 
     public void PlayNoBulletsSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(outOfBulletsEvent, transform.position);
+        PlayClip(outOfBulletsClip);
     }
 }
