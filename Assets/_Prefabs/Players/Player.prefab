@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 7261923253008125782}
   - component: {fileID: 7261923253008125777}
   - component: {fileID: 7261923253008125778}
-  - component: {fileID: 7261923253008125779}
   - component: {fileID: 7261923253008125776}
   m_Layer: 0
   m_Name: avatar
@@ -395,7 +394,8 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 44922
+
+  m_InstanceId: 54066
 --- !u!82 &7261923253008125779
 AudioSource:
   m_ObjectHideFlags: 0
@@ -504,10 +504,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  damageTakenClip: {fileID: 8300000, guid: 2541b89145d2d214fbdb27c555ed614b, type: 3}
-  deathClip: {fileID: 8300000, guid: 77ad08fa1f2f4bb4684ae2d90dc5455c, type: 3}
-  stepClip: {fileID: 8300000, guid: 69d2370c3670d84488bb4dbb1b3ecaba, type: 3}
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: 331476970
+      Data2: 1180409917
+      Data3: -1531282521
+      Data4: 1264681341
+    Path: event:/BIO-S/S-Step
 --- !u!1 &7261923253359743249
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +540,7 @@ GameObject:
   - component: {fileID: 7261923253359743251}
   - component: {fileID: 7261923253359743260}
   - component: {fileID: 5065862439272653460}
+  - component: {fileID: 5355692338035301397}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -547,6 +565,7 @@ Transform:
   - {fileID: 7261923254287780941}
   - {fileID: 7261923253362023582}
   - {fileID: 1000417936137025274}
+  - {fileID: 3840572206140344612}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -802,7 +821,7 @@ MonoBehaviour:
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7261923253008125776}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDamageSound
         m_Mode: 1
@@ -817,7 +836,7 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7261923253008125776}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDeathSound
         m_Mode: 1
@@ -848,6 +867,20 @@ MonoBehaviour:
   ROFMultiplier: 0
   BulletCountMultiplier: 0
   DamageMultiplier: 0
+--- !u!114 &5355692338035301397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261923253359743249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &7261923253362023583
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 0}
-  weapon: {fileID: 0}
+  weapon: {fileID: 8960519738105143103, guid: e9f57b69ebde592418964205e514804a, type: 3}
   InfAmmo: 0
   selectedWeapon: 0
   numGrenades: 5
@@ -1021,6 +1054,50 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &8617891379859424215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3840572206140344612}
+  - component: {fileID: 1221071358570688164}
+  m_Layer: 0
+  m_Name: InventoryParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3840572206140344612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617891379859424215}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.747783, y: 3.4385188, z: -0.07292146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7261923253359743248}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221071358570688164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617891379859424215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542237f0b0c103c46b255e967f3616b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!1001 &2640685782103994329
 PrefabInstance:
   m_ObjectHideFlags: 0

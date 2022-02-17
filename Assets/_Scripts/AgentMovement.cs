@@ -62,7 +62,7 @@ public class AgentMovement : MonoBehaviour
     {
         if (movementInput.magnitude > 0)
         {
-            currentVelocity += MovementData.acceleration * Time.deltaTime;
+            currentVelocity += MovementData.acceleration * Time.deltaTime ;
         }
         else
         {

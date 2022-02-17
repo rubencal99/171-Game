@@ -7,7 +7,16 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     [field: SerializeField]
-    public int Health { get; private set; } = 6;
+    public int Health { get; set; } = 6;
+
+     [field: SerializeField]
+    public int MaxHealth { get; private set; } = 6;
+
+    [field: SerializeField]
+    public int Wallet { get; private set; } = 0;
+
+    [field: SerializeField]
+    public int AugmentationTokens { get; private set; } = 0;
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -29,6 +38,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnHeal { get; set; }
 
     [field: SerializeField]
     public GameObject DeathMenuUI;
@@ -60,6 +72,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
              StartCoroutine(WaitToDie());
          }
     }
+
+    public void Heal(int amount) {
+        Health += amount;
+        if(Health > MaxHealth)
+            Health = MaxHealth;
+    }
+
+    public void setMaxHp(int amount) {
+        MaxHealth = amount;
+
+    }
+
 
     public void GetHit(int damage, GameObject damageDealer)
     {    
@@ -101,6 +125,44 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
     }
 
+
+    public void Heal()
+    {
+        Health += 2;
+    }
+
+    public void AddBounty(int funds)
+    {
+        Wallet += funds;
+    }
+
+    public bool CanPurchase(int cost)
+    {
+        if (cost > Wallet)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void Purchase(int cost)
+    {
+        Wallet -= cost;
+    }
+
+    public bool CanAcuire(int cost)
+    {
+        if (AugmentationTokens < cost)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public void Acquire(int cost)
+    {
+        AugmentationTokens -= cost;
+    }
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
