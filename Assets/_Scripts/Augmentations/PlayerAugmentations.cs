@@ -12,6 +12,20 @@ public static class PlayerAugmentations : object
     public static float BulletTT = 0.5f;
     public static float BulletTimeIntensity = 0.5f;
 
+    public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
+    {
+        {"Epinephrine", Epinephrine},
+        {"BulletTime", BulletTime}
+    };
+
+    public static void PrintDictionary()
+    {
+        foreach(KeyValuePair<string, bool> aug in AugmentationList)
+        {
+            Debug.Log(aug.Key + ": " + aug.Value);
+        }
+    }
+
     // Start is called before the first frame update
     /*public static void Start()
     {

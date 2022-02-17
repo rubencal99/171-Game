@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Direction>k__BackingField: {x: 0, y: 0}
   <PointOfInterest>k__BackingField: {x: 0, y: 0}
+  <PointerPosition>k__BackingField: {x: 0, y: 0}
 --- !u!1 &2328509939710562079
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +263,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 238510
+  m_InstanceId: 149196
 --- !u!82 &7408338872361167052
 AudioSource:
   m_ObjectHideFlags: 0
@@ -651,6 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
+  <Weapon>k__BackingField: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 477828738045565077}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
@@ -1284,17 +1286,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Syringe
       objectReference: {fileID: 0}
+    - target: {fileID: 1546480918363047159, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3740a5e0552335f458673d727c7ef1ea, type: 3}
     - target: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.574
+      value: 0.413
       objectReference: {fileID: 0}
     - target: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.085
       objectReference: {fileID: 0}
     - target: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
       propertyPath: m_LocalPosition.z

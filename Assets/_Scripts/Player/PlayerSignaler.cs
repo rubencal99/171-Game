@@ -16,10 +16,18 @@ public static class PlayerSignaler : object
         playerPassives = obj.GetComponent<PlayerPassives>();
     }*/
 
+    public static void CallBulletTime()
+    {
+        if(PlayerAugmentations.AugmentationList["BulletTime"] == true)
+        {
+            TimeManager.DoSlowMotion();
+        }
+    }
+
     public static void CallPlayerEpiBoost()
     {
         Debug.Log("In Epi Boost");
-        if(PlayerAugmentations.Epinephrine == true)
+        if(PlayerAugmentations.AugmentationList["Epinephrine"] == true)
         {
             Debug.Log("Epinephrine = true");
             Player.AddHealth(PlayerAugmentations.EpinephrineBoost);

@@ -42,7 +42,7 @@ public class PlayerRunGunState : PlayerBaseState
         GetMeleeInput();
         GetReloadInput();
         // GetRestartInput();
-        GetRespawnInput();
+        // GetRespawnInput();
         GetDodgeInput();
         GetTabInput();
         if (dodging)

@@ -27,7 +27,7 @@ public class PlayerDiveState : PlayerBaseState
         playerInput = Player.playerInput;
         collider = playerInput.Collider;
         collider.enabled = false;
-        TimeManager.DoSlowMotion();
+        PlayerSignaler.CallBulletTime();
     }
 
     public override void UpdateState(PlayerStateManager Player)
