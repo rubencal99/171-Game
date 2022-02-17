@@ -22,15 +22,12 @@ public class RoomClearCheck : MonoBehaviour
     }
 
      void Update() {
-         // Debug.Log("hello " +  spawners.Count);
+         Debug.Log("hello " +  spawners.Count);
          foreach(GameObject sp in spawners)
          {
-            if (sp!= null)
-            {
-                // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
-                if(sp.GetComponent<EnemySpanwer>().spawned)
-                    oneStepCloser();
-            }
+            Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+            if(sp.GetComponent<EnemySpanwer>().spawned)
+                oneStepCloser();
          }
     }
 

@@ -9,7 +9,7 @@ public class EnrageDecision : AIDecision
         bool isEnraged = transform.parent.GetComponent<EnrageAction>().Enraged;
         if (isEnraged)
         {
-            transform.parent.parent.parent.GetComponent<EnemySpanwer>().enabled = true;
+            transform.root.GetComponent<EnemySpanwer>().enabled = true;
         }
         return isEnraged;
     }

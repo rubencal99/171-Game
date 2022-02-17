@@ -12,8 +12,6 @@ public class AgentMovement : MonoBehaviour
 
     protected PlayerPassives Passives;
 
-    // protected PlayerAugmentations Augmentations;
-
     // MovementData is a scriptable object that contains data regarding movement
     [field: SerializeField]
     public MovementDataSO MovementData { get; set; }
@@ -22,7 +20,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     public float currentVelocity = 0;
     [SerializeField]
-    public Vector2 movementDirection;
+    protected Vector2 movementDirection;
 
     // This passes currentVelocity to AgentAnimations.AnimatePlayer
     // Hence SerializeField
@@ -52,9 +50,6 @@ public class AgentMovement : MonoBehaviour
                 currentVelocity = 0;
             */
             movementDirection = movementInput.normalized;
-        }
-        else{
-            movementDirection = Vector2.zero;
         }
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
     }

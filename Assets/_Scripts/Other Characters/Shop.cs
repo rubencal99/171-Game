@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    // public List<ShopItemSO> ItemsForSale;
+    public List<ShopItemSO> ItemsForSale;
     public Transform ShopUI;
     public float ShopDistance;
     public bool inDistance = false;

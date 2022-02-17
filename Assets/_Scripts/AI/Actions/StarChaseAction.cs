@@ -19,8 +19,8 @@ public class StarChaseAction : AIAction
     // Start is called before the first frame update
     public virtual void Start()
     {
-        seeker = transform.parent.parent.GetComponent<Seeker>();
-        rb = transform.parent.parent.GetComponent<Rigidbody2D>();
+        seeker = transform.root.GetComponent<Seeker>();
+        rb = transform.root.GetComponent<Rigidbody2D>();
         target = enemyBrain.Target;
 
         aiMovementData.PointOfInterest = (Vector2)target.transform.position;
@@ -72,7 +72,7 @@ public class StarChaseAction : AIAction
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
 
         enemyBrain.Move(aiMovementData.Direction);
-        // enemyBrain.Aim(aiMovementData.PointOfInterest);
+        enemyBrain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

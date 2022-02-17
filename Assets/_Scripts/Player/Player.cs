@@ -91,11 +91,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
     }
 
-    public void AddHealth(int h)
-    {
-        Health += h;
-    }
-
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;

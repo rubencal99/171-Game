@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -9,14 +8,6 @@ public class MapGenerator : MonoBehaviour
     private TileSpritePlacer AutoTiler;
     [SerializeField]
     private GameObject LightPrefab;
-    [SerializeField]
-    private GameObject ShopKeeper;
-    [SerializeField]
-    private GameObject Spawner;
-    [SerializeField]
-    private GameObject BossSpawner;
-    [SerializeField]
-    private GameObject EntryCollider;
     public int columns;
     public int rows;
     TileNode[,] map;
@@ -58,8 +49,6 @@ public class MapGenerator : MonoBehaviour
     private List<RoomNode> Rooms = new List<RoomNode>();
     private List<CorridorNode> Corridors = new List<CorridorNode>();
 
-    //private AstarPath AStar;
-
 
     public TileNode[,] GenerateMap()
     {
@@ -69,9 +58,6 @@ public class MapGenerator : MonoBehaviour
         BinarySpace();
 
         DrawMap();
-        // AStar = GameObject.FindGameObjectWithTag("AStar").GetComponent<AstarPath>();
-        AstarPath.active.Scan();
-
         OnDrawGizmos();
 
         return map;
@@ -79,7 +65,6 @@ public class MapGenerator : MonoBehaviour
     void DrawMap(){
         AutoTiler.Clear();
         AutoTiler.PaintFloorTiles(roomTiles);
-        AutoTiler.PaintCollisions(roomTiles, map);
     }
 
     void FillMap(){
@@ -220,7 +205,6 @@ public class MapGenerator : MonoBehaviour
         }
 
         // This is where we create the rooms
-        int tempCount = 0;
         while (roomsList.Count > 0)
         {
             int[] room = roomsList.Dequeue();
@@ -230,26 +214,20 @@ public class MapGenerator : MonoBehaviour
             int x2 = (int)room[2];
             int y2 = (int)room[3];
 
-            GameObject tempRoom = new GameObject(tempCount.ToString());
-            tempRoom.AddComponent<RoomNode>();
-
-            RoomNode NewRoom = tempRoom.GetComponent<RoomNode>();
+            RoomNode NewRoom;
             if (!HasEntry)
             {
-                NewRoom.RoomType = "Start";
-                NewRoom.MaxNeighbors = 1;
+                NewRoom = new RoomNode("Start");
                 HasEntry = true;
             }
             else if (!HasBoss && roomsList.Count == 0)
             {
-                NewRoom.RoomType = "Boss";
-                NewRoom.MaxNeighbors = 2;
+                NewRoom = new RoomNode("Boss");
                 HasBoss = true;
             }
             else
             {
-                NewRoom.RoomType = "Normal";
-                NewRoom.MaxNeighbors = 3;
+                NewRoom = new RoomNode("Normal");
             }
 
             // Here we fill the negative space with empty space 
@@ -264,89 +242,19 @@ public class MapGenerator : MonoBehaviour
                     NewRoom.tileList.Add(map[i, j]);
                 }
             }
-            AddLights(x1, y1, x2, y2, NewRoom);
+            AddLights(x1, y1, x2, y2);
             NewRoom.CalculateCenter();
-            if(NewRoom.RoomType == "Start")
-            {
-                SpawnPlayer(NewRoom);
-            }
-
             Rooms.Add(NewRoom);
-            tempCount++;
         }
         SortRooms();
         AddCorridors();
-        AddEntryColliders();
-        AddSpawners();
-    }
-
-    void AddSpawners()
-    {
-        foreach(RoomNode room in Rooms)
-        {
-            Vector3 pos1 = new Vector3(room.roomCenter.x + 3, room.roomCenter.y + 3, 0);
-            if (room.RoomType == "Start")
-            {
-                // Instantiate(ShopKeeper, pos1, Quaternion.identity);
-                continue;
-            }
-            pos1 = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
-            GameObject spawner;
-            if(room.RoomType == "Boss")
-            {
-                spawner = Instantiate(BossSpawner, pos1, Quaternion.identity);
-            }
-            else
-            {
-                spawner = Instantiate(Spawner, pos1, Quaternion.identity);
-            }
-            spawner.transform.parent = room.transform;
-
-            room.gameObject.AddComponent<RoomClearCheck>();
-        }
-    }
-
-    void AddEntryColliders()
-    {
         foreach(CorridorNode corridor in Corridors)
         {
-            if (corridor != null && corridor.tileList.Count > 0)
-            {
-                roomTiles.AddRange(corridor.tileList);
-                Debug.Log("Tilelist count: " + corridor.tileList.Count);
-                // GRab 1st element from tilelist and roomlist
-                TileNode tile1 = corridor.tileList[0];
-                RoomNode room1 = corridor.roomList[0];
-                
-                if(room1.RoomType != "Start")
-                {
-                    // instantiate entry collider at 1st tile coupled with 1st room
-                    Vector3 pos1 = new Vector3(tile1.x, tile1.y, 0);
-                    GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
-                    entryCollider1.transform.parent = room1.transform;
-                }
-
-                //grab 2nd element
-                TileNode tile2 = corridor.tileList.Last();
-                RoomNode room2 = corridor.roomList.Last();
-
-                // instantiate entry collider at 2nd tile coupled with 2nd room
-                Vector3 pos2 = new Vector3(tile2.x, tile2.y, 0);
-                GameObject entryCollider2 = Instantiate(EntryCollider, pos2, Quaternion.identity);
-                entryCollider2.transform.parent = room2.transform;
-            }
-            
+            roomTiles.AddRange(corridor.tileList);
         }
     }
 
-    void SpawnPlayer(RoomNode SpawnRoom)
-    {
-        var Player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, SpawnRoom.roomCenter.y, 0);
-        Player.transform.position = spawnPosition;
-    }
-
-    /* RoomNode CreateRoom(int x1, int y1, int x2, int y2)
+    RoomNode CreateRoom(int x1, int y1, int x2, int y2)
     {
         RoomNode New = new RoomNode("Normal");
 
@@ -354,7 +262,7 @@ public class MapGenerator : MonoBehaviour
         // if (area)
 
         return New;
-    }*/
+    }
 
     // This function sorts all Rooms according to their distance from eachother
     // This helps with optimizing corridor creation
@@ -459,7 +367,6 @@ public class MapGenerator : MonoBehaviour
         // Here we randomly choose a directional preference
         if (Random.Range(0, 100) < 50)
         {
-            // Moving vertically
             while (position.y != destination.y)
             {
                 if (destination.y > position.y)
@@ -470,24 +377,19 @@ public class MapGenerator : MonoBehaviour
                 {
                     position += Vector2Int.down;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x-1, position.y].value == 0)
+                if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
-                    map[position.x-1, position.y].value = 2;
                     corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x-1, position.y]);
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x-1, position.y].value == 1)
+                else if (map[position.x, position.y].value == 1)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
                     {
-                        NullifyCorridor(corridor);
-                        corridor = null;
                         return null;
                     }
                 }
             }
-            // Moving horizontally
             while (position.x != destination.x)
             {
                 if (destination.x > position.x)
@@ -498,19 +400,15 @@ public class MapGenerator : MonoBehaviour
                 {
                     position += Vector2Int.left;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x, position.y-1].value == 0)
+                if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
-                    map[position.x, position.y-1].value = 2;
                     corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x, position.y-1]);
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x, position.y-1].value == 1)
+                else if (map[position.x, position.y].value == 1)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
                     {
-                        NullifyCorridor(corridor);
-                        corridor = null;
                         return null;
                     }
                 }
@@ -528,19 +426,15 @@ public class MapGenerator : MonoBehaviour
                 {
                     position += Vector2Int.left;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x, position.y-1].value == 0)
+                if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
-                    map[position.x, position.y-1].value = 2;
                     corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x, position.y-1]);
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x, position.y-1].value == 1)
+                else if (map[position.x, position.y].value == 1)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
                     {
-                        NullifyCorridor(corridor);
-                        corridor = null;
                         return null;
                     }
                 }
@@ -555,19 +449,15 @@ public class MapGenerator : MonoBehaviour
                 {
                     position += Vector2Int.down;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x-1, position.y].value == 0)
+                if (map[position.x, position.y].value == 0)
                 {
                     map[position.x, position.y].value = 2;
-                    map[position.x-1, position.y].value = 2;
                     corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x-1, position.y]);
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x-1, position.y].value == 1)
+                else if (map[position.x, position.y].value == 1)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
+                    if (map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor)
                     {
-                        NullifyCorridor(corridor);
-                        corridor = null;
                         return null;
                     }
                 }
@@ -575,19 +465,7 @@ public class MapGenerator : MonoBehaviour
         }
         room.NeighborRooms.Add(neighbor);
         neighbor.NeighborRooms.Add(room);
-
-        corridor.roomList.Add(room);
-        corridor.roomList.Add(neighbor);
-
         return corridor;
-    }
-
-    private void NullifyCorridor(CorridorNode corridor)
-    {
-        foreach(TileNode tile in corridor.tileList)
-        {
-            map[tile.x, tile.y].value = 0;
-        }
     }
 
     private Vector2Int FindClosestPoint(Vector2Int currentCenter, List<Vector2Int> roomCenters)
@@ -606,17 +484,12 @@ public class MapGenerator : MonoBehaviour
         return closest;
     }
 
-    void AddLights(int x1, int y1, int x2, int y2, RoomNode room)
+    void AddLights(int x1, int y1, int x2, int y2)
     {
         var lightPrefab1 = Instantiate(LightPrefab, new Vector2(x1 + 4, y1 + 4), Quaternion.identity);
         var lightPrefab2 = Instantiate(LightPrefab, new Vector2(x1 + 4, y2 - 4), Quaternion.identity);
         var lightPrefab3 = Instantiate(LightPrefab, new Vector2(x2 - 4, y1 + 4), Quaternion.identity);
         var lightPrefab4 = Instantiate(LightPrefab, new Vector2(x2 - 4, y2 - 4), Quaternion.identity);
-
-        lightPrefab1.transform.parent = room.gameObject.transform;
-        lightPrefab2.transform.parent = room.gameObject.transform;
-        lightPrefab3.transform.parent = room.gameObject.transform;
-        lightPrefab4.transform.parent = room.gameObject.transform;
     }
 
     // Splits map horizontally

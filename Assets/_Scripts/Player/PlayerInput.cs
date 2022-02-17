@@ -65,7 +65,4 @@ public class PlayerInput : MonoBehaviour
 
     [field: SerializeField]
     public UnityEvent OnInteractKeyPressed { get; set; }
-
-    [field: SerializeField]
-    public UnityEvent OnTabKeyPressed { get; set; }
 }

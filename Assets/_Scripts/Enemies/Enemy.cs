@@ -57,9 +57,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         yield return new WaitForSeconds(5f);
         if (isDying == true)
         {
-            // Call function that adds health to player if player passsive active
-            Debug.Log("Before Epi Boost");
-            PlayerSignaler.CallPlayerEpiBoost();
             Destroy(gameObject);
         }
     }

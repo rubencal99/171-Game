@@ -13,7 +13,7 @@ public class EnrageAction : AIAction
     public float enrageTimer;
     public override void TakeAction()
     {
-        PlayerPassives passives = transform.parent.parent.GetComponent<PlayerPassives>();
+        PlayerPassives passives = transform.root.GetComponent<PlayerPassives>();
         passives.SpeedMultiplier = 1.3f;
         aiMovementData.Direction = Vector2.zero;
         // aiMovementData.PointOfInterest = transform.position;

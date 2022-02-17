@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
-    public WeaponDataSO weaponData;
+    protected WeaponDataSO weaponData;
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
