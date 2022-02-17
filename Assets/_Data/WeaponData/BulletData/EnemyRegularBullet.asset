@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemyRegularBullet
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: e34bcef653d63084da177b2f38d35a78, type: 3}
-  <BulletSpeed>k__BackingField: 10.2
+  <BulletSpeed>k__BackingField: 12
   <Damage>k__BackingField: 1
-  <Friction>k__BackingField: 0.1
+  <Friction>k__BackingField: 20
   <Bounce>k__BackingField: 0
   <GoThroughHittable>k__BackingField: 0
   <IsRaycast>k__BackingField: 0
@@ -23,3 +23,5 @@ MonoBehaviour:
   <ImpactEnemyPrefab>k__BackingField: {fileID: 7261923253359743249, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
   <KnockbackPower>k__BackingField: 6.11
   <KnockbackDelay>k__BackingField: 0.101
+  <hasDecay>k__BackingField: 0
+  <decayTime>k__BackingField: 5

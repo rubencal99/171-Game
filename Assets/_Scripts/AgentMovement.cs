@@ -53,7 +53,8 @@ public class AgentMovement : MonoBehaviour
             movementDirection = movementInput.normalized;
         }
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
-        this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
+        if(this.GetComponentInChildren<AgentAnimations>() != null)
+             this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
     }
     
     // this function integrates acceleration
