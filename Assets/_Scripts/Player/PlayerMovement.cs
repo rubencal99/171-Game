@@ -29,9 +29,9 @@ public class PlayerMovement : AgentMovement
             currentVelocity -= MovementData.decceleration * Time.deltaTime;
         }
         // Check if player is dodging
-        Debug.Log("Diving = " + PlayerState.DiveState.diving);
+        //Debug.Log("Diving = " + PlayerState.DiveState.diving);
         if (PlayerState.DiveState.diving == true) {
-            Debug.Log("In Dive velocity");
+           // Debug.Log("In Dive velocity");
             return Mathf.Clamp((currentVelocity * dodgeVelocity), 0, MovementData.maxDodgeSpeed);
         }
         // Returns velocity between 0 and maxSpeed
