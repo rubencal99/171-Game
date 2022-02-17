@@ -23,6 +23,7 @@ public class PlayerProneState : PlayerBaseState
     {
         // Debug.Log("Entered Prone State");
         // Debug.Log("Standing = " + standing);
+        TimeManager.RevertSlowMotion();
         standing = false;
         // Debug.Log("Standing = " + standing);
         playerInput = Player.playerInput;

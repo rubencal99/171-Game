@@ -10,6 +10,7 @@ public class PlayerRunGunState : PlayerBaseState
     private bool fireButtonDown = false;
     private bool throwButtonDown = false;
     private bool meleeButtonDown = false;
+    private bool tabButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
     public bool shopping = false; // bool to check if dodging
@@ -26,6 +27,7 @@ public class PlayerRunGunState : PlayerBaseState
     public override void EnterState(PlayerStateManager Player)
     {
         // Debug.Log("Entered RunGun State");
+        TimeManager.RevertSlowMotion();
         playerInput = Player.playerInput;
         mainCamera = Camera.main;
         dodging = false;
@@ -42,6 +44,7 @@ public class PlayerRunGunState : PlayerBaseState
         // GetRestartInput();
         GetRespawnInput();
         GetDodgeInput();
+        GetTabInput();
         if (dodging)
         {
             Debug.Log("Switching to Dive State");
@@ -245,6 +248,26 @@ public class PlayerRunGunState : PlayerBaseState
             if (dodging == true)
             {
                 dodging = false;
+            }
+        }
+    }
+
+    private void GetTabInput()
+    {
+        if (Input.GetAxisRaw("Tab") > 0)
+        {
+            if (tabButtonDown == false)
+            {
+                tabButtonDown = true;
+                playerInput.OnTabKeyPressed?.Invoke();
+            }
+            // Debug.Log("Tab key pressed");
+        }
+        else
+        {
+            if (tabButtonDown == true)
+            {
+                tabButtonDown = false;
             }
         }
     }
