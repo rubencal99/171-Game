@@ -22,7 +22,16 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int Damage { get; private set; }
 
     [field: SerializeField]                         
-    public bool isDead;                             //For debug
+    public bool isDead; 
+
+    [field: SerializeField]                         
+    public float getHitFrequency;
+
+    [field: SerializeField]                         
+    public float getHitIntensity; 
+    
+    [field: SerializeField]                         
+    public float getHitTime;                           //For debug
 
     [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
@@ -84,6 +93,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
+        CameraShake.Instance.ShakeCamera(damage * getHitIntensity, getHitFrequency, getHitTime);
 // =======
 //         
 //         DeathMenuUI.SetActive(false);

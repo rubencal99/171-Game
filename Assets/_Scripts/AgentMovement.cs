@@ -27,6 +27,7 @@ public class AgentMovement : MonoBehaviour
     [field: SerializeField]
     public UnityEvent<float> OnVelocityChange { get; set; }
 
+
     protected void Awake()
     {
         // Grabs RigidBody that the script is attached to
@@ -51,9 +52,9 @@ public class AgentMovement : MonoBehaviour
             */
             movementDirection = movementInput.normalized;
         }
-        currentVelocity = calculateSpeed(movementInput);
-        if(movementInput.magnitude > 0)
-            currentVelocity *= Passives.SpeedMultiplier;
+        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
+        if(this.GetComponentInChildren<AgentAnimations>() != null)
+             this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
     }
     
     // this function integrates acceleration
