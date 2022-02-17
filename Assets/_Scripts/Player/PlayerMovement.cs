@@ -9,6 +9,7 @@ public class PlayerMovement : AgentMovement
     [SerializeField]
     protected float dodgeVelocity = 200;
 
+
     protected PlayerStateManager PlayerState;
     public CapsuleCollider2D collider;
     public Vector2 oriCollider;

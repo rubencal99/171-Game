@@ -48,7 +48,8 @@ public class RoomClearCheck : MonoBehaviour
        foreach(Transform child in transform)
        { 
            if(child.tag == "Enemy") {
-                enemyCount++;
+               if(!child.GetComponent<Enemy>().isDying)
+                    enemyCount++;
            }
              Debug.Log("current enemy count = " + enemyCount); 
         }

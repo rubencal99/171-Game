@@ -25,7 +25,7 @@ public class AgentAnimations : MonoBehaviour
 
     public void SetDeathAnimation(bool val)
     {
-        agentAnimator.SetBool("Is Dead", true);
+        agentAnimator.SetBool("IsDead", true);
         Debug.Log("Triggering Death Animation");
     }
 
