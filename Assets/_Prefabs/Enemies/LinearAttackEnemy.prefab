@@ -469,7 +469,7 @@ MonoBehaviour:
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3128835130343464155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDamageSound
         m_Mode: 1
@@ -484,7 +484,7 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3128835130343464155}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDeathSound
         m_Mode: 1
@@ -495,6 +495,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5304084264254618942}
+        m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
+        m_MethodName: SetDeathAnimation
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   isDying: 0
 --- !u!114 &2447108988747857650
@@ -597,7 +609,6 @@ GameObject:
   - component: {fileID: 6638867990098400908}
   - component: {fileID: 6638867990098400944}
   - component: {fileID: 6638867990098400911}
-  - component: {fileID: 1927202829762752866}
   - component: {fileID: 3128835130343464155}
   - component: {fileID: 4148922082664816404}
   - component: {fileID: 5304084264254618942}
@@ -832,10 +843,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  damageTakenClip: {fileID: 8300000, guid: bdea4e5d8c8948c429dbfc5759a2265d, type: 3}
-  deathClip: {fileID: 0}
-  stepClip: {fileID: 8300000, guid: 69d2370c3670d84488bb4dbb1b3ecaba, type: 3}
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: 331476970
+      Data2: 1180409917
+      Data3: -1531282521
+      Data4: 1264681341
+    Path: event:/BIO-S/S-Step
 --- !u!95 &4148922082664816404
 Animator:
   serializedVersion: 3

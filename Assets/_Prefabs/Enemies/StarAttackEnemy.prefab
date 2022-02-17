@@ -267,7 +267,7 @@ MonoBehaviour:
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3476428367443596128}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDamageSound
         m_Mode: 1
@@ -282,7 +282,7 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3476428367443596128}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDeathSound
         m_Mode: 1
@@ -543,8 +543,7 @@ GameObject:
   - component: {fileID: 5148991599991413047}
   - component: {fileID: 5148991599991413003}
   - component: {fileID: 5148991599991413044}
-  - component: {fileID: 138440696315084505}
-  - component: {fileID: 3476428367443596128}
+  - component: {fileID: 1599113664421421637}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -776,10 +775,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  damageTakenClip: {fileID: 8300000, guid: bdea4e5d8c8948c429dbfc5759a2265d, type: 3}
-  deathClip: {fileID: 0}
-  stepClip: {fileID: 8300000, guid: 69d2370c3670d84488bb4dbb1b3ecaba, type: 3}
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: 331476970
+      Data2: 1180409917
+      Data3: -1531282521
+      Data4: 1264681341
+    Path: event:/BIO-S/S-Step
 --- !u!1 &5148991600045721717
 GameObject:
   m_ObjectHideFlags: 0
