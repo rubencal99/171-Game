@@ -34,6 +34,10 @@ public class PlayerMovement : AgentMovement
             Debug.Log("In Dive velocity");
             return Mathf.Clamp((currentVelocity * dodgeVelocity), 0, MovementData.maxDodgeSpeed);
         }
+        if(PlayerState.ProneState.standing == false)
+        {
+            return Mathf.Clamp((currentVelocity), 0, MovementData.maxProneSpeed);
+        }
         // Returns velocity between 0 and maxSpeed
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }

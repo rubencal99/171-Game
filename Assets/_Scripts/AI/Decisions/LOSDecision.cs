@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,8 +31,11 @@ public class LOSDecision : AIDecision
         }
         return false;*/
 
-        RaycastHit2D hit = Physics2D.Raycast(pos, direction, layerMask);
+        // Arbitrary distance, may be changed usiong EnemyData Range
+        RaycastHit2D hit = Physics2D.Raycast(pos, direction, 100, layerMask);
         // Debug.Log("Hit point = " + hit.transform.position);
+        Debug.Log("Rayhit Name: " + hit.transform.name.ToString() + "  Rayhit Layer: " + hit.transform.gameObject.layer.ToString());
+        Debug.Log("Layer Name: " + LayerMask.LayerToName(hit.transform.gameObject.layer));
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){
             Debug.Log("Hitting player");
             collision = hit.point;

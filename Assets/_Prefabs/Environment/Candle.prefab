@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2098239701316472062}
   - component: {fileID: 2098239701316472061}
   - component: {fileID: 8477635976669824381}
+  - component: {fileID: 6345188870763150412}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -125,6 +126,22 @@ MonoBehaviour:
   chase: 0
   smooth: 0
   triggerRadius: 0
+--- !u!58 &6345188870763150412
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098239701316472060}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &2098239702095650722
 GameObject:
   m_ObjectHideFlags: 0
