@@ -14,6 +14,7 @@ public class SyringeScript : MonoBehaviour
             if (enemy.isDying == true)
             {
                 enemy.isDying = false;
+                enemy.Health = 3;
                 enemy.DeadOrAlive();
             }
         }

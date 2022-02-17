@@ -62,4 +62,7 @@ public class PlayerInput : MonoBehaviour
 
     [field: SerializeField]
     public UnityEvent OnStandButtonPressed { get; set; }
+
+    [field: SerializeField]
+    public UnityEvent OnInteractKeyPressed { get; set; }
 }
