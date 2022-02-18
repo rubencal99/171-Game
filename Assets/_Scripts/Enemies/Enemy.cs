@@ -25,8 +25,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public UnityEvent OnDie { get; set; }
     public bool isDying = false;
 
-    public GameObject[] Loot;
-
     private AgentRenderer agentRenderer;
 
     private AgentAnimations agentAnimations;
@@ -57,23 +55,13 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     IEnumerator WaitToDie(){
-        gameObject.layer = 0;
         isDying = true;
         enemyBrain.enabled = false;
         agentMovement.currentVelocity = 0.0f;
         int odds = Random.Range(1, 20);
         if (odds == 1)
         {
-            int item;
-            GameObject thisLoot;
-            item = Random.Range(1, 20);
-            if(item < 5)
-            {
-                thisLoot = Instantiate(Loot[1]) as GameObject;
-                thisLoot.transform.position = gameObject.transform.position;
-            }
-            thisLoot = Instantiate(Loot[0]) as GameObject;
-            thisLoot.transform.position = gameObject.transform.position;
+            Destroy(gameObject);
         }
         else
         {

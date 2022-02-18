@@ -9,7 +9,6 @@ TagManager:
   - Door
   - Avatar
   - Gun Muzzle
-  - AStar
   layers:
   - Default
   - TransparentFX
@@ -58,9 +57,6 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 1648441835
-    locked: 0
-  - name: Hands
-    uniqueID: 1313430193
     locked: 0
   - name: Bullets
     uniqueID: 1722504919

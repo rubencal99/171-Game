@@ -124,11 +124,6 @@ public class Gun : MonoBehaviour
         TotalAmmo -= neededAmmo;
     }
 
-    public void AmmoFill()
-    {
-        TotalAmmo = weaponData.MaxAmmoCapacity;
-    }
-
     protected IEnumerator ReloadCoroutine()
     {
         // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
