@@ -17,15 +17,26 @@ public class AgentAnimations : MonoBehaviour
         agentAnimator.SetBool("Walk", val);
     }
 
+    public void SetDodgeAnimation()
+    {
+        agentAnimator.SetTrigger("dodge");
+         Debug.Log("Triggering Dive Animation");
+    }
+    public void SetStandAnimation()
+    {
+        agentAnimator.SetTrigger("stand");
+         Debug.Log("Triggering stand Animation");
+    }
+
     public void SetTakeDamageAnimation()
     {
         agentAnimator.SetTrigger("Got hit");
         Debug.Log("Triggering Hurt Animation");
     }
 
-    public void SetDeathAnimation(bool val)
+    public void SetDeathAnimation()
     {
-        agentAnimator.SetBool("IsDead", true);
+        agentAnimator.SetTrigger("isDead");
         Debug.Log("Triggering Death Animation");
     }
 

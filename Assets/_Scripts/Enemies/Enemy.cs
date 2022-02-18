@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public GameObject[] Loot;
 
     private AgentRenderer agentRenderer;
+
+    private AgentAnimations agentAnimations;
     private EnemyBrain enemyBrain;
     private AgentMovement agentMovement;
 
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         Damage = EnemyData.Damage;
         Range = EnemyData.Range;
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        agentAnimations = GetComponentInChildren<AgentAnimations>();
         enemyBrain = GetComponent<EnemyBrain>();
         agentMovement = GetComponent<AgentMovement>();
     }
@@ -56,6 +59,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         isDying = true;
+        enemyBrain.enabled = false;
+        agentMovement.currentVelocity = 0.0f;
         int odds = Random.Range(1, 20);
         if (odds == 1)
         {
@@ -75,7 +80,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             Player player = FindObjectOfType<Player>();
             player?.AddBounty(10);
         }
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(2.0f);
         Destroy(gameObject);
     }
 

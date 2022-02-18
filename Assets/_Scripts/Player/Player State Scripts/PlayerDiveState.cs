@@ -24,6 +24,7 @@ public class PlayerDiveState : PlayerBaseState
         playerInput = Player.playerInput;
         collider = playerInput.Collider;
         Debug.Log("Current collider size:" + collider.size);
+        Player.GetComponentInChildren<AgentAnimations>().SetDodgeAnimation();
         //collider.enabled = false;
     }
 

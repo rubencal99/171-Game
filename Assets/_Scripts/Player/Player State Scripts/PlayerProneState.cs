@@ -12,6 +12,7 @@ public class PlayerProneState : PlayerBaseState
     private bool standing;
     private float standTime;
     public PlayerInput playerInput;
+    public AgentAnimations playerAnimations;
 
     public override void EnterState(PlayerStateManager Player)
     {
@@ -31,6 +32,7 @@ public class PlayerProneState : PlayerBaseState
         CalculateStandTime();
         if (standing == true && standTime <= 0)
         {
+             Player.GetComponentInChildren<AgentAnimations>().SetStandAnimation();
             Player.SwitchState(Player.RunGunState);
         }
     }
