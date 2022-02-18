@@ -420,7 +420,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isDying: 0
 --- !u!114 &2447108988747857650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MovementData>k__BackingField: {fileID: 11400000, guid: d18af5c2740834543b97592195d16bf2, type: 2}
   currentVelocity: 0
-  movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -721,7 +719,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52196
+  m_InstanceId: 37314
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0
@@ -831,8 +829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitchRandomness: 0.05
-  damageTakenClip: {fileID: 8300000, guid: 2541b89145d2d214fbdb27c555ed614b, type: 3}
-  deathClip: {fileID: 8300000, guid: 77ad08fa1f2f4bb4684ae2d90dc5455c, type: 3}
+  damageTakenClip: {fileID: 8300000, guid: bdea4e5d8c8948c429dbfc5759a2265d, type: 3}
+  deathClip: {fileID: 8300000, guid: e458e78d2f0c592438a12bbac25b0e54, type: 3}
   stepClip: {fileID: 8300000, guid: 69d2370c3670d84488bb4dbb1b3ecaba, type: 3}
 --- !u!1 &6638867990160967630
 GameObject:

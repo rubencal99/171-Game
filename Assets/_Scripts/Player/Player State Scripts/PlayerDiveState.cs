@@ -14,7 +14,6 @@ public class PlayerDiveState : PlayerBaseState
     private float diveTime;
     public PlayerInput playerInput;
     public CapsuleCollider2D collider;
-   
     public override void EnterState(PlayerStateManager Player)
     {
         // Debug.Log("Entered Dive State");
@@ -22,7 +21,6 @@ public class PlayerDiveState : PlayerBaseState
         diveTime = DiveTimer;
         playerInput = Player.playerInput;
         collider = playerInput.Collider;
-        //Debug.Log("Current collider size:" + collider.size);
         collider.enabled = false;
     }
 

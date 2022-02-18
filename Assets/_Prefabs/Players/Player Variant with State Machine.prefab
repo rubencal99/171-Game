@@ -275,21 +275,13 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
-      propertyPath: deathClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 77ad08fa1f2f4bb4684ae2d90dc5455c, type: 3}
-    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
-      propertyPath: damageTakenClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2541b89145d2d214fbdb27c555ed614b, type: 3}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_InstanceId
-      value: -74420
+      value: -219530
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253359743248, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_RootOrder
@@ -337,7 +329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253359743249, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_Name
-      value: Player Variant with State Machine
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253359743249, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_IsActive
@@ -603,8 +595,5 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   <OnStandButtonPressed>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  <OnInteractKeyPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls: []

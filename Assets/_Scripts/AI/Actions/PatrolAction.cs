@@ -14,8 +14,8 @@ public class PatrolAction : StarChaseAction
 
     public override void Start()
     {
-        seeker = transform.parent.parent.GetComponent<Seeker>();
-        rb = transform.parent.parent.GetComponent<Rigidbody2D>();
+        seeker = transform.root.GetComponent<Seeker>();
+        rb = transform.root.GetComponent<Rigidbody2D>();
         target = enemyBrain.Target;
         currentWait = waitTime;
 
