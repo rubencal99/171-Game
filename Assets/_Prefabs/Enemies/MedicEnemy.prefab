@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 2328509939710562082}
   - component: {fileID: 2328509939710562078}
   - component: {fileID: 2328509939710562081}
-  - component: {fileID: 7408338872361167052}
   - component: {fileID: 6276508036476323189}
   m_Layer: 0
   m_Name: avatar
@@ -262,7 +261,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1327724
+  m_InstanceId: 52374
 --- !u!82 &7408338872361167052
 AudioSource:
   m_ObjectHideFlags: 0
@@ -371,10 +370,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  damageTakenClip: {fileID: 8300000, guid: bdea4e5d8c8948c429dbfc5759a2265d, type: 3}
-  deathClip: {fileID: 8300000, guid: e458e78d2f0c592438a12bbac25b0e54, type: 3}
-  stepClip: {fileID: 8300000, guid: 69d2370c3670d84488bb4dbb1b3ecaba, type: 3}
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: 331476970
+      Data2: 1180409917
+      Data3: -1531282521
+      Data4: 1264681341
+    Path: event:/BIO-S/S-Step
 --- !u!1 &2328509939782082144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1344,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5978813852858728833, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978813852858728833, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4166236928070218022, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
+    - {fileID: 4173212850514091514, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
 --- !u!4 &8144298215097433880 stripped
 Transform:

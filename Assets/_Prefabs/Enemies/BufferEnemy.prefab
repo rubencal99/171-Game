@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 304799389376354105}
   - component: {fileID: 304799389376354053}
   - component: {fileID: 304799389376354106}
-  - component: {fileID: 4802507283784052951}
   - component: {fileID: 8318422101437242734}
   m_Layer: 0
   m_Name: avatar
@@ -136,7 +135,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1327852
+  m_InstanceId: 51568
 --- !u!82 &4802507283784052951
 AudioSource:
   m_ObjectHideFlags: 0
@@ -245,10 +244,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  damageTakenClip: {fileID: 8300000, guid: bdea4e5d8c8948c429dbfc5759a2265d, type: 3}
-  deathClip: {fileID: 8300000, guid: e458e78d2f0c592438a12bbac25b0e54, type: 3}
-  stepClip: {fileID: 8300000, guid: 69d2370c3670d84488bb4dbb1b3ecaba, type: 3}
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: 331476970
+      Data2: 1180409917
+      Data3: -1531282521
+      Data4: 1264681341
+    Path: event:/BIO-S/S-Step
 --- !u!1 &304799389573957243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1240,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5600717229583576303}
     m_Modifications:
+    - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8120652600635110448, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: m_TagString
       value: Gun Muzzle
@@ -1276,7 +1300,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5781061016965307629, guid: 27d8877b83a323943981414369d59a63, type: 3}
+    - {fileID: 5764955853745745969, guid: 27d8877b83a323943981414369d59a63, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 27d8877b83a323943981414369d59a63, type: 3}
 --- !u!4 &2278905142259199530 stripped
 Transform:
