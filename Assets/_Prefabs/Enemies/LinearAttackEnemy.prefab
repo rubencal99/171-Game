@@ -484,9 +484,9 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3128835130343464155}
-        m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
-        m_MethodName: PlayDeathSound
+      - m_Target: {fileID: 5304084264254618942}
+        m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
+        m_MethodName: SetDeathAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -598,7 +598,6 @@ GameObject:
   - component: {fileID: 6638867990098400908}
   - component: {fileID: 6638867990098400944}
   - component: {fileID: 6638867990098400911}
-  - component: {fileID: 1927202829762752866}
   - component: {fileID: 3128835130343464155}
   - component: {fileID: 4148922082664816404}
   - component: {fileID: 5304084264254618942}
