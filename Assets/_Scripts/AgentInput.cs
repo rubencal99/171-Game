@@ -64,6 +64,9 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnMeleeButtonPressed { get; set; }
 
+     [field: SerializeField]
+    public UnityEvent OnStandButtonPressed { get; set; }
+
 
     private void Awake()
     {

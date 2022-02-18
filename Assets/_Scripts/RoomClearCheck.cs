@@ -25,9 +25,12 @@ public class RoomClearCheck : MonoBehaviour
          Debug.Log("hello " +  spawners.Count);
          foreach(GameObject sp in spawners)
          {
-            Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
-            if(sp.GetComponent<EnemySpanwer>().spawned)
-                oneStepCloser();
+            if (sp!= null)
+            {
+                Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+                if(sp.GetComponent<EnemySpanwer>().spawned)
+                    oneStepCloser();
+            }
          }
     }
 
@@ -45,7 +48,8 @@ public class RoomClearCheck : MonoBehaviour
        foreach(Transform child in transform)
        { 
            if(child.tag == "Enemy") {
-                enemyCount++;
+               if(!child.GetComponent<Enemy>().isDying)
+                    enemyCount++;
            }
              Debug.Log("current enemy count = " + enemyCount); 
         }
