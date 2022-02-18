@@ -357,7 +357,6 @@ GameObject:
   - component: {fileID: 7006193681232748733}
   - component: {fileID: 2442029794336106954}
   - component: {fileID: 8057089578421059079}
-  - component: {fileID: 1347351099966415342}
   m_Layer: 5
   m_Name: UI_Shop
   m_TagString: Untagged
@@ -446,22 +445,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1347351099966415342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843827093433607439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55413e14f84e0f042977f6cee0253563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShopInventory:
-  - {fileID: 11400000, guid: 07af80be4025e4744a37c00ba1ed47dd, type: 2}
-  - {fileID: 11400000, guid: dff7c14d01d227045a5fbe37dcad8705, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
 --- !u!1 &2730043267562233648
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,14 +700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a3008e6341757a43910cf8eb562513c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemsForSale:
-  - {fileID: 11400000, guid: 07af80be4025e4744a37c00ba1ed47dd, type: 2}
-  - {fileID: 11400000, guid: dff7c14d01d227045a5fbe37dcad8705, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
-  ShopUI: {fileID: 0}
-  ShopDistance: 3
-  inDistance: 0
-  Player: {fileID: 0}
 --- !u!1 &6638867990098400945
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +836,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 230136
+  m_InstanceId: 52192
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0
