@@ -7,7 +7,10 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     [field: SerializeField]
-    public int Health { get; private set; } = 6;
+    public int Health { get; set; } = 6;
+
+     [field: SerializeField]
+    public int MaxHealth { get; private set; } = 6;
 
     [field: SerializeField]
     public int Wallet { get; private set; } = 0;
@@ -19,13 +22,25 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int Damage { get; private set; }
 
     [field: SerializeField]                         
-    public bool isDead;                             //For debug
+    public bool isDead; 
+
+    [field: SerializeField]                         
+    public float getHitFrequency;
+
+    [field: SerializeField]                         
+    public float getHitIntensity; 
+    
+    [field: SerializeField]                         
+    public float getHitTime;                           //For debug
 
     [field: SerializeField]
     public UnityEvent OnGetHit { get; set; }
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnHeal { get; set; }
 
     [field: SerializeField]
     public GameObject DeathMenuUI;
@@ -58,6 +73,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
          }
     }
 
+    public void Heal(int amount) {
+        Health += amount;
+        if(Health > MaxHealth)
+            Health = MaxHealth;
+    }
+
+    public void setMaxHp(int amount) {
+        MaxHealth = amount;
+
+    }
+
+
     public void GetHit(int damage, GameObject damageDealer)
     {    
         //check if player is Dodging, if true, dont decrement health
@@ -66,6 +93,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
+        CameraShake.Instance.ShakeCamera(damage * getHitIntensity, getHitFrequency, getHitTime);
 // =======
 //         
 //         DeathMenuUI.SetActive(false);

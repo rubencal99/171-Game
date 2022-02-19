@@ -10,7 +10,10 @@ using UnityEngine.Events;
 public class PlayerProneState : PlayerBaseState
 {
     private bool standing;
+    private float standTime;
     public PlayerInput playerInput;
+    public AgentAnimations playerAnimations;
+
     public override void EnterState(PlayerStateManager Player)
     {
         // Debug.Log("Entered Prone State");
@@ -19,14 +22,26 @@ public class PlayerProneState : PlayerBaseState
         // Debug.Log("Standing = " + standing);
         playerInput = Player.playerInput;
         playerInput.PlayerMovement.ResetSpeed();
+        standTime = playerInput.PlayerMovement.MovementData.standingDelay;
+
     }
 
     public override void UpdateState(PlayerStateManager Player)
     {
         GetStandInput();
-        if (standing == true)
+        CalculateStandTime();
+        if (standing == true && standTime <= 0)
         {
+             Player.GetComponentInChildren<AgentAnimations>().SetStandAnimation();
             Player.SwitchState(Player.RunGunState);
+        }
+    }
+
+    private void CalculateStandTime()
+    {
+        if (standTime > 0)
+        {
+            standTime -= Time.deltaTime;
         }
     }
 
@@ -39,4 +54,5 @@ public class PlayerProneState : PlayerBaseState
             playerInput.OnStandButtonPressed?.Invoke();
         }
     }
+
 }
