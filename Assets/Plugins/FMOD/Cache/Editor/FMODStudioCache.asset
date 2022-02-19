@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637807908760000000
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -89,7 +89,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637807916522000469
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 1780
@@ -109,7 +109,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/LAS-L.bank
   Name: LAS-L
   StudioPath: bank:/Weapons/LAS-L
-  lastModified: 637807916521970451
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 7840
@@ -184,7 +184,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-SG.bank
   Name: BAL-SG
   StudioPath: bank:/Weapons/BAL-SG
-  lastModified: 637807916521900440
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 3172
@@ -231,7 +231,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/LAS-H.bank
   Name: LAS-H
   StudioPath: bank:/Weapons/LAS-H
-  lastModified: 637807916521960458
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 3172
@@ -308,7 +308,7 @@ MonoBehaviour:
   - {fileID: -8155350952945153809}
   StringsBanks:
   - {fileID: -7274529317412820514}
-  cacheTime: 637807916522000469
+  cacheTime: 637808155040000000
   cacheVersion: 10
 --- !u!114 &12917563093563376
 MonoBehaviour:
@@ -381,7 +381,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BIO-L.bank
   Name: BIO-L
   StudioPath: bank:/Enemies/BIO-L
-  lastModified: 637807916521930463
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 183744
@@ -433,7 +433,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BIO-S.bank
   Name: BIO-S
   StudioPath: bank:/Enemies/BIO-S
-  lastModified: 637807916521950451
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 183744
@@ -561,7 +561,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-AR.bank
   Name: BAL-AR
   StudioPath: bank:/Weapons/BAL-AR
-  lastModified: 637807916521860433
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 3172
@@ -581,7 +581,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-L.bank
   Name: BAL-L
   StudioPath: bank:/Weapons/BAL-L
-  lastModified: 637807916521870430
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 11296
@@ -655,7 +655,7 @@ MonoBehaviour:
   Path: Assets/171-Game-FMOD/Build/Desktop/BAL-RF.bank
   Name: BAL-RF
   StudioPath: bank:/Weapons/BAL-RF
-  lastModified: 637807916521890448
+  lastModified: 637808155040000000
   FileSizes:
   - Name: Desktop
     Value: 3172

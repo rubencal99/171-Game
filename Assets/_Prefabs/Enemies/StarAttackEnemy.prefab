@@ -279,12 +279,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3476428367443596128}
+        m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayDamageSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7554741728697442989}
         m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
         m_MethodName: SetDeathAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3476428367443596128}
+        m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayDeathSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -670,7 +694,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 60868
+  m_InstanceId: 36848
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
