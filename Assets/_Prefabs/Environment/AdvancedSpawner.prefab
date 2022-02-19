@@ -54,7 +54,7 @@ MonoBehaviour:
   spawnDelay: 1
   numToSpawn: 6
   enemyCount: 0
-  offset: 1
+  offset: 2.94
   spawned: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
