@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomClearCheck : MonoBehaviour
 {
-
+    public GameObject[] Loot;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class RoomClearCheck : MonoBehaviour
         foreach(Transform child in transform) {
            if(child.tag == "Spawner")
            {
-              // child.GetComponent<EnemySpanwer>().enabled = true;
+               child.GetComponent<EnemySpanwer>().enabled = true;
                enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
                spawners.Add(child.gameObject);
               }
@@ -25,9 +25,12 @@ public class RoomClearCheck : MonoBehaviour
          Debug.Log("hello " +  spawners.Count);
          foreach(GameObject sp in spawners)
          {
-            Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
-            if(sp.GetComponent<EnemySpanwer>().spawned)
-                oneStepCloser();
+            if (sp!= null)
+            {
+                Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+                if(sp.GetComponent<EnemySpanwer>().spawned)
+                    oneStepCloser();
+            }
          }
     }
 
@@ -45,7 +48,8 @@ public class RoomClearCheck : MonoBehaviour
        foreach(Transform child in transform)
        { 
            if(child.tag == "Enemy") {
-                enemyCount++;
+               if(!child.GetComponent<Enemy>().isDying)
+                    enemyCount++;
            }
              Debug.Log("current enemy count = " + enemyCount); 
         }
@@ -60,6 +64,19 @@ public class RoomClearCheck : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        Vector3 offsetPosition = transform.position;
+        offsetPosition.x += Random.Range(-5f, 5f);
+        offsetPosition.y += Random.Range(-5f, 5f);
+        int item;
+        GameObject thisLoot;
+        item = Random.Range(1, 20);
+        if (item < 5)
+        {
+            thisLoot = Instantiate(Loot[1]) as GameObject;
+            thisLoot.transform.position = offsetPosition;
+        }
+        thisLoot = Instantiate(Loot[0]) as GameObject;
+        thisLoot.transform.position = offsetPosition;
         Debug.Log("room cleared");
  
     }

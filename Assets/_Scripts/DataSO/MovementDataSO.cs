@@ -13,4 +13,9 @@ public class MovementDataSO : ScriptableObject
 
     [Range(0.1f, 100)]
     public float acceleration = 50, decceleration = 50;
+
+     [Range(0.0f, 5.0f)]
+    public float standingDelay = 0.0f;
+
+
 }
