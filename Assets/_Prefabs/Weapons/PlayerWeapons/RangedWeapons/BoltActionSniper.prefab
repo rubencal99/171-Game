@@ -295,9 +295,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439acf8f38672e545a9baa47e32f69c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  shootBulletClip: {fileID: 8300000, guid: 1a475093b88a02d4dac2fa975738761f, type: 3}
-  outOfBulletsClip: {fileID: 8300000, guid: 037ccb8647fa01145bb18b4967c50c5f, type: 3}
+  shootBulletEvent:
+    Guid:
+      Data1: 226928896
+      Data2: 1152122889
+      Data3: -1883703369
+      Data4: 313060228
+    Path: event:/WEP/BAL/RF-Fire
+  outOfBulletsEvent:
+    Guid:
+      Data1: 1824021654
+      Data2: 1327393408
+      Data3: -713388392
+      Data4: -1272974844
+    Path: event:/WEP/Click
 --- !u!1 &8960519739286643315
 GameObject:
   m_ObjectHideFlags: 0

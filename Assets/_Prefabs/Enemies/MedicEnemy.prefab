@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 2328509939710562078}
   - component: {fileID: 2328509939710562081}
   - component: {fileID: 6276508036476323189}
+  - component: {fileID: 7408338872361167052}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -261,7 +262,40 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 52374
+  m_InstanceId: 53990
+--- !u!114 &6276508036476323189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328509939710562079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/Characters/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/Characters/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: -140135639
+      Data2: 1274709324
+      Data3: -1154916714
+      Data4: -644915927
+    Path: event:/Characters/BIO-S/STEP-Bare
 --- !u!82 &7408338872361167052
 AudioSource:
   m_ObjectHideFlags: 0
@@ -358,39 +392,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6276508036476323189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2328509939710562079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageTakenEvent:
-    Guid:
-      Data1: -830976992
-      Data2: 1244580679
-      Data3: -164810101
-      Data4: -492396689
-    Path: event:/BIO-S/S-Hurt
-  deathEvent:
-    Guid:
-      Data1: -282551224
-      Data2: 1123922648
-      Data3: 623627917
-      Data4: -712787353
-    Path: event:/BIO-S/S-Death
-  stepEvent:
-    Guid:
-      Data1: 331476970
-      Data2: 1180409917
-      Data3: -1531282521
-      Data4: 1264681341
-    Path: event:/BIO-S/S-Step
 --- !u!1 &2328509939782082144
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,6 +637,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isDying: 0
+  Loot: []
 --- !u!114 &6738678754074683228
 MonoBehaviour:
   m_ObjectHideFlags: 0

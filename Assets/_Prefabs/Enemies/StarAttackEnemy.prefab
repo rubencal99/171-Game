@@ -694,7 +694,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 36848
+  m_InstanceId: 54522
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -809,21 +809,21 @@ MonoBehaviour:
       Data2: 1244580679
       Data3: -164810101
       Data4: -492396689
-    Path: event:/BIO-S/S-Hurt
+    Path: event:/Characters/BIO-S/S-Hurt
   deathEvent:
     Guid:
       Data1: -282551224
       Data2: 1123922648
       Data3: 623627917
       Data4: -712787353
-    Path: event:/BIO-S/S-Death
+    Path: event:/Characters/BIO-S/S-Death
   stepEvent:
     Guid:
-      Data1: 331476970
-      Data2: 1180409917
-      Data3: -1531282521
-      Data4: 1264681341
-    Path: event:/BIO-S/S-Step
+      Data1: -140135639
+      Data2: 1274709324
+      Data3: -1154916714
+      Data4: -644915927
+    Path: event:/Characters/BIO-S/STEP-Bare
 --- !u!95 &8110461470414115898
 Animator:
   serializedVersion: 3

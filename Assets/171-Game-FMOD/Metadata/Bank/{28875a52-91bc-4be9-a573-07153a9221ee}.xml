@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="Bank" id="{28875a52-91bc-4be9-a573-07153a9221ee}">
+		<property name="name">
+			<value>BAL-SMG</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8a943b0a-0512-4197-ac05-79154f4552be}</destination>
+		</relationship>
+	</object>
+</objects>
