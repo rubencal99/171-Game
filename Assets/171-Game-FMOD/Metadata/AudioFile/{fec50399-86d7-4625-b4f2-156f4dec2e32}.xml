@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{fec50399-86d7-4625-b4f2-156f4dec2e32}">
 		<property name="assetPath">
-			<value>Sounds/BIO-enemy/HURT/HURT1.wav</value>
+			<value>Sounds/Characters/BIO-enemy/HURT/HURT1.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
