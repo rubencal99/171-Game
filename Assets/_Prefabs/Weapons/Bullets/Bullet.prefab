@@ -156,9 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168e49f3698a15140a5c60e71983c856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 69c7bb5fd8905ad4aba93c6b52b94fe9, type: 2}
-=======
   <BulletData>k__BackingField: {fileID: 0}
 --- !u!58 &-5964062796708031613
 CircleCollider2D:
@@ -217,4 +214,3 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
->>>>>>> e34db794ed182c3ad5d21df8dd9a6f8e34da783a
