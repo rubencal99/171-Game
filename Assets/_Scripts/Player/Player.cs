@@ -60,7 +60,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
-        DeathMenuUI.SetActive(false);
+        //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
     }
 
