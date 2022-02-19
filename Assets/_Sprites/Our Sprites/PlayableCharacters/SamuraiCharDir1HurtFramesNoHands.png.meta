@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: df01538e00d66d248aedfc38d068ec68
+guid: 09f8e1ec2b2a513498e60fc1a803a3b5
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3066772796294133923
+    second: SamuraiCharDir1HurtFramesNoHands_0
+  - first:
+      213: -3274030645630304722
+    second: SamuraiCharDir1HurtFramesNoHands_1
+  - first:
+      213: 6341476981282136649
+    second: SamuraiCharDir1HurtFramesNoHands_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +50,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,7 +110,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SamuraiCharDir1HurtFramesNoHands_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 15
+        width: 75
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d578e06e362a075d0800000000000000
+      internalID: -3066772796294133923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1HurtFramesNoHands_1
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 15
+        width: 75
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e767f697e4092d0800000000000000
+      internalID: -3274030645630304722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1HurtFramesNoHands_2
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 15
+        width: 75
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94263a447b3710850800000000000000
+      internalID: 6341476981282136649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

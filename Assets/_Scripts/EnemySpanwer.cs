@@ -12,6 +12,8 @@ public class EnemySpanwer : MonoBehaviour
     public int numToSpawn = 1;
     public int enemyCount;
 
+    public float offset = 1.0f;
+
     public bool spawned = false;
 
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class EnemySpanwer : MonoBehaviour
         if(infiniteSpawn)
             InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         else {
-            for(int i = 0; i < numToSpawn; i++) {
+            for(int i = 0; i < Random.Range(numToSpawn/2, numToSpawn + (numToSpawn/4)); i++) {
                 Invoke("SpawnObject", spawnTime);
             }
         }
@@ -38,8 +40,8 @@ public class EnemySpanwer : MonoBehaviour
 
     public void SpawnObject(){
         Vector3 offsetPosition = transform.position;
-        offsetPosition.x += Random.Range(-5f, 5f);
-        offsetPosition.y += Random.Range(-5f, 5f);
+        offsetPosition.x += Random.Range(-offset, offset);
+        offsetPosition.y += Random.Range(-offset, offset);
         var clone = Instantiate(Enemies[Random.Range(0, Enemies.Length)], offsetPosition, Quaternion.identity);
         clone.transform.parent = this.gameObject.transform.parent.transform;
         if(stopSpawn){
