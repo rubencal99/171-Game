@@ -114,7 +114,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 //         Health -= damage;
 // >>>>>>> master
         // This function is supposed to play a damage animation / deliver knockback
-        if (Health >= 0)    
+        if (Health > 0)    
             OnGetHit?.Invoke();
         else
         {
