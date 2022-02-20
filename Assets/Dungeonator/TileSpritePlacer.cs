@@ -7,10 +7,14 @@ public class TileSpritePlacer : MonoBehaviour
 {
     [SerializeField]
     private Tilemap Tilemap;
+    [SerializeField]
+    private Tilemap Collisions;
 
     // We can create an array of TileBase for multiple tiles
     [SerializeField]
     private TileBase Tile;
+    [SerializeField]
+    private TileBase colliderTile;
 
     private List<TileNode> prevNodes;
 
@@ -18,6 +22,35 @@ public class TileSpritePlacer : MonoBehaviour
     {
         Clear();
         PaintTiles(tileNodes, Tilemap, Tile);
+    }
+
+    public void PaintCollisions(List<TileNode> tileNodes, TileNode[,] map)
+    {
+        Vector2Int position = Vector2Int.zero;
+        foreach(TileNode currentTile in tileNodes)
+        {
+            position.x = currentTile.x;
+            position.y = currentTile.y;
+            CheckForwalls(map, position);
+        }
+    }
+
+    private void CheckForwalls(TileNode[,] grid, Vector2Int position)
+    {
+        Vector2Int wallPosition = Vector2Int.zero;
+        for(int i = position.x - 1; i <= position.x + 1; i++)
+        {
+            for (int j = position.y - 1; j <= position.y + 1; j++)
+            {
+                TileNode potentialWall = grid[i, j];
+                if(potentialWall.value == 0)
+                {
+                    wallPosition.x = i;
+                    wallPosition.y = j;
+                    PaintSingleTile(Collisions, colliderTile, wallPosition);
+                }
+            }
+        }
     }
 
     private void PaintTiles(List<TileNode> tileNodes, Tilemap tilemap, TileBase tile)
