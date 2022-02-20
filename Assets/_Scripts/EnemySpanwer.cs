@@ -20,7 +20,7 @@ public class EnemySpanwer : MonoBehaviour
     void Start()
     {
         enemyCount = this.numToSpawn;
-        Debug.Log("initial Enemy count = " + enemyCount);
+        // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
@@ -60,7 +60,7 @@ public class EnemySpanwer : MonoBehaviour
            if(child.tag == "Enemy") {
                 enemyCount++;
            }
-             Debug.Log("current enemy count = " + enemyCount); 
+             // Debug.Log("current enemy count = " + enemyCount); 
         }
         // if(enemyCount <= 0)
         //     checkIfClear();
