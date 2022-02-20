@@ -9,6 +9,18 @@ public class PrefabHolder : MonoBehaviour
     public UI_Shop shop;
     public PlayerWeapon weaponParent;
 
+    public AugmentationSO augData;
+    public AugmentationUI augmentationUI;
+    public GameObject Player;
+
+    public void TryBuyAugmentation()
+    {
+        GameObject prefab = augData.Prefab;
+        // Debug.Log(prefab.name + " = " + "true");
+        PlayerAugmentations.AugmentationList[augData.name] = true;
+        PlayerAugmentations.PrintDictionary();
+    }
+
     public void TryBuyItem()
     {
         GameObject prefab = itemData.Prefab;
