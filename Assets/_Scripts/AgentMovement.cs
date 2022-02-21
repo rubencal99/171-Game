@@ -20,7 +20,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     public float currentVelocity = 0;
     [SerializeField]
-    protected Vector2 movementDirection;
+    public Vector2 movementDirection;
 
     // This passes currentVelocity to AgentAnimations.AnimatePlayer
     // Hence SerializeField
@@ -51,6 +51,9 @@ public class AgentMovement : MonoBehaviour
                 currentVelocity = 0;
             */
             movementDirection = movementInput.normalized;
+        }
+        else{
+            movementDirection = Vector2.zero;
         }
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
