@@ -278,15 +278,12 @@ AnimatorState:
   m_Name: Walking
   m_Speed: 1
   m_CycleOffset: 0
-<<<<<<< HEAD
   m_Transitions:
   - {fileID: 1415721230324775169}
   m_StateMachineBehaviours:
   - {fileID: 8460691760131185006}
-=======
   m_Transitions: []
   m_StateMachineBehaviours: []
->>>>>>> e34db794ed182c3ad5d21df8dd9a6f8e34da783a
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

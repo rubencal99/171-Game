@@ -47,12 +47,11 @@ MonoBehaviour:
   Enemies:
   - {fileID: 3837873860802124099, guid: 1c310ef3ef8085247aa7d0000ac8c69d, type: 3}
   - {fileID: 5148991598613868802, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
-  - {fileID: 304799391290785548, guid: 8ea6cc2470bda624691bce900ece957c, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 6
+  numToSpawn: 8
   enemyCount: 0
   offset: 2.94
   spawned: 0
