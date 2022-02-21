@@ -72,7 +72,7 @@ public class StarChaseAction : AIAction
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
 
         enemyBrain.Move(aiMovementData.Direction);
-        enemyBrain.Aim(aiMovementData.PointOfInterest);
+        // enemyBrain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
