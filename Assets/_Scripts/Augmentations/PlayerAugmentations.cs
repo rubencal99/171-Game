@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public static class PlayerAugmentations : object
 {
@@ -17,6 +18,14 @@ public static class PlayerAugmentations : object
         {"Epinephrine", Epinephrine},
         {"BulletTime", BulletTime}
     };
+
+    public static void ResetAugmentations()
+    {
+        foreach(string key in AugmentationList.Keys.ToList())
+        {
+            AugmentationList[key] = false;
+        }
+    }
 
     public static void PrintDictionary()
     {

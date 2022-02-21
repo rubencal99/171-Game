@@ -26,7 +26,7 @@ public static class PlayerSignaler : object
 
     public static void CallPlayerEpiBoost()
     {
-        Debug.Log("In Epi Boost");
+        // Debug.Log("In Epi Boost");
         if(PlayerAugmentations.AugmentationList["Epinephrine"] == true)
         {
             Debug.Log("Epinephrine = true");
