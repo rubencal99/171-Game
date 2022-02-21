@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int MaxHealth { get; private set; } = 6;
 
     [field: SerializeField]
-    public int Wallet { get; private set; } = 0;
+    public int Wallet { get; private set; } = 80;
 
     [field: SerializeField]
     public int AugmentationTokens { get; private set; } = 0;
@@ -57,6 +57,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private void Start()
     {
+        // Note, resetting augmentations will want to be moved somewhere else
+        // if incorporating multiple levels
+        PlayerAugmentations.ResetAugmentations();
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();

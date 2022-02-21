@@ -88,6 +88,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             int bounty = Random.Range(8, 15);
             player?.AddBounty(bounty);
         }
+        PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
 

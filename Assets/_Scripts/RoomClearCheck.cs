@@ -18,16 +18,16 @@ public class RoomClearCheck : MonoBehaviour
                spawners.Add(child.gameObject);
               }
         }
-        Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
+        // Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
     }
 
      void Update() {
-         Debug.Log("hello " +  spawners.Count);
+         // Debug.Log("hello " +  spawners.Count);
          foreach(GameObject sp in spawners)
          {
             if (sp!= null)
             {
-                Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+                // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
                 if(sp.GetComponent<EnemySpanwer>().spawned)
                     oneStepCloser();
             }
@@ -51,7 +51,7 @@ public class RoomClearCheck : MonoBehaviour
                if(!child.GetComponent<Enemy>().isDying)
                     enemyCount++;
            }
-             Debug.Log("current enemy count = " + enemyCount); 
+            // Debug.Log("current enemy count = " + enemyCount); 
         }
         if(enemyCount <= 0)
             checkIfClear();
@@ -77,12 +77,12 @@ public class RoomClearCheck : MonoBehaviour
         }
         thisLoot = Instantiate(Loot[0]) as GameObject;
         thisLoot.transform.position = offsetPosition;
-        Debug.Log("room cleared");
+        // Debug.Log("room cleared");
  
     }
 
     public void setRoomActive() {
-        Debug.Log("room set active");
+        // Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    child.GetChild(0).gameObject.SetActive(true);
