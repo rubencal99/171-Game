@@ -31,7 +31,8 @@ public class LOSDecision : AIDecision
         }
         return false;*/
 
-        RaycastHit2D hit = Physics2D.Raycast(pos, direction, layerMask);
+        // Arbitrary distance, may be changed using EnemyData Range
+        RaycastHit2D hit = Physics2D.Raycast(pos, direction, 100, layerMask);
         // Debug.Log("Hit point = " + hit.transform.position);
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){
             Debug.Log("Hitting player");
