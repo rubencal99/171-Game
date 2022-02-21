@@ -10,7 +10,7 @@ public class HealthDecision : AIDecision
 
     public override bool MakeADecision()
     {
-        int health = transform.root.GetComponent<Enemy>().Health;
+        int health = transform.parent.parent.parent.GetComponent<Enemy>().Health;
         if (health < healthThreshold)
         {
             return true;

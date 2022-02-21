@@ -10,6 +10,9 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     public GameObject Target { get; set; }
 
     [field: SerializeField]
+    public EnemyGun Weapon { get; set; }
+
+    [field: SerializeField]
     public AIState CurrentState { get; set; }
 
     [field: SerializeField]
@@ -54,6 +57,7 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     private void Awake()
     {
         Target = FindObjectOfType<Player>().gameObject;
+        Weapon = transform.GetComponentInChildren<EnemyGun>();
     }
 
     private void Start()

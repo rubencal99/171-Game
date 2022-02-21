@@ -7,7 +7,7 @@ public static class PlayerAugmentations : object
 {
     [SerializeField]
     public static bool Epinephrine = false;
-    public static int EpinephrineBoost = 40;
+    public static int EpinephrineBoost = 1;
 
     public static bool BulletTime = false;
     public static float BulletTT = 0.5f;

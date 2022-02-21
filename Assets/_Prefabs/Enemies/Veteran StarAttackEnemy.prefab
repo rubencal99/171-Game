@@ -58,8 +58,7 @@ GameObject:
   - component: {fileID: 6391541901446642455}
   - component: {fileID: 7027292537965678208}
   - component: {fileID: 7400147664812136079}
-  - component: {fileID: 461398062453715673}
-  - component: {fileID: 7612134335706945028}
+  - component: {fileID: 283305877915209666}
   m_Layer: 0
   m_Name: CloseEnough
   m_TagString: Untagged
@@ -96,8 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 7400147664812136079}
-  - {fileID: 461398062453715673}
-  - {fileID: 7612134335706945028}
+  - {fileID: 283305877915209666}
   Transitions:
   - {fileID: 455060234977314213}
 --- !u!114 &7400147664812136079
@@ -112,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14bad0cc8972be4587e58322e2bb744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &461398062453715673
+--- !u!114 &283305877915209666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,19 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 560282298062614048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3db062ad8dbd94ba96f6f94bb81ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7612134335706945028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560282298062614048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 979e31a63a5e5154d81dfe7e592c77a9, type: 3}
+  m_Script: {fileID: 11500000, guid: cb620bdbc2f2bc340b5fe4426bac3fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2380794417765894069
@@ -214,7 +200,7 @@ GameObject:
   - component: {fileID: 2458706460706828943}
   - component: {fileID: 103517109481660597}
   m_Layer: 8
-  m_Name: StarAttackEnemy
+  m_Name: Veteran StarAttackEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,7 +685,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 25164
+  m_InstanceId: 28370
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -918,8 +904,7 @@ GameObject:
   - component: {fileID: 8722511913951445328}
   - component: {fileID: 8890228632923692817}
   - component: {fileID: 6977359640576418441}
-  - component: {fileID: 7109085670454306723}
-  - component: {fileID: 5908462963731432396}
+  - component: {fileID: 1762079091635612906}
   m_Layer: 0
   m_Name: ChaseState
   m_TagString: Untagged
@@ -956,8 +941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 6977359640576418441}
-  - {fileID: 7109085670454306723}
-  - {fileID: 5908462963731432396}
+  - {fileID: 1762079091635612906}
   Transitions:
   - {fileID: 5896464762282046524}
 --- !u!114 &6977359640576418441
@@ -974,7 +958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   nextWaypointDistance: 0.5
---- !u!114 &7109085670454306723
+--- !u!114 &1762079091635612906
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -983,19 +967,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7495645159191042193}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a3db062ad8dbd94ba96f6f94bb81ccf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5908462963731432396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7495645159191042193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 979e31a63a5e5154d81dfe7e592c77a9, type: 3}
+  m_Script: {fileID: 11500000, guid: cb620bdbc2f2bc340b5fe4426bac3fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8101022033461068483
