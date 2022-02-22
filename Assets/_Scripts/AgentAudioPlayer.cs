@@ -6,6 +6,7 @@ using UnityEngine;
 // because the required Audio Source component might only play one clip at a time
 public class AgentAudioPlayer : MonoBehaviour
 {
+    /*
     public FMODUnity.EventReference damageTakenEvent;
     public FMODUnity.EventReference deathEvent;
     public FMODUnity.EventReference stepEvent;
@@ -24,4 +25,5 @@ public class AgentAudioPlayer : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot(deathEvent, transform.position);
     }
+    */
 }
