@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
-    protected WeaponDataSO weaponData;
+    public WeaponDataSO weaponData;
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
@@ -122,6 +122,11 @@ public class Gun : MonoBehaviour
         var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
         Ammo += neededAmmo;
         TotalAmmo -= neededAmmo;
+    }
+
+    public void AmmoFill()
+    {
+        TotalAmmo = weaponData.MaxAmmoCapacity;
     }
 
     protected IEnumerator ReloadCoroutine()
@@ -221,7 +226,7 @@ public class Gun : MonoBehaviour
        if (isPlayer)
        {
            // OnCameraShake?.Invoke(weaponData.recoilIntensity, weaponData.recoilTime);
-           CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
+           //CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
        }
     }
 

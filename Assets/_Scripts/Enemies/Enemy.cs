@@ -25,7 +25,11 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public UnityEvent OnDie { get; set; }
     public bool isDying = false;
 
+    public GameObject[] Loot;
+
     private AgentRenderer agentRenderer;
+
+    private AgentAnimations agentAnimations;
     private EnemyBrain enemyBrain;
     private AgentMovement agentMovement;
 
@@ -35,6 +39,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         Damage = EnemyData.Damage;
         Range = EnemyData.Range;
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        agentAnimations = GetComponentInChildren<AgentAnimations>();
         enemyBrain = GetComponent<EnemyBrain>();
         agentMovement = GetComponent<AgentMovement>();
     }
@@ -54,11 +59,37 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     IEnumerator WaitToDie(){
         isDying = true;
         DeadOrAlive();
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.0f);
         if (isDying == true)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        int odds = Random.Range(1, 20);
+        if (odds == 1)
+        {
+            int item;
+            GameObject thisLoot;
+            item = Random.Range(1, 20);
+            if(item < 5)
+            {
+                thisLoot = Instantiate(Loot[1]) as GameObject;
+                thisLoot.transform.position = gameObject.transform.position;
+            }
+            thisLoot = Instantiate(Loot[0]) as GameObject;
+            thisLoot.transform.position = gameObject.transform.position;
+        }
+        else
+        {
+            Player player = FindObjectOfType<Player>();
+            int bounty = Random.Range(8, 15);
+            player?.AddBounty(bounty);
+        }
+        PlayerSignaler.CallPlayerEpiBoost();
+        Destroy(gameObject);
     }
 
     public void DeadOrAlive()

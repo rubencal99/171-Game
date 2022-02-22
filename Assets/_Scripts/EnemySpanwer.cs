@@ -12,20 +12,22 @@ public class EnemySpanwer : MonoBehaviour
     public int numToSpawn = 1;
     public int enemyCount;
 
+    public float offset = 1.0f;
+
     public bool spawned = false;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyCount = this.numToSpawn;
-        Debug.Log("initial Enemy count = " + enemyCount);
+        // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
         if(infiniteSpawn)
             InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         else {
-            for(int i = 0; i < numToSpawn; i++) {
+            for(int i = 0; i < Random.Range(numToSpawn/2, numToSpawn + (numToSpawn/4)); i++) {
                 Invoke("SpawnObject", spawnTime);
             }
         }
@@ -38,8 +40,8 @@ public class EnemySpanwer : MonoBehaviour
 
     public void SpawnObject(){
         Vector3 offsetPosition = transform.position;
-        offsetPosition.x += Random.Range(-1.5f, 1.5f);
-        offsetPosition.y += Random.Range(-1.5f, 1.5f);
+        offsetPosition.x += Random.Range(-offset, offset);
+        offsetPosition.y += Random.Range(-offset, offset);
         var clone = Instantiate(Enemies[Random.Range(0, Enemies.Length)], offsetPosition, Quaternion.identity);
         clone.transform.parent = this.gameObject.transform.parent.transform;
         if(stopSpawn){
@@ -50,7 +52,7 @@ public class EnemySpanwer : MonoBehaviour
 
     }
 
-     // Update is called once per frame
+    // Update is called once per frame
    public void oneStepCloser() {
       enemyCount = 0;
        foreach(Transform child in transform)
@@ -58,7 +60,7 @@ public class EnemySpanwer : MonoBehaviour
            if(child.tag == "Enemy") {
                 enemyCount++;
            }
-             Debug.Log("current enemy count = " + enemyCount); 
+             // Debug.Log("current enemy count = " + enemyCount); 
         }
         // if(enemyCount <= 0)
         //     checkIfClear();
