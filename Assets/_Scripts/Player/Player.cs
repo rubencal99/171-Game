@@ -96,7 +96,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
-        CameraShake.Instance.ShakeCamera(damage * getHitIntensity, getHitFrequency, getHitTime);
+        CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
+        
 // =======
 //         
 //         DeathMenuUI.SetActive(false);
