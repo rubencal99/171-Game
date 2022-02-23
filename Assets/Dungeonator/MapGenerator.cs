@@ -59,14 +59,33 @@ public class MapGenerator : MonoBehaviour
     private List<CorridorNode> Corridors = new List<CorridorNode>();
 
     //private AstarPath AStar;
+    private bool isProblematic;
 
 
     public TileNode[,] GenerateMap()
     {
         map = new TileNode[columns, rows];
 
+        int i = 0;
+        /*while (isProblematic)
+        {
+            if(i >= 100)
+            {
+                Debug.Log("Final Pass timed out");
+                break;
+            }
+            FillMap();
+            BinarySpace();
+
+            isProblematic = MapCheck.FinalPass(map, Corridors);
+            i++;
+        }*/
+
         FillMap();
         BinarySpace();
+
+        isProblematic = MapCheck.FinalPass(map, Corridors);
+        Debug.Log("Is this map problematic? " + isProblematic);
 
         DrawMap();
         // AStar = GameObject.FindGameObjectWithTag("AStar").GetComponent<AstarPath>();
@@ -219,17 +238,19 @@ public class MapGenerator : MonoBehaviour
             count++;
         }
 
+        CreateRooms();
+        SortRooms();
+        AddCorridors();
+        AddEntryColliders();
+        AddSpawners();
+    }
+
+    void CreateRooms()
+    {
         // This is where we create the rooms
         int tempCount = 0;
         while (roomsList.Count > 0)
         {
-            int[] room = roomsList.Dequeue();
-
-            int x1 = (int)room[0];
-            int y1 = (int)room[1];
-            int x2 = (int)room[2];
-            int y2 = (int)room[3];
-
             GameObject tempRoom = new GameObject(tempCount.ToString());
             tempRoom.AddComponent<RoomNode>();
 
@@ -252,19 +273,14 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.MaxNeighbors = 3;
             }
 
-            // Here we fill the negative space with empty space 
-            // I.e. room creation
-            for (int i = x1 + 1; i < x2 - 1; i++)
+            if(UnityEngine.Random.Range(0, 100) < 50)
             {
-                for (int j = y1 + 1; j < y2 - 1; j++)
-                {
-                    map[i, j].value = 1;
-                    map[i,j].room = NewRoom;
-                    roomTiles.Add(map[i, j]);
-                    NewRoom.tileList.Add(map[i, j]);
-                }
+                CreateSquareRoom(NewRoom);
             }
-            AddLights(x1, y1, x2, y2, NewRoom);
+            else
+            {
+                CreateCellularRoom(NewRoom);
+            }
             NewRoom.CalculateCenter();
             if(NewRoom.RoomType == "Start")
             {
@@ -274,10 +290,116 @@ public class MapGenerator : MonoBehaviour
             Rooms.Add(NewRoom);
             tempCount++;
         }
-        SortRooms();
-        AddCorridors();
-        AddEntryColliders();
-        AddSpawners();
+    }
+
+    void CreateSquareRoom(RoomNode NewRoom)
+    {
+        int[] room = roomsList.Dequeue();
+
+        int x1 = (int)room[0];
+        int y1 = (int)room[1];
+        int x2 = (int)room[2];
+        int y2 = (int)room[3];
+
+        // Here we fill the negative space with empty space 
+        // I.e. room creation
+        for (int i = x1 + 1; i < x2 - 1; i++)
+        {
+            for (int j = y1 + 1; j < y2 - 1; j++)
+            {
+                map[i, j].value = 1;
+                map[i,j].room = NewRoom;
+                roomTiles.Add(map[i, j]);
+                NewRoom.tileList.Add(map[i, j]);
+            }
+        }
+        AddLights(x1, y1, x2, y2, NewRoom);
+    }
+
+    void CreateCellularRoom(RoomNode NewRoom)
+    {
+        int[] room = roomsList.Dequeue();
+
+        int x1 = (int)room[0];
+        int y1 = (int)room[1];
+        int x2 = (int)room[2];
+        int y2 = (int)room[3];
+
+        RandomFillRoom(x1, y1, x2, y2);
+
+        for(int i = 0; i < Iterations; i++)
+        {
+            CellularAutomata(x1, y1, x2, y2);
+        }
+        for (int i = x1 + 1; i < x2 - 1; i++)
+        {
+            for (int j = y1 + 1; j < y2 - 1; j++)
+            {
+                if(map[i, j].value == 1)
+                {
+                    map[i,j].room = NewRoom;
+                    roomTiles.Add(map[i, j]);
+                    NewRoom.tileList.Add(map[i, j]);
+                }
+            }
+        }
+        AddLights(x1, y1, x2, y2, NewRoom);
+    }
+
+    void CellularAutomata(int x1, int y1, int x2, int y2)
+    {
+        for (int i = x1 + 1; i < x2 - 1; i++)
+        {
+            for (int j = y1 + 1; j < y2 - 1; j++)
+            {
+                int numWalls = WallCount(i, j);
+                if (numWalls > wallCount)
+                {
+                    map[i,j].prevValue = map[i,j].value;
+                    map[i,j].value = 1;
+                }
+                else if (numWalls < wallCount)
+                {
+                    map[i,j].prevValue = map[i,j].value;
+                    map[i,j].value = 0;
+                }
+            }
+        }
+    }
+
+    // Counts how many neighbors are walls (negative space)
+    int WallCount(int gridX, int gridY)
+    {
+        int count = 0;
+        for (int x = gridX-1; x <= gridX+1; x++){
+            for (int y = gridY - 1; y <= gridY+1; y++){
+                if (x != gridX || y != gridY)
+                {
+                    count += map[x, y].prevValue;
+                }
+                else
+                {
+                    count += 1;
+                }
+            }
+        }
+        return count;
+    }
+
+    void RandomFillRoom(int x1, int y1, int x2, int y2)
+    {
+        string Seed = System.DateTime.Now.ToString();
+        System.Random rand = new System.Random(Seed.GetHashCode());
+
+        for (int i = x1 + 1; i < x2 - 1; i++)
+        {
+            for (int j = y1 + 1; j < y2 - 1; j++)
+            {
+                map[i, j].value = (rand.Next(0, 100) < wallPercent) ? 1 : 0;
+                map[i, j].prevValue = map[i, j].value;
+                // temp[x, y] = (rand.Next(0, 100) < wallPercent) ? 1 : 0;
+            }
+        }
     }
 
     void AddSpawners()
@@ -456,6 +578,10 @@ public class MapGenerator : MonoBehaviour
         Vector2Int destination = neighbor.roomCenter;
         var position = currentRoomCenter;
         CorridorNode corridor = new CorridorNode();
+        corridor.roomList.Add(room);
+        corridor.roomList.Add(neighbor);
+        bool goingUp = false;
+        bool goingRight = false;
         // Here we randomly choose a directional preference
         if (Random.Range(0, 100) < 50)
         {
@@ -464,50 +590,75 @@ public class MapGenerator : MonoBehaviour
             {
                 if (destination.y > position.y)
                 {
+                    goingUp = true;
                     position += Vector2Int.up;
                 }
                 else
                 {
+                    goingUp = false;
                     position += Vector2Int.down;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x-1, position.y].value == 0)
+                TileNode tile1 = map[position.x, position.y];
+                TileNode tile2 = map[position.x-1, position.y];
+                AddCorridorTile(corridor, tile1, tile2);
+                if (corridor == null)
                 {
-                    map[position.x, position.y].value = 2;
-                    map[position.x-1, position.y].value = 2;
-                    corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x-1, position.y]);
-                }
-                else if (map[position.x, position.y].value == 1 || map[position.x-1, position.y].value == 1)
-                {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
-                    {
-                        NullifyCorridor(corridor);
-                        corridor = null;
-                        return null;
-                    }
+                    return null;
                 }
             }
+            /*if(goingUp)
+            {
+                TileNode tile1 = map[position.x, position.y+1];
+                TileNode tile2 = map[position.x-1, position.y+1];
+                AddCorridorTile(corridor, tile1, tile2);
+                if (corridor == null)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                TileNode tile1 = map[position.x, position.y-1];
+                TileNode tile2 = map[position.x-1, position.y-1];
+                AddCorridorTile(corridor, tile1, tile2);
+                if (corridor == null)
+                {
+                    return null;
+                }
+            }*/
             // Moving horizontally
             while (position.x != destination.x)
             {
                 if (destination.x > position.x)
                 {
+                    goingRight = true;
                     position += Vector2Int.right;
                 }
                 else
                 {
+                    goingRight = false;
                     position += Vector2Int.left;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x, position.y-1].value == 0)
+                TileNode tile1 = map[position.x, position.y];
+                TileNode tile2 = map[position.x, position.y-1];
+                AddCorridorTile(corridor, tile1, tile2);
+                if (corridor == null)
                 {
-                    map[position.x, position.y].value = 2;
-                    map[position.x, position.y-1].value = 2;
-                    corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x, position.y-1]);
+                    return null;
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x, position.y-1].value == 1)
+            }
+            /*if(goingRight)
+            {
+                if (map[position.x+1, position.y].value == 0 && map[position.x-1+1, position.y].value == 0)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
+                    map[position.x+1, position.y].value = 2;
+                    map[position.x-1+1, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x+1, position.y]);
+                    corridor.tileList.Add(map[position.x-1+1, position.y]);
+                }
+                else if (map[position.x+1, position.y].value == 1 || map[position.x-1+1, position.y].value == 1)
+                {
+                    if ((map[position.x+1, position.y].room != room && map[position.x+1, position.y].room != neighbor) || (map[position.x-1+1, position.y].room != room && map[position.x-1+1, position.y].room != neighbor))
                     {
                         NullifyCorridor(corridor);
                         corridor = null;
@@ -515,6 +666,25 @@ public class MapGenerator : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                if (map[position.x-1, position.y].value == 0 && map[position.x-1-1, position.y].value == 0)
+                {
+                    map[position.x-1, position.y].value = 2;
+                    map[position.x-1-1, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x-1, position.y]);
+                    corridor.tileList.Add(map[position.x-1-1, position.y]);
+                }
+                else if (map[position.x-1, position.y].value == 1 || map[position.x-1-1, position.y].value == 1)
+                {
+                    if ((map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor) || (map[position.x-1-1, position.y].room != room && map[position.x-1-1, position.y].room != neighbor))
+                    {
+                        NullifyCorridor(corridor);
+                        corridor = null;
+                        return null;
+                    }
+                }
+            }*/
         }
         else
         {
@@ -522,22 +692,34 @@ public class MapGenerator : MonoBehaviour
             {
                 if (destination.x > position.x)
                 {
+                    goingRight = true;
                     position += Vector2Int.right;
                 }
                 else
                 {
+                    goingRight = false;
                     position += Vector2Int.left;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x, position.y-1].value == 0)
+                TileNode tile1 = map[position.x, position.y];
+                TileNode tile2 = map[position.x, position.y+1];
+                AddCorridorTile(corridor, tile1, tile2);
+                if (corridor == null)
                 {
-                    map[position.x, position.y].value = 2;
-                    map[position.x, position.y-1].value = 2;
-                    corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x, position.y-1]);
+                    return null;
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x, position.y-1].value == 1)
+            }
+            /*if(goingRight)
+            {
+                if (map[position.x+1, position.y].value == 0 && map[position.x-1+1, position.y].value == 0)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
+                    map[position.x+1, position.y].value = 2;
+                    map[position.x-1+1, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x+1, position.y]);
+                    corridor.tileList.Add(map[position.x-1+1, position.y]);
+                }
+                else if (map[position.x+1, position.y].value == 1 || map[position.x-1+1, position.y].value == 1)
+                {
+                    if ((map[position.x+1, position.y].room != room && map[position.x+1, position.y].room != neighbor) || (map[position.x-1+1, position.y].room != room && map[position.x-1+1, position.y].room != neighbor))
                     {
                         NullifyCorridor(corridor);
                         corridor = null;
@@ -545,26 +727,57 @@ public class MapGenerator : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                if (map[position.x-1, position.y].value == 0 && map[position.x-1-1, position.y].value == 0)
+                {
+                    map[position.x-1, position.y].value = 2;
+                    map[position.x-1-1, position.y].value = 2;
+                    corridor.tileList.Add(map[position.x-1, position.y]);
+                    corridor.tileList.Add(map[position.x-1-1, position.y]);
+                }
+                else if (map[position.x-1, position.y].value == 1 || map[position.x-1-1, position.y].value == 1)
+                {
+                    if ((map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor) || (map[position.x-1-1, position.y].room != room && map[position.x-1-1, position.y].room != neighbor))
+                    {
+                        NullifyCorridor(corridor);
+                        corridor = null;
+                        return null;
+                    }
+                }
+            }*/
             while (position.y != destination.y)
             {
                 if (destination.y > position.y)
                 {
+                    goingUp = true;
                     position += Vector2Int.up;
                 }
                 else
                 {
+                    goingUp = false;
                     position += Vector2Int.down;
                 }
-                if (map[position.x, position.y].value == 0 && map[position.x-1, position.y].value == 0)
+                TileNode tile1 = map[position.x, position.y];
+                TileNode tile2 = map[position.x-1, position.y];
+                AddCorridorTile(corridor, tile1, tile2);
+                if (corridor == null)
                 {
-                    map[position.x, position.y].value = 2;
-                    map[position.x-1, position.y].value = 2;
-                    corridor.tileList.Add(map[position.x, position.y]);
-                    corridor.tileList.Add(map[position.x-1, position.y]);
+                    return null;
                 }
-                else if (map[position.x, position.y].value == 1 || map[position.x-1, position.y].value == 1)
+            }
+            /*if(goingUp)
+            {
+                if (map[position.x, position.y+1].value == 0 && map[position.x-1, position.y+1].value == 0)
                 {
-                    if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
+                    map[position.x, position.y+1].value = 2;
+                    map[position.x-1, position.y+1].value = 2;
+                    corridor.tileList.Add(map[position.x, position.y+1]);
+                    corridor.tileList.Add(map[position.x-1, position.y+1]);
+                }
+                else if (map[position.x, position.y+1].value == 1 || map[position.x-1, position.y+1].value == 1)
+                {
+                    if ((map[position.x, position.y+1].room != room && map[position.x, position.y+1].room != neighbor) || (map[position.x-1, position.y+1].room != room && map[position.x-1, position.y+1].room != neighbor))
                     {
                         NullifyCorridor(corridor);
                         corridor = null;
@@ -572,14 +785,66 @@ public class MapGenerator : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                if (map[position.x, position.y-1].value == 0 && map[position.x-1, position.y-1].value == 0)
+                {
+                    map[position.x, position.y-1].value = 2;
+                    map[position.x-1, position.y-1].value = 2;
+                    corridor.tileList.Add(map[position.x, position.y-1]);
+                    corridor.tileList.Add(map[position.x-1, position.y-1]);
+                }
+                else if (map[position.x, position.y-1].value == 1 || map[position.x-1, position.y-1].value == 1)
+                {
+                    if ((map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor) || (map[position.x-1, position.y-1].room != room && map[position.x-1, position.y-1].room != neighbor))
+                    {
+                        NullifyCorridor(corridor);
+                        corridor = null;
+                        return null;
+                    }
+                }
+            }*/
         }
         room.NeighborRooms.Add(neighbor);
         neighbor.NeighborRooms.Add(room);
 
-        corridor.roomList.Add(room);
-        corridor.roomList.Add(neighbor);
-
         return corridor;
+    }
+/*
+    if (map[position.x+1, position.y].value == 0 && map[position.x-1+1, position.y].value == 0)
+    {
+        map[position.x+1, position.y].value = 2;
+        map[position.x-1+1, position.y].value = 2;
+        corridor.tileList.Add(map[position.x+1, position.y]);
+        corridor.tileList.Add(map[position.x-1+1, position.y]);
+    }
+    else if (map[position.x+1, position.y].value == 1 || map[position.x-1+1, position.y].value == 1)
+    {
+        if ((map[position.x+1, position.y].room != room && map[position.x+1, position.y].room != neighbor) || (map[position.x-1+1, position.y].room != room && map[position.x-1+1, position.y].room != neighbor))
+        {
+            NullifyCorridor(corridor);
+            corridor = null;
+            return null;
+        }
+    }*/
+
+    private void AddCorridorTile(CorridorNode corridor, TileNode tile1, TileNode tile2)
+    {
+        if (tile1.value == 0 && tile1.value == 0)
+        {
+            tile1.value = 2;
+            tile2.value = 2;
+            corridor.tileList.Add(tile1);
+            corridor.tileList.Add(tile2);
+        }
+        else if (tile1.value == 1 || tile2.value == 1)
+        {
+            if ((tile1.room != corridor.roomList[0] && tile1.room != corridor.roomList[1]) || (tile2.room != corridor.roomList[0] && tile2.room != corridor.roomList[1]))
+            {
+                NullifyCorridor(corridor);
+                corridor = null;
+            }
+        }
     }
 
     private void NullifyCorridor(CorridorNode corridor)

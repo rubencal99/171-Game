@@ -11,9 +11,16 @@ public class TileNode
     // 1 = room
     // 2 = corridor
     public int value;
+    public int prevValue;
     public int x;
     public int y;
     // public bool isDoor;
+
+    public TileNode()
+    {
+        value = 0;
+        prevValue = 0;
+    }
 
 
     // Start is called before the first frame update
