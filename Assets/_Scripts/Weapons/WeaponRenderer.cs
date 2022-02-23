@@ -18,6 +18,7 @@ public class WeaponRenderer : MonoBehaviour
     // Flips weapon
     public void FlipSprite(bool val)
     {
+        //weaponRenderer.flipX = val;
         weaponRenderer.flipY = val;
     }
 
