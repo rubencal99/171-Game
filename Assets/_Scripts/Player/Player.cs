@@ -48,6 +48,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private Vector3 SpawnPosition;
     private AgentRenderer agentRenderer;
 
+    public ParticleSystem blood;
 
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input 
@@ -92,8 +93,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
             return;
         }
 
+        blood.Play();
         Health -= damage;
         CameraShake.Instance.ShakeCamera(damage * getHitIntensity, getHitFrequency, getHitTime);
+        blood.Stop();
 // =======
 //         
 //         DeathMenuUI.SetActive(false);
