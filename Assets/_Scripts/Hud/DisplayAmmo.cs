@@ -24,7 +24,5 @@ public class DisplayAmmo : MonoBehaviour
             totalAmmo = w.weapon.TotalAmmo;
              AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
         }
-
-
     }
 }

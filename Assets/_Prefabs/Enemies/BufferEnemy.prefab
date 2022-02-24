@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 304799389376354053}
   - component: {fileID: 304799389376354106}
   - component: {fileID: 8318422101437242734}
+  - component: {fileID: 4802507283784052951}
+  - component: {fileID: 4258413871444944143}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 304799389376354052}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 304799391290785536}
   m_RootOrder: 0
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7124621374147906806, guid: aae5977d1af33b54d99e49711753c497, type: 3}
+  m_Sprite: {fileID: 6199735865095511310, guid: 977a30c23b5663c468a341fdc680d531, type: 3}
   m_Color: {r: 0.47322398, g: 0.45834818, b: 0.9433962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,7 +137,40 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 51568
+  m_InstanceId: 65626
+--- !u!114 &8318422101437242734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304799389376354052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTakenEvent:
+    Guid:
+      Data1: -830976992
+      Data2: 1244580679
+      Data3: -164810101
+      Data4: -492396689
+    Path: event:/BIO-S/S-Hurt
+  deathEvent:
+    Guid:
+      Data1: -282551224
+      Data2: 1123922648
+      Data3: 623627917
+      Data4: -712787353
+    Path: event:/BIO-S/S-Death
+  stepEvent:
+    Guid:
+      Data1: 331476970
+      Data2: 1180409917
+      Data3: -1531282521
+      Data4: 1264681341
+    Path: event:/BIO-S/S-Step
 --- !u!82 &4802507283784052951
 AudioSource:
   m_ObjectHideFlags: 0
@@ -232,39 +267,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8318422101437242734
-MonoBehaviour:
+--- !u!95 &4258413871444944143
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304799389376354052}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a527de30ab35dd4b84517949ad7339a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageTakenEvent:
-    Guid:
-      Data1: -830976992
-      Data2: 1244580679
-      Data3: -164810101
-      Data4: -492396689
-    Path: event:/BIO-S/S-Hurt
-  deathEvent:
-    Guid:
-      Data1: -282551224
-      Data2: 1123922648
-      Data3: 623627917
-      Data4: -712787353
-    Path: event:/BIO-S/S-Death
-  stepEvent:
-    Guid:
-      Data1: 331476970
-      Data2: 1180409917
-      Data3: -1531282521
-      Data4: 1264681341
-    Path: event:/BIO-S/S-Step
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a0742d8e174eba4e9538317aba6b04c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &304799389573957243
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +531,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isDying: 0
+  Loot: []
 --- !u!114 &8786173802619174727
 MonoBehaviour:
   m_ObjectHideFlags: 0

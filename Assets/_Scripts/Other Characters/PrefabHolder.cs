@@ -9,6 +9,31 @@ public class PrefabHolder : MonoBehaviour
     public UI_Shop shop;
     public PlayerWeapon weaponParent;
 
+    public AugmentationSO augData;
+    public AugmentationUI augmentationUI;
+    public GameObject Player;
+
+    public void TryBuyAugmentation()
+    {
+        GameObject prefab = augData.Prefab;
+        Player playerInfo = Player.GetComponent<Player>();
+        if (playerInfo.CanPurchase(augData.Cost) && PlayerAugmentations.AugmentationList[augData.name] == false)
+        {
+            // Debug.Log(prefab.name + " = " + "true");
+            playerInfo.Purchase(augData.Cost);
+            PlayerAugmentations.AugmentationList[augData.name] = true;
+            PlayerAugmentations.PrintDictionary();
+        }
+        else if (PlayerAugmentations.AugmentationList[augData.name] == true)
+        {
+            Debug.Log("Already purchased " + augData.name);
+        }
+        else if (!playerInfo.CanPurchase(augData.Cost))
+        {
+            Debug.Log("Cannot afford " + augData.name);
+        }
+    }
+
     public void TryBuyItem()
     {
         GameObject prefab = itemData.Prefab;

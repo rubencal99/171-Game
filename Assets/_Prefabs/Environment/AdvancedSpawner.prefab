@@ -47,15 +47,13 @@ MonoBehaviour:
   Enemies:
   - {fileID: 3837873860802124099, guid: 1c310ef3ef8085247aa7d0000ac8c69d, type: 3}
   - {fileID: 5148991598613868802, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
-  - {fileID: 304799391290785548, guid: 8ea6cc2470bda624691bce900ece957c, type: 3}
-  - {fileID: 2328509941553751831, guid: 298ca68bec793e948abaf10602a57dc6, type: 3}
-  - {fileID: 6638867989798731449, guid: 8e2b49a1531d84a4e892b6539b1eccf1, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 5
+  numToSpawn: 8
   enemyCount: 0
+  offset: 2.94
   spawned: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
@@ -95,7 +93,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1722504919
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
