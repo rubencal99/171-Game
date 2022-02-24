@@ -89,6 +89,9 @@ public class Gun : MonoBehaviour
 
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
+    
+    [field: SerializeField]
+    public UnityEvent OnReload { get; set; }
 
     /*[field: SerializeField]
     public UnityEvent<float, float> OnCameraShake { get; set; }*/
@@ -132,6 +135,9 @@ public class Gun : MonoBehaviour
     protected IEnumerator ReloadCoroutine()
     {
         // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
+        this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (weaponData.ReloadSpeed / passives.ReloadMultiplier)) / 10.0f);
+        this.GetComponent<Animator>().Play("reload");
+
         reloadCoroutine = true;
         yield return new WaitForSeconds(weaponData.ReloadSpeed / passives.ReloadMultiplier);
         // rateOfFireCoroutine = false;
