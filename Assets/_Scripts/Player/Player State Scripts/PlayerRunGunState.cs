@@ -26,7 +26,7 @@ public class PlayerRunGunState : PlayerBaseState
     }
     public override void EnterState(PlayerStateManager Player)
     {
-        // Debug.Log("Entered RunGun State");
+        Debug.Log("Entered RunGun State");
         playerInput = Player.playerInput;
         mainCamera = Camera.main;
         dodging = false;
@@ -45,6 +45,7 @@ public class PlayerRunGunState : PlayerBaseState
         GetRespawnInput();
         GetDodgeInput();
         GetTabInput();
+        GetInteractInput();
         if (dodging)
         {
             Debug.Log("Switching to Dive State");
@@ -53,7 +54,7 @@ public class PlayerRunGunState : PlayerBaseState
         if (shopping)
         {
             Debug.Log("Switching to Shop State");
-            Player.SwitchState(Player.DiveState);
+            Player.SwitchState(Player.ShopState);
         }
     }
 
@@ -278,16 +279,18 @@ public class PlayerRunGunState : PlayerBaseState
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Interact") > 0) 
         {
-            if (shopping == false)
+            Debug.Log("Interact key pressed");
+            if (shopping == false && playerInput.ShopKeeper.inDistance)
             {
+                Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;
                 playerInput.OnInteractKeyPressed?.Invoke();
             }  
         }
         else{
-            if (dodging == true)
+            if (shopping == true)
             {
-                dodging = false;
+                shopping = false;
             }
         }
     }
