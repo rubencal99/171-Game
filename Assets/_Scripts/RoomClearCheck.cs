@@ -10,14 +10,14 @@ public class RoomClearCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach(Transform child in transform) {
-           if(child.tag == "Spawner")
-           {
-               child.GetComponent<EnemySpanwer>().enabled = true;
-               enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
-               spawners.Add(child.gameObject);
-              }
-        }
+        // foreach(Transform child in transform) {
+        //    if(child.tag == "Spawner")
+        //    {
+        //        child.GetComponent<EnemySpanwer>().enabled = true;
+        //        enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
+        //        spawners.Add(child.gameObject);
+        //       }
+        // }
         // Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
     }
 

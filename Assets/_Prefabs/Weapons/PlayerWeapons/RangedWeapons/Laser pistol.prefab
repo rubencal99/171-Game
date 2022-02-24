@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8960519738105143101}
   - component: {fileID: 8960519738105143102}
   - component: {fileID: 8960519738105143103}
+  - component: {fileID: -2873734662764589796}
   m_Layer: 0
   m_Name: Laser pistol
   m_TagString: Untagged
@@ -167,6 +168,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnReload>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!95 &-2873734662764589796
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960519738105143089}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6372ef89bddb6a4a94bb4a457f09cbd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8960519738536017281
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,9 +330,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439acf8f38672e545a9baa47e32f69c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  shootBulletClip: {fileID: 8300000, guid: 1a475093b88a02d4dac2fa975738761f, type: 3}
-  outOfBulletsClip: {fileID: 8300000, guid: 037ccb8647fa01145bb18b4967c50c5f, type: 3}
+  shootBulletEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  outOfBulletsEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &8960519739286643315
 GameObject:
   m_ObjectHideFlags: 0
