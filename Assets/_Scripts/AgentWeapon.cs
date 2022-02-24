@@ -59,7 +59,7 @@ public class AgentWeapon : MonoBehaviour
 
             // Explicitly check for null instead of using ?
             // This prevents bugs if weaponRenderer is deleted mid-game
-            weaponRenderer.RenderBehindHead(desiredAngle < 150 && desiredAngle > 0);
+           // weaponRenderer.RenderBehindHead(desiredAngle < 150 && desiredAngle > 0);
 
             if(desiredAngle > 90 || desiredAngle < -90){ // 6 to 12 Clockwise or LEFT
              current_pos.x = -0.45f;
@@ -79,9 +79,9 @@ public class AgentWeapon : MonoBehaviour
 
     public void Reload()
     {
-        if (weapon != null && weapon.TotalAmmo > 0)
+        if (weapon != null && weapon.TotalAmmo > 0 && !(weapon.ammo >= weapon.totalAmmo))
         {
-            weapon.Reload();
+            weapon.TryReloading();
         }
 
     }

@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Direction>k__BackingField: {x: 0, y: 0}
   <PointOfInterest>k__BackingField: {x: 0, y: 0}
+  <PointerPosition>k__BackingField: {x: 0, y: 0}
 --- !u!114 &974334200587282919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,14 +488,14 @@ MonoBehaviour:
       - m_Target: {fileID: 5304084264254618942}
         m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
         m_MethodName: SetDeathAnimation
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   isDying: 0
   Loot: []
@@ -523,12 +524,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867989798731449}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
+  <Weapon>k__BackingField: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 7003599507522047168}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
@@ -724,7 +726,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 84344
+  m_InstanceId: 135466
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6638867990160967629}
   - component: {fileID: 6638867990160967628}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: MovementCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -51,7 +51,7 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 8
+  numToSpawn: 12
   enemyCount: 0
   offset: 2.94
   spawned: 0
