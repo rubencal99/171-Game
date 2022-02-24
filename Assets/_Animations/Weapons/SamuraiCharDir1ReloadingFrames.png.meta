@@ -1,0 +1,432 @@
+fileFormatVersion: 2
+guid: 6d6c110b89965c74ca7bdf7a813eb22b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8829415123978104194
+    second: SamuraiCharDir1ReloadingFrames_0
+  - first:
+      213: 6119513809415775611
+    second: SamuraiCharDir1ReloadingFrames_1
+  - first:
+      213: -6016483898296131501
+    second: SamuraiCharDir1ReloadingFrames_2
+  - first:
+      213: 6111182551080365926
+    second: SamuraiCharDir1ReloadingFrames_3
+  - first:
+      213: -2847820366033493400
+    second: SamuraiCharDir1ReloadingFrames_4
+  - first:
+      213: 8708408062189427104
+    second: SamuraiCharDir1ReloadingFrames_5
+  - first:
+      213: -3297267764536660686
+    second: SamuraiCharDir1ReloadingFrames_6
+  - first:
+      213: 5935502236982344483
+    second: SamuraiCharDir1ReloadingFrames_7
+  - first:
+      213: 4413725821625371057
+    second: SamuraiCharDir1ReloadingFrames_8
+  - first:
+      213: 2561798662647983906
+    second: SamuraiCharDir1ReloadingFrames_9
+  - first:
+      213: -3730848331195615187
+    second: SamuraiCharDir1ReloadingFrames_10
+  - first:
+      213: -6242509173954013949
+    second: SamuraiCharDir1ReloadingFrames_11
+  - first:
+      213: -5823215661351639908
+    second: SamuraiCharDir1ReloadingFrames_12
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_0
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 60
+        width: 31
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28d2d276642688a70800000000000000
+      internalID: 8829415123978104194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_1
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 39
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7523581361ece450800000000000000
+      internalID: 6119513809415775611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_2
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 39
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350a33d65c7218ca0800000000000000
+      internalID: -6016483898296131501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_3
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 39
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66fe5bad6284fc450800000000000000
+      internalID: 6111182551080365926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_4
+      rect:
+        serializedVersion: 2
+        x: 724
+        y: 45
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 862637a27728a78d0800000000000000
+      internalID: -2847820366033493400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_5
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 50
+        width: 66
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a9d2f15efa7ad870800000000000000
+      internalID: 8708408062189427104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_6
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 55
+        width: 62
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d22751070cd32d0800000000000000
+      internalID: -3297267764536660686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_7
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 50
+        width: 66
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32b7ede36d32f5250800000000000000
+      internalID: 5935502236982344483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_8
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 45
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b903f5ff34b04d30800000000000000
+      internalID: 4413725821625371057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_9
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 39
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f24398f465d8320800000000000000
+      internalID: 2561798662647983906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_10
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 39
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d28f93ca53d593cc0800000000000000
+      internalID: -3730848331195615187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_11
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 39
+        width: 66
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3059a530bf62e59a0800000000000000
+      internalID: -6242509173954013949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SamuraiCharDir1ReloadingFrames_12
+      rect:
+        serializedVersion: 2
+        x: 2019
+        y: 60
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94e4ae6538cf2fa0800000000000000
+      internalID: -5823215661351639908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5b27d278e35b63c438afd4a6a960f510
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
