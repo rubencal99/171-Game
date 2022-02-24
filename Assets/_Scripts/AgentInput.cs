@@ -12,6 +12,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private bool fireButtonDown = false;
     private bool throwButtonDown = false;
     private bool meleeButtonDown = false;
+    private bool reloadButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
     
@@ -44,7 +45,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
     [field: SerializeField]
     public UnityEvent OnFireButtonReleased { get; set; }
 
-    // Calls PlayerWeapon.StopShooting
+    // Calls PlayerWeapon.tryReloading
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
@@ -110,8 +111,18 @@ public class AgentInput : MonoBehaviour, IAgentInput
     {
         if (Input.GetAxisRaw("Reload") > 0)
         {
-            OnReloadButtonPressed?.Invoke();
+             if (reloadButtonDown == false) {
+                reloadButtonDown = true;
+                OnReloadButtonPressed?.Invoke();
+             }
         }
+        //  else
+        // {
+        //     if (reloadButtonDown == true)
+        //     {
+        //         reloadButtonDown = false;
+        //     }
+        // }
     }
 
     private void GetThrowInput()
