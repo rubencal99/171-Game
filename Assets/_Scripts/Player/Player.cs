@@ -96,7 +96,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
-        CameraShake.Instance.ShakeCamera(damage * getHitIntensity, getHitFrequency, getHitTime);
+        CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
+        
 // =======
 //         
 //         DeathMenuUI.SetActive(false);
@@ -169,8 +170,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(3f);
+        //Destroy(gameObject);
         // Play End Game Screen here
         DeathMenuUI.SetActive(true);
     }

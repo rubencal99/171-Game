@@ -91,6 +91,9 @@ public class Gun : MonoBehaviour
 
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
+    
+    [field: SerializeField]
+    public UnityEvent OnReload { get; set; }
 
     /*[field: SerializeField]
     public UnityEvent<float, float> OnCameraShake { get; set; }*/
@@ -135,8 +138,11 @@ public class Gun : MonoBehaviour
             var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
             Ammo += neededAmmo;
             TotalAmmo -= neededAmmo;
-            if(isPlayer)
+            if(isPlayer) {
                 displayReloadProgressBar();
+                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (weaponData.ReloadSpeed / passives.ReloadMultiplier)) / 10.0f);
+                this.GetComponent<Animator>().Play("reload");
+                }
             FinishReloading();
         }
     }
@@ -250,7 +256,7 @@ public class Gun : MonoBehaviour
        if (isPlayer)
        {
            // OnCameraShake?.Invoke(weaponData.recoilIntensity, weaponData.recoilTime);
-           //CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
+           CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
        }
     }
 
