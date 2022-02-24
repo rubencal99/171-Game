@@ -10,15 +10,15 @@ public class RoomClearCheck : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // foreach(Transform child in transform) {
-        //    if(child.tag == "Spawner")
-        //    {
-        //        child.GetComponent<EnemySpanwer>().enabled = true;
-        //        enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
-        //        spawners.Add(child.gameObject);
-        //       }
-        // }
-        // Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
+        foreach(Transform child in transform) {
+           if(child.tag == "Spawner")
+           {
+               child.GetComponent<EnemySpanwer>().enabled = true;
+               enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
+               spawners.Add(child.gameObject);
+              }
+        }
+        Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
     }
 
      void Update() {
@@ -70,13 +70,13 @@ public class RoomClearCheck : MonoBehaviour
         int item;
         GameObject thisLoot;
         item = Random.Range(1, 20);
-        if (item < 5)
-        {
-            thisLoot = Instantiate(Loot[1]) as GameObject;
-            thisLoot.transform.position = offsetPosition;
-        }
-        thisLoot = Instantiate(Loot[0]) as GameObject;
-        thisLoot.transform.position = offsetPosition;
+        // if (item < 5)
+        // {
+        //     thisLoot = Instantiate(Loot[1]) as GameObject;
+        //     thisLoot.transform.position = offsetPosition;
+        // }
+        // thisLoot = Instantiate(Loot[0]) as GameObject;
+        // thisLoot.transform.position = offsetPosition;
         // Debug.Log("room cleared");
  
     }
@@ -90,6 +90,12 @@ public class RoomClearCheck : MonoBehaviour
            }
            if(child.tag == "Spawner")
                 child.GetComponent<EnemySpanwer>().enabled = true;
+                //   foreach(Transform grandchild in transform)
+                //     grandchild.GetComponent<EnemyBrain>().enabled = true;
+            if(child.tag == "Enemy") {
+               child.GetComponent<EnemyBrain>().enabled = true;
+           }   
               }
+          
     }
 }

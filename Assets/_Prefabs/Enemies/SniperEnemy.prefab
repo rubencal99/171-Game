@@ -421,6 +421,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isDying: 0
+  Loot: []
 --- !u!114 &2447108988747857650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,12 +447,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867989798731449}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
+  <Weapon>k__BackingField: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 6932574753163038890}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
@@ -597,7 +599,8 @@ GameObject:
   - component: {fileID: 6638867990098400908}
   - component: {fileID: 6638867990098400944}
   - component: {fileID: 6638867990098400911}
-  - component: {fileID: 5027448431643982941}
+  - component: {fileID: 1927202829762752866}
+  - component: {fileID: 3128835130343464155}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -1098,6 +1101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Direction>k__BackingField: {x: 0, y: 0}
   <PointOfInterest>k__BackingField: {x: 0, y: 0}
+  <PointerPosition>k__BackingField: {x: 0, y: 0}
 --- !u!1 &8061572223225544937
 GameObject:
   m_ObjectHideFlags: 0
