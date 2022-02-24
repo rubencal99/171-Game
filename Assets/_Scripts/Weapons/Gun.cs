@@ -60,6 +60,8 @@ public class Gun : MonoBehaviour
 
     protected bool isMelee = false;
 
+    protected bool isReloading = false;
+
     [SerializeField]
     protected bool rateOfFireCoroutine = false;
 
@@ -114,14 +116,29 @@ public class Gun : MonoBehaviour
         isMelee = false;
     }
 
+    public void TryReloading()
+    {
+        if(Ammo < weaponData.MagazineCapacity)
+            isReloading = true;
+    }
+    public void StopReloading()
+    {
+        isReloading = false;
+    }
+
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
     // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
     public void Reload()
     {
-        StartCoroutine(ReloadCoroutine());
-        var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
-        Ammo += neededAmmo;
-        TotalAmmo -= neededAmmo;
+        if(isReloading && !reloadCoroutine) {
+
+            var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+            Ammo += neededAmmo;
+            TotalAmmo -= neededAmmo;
+            if(isPlayer)
+                displayReloadProgressBar();
+            FinishReloading();
+        }
     }
 
     public void AmmoFill()
@@ -129,19 +146,11 @@ public class Gun : MonoBehaviour
         TotalAmmo = weaponData.MaxAmmoCapacity;
     }
 
-    protected IEnumerator ReloadCoroutine()
-    {
-        // rateOfFireCoroutine = true;                      // For some reason using both bools causes bug where if you're spamming fire while the reload ends, you empty your clip within a few frames
-        reloadCoroutine = true;
-        yield return new WaitForSeconds(weaponData.ReloadSpeed / passives.ReloadMultiplier);
-        // rateOfFireCoroutine = false;
-        reloadCoroutine = false;
-    }
-
     protected void Update()
     {
         UseWeapon();
         UseMelee();
+        Reload();
         infAmmo = weaponParent.InfAmmo;
     }
 
@@ -204,6 +213,14 @@ public class Gun : MonoBehaviour
         isMelee = false;
     }
 
+    private void FinishReloading()
+    {
+        StartCoroutine(DelayNextReloadingCoroutine());
+        
+        isReloading = false;
+    }
+
+
     protected virtual IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
@@ -216,6 +233,13 @@ public class Gun : MonoBehaviour
         meleeCoroutine = true;
         yield return new WaitForSeconds(swordData.RecoveryLength / passives.ROFMultiplier);
         meleeCoroutine = false;
+    }
+
+    protected IEnumerator DelayNextReloadingCoroutine()
+    {
+        reloadCoroutine = true;
+        yield return new WaitForSeconds( weaponData.ReloadSpeed / passives.ROFMultiplier);
+        reloadCoroutine = false;
     }
 
 
@@ -253,4 +277,11 @@ public class Gun : MonoBehaviour
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));
         return muzzle.transform.rotation * bulletSpreadRotation;
     }
+
+    protected void displayReloadProgressBar() {
+       var reloadBar = this.transform.parent.parent.GetComponentInChildren<PlayerReload>();
+       reloadBar.displayReloadProgressBar();
+       
+    }
 }
+
