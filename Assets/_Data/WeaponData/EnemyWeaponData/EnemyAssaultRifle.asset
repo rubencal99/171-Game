@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: ca00283b322aacf4fa25433b189ab8e4, type: 2}
   <MagazineCapacity>k__BackingField: 32
-  <MaxAmmoCapacity>k__BackingField: 100
+  <MaxAmmoCapacity>k__BackingField: 400
   <AutomaticFire>k__BackingField: 1
   <WeaponDelay>k__BackingField: 0.31
   <ReloadSpeed>k__BackingField: 3.19
