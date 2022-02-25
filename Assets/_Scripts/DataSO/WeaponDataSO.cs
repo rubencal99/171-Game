@@ -29,7 +29,7 @@ public class WeaponDataSO : ScriptableObject
     public float WeaponDelay { get; set; } = 0.1f;
 
     [field: SerializeField]
-    [field: Range(1, 10)]
+    [field: Range(0.1f, 10)]
     public float ReloadSpeed { get; set; } = 1;
 
     [field: SerializeField]

@@ -47,13 +47,15 @@ MonoBehaviour:
   Enemies:
   - {fileID: 3837873860802124099, guid: 1c310ef3ef8085247aa7d0000ac8c69d, type: 3}
   - {fileID: 5148991598613868802, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+  - {fileID: 5148991598613868802, guid: e6d41c6a84c67824188ff94d7290a7cd, type: 3}
+  - {fileID: 5148991598613868802, guid: cefe9d6384bc29445a9a1bd0d381e847, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 12
+  numToSpawn: 13
   enemyCount: 0
-  offset: 2.94
+  offset: 5.64
   spawned: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
