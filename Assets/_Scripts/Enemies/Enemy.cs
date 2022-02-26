@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
     public bool isDying = false;
+    public float deathTimer = 10.0f;
 
     public GameObject[] Loot;
 
@@ -59,7 +60,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     IEnumerator WaitToDie(){
         isDying = true;
         DeadOrAlive();
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(deathTimer);
         if (isDying == true)
         {
             Die();
