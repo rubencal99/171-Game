@@ -7,11 +7,13 @@ public class PlayerInput : MonoBehaviour
 {
     public PlayerMovement PlayerMovement;
     public CapsuleCollider2D Collider;
+    public Shop ShopKeeper;
 
     private void Start()
     {
         PlayerMovement = GetComponent<PlayerMovement>();
         Collider = GetComponent<CapsuleCollider2D>();
+        // ShopKeeper = GameObject.Find("ShopKeeper").GetComponent<Shop>();
     }
 
     // The Vector2 corresponds to the magnitude of movement in the (x, y)    wasd

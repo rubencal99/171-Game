@@ -13,6 +13,11 @@ public class PrefabHolder : MonoBehaviour
     public AugmentationUI augmentationUI;
     public GameObject Player;
 
+    public void Start()
+    {
+        Player = GameObject.FindWithTag("Player");
+    }
+
     public void TryBuyAugmentation()
     {
         GameObject prefab = augData.Prefab;
@@ -37,22 +42,31 @@ public class PrefabHolder : MonoBehaviour
     public void TryBuyItem()
     {
         GameObject prefab = itemData.Prefab;
-        if (prefab.GetComponent<Gun>())
+        Player playerInfo = Player.GetComponent<Player>();
+        if (playerInfo.CanPurchase(itemData.Cost))
         {
-            weaponParent = FindObjectOfType<PlayerWeapon>();
-            var weapon = Instantiate(prefab, weaponParent.transform.position, Quaternion.identity);
-            weapon.transform.parent = weaponParent.transform;
-            // weapon.transform.position = weaponParent.transform.position;
+            if (prefab.GetComponent<Gun>())
+            {
+                weaponParent = FindObjectOfType<PlayerWeapon>();
+                var weapon = Instantiate(prefab, weaponParent.transform.position, Quaternion.identity);
+                weapon.transform.parent = weaponParent.transform;
+                playerInfo.Purchase(itemData.Cost);
+                // weapon.transform.position = weaponParent.transform.position;
 
-            weapon.transform.localPosition = new Vector3(0.574f, 0, 0);
-            weapon.SetActive(false);
+                weapon.transform.localPosition = new Vector3(0.574f, 0, 0);
+                weapon.SetActive(false);
 
-            /* 
-            Vector3 p = weapon.transform.position;
-            p.x = 0.574f;
-            weapon.transform.position = p;
-            
-            */
+                /* 
+                Vector3 p = weapon.transform.position;
+                p.x = 0.574f;
+                weapon.transform.position = p;
+                
+                */
+            }
+        }
+        else if (!playerInfo.CanPurchase(itemData.Cost))
+        {
+            Debug.Log("Cannot afford " + itemData.name);
         }
     }
 }

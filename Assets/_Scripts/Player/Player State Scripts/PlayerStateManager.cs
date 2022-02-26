@@ -8,7 +8,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerRunGunState RunGunState = new PlayerRunGunState();
     public PlayerDiveState DiveState = new PlayerDiveState();
     public PlayerProneState ProneState = new PlayerProneState();
-    // public PlayerShopState ShopState = new PlayerShopState();
+    public PlayerShopState ShopState = new PlayerShopState();
 
     // Start is called before the first frame update
     void Start()
