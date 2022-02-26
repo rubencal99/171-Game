@@ -16,6 +16,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject BossSpawner;
     [SerializeField]
+    private GameObject ShopKeeperSpawner;
+    [SerializeField]
     private GameObject EntryCollider;
     public int columns;
     public int rows;
@@ -296,16 +298,23 @@ public class MapGenerator : MonoBehaviour
                 continue;
             }
             pos1 = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
-            GameObject spawner;
+            GameObject spawnedObject;
             if(room.RoomType == "Boss")
             {
-                spawner = Instantiate(BossSpawner, pos1, Quaternion.identity);
+                spawnedObject = Instantiate(BossSpawner, pos1, Quaternion.identity);
+            }
+            else if(room.RoomType == "Shop")
+            {
+                spawnedObject = Instantiate(ShopKeeperSpawner, pos1, Quaternion.identity);
+                //spawnedObject.transform.parent = room.transform;
+                //ShopKeeper = spawnedObject.transform.Find("ShopKeeper(clone)").gameObject;
+                //ShopKeeper.name = "ShopKeeper";
             }
             else
             {
-                spawner = Instantiate(Spawner, pos1, Quaternion.identity);
+                spawnedObject = Instantiate(Spawner, pos1, Quaternion.identity);
             }
-            spawner.transform.parent = room.transform;
+            spawnedObject.transform.parent = room.transform;
 
             room.gameObject.AddComponent<RoomClearCheck>();
         }
