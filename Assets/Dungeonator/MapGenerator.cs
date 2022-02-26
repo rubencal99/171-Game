@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
     private GameObject EntryCollider;
     public int columns;
     public int rows;
-    TileNode[,] map;
+    public static TileNode[,] map;
 
     // Min dimensions of rooms
     public Vector2Int minRoomDim;
@@ -47,8 +47,8 @@ public class MapGenerator : MonoBehaviour
     public bool HasEntry = false;
     public bool HasBoss = false;
     public int numLargeRooms;
-    public int BossRoom = 1;
-    public int normalRooms;
+    public int NumBossRooms = 1;
+    public int NumNormalRooms;
     public int overgrownRooms;
 
     // Queues for the BSP algorithm
@@ -59,6 +59,10 @@ public class MapGenerator : MonoBehaviour
     private List<CorridorNode> Corridors = new List<CorridorNode>();
 
     //private AstarPath AStar;
+
+    private RoomNode StartRoom;
+    private RoomNode BossRoom;
+    private RoomNode ShopRoom;
 
 
     public TileNode[,] GenerateMap()
@@ -239,13 +243,14 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.RoomType = "Start";
                 NewRoom.MaxNeighbors = 1;
                 HasEntry = true;
+                StartRoom = NewRoom;
             }
-            else if (!HasBoss && roomsList.Count == 0)
+            /*else if (!HasBoss && roomsList.Count == 0)
             {
                 NewRoom.RoomType = "Boss";
                 NewRoom.MaxNeighbors = 2;
                 HasBoss = true;
-            }
+            }*/
             else
             {
                 NewRoom.RoomType = "Normal";
@@ -316,7 +321,7 @@ public class MapGenerator : MonoBehaviour
                 // Debug.Log("Tilelist count: " + corridor.tileList.Count);
                 // GRab 1st element from tilelist and roomlist
                 TileNode tile1 = corridor.tileList[0];
-                RoomNode room1 = corridor.roomList[0];
+                RoomNode room1 = corridor.TargetRoomList[0];
                 
                 if(room1.RoomType != "Start")
                 {
@@ -328,7 +333,7 @@ public class MapGenerator : MonoBehaviour
 
                 //grab 2nd element
                 TileNode tile2 = corridor.tileList.Last();
-                RoomNode room2 = corridor.roomList.Last();
+                RoomNode room2 = corridor.TargetRoomList.Last();
 
                 // instantiate entry collider at 2nd tile coupled with 2nd room
                 Vector3 pos2 = new Vector3(tile2.x, tile2.y, 0);
@@ -374,7 +379,17 @@ public class MapGenerator : MonoBehaviour
 
                 SortByDistance(room, neighbor);
             }
+            if((room.RoomType) == "Start")
+            {
+                RoomNode bossRoom = room.RoomsByDistance[room.RoomsByDistance.Count-1];
+                bossRoom.RoomType = "Boss";
+                BossRoom = bossRoom;
+            }
         }
+        int index = Random.Range(0, 4);
+        RoomNode shop = BossRoom.RoomsByDistance[index];
+        shop.RoomType = "Shop";
+        ShopRoom = shop;
     }
 
     // This function goes through current list of rooms and inserts room in question accordingly
@@ -444,9 +459,23 @@ public class MapGenerator : MonoBehaviour
         CorridorNode corridor = CreateCorridor(room, neighbor);
         if (corridor == null)
         {
+            corridor = Helper.CreatePassage(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);
+        }
+        if(corridor == null)
+        {
             return;
         }
+
+        /*if(IsBorderingRoom(corridor))
+        {
+            Debug.Log("Corridor is bordering room");
+            NullifyCorridor(corridor);
+            corridor = null;
+            return;
+        }*/
+
         Corridors.Add(corridor);
+        RoomNode.ConnectRooms(room, neighbor);
 
     }
 
@@ -481,11 +510,17 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
                 }
+                /*Debug.Log("Before InMapRange check");
+                if(Helper.IsInMapRange(position.x-1, position.y, ref map) && Helper.IsInMapRange(position.x, position.y, ref map))
+                {
+                    AddCorridorTile(corridor, map[position.x, position.y], map[position.x-1, position.y]);
+                }*/
+                
             }
             // Moving horizontally
             while (position.x != destination.x)
@@ -509,7 +544,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
@@ -539,7 +574,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
@@ -566,20 +601,64 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
                 }
             }
         }
-        room.NeighborRooms.Add(neighbor);
-        neighbor.NeighborRooms.Add(room);
 
-        corridor.roomList.Add(room);
-        corridor.roomList.Add(neighbor);
+        corridor.TargetRoomList.Add(room);
+        corridor.TargetRoomList.Add(neighbor);
+
+        if(corridor.IsBorderingRoom())
+        {
+            corridor.NullifyCorridor();
+            return null;
+        }
 
         return corridor;
+    }
+
+    // this function checks if a corridor is bordering a room it's not supposed to
+    /*public bool IsBorderingRoom(CorridorNode corridor)
+    {
+        foreach(TileNode tile in corridor.tileList)
+        {
+            for(int x = -1; x <= 1; x++)
+            {
+                for(int y = -1; y <= 1; y++)
+                {   
+                    TileNode check = map[tile.x + x, tile.y + y];
+                    if(check.value == 1 && check.room != corridor.roomList[0] && check.room != corridor.roomList[1])
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }*/
+
+    private void AddCorridorTile(CorridorNode corridor, TileNode tile1, TileNode tile2)
+    {
+        if (tile1.value == 0 && tile1.value == 0)
+        {
+            tile1.value = 2;
+            tile2.value = 2;
+            corridor.tileList.Add(tile1);
+            corridor.tileList.Add(tile2);
+        }
+        else if (tile1.value == 1 || tile2.value == 1)
+        {
+            if ((tile1.room != corridor.TargetRoomList[0] && tile1.room != corridor.TargetRoomList[1]) || 
+                (tile2.room != corridor.TargetRoomList[0] && tile2.room != corridor.TargetRoomList[1]))
+            {
+                NullifyCorridor(corridor);
+                corridor = null;
+            }
+        }
     }
 
     private void NullifyCorridor(CorridorNode corridor)
@@ -698,6 +777,10 @@ public class MapGenerator : MonoBehaviour
                     else if (map[x, y].room.RoomType == "Boss")
                     {
                         Gizmos.color = new Color(255, 0, 0, 1f);
+                    }
+                    else if (map[x, y].room.RoomType == "Shop")
+                    {
+                        Gizmos.color = new Color(210/255f, 105/255f, 30/255f, 1f);
                     }
                     else
                     {
