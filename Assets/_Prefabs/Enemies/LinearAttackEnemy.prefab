@@ -497,6 +497,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isDying: 0
+  LootKill:
+  - {fileID: 3090609932968399411, guid: 58f0171a43f167c468b3906b08d1ae5d, type: 3}
 --- !u!114 &2447108988747857650
 MonoBehaviour:
   m_ObjectHideFlags: 0

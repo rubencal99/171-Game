@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RoomClearCheck : MonoBehaviour
 {
-    public GameObject[] Loot;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
     // Start is called before the first frame update
@@ -63,19 +62,8 @@ public class RoomClearCheck : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        Vector3 offsetPosition = transform.position;
-        offsetPosition.x += Random.Range(-5f, 5f);
-        offsetPosition.y += Random.Range(-5f, 5f);
-        int item;
-        GameObject thisLoot;
-        item = Random.Range(1, 20);
-        if (item < 5)
-        {
-            thisLoot = Instantiate(Loot[1]) as GameObject;
-            thisLoot.transform.position = offsetPosition;
-        }
-        thisLoot = Instantiate(Loot[0]) as GameObject;
-        thisLoot.transform.position = offsetPosition;
+        Loot thisLoot = FindObjectOfType<Loot>();
+        thisLoot.Pick();
         Debug.Log("room cleared");
  
     }
