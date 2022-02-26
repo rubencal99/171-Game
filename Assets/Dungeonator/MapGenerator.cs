@@ -47,8 +47,8 @@ public class MapGenerator : MonoBehaviour
     public bool HasEntry = false;
     public bool HasBoss = false;
     public int numLargeRooms;
-    public int BossRoom = 1;
-    public int normalRooms;
+    public int NumBossRooms = 1;
+    public int NumNormalRooms;
     public int overgrownRooms;
 
     // Queues for the BSP algorithm
@@ -59,6 +59,10 @@ public class MapGenerator : MonoBehaviour
     private List<CorridorNode> Corridors = new List<CorridorNode>();
 
     //private AstarPath AStar;
+
+    private RoomNode StartRoom;
+    private RoomNode BossRoom;
+    private RoomNode ShopRoom;
 
 
     public TileNode[,] GenerateMap()
@@ -239,6 +243,7 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.RoomType = "Start";
                 NewRoom.MaxNeighbors = 1;
                 HasEntry = true;
+                StartRoom = NewRoom;
             }
             /*else if (!HasBoss && roomsList.Count == 0)
             {
@@ -378,8 +383,13 @@ public class MapGenerator : MonoBehaviour
             {
                 RoomNode bossRoom = room.RoomsByDistance[room.RoomsByDistance.Count-1];
                 bossRoom.RoomType = "Boss";
+                BossRoom = bossRoom;
             }
         }
+        int index = Random.Range(0, 4);
+        RoomNode shop = BossRoom.RoomsByDistance[index];
+        shop.RoomType = "Shop";
+        ShopRoom = shop;
     }
 
     // This function goes through current list of rooms and inserts room in question accordingly
@@ -767,6 +777,10 @@ public class MapGenerator : MonoBehaviour
                     else if (map[x, y].room.RoomType == "Boss")
                     {
                         Gizmos.color = new Color(255, 0, 0, 1f);
+                    }
+                    else if (map[x, y].room.RoomType == "Shop")
+                    {
+                        Gizmos.color = new Color(210/255f, 105/255f, 30/255f, 1f);
                     }
                     else
                     {
