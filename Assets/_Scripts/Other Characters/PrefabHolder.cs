@@ -13,6 +13,11 @@ public class PrefabHolder : MonoBehaviour
     public AugmentationUI augmentationUI;
     public GameObject Player;
 
+    public void Start()
+    {
+        Player = GameObject.FindWithTag("Player");
+    }
+
     public void TryBuyAugmentation()
     {
         GameObject prefab = augData.Prefab;

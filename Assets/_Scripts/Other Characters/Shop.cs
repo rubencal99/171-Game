@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         ShopKeeper = transform.Find("avatar").GetComponent<SpriteRenderer>();
         ShopKeeper.color = new Color(175, 175, 175, 1);
-        Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);
+        //Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);
         ShopUI = transform.Find("UI_Shop");
         CloseShop();
     }
@@ -25,7 +25,7 @@ public class Shop : MonoBehaviour
     void Update()
     {
         CheckDistance();
-        Debug.Log("Shopkeeper color: " + ShopKeeper.color);
+        //Debug.Log("Shopkeeper color: " + ShopKeeper.color);
     }
 
     public void HighlightShopKeeper()

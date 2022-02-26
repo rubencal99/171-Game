@@ -2,19 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpanwer : MonoBehaviour
+public class ShopSpawner : EnemySpanwer
 {
-    public GameObject[]  Enemies;
-    public bool infiniteSpawn = false;
-    public bool stopSpawn = false;
-    public float spawnTime = 1.0f;
-    public float spawnDelay = 1.0f;
-    public int numToSpawn = 1;
-    public int enemyCount;
-
-    public float offset = 1.0f;
-
-    public bool spawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +13,7 @@ public class EnemySpanwer : MonoBehaviour
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
-        if(infiniteSpawn)
-            InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
-        else {
-            for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
-                Invoke("SpawnObject", spawnTime);
-            }
-        }
+        SpawnObject();
     }
 
     // void Update() {
@@ -38,7 +21,7 @@ public class EnemySpanwer : MonoBehaviour
     //         oneStepCloser();
     // }
 
-    public void SpawnObject(){
+    new public void SpawnObject(){
         Vector3 offsetPosition = transform.position;
         offsetPosition.x += Random.Range(-offset, offset);
         offsetPosition.y += Random.Range(-offset, offset);
@@ -47,16 +30,17 @@ public class EnemySpanwer : MonoBehaviour
         var clone = Instantiate(source, offsetPosition, Quaternion.identity);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
-        if(stopSpawn){
-            CancelInvoke("SpawnObject");
-        }
+
+        // PlayerInput Player = clone.GetComponent<Shop>().Player.GetComponent<PlayerInput>();
+        PlayerInput Player = GameObject.FindWithTag("Player").GetComponent<PlayerInput>();
+        Player.ShopKeeper = clone.GetComponent<Shop>();
 
         spawned = true;
 
     }
 
     // Update is called once per frame
-   public void oneStepCloser() {
+   /*public void oneStepCloser() {
       enemyCount = 0;
        foreach(Transform child in transform)
        { 
@@ -78,6 +62,6 @@ public class EnemySpanwer : MonoBehaviour
 
 //         Debug.Log("room cleared");
  
-//     }
+//     }*/
     
  }
