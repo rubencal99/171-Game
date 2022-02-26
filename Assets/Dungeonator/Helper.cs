@@ -26,7 +26,7 @@ public static class Helper
         }
 
         List<TileNode> tileList = new List<TileNode>();
-        
+
         foreach (TileNode c in line)
         {
             DrawCircle(tileList, c, passageSize, ref map);
@@ -34,8 +34,10 @@ public static class Helper
 
         CorridorNode corridor = new CorridorNode();
         corridor.tileList = tileList;
-        corridor.roomList.Add(roomA);
-        corridor.roomList.Add(roomB);
+        corridor.TargetRoomList.Add(roomA);
+        corridor.TargetRoomList.Add(roomB);
+        corridor.ConnectedRoomList.Add(roomA);
+        corridor.ConnectedRoomList.Add(roomB);
 
         if(corridor.IsBorderingRoom())
         {

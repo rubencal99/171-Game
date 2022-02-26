@@ -240,12 +240,12 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.MaxNeighbors = 1;
                 HasEntry = true;
             }
-            else if (!HasBoss && roomsList.Count == 0)
+            /*else if (!HasBoss && roomsList.Count == 0)
             {
                 NewRoom.RoomType = "Boss";
                 NewRoom.MaxNeighbors = 2;
                 HasBoss = true;
-            }
+            }*/
             else
             {
                 NewRoom.RoomType = "Normal";
@@ -316,7 +316,7 @@ public class MapGenerator : MonoBehaviour
                 // Debug.Log("Tilelist count: " + corridor.tileList.Count);
                 // GRab 1st element from tilelist and roomlist
                 TileNode tile1 = corridor.tileList[0];
-                RoomNode room1 = corridor.roomList[0];
+                RoomNode room1 = corridor.TargetRoomList[0];
                 
                 if(room1.RoomType != "Start")
                 {
@@ -328,7 +328,7 @@ public class MapGenerator : MonoBehaviour
 
                 //grab 2nd element
                 TileNode tile2 = corridor.tileList.Last();
-                RoomNode room2 = corridor.roomList.Last();
+                RoomNode room2 = corridor.TargetRoomList.Last();
 
                 // instantiate entry collider at 2nd tile coupled with 2nd room
                 Vector3 pos2 = new Vector3(tile2.x, tile2.y, 0);
@@ -373,6 +373,11 @@ public class MapGenerator : MonoBehaviour
                 }
 
                 SortByDistance(room, neighbor);
+            }
+            if((room.RoomType) == "Start")
+            {
+                RoomNode bossRoom = room.RoomsByDistance[room.RoomsByDistance.Count-1];
+                bossRoom.RoomType = "Boss";
             }
         }
     }
@@ -500,6 +505,12 @@ public class MapGenerator : MonoBehaviour
                         return null;
                     }
                 }
+                /*Debug.Log("Before InMapRange check");
+                if(Helper.IsInMapRange(position.x-1, position.y, ref map) && Helper.IsInMapRange(position.x, position.y, ref map))
+                {
+                    AddCorridorTile(corridor, map[position.x, position.y], map[position.x-1, position.y]);
+                }*/
+                
             }
             // Moving horizontally
             while (position.x != destination.x)
@@ -588,8 +599,8 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        corridor.roomList.Add(room);
-        corridor.roomList.Add(neighbor);
+        corridor.TargetRoomList.Add(room);
+        corridor.TargetRoomList.Add(neighbor);
 
         if(corridor.IsBorderingRoom())
         {
@@ -619,6 +630,26 @@ public class MapGenerator : MonoBehaviour
         }
         return false;
     }*/
+
+    private void AddCorridorTile(CorridorNode corridor, TileNode tile1, TileNode tile2)
+    {
+        if (tile1.value == 0 && tile1.value == 0)
+        {
+            tile1.value = 2;
+            tile2.value = 2;
+            corridor.tileList.Add(tile1);
+            corridor.tileList.Add(tile2);
+        }
+        else if (tile1.value == 1 || tile2.value == 1)
+        {
+            if ((tile1.room != corridor.TargetRoomList[0] && tile1.room != corridor.TargetRoomList[1]) || 
+                (tile2.room != corridor.TargetRoomList[0] && tile2.room != corridor.TargetRoomList[1]))
+            {
+                NullifyCorridor(corridor);
+                corridor = null;
+            }
+        }
+    }
 
     private void NullifyCorridor(CorridorNode corridor)
     {

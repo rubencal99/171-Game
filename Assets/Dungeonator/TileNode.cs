@@ -7,6 +7,7 @@ using UnityEngine;
 public class TileNode
 {
     public RoomNode room;
+    public List<CorridorNode> corridors;
     // 0 == empty space / out of map
     // 1 = room
     // 2 = corridor

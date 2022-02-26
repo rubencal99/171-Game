@@ -5,8 +5,13 @@ using UnityEngine;
 public class CorridorNode
 {
     public List<TileNode> tileList = new List<TileNode>();
-    public List<RoomNode> roomList = new List<RoomNode>();
+    public List<RoomNode> TargetRoomList = new List<RoomNode>();
+    public List<RoomNode> ConnectedRoomList = new List<RoomNode>();
 
+    public void AdjustConnectedRooms()
+    {
+        
+    }
 
     public bool IsBorderingRoom()
     {
@@ -17,7 +22,7 @@ public class CorridorNode
                 for(int y = -1; y <= 1; y++)
                 {   
                     TileNode check = MapGenerator.map[tile.x + x, tile.y + y];
-                    if(check.value == 1 && check.room != roomList[0] && check.room != roomList[1])
+                    if(check.value == 1 && check.room != TargetRoomList[0] && check.room != TargetRoomList[1])
                     {
                         return true;
                     }
