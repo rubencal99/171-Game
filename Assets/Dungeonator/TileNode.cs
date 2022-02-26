@@ -15,6 +15,18 @@ public class TileNode
     public int y;
     // public bool isDoor;
 
+    public TileNode()
+    {
+        value = 0;
+    }
+
+    public TileNode(int tileX, int tileY)
+    {
+        x = tileX;
+        y = tileY;
+        value = 0;
+    }
+
 
     // Start is called before the first frame update
     void Start()

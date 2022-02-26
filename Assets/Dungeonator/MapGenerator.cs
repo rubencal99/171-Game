@@ -19,7 +19,7 @@ public class MapGenerator : MonoBehaviour
     private GameObject EntryCollider;
     public int columns;
     public int rows;
-    TileNode[,] map;
+    public static TileNode[,] map;
 
     // Min dimensions of rooms
     public Vector2Int minRoomDim;
@@ -444,9 +444,23 @@ public class MapGenerator : MonoBehaviour
         CorridorNode corridor = CreateCorridor(room, neighbor);
         if (corridor == null)
         {
+            corridor = Helper.CreatePassage(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);
+        }
+        if(corridor == null)
+        {
             return;
         }
+
+        /*if(IsBorderingRoom(corridor))
+        {
+            Debug.Log("Corridor is bordering room");
+            NullifyCorridor(corridor);
+            corridor = null;
+            return;
+        }*/
+
         Corridors.Add(corridor);
+        RoomNode.ConnectRooms(room, neighbor);
 
     }
 
@@ -481,7 +495,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
@@ -509,7 +523,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
@@ -539,7 +553,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x, position.y-1].room != room && map[position.x, position.y-1].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
@@ -566,21 +580,45 @@ public class MapGenerator : MonoBehaviour
                 {
                     if ((map[position.x, position.y].room != room && map[position.x, position.y].room != neighbor) || (map[position.x-1, position.y].room != room && map[position.x-1, position.y].room != neighbor))
                     {
-                        NullifyCorridor(corridor);
+                        corridor.NullifyCorridor();
                         corridor = null;
                         return null;
                     }
                 }
             }
         }
-        room.NeighborRooms.Add(neighbor);
-        neighbor.NeighborRooms.Add(room);
 
         corridor.roomList.Add(room);
         corridor.roomList.Add(neighbor);
 
+        if(corridor.IsBorderingRoom())
+        {
+            corridor.NullifyCorridor();
+            return null;
+        }
+
         return corridor;
     }
+
+    // this function checks if a corridor is bordering a room it's not supposed to
+    /*public bool IsBorderingRoom(CorridorNode corridor)
+    {
+        foreach(TileNode tile in corridor.tileList)
+        {
+            for(int x = -1; x <= 1; x++)
+            {
+                for(int y = -1; y <= 1; y++)
+                {   
+                    TileNode check = map[tile.x + x, tile.y + y];
+                    if(check.value == 1 && check.room != corridor.roomList[0] && check.room != corridor.roomList[1])
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }*/
 
     private void NullifyCorridor(CorridorNode corridor)
     {
