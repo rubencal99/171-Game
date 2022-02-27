@@ -32,6 +32,7 @@ public class AgentRenderer : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = GetComponent<SpriteRenderer>().material;
+        SetSkinTone();
         originalColor = spriteRenderer.color;
         // Debug.Log("Original Color: " + originalColor);
         deathColor = new Color(originalColor.r/2, originalColor.g/2, originalColor.b/2, 1);
@@ -67,6 +68,16 @@ public class AgentRenderer : MonoBehaviour
         else{
             spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
         }
+    }
+
+    void SetSkinTone()
+    {
+        float r = Random.Range(0, 255);
+        float g = Random.Range(0, 255);
+        float b = Random.Range(0, 255);
+
+        Color skinTone = new Color(r/255f, g/255f, b/255f);
+        material.SetColor("SkinTone", skinTone);
     }
     
     public void FaceDirection(Vector2 pointerInput)
