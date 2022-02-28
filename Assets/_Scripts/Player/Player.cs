@@ -6,6 +6,8 @@ using UnityEngine.Events;
 // IAgent has not been implemented for player yet
 public class Player : MonoBehaviour, IAgent, IHittable
 {
+    public static Player instance;
+
     [field: SerializeField]
     public int Health { get; set; } = 6;
 
@@ -55,6 +57,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
 //     private AgentRenderer agentRender;
 // >>>>>>> master
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         // Note, resetting augmentations will want to be moved somewhere else
@@ -97,35 +104,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         Health -= damage;
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
-        
-// =======
-//         
-//         DeathMenuUI.SetActive(false);
-//         agentRender = GetComponentInChildren<AgentRenderer>();
-//         isDead = false;   
-//     }
-//     private void Update()
-//     {
-//         if (isDead==true){                      //For Debug
-//             Health = 0;
-//             OnDie?.Invoke();
-//             StartCoroutine(WaitToDie());
-//         }
-//     }
-
-//     public void GetHit(int damage, GameObject damageDealer)
-//     {
-//         Health -= damage;
-// >>>>>>> master
-        // This function is supposed to play a damage animation / deliver knockback
         if (Health > 0)    
             OnGetHit?.Invoke();
         else
         {
             OnDie?.Invoke();
-            StartCoroutine(WaitToDie());
-            
-            
+            StartCoroutine(WaitToDie());   
         }
     }
 
