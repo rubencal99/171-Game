@@ -26,6 +26,7 @@ public class AgentRenderer : MonoBehaviour
     public bool isBuffed = false;
 
     public Color baseColor;
+    public Color baseColor2;
     public Color generatedColor;
     private Color originalColor;
     private Color deathColor;
@@ -75,10 +76,11 @@ public class AgentRenderer : MonoBehaviour
     void SetSkinTone()
     {
         material.SetColor("BaseColor", baseColor);
+        material.SetColor("BaseColor2", baseColor2);
 
-        float r = Random.Range(0, 255);
-        float g = Random.Range(0, 255);
-        float b = Random.Range(0, 255);
+        float r = Random.Range(150, 255);
+        float g = Random.Range(150, 255);
+        float b = Random.Range(150, 255);
 
         Color skinTone = new Color(r/255f, g/255f, b/255f);
         generatedColor = skinTone;
