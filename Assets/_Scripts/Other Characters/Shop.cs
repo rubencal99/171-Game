@@ -14,6 +14,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Player.GetComponent<PlayerInput>().ShopKeeper = this;
         ShopKeeper = transform.Find("avatar").GetComponent<SpriteRenderer>();
         ShopKeeper.color = new Color(175, 175, 175, 1);
         //Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);

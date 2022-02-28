@@ -347,6 +347,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   isDying: 0
+  deathTimer: 10
   Loot: []
 --- !u!114 &4224652976851562825
 MonoBehaviour:
@@ -640,7 +641,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 663eab6938ef1a1469a07bea88dacfea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -662,7 +663,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5989c1fad2493aa47af4da86f6146f23, type: 3}
-  m_Color: {r: 0.9150943, g: 0.6690548, b: 0.866295, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -687,6 +688,9 @@ MonoBehaviour:
   isDying: 0
   isEnraged: 0
   isBuffed: 0
+  baseColor: {r: 0.9058824, g: 0.9058824, b: 0.9058824, a: 0}
+  baseColor2: {r: 0.7803922, g: 0.7803922, b: 0.7803922, a: 0}
+  generatedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5148991599991413044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,7 +726,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 132478
+  m_InstanceId: 38248
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
