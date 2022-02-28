@@ -21,11 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3128835130343464155, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: deathEvent.Path
-      value: event:/BIO-S/S-Death
+      value: event:/Characters/BIO-S/S-Death
       objectReference: {fileID: 0}
     - target: {fileID: 3128835130343464155, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: damageTakenEvent.Path
-      value: event:/BIO-S/S-Hurt
+      value: event:/Characters/BIO-S/S-Hurt
       objectReference: {fileID: 0}
     - target: {fileID: 6638867989798731445, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_RootOrder
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990098400911, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_InstanceId
-      value: -66916
+      value: -24112
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990841983292, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_Enabled

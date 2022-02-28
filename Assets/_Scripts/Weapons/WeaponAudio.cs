@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WeaponAudio : MonoBehaviour
 {
-
     public FMODUnity.EventReference shootBulletEvent; 
     public FMODUnity.EventReference outOfBulletsEvent;
 
