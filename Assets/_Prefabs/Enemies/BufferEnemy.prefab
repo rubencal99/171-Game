@@ -460,12 +460,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304799391290785548}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
+  <Weapon>k__BackingField: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 2507322668031623310}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
@@ -665,6 +666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Direction>k__BackingField: {x: 0, y: 0}
   <PointOfInterest>k__BackingField: {x: 0, y: 0}
+  <PointerPosition>k__BackingField: {x: 0, y: 0}
 --- !u!1 &4612861237894543266
 GameObject:
   m_ObjectHideFlags: 0

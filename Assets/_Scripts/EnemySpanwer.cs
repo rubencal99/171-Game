@@ -20,14 +20,14 @@ public class EnemySpanwer : MonoBehaviour
     void Start()
     {
         enemyCount = this.numToSpawn;
-        Debug.Log("initial Enemy count = " + enemyCount);
+        // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
         if(infiniteSpawn)
             InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         else {
-            for(int i = 0; i < Random.Range(numToSpawn/2, numToSpawn + (numToSpawn/4)); i++) {
+            for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
                 Invoke("SpawnObject", spawnTime);
             }
         }
@@ -42,7 +42,10 @@ public class EnemySpanwer : MonoBehaviour
         Vector3 offsetPosition = transform.position;
         offsetPosition.x += Random.Range(-offset, offset);
         offsetPosition.y += Random.Range(-offset, offset);
-        var clone = Instantiate(Enemies[Random.Range(0, Enemies.Length)], offsetPosition, Quaternion.identity);
+
+        var source = Enemies[Random.Range(0, Enemies.Length)];
+        var clone = Instantiate(source, offsetPosition, Quaternion.identity);
+        clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
         if(stopSpawn){
             CancelInvoke("SpawnObject");
@@ -60,7 +63,7 @@ public class EnemySpanwer : MonoBehaviour
            if(child.tag == "Enemy") {
                 enemyCount++;
            }
-             Debug.Log("current enemy count = " + enemyCount); 
+             // Debug.Log("current enemy count = " + enemyCount); 
         }
         // if(enemyCount <= 0)
         //     checkIfClear();

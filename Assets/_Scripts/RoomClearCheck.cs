@@ -22,12 +22,12 @@ public class RoomClearCheck : MonoBehaviour
     }
 
      void Update() {
-         Debug.Log("hello " +  spawners.Count);
+         // Debug.Log("hello " +  spawners.Count);
          foreach(GameObject sp in spawners)
          {
             if (sp!= null)
             {
-                Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+                // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
                 if(sp.GetComponent<EnemySpanwer>().spawned)
                     oneStepCloser();
             }
@@ -51,7 +51,7 @@ public class RoomClearCheck : MonoBehaviour
                if(!child.GetComponent<Enemy>().isDying)
                     enemyCount++;
            }
-             Debug.Log("current enemy count = " + enemyCount); 
+            // Debug.Log("current enemy count = " + enemyCount); 
         }
         if(enemyCount <= 0)
             checkIfClear();
@@ -70,19 +70,19 @@ public class RoomClearCheck : MonoBehaviour
         int item;
         GameObject thisLoot;
         item = Random.Range(1, 20);
-        if (item < 5)
-        {
-            thisLoot = Instantiate(Loot[1]) as GameObject;
-            thisLoot.transform.position = offsetPosition;
-        }
-        thisLoot = Instantiate(Loot[0]) as GameObject;
-        thisLoot.transform.position = offsetPosition;
-        Debug.Log("room cleared");
+        // if (item < 5)
+        // {
+        //     thisLoot = Instantiate(Loot[1]) as GameObject;
+        //     thisLoot.transform.position = offsetPosition;
+        // }
+        // thisLoot = Instantiate(Loot[0]) as GameObject;
+        // thisLoot.transform.position = offsetPosition;
+        // Debug.Log("room cleared");
  
     }
 
     public void setRoomActive() {
-        Debug.Log("room set active");
+        // Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    child.GetChild(0).gameObject.SetActive(true);
@@ -90,6 +90,12 @@ public class RoomClearCheck : MonoBehaviour
            }
            if(child.tag == "Spawner")
                 child.GetComponent<EnemySpanwer>().enabled = true;
+                //   foreach(Transform grandchild in transform)
+                //     grandchild.GetComponent<EnemyBrain>().enabled = true;
+            if(child.tag == "Enemy") {
+               child.GetComponent<EnemyBrain>().enabled = true;
+           }   
               }
+          
     }
 }

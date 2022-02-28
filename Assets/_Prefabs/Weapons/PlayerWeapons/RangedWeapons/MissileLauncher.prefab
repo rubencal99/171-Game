@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8960519738105143101}
   - component: {fileID: 8960519738105143102}
   - component: {fileID: 8960519738105143103}
+  - component: {fileID: 5953414765655352644}
   m_Layer: 0
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -155,6 +156,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnReload>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!95 &5953414765655352644
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960519738105143089}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a6372ef89bddb6a4a94bb4a457f09cbd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8960519738536017281
 GameObject:
   m_ObjectHideFlags: 0

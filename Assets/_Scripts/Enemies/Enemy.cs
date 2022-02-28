@@ -57,30 +57,38 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     IEnumerator WaitToDie(){
-        gameObject.layer = 0;
         isDying = true;
-        enemyBrain.enabled = false;
-        agentMovement.currentVelocity = 0.0f;
+        DeadOrAlive();
+        yield return new WaitForSeconds(2.0f);
+        if (isDying == true)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
         int odds = Random.Range(1, 20);
         if (odds == 1)
         {
             int item;
             GameObject thisLoot;
             item = Random.Range(1, 20);
-            if(item < 5)
-            {
-                thisLoot = Instantiate(Loot[1]) as GameObject;
-                thisLoot.transform.position = gameObject.transform.position;
-            }
-            thisLoot = Instantiate(Loot[0]) as GameObject;
-            thisLoot.transform.position = gameObject.transform.position;
+            // if(item < 5)
+            // {
+            //     thisLoot = Instantiate(Loot[1]) as GameObject;
+            //     thisLoot.transform.position = gameObject.transform.position;
+            // }
+            // thisLoot = Instantiate(Loot[0]) as GameObject;
+            // thisLoot.transform.position = gameObject.transform.position;
         }
         else
         {
             Player player = FindObjectOfType<Player>();
-            player?.AddBounty(10);
+            int bounty = Random.Range(8, 15);
+            player?.AddBounty(bounty);
         }
-        yield return new WaitForSeconds(2.0f);
+        PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
 
