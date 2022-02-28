@@ -13,4 +13,32 @@ public class EnemyGun : Gun
         yield return new WaitForSeconds(delay / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
+
+    protected override void UseWeapon()
+    {
+        if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
+        {
+            if (Ammo > 0)
+            {
+                Ammo--;
+                //I'd like the UI of this to show the ammo decreasing & increasing rapidly
+                if (infAmmo)
+                    Ammo++;
+                OnShoot?.Invoke();
+                for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
+                {
+                    ShootBullet();
+                }
+            }
+            else
+            {
+                isShooting = false;
+                OnShootNoAmmo?.Invoke();
+                Debug.Log("About to reload");
+                TryReloading();                 // Use this if we want to reload automatically
+                return;
+            }
+            FinishShooting();
+        }
+    }
 }

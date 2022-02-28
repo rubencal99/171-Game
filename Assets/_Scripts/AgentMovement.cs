@@ -52,9 +52,9 @@ public class AgentMovement : MonoBehaviour
             */
             movementDirection = movementInput.normalized;
         }
-        else{
+        /*else{
             movementDirection = Vector2.zero;
-        }
+        }*/
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);

@@ -40,6 +40,7 @@ public class PatrolAction : StarChaseAction
 
     public override void TakeAction()
     {
+        enemyBrain.StopAttack();
         if (currentWait <= 0)
         {
             ChoosePoint();
