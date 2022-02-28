@@ -33,11 +33,18 @@ public class PlayerMovement : AgentMovement
         {
             currentVelocity -= MovementData.decceleration * Time.deltaTime;
         }
-        // Check if player is dodging
-        // Debug.Log("Diving = " + PlayerState.DiveState.diving);
+        return AdjustedStateSpeed();
+    }
+
+    protected float AdjustedStateSpeed()
+    {
         if (PlayerState.DiveState.diving == true) {
             Debug.Log("In Dive velocity");
             return Mathf.Clamp((currentVelocity * dodgeVelocity), 0, MovementData.maxDodgeSpeed);
+        }
+        if(PlayerState.ProneState.standing == false)
+        {
+            return Mathf.Clamp((currentVelocity), 0, MovementData.maxProneSpeed);
         }
         // Returns velocity between 0 and maxSpeed
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);

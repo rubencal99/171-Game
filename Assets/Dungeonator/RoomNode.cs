@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class RoomNode : MonoBehaviour
 {
     public List<TileNode> tileList= new List<TileNode>();
+    public TileNode CenterTile;
     public Vector2Int roomCenter;
     public int length;
     public int width;
     public int area;
     public string RoomType;
     public int MaxNeighbors;
+    public bool isAccessibleFromStart;
     public EnemySpanwer spawner;
     public List<RoomNode> NeighborRooms = new List<RoomNode>();
+    public List<RoomNode> ConnectedRooms = new List<RoomNode>();
     public List<RoomNode> RoomsByDistance = new List<RoomNode>();
 
     public void CreateRoomObject()
@@ -39,7 +43,7 @@ public class RoomNode : MonoBehaviour
         }
         if(RoomType == "Normal")
         {
-            MaxNeighbors = 3;
+            MaxNeighbors = 2;
         }
         if(RoomType == "Large")
         {
@@ -60,9 +64,81 @@ public class RoomNode : MonoBehaviour
         Vector2Int firstPoint = new Vector2Int(firstTile.x, firstTile.y);
         Vector2Int lastPoint = new Vector2Int(lastTile.x, lastTile.y);
 
+        //roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
+        // CenterTile = tileList[(int)tileList.Count/2];
+        //roomCenter = new Vector2Int(CenterTile.x, CenterTile.y);
         roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
+        
+        foreach(TileNode tile in tileList)
+        {
+            Vector2Int tilePosition = new Vector2Int(tile.x, tile.y);
+            if(tilePosition == roomCenter)
+            {
+                CenterTile = tile;
+            }
+        }
+        if(CenterTile == null)
+        {
+            Debug.Log("Center tile not found");
+            CenterTile = tileList[(int)tileList.Count/2];
+        }
+        
         length = lastTile.x - firstTile.x;
         width = lastTile.y - firstTile.y;
         area = length * width;
+    }
+
+    public void SetAccessibleFromStart()
+    {
+        if (!isAccessibleFromStart)
+        {
+            isAccessibleFromStart = true;
+            foreach (RoomNode connectedRoom in ConnectedRooms)
+            {
+                connectedRoom.SetAccessibleFromStart();
+            }
+        }
+    }
+
+    // this function merges all the Connected Rooms of both rooms together 
+    public static void ConnectRooms(RoomNode roomA, RoomNode roomB)
+    {
+        if (roomA.isAccessibleFromStart)
+        {
+            roomB.SetAccessibleFromStart();
+        }
+        else if (roomB.isAccessibleFromStart)
+        {
+            roomA.SetAccessibleFromStart();
+        }
+
+        roomA.NeighborRooms.Add(roomB);
+        roomB.NeighborRooms.Add(roomA);
+
+        roomA.ConnectedRooms = roomA.ConnectedRooms.Union<RoomNode>(roomB.ConnectedRooms).ToList<RoomNode>();
+        roomB.ConnectedRooms = roomB.ConnectedRooms.Union<RoomNode>(roomA.ConnectedRooms).ToList<RoomNode>();
+        roomA.ConnectedRooms.Add(roomB);
+        roomB.ConnectedRooms.Add(roomA);
+
+        foreach(RoomNode room1 in roomA.ConnectedRooms)
+        {
+            roomB.ConnectedRooms = roomB.ConnectedRooms.Union<RoomNode>(room1.ConnectedRooms).ToList<RoomNode>();
+            room1.ConnectedRooms = room1.ConnectedRooms.Union<RoomNode>(roomB.ConnectedRooms).ToList<RoomNode>();
+        }
+        foreach(RoomNode room2 in roomB.ConnectedRooms)
+        {
+            roomA.ConnectedRooms = roomA.ConnectedRooms.Union<RoomNode>(room2.ConnectedRooms).ToList<RoomNode>();
+            room2.ConnectedRooms = room2.ConnectedRooms.Union<RoomNode>(roomA.ConnectedRooms).ToList<RoomNode>();
+        }
+    }
+
+    public bool IsConnected(RoomNode otherRoom)
+    {
+        return ConnectedRooms.Contains(otherRoom);
+    }
+
+    public int CompareTo(RoomNode otherRoom)
+    {
+        return otherRoom.tileList.Count.CompareTo(tileList.Count);
     }
 }

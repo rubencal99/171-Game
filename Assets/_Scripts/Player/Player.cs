@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int MaxHealth { get; private set; } = 6;
 
     [field: SerializeField]
-    public int Wallet { get; private set; } = 0;
+    public int Wallet { get; private set; } = 80;
 
     [field: SerializeField]
     public int AugmentationTokens { get; private set; } = 0;
@@ -62,6 +62,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private void Start()
     {
+        // Note, resetting augmentations will want to be moved somewhere else
+        // if incorporating multiple levels
+        PlayerAugmentations.ResetAugmentations();
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
@@ -106,7 +109,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         blood.Play();
         Health -= damage;
-        CameraShake.Instance.ShakeCamera(damage * getHitIntensity, getHitFrequency, getHitTime);
+        CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         blood.Stop();
 
 // =======
@@ -129,7 +132,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 //         Health -= damage;
 // >>>>>>> master
         // This function is supposed to play a damage animation / deliver knockback
-        if (Health >= 0)    
+        if (Health > 0)    
             OnGetHit?.Invoke();
         else
         {
@@ -181,8 +184,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(3f);
+        //Destroy(gameObject);
         // Play End Game Screen here
         DeathMenuUI.SetActive(true);
     }

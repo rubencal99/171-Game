@@ -21,7 +21,7 @@ MonoBehaviour:
   <IsRaycast>k__BackingField: 0
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
   <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
-  <KnockbackPower>k__BackingField: 6.11
+  <KnockbackPower>k__BackingField: 19
   <KnockbackDelay>k__BackingField: 0.101
   <hasDecay>k__BackingField: 0
   <decayTime>k__BackingField: 5

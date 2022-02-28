@@ -8,6 +8,9 @@ using UnityEngine.Events;
 // This state automatically transitions to prone state
 public class PlayerDiveState : PlayerBaseState
 {
+    private Camera mainCamera;
+
+    private bool fireButtonDown = false;
     public bool diving;
     [SerializeField]
     private float DiveTimer = 0.3f;
@@ -19,6 +22,7 @@ public class PlayerDiveState : PlayerBaseState
     public override void EnterState(PlayerStateManager Player)
     {
         // Debug.Log("Entered Dive State");
+        mainCamera = Camera.main;
         diving = true;
         diveTime = DiveTimer;
         playerInput = Player.playerInput;
@@ -26,17 +30,58 @@ public class PlayerDiveState : PlayerBaseState
         Debug.Log("Current collider size:" + collider.size);
         Player.GetComponentInChildren<AgentAnimations>().SetDodgeAnimation();
         //collider.enabled = false;
+        PlayerSignaler.CallBulletTime();
     }
 
     public override void UpdateState(PlayerStateManager Player)
     {
         CalculateDiveTime();
         GetMovementInput();
+        GetPointerInput();
+        GetFireInput();
+        GetReloadInput();
         if (diveTime <= 0)
         {
             diving = false;
             collider.enabled = true;
             Player.SwitchState(Player.ProneState);
+        }
+    }
+
+    private void GetPointerInput()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = mainCamera.nearClipPlane;
+        var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        // This invokes AgentRenderer.FaceDirection and PlayerWeapon.AimWeapon
+        playerInput.OnPointerPositionChange?.Invoke(mouseInWorldSpace);
+    }
+
+    private void GetFireInput()
+    {
+        if (Input.GetAxisRaw("Fire1") > 0)
+        {
+            if (fireButtonDown == false)
+            {
+                fireButtonDown = true;
+                playerInput.OnFireButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (fireButtonDown == true)
+            {
+                fireButtonDown = false;
+                playerInput.OnFireButtonReleased?.Invoke();
+            }
+        }
+    }
+
+    private void GetReloadInput()
+    {
+        if (Input.GetAxisRaw("Reload") > 0)
+        {
+            playerInput.OnReloadButtonPressed?.Invoke();
         }
     }
 

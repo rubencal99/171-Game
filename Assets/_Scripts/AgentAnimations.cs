@@ -34,14 +34,19 @@ public class AgentAnimations : MonoBehaviour
         Debug.Log("Triggering Hurt Animation");
     }
 
-    public void SetDeathAnimation()
+    public void SetDeathAnimation(bool val)
     {
-        agentAnimator.SetTrigger("isDead");
+        agentAnimator.SetBool("isDead", val);
         Debug.Log("Triggering Death Animation");
     }
 
     public void AnimatePlayer(float velocity)
     {
         SetWalkAnimation(velocity > 0);
+    }
+
+    public void ShootAnimation() 
+    {
+        agentAnimator.SetTrigger("shoot");
     }
 }
