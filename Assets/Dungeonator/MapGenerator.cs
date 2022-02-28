@@ -19,6 +19,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject ShopKeeperSpawner;
     [SerializeField]
     private GameObject EntryCollider;
+    [SerializeField]
+    public GameObject Exit;
     public int columns;
     public int rows;
     public static TileNode[,] map;
