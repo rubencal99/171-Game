@@ -10,6 +10,7 @@ public class PlayerRunGunState : PlayerBaseState
     private bool fireButtonDown = false;
     private bool throwButtonDown = false;
     private bool meleeButtonDown = false;
+    private bool tabButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
     public bool shopping = false; // bool to check if dodging
@@ -25,10 +26,11 @@ public class PlayerRunGunState : PlayerBaseState
     }
     public override void EnterState(PlayerStateManager Player)
     {
-        // Debug.Log("Entered RunGun State");
+        Debug.Log("Entered RunGun State");
         playerInput = Player.playerInput;
         mainCamera = Camera.main;
         dodging = false;
+        TimeManager.RevertSlowMotion();
     }
 
     public override void UpdateState(PlayerStateManager Player)
@@ -42,6 +44,8 @@ public class PlayerRunGunState : PlayerBaseState
         // GetRestartInput();
         GetRespawnInput();
         GetDodgeInput();
+        GetTabInput();
+        GetInteractInput();
         if (dodging)
         {
             Debug.Log("Switching to Dive State");
@@ -50,7 +54,7 @@ public class PlayerRunGunState : PlayerBaseState
         if (shopping)
         {
             Debug.Log("Switching to Shop State");
-            Player.SwitchState(Player.DiveState);
+            Player.SwitchState(Player.ShopState);
         }
     }
 
@@ -249,21 +253,44 @@ public class PlayerRunGunState : PlayerBaseState
         }
     }
 
+    private void GetTabInput()
+    {
+        if (Input.GetAxisRaw("Tab") > 0)
+        {
+            Debug.Log("Tab key pressed");
+            if (tabButtonDown == false)
+            {
+                tabButtonDown = true;
+                playerInput.OnTabKeyPressed?.Invoke();
+            }
+            // Debug.Log("Tab key pressed");
+        }
+        else
+        {
+            if (tabButtonDown == true)
+            {
+                tabButtonDown = false;
+            }
+        }
+    }
+
     private void GetInteractInput()
     {
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Interact") > 0) 
         {
-            if (shopping == false)
+            Debug.Log("Interact key pressed");
+            if (shopping == false && playerInput.ShopKeeper.inDistance)
             {
+                Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;
                 playerInput.OnInteractKeyPressed?.Invoke();
             }  
         }
         else{
-            if (dodging == true)
+            if (shopping == true)
             {
-                dodging = false;
+                shopping = false;
             }
         }
     }

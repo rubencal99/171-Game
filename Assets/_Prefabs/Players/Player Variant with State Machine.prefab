@@ -297,11 +297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: deathEvent.Path
-      value: event:/BIO-S/S-Death
+      value: event:/Characters/BIO-S/S-Death
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: damageTakenEvent.Path
-      value: event:/BIO-S/S-Hurt
+      value: event:/Characters/BIO-S/S-Hurt
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_Mesh
@@ -309,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_InstanceId
-      value: -70474
+      value: -26782
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253359743248, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_RootOrder
@@ -457,6 +457,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   dodgeVelocity: 2
+  collider: {fileID: 0}
+  oriCollider: {x: 0, y: 0}
 --- !u!114 &294297016
 MonoBehaviour:
   m_ObjectHideFlags: 0

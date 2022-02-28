@@ -30,7 +30,8 @@ public class StarChaseAction : AIAction
     }
 
     public virtual void Update() {
-        aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+        if(target)
+            aiMovementData.PointOfInterest = (Vector2)target.transform.position;
         // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
 
@@ -72,7 +73,7 @@ public class StarChaseAction : AIAction
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
 
         enemyBrain.Move(aiMovementData.Direction);
-        enemyBrain.Aim(aiMovementData.PointOfInterest);
+        // enemyBrain.Aim(aiMovementData.PointOfInterest);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 

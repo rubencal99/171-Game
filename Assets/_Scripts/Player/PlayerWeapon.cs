@@ -8,12 +8,6 @@ public class PlayerWeapon : AgentWeapon
 {
     private float timeToReload = 0.0f;
 
-    public void displayReloadProgressBar() {
-       var reloadBar = this.transform.parent.GetComponentInChildren<PlayerReload>();
-       reloadBar.displayReloadProgressBar();
-       
-    }
-
     public int selectedWeapon = 0;
     public int numGrenades = 5;
     public GameObject Grenade;
@@ -58,7 +52,7 @@ public class PlayerWeapon : AgentWeapon
         if (previousSelectedWeapon != selectedWeapon)
         {
             SelectWeapon();
-            DisplayWeapon.Instance.UpdateWeapon();
+            //DisplayWeapon.Instance.UpdateWeapon();
         }
     }
 

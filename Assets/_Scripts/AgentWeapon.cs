@@ -6,6 +6,9 @@ using UnityEngine;
 public class AgentWeapon : MonoBehaviour
 {
     protected float desiredAngle;
+    protected float xMax;
+    protected float xMin;
+    protected bool flipY;
 
     // Need our weaponRenderer to call it's functions
     [SerializeField]
@@ -26,6 +29,9 @@ public class AgentWeapon : MonoBehaviour
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
         weapon = GetComponentInChildren<Gun>();
+        xMax = gameObject.transform.position.x + 0.5f;
+        xMin = gameObject.transform.position.x - 0.5f;
+        flipY = false;
     }
 
     public virtual void AimWeapon(Vector2 pointerPosition)
@@ -49,19 +55,33 @@ public class AgentWeapon : MonoBehaviour
         // weaponRenderer?.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
         if (weaponRenderer != null)     
         {
+            Vector3 current_pos = gameObject.transform.localPosition;
+
             // Explicitly check for null instead of using ?
             // This prevents bugs if weaponRenderer is deleted mid-game
-            weaponRenderer.FlipSprite(desiredAngle > 90 || desiredAngle < -90);
-            weaponRenderer.RenderBehindHead(desiredAngle < 180 && desiredAngle > 0);
+           // weaponRenderer.RenderBehindHead(desiredAngle < 150 && desiredAngle > 0);
+
+            if(desiredAngle > 90 || desiredAngle < -90){ // 6 to 12 Clockwise or LEFT
+             current_pos.x = -0.45f;
+             current_pos.y = -0.20f;
+            flipY = true;
+            } else { // 12 to 6 clockwise or RIGHT
+            current_pos.x = 0.25f;
+            current_pos.y = 0f;
+            flipY = false;
+            }   
+             gameObject.transform.localPosition = current_pos;
+             weaponRenderer.FlipSprite(flipY);
+            // gameObject.GetComponent<SpriteRenderer>().flipY = flipY;
         }
 
     }
 
     public void Reload()
     {
-        if (weapon != null && weapon.TotalAmmo > 0)
+        if (weapon != null && weapon.TotalAmmo > 0 && !(weapon.ammo >= weapon.totalAmmo))
         {
-            weapon.Reload();
+            weapon.TryReloading();
         }
 
     }

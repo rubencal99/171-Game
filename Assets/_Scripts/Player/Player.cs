@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int MaxHealth { get; private set; } = 6;
 
     [field: SerializeField]
-    public int Wallet { get; private set; } = 0;
+    public int Wallet { get; private set; } = 80;
 
     [field: SerializeField]
     public int AugmentationTokens { get; private set; } = 0;
@@ -22,16 +22,16 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public int Damage { get; private set; }
 
-    [field: SerializeField]                         
-    public bool isDead; 
+    [field: SerializeField]
+    public bool isDead;
 
-    [field: SerializeField]                         
+    [field: SerializeField]
     public float getHitFrequency;
 
-    [field: SerializeField]                         
-    public float getHitIntensity; 
-    
-    [field: SerializeField]                         
+    [field: SerializeField]
+    public float getHitIntensity;
+
+    [field: SerializeField]
     public float getHitTime;                           //For debug
 
     [field: SerializeField]
@@ -57,13 +57,16 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public bool hasHippoSkin;
 
     public PlayerStateManager PlayerState; // game odject for agent input
-    // private AgentInput w; // var to hold agent input 
+    // private AgentInput w; // var to hold agent input
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
 
     private void Start()
     {
+        // Note, resetting augmentations will want to be moved somewhere else
+        // if incorporating multiple levels
+        PlayerAugmentations.ResetAugmentations();
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
@@ -72,12 +75,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
         image = GetComponent<Image>();
         tempAlpha = 0f;
         hasHippoSkin = false;
-        //Debuging death 
+        //Debuging death
     }
 
     private void Update()
     {
-         if (isDead==true){                      //For Debug the instance kill 
+         if (isDead==true){                      //For Debug the instance kill
              Health -= Health;
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
@@ -86,7 +89,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         var tempOverlay = image.color;
         tempOverlay.a = 1 - Health/MaxHealth;
         image.color = tempOverlay;
-        
+
         if(hasHippoSkin){
             MaxHealth = MaxHealth + ((MaxHealth * 40)/ 100);
         }
@@ -105,7 +108,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
 
     public void GetHit(int damage, GameObject damageDealer)
-    {    
+    {
         //check if player is Dodging, if true, dont decrement health
         if (PlayerState.DiveState.diving) {
             return;
@@ -117,10 +120,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
         blood.Stop();
 
 // =======
-//         
+//
 //         DeathMenuUI.SetActive(false);
 //         agentRender = GetComponentInChildren<AgentRenderer>();
-//         isDead = false;   
+//         isDead = false;
 //     }
 //     private void Update()
 //     {
@@ -136,14 +139,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
 //         Health -= damage;
 // >>>>>>> master
         // This function is supposed to play a damage animation / deliver knockback
-        if (Health >= 0)    
+        if (Health > 0)
             OnGetHit?.Invoke();
         else
         {
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
-            
-            
+
+
         }
     }
 
@@ -188,8 +191,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        yield return new WaitForSeconds(3f);
+        //Destroy(gameObject);
         // Play End Game Screen here
         DeathMenuUI.SetActive(true);
     }
