@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 // IAgent has not been implemented for player yet
 public class Player : MonoBehaviour, IAgent, IHittable
@@ -48,6 +49,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private Vector3 SpawnPosition;
     private AgentRenderer agentRenderer;
 
+    public ParticleSystem blood;
+
+    public Image image;
+    private float tempAlpha;
 
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input 
@@ -63,8 +68,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
-        //DeathMenuUI.SetActive(false);
-        isDead = false;                                         //Debuging death 
+        DeathMenuUI.SetActive(false);
+        isDead = false;
+        image = GetComponent<Image>();
+        tempAlpha = 0f;
+        //Debuging death 
     }
 
     private void Update()
@@ -74,6 +82,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
+        //Blood screen overlay
+        var tempOverlay = image.color;
+        tempOverlay.a = 1 - Health/MaxHealth;
+        image.color = tempOverlay;
     }
 
     public void Heal(int amount) {
@@ -95,9 +107,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
             return;
         }
 
+        blood.Play();
         Health -= damage;
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
-        
+        blood.Stop();
+
 // =======
 //         
 //         DeathMenuUI.SetActive(false);
