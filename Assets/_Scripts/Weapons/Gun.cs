@@ -276,6 +276,7 @@ public class Gun : MonoBehaviour
     {
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+        bulletPrefab.GetComponent<Bullet>().direction = position - transform.position;
     }
 
     // Here we add some randomness for weapon spread
