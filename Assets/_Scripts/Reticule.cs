@@ -14,7 +14,7 @@ public class Reticule : MonoBehaviour
     
     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 mousePos =  Input.mousePosition;
         mousePos.x = Mathf.Clamp(mousePos.x, minX, maxX);

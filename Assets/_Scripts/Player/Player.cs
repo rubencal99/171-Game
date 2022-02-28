@@ -54,6 +54,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public Image image;
     private float tempAlpha;
 
+    public bool hasHippoSkin;
+
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input 
 // =======
@@ -69,6 +71,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;
         image = GetComponent<Image>();
         tempAlpha = 0f;
+        hasHippoSkin = false;
         //Debuging death 
     }
 
@@ -83,6 +86,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
         var tempOverlay = image.color;
         tempOverlay.a = 1 - Health/MaxHealth;
         image.color = tempOverlay;
+        
+        if(hasHippoSkin){
+            MaxHealth = MaxHealth + ((MaxHealth * 40)/ 100);
+        }
     }
 
     public void Heal(int amount) {
