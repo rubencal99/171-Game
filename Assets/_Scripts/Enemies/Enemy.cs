@@ -97,6 +97,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         if(isDying == true)
         {
+            enemyBrain.OnFireButtonReleased?.Invoke();
             gameObject.layer = 0;
             enemyBrain.Move(Vector2.zero);
             agentMovement.currentVelocity = 0;
