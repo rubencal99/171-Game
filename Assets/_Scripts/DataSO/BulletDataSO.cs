@@ -41,7 +41,7 @@ public class BulletDataSO : ScriptableObject
 
     [field: SerializeField]
     [field: Range(0.01f, 1f)]
-    public float KnockbackDelay { get; set; } = 0.1f;
+    public float KnockbackDuration { get; set; } = 0.1f;
 
     [field: SerializeField]
     public bool hasDecay { get; set; } = false;
