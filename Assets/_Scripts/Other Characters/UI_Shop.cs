@@ -43,13 +43,17 @@ public class UI_Shop : MonoBehaviour
         Text shopItemText = shopItemTransform.GetComponent<Text>();         //for storge the name and price of item, it is set to be invisible in the scene
         Vector2 position = new Vector2(0,0);                                //Initialize the position of slots
         
+        Debug.Log("Screen size: " + Screen.width + " x " +Screen.height);
         //Hard coded position for the slots, need a standard size of the screen
         if(positionIndex == 0 ){
-            position = new Vector2(145,0);
+            position = new Vector2(Screen.width / 7, Screen.height / 30);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
         } else if(positionIndex == 1){
-            position = new Vector2(-195,-135);
+            position = new Vector2(- Screen.width / 5 , - Screen.height / 5);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
         }else{
-            position = new Vector2(215,-130);
+            position = new Vector2(Screen.width / 5 ,- Screen.height / 5);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
         }
         
         // float shopItemHeight = 90f;
