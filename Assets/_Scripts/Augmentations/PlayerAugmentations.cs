@@ -23,7 +23,6 @@ public static class PlayerAugmentations : object
 
     public static bool Hookshot = false;
 
-    public static bool hasHook = false;
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {

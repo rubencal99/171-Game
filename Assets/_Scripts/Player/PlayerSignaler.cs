@@ -47,4 +47,6 @@ public static class PlayerSignaler : object
             PlayerAugmentations.whiskerApplied = true;
         }
     }
+
+
 }
