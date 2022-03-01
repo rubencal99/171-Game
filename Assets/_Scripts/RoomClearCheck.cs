@@ -5,6 +5,8 @@ using UnityEngine;
 public class RoomClearCheck : MonoBehaviour
 {
     public GameObject[] Loot;
+
+    private GameObject exit;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
     // Start is called before the first frame update
@@ -70,6 +72,17 @@ public class RoomClearCheck : MonoBehaviour
         int item;
         GameObject thisLoot;
         item = Random.Range(1, 20);
+
+        if(this.GetComponent<RoomNode>().RoomType == "Boss") {
+            Debug.Log("Boss defeated");
+            exit = GameObject.FindWithTag("Map Gen").GetComponent<MapGenerator>().Exit;
+           
+            Vector3 exit_pos = new Vector3((float)this.GetComponent<RoomNode>().roomCenter.x, (float)this.GetComponent<RoomNode>().roomCenter.y, 0f);
+            //exit.transform.position = exit_pos;
+            Instantiate(exit, exit_pos, Quaternion.identity);
+
+
+        }
         // if (item < 5)
         // {
         //     thisLoot = Instantiate(Loot[1]) as GameObject;
