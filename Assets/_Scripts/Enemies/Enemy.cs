@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     private AgentRenderer agentRenderer;
 
-    private AgentAnimations agentAnimations;
+    public AgentAnimations agentAnimations;
     private EnemyBrain enemyBrain;
     private AgentMovement agentMovement;
     public bool knockback;
