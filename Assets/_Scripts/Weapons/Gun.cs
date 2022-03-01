@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
     protected AgentWeapon weaponParent;
 
     [SerializeField]
-    protected PlayerPassives passives;
+    public PlayerPassives passives;
 
     [SerializeField]
     public int ammo;
@@ -98,8 +98,8 @@ public class Gun : MonoBehaviour
     /*[field: SerializeField]
     public UnityEvent<float, float> OnCameraShake { get; set; }*/
 
-    public float getReloadSpeed() {
-        return weaponData.ReloadSpeed / passives.ReloadMultiplier;
+    public virtual float getReloadSpeed() {
+        return PlayerSignaler.CallGunnerGloves(this);
     }
     public void TryShooting()
     {
@@ -136,7 +136,10 @@ public class Gun : MonoBehaviour
         if(isReloading && !reloadCoroutine) {
 
             var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+            Ammo += neededAmmo;
+            TotalAmmo -= neededAmmo;
             if(isPlayer) {
+                Debug.Log("In Reload");
                 displayReloadProgressBar();
                 this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (weaponData.ReloadSpeed / passives.ReloadMultiplier)) / 10.0f);
                 this.GetComponent<Animator>().Play("reload");
@@ -244,9 +247,9 @@ public class Gun : MonoBehaviour
     {
         reloadCoroutine = true;
         yield return new WaitForSeconds( weaponData.ReloadSpeed / passives.ROFMultiplier);
-        var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
-        Ammo += neededAmmo;
-        TotalAmmo -= neededAmmo;
+        //var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+        //Ammo += neededAmmo;
+        //TotalAmmo -= neededAmmo;
         reloadCoroutine = false;
     }
 
