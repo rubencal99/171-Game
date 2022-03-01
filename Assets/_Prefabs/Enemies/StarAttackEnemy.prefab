@@ -307,6 +307,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3476428367443596128}
+        m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayDamageSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -322,7 +334,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 3476428367443596128}
+        m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
+        m_MethodName: PlayDeathSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   isDying: 0
+  deathTimer: 10
   Loot: []
 --- !u!114 &4224652976851562825
 MonoBehaviour:
@@ -573,7 +598,6 @@ GameObject:
   - component: {fileID: 5148991599991413047}
   - component: {fileID: 5148991599991413003}
   - component: {fileID: 5148991599991413044}
-  - component: {fileID: 138440696315084505}
   - component: {fileID: 3476428367443596128}
   - component: {fileID: 8110461470414115898}
   - component: {fileID: 7554741728697442989}
@@ -617,7 +641,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 663eab6938ef1a1469a07bea88dacfea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -639,7 +663,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5989c1fad2493aa47af4da86f6146f23, type: 3}
-  m_Color: {r: 0.9150943, g: 0.6690548, b: 0.866295, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -664,6 +688,9 @@ MonoBehaviour:
   isDying: 0
   isEnraged: 0
   isBuffed: 0
+  baseColor: {r: 0.9058824, g: 0.9058824, b: 0.9058824, a: 0}
+  baseColor2: {r: 0.7803922, g: 0.7803922, b: 0.7803922, a: 0}
+  generatedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5148991599991413044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +726,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 132478
+  m_InstanceId: 38248
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -814,21 +841,21 @@ MonoBehaviour:
       Data2: 1244580679
       Data3: -164810101
       Data4: -492396689
-    Path: event:/BIO-S/S-Hurt
+    Path: event:/Characters/BIO-S/S-Hurt
   deathEvent:
     Guid:
       Data1: -282551224
       Data2: 1123922648
       Data3: 623627917
       Data4: -712787353
-    Path: event:/BIO-S/S-Death
+    Path: event:/Characters/BIO-S/S-Death
   stepEvent:
     Guid:
-      Data1: 331476970
-      Data2: 1180409917
-      Data3: -1531282521
-      Data4: 1264681341
-    Path: event:/BIO-S/S-Step
+      Data1: -140135639
+      Data2: 1274709324
+      Data3: -1154916714
+      Data4: -644915927
+    Path: event:/Characters/BIO-S/STEP-Bare
 --- !u!95 &8110461470414115898
 Animator:
   serializedVersion: 3
