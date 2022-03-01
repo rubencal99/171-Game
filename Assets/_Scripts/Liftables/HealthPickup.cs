@@ -10,7 +10,7 @@ public class HealthPickup : MonoBehaviour
       {
            Destroy(gameObject);
            Player player = FindObjectOfType<Player>();
-           player?.Heal();
+           player?.Heal(2);
       }
    }
 }

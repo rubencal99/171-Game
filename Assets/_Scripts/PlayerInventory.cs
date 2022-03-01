@@ -41,7 +41,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
         if(hpUP != 0) {
-        player.setMaxHp( player.MaxHealth + hpUP);
+        //player.setMaxHp( player.MaxHealth + hpUP);
         player.Heal(hpUP);
         }
 

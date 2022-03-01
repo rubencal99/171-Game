@@ -5,7 +5,7 @@ using UnityEngine;
 public static class PlayerSignaler : object
 {
     public static GameObject obj = GameObject.FindGameObjectWithTag("Player");
-    public static Player Player = obj.GetComponent<Player>();
+    public static Player player  = obj.GetComponent<Player>();
     public static PlayerPassives playerPassives = obj.GetComponent<PlayerPassives>();
 
     
@@ -30,7 +30,21 @@ public static class PlayerSignaler : object
         if(PlayerAugmentations.AugmentationList["Epinephrine"] == true)
         {
             Debug.Log("Epinephrine = true");
-            Player.Heal(PlayerAugmentations.EpinephrineBoost);
+            player.Heal(PlayerAugmentations.EpinephrineBoost);
+        }
+    }
+
+    public static void CallHippoSkin(){ // work after saving file but breaks after 
+        if(!PlayerAugmentations.hippoApplied && PlayerAugmentations.AugmentationList["HippoSkin"] == true ){
+            PlayerAugmentations.hippoApplied = true;
+            player.setMaxHp(player.MaxHealth + (int)(player.MaxHealth * 4 / 10));
+            player.setMaxHp(player.MaxHealth);
+        }
+    }
+
+    public static void CallWhiskers(){
+        if(PlayerAugmentations.AugmentationList["Whiskers"] && !PlayerAugmentations.whiskerApplied){
+            PlayerAugmentations.whiskerApplied = true;
         }
     }
 }

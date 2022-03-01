@@ -15,6 +15,8 @@ public class PlayerRunGunState : PlayerBaseState
     public bool dodging = false; // bool to check if dodging
     public bool shopping = false; // bool to check if dodging
 
+    
+
     public PlayerInput playerInput;
     
     [SerializeField]
@@ -49,7 +51,9 @@ public class PlayerRunGunState : PlayerBaseState
         if (dodging)
         {
             Debug.Log("Switching to Dive State");
-            Player.SwitchState(Player.DiveState);
+            //Player.SwitchState(Player.DiveState);
+            //switch to telport state
+            Player.SwitchState(Player.teleportState);
         }
         if (shopping)
         {

@@ -14,6 +14,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
      [field: SerializeField]
     public int MaxHealth { get; private set; } = 6;
 
+    public int BaseMaxHealth {get; set;} = 6;
+
     [field: SerializeField]
     public int Wallet { get; private set; } = 80;
 
@@ -60,6 +62,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Awake()
     {
         instance = this;
+        MaxHealth = BaseMaxHealth;
+
     }
 
     private void Start()
@@ -81,6 +85,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
+         if(!PlayerAugmentations.hippoApplied){
+             PlayerSignaler.CallHippoSkin();
+         }
     }
 
     public void Heal(int amount) {
@@ -91,7 +98,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void setMaxHp(int amount) {
         MaxHealth = amount;
-
     }
 
 
@@ -113,11 +119,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
     }
 
-
+    /*
     public void Heal()
     {
         Health += 2;
-    }
+    }*/
 
     public void AddBounty(int funds)
     {

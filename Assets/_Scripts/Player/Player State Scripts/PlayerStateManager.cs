@@ -10,6 +10,8 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerProneState ProneState = new PlayerProneState();
     public PlayerShopState ShopState = new PlayerShopState();
 
+    public PlayerTeleportState teleportState = new PlayerTeleportState();
+
     // Start is called before the first frame update
     void Start()
     {
