@@ -33,4 +33,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         // Debug.Log("Hide Floating window");
     }
 
+
+
 }
