@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5087463274387040076
 Transform:
   m_ObjectHideFlags: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5694068309932514625}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d8a3c248d96b114099612ca0accdcf7, type: 3}
   m_Name: 
@@ -49,11 +49,14 @@ MonoBehaviour:
   - {fileID: 5148991598613868802, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
   - {fileID: 5148991598613868802, guid: e6d41c6a84c67824188ff94d7290a7cd, type: 3}
   - {fileID: 5148991598613868802, guid: cefe9d6384bc29445a9a1bd0d381e847, type: 3}
+  - {fileID: 5148991598613868802, guid: c8fc90d13a901674091f49a161e97b45, type: 3}
+  - {fileID: 2328509941553751831, guid: 298ca68bec793e948abaf10602a57dc6, type: 3}
+  - {fileID: 6638867989798731449, guid: 8e2b49a1531d84a4e892b6539b1eccf1, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 13
+  numToSpawn: 8
   enemyCount: 0
   offset: 5.64
   spawned: 0

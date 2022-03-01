@@ -53,6 +53,7 @@ public class EnemySpanwer : MonoBehaviour
         var clone = Instantiate(source, offsetPosition, Quaternion.identity);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
+        clone.GetComponent<EnemyBrain>().enabled = true;
         if(stopSpawn){
             CancelInvoke("SpawnObject");
         }

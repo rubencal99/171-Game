@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1606400026148652367}
   - component: {fileID: 6802361432936439738}
   - component: {fileID: 839055604758307081}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: rigid body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 3839424358700345744}
   - component: {fileID: 3820387151114804951}
   - component: {fileID: 8396777413001728187}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Entry Collider
   m_TagString: Door
   m_Icon: {fileID: 0}

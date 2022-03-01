@@ -25,7 +25,8 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
             //this.GetComponent<Collider2D>().isTrigger = false;
-            this.transform.GetChild(0).gameObject.SetActive(true);
+            //this.transform.GetChild(0).gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
            //  Debug.Log("leaving collider");
             }
      //   }

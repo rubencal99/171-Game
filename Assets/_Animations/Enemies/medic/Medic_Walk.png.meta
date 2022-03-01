@@ -1,25 +1,19 @@
 fileFormatVersion: 2
-guid: 3b1c99aa3f5a2de4da2b1822043f6bf7
+guid: 8c9cecf869888cc479a8438f8f8556f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 31198576128669288
-    second: Warden_Death_0
+      213: 2575148293413118282
+    second: Medic_Walk_0
   - first:
-      213: 6064326034496363093
-    second: Warden_Death_1
+      213: 5343587322253512095
+    second: Medic_Walk_1
   - first:
-      213: -5831562376062738571
-    second: Warden_Death_2
+      213: 3072993847920320165
+    second: Medic_Walk_2
   - first:
-      213: 1740059619934816463
-    second: Warden_Death_3
-  - first:
-      213: 7509684866353186801
-    second: Warden_Death_4
-  - first:
-      213: -967597167374352106
-    second: Warden_Death_5
+      213: -2158359889707643581
+    second: Medic_Walk_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +58,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 94
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -85,7 +79,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -97,7 +91,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -109,7 +103,7 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -121,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Warden_Death_0
+      name: Medic_Walk_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 96
-        width: 42
-        height: 94
+        x: 48
+        y: 36
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 866b5af80f6de6000800000000000000
-      internalID: 31198576128669288
+      spriteID: a41a7d8aab3ccb320800000000000000
+      internalID: 2575148293413118282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warden_Death_1
+      name: Medic_Walk_1
       rect:
         serializedVersion: 2
-        x: 266
-        y: 96
-        width: 42
-        height: 94
+        x: 176
+        y: 36
+        width: 32
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55a1f40f560d82450800000000000000
-      internalID: 6064326034496363093
+      spriteID: f9d8339ab5c382a40800000000000000
+      internalID: 5343587322253512095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warden_Death_2
+      name: Medic_Walk_2
       rect:
         serializedVersion: 2
-        x: 418
-        y: 96
-        width: 48
-        height: 90
+        x: 304
+        y: 38
+        width: 32
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57f5f397ae0221fa0800000000000000
-      internalID: -5831562376062738571
+      spriteID: 5ae504e8f9775aa20800000000000000
+      internalID: 3072993847920320165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Warden_Death_3
+      name: Medic_Walk_3
       rect:
         serializedVersion: 2
-        x: 546
-        y: 96
-        width: 72
-        height: 84
+        x: 432
+        y: 36
+        width: 32
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,50 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc8473e410fe52810800000000000000
-      internalID: 1740059619934816463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warden_Death_4
-      rect:
-        serializedVersion: 2
-        x: 660
-        y: 96
-        width: 98
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1f7cb121992c73860800000000000000
-      internalID: 7509684866353186801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Warden_Death_5
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 98
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6114af8b0876292f0800000000000000
-      internalID: -967597167374352106
+      spriteID: 34d4684ad17fb02e0800000000000000
+      internalID: -2158359889707643581
       vertices: []
       indices: 
       edges: []
@@ -249,7 +201,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 64c689077058b9d4d9ecee0372c99ad9
     internalID: 0
     vertices: []
     indices: 

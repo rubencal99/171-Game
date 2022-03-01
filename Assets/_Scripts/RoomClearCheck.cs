@@ -5,8 +5,6 @@ using UnityEngine;
 public class RoomClearCheck : MonoBehaviour
 {
     public GameObject[] Loot;
-
-    private GameObject exit;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
     // Start is called before the first frame update
@@ -72,17 +70,6 @@ public class RoomClearCheck : MonoBehaviour
         int item;
         GameObject thisLoot;
         item = Random.Range(1, 20);
-
-        if(this.GetComponent<RoomNode>().RoomType == "Boss") {
-            Debug.Log("Boss defeated");
-            exit = GameObject.FindWithTag("Map Gen").GetComponent<MapGenerator>().Exit;
-           
-            Vector3 exit_pos = new Vector3((float)this.GetComponent<RoomNode>().roomCenter.x, (float)this.GetComponent<RoomNode>().roomCenter.y, 0f);
-            //exit.transform.position = exit_pos;
-            Instantiate(exit, exit_pos, Quaternion.identity);
-
-
-        }
         // if (item < 5)
         // {
         //     thisLoot = Instantiate(Loot[1]) as GameObject;
@@ -95,19 +82,20 @@ public class RoomClearCheck : MonoBehaviour
     }
 
     public void setRoomActive() {
-        // Debug.Log("room set active");
+         Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    child.GetChild(0).gameObject.SetActive(true);
                    child.GetComponent<EntryCollider>().toggleGuarded();
            }
            if(child.tag == "Spawner")
-                child.GetComponent<EnemySpanwer>().enabled = true;
+               child.gameObject.SetActive(true);
+               // child.GetComponent<EnemySpanwer>().enabled = true;
                 //   foreach(Transform grandchild in transform)
                 //     grandchild.GetComponent<EnemyBrain>().enabled = true;
-            if(child.tag == "Enemy") {
-               child.GetComponent<EnemyBrain>().enabled = true;
-           }   
+        //     if(child.tag == "Enemy") {
+        //        child.GetComponent<EnemyBrain>().enabled = true;
+        //    }   
               }
           
     }
