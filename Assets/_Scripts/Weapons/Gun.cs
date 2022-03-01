@@ -261,7 +261,7 @@ public class Gun : MonoBehaviour
        if (isPlayer)
        {
            // OnCameraShake?.Invoke(weaponData.recoilIntensity, weaponData.recoilTime);
-           CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
+           //CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
        }
     }
 

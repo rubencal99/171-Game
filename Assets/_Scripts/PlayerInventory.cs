@@ -27,12 +27,12 @@ public class PlayerInventory : MonoBehaviour
            if(!item.applied)
                 switch(item.type)
                 {
-                    case ItemType.HP:
+                    case PassiveType.HP:
                             Debug.Log("HP passive upgrade");
                             hpUP++;
                             break;
                     
-                    case ItemType.MoveSpeed:
+                    case PassiveType.MoveSpeed:
                         Debug.Log("movespeed passive upgrade");
                         moveSpeedUp += item.intensity;
                         break;

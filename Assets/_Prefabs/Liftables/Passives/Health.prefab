@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9132335765561888776}
   - component: {fileID: 9132335765561888781}
   m_Layer: 0
-  m_Name: HELTH
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1648441835
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80e811ecf01df8e47a83dce9e86b7e2f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: faca8dc2492ce0349bb52d8413238f2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
