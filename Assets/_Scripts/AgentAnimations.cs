@@ -40,6 +40,12 @@ public class AgentAnimations : MonoBehaviour
         Debug.Log("Triggering Death Animation");
     }
 
+    public void SetBuffAnimation(bool val)
+    {
+        agentAnimator.SetBool("isBuffing", val);
+        Debug.Log("Triggering Buff Animation");
+    }
+
     public void AnimatePlayer(float velocity)
     {
         SetWalkAnimation(velocity > 0);
