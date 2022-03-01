@@ -44,6 +44,11 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
         OnFireButtonPressed?.Invoke();
     }
 
+    public void StopAttack()
+    {
+        OnFireButtonReleased?.Invoke();
+    }
+
     public void Move(Vector2 movementDirection)
     {
         OnMovementKeyPressed?.Invoke(movementDirection);

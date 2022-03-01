@@ -332,7 +332,7 @@ MonoBehaviour:
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5228980908535081209}
         m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
         m_MethodName: PlayShootSound
         m_Mode: 1
@@ -362,7 +362,7 @@ MonoBehaviour:
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 5228980908535081209}
         m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
         m_MethodName: PlayNoBulletsSound
         m_Mode: 1

@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody2D))]
 public class AgentMovement : MonoBehaviour
 {
-    protected Rigidbody2D rigidbody2D;
+    public Rigidbody2D rigidbody2D;
 
     protected PlayerPassives Passives;
 
@@ -26,6 +26,11 @@ public class AgentMovement : MonoBehaviour
     // Hence SerializeField
     [field: SerializeField]
     public UnityEvent<float> OnVelocityChange { get; set; }
+
+    public bool knockback;
+    public float knockbackPower;
+    public float knockbackTimer;
+    public Vector2 knockbackDirection;
 
 
     protected void Awake()
@@ -52,9 +57,9 @@ public class AgentMovement : MonoBehaviour
             */
             movementDirection = movementInput.normalized;
         }
-        else{
+        /*else{
             movementDirection = Vector2.zero;
-        }
+        }*/
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
@@ -75,8 +80,32 @@ public class AgentMovement : MonoBehaviour
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
 
+    public void Knockback(float duration, float power, Vector2 direction)
+    {
+        knockback = true;
+        // Vector2 direction = (bullet.direction).normalized;
+        knockbackPower = power;
+        knockbackTimer = duration;
+        knockbackDirection = direction;
+        Vector2 k = -knockbackDirection * knockbackPower;
+        rigidbody2D.AddForce(k, ForceMode2D.Impulse);
+        //knockback = false;
+    }
+
     protected void FixedUpdate()
     {   
+        if(knockback)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if(knockbackTimer <= 0)
+            {
+                knockback = false;
+            }
+            // Vector2 k = -knockbackDirection * knockbackPower;
+            // rigidbody2D.AddForce(k, ForceMode2D.Impulse);
+            //rigidbody2D.velocity += k;
+            return;
+        }
         OnVelocityChange?.Invoke(currentVelocity);
         rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
     }

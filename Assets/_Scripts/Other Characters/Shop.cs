@@ -14,6 +14,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Player.GetComponent<PlayerInput>().ShopKeeper = this;
         ShopKeeper = transform.Find("avatar").GetComponent<SpriteRenderer>();
         ShopKeeper.color = new Color(175, 175, 175, 1);
         //Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);
@@ -53,7 +54,7 @@ public class Shop : MonoBehaviour
     {
         if(Vector2.Distance(Player.transform.position, transform.position) <= ShopDistance)
         {
-            Debug.Log("In Distance of Shopkeeper");
+            // Debug.Log("In Distance of Shopkeeper");
             if(inDistance == false)
             {
                 inDistance = true;
@@ -62,7 +63,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not in Distance of Shopkeeper");
+            // Debug.Log("Not in Distance of Shopkeeper");
             if(inDistance == true)
             {
                 inDistance = false;

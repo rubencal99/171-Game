@@ -15,7 +15,7 @@ public class Gun : MonoBehaviour
     protected AgentWeapon weaponParent;
 
     [SerializeField]
-    protected PlayerPassives passives;
+    public PlayerPassives passives;
 
     [SerializeField]
     public int ammo;
@@ -98,8 +98,8 @@ public class Gun : MonoBehaviour
     /*[field: SerializeField]
     public UnityEvent<float, float> OnCameraShake { get; set; }*/
 
-    public float getReloadSpeed() {
-        return weaponData.ReloadSpeed / passives.ReloadMultiplier;
+    public virtual float getReloadSpeed() {
+        return PlayerSignaler.CallGunnerGloves(this);
     }
     public void TryShooting()
     {
@@ -139,11 +139,13 @@ public class Gun : MonoBehaviour
             Ammo += neededAmmo;
             TotalAmmo -= neededAmmo;
             if(isPlayer) {
+                Debug.Log("In Reload");
                 displayReloadProgressBar();
                 this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (weaponData.ReloadSpeed / passives.ReloadMultiplier)) / 10.0f);
                 this.GetComponent<Animator>().Play("reload");
-                }
+            }
             FinishReloading();
+            
         }
     }
 
@@ -160,7 +162,7 @@ public class Gun : MonoBehaviour
         infAmmo = weaponParent.InfAmmo;
     }
 
-    protected void UseWeapon()
+    protected virtual void UseWeapon()
     {
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
@@ -203,7 +205,7 @@ public class Gun : MonoBehaviour
             FinishMelee();
         }
 
-    private void FinishShooting()
+    protected void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
         if (weaponData.AutomaticFire == false)
@@ -245,11 +247,14 @@ public class Gun : MonoBehaviour
     {
         reloadCoroutine = true;
         yield return new WaitForSeconds( weaponData.ReloadSpeed / passives.ROFMultiplier);
+        //var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+        //Ammo += neededAmmo;
+        //TotalAmmo -= neededAmmo;
         reloadCoroutine = false;
     }
 
 
-    private void ShootBullet()
+    protected void ShootBullet()
     {
         SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
@@ -274,6 +279,7 @@ public class Gun : MonoBehaviour
     {
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+        bulletPrefab.GetComponent<Bullet>().direction = position - transform.position;
     }
 
     // Here we add some randomness for weapon spread

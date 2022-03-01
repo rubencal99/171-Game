@@ -7,4 +7,6 @@ public abstract class Bullet : MonoBehaviour
 {
     [field: SerializeField]
     public virtual BulletDataSO BulletData { get; set; } // Virtual lets us change this 
+
+    public Vector2 direction;
 }

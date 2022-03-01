@@ -30,7 +30,8 @@ public class StarChaseAction : AIAction
     }
 
     public virtual void Update() {
-        aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+        if(target)
+            aiMovementData.PointOfInterest = (Vector2)target.transform.position;
         // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
 
