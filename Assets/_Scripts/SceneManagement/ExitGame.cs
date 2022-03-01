@@ -7,7 +7,7 @@ public class ExitGame : MonoBehaviour
 {
     // Start is called before the first frame update
     public void doExitGame() {
-        UnityEditor.EditorApplication.isPlaying = false;
+       // UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
