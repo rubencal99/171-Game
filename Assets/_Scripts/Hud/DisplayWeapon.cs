@@ -16,14 +16,14 @@ public class DisplayWeapon : MonoBehaviour
 
     public GameObject obj;
     public PlayerWeapon w;
-    private Image weaponImage;
-    private SpriteRenderer SR;
+    public Image weaponImage;
+    public SpriteRenderer SR;
     public Sprite weaponSprite;
 
     // Start is called before the first frame update
     void Start()
     {
-        w = obj.GetComponent<PlayerWeapon>();
+        w = obj.GetComponentInChildren<PlayerWeapon>();
         weaponImage = this.gameObject.GetComponent<Image>();
         UpdateWeapon();
     }
