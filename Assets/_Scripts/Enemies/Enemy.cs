@@ -26,8 +26,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public bool isDying = false;
     public float deathTimer = 10.0f;
 
-    public GameObject[] Loot;
-
     private AgentRenderer agentRenderer;
 
     private AgentAnimations agentAnimations;
@@ -95,6 +93,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         yield return new WaitForSeconds(deathTimer);
         if (isDying == true)
         {
+            Debug.Log("DEAD DEAD DEAD");
             Die();
         }
     }
@@ -102,18 +101,10 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     private void Die()
     {
         int odds = Random.Range(1, 20);
-        if (odds == 1)
+        if (odds == 2)
         {
-            int item;
-            GameObject thisLoot;
-            item = Random.Range(1, 20);
-            // if(item < 5)
-            // {
-            //     thisLoot = Instantiate(Loot[1]) as GameObject;
-            //     thisLoot.transform.position = gameObject.transform.position;
-            // }
-            // thisLoot = Instantiate(Loot[0]) as GameObject;
-            // thisLoot.transform.position = gameObject.transform.position;
+            Loot thisLoot = FindObjectOfType<Loot>(); 
+            thisLoot?.Pick(gameObject);
         }
         else
         {
