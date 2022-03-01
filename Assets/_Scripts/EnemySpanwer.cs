@@ -12,14 +12,20 @@ public class EnemySpanwer : MonoBehaviour
     public int numToSpawn = 1;
     public int enemyCount;
 
+     public int enemyDensity = 20;
+
     public float offset = 1.0f;
 
     public bool spawned = false;
 
+    private RoomNode thisroom;
+
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount = this.numToSpawn;
+        thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
+        enemyCount = thisroom.area / enemyDensity;
+
         // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 

@@ -35,6 +35,6 @@ public class PassiveItem : MonoBehaviour
 }
 
 
-public enum ItemType { 
-   HP, MoveSpeed, ReloadSpeed, Recoil, FireRate
-}
+// public enum ItemType { 
+//    HP, MoveSpeed, ReloadSpeed, Recoil, FireRate
+// }

@@ -58,6 +58,7 @@ MonoBehaviour:
   spawnDelay: 1
   numToSpawn: 8
   enemyCount: 0
+  enemyDensity: 100
   offset: 5.64
   spawned: 0
 --- !u!212 &3392075588759141863
