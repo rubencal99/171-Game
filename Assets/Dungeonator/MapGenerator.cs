@@ -19,6 +19,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject ShopKeeperSpawner;
     [SerializeField]
     private GameObject EntryCollider;
+    [SerializeField]
+    public GameObject Exit;
     public int columns;
     public int rows;
     public static TileNode[,] map;
@@ -322,6 +324,14 @@ public class MapGenerator : MonoBehaviour
 
     void AddEntryColliders()
     {
+        foreach(RoomNode room in Rooms) {
+             if(room.RoomType != "Start")
+             {
+                Vector3 pos1 = new Vector3(room.roomCenter.x + 3, room.roomCenter.y + 3, 0);
+                GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
+                entryCollider1.transform.parent = room.transform;
+            }
+        }
         foreach(CorridorNode corridor in Corridors)
         {
             if (corridor != null && corridor.tileList.Count > 0)
@@ -334,10 +344,10 @@ public class MapGenerator : MonoBehaviour
                 
                 if(room1.RoomType != "Start")
                 {
-                    // instantiate entry collider at 1st tile coupled with 1st room
-                    Vector3 pos1 = new Vector3(tile1.x, tile1.y, 0);
-                    GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
-                    entryCollider1.transform.parent = room1.transform;
+                    // // instantiate entry collider at 1st tile coupled with 1st room
+                    // Vector3 pos1 = new Vector3(tile1.x, tile1.y, 0);
+                    // GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
+                    // entryCollider1.transform.parent = room1.transform;
                 }
 
                 //grab 2nd element
@@ -345,9 +355,9 @@ public class MapGenerator : MonoBehaviour
                 RoomNode room2 = corridor.TargetRoomList.Last();
 
                 // instantiate entry collider at 2nd tile coupled with 2nd room
-                Vector3 pos2 = new Vector3(tile2.x, tile2.y, 0);
-                GameObject entryCollider2 = Instantiate(EntryCollider, pos2, Quaternion.identity);
-                entryCollider2.transform.parent = room2.transform;
+                // Vector3 pos2 = new Vector3(tile2.x, tile2.y, 0);
+                // GameObject entryCollider2 = Instantiate(EntryCollider, pos2, Quaternion.identity);
+                // entryCollider2.transform.parent = room2.transform;
             }
             
         }
