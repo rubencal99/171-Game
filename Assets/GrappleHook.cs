@@ -21,6 +21,9 @@ LineRenderer line;
     }
 
     private void Update() {
+        Debug.Log("Is Hook button down: " + Input.GetButtonDown("Hook"));
+        Debug.Log("Are we trying to grapple: " + isGrappling);
+        Debug.Log("Has the Hook augment been bought: " + PlayerAugmentations.AugmentationList["Hookshot"] );
         if (Input.GetButtonDown("Hook") && !isGrappling && PlayerAugmentations.AugmentationList["Hookshot"] == true) {
             StartGrapple();
         }
