@@ -7,9 +7,11 @@ public class RoomClearCheck : MonoBehaviour
     public GameObject[] Loot;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
+    RoomNode room;
     // Start is called before the first frame update
     void Start()
     {
+        room = transform.GetComponent<RoomNode>();
         foreach(Transform child in transform) {
            if(child.tag == "Spawner")
            {
@@ -64,8 +66,8 @@ public class RoomClearCheck : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        LootClear thisLoot = FindObjectOfType<LootClear>();
-        thisLoot?.Pick();
+        LootClear thisLoot = LootClear.Instance;
+        thisLoot?.Pick(room);
         Debug.Log("room cleared");
  
     }

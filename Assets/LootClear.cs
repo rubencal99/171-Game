@@ -7,49 +7,41 @@ public class LootClear : MonoBehaviour
 {
     public GameObject[] LootItems;
     public GameObject[] LootWeapons;
+    public static LootClear Instance;
 
-    public void Pick()
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public void Pick(RoomNode room)
     {
         int odds = Random.Range(1, 5);
         if (odds == 1)
         {
-            PickWeapon();
+            PickWeapon(room);
         } else
         {
-            PickItem();
+            PickItem(room);
         }
     }
 
-    private void PickItem()
+    private void PickItem(RoomNode room)
     {
-        Vector3 setPosition = transform.position;
-        setPosition.x += 0;
-        setPosition.y += 0;
-
         int item;
         GameObject thisItemLoot;
         item = Random.Range(0, 5);
         thisItemLoot = Instantiate(LootItems[item]) as GameObject;
-        GameObject x = GameObject.Find("Floor");
-        Tilemap cent = x.GetComponent(typeof(Tilemap)) as Tilemap;
-        Vector3 center = cent.cellBounds.center;
-        thisItemLoot.transform.position = center; ;
+        thisItemLoot.transform.position = new Vector3 (room.roomCenter.x, room.roomCenter.y, 0);
         Debug.Log("CLEAR Item");
     }
 
-    private void PickWeapon()
+    private void PickWeapon(RoomNode room)
     {
-        Vector3 setPosition = transform.position;
-        setPosition.x = 0;
-        setPosition.y = 0;
-
         int weap;
         weap = Random.Range(0, 5);
         GameObject thisWeapLoot = Instantiate(LootWeapons[weap]) as GameObject;
-        GameObject x = GameObject.Find("Floor");
-        Tilemap cent = x.GetComponent(typeof(Tilemap)) as Tilemap;
-        Vector3 center = cent.cellBounds.center;
-        thisWeapLoot.transform.position = center;
+        thisWeapLoot.transform.position = new Vector3 (room.roomCenter.x, room.roomCenter.y, 0);
         Debug.Log("CLEAR Weap");
 
     }
