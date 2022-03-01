@@ -24,35 +24,19 @@ public class PlayerInventory : MonoBehaviour
 
 //        foreach(PassiveItem item in items) {
 
-//            if(!item.applied)
-//                 switch(item.type)
-//                 {
-//                 //    case ItemType.HP:
-//                             Debug.Log("HP passive upgrade");
-//                             hpUP++;
-//                             break;
+           if(!item.applied)
+                switch(item.type)
+                {
+                    case PassiveType.HP:
+                            Debug.Log("HP passive upgrade");
+                            hpUP++;
+                            break;
                     
-//              //       case ItemType.MoveSpeed:
-//                         Debug.Log("movespeed passive upgrade");
-//                         moveSpeedUp += item.intensity;
-//                         break;
-//                 }
-
-//     }
-
-//         if(hpUP != 0) {
-//         player.setMaxHp( player.MaxHealth + hpUP);
-//         player.Heal(hpUP);
-//         }
-
-//         if(moveSpeedUp != 0.0f) {
-//             float percentIncrease = moveSpeedUp / 100.0f;
-//             percentIncrease *= stats.SpeedMultiplier;
-            
-
-//             stats.SpeedMultiplier += percentIncrease;
-//             Debug.Log("speed multiplier is" + stats.SpeedMultiplier); 
-//         }
+                    case PassiveType.MoveSpeed:
+                        Debug.Log("movespeed passive upgrade");
+                        moveSpeedUp += item.intensity;
+                        break;
+                }
 
     }
 
