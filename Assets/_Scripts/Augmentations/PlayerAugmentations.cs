@@ -13,10 +13,14 @@ public static class PlayerAugmentations : object
     public static float BulletTT = 0.5f;
     public static float BulletTimeIntensity = 0.5f;
 
+    public static bool  GunnerGloves = false;
+    public static float GunnerGlovesSpeed = 1.5f;
+
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {
         {"Epinephrine", Epinephrine},
-        {"BulletTime", BulletTime}
+        {"BulletTime", BulletTime},
+        {"GunnerGloves", GunnerGloves}
     };
 
     public static void ResetAugmentations()

@@ -14,6 +14,11 @@ public class EnemyGun : Gun
         rateOfFireCoroutine = false;
     }
 
+    public override float getReloadSpeed()
+    {
+        return weaponData.ReloadSpeed;
+    }
+
     protected override void UseWeapon()
     {
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
