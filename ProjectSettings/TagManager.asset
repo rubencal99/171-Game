@@ -10,8 +10,7 @@ TagManager:
   - Avatar
   - Gun Muzzle
   - AStar
-  - Loot
-  - LootClear
+  - Map Gen
   layers:
   - Default
   - TransparentFX

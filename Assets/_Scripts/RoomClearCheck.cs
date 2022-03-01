@@ -5,6 +5,8 @@ using UnityEngine;
 public class RoomClearCheck : MonoBehaviour
 {
     public GameObject[] Loot;
+
+    private GameObject exit;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
     RoomNode room;
