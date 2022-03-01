@@ -52,6 +52,10 @@ MonoBehaviour:
   - {fileID: 5148991598613868802, guid: c8fc90d13a901674091f49a161e97b45, type: 3}
   - {fileID: 2328509941553751831, guid: 298ca68bec793e948abaf10602a57dc6, type: 3}
   - {fileID: 6638867989798731449, guid: 8e2b49a1531d84a4e892b6539b1eccf1, type: 3}
+  - {fileID: 5148991598613868802, guid: e6d41c6a84c67824188ff94d7290a7cd, type: 3}
+  - {fileID: 5148991598613868802, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+  - {fileID: 5148991598613868802, guid: f820ac08bee362d4281179ac4d389b8c, type: 3}
+  - {fileID: 5148991598613868802, guid: 7ba59a605de580b4589331873c4f45c7, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
