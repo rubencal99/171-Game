@@ -18,7 +18,8 @@ public class Shop : MonoBehaviour
         ShopKeeper = transform.Find("avatar").GetComponent<SpriteRenderer>();
         ShopKeeper.color = new Color(175, 175, 175, 1);
         //Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);
-        ShopUI = transform.Find("UI_Shop");
+        // ShopUI = transform.Find("UI_Shop");
+        ShopUI = transform.Find("Canvas-ShopUI");
         CloseShop();
     }
 
