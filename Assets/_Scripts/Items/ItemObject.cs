@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType{
-    Augment, 
+    Augmentation, 
     Weapon,
     Passive,
     Default
 }
 
-public abstract class Item : ScriptableObject 
+public abstract class ItemObject : ScriptableObject 
 {
     public GameObject prefab;
     public ItemType type;

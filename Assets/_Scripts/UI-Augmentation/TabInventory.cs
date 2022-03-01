@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TabInventory
 {
-    private List<Item> itemList;
+    private List<ItemObject> itemList;
 
     public TabInventory() {
-        itemList = new List<Item>(); 
+        itemList = new List<ItemObject>(); 
 
         Debug.Log("Inventory"); 
     }
