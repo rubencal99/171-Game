@@ -24,19 +24,19 @@ public class PlayerInventory : MonoBehaviour
 
 //        foreach(PassiveItem item in items) {
 
-           if(!item.applied)
-                switch(item.type)
-                {
-                    case PassiveType.HP:
-                            Debug.Log("HP passive upgrade");
-                            hpUP++;
-                            break;
+        //    if(!item.applied)
+        //         switch(item.type)
+        //         {
+        //             case PassiveType.HP:
+        //                     Debug.Log("HP passive upgrade");
+        //                     hpUP++;
+        //                     break;
                     
-                    case PassiveType.MoveSpeed:
-                        Debug.Log("movespeed passive upgrade");
-                        moveSpeedUp += item.intensity;
-                        break;
-                }
+        //             case PassiveType.MoveSpeed:
+        //                 Debug.Log("movespeed passive upgrade");
+        //                 moveSpeedUp += item.intensity;
+        //                 break;
+        //         }
 
     }
 
