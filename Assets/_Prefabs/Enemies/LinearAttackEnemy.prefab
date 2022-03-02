@@ -524,6 +524,8 @@ MonoBehaviour:
   isDying: 0
   deathTimer: 10
   Loot: []
+  agentAnimations: {fileID: 0}
+  knockback: 0
 --- !u!114 &2447108988747857650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,12 +538,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bb40e9182e9904aa5baf88dd79372e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 0}
   <MovementData>k__BackingField: {fileID: 11400000, guid: d18af5c2740834543b97592195d16bf2, type: 2}
   currentVelocity: 0
   movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  knockback: 0
+  knockbackPower: 0
+  knockbackTimer: 0
+  knockbackDirection: {x: 0, y: 0}
 --- !u!114 &1334037856497830754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
   <Weapon>k__BackingField: {fileID: 0}
+  enemy: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 7003599507522047168}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
@@ -668,7 +676,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 663eab6938ef1a1469a07bea88dacfea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -690,7 +698,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3709464250471344649, guid: d9af8daa03ce62e4e989bd9a777d00be, type: 3}
-  m_Color: {r: 0.9150943, g: 0.6690548, b: 0.866295, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -753,7 +761,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -12572
+  m_InstanceId: 47198
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
