@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 // IAgent has not been implemented for player yet
 public class Player : MonoBehaviour, IAgent, IHittable
@@ -52,6 +53,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private Vector3 SpawnPosition;
     private AgentRenderer agentRenderer;
 
+    public ParticleSystem bloodSystem;
+    public Image bloodOverlay;
+
 
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input 
@@ -74,8 +78,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        bloodSystem = GetComponent<ParticleSystem>();
+        bloodOverlay = GetComponent<Image>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
+
     }
 
     private void Update()
@@ -88,6 +95,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
          if(!PlayerAugmentations.hippoApplied){
              PlayerSignaler.CallHippoSkin();
          }
+         if(Input.GetButtonDown("blood") == true){
+             Debug.Log("Just pressed o");
+            bloodSystem.Play();
+         }
+         var tempOverlayColor = bloodOverlay.color;
+         tempOverlayColor.a = (float)(1 - Health/MaxHealth);
+         bloodOverlay.color = tempOverlayColor;
     }
 
     public void Heal(int amount) {
@@ -107,8 +121,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
-
+        bloodSystem.Play();
         Health -= damage;
+        var tempOverlay = bloodOverlay;
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         if (Health > 0)    
             OnGetHit?.Invoke();
