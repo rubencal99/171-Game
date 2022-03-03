@@ -387,6 +387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
   <Weapon>k__BackingField: {fileID: 0}
+  enemy: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 8890228632923692817}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
@@ -904,7 +905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5148991600045721718}
   - component: {fileID: 5148991600045721719}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: MovementCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
