@@ -75,9 +75,9 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dec948719747f2846ba3f6a0151a9eb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6624172ca9f6c3944a9e2bb4da8e888d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.0666667, y: 0.4}
@@ -155,6 +155,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnReload>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1826593068742810107
 GameObject:
   m_ObjectHideFlags: 0

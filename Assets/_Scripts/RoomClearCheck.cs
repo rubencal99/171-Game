@@ -5,8 +5,6 @@ using UnityEngine;
 public class RoomClearCheck : MonoBehaviour
 {
     public GameObject[] Loot;
-
-    private GameObject exit;
     private int enemyCount;
     private List<GameObject> spawners = new List<GameObject>();
     RoomNode room;
@@ -75,19 +73,20 @@ public class RoomClearCheck : MonoBehaviour
     }
 
     public void setRoomActive() {
-        // Debug.Log("room set active");
+         Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    child.GetChild(0).gameObject.SetActive(true);
                    child.GetComponent<EntryCollider>().toggleGuarded();
            }
            if(child.tag == "Spawner")
-                child.GetComponent<EnemySpanwer>().enabled = true;
+               child.gameObject.SetActive(true);
+               // child.GetComponent<EnemySpanwer>().enabled = true;
                 //   foreach(Transform grandchild in transform)
                 //     grandchild.GetComponent<EnemyBrain>().enabled = true;
-            if(child.tag == "Enemy") {
-               child.GetComponent<EnemyBrain>().enabled = true;
-           }   
+        //     if(child.tag == "Enemy") {
+        //        child.GetComponent<EnemyBrain>().enabled = true;
+        //    }   
               }
           
     }

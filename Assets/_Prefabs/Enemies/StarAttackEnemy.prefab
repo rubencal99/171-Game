@@ -347,8 +347,8 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   isDying: 0
-  deathTimer: 10
-  agentAnimations: {fileID: 0}
+  deathTimer: 5
+  Loot: []
   knockback: 0
 --- !u!114 &4224652976851562825
 MonoBehaviour:
@@ -734,7 +734,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 38248
+  m_InstanceId: 105286
 --- !u!114 &3476428367443596128
 MonoBehaviour:
   m_ObjectHideFlags: 0

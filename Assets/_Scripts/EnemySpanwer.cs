@@ -12,14 +12,20 @@ public class EnemySpanwer : MonoBehaviour
     public int numToSpawn = 1;
     public int enemyCount;
 
+     public int enemyDensity = 20;
+
     public float offset = 1.0f;
 
     public bool spawned = false;
 
+    private RoomNode thisroom;
+
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount = this.numToSpawn;
+        thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
+        enemyCount = thisroom.area / enemyDensity;
+
         // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
@@ -45,14 +51,15 @@ public class EnemySpanwer : MonoBehaviour
         RoomNode room = this.transform.parent.GetComponent<RoomNode>();
         Vector3 room_center = new Vector3((float)room.roomCenter.x, (float)room.roomCenter.y, 0f);
 
-        Vector3 offsetPosition = new Vector3(Random.Range(room_center.x - (room.width /2f) +2f, (room_center.x + (room.width /2f) - 2f)), 
-                                        Random.Range(room_center.y - (room.length/2f) +2f, (room_center.y + (room.length /2f)-2f)),
+        Vector3 offsetPosition = new Vector3(Random.Range(room_center.x - (room.width /2f) +3f, (room_center.x + (room.width /2f) - 3f)), 
+                                        Random.Range(room_center.y - (room.length/2f) +4f, (room_center.y + (room.length /2f)-4f)),
                                             0f);
 
         var source = Enemies[Random.Range(0, Enemies.Length)];
         var clone = Instantiate(source, offsetPosition, Quaternion.identity);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
+        clone.GetComponent<EnemyBrain>().enabled = true;
         if(stopSpawn){
             CancelInvoke("SpawnObject");
         }
