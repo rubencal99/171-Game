@@ -206,7 +206,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
         }
 
         // Create new Vector2 when dodge button (Left shift) pressed
-        if (Input.GetAxisRaw("Dodge") > 0) {
+        if (Input.GetAxisRaw("Dodge") > 0 || Input.GetAxisRaw("Fire2") > 0 ) {
             if (dodging == false && DodgeTimer <= 0)
             {
                 DodgeTimer = .3f;
