@@ -60,9 +60,9 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 8
+  numToSpawn: 10
   enemyCount: 0
-  enemyDensity: 120
+  enemyDensity: 173
   offset: 5.64
   spawned: 0
 --- !u!212 &3392075588759141863
