@@ -323,6 +323,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   isDying: 0
+  deathTimer: 10
   Loot: []
 --- !u!114 &4224652976851562825
 MonoBehaviour:
@@ -664,6 +665,9 @@ MonoBehaviour:
   isDying: 0
   isEnraged: 0
   isBuffed: 0
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  baseColor2: {r: 0, g: 0, b: 0, a: 0}
+  generatedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &5148991599991413044
 MonoBehaviour:
   m_ObjectHideFlags: 0
