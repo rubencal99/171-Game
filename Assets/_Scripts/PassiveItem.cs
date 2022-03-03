@@ -9,7 +9,7 @@ public class PassiveItem : MonoBehaviour
     public string name;
     public string description;
 
-    public ItemType type;
+    public PassiveType type;
 
     //intensity = percentage of effect (0 - 100)
      [Range(-100.0f,100.0f)]
@@ -35,6 +35,6 @@ public class PassiveItem : MonoBehaviour
 }
 
 
-public enum ItemType { 
+public enum PassiveType { 
    HP, MoveSpeed, ReloadSpeed, Recoil, FireRate
 }

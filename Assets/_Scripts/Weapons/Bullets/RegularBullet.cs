@@ -8,6 +8,8 @@ public class RegularBullet : Bullet
     // Need reference to our bullet's rigidbody
     protected Rigidbody2D rigidbody2D;
 
+    protected float decay;
+
     public override BulletDataSO BulletData
     {
         get => base.BulletData;
@@ -17,6 +19,20 @@ public class RegularBullet : Bullet
             rigidbody2D = GetComponent<Rigidbody2D>();
             // drag is for bullets that slow down (ex. shotgun shells)
             rigidbody2D.drag = BulletData.Friction;
+            // decay is for bullets that expire (melee)
+            decay = BulletData.decayTime;
+        }
+    }
+
+    public virtual void Update()
+    {
+        if(BulletData.hasDecay)
+        {
+            decay -= Time.deltaTime;
+            if(decay <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

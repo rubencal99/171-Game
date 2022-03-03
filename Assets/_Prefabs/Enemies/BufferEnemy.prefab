@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 304799389376354106}
   - component: {fileID: 8318422101437242734}
   - component: {fileID: 4258413871444944143}
+  - component: {fileID: 7982613495381505530}
   m_Layer: 0
   m_Name: avatar
   m_TagString: Untagged
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6199735865095511310, guid: 977a30c23b5663c468a341fdc680d531, type: 3}
-  m_Color: {r: 0.47322398, g: 0.45834818, b: 0.9433962, a: 1}
+  m_Sprite: {fileID: 85760979984628720, guid: fc746fa7f36150f4a8c744b9c5c44fe3, type: 3}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,6 +102,9 @@ MonoBehaviour:
   isDying: 0
   isEnraged: 0
   isBuffed: 0
+  baseColor: {r: 0, g: 0, b: 0, a: 0}
+  baseColor2: {r: 0, g: 0, b: 0, a: 0}
+  generatedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &304799389376354106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +140,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 51660
+  m_InstanceId: -70038
 --- !u!114 &8318422101437242734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +193,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7982613495381505530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304799389376354052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc22ae1adcca50e4b97a7b30d75eb596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &304799389573957243
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +450,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   isDying: 0
+  deathTimer: 10
   Loot: []
+  agentAnimations: {fileID: 0}
+  knockback: 0
 --- !u!114 &8786173802619174727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,12 +466,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bb40e9182e9904aa5baf88dd79372e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 0}
   <MovementData>k__BackingField: {fileID: 11400000, guid: 81187357337f4584f92d8f2c47da5352, type: 2}
   currentVelocity: 0
   movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  knockback: 0
+  knockbackPower: 0
+  knockbackTimer: 0
+  knockbackDirection: {x: 0, y: 0}
 --- !u!114 &5375141200987966167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,13 +484,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304799391290785548}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Target>k__BackingField: {fileID: 0}
   <Weapon>k__BackingField: {fileID: 0}
+  enemy: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 2507322668031623310}
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:

@@ -405,8 +405,16 @@ public class MapGenerator : MonoBehaviour
                 BossRoom = bossRoom;
             }
         }
-        int index = Random.Range(0, 4);
+        int index = Random.Range(1, 4);
+        if(index >= BossRoom.RoomsByDistance.Count)
+        {
+            index = 1;
+        }
         RoomNode shop = BossRoom.RoomsByDistance[index];
+        if(shop == StartRoom)
+        {
+            shop = BossRoom.RoomsByDistance[index-1];
+        }
         shop.RoomType = "Shop";
         ShopRoom = shop;
     }

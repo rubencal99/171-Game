@@ -11,7 +11,7 @@ public class MeleeBullet : RegularBullet
         lifetime = BulletData.decayTime;
     }
 
-    void Update() {
+    public override void Update() {
         if(lifetime < 0.0f)
             Destroy(gameObject);
         
