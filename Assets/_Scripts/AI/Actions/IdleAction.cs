@@ -10,5 +10,6 @@ public class IdleAction : AIAction
         // aiMovementData.PointOfInterest = transform.position;
         enemyBrain.Move(aiMovementData.Direction);
         enemyBrain.Aim(aiMovementData.PointOfInterest);
+        enemyBrain.StopAttack();
     }
 }
