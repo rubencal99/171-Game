@@ -18,7 +18,8 @@ public class Shop : MonoBehaviour
         ShopKeeper = transform.Find("avatar").GetComponent<SpriteRenderer>();
         ShopKeeper.color = new Color(175, 175, 175, 1);
         //Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);
-        ShopUI = transform.Find("UI_Shop");
+        // ShopUI = transform.Find("UI_Shop");
+        ShopUI = transform.Find("Canvas-ShopUI");
         CloseShop();
     }
 
@@ -54,7 +55,7 @@ public class Shop : MonoBehaviour
     {
         if(Vector2.Distance(Player.transform.position, transform.position) <= ShopDistance)
         {
-            Debug.Log("In Distance of Shopkeeper");
+            // Debug.Log("In Distance of Shopkeeper");
             if(inDistance == false)
             {
                 inDistance = true;
@@ -63,7 +64,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not in Distance of Shopkeeper");
+            // Debug.Log("Not in Distance of Shopkeeper");
             if(inDistance == true)
             {
                 inDistance = false;

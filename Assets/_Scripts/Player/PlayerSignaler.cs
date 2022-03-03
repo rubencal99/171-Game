@@ -16,6 +16,15 @@ public static class PlayerSignaler : object
         playerPassives = obj.GetComponent<PlayerPassives>();
     }*/
 
+    public static float CallGunnerGloves(Gun gun)
+    {
+        if(PlayerAugmentations.AugmentationList["GunnerGloves"] == true)
+        {
+            return gun.weaponData.ReloadSpeed / gun.passives.ReloadMultiplier / PlayerAugmentations.GunnerGlovesSpeed;
+        }
+        return gun.weaponData.ReloadSpeed / gun.passives.ReloadMultiplier;
+    }
+
     public static void CallBulletTime()
     {
         if(PlayerAugmentations.AugmentationList["BulletTime"] == true)
