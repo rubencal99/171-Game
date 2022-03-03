@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     private void Die()
     {
-        int odds = Random.Range(1, 20);
+        int odds = Random.Range(1, 8);
         if (odds == 2)
         {
             Loot thisLoot = FindObjectOfType<Loot>(); 
