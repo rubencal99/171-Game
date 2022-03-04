@@ -64,6 +64,7 @@ public class RoomClearCheck : MonoBehaviour
         {
         if(child.tag == "Spawner" || child.tag == "Door")
             Destroy(child.gameObject);
+            GraphUpdater.InRoom = false;
         }
 
         LootClear thisLoot = LootClear.Instance;

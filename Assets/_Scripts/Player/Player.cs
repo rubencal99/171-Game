@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public RoomNode currentRoom;
 
     [field: SerializeField]
     public int Health { get; set; } = 6;
