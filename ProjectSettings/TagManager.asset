@@ -11,6 +11,17 @@ TagManager:
   - Gun Muzzle
   - AStar
   - Map Gen
+  - Loot
+  - AR
+  - SG
+  - BAS
+  - LBA
+  - LP
+  - LG
+  - ML
+  - SN
+  - UZ
+  - SP
   layers:
   - Default
   - TransparentFX
