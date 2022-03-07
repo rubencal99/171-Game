@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SniperWeaponData
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: be63eabfb0056264384defbe65ab29b0, type: 2}
-  <MagazineCapacity>k__BackingField: 100
-  <MaxAmmoCapacity>k__BackingField: 150
+  <MagazineCapacity>k__BackingField: 4
+  <MaxAmmoCapacity>k__BackingField: 40
   <AutomaticFire>k__BackingField: 0
-  <WeaponDelay>k__BackingField: 0.05
-  <ReloadSpeed>k__BackingField: 1
+  <WeaponDelay>k__BackingField: 0.97
+  <ReloadSpeed>k__BackingField: 1.9
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
   bulletCount: 0

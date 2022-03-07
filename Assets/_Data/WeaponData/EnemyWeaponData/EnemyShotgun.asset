@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: EnemyShotgun
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: ca00283b322aacf4fa25433b189ab8e4, type: 2}
-  <MagazineCapacity>k__BackingField: 12
+  <BulletData>k__BackingField: {fileID: 11400000, guid: b39eec4c328c62346866c1d9bd995a70, type: 2}
+  <MagazineCapacity>k__BackingField: 6
   <MaxAmmoCapacity>k__BackingField: 299
   <AutomaticFire>k__BackingField: 0
-  <WeaponDelay>k__BackingField: 0.27
+  <WeaponDelay>k__BackingField: 0.87
   <ReloadSpeed>k__BackingField: 3.19
-  <SpreadAngle>k__BackingField: 18.6
+  <SpreadAngle>k__BackingField: 8.1
   multiBulletShot: 1
   bulletCount: 6
   recoilIntensity: 0

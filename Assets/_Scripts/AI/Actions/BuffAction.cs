@@ -60,6 +60,7 @@ public class BuffAction : AIAction
         MutationProcess();
         allyPassives.SpeedMultiplier *= speedBuff;
         allyPassives.ROFMultiplier *= ROFBuff;
+        enemyBrain.enemy.agentAnimations.SetBuffAnimation(true);
     }
 
     void MutationProcess()

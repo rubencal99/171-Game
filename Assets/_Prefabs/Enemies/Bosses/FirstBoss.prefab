@@ -750,7 +750,7 @@ MonoBehaviour:
         m_CallState: 2
   isDying: 0
   deathTimer: 10
-  Loot: []
+  knockback: 0
 --- !u!114 &2447108988747857650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,12 +763,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bb40e9182e9904aa5baf88dd79372e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 0}
   <MovementData>k__BackingField: {fileID: 11400000, guid: d18af5c2740834543b97592195d16bf2, type: 2}
   currentVelocity: 0
   movementDirection: {x: 0, y: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  knockback: 0
+  knockbackPower: 0
+  knockbackTimer: 0
+  knockbackDirection: {x: 0, y: 0}
 --- !u!114 &1334037856497830754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,7 +781,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867989798731449}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
@@ -1001,6 +1006,7 @@ MonoBehaviour:
   spawnDelay: 1
   numToSpawn: 10
   enemyCount: 0
+  enemyDensity: 20
   offset: 1
   spawned: 0
 --- !u!1 &6638867990098400945

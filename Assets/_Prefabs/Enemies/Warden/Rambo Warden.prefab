@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &312451461336910927
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 574053724425864106, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: <Distance>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975247185072324443, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: c247a492b7df87e498a80a1d02455dd2, type: 2}
+    - target: {fileID: 2264437711611984058, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: <Distance>k__BackingField
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082328776209422230, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: Range
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868802, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_Name
+      value: Rambo Warden
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991599991413044, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148991599991413044, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: m_InstanceId
+      value: -275804
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
