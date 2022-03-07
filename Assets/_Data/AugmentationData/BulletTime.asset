@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: BulletTime
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6627072280610743293, guid: 76f26034b15b5db48845495a8d7d3387, type: 3}
+  Type: 0
+  Description: 
   Name: BulletTime
   Cost: 60
