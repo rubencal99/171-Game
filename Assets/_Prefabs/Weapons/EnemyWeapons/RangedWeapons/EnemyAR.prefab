@@ -4977,7 +4977,7 @@ MonoBehaviour:
   ammo: 0
   totalAmmo: 0
   infAmmo: 0
-  weaponData: {fileID: 11400000, guid: 2728cb34d68bc85459c3b7d80b4b2110, type: 2}
+  weaponData: {fileID: 11400000, guid: be2dd75d0c841cf4a8212df0ad03216b, type: 2}
   swordData: {fileID: 0}
   isPlayer: 0
   rateOfFireCoroutine: 0
@@ -5028,3 +5028,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnReload>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
