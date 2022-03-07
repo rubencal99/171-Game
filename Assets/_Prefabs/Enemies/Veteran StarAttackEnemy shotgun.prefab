@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c90bcbc7eea4134bb8bc86380a01bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Distance>k__BackingField: 5
+  <Distance>k__BackingField: 6
 --- !u!1 &5148991598613868802
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
-  <Health>k__BackingField: 2
+  <Health>k__BackingField: 3
   <Damage>k__BackingField: 0
   <Range>k__BackingField: 0
   <OnGetHit>k__BackingField:
@@ -310,7 +310,6 @@ MonoBehaviour:
         m_CallState: 2
   isDying: 0
   deathTimer: 10
-  Loot: []
   agentAnimations: {fileID: 0}
   knockback: 0
 --- !u!114 &4224652976851562825
@@ -697,7 +696,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 62348
+  m_InstanceId: 63500
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1042,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c90bcbc7eea4134bb8bc86380a01bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Distance>k__BackingField: 4.32
+  <Distance>k__BackingField: 6
 --- !u!1 &8495769572527809728
 GameObject:
   m_ObjectHideFlags: 0
