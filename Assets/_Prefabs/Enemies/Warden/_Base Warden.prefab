@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 4265053995489830791}
   - component: {fileID: 455060234977314213}
   - component: {fileID: 574053724425864106}
+  - component: {fileID: 3428199019040753919}
   m_Layer: 0
   m_Name: TransitionChase
   m_TagString: Untagged
@@ -197,6 +198,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 5
+--- !u!114 &3428199019040753919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2380794417765894069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1239a618acf4b4c819b901c0268391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!1 &5148991598613868802
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +230,7 @@ GameObject:
   - component: {fileID: 2458706460706828943}
   - component: {fileID: 103517109481660597}
   m_Layer: 8
-  m_Name: StarAttackEnemy
+  m_Name: _Base Warden
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +364,7 @@ MonoBehaviour:
         m_CallState: 2
   isDying: 0
   deathTimer: 5
-  Loot: []
+  agentAnimations: {fileID: 0}
   knockback: 0
 --- !u!114 &4224652976851562825
 MonoBehaviour:
@@ -734,7 +750,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 105286
+  m_InstanceId: 155638
 --- !u!114 &3476428367443596128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1060,7 @@ GameObject:
   - component: {fileID: 5518311763601667643}
   - component: {fileID: 5896464762282046524}
   - component: {fileID: 2264437711611984058}
+  - component: {fileID: 361133794623580123}
   m_Layer: 0
   m_Name: TransitionCloseEnough
   m_TagString: Untagged
@@ -1094,6 +1111,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Distance>k__BackingField: 4.32
+--- !u!114 &361133794623580123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8101022033461068483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1239a618acf4b4c819b901c0268391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!1 &8495769572527809728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1176,7 @@ MonoBehaviour:
   <IsAlone>k__BackingField: 0
   <Arrived>k__BackingField: 0
   <Attack>k__BackingField: 0
-  Range: 100
+  Range: 7
 --- !u!114 &5539040630503835385
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,6 +27,10 @@ public class WeaponDataSO : ScriptableObject
     [field: SerializeField]
     [field: Range(0.05f, 2f)]
     public float WeaponDelay { get; set; } = 0.1f;
+    
+    [field: SerializeField]
+    [field: Range(0f, 2f)]
+    public float WeaponDelayRandomizer { get; set; } = 0.1f;
 
     [field: SerializeField]
     [field: Range(0.1f, 10)]

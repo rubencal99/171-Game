@@ -49,6 +49,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
     private AgentRenderer agentRenderer;
+    [SerializeField]
+    private bool invulnerable;
 
 
     public PlayerStateManager PlayerState; // game odject for agent input
@@ -97,6 +99,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void GetHit(int damage, GameObject damageDealer)
     {    
+        if(invulnerable)
+        {
+            return;
+        }
         //check if player is Dodging, if true, dont decrement health
         if (PlayerState.DiveState.diving) {
             return;

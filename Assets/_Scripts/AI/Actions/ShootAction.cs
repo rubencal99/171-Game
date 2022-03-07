@@ -12,5 +12,15 @@ public class ShootAction : AIAction
         if (Mathf.Abs(distance) < aiActionData.Range){
             enemyBrain.Attack();
         }
+        else{
+            enemyBrain.StopAttack();
+        }
+    }
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, aiActionData.Range);
+        Gizmos.color = Color.white;
     }
 }
