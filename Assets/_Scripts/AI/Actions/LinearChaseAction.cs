@@ -6,10 +6,10 @@ public class LinearChaseAction : AIAction
 {
     public override void TakeAction()
     {
-        var direction = enemyBrain.Target.transform.position - transform.position;
+        var direction = (Vector3)aiMovementData.PointOfInterest - transform.position;
         aiMovementData.Direction = direction.normalized;
-        aiMovementData.PointOfInterest = enemyBrain.Target.transform.position;
+        // aiMovementData.PointOfInterest = enemyBrain.Target.transform.position;
         enemyBrain.Move(aiMovementData.Direction);
-        enemyBrain.Aim(aiMovementData.PointOfInterest);
+        // enemyBrain.Aim(aiMovementData.PointOfInterest);
     }
 }

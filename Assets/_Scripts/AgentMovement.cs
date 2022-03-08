@@ -46,7 +46,7 @@ public class AgentMovement : MonoBehaviour
     }
 
     // Takes Vector2 from AgentInput OnMovementKeyPressed
-    public void MoveAgent(Vector2 movementInput)
+    public virtual void MoveAgent(Vector2 movementInput)
     {
         // rigidbody2D.velocity = movementInput.normalized * currentVelocity;
         if (movementInput.magnitude > 0)
