@@ -22,7 +22,7 @@ public class DisplayAmmo : MonoBehaviour
         if (w != null){
             ammo = w.weapon.ammo;
             totalAmmo = w.weapon.TotalAmmo;
-            AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
+            AmmoText.text = ammo.ToString() + "             " + totalAmmo.ToString();
         }
     }
 }

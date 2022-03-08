@@ -28,6 +28,7 @@ public class PlayerProneState : PlayerBaseState
         playerInput = Player.playerInput;
         playerInput.PlayerMovement.ResetSpeed();
         standTime = playerInput.PlayerMovement.MovementData.standingDelay;
+        Player.transform.Find("shadow").gameObject.SetActive(false);  
 
     }
 
