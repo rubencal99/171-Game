@@ -15,18 +15,20 @@ public class StarChaseAction : AIAction
 
     protected Seeker seeker;
     protected Rigidbody2D rb;
+    protected CapsuleCollider2D movementCollider;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        seeker = transform.parent.parent.GetComponent<Seeker>();
+        seeker = transform.parent.parent.GetComponentInChildren<Seeker>();
         rb = transform.parent.parent.GetComponent<Rigidbody2D>();
+        movementCollider = seeker.transform.GetComponent<CapsuleCollider2D>();
         target = enemyBrain.Target;
 
         aiMovementData.PointOfInterest = (Vector2)target.transform.position;
 
         // This calls our UpdatePath func on 0.5 sec loop
-        InvokeRepeating("UpdatePath", 0f, 0.1f);
+        InvokeRepeating("UpdatePath", 0f, .1f);
     }
 
     public virtual void Update() {
@@ -39,7 +41,7 @@ public class StarChaseAction : AIAction
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+            seeker.StartPath(movementCollider.transform.position, target.transform.position, OnPathComplete);
         }
     }
 
@@ -68,14 +70,14 @@ public class StarChaseAction : AIAction
             reachedEnd = false;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)movementCollider.transform.position).normalized;
         aiMovementData.Direction = direction;
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
 
         enemyBrain.Move(aiMovementData.Direction);
         // enemyBrain.Aim(aiMovementData.PointOfInterest);
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector2.Distance(movementCollider.transform.position, path.vectorPath[currentWaypoint]);
 
 
         if (distance < nextWaypointDistance)

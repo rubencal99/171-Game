@@ -76,7 +76,7 @@ public class RoomNode : MonoBehaviour
         //roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
         // CenterTile = tileList[(int)tileList.Count/2];
         //roomCenter = new Vector2Int(CenterTile.x, CenterTile.y);
-        roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
+        roomCenter = new Vector2Int((firstPoint.x + lastPoint.x) / 2 + 1, (firstPoint.y + lastPoint.y) / 2);
         
         foreach(TileNode tile in tileList)
         {
