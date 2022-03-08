@@ -9,7 +9,7 @@ public class TimeDecision : AIDecision
     public override bool MakeADecision()
     {
         time -= Time.deltaTime;
-        if (time <= 0)
+        if (time <= 0.1)
         {
             time = Timer;
             return true;

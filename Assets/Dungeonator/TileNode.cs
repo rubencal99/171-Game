@@ -15,6 +15,7 @@ public class TileNode
     public int x;
     public int y;
     // public bool isDoor;
+    public bool isObstacle = false;
 
     public TileNode()
     {
