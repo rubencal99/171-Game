@@ -7,8 +7,8 @@ public class EnemySpanwer : MonoBehaviour
     public GameObject[]  Enemies;
     public bool infiniteSpawn = false;
     public bool stopSpawn = false;
-    public float spawnTime = 1.0f;
-    public float spawnDelay = 1.0f;
+    public float spawnTime = 0.1f;
+    public float spawnDelay = 0.2f;
     public int numToSpawn = 1;
     public int enemyCount;
 
@@ -20,6 +20,8 @@ public class EnemySpanwer : MonoBehaviour
 
     private RoomNode thisroom;
 
+    private bool canSpawn = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +32,13 @@ public class EnemySpanwer : MonoBehaviour
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
-        if(infiniteSpawn)
-            InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
-        else {
-            for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
-                Invoke("SpawnObject", spawnTime);
-            }
-        }
+        // if(infiniteSpawn)
+        //     InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        // else {
+        //     for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
+                 StartCoroutine(invoke_spawn());
+        //     }
+        // }
     }
 
     // void Update() {
@@ -44,6 +46,20 @@ public class EnemySpanwer : MonoBehaviour
     //         oneStepCloser();
     // }
 
+    public IEnumerator invoke_spawn() {
+        // canSpawn = false;
+        // yield return new WaitForSeconds(spawnTime);
+        // Invoke("SpawnObject", spawnTime);
+        // canSpawn = true;
+         if(infiniteSpawn)
+            InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
+        else {
+            for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
+                Invoke("SpawnObject", spawnTime);
+                yield return new WaitForSeconds(spawnTime);
+            }
+        }
+    }
     public void SpawnObject(){
         // Vector3 offsetPosition = transform.position;
         // offsetPosition.x += Random.Range(-offset, offset);
@@ -51,15 +67,16 @@ public class EnemySpanwer : MonoBehaviour
         RoomNode room = this.transform.parent.GetComponent<RoomNode>();
         Vector3 room_center = new Vector3((float)room.roomCenter.x, (float)room.roomCenter.y, 0f);
 
-        Vector3 offsetPosition = new Vector3(Random.Range(room_center.x - (room.width /2f) +3f, (room_center.x + (room.width /2f) - 3f)), 
-                                        Random.Range(room_center.y - (room.length/2f) +4f, (room_center.y + (room.length /2f)-4f)),
-                                            0f);
+        TileNode spawnTile = room.GrabValidTile();
+
+        Vector3 offsetPosition = new Vector3(spawnTile.x, spawnTile.y, 0f);
 
         var source = Enemies[Random.Range(0, Enemies.Length)];
         var clone = Instantiate(source, offsetPosition, Quaternion.identity);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
-        clone.GetComponent<EnemyBrain>().enabled = true;
+        StartCoroutine(enable_brain(clone));
+      //  clone.GetComponent<EnemyBrain>().enabled = true;
         if(stopSpawn){
             CancelInvoke("SpawnObject");
         }
@@ -81,6 +98,13 @@ public class EnemySpanwer : MonoBehaviour
         // if(enemyCount <= 0)
         //     checkIfClear();
        
+   }
+
+   public IEnumerator enable_brain(GameObject enemy) {
+      enemy.transform.Find("WeaponParent").gameObject.SetActive(false);  
+      yield return new WaitForSeconds(spawnDelay);
+      enemy.GetComponent<EnemyBrain>().enabled = true;
+      enemy.transform.Find("WeaponParent").gameObject.SetActive(true);
    }
 //     public void checkIfClear() {
 //         foreach(Transform child in transform.parent)

@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
 {
     // This gives us a place to instantiate the bullet ie reference to our gun
     [SerializeField]
-    protected GameObject muzzle;
+    public GameObject muzzle;
 
     protected AgentWeapon weaponParent;
 

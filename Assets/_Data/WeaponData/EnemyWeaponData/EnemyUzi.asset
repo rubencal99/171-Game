@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
-  m_Name: EnmyUzi
+  m_Name: EnemyUzi
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 228827c04f9752e45820b2c0ad292f8f, type: 2}
   <MagazineCapacity>k__BackingField: 30
   <MaxAmmoCapacity>k__BackingField: 150
   <AutomaticFire>k__BackingField: 1
-  <WeaponDelay>k__BackingField: 0.05
+  <WeaponDelay>k__BackingField: 0.15
+  <WeaponDelayRandomizer>k__BackingField: 0
   <ReloadSpeed>k__BackingField: 1
-  <SpreadAngle>k__BackingField: 21.8
+  <SpreadAngle>k__BackingField: 25
   multiBulletShot: 0
   bulletCount: 0
   recoilIntensity: 0

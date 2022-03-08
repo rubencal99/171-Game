@@ -54,7 +54,8 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     m_Colors:
-    - BaseColor: {r: 1, g: 1, b: 1, a: 0}
+    - BaseColor: {r: 0.9960785, g: 0.9960785, b: 0.9960785, a: 0}
+    - BaseColor2: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 0}
     - Color_306c984b51744bf8838258727b14ac24: {r: 1, g: 0, b: 0, a: 0}
     - SkinTone: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

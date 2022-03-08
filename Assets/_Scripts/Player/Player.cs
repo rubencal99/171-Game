@@ -7,6 +7,12 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public RoomNode currentRoom;
+
+    
+    public bool invincible = false;
+
+    public int damage_iframes = 20;
 
     [field: SerializeField]
     public int Health { get; set; } = 6;
@@ -49,6 +55,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
     private AgentRenderer agentRenderer;
+    [SerializeField]
 
 
     public PlayerStateManager PlayerState; // game odject for agent input
@@ -97,6 +104,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void GetHit(int damage, GameObject damageDealer)
     {    
+        if(invincible)
+        {
+            return;
+        }
         //check if player is Dodging, if true, dont decrement health
         if (PlayerState.DiveState.diving) {
             return;
@@ -104,8 +115,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         Health -= damage;
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
-        if (Health > 0)    
+        if (Health > 0) {   
             OnGetHit?.Invoke();
+            StartCoroutine(iframes_damage());
+        }
         else
         {
             OnDie?.Invoke();
@@ -164,5 +177,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public void Respawn()
     {
         transform.position = SpawnPosition;
+    }
+
+     public IEnumerator iframes_damage() {
+        invincible = true;
+        yield return new WaitForSeconds((float)damage_iframes / 60f);
+        invincible = false;
     }
 }
