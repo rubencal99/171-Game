@@ -1113,7 +1113,6 @@ GameObject:
   - component: {fileID: 3423806440538705489}
   - component: {fileID: 7795958295990640065}
   - component: {fileID: 2451682342186880233}
-  - component: {fileID: 1993159710}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1192,20 +1191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1.778
---- !u!114 &1993159710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2950450401807142855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AspectMode: 2
-  m_AspectRatio: 1.7777778
 --- !u!1 &3301937255683214853
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,6 +2033,7 @@ MonoBehaviour:
   inDistance: 0
   Player: {fileID: 0}
   ShopKeeper: {fileID: 0}
+  inShop: 0
 --- !u!1 &6638867990098400945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2173,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1743950
+  m_InstanceId: 26242
 --- !u!82 &1927202829762752866
 AudioSource:
   m_ObjectHideFlags: 0

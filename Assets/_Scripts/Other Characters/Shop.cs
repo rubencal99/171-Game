@@ -10,6 +10,7 @@ public class Shop : MonoBehaviour
     public bool inDistance = false;
     public GameObject Player;
     public SpriteRenderer ShopKeeper;
+    public bool inShop;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,8 @@ public class Shop : MonoBehaviour
         // ShopUI = transform.Find("UI_Shop");
         ShopUI = transform.Find("Canvas-ShopUI");
         CloseShop();
+        inShop = false;
+        
     }
 
     // Update is called once per frame
@@ -28,7 +31,14 @@ public class Shop : MonoBehaviour
     {
         CheckDistance();
         //Debug.Log("Shopkeeper color: " + ShopKeeper.color);
+        if (inShop == true){
+            if (Input.GetKeyDown(KeyCode.Escape)){
+                // Debug.Log("esc press");
+                CloseShop();   
+            }
+        }
     }
+
 
     public void HighlightShopKeeper()
     {
@@ -43,12 +53,21 @@ public class Shop : MonoBehaviour
     public void DisplayShop()
     {
         ShopUI.gameObject.SetActive(true);
+        inShop = true;
     }
 
     // This function when invoked disables the Shop UI
     public void CloseShop()
     {
         ShopUI.gameObject.SetActive(false);
+        StartCoroutine(closingShop());
+    }
+
+    IEnumerator closingShop()
+    {
+        yield return new WaitForSeconds(0.01f);
+        Debug.Log("After 0.01s");
+        inShop = false;
     }
 
     public void CheckDistance()
