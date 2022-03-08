@@ -54,6 +54,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public GameObject DeathMenuUI;
 
     private Vector3 SpawnPosition;
+
+    [SerializeField]
+    private ParticleSystem blood;
     private AgentRenderer agentRenderer;
     [SerializeField]
 
@@ -79,6 +82,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         agentRenderer = GetComponentInChildren<AgentRenderer>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
+        blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -114,6 +118,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
+        blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         if (Health > 0) {   
             OnGetHit?.Invoke();
