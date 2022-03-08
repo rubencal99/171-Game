@@ -15,7 +15,7 @@ public class EntryCollider : MonoBehaviour
 
        // boxCol = GetComponent<BoxCollider2D>();
         room = this.transform.parent.GetComponent<RoomNode>();
-        this.gameObject.transform.localScale = new Vector3((float)room.length - 1f, (float)room.width - 1f, 1f);
+        this.gameObject.transform.localScale = new Vector3((float)room.length, (float)room.width, 1f);
     }
     
     private bool guarded = false;

@@ -102,7 +102,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    void BinarySpace()
+    async void BinarySpace()
     {
         // Instantiate first room space (whole map)
         var temp = new int[4];
@@ -238,10 +238,14 @@ public class MapGenerator : MonoBehaviour
             int x2 = (int)room[2];
             int y2 = (int)room[3];
 
+            int length = (x2 - 1) - (x1 + 1);
+            int width = (y2 - 1) - (y1 + 1);
+
             GameObject tempRoom = new GameObject(tempCount.ToString());
             tempRoom.AddComponent<RoomNode>();
 
             RoomNode NewRoom = tempRoom.GetComponent<RoomNode>();
+            NewRoom.AddDimensions(length, width);
             if (!HasEntry)
             {
                 NewRoom.RoomType = "Start";
@@ -261,16 +265,18 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.MaxNeighbors = 3;
             }
 
+            
             // Here we fill the negative space with empty space 
             // I.e. room creation
-            for (int i = x1 + 1; i < x2 - 1; i++)
+            for (int i = 0; i < length; i++)
             {
-                for (int j = y1 + 1; j < y2 - 1; j++)
+                for (int j = 0; j < width; j++)
                 {
-                    map[i, j].value = 1;
-                    map[i,j].room = NewRoom;
-                    roomTiles.Add(map[i, j]);
-                    NewRoom.tileList.Add(map[i, j]);
+                    map[x1 + 1 + i, y1 + 1 + j].value = 1;
+                    map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
+                    roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                    NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                    NewRoom.tileCount++;
                 }
             }
             AddLights(x1, y1, x2, y2, NewRoom);
@@ -287,6 +293,19 @@ public class MapGenerator : MonoBehaviour
         AddCorridors();
         AddEntryColliders();
         AddSpawners();
+        AddObstacles();
+    }
+
+    void AddObstacles()
+    {
+        foreach(RoomNode room in Rooms)
+        {
+            if (room.RoomType == "Start" || room.RoomType == "Shop" || room.RoomType == "Boss")
+            {
+                continue;
+            }
+            ObstacleInjector.PlaceObstacles(room);
+        }
     }
 
     void AddSpawners()
@@ -327,7 +346,7 @@ public class MapGenerator : MonoBehaviour
         foreach(RoomNode room in Rooms) {
              if(room.RoomType != "Start")
              {
-                Vector3 pos1 = new Vector3(room.roomCenter.x + 3, room.roomCenter.y + 3, 0);
+                Vector3 pos1 = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
                 GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
                 entryCollider1.transform.parent = room.transform;
             }

@@ -5,7 +5,9 @@ using System.Linq;
 
 public class RoomNode : MonoBehaviour
 {
-    public List<TileNode> tileList= new List<TileNode>();
+    // public List<TileNode> tileList= new List<TileNode>();
+    public TileNode[,] tileList;
+    public int tileCount = 0;
     public TileNode CenterTile;
     public Vector2Int roomCenter;
     public int length;
@@ -56,10 +58,17 @@ public class RoomNode : MonoBehaviour
         set{}
     }
 
+    public void AddDimensions(int l, int w)
+    {
+        length = l;
+        width = w;
+        tileList = new TileNode[length, width];
+    }
+
     public void CalculateCenter()
     {
-        TileNode firstTile = tileList[0];
-        TileNode lastTile = tileList[tileList.Count-1];
+        TileNode firstTile = tileList[0, 0];
+        TileNode lastTile = tileList[length - 1, width - 1];
 
         Vector2Int firstPoint = new Vector2Int(firstTile.x, firstTile.y);
         Vector2Int lastPoint = new Vector2Int(lastTile.x, lastTile.y);
@@ -67,7 +76,7 @@ public class RoomNode : MonoBehaviour
         //roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
         // CenterTile = tileList[(int)tileList.Count/2];
         //roomCenter = new Vector2Int(CenterTile.x, CenterTile.y);
-        roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
+        roomCenter = new Vector2Int((firstPoint.x + lastPoint.x) / 2 + 1, (firstPoint.y + lastPoint.y) / 2);
         
         foreach(TileNode tile in tileList)
         {
@@ -80,7 +89,7 @@ public class RoomNode : MonoBehaviour
         if(CenterTile == null)
         {
             Debug.Log("Center tile not found");
-            CenterTile = tileList[(int)tileList.Count/2];
+            CenterTile = tileList[(int)(length/2), (int)(width/2)];
         }
         
         length = lastTile.x - firstTile.x;
@@ -139,6 +148,6 @@ public class RoomNode : MonoBehaviour
 
     public int CompareTo(RoomNode otherRoom)
     {
-        return otherRoom.tileList.Count.CompareTo(tileList.Count);
+        return otherRoom.tileCount.CompareTo(tileCount);
     }
 }
