@@ -47,6 +47,7 @@ public class AIState : MonoBehaviour
             {
                 if (transition.PositiveResult != null)
                 {
+                    Debug.Log("Transitioning to " + transition.PositiveResult);
                     enemyBrain.ChangetoState(transition.PositiveResult);
                     return;
                 }
