@@ -76,7 +76,7 @@ public class RoomNode : MonoBehaviour
         //roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
         // CenterTile = tileList[(int)tileList.Count/2];
         //roomCenter = new Vector2Int(CenterTile.x, CenterTile.y);
-        roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
+        roomCenter = new Vector2Int((firstPoint.x + lastPoint.x) / 2 + 1, (firstPoint.y + lastPoint.y) / 2);
         
         foreach(TileNode tile in tileList)
         {
@@ -95,6 +95,44 @@ public class RoomNode : MonoBehaviour
         length = lastTile.x - firstTile.x;
         width = lastTile.y - firstTile.y;
         area = length * width;
+    }
+
+    public TileNode GrabValidTile()
+    {
+        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 3, roomCenter.x + (width /2) - 3),
+                                        Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
+
+        var count = 0;
+        TileNode tile = FindTileByPoint(r.x, r.y);
+        while(tile.value != 1)
+        {
+            if(count >= 3)
+            {
+                Debug.Log("Couldn't find valid tile.");
+                tile = FindTileByPoint(roomCenter.x, roomCenter.y + 6);
+                break;
+            }
+            r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 3, roomCenter.x + (width /2) - 3),
+                                Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
+            tile = FindTileByPoint(r.x, r.y);
+            count++;
+        }
+        return tile;
+    }
+
+    public TileNode FindTileByPoint(int x, int y)
+    {
+        for(int i = 0; i < length; i++)
+        {
+            for(int j = 0; j < width; j++)
+            {
+                if(tileList[i, j].x == x && tileList[i, j].y == y)
+                {
+                    return tileList[i, j];
+                }
+            }
+        }
+        return null;
     }
 
     public void SetAccessibleFromStart()

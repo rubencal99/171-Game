@@ -346,7 +346,7 @@ public class MapGenerator : MonoBehaviour
         foreach(RoomNode room in Rooms) {
              if(room.RoomType != "Start")
              {
-                Vector3 pos1 = new Vector3(room.roomCenter.x + 3, room.roomCenter.y + 3, 0);
+                Vector3 pos1 = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
                 GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
                 entryCollider1.transform.parent = room.transform;
             }
