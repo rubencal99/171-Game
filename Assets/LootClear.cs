@@ -32,7 +32,7 @@ public class LootClear : MonoBehaviour
         GameObject thisItemLoot;
         item = Random.Range(0, 5);
         thisItemLoot = Instantiate(LootItems[item]) as GameObject;
-        thisItemLoot.transform.position = new Vector3 (room.roomCenter.x, room.roomCenter.y, 0);
+        thisItemLoot.transform.position = CalculateSpawn(room);
         Debug.Log("CLEAR Item");
     }
 
@@ -41,9 +41,24 @@ public class LootClear : MonoBehaviour
         int weap;
         weap = Random.Range(0, 5);
         GameObject thisWeapLoot = Instantiate(LootWeapons[weap]) as GameObject;
-        thisWeapLoot.transform.position = new Vector3 (room.roomCenter.x, room.roomCenter.y, 0);
+        thisWeapLoot.transform.position = CalculateSpawn(room);
         Debug.Log("CLEAR Weap");
 
+    }
+
+    private Vector3 CalculateSpawn(RoomNode room)
+    {
+        Vector3 spawnPosition;
+        if(room.FindTileByPoint(room.roomCenter.x, room.roomCenter.y).value != 1)
+        {
+            var tile = room.GrabValidTile();
+            spawnPosition = new Vector3(tile.x, tile.y, 0);
+        }
+        else
+        {
+            spawnPosition = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
+        }
+        return spawnPosition;
     }
 
 }

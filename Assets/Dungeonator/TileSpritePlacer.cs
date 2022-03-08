@@ -59,7 +59,7 @@ public class TileSpritePlacer : MonoBehaviour
                 {
                     wallPosition.x = i;
                     wallPosition.y = j;
-                    PaintSingleTile(Collisions, obstaclesTile, wallPosition);
+                    PaintSingleTile(Collisions, colliderTile, wallPosition);
                 }
 
             }
