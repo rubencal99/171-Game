@@ -10,6 +10,9 @@ TagManager:
   - Avatar
   - Gun Muzzle
   - AStar
+  - Map Gen
+  - Loot
+  - shadow
   layers:
   - Default
   - TransparentFX

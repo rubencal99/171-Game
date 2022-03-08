@@ -12,5 +12,6 @@ public class AttackAction : AIAction
         enemyBrain.Aim(aiMovementData.PointOfInterest);
         aiActionData.Attack = true;
         enemyBrain.Attack();
+        //enemyBrain.StopAttack();
     }
 }

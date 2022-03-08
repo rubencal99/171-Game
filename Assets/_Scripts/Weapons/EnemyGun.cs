@@ -9,7 +9,7 @@ public class EnemyGun : Gun
     protected override IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
-        float delay = UnityEngine.Random.Range(weaponData.WeaponDelay, weaponData.WeaponDelay + 1);
+        float delay = UnityEngine.Random.Range(weaponData.WeaponDelay, weaponData.WeaponDelay + weaponData.WeaponDelayRandomizer);
         yield return new WaitForSeconds(delay / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }

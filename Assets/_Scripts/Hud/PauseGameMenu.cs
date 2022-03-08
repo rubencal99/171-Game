@@ -9,6 +9,7 @@ public class PauseGameMenu : MonoBehaviour
     private void start()
     {
         isPause = false;
+        // Debug.Log("size: \n" + UnityEngine.Screen.width + "\n" + UnityEngine.Sreen.height);
     }
 
     private void Update()

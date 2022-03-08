@@ -21,6 +21,8 @@ public class UI_Shop : MonoBehaviour
 
     private void Start()
     {
+        
+        
         int i = 0;
         foreach(ShopItemSO itemData in ShopInventory)
         {
@@ -37,15 +39,34 @@ public class UI_Shop : MonoBehaviour
     {
         Transform shopItemTransform = Instantiate(shopItemTemplate, container);
         RectTransform shopItemRectTransform = shopItemTransform.GetComponent<RectTransform>();
-
-
-        float shopItemHeight = 90f;
-        shopItemRectTransform.anchoredPosition = new Vector2(0, -shopItemHeight * positionIndex);
+        
+        Text shopItemText = shopItemTransform.GetComponent<Text>();         //for storge the name and price of item, it is set to be invisible in the scene
+        Vector2 position = new Vector2(0,0);                                //Initialize the position of slots
+        
+        Debug.Log("Screen size: " + Screen.width + " x " +Screen.height);
+        //Hard coded position for the slots, need a standard size of the screen
+        if(positionIndex == 0 ){
+            position = new Vector2(Screen.width / 7, Screen.height / 30);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
+        } else if(positionIndex == 1){
+            position = new Vector2(- Screen.width / 5 , - Screen.height / 5);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
+        }else{
+            position = new Vector2(Screen.width / 5 ,- Screen.height / 5);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
+        }
+        
+        // float shopItemHeight = 90f;
+        //shopItemRectTransform.anchoredPosition = new Vector2 (0, shopItemHeight * positionIndex);
+        shopItemRectTransform.anchoredPosition = position;
 
         shopItemTransform.Find("NameText").GetComponent<TextMeshProUGUI>().SetText(itemName);
         shopItemTransform.Find("PriceText").GetComponent<TextMeshProUGUI>().SetText(itemPrice.ToString());
-
         shopItemTransform.Find("ItemSprite").GetComponent<Image>().sprite = itemSprite;
+
+        //Storge the name and price of item in button's text component, easier to access
+        shopItemText.text = (itemName + "\n" + "$ " +itemPrice.ToString()); 
+
         shopItemTransform.GetComponent<PrefabHolder>().itemData = itemData;
         shopItemTransform.GetComponent<PrefabHolder>().shop = this;
         shopItemTransform.gameObject.SetActive(true);
