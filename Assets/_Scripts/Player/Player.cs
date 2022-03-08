@@ -19,6 +19,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
      [field: SerializeField]
     public int MaxHealth { get; private set; } = 6;
 
+    [field: SerializeField] 
+    public HealthBarController healthbar;
+
     [field: SerializeField]
     public int Wallet { get; private set; } = 80;
 
@@ -54,14 +57,15 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private Vector3 SpawnPosition;
     private AgentRenderer agentRenderer;
-    [SerializeField]
-
+    //[SerializeField]
 
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input 
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
+    private float Fhealth;
+    private float FmaxHealth;
 
     private void Awake()
     {
@@ -78,15 +82,22 @@ public class Player : MonoBehaviour, IAgent, IHittable
         agentRenderer = GetComponentInChildren<AgentRenderer>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
+
+        // Set health variables
+        Fhealth = Health;
+        FmaxHealth = MaxHealth;
     }
 
     private void Update()
     {
-         if (isDead==true){                      //For Debug the instance kill 
-             Health -= Health;
-             OnDie?.Invoke();
-             StartCoroutine(WaitToDie());
-         }
+        if (isDead==true){                      //For Debug the instance kill 
+            Health -= Health;
+            OnDie?.Invoke();
+            StartCoroutine(WaitToDie());
+        }
+        Fhealth = Health;
+        FmaxHealth = MaxHealth;
+        healthbar.SetSize(Fhealth/FmaxHealth); // set the healthbar based of current heath
     }
 
     public void Heal(int amount) {

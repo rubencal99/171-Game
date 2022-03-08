@@ -50,6 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI
+    uniqueID: 491266117
+    locked: 0
   - name: Floor
     uniqueID: 3538385617
     locked: 0
@@ -67,9 +70,6 @@ TagManager:
     locked: 0
   - name: Bullets
     uniqueID: 1722504919
-    locked: 0
-  - name: UI
-    uniqueID: 491266117
     locked: 0
   - name: Debug
     uniqueID: 3146635093
