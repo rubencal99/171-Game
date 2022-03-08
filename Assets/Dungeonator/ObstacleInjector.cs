@@ -99,6 +99,7 @@ public static class ObstacleInjector
                 if(Mathf.Abs(i) == Mathf.Abs(j))
                 {
                     room.tileList[centerCrossX + i, centerCrossY + j].value = 0;
+                    room.tileList[centerCrossX + i, centerCrossY + j].isObstacle = true;
                 }
             }
         }
@@ -113,6 +114,7 @@ public static class ObstacleInjector
                 if(i == 0 || j == 0)
                 {
                     room.tileList[centerCrossX + i, centerCrossY + j].value = 0;
+                    room.tileList[centerCrossX + i, centerCrossY + j].isObstacle = true;
                 }
             }
         }
@@ -125,6 +127,7 @@ public static class ObstacleInjector
             for(int j = -1; j <= 1; j++)
             {
                 room.tileList[centerSquareX + i, centerSquareX + j].value = 0;
+                  room.tileList[centerSquareX + i, centerSquareX + j].isObstacle = true;
             }
         }
     }
@@ -138,6 +141,7 @@ public static class ObstacleInjector
                 if(i == 0 || j == 0)
                 {
                     room.tileList[centerCrossX + i, centerCrossY + j].value = 0;
+                    room.tileList[centerCrossX + i, centerCrossY + j].isObstacle = true;
                 }
             }
         }
@@ -155,6 +159,7 @@ public static class ObstacleInjector
             for(int j = -y; j <= y; j++)
             {
                 room.tileList[centerX + i, centerY + j].value = 0;
+                room.tileList[centerX + i, centerY + j].isObstacle = true;
             }
         }
     }
