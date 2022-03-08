@@ -12,16 +12,7 @@ TagManager:
   - AStar
   - Map Gen
   - Loot
-  - AR
-  - SG
-  - BAS
-  - LBA
-  - LP
-  - LG
-  - ML
-  - SN
-  - UZ
-  - SP
+  - shadow
   layers:
   - Default
   - TransparentFX
