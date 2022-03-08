@@ -6,6 +6,7 @@ public class PauseGameMenu : MonoBehaviour
 {
     public GameObject PauseMenu;
     public bool isPause;
+    public Shop Shop;
     private void start()
     {
         isPause = false;
@@ -17,24 +18,25 @@ public class PauseGameMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Debug.Log("Esc press");
-            if (isPause == true)
-            {
-                OnResume();
-            }else
-            {
-                OnPause();
+            if (Shop.inShop == false){              //Shop can also use "esc" to exit,therefore need to be not in shop for press esc to pause
+                // Debug.Log("not in shop");
+                if (isPause == true)
+                {
+                    OnResume();
+                }else
+                {
+                    OnPause();
+                }
             }
-            
         }
     }
 
     public void OnPause()
     {
-        var Menu = PauseMenu.GetComponent<Canvas>();
+        var Menu = PauseMenu.GetComponent<Canvas>();        
         Menu.enabled = !Menu.enabled;
         isPause = true;
         Time.timeScale = 0;
-
     }
 
     public void OnResume()

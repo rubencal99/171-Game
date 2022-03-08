@@ -31,6 +31,7 @@ public class PlayerRunGunState : PlayerBaseState
         mainCamera = Camera.main;
         dodging = false;
         TimeManager.RevertSlowMotion();
+        Player.transform.Find("shadow").gameObject.SetActive(true);  
     }
 
     public override void UpdateState(PlayerStateManager Player)
