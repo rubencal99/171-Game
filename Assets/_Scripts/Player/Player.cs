@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 // IAgent has not been implemented for player yet
 public class Player : MonoBehaviour, IAgent, IHittable
@@ -57,6 +58,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     [SerializeField]
     private ParticleSystem blood;
+
+    [SerializeField]
+    private Image overlay;
+
     private AgentRenderer agentRenderer;
     [SerializeField]
 
@@ -83,6 +88,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
+        overlay = GameObject.Find("Overlay").GetComponent<Image>();
     }
 
     private void Update()
@@ -92,6 +98,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
+         setOverlay();
+    }
+
+    private void setOverlay(){
+        var curHealth = (float)Health/MaxHealth;
+        //Debug.Log("health/MaxHealth: " + curHealth);
+        var tempAlpha = (float)(1.0 - curHealth);
+        var tempOverlay = overlay.color;
+        tempOverlay.a = tempAlpha;
+        overlay.color = tempOverlay;
+        //Debug.Log("Now 1 - health/Maxhealth: " + tempAlpha);
+        //Debug.Log("What alpha should be: " + (float)(1.0 - (float)(Health/MaxHealth)));
     }
 
     public void Heal(int amount) {
