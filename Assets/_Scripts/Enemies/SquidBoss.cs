@@ -9,6 +9,7 @@ public class SquidBoss : MonoBehaviour
     public static int cycloneRange = 3;
     public static bool atCycloneDest = false;
     public BossMovement bossMovement;
+    public BossAnimations bossAnimator;
 
     public void Start()
     {
@@ -16,6 +17,17 @@ public class SquidBoss : MonoBehaviour
         atCycloneDest = false;
         cycloneAttempts = 3;
         bossMovement = transform.parent.GetComponent<BossMovement>();
+        bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
+    }
+
+    public void Update()
+    {
+        CheckCyclone();
+    }
+
+    public void CheckCyclone()
+    {
+        bossAnimator.SetCycloneAnimation(!atCycloneDest);
     }
 
     public void AdjustCycloneSpeed(bool val)
