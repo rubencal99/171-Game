@@ -7,4 +7,8 @@ public class AugmentationSO : ItemObject
 {
     public string Name;
     public int Cost;
+
+    public void Awake() {
+        Type = ItemType.Augmentation;
+    }
 }
