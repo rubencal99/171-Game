@@ -82,7 +82,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         bloodOverlay = GetComponent<Image>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
-
+        //var oriOverlay = bloodOverlay.color;
     }
 
     private void Update()
@@ -95,15 +95,15 @@ public class Player : MonoBehaviour, IAgent, IHittable
          if(!PlayerAugmentations.hippoApplied){
              PlayerSignaler.CallHippoSkin();
          }
-         if(Input.GetButtonDown("blood") == true){
-             Debug.Log("Just pressed o");
-            bloodSystem.Play();
-         }
+         setOverlay();
+    }
+
+    public void setOverlay(){
+         //make a new overlay
          var tempOverlayColor = bloodOverlay.color;
          tempOverlayColor.a = (float)(1 - Health/MaxHealth);
          bloodOverlay.color = tempOverlayColor;
     }
-
     public void Heal(int amount) {
         Health += amount;
         if(Health > MaxHealth)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 // Mostly responsible for enemy collisions & data storage
 public class Enemy : MonoBehaviour, IHittable, IAgent
@@ -33,6 +34,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     private AgentMovement agentMovement;
     public bool knockback;
 
+    public ParticleSystem Blood;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -42,11 +45,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         agentAnimations = GetComponentInChildren<AgentAnimations>();
         enemyBrain = GetComponent<EnemyBrain>();
         agentMovement = GetComponent<AgentMovement>();
+        //Blood = GetComponentInChildren<ParticleSystem>();
+        Blood = GameObject.Find("EnemyBloodSplatter2").GetComponent<ParticleSystem>();
     }
 
     public void GetHit(int damage, GameObject damageDealer)
     {
         Health -= damage;
+        Blood.Play();
         BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
         Debug.Log("In Enemy Get Hit");
         Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
