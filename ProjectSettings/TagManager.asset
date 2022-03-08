@@ -13,6 +13,7 @@ TagManager:
   - Map Gen
   - Loot
   - shadow
+  - bloodparticles
   layers:
   - Default
   - TransparentFX
