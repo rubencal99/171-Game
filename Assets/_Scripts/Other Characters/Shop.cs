@@ -66,7 +66,7 @@ public class Shop : MonoBehaviour
     IEnumerator closingShop()
     {
         yield return new WaitForSeconds(0.01f);
-        Debug.Log("After 0.01s");
+        // Debug.Log("After 0.01s");
         inShop = false;
     }
 
