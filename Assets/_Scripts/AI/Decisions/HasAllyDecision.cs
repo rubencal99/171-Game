@@ -14,6 +14,7 @@ public class HasAllyDecision : AIDecision
         if(allies.Length > 1){
             return true;
         }
+        enemyBrain.enemy.agentAnimations.SetBuffAnimation(false);
         return false;
     }
 }

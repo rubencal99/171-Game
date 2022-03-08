@@ -13,25 +13,14 @@ public static class PlayerAugmentations : object
     public static float BulletTT = 0.5f;
     public static float BulletTimeIntensity = 0.5f;
 
-    public static bool Whiskers = false;
-
-    public static bool whiskerApplied = false;
-
-    public static bool HippoSkin = false;
-
-    public static bool hippoApplied = false;
-
-    public static bool Hookshot = false;
-
-    public static bool hasHook = false;
+    public static bool  GunnerGloves = false;
+    public static float GunnerGlovesSpeed = 1.5f;
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {
         {"Epinephrine", Epinephrine},
         {"BulletTime", BulletTime},
-        {"Whiskers", Whiskers},
-        {"HippoSkin", HippoSkin},
-        {"HookShot", Hookshot}
+        {"GunnerGloves", GunnerGloves}
     };
 
     public static void ResetAugmentations()
@@ -40,7 +29,6 @@ public static class PlayerAugmentations : object
         {
             AugmentationList[key] = false;
         }
-        hippoApplied = false;
     }
 
     public static void PrintDictionary()
