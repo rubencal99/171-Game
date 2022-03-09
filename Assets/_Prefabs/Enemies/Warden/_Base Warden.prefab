@@ -379,6 +379,7 @@ MonoBehaviour:
   deathTimer: 5
   agentAnimations: {fileID: 0}
   knockback: 0
+  blood: {fileID: 8604645050922426427}
 --- !u!114 &4224652976851562825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,7 +736,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 31224
+  m_InstanceId: 119138
 --- !u!114 &3476428367443596128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,5 +1415,10 @@ PrefabInstance:
 --- !u!4 &9055020713866494385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6657395350745081320, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
+  m_PrefabInstance: {fileID: 2434816348231984217}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8604645050922426427 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6243083664929031266, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
   m_PrefabInstance: {fileID: 2434816348231984217}
   m_PrefabAsset: {fileID: 0}

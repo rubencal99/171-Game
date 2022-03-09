@@ -15,6 +15,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public int damage_iframes = 20;
 
+
+    public int damage_iframes = 200;
+
     [field: SerializeField]
     public int Health { get; set; } = 6;
 

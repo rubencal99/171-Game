@@ -268,7 +268,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 34800
+  m_InstanceId: 119954
 --- !u!114 &6276508036476323189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,6 +715,7 @@ MonoBehaviour:
   deathTimer: 2
   agentAnimations: {fileID: 0}
   knockback: 0
+  blood: {fileID: 732201216037152324}
 --- !u!114 &6738678754074683228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1520,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6657395350745081320, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
   m_PrefabInstance: {fileID: 6668334219772781094}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &732201216037152324 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6243083664929031266, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
+  m_PrefabInstance: {fileID: 6668334219772781094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7239631586699485670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1586,14 +1592,14 @@ PrefabInstance:
     - {fileID: 4166236928070218022, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
     - {fileID: 4173212850514091514, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
---- !u!4 &8144298215097433880 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
-  m_PrefabInstance: {fileID: 7239631586699485670}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9016499086331787293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1826593068742810107, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
+  m_PrefabInstance: {fileID: 7239631586699485670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8144298215097433880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
   m_PrefabInstance: {fileID: 7239631586699485670}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7432175099431475798

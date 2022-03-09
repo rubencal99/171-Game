@@ -10,6 +10,8 @@ public class RegularBullet : Bullet
 
     protected float decay;
 
+    protected Animator animator;
+
     public override BulletDataSO BulletData
     {
         get => base.BulletData;
@@ -22,6 +24,10 @@ public class RegularBullet : Bullet
             // decay is for bullets that expire (melee)
             decay = BulletData.decayTime;
         }
+    }
+
+    public virtual void Start() {
+        animator = GetComponent<Animator>();
     }
 
     public virtual void Update()
@@ -53,14 +59,16 @@ public class RegularBullet : Bullet
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
             HitObstacle();
-            Destroy(gameObject);
+            StartCoroutine(destruction());
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             HitEnemy(collision);
             // This check is for bullets that go through enemies like snipers or lasers etc.
-            if (!BulletData.GoThroughHittable)
-                Destroy(gameObject);
+            if (!BulletData.GoThroughHittable) {
+                animator.Play("bulletdestructionenemy");
+                 StartCoroutine(destruction());
+            }
         }
         
     }
@@ -70,10 +78,18 @@ public class RegularBullet : Bullet
         // This drops enemy health / destroys enemy
         var hittable = collision.GetComponent<IHittable>();
         hittable?.GetHit(BulletData.Damage, gameObject);
+        
     }
 
     public void HitObstacle()
     {
-        // Debug.Log("Hitting obstacle");
+         Debug.Log("Hitting obstacle");
+           animator.Play("bulletdestructionobstacle");
+    }
+
+    public IEnumerator destruction() {
+
+         yield return new WaitForSeconds(0.05f);
+         Destroy(gameObject);
     }
 }
