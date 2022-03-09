@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     
     public bool invincible = false;
 
-    public int damage_iframes = 20;
+   // public int damage_iframes = 20;
 
 
     public int damage_iframes = 200;
