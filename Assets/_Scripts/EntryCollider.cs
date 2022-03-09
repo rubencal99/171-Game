@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EntryCollider : MonoBehaviour
 {
     public BoxCollider boxCol;
+
+    RoomNode room;
 
     
     // Start is called before the first frame update
     public void Start() {
 
        // boxCol = GetComponent<BoxCollider2D>();
-        RoomNode room = this.transform.parent.GetComponent<RoomNode>();
-        this.gameObject.transform.localScale = new Vector3((float)room.length - 1f, (float)room.width - 1f, 1f);
+        room = this.transform.parent.GetComponent<RoomNode>();
+        this.gameObject.transform.localScale = new Vector3((float)room.length, (float)room.width, 1f);
     }
     
     private bool guarded = false;
@@ -24,6 +27,8 @@ public class EntryCollider : MonoBehaviour
        // if(!guarded) {
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
+                Player.instance.currentRoom = room;
+                GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
             //this.GetComponent<Collider2D>().isTrigger = false;
             //this.transform.GetChild(0).gameObject.SetActive(true);
             this.gameObject.SetActive(false);

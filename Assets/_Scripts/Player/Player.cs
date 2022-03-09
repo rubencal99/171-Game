@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 // IAgent has not been implemented for player yet
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public RoomNode currentRoom;
 
     
     public bool invincible = false;
@@ -53,6 +55,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public GameObject DeathMenuUI;
 
     private Vector3 SpawnPosition;
+
+    [SerializeField]
+    private ParticleSystem blood;
+
+    [SerializeField]
+    private Image overlay;
+
     private AgentRenderer agentRenderer;
     [SerializeField]
 
@@ -78,6 +87,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         agentRenderer = GetComponentInChildren<AgentRenderer>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
+        blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
+        overlay = GameObject.Find("Overlay").GetComponent<Image>();
     }
 
     private void Update()
@@ -87,6 +98,32 @@ public class Player : MonoBehaviour, IAgent, IHittable
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
+         setOverlay();
+    }
+
+    private void setOverlay(){
+        var curHealth = (float)Health/MaxHealth;
+        //Debug.Log("health/MaxHealth: " + curHealth);
+        var tempAlpha = (float)(1f - curHealth);
+        var tempOverlay = overlay.color;
+        tempOverlay.a = tempAlpha;
+        overlay.color = tempOverlay;
+
+        StartCoroutine(fadeOverlay());
+        //Debug.Log("Now 1 - health/Maxhealth: " + tempAlpha);
+        //Debug.Log("What alpha should be: " + (float)(1.0 - (float)(Health/MaxHealth)));
+    }
+
+    private IEnumerator fadeOverlay() {
+        var tempOverlay = overlay.color;
+        for (float alpha = tempOverlay.a; alpha >= 0; alpha -= 0.1f)
+        {
+           Debug.Log("fading overlay, alpha = " + alpha);
+           if(alpha < 0.1f) alpha = 0;
+            tempOverlay.a = alpha;
+             overlay.color = tempOverlay;
+            yield return null;
+        }
     }
 
     public void Heal(int amount) {
@@ -113,6 +150,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
+        blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         if (Health > 0) {   
             OnGetHit?.Invoke();
