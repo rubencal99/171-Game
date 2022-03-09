@@ -95,7 +95,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7916410930458580671}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d2b10b617b0a6534cab5eac83f724db0, type: 2}
   m_CullingMode: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: ca00283b322aacf4fa25433b189ab8e4, type: 2}
+  direction: {x: 0, y: 0}
 --- !u!114 &-5236796883373583495
 MonoBehaviour:
   m_ObjectHideFlags: 0

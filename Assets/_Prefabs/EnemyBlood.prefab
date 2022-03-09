@@ -11,14 +11,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyBlood
       objectReference: {fileID: 0}
-    - target: {fileID: 8480267641710826314, guid: a6fa2f5d4f160094d9b0edd8d19918f5, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8480267641710826314, guid: a6fa2f5d4f160094d9b0edd8d19918f5, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.0021022558
-      objectReference: {fileID: 0}
     - target: {fileID: 9182773900989510336, guid: a6fa2f5d4f160094d9b0edd8d19918f5, type: 3}
       propertyPath: m_RootOrder
       value: 0
