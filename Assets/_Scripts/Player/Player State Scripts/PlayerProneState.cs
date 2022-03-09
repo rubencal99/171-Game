@@ -99,7 +99,7 @@ public class PlayerProneState : PlayerBaseState
 
     private void GetStandInput()
     {
-        if (Input.GetAxisRaw("Space") > 0)
+        if (Input.GetAxisRaw("Space") > 0 || Input.GetAxisRaw("Fire2") > 0)
         {
             // Debug.Log("Space button pressed while Prone");
             standing = true;
