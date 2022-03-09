@@ -11,6 +11,7 @@ public class Shop : MonoBehaviour
     public GameObject Player;
     public SpriteRenderer ShopKeeper;
     public bool inShop;
+    public GameObject Key;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +80,8 @@ public class Shop : MonoBehaviour
             {
                 inDistance = true;
                 HighlightShopKeeper();
+                var popUp = Key.GetComponent<SpriteRenderer>();
+                popUp.enabled = !popUp.enabled;
             }
         }
         else
@@ -88,6 +91,8 @@ public class Shop : MonoBehaviour
             {
                 inDistance = false;
                 UnHighlightShopKeeper();
+                var popUp = Key.GetComponent<SpriteRenderer>();
+                popUp.enabled = !popUp.enabled;
             }
         }
     }
