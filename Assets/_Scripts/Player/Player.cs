@@ -104,12 +104,26 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void setOverlay(){
         var curHealth = (float)Health/MaxHealth;
         //Debug.Log("health/MaxHealth: " + curHealth);
-        var tempAlpha = (float)(1.0 - curHealth);
+        var tempAlpha = (float)(1f - curHealth);
         var tempOverlay = overlay.color;
         tempOverlay.a = tempAlpha;
         overlay.color = tempOverlay;
+
+        StartCoroutine(fadeOverlay());
         //Debug.Log("Now 1 - health/Maxhealth: " + tempAlpha);
         //Debug.Log("What alpha should be: " + (float)(1.0 - (float)(Health/MaxHealth)));
+    }
+
+    private IEnumerator fadeOverlay() {
+        var tempOverlay = overlay.color;
+        for (float alpha = tempOverlay.a; alpha >= 0; alpha -= 0.1f)
+        {
+           Debug.Log("fading overlay, alpha = " + alpha);
+           if(alpha < 0.1f) alpha = 0;
+            tempOverlay.a = alpha;
+             overlay.color = tempOverlay;
+            yield return null;
+        }
     }
 
     public void Heal(int amount) {

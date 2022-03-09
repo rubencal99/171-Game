@@ -45,7 +45,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         agentAnimations = GetComponentInChildren<AgentAnimations>();
         enemyBrain = GetComponent<EnemyBrain>();
         agentMovement = GetComponent<AgentMovement>();
-        blood = GameObject.Find("EnemyBlood").GetComponent<ParticleSystem>();
+        blood = transform.Find("EnemyBlood").GetComponent<ParticleSystem>();
+        //blood = FindComponentInChildWithTag
     }
 
     public void GetHit(int damage, GameObject damageDealer)
