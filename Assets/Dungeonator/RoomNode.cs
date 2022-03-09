@@ -97,6 +97,44 @@ public class RoomNode : MonoBehaviour
         area = length * width;
     }
 
+    public TileNode GrabValidTile()
+    {
+        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 3, roomCenter.x + (width /2) - 3),
+                                        Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
+
+        var count = 0;
+        TileNode tile = FindTileByPoint(r.x, r.y);
+        while(tile.value != 1)
+        {
+            if(count >= 3)
+            {
+                Debug.Log("Couldn't find valid tile.");
+                tile = FindTileByPoint(roomCenter.x, roomCenter.y + 6);
+                break;
+            }
+            r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 3, roomCenter.x + (width /2) - 3),
+                                Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
+            tile = FindTileByPoint(r.x, r.y);
+            count++;
+        }
+        return tile;
+    }
+
+    public TileNode FindTileByPoint(int x, int y)
+    {
+        for(int i = 0; i < length; i++)
+        {
+            for(int j = 0; j < width; j++)
+            {
+                if(tileList[i, j].x == x && tileList[i, j].y == y)
+                {
+                    return tileList[i, j];
+                }
+            }
+        }
+        return null;
+    }
+
     public void SetAccessibleFromStart()
     {
         if (!isAccessibleFromStart)
