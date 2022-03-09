@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/split 1 map.unity
     guid: 5868d7eec06f8a446b924beb90378441
   - enabled: 0
-    path: Assets/Scenes/RubenDungeonCreation.unity
+    path: 
     guid: b11946a0099274f4abced0c711806d0f
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DillonProcedural.unity
     guid: d93925446f8ba7e47907a1c0d65b0290
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 591e38310e423194bab6a02ccbf5b742
   m_configObjects: {}
