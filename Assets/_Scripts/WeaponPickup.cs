@@ -22,18 +22,22 @@ public class WeaponPickup : MonoBehaviour
                 Debug.Log("GUN_Restocked");
                 weapon = weap.GetComponent<Gun>();
                 weapon.AmmoFill();
+                 popup popup = FindObjectOfType<popup>();
+                popup.SetText("ammo refill");
+                popup.ShowText();
             }
             else {
                 Debug.Log("GUN_Acquired");
-                Destroy(gameObject);
+               
                 GameObject thisFireArm = Instantiate(FireArm) as GameObject;
                 thisFireArm.transform.parent = GameObject.Find("WeaponParent").transform;
                 thisFireArm.transform.localPosition = new Vector3(0f, 0f, 0f);
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
+                 popup popup = FindObjectOfType<popup>();
                 popup.SetText("weapon");
                 popup.ShowText();
-                
+                 Destroy(gameObject);
             }
         }
     }
