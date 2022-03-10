@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LootOp:
-  - {fileID: 7810571008584226850, guid: 8fb8b324595d41c4ba7ef4e6b54f3714, type: 3}
-  - {fileID: 9132335765561888777, guid: 9f874bd786b93a448a58e7b5d572f558, type: 3}
   - {fileID: 4886039924621977508, guid: 0c78a39aee27cc9418107a3638504dd6, type: 3}
   - {fileID: 4886039924621977508, guid: 86900d2ec4010294baea004a3ddcc0ef, type: 3}
   - {fileID: 4886039924621977508, guid: 66891a86299fce9448233aafd28d4162, type: 3}

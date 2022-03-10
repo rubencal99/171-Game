@@ -53,7 +53,7 @@ public class PrefabHolder : MonoBehaviour
                 playerInfo.Purchase(itemData.Cost);
                 // weapon.transform.position = weaponParent.transform.position;
 
-                weapon.transform.localPosition = new Vector3(0.574f, 0, 0);
+                weapon.transform.localPosition = new Vector3(0, -0.25F, 0);
                 weapon.SetActive(false);
 
                 /* 

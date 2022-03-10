@@ -30,7 +30,7 @@ public class LootClear : MonoBehaviour
     {
         int item;
         GameObject thisItemLoot;
-        item = Random.Range(0, 5);
+        item = Random.Range(0, 1);
         thisItemLoot = Instantiate(LootItems[item]) as GameObject;
         thisItemLoot.transform.position = CalculateSpawn(room);
         Debug.Log("CLEAR Item");

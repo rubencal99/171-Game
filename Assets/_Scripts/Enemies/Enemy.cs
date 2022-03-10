@@ -76,40 +76,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         Debug.Log("Temp test");
     }
 
-    /*public void Knockback(float duration, float power, Transform obj)
-    {
-        Debug.Log("In Knockback");
-        agentMovement.knockback = true;
-        /*float timer = duration;
-        while(timer > 0)
-        {
-            timer -= Time.deltaTime;
-            Vector2 direction = (obj.transform.position - transform.position).normalized;
-            agentMovement.rigidbody2D.AddForce(-direction * power);
-        }
-        Vector2 direction = (obj.transform.position - transform.position).normalized;
-        agentMovement.rigidbody2D.AddForce(-direction * power, ForceMode2D.Impulse);
-        agentMovement.knockback = false;
-        // yield return null;
-    }*/
 
     IEnumerator WaitToDie(){
         isDying = true;
         DeadOrAlive();
-        yield return new WaitForSeconds(deathTimer);
-        if (isDying == true)
+        int odds = Random.Range(1, 100);
+        if (odds > 25) 
         {
-            Debug.Log("DEAD DEAD DEAD");
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        int odds = Random.Range(1, 20);
-        if (odds == 2)
-        {
-            Loot thisLoot = FindObjectOfType<Loot>(); 
+            Loot thisLoot = FindObjectOfType<Loot>();
             thisLoot?.Pick(gameObject);
         }
         else
@@ -118,6 +92,16 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             int bounty = Random.Range(8, 15);
             player?.AddBounty(bounty);
         }
+        yield return new WaitForSeconds(deathTimer);
+        if (isDying == true)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
