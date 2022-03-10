@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
 
         // Temp();
-        agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, damageDealer.GetComponent<Bullet>().direction);
+        agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
         
         Debug.Log("After Enemy Knockback");
         if (Health >= 0)

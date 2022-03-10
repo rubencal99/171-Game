@@ -8,6 +8,8 @@ public class WeaponPickup : MonoBehaviour
     public string tag;
     private Gun weapon;
 
+    public string name;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,7 +38,7 @@ public class WeaponPickup : MonoBehaviour
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
                  popup popup = FindObjectOfType<popup>();
-                popup.SetText("weapon");
+                popup.SetText(name);
                 popup.ShowText();
                  Destroy(gameObject);
             }
