@@ -22,8 +22,8 @@ public class WeaponPickup : MonoBehaviour
                 Debug.Log("GUN_Restocked");
                 weapon = weap.GetComponent<Gun>();
                 weapon.AmmoFill();
-                //popup.SetText("weapon restock");
-                //popup.ShowText();
+                /*popup.SetText("weapon restock");
+                popup.ShowText();*/
             }
             else
             {
@@ -34,8 +34,8 @@ public class WeaponPickup : MonoBehaviour
                 thisFireArm.transform.localPosition = new Vector3(0f, -0.25f, 0f);
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
-                //popup.SetText("weapon");
-                //popup.ShowText();
+                /*popup.SetText("weapon restock");
+                popup.ShowText();*/
             }
         }
     }
