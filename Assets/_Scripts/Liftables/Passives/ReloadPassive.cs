@@ -11,6 +11,9 @@ public class ReloadPassive : _BasePassive
     {
         PlayerPassives passives = player.GetComponent<PlayerPassives>();
         passives.ReloadMultiplier *= multiplier;
+         popup popup = FindObjectOfType<popup>();
+            popup.SetText("reload speed increase");
+            popup.ShowText();
 
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
@@ -19,6 +22,7 @@ public class ReloadPassive : _BasePassive
 
         passives.ReloadMultiplier /= multiplier;
 
+       
         Destroy(gameObject);
     }
 }
