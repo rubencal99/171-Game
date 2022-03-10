@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireArm: {fileID: 8960519738105143089, guid: a503b8afdabe9464e9b0782e2992a164, type: 3}
+  tag: LG

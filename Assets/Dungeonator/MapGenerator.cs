@@ -295,7 +295,8 @@ public class MapGenerator : MonoBehaviour
         AddCorridors();
         AddEntryColliders();
         AddSpawners();
-        AddObstacles();
+        for(int i = 0; i < 2; i++)
+            AddObstacles();
     }
 
     void AddObstacles()

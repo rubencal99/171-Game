@@ -18,24 +18,27 @@ public class WeaponPickup : MonoBehaviour
 
             if (weap != null)
             {
-                Destroy(gameObject);
+              
                 Debug.Log("GUN_Restocked");
                 weapon = weap.GetComponent<Gun>();
                 weapon.AmmoFill();
-                /*popup.SetText("weapon restock");
-                popup.ShowText();*/
+                 popup popup = FindObjectOfType<popup>();
+                popup.SetText("ammo refill");
+                popup.ShowText();
+                  Destroy(gameObject);
             }
-            else
-            {
+            else {
                 Debug.Log("GUN_Acquired");
-                Destroy(gameObject);
+               
                 GameObject thisFireArm = Instantiate(FireArm) as GameObject;
                 thisFireArm.transform.parent = GameObject.Find("WeaponParent").transform;
                 thisFireArm.transform.localPosition = new Vector3(0f, -0.25f, 0f);
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
-                /*popup.SetText("weapon restock");
-                popup.ShowText();*/
+                 popup popup = FindObjectOfType<popup>();
+                popup.SetText("weapon");
+                popup.ShowText();
+                 Destroy(gameObject);
             }
         }
     }
@@ -55,6 +58,7 @@ public class WeaponPickup : MonoBehaviour
         }
         return null;
     }
+
 }
 
 
