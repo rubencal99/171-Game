@@ -33,6 +33,7 @@ public class WeaponPickup : MonoBehaviour
                 thisFireArm.SetActive(false);
                 popup.SetText("weapon");
                 popup.ShowText();
+                
             }
         }
     }
