@@ -94,6 +94,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;                                         //Debuging death 
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
         overlay = GameObject.Find("Overlay").GetComponent<Image>();
+
         HitLastFiveSec = false;
     }
 
@@ -108,15 +109,20 @@ public class Player : MonoBehaviour, IAgent, IHittable
             StartCoroutine(fadeOverlay());
          }
     }
-    IEnumerator fadeOverlay(){
+    public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
         var currHealth = (float)Health/MaxHealth;
         var tempAlpha = (float)(1f - currHealth);
         tempColor.a = tempAlpha;
         overlay.color = tempColor;
         yield return new WaitForSeconds(3f);
+        for(var alpha = tempAlpha; alpha > 0f; alpha -= 0.1f) {
+            tempColor.a = alpha;
+            overlay.color = tempColor;
+            yield return null;
+        }
         tempColor.a = 0f;
-        overlay.color = tempColor;
+        
         HitLastFiveSec = false;
     }
     

@@ -17,6 +17,9 @@ public class WeaponPickup : MonoBehaviour
             thisFireArm.transform.localRotation = Quaternion.identity;
             //SpriteRenderer sprite = thisFireArm.GetComponent<SpriteRenderer>();
             //sprite.enabled = false;
+            popup popup = FindObjectOfType<popup>();
+            popup.SetText("weapon");
+            popup.ShowText();
             thisFireArm.SetActive(false);
         }
     }
