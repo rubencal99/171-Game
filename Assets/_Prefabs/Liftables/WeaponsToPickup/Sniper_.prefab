@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireArm: {fileID: 8960519738105143089, guid: 8600256244ab90d41a9514a059615c48, type: 3}
+  tag: SN
