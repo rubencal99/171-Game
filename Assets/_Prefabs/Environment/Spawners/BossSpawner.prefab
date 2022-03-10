@@ -53,7 +53,7 @@ MonoBehaviour:
   numToSpawn: 1
   enemyCount: 0
   enemyDensity: 20
-  offset: 1
+  offset: 0
   spawned: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
