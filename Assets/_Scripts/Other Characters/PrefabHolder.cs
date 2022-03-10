@@ -43,6 +43,7 @@ public class PrefabHolder : MonoBehaviour
     {
         GameObject prefab = itemData.Prefab;
         Player playerInfo = Player.GetComponent<Player>();
+         popup popup = FindObjectOfType<popup>();
         if (playerInfo.CanPurchase(itemData.Cost))
         {
             if (prefab.GetComponent<Gun>())
@@ -50,9 +51,11 @@ public class PrefabHolder : MonoBehaviour
                 weaponParent = FindObjectOfType<PlayerWeapon>();
                 var weapon = Instantiate(prefab, weaponParent.transform.position, Quaternion.identity);
                 weapon.transform.parent = weaponParent.transform;
+                
                 playerInfo.Purchase(itemData.Cost);
                 // weapon.transform.position = weaponParent.transform.position;
-
+                 popup.SetText(itemData.Name);
+                popup.ShowText();
                 weapon.transform.localPosition = new Vector3(0.574f, 0, 0);
                 weapon.SetActive(false);
 
@@ -66,6 +69,9 @@ public class PrefabHolder : MonoBehaviour
         }
         else if (!playerInfo.CanPurchase(itemData.Cost))
         {
+          
+            popup.SetAltText("Can't afford!");
+            popup.ShowText();
             Debug.Log("Cannot afford " + itemData.name);
         }
     }
