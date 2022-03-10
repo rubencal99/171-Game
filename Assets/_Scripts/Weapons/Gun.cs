@@ -256,7 +256,7 @@ public class Gun : MonoBehaviour
 
     protected void ShootBullet()
     {
-        SpawnBullet(muzzle.transform.position, CalculateAngle(muzzle));
+        SpawnBullet(muzzle.transform.position + muzzle.transform.right, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
        if (isPlayer)
        {

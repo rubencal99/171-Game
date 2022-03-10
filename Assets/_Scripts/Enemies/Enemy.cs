@@ -33,6 +33,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     private AgentMovement agentMovement;
     public bool knockback;
 
+    [SerializeField]
+    private ParticleSystem blood;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -42,11 +45,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         agentAnimations = GetComponentInChildren<AgentAnimations>();
         enemyBrain = GetComponent<EnemyBrain>();
         agentMovement = GetComponent<AgentMovement>();
+        blood = transform.Find("EnemyBlood").GetComponent<ParticleSystem>();
+        //blood = FindComponentInChildWithTag
     }
 
     public void GetHit(int damage, GameObject damageDealer)
     {
         Health -= damage;
+        blood.Play();
         BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
         Debug.Log("In Enemy Get Hit");
         Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);

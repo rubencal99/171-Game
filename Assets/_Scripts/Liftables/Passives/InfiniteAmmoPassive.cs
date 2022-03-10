@@ -18,6 +18,9 @@ public class InfiniteAmmoPassive : _BasePassive
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<CircleCollider2D>().enabled = false;
 
+        popup popup = FindObjectOfType<popup>();
+            popup.SetText("infinite ammo");
+            popup.ShowText();
         yield return new WaitForSeconds(duration);
 
         weaponParent.InfAmmo = false;

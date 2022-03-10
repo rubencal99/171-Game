@@ -8,9 +8,14 @@ public class HealthPickup : MonoBehaviour
    {
       if (collision.tag == "Player")
       {
-           Destroy(gameObject);
+          
            Player player = FindObjectOfType<Player>();
            player?.Heal();
+           popup popup = FindObjectOfType<popup>();
+            popup.SetText("health");
+            popup.ShowText();
+             Destroy(gameObject);
+           
       }
    }
 }
