@@ -23,6 +23,7 @@ TagManager:
   - ML
   - LB
   - bloodparticles
+  - LP
   layers:
   - Default
   - TransparentFX
@@ -37,7 +38,7 @@ TagManager:
   - EnemyMovementCollider
   - PlayerMovementCollider
   - Minimap
-  - 
+  - Glow
   - 
   - 
   - 
@@ -59,6 +60,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Glow
+    uniqueID: 1722596947
     locked: 0
   - name: Floor
     uniqueID: 3538385617

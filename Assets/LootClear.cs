@@ -17,7 +17,7 @@ public class LootClear : MonoBehaviour
     public void Pick(RoomNode room)
     {
         int odds = Random.Range(1, 5);
-        if (odds == 1)
+        if (odds >= 1)
         {
             PickWeapon(room);
         } else
@@ -30,7 +30,7 @@ public class LootClear : MonoBehaviour
     {
         int item;
         GameObject thisItemLoot;
-        item = Random.Range(0, 5);
+        item = Random.Range(0, 1);
         thisItemLoot = Instantiate(LootItems[item]) as GameObject;
         thisItemLoot.transform.position = CalculateSpawn(room);
         Debug.Log("CLEAR Item");

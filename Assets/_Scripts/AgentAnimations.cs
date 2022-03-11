@@ -46,6 +46,18 @@ public class AgentAnimations : MonoBehaviour
         Debug.Log("Triggering Buff Animation");
     }
 
+    public void SetSearchAnimation(bool val)
+    {
+        agentAnimator.SetBool("isSearching", val);
+        Debug.Log("Triggering Search Animation");
+    }
+
+     public void SetPanicAnimation(bool val)
+    {
+        agentAnimator.SetBool("isPanic", val);
+        Debug.Log("Triggering Panic Animation");
+    }
+
     public void AnimatePlayer(float velocity)
     {
         SetWalkAnimation(velocity > 0);

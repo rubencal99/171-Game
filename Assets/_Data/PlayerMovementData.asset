@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDodgeSpeed: 12
   maxRunSpeed: 6.5
+  maxProneSpeed: 3
   acceleration: 30
   decceleration: 50
-  standingDelay: 0.1
+  standingDelay: 0.23
