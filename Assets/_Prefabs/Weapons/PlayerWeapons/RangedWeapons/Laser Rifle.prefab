@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8960519738105143103}
   - component: {fileID: 4094545910520612308}
   m_Layer: 0
-  m_Name: Laser Bolt action
+  m_Name: Laser Rifle
   m_TagString: LB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

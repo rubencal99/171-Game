@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MissileBullet
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 10459a0fa6d4b2a4291cbdaa1b4bab60, type: 3}
-  <BulletSpeed>k__BackingField: 70
+  <BulletSpeed>k__BackingField: 50
   <Damage>k__BackingField: 8
   <Friction>k__BackingField: 0.1
   <Bounce>k__BackingField: 0
@@ -21,7 +21,7 @@ MonoBehaviour:
   <IsRaycast>k__BackingField: 0
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
   <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
-  <KnockbackPower>k__BackingField: 10.1
-  <KnockbackDelay>k__BackingField: 0.1
+  <KnockbackPower>k__BackingField: 10
+  <KnockbackDuration>k__BackingField: 0.1
   <hasDecay>k__BackingField: 0
   <decayTime>k__BackingField: 5
