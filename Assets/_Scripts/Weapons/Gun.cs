@@ -71,6 +71,9 @@ public class Gun : MonoBehaviour
     [SerializeField]
     protected bool meleeCoroutine = false;
 
+    [SerializeField]
+    public string name;
+
     private void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
