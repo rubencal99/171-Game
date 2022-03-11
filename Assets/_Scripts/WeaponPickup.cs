@@ -34,7 +34,7 @@ public class WeaponPickup : MonoBehaviour
                
                 GameObject thisFireArm = Instantiate(FireArm) as GameObject;
                 thisFireArm.transform.parent = GameObject.Find("WeaponParent").transform;
-                thisFireArm.transform.localPosition = new Vector3(0f, 0f, 0f);
+                thisFireArm.transform.localPosition = new Vector3(0f, -0.25f, 0f);
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
                  popup popup = FindObjectOfType<popup>();

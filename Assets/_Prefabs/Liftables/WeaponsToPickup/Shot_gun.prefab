@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6436781124620589926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.29, y: -1.55, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireArm: {fileID: 5516205167494534619, guid: 75f049e8acf54a94b89ae58b7beb20e6, type: 3}
   tag: SG
+  name: 
 --- !u!114 &1056439359755140634
 MonoBehaviour:
   m_ObjectHideFlags: 0
