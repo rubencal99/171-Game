@@ -17,7 +17,7 @@ public class LootClear : MonoBehaviour
     public void Pick(RoomNode room)
     {
         int odds = Random.Range(1, 5);
-        if (odds == 1)
+        if (odds >= 1)
         {
             PickWeapon(room);
         } else
