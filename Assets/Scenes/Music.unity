@@ -2534,7 +2534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 1338506455}
   ListenerNumber: -1
 --- !u!114 &759457922
 MonoBehaviour:
@@ -2548,6 +2548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17f189809608e842be5d57fb94958bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgMusic: {fileID: 0}
 --- !u!1 &772001599
 GameObject:
   m_ObjectHideFlags: 0
@@ -6940,6 +6941,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4115433093175184215, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355692338035301397, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
