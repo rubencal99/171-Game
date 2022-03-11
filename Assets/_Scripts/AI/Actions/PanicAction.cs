@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PanicAction : AIAction
 {
-    public override void TakeAction(){
+    GameObject self;
+     void Start(){
+        self = this.transform.root.gameObject;
+    }
 
+    public override void TakeAction(){
+         self.GetComponentInChildren<AgentAnimations>().SetPanicAnimation(true);
     }
 }
