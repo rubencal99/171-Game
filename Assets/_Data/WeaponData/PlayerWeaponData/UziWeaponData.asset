@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: UziWeaponData
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 1f6765ebc90c9fb4ba90dec252a848e3, type: 2}
-  <MagazineCapacity>k__BackingField: 30
-  <MaxAmmoCapacity>k__BackingField: 150
+  <MagazineCapacity>k__BackingField: 25
+  <MaxAmmoCapacity>k__BackingField: 300
   <AutomaticFire>k__BackingField: 1
   <WeaponDelay>k__BackingField: 0.05
-  <ReloadSpeed>k__BackingField: 1
-  <SpreadAngle>k__BackingField: 21.8
+  <WeaponDelayRandomizer>k__BackingField: 0.1
+  <ReloadSpeed>k__BackingField: 0.5
+  <SpreadAngle>k__BackingField: 20
   multiBulletShot: 0
-  bulletCount: 0
+  bulletCount: 1
+  recoilIntensity: 0
+  recoilFrequency: 0
+  recoilTime: 0

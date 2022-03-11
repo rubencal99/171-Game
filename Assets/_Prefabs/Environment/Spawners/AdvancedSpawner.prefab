@@ -56,13 +56,14 @@ MonoBehaviour:
   - {fileID: 6638867989798731449, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
   - {fileID: 6638867989798731449, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
   - {fileID: 6638867989798731449, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+  - {fileID: 304799391290785548, guid: 8ea6cc2470bda624691bce900ece957c, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 8
+  numToSpawn: 17
   enemyCount: 0
-  enemyDensity: 88
+  enemyDensity: 40
   offset: 6.12
   spawned: 0
 --- !u!212 &3392075588759141863

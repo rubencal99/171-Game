@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8960519738105143103}
   - component: {fileID: 4094545910520612308}
   m_Layer: 0
-  m_Name: Laser Bolt action
+  m_Name: Laser Rifle
   m_TagString: LB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 470539697
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 431852216664804413, guid: b62ddda33fa718b47932cf51f6de2545, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -123,6 +123,7 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
+  name: Lazer Rifle
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -318,7 +319,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1722504919
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
