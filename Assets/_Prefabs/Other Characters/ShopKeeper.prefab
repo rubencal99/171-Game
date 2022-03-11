@@ -2523,7 +2523,6 @@ GameObject:
   - component: {fileID: 6638867990098400908}
   - component: {fileID: 6638867990098400944}
   - component: {fileID: 6638867990098400911}
-  - component: {fileID: 1927202829762752866}
   - component: {fileID: 3128835130343464155}
   m_Layer: 5
   m_Name: avatar
