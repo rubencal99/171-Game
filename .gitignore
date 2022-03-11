@@ -48,6 +48,9 @@ ExportedObj/
 *.pdb.meta
 *.mdb.meta
 
+# Node modules
+node_modules
+
 # Unity3D generated file on crash reports
 sysinfo.txt
 

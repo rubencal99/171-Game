@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb4a34f08ded4d4ab1818c56cc5dc3c, type: 3}
   m_Name: Laser Bolt Action
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8960519738105143089, guid: 8600256244ab90d41a9514a059615c48, type: 3}
-  Name: Sniper
+  Prefab: {fileID: 8960519738105143089, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+  Name: Laser Bolt Action
   Cost: 50
