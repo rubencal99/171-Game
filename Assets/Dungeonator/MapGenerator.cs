@@ -21,6 +21,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject EntryCollider;
     [SerializeField]
     public GameObject Exit;
+     [SerializeField]
+    public placecontrols controls;
     public int columns;
     public int rows;
     public static TileNode[,] map;
@@ -293,7 +295,8 @@ public class MapGenerator : MonoBehaviour
         AddCorridors();
         AddEntryColliders();
         AddSpawners();
-        AddObstacles();
+        for(int i = 0; i < 2; i++)
+            AddObstacles();
     }
 
     void AddObstacles()
@@ -387,6 +390,7 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, SpawnRoom.roomCenter.y, 0);
         Player.transform.position = spawnPosition;
+        controls.SetPosition();
     }
 
     /* RoomNode CreateRoom(int x1, int y1, int x2, int y2)

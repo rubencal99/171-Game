@@ -13,7 +13,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
     
     public bool invincible = false;
 
-    public int damage_iframes = 20;
+   // public int damage_iframes = 20;
+
+
+    public int damage_iframes = 200;
 
     [field: SerializeField]
     public int Health { get; set; } = 6;
@@ -62,6 +65,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [SerializeField]
     private Image overlay;
 
+    private bool HitLastFiveSec;
+
     private AgentRenderer agentRenderer;
     [SerializeField]
 
@@ -89,6 +94,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;                                         //Debuging death 
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
         overlay = GameObject.Find("Overlay").GetComponent<Image>();
+
+        HitLastFiveSec = false;
     }
 
     private void Update()
@@ -98,34 +105,34 @@ public class Player : MonoBehaviour, IAgent, IHittable
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
-         setOverlay();
+         if(HitLastFiveSec){
+            StartCoroutine(fadeOverlay());
+         }
     }
-
-    private void setOverlay(){
-        var curHealth = (float)Health/MaxHealth;
-        //Debug.Log("health/MaxHealth: " + curHealth);
-        var tempAlpha = (float)(1f - curHealth);
-        var tempOverlay = overlay.color;
-        tempOverlay.a = tempAlpha;
-        overlay.color = tempOverlay;
-
-        StartCoroutine(fadeOverlay());
-        //Debug.Log("Now 1 - health/Maxhealth: " + tempAlpha);
-        //Debug.Log("What alpha should be: " + (float)(1.0 - (float)(Health/MaxHealth)));
-    }
-
-    private IEnumerator fadeOverlay() {
-        var tempOverlay = overlay.color;
-        for (float alpha = tempOverlay.a; alpha >= 0; alpha -= 0.1f)
-        {
-           Debug.Log("fading overlay, alpha = " + alpha);
-           if(alpha < 0.1f) alpha = 0;
-            tempOverlay.a = alpha;
-             overlay.color = tempOverlay;
+    public IEnumerator fadeOverlay(){
+        var tempColor = overlay.color;
+        var currHealth = (float)Health/MaxHealth;
+        var tempAlpha = (float)(1f - currHealth);
+        tempColor.a = tempAlpha;
+        overlay.color = tempColor;
+        yield return new WaitForSeconds(1f);
+        // for(var alpha = tempAlpha; alpha > 0f; alpha -= 0.1f) {
+        //     tempColor.a = alpha;
+        //     overlay.color = tempColor;
+        //     yield return null;
+        // }
+        for(float t = 1f; t > 0f; t -= 0.01f) {
+            var newAlpha = Mathf.Lerp(tempAlpha, 0f, (1-t)* (1-t));
+            tempColor.a = newAlpha;
+            overlay.color = tempColor;
             yield return null;
-        }
-    }
 
+        }
+        tempColor.a = 0f;
+        
+        HitLastFiveSec = false;
+    }
+    
     public void Heal(int amount) {
         Health += amount;
         if(Health > MaxHealth)
@@ -150,6 +157,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         Health -= damage;
+        HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         if (Health > 0) {   

@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 63c1beb30be22d84b8b4c7159322229e, type: 3}
   <BulletSpeed>k__BackingField: 59
-  <Damage>k__BackingField: 4
+  <Damage>k__BackingField: 1
   <Friction>k__BackingField: 0
   <Bounce>k__BackingField: 0
   <GoThroughHittable>k__BackingField: 1
   <IsRaycast>k__BackingField: 1
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
   <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
-  <KnockbackPower>k__BackingField: 1.9
-  <KnockbackDelay>k__BackingField: 0.054
+  <KnockbackPower>k__BackingField: 2.54
+  <KnockbackDuration>k__BackingField: 0.01
   <hasDecay>k__BackingField: 0
   <decayTime>k__BackingField: 5

@@ -16,6 +16,7 @@ public abstract class _BasePassive : MonoBehaviour
 
             // Here we execute the Pickup function that accesses player stats
             StartCoroutine(Pickup(collision));
+            
         }
     }
 
