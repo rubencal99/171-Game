@@ -53,6 +53,8 @@ public class BuffAction : AIAction
 
     void BuffAlly(GameObject ally)
     {
+        // AgentAnimations anim = this.transform.parent.GetComponentInChildren<AgentAnimations>();
+        // //anim.SetBuffAnimation(true); 
         // Debug.Log("In buffAlly");
         // Here is where we'd want to call a coroutine or animation
         PlayerPassives allyPassives = ally.GetComponent<PlayerPassives>();
@@ -60,7 +62,7 @@ public class BuffAction : AIAction
         MutationProcess();
         allyPassives.SpeedMultiplier *= speedBuff;
         allyPassives.ROFMultiplier *= ROFBuff;
-        enemyBrain.enemy.agentAnimations.SetBuffAnimation(true);
+        self.GetComponentInChildren<AgentAnimations>().SetBuffAnimation(true);
     }
 
     void MutationProcess()
