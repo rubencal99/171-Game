@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using FMODUnity;
 
 // IAgent has not been implemented for player yet
 public class Player : MonoBehaviour, IAgent, IHittable
 {
+    public FMODUnity.EventReference BGMusic;
     public static Player instance;
     public RoomNode currentRoom;
 
