@@ -329,10 +329,89 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a382382f106584e8f8f62412fee177, type: 3}
+  m_Script: {fileID: 11500000, guid: eef8d824ea7b63742966aaa0e94ac383, type: 3}
+  m_Name: FMODStudioSettings
+  m_EditorClassIdentifier: 
+  SwitchSettingsMigration: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
+  sourceProjectPath: 
+  sourceBankPath: Assets/Desktop
+  SourceBankPathUnformatted: 
+  BankRefreshCooldown: 5
+  ShowBankRefreshWindow: 1
+  AutomaticEventLoading: 1
+  BankLoadType: 0
+  AutomaticSampleLoading: 0
+  EncryptionKey: 
+  ImportType: 0
+  TargetAssetPath: FMODBanks
+  TargetBankFolder: 
+  EventLinkage: 0
+  LoggingLevel: 2
+  SpeakerModeSettings: []
+  SampleRateSettings: []
+  LiveUpdateSettings: []
+  OverlaySettings: []
+  LoggingSettings: []
+  BankDirectorySettings: []
+  VirtualChannelSettings: []
+  RealChannelSettings: []
+  Plugins: []
+  MasterBanks:
+  - Master
+  Banks:
+  - BAL-AR
+  - BAL-L
+  - BAL-RF
+  - BAL-SG
+  - BAL-SMG
+  - BGM
+  - BIO-L
+  - BIO-S
+  - LAS-H
+  - LAS-L
+  - SHOP
+  BanksToLoad: []
+  LiveUpdatePort: 9264
+  EnableMemoryTracking: 0
+  AndroidUseOBB: 0
+  MeterChannelOrdering: 0
+  StopEventsOutsideMaxDistance: 0
+  BoltUnitOptionsBuildPending: 0
+  EnableErrorCallback: 0
+  SharedLibraryUpdateStage: 0
+  SharedLibraryTimeSinceStart: 0
+  CurrentVersion: 131588
+  HideSetupWizard: 1
+  LastEventReferenceScanVersion: 131588
+  Platforms:
+  - {fileID: -7734462596275226346}
+  - {fileID: -6371561964648098738}
+  - {fileID: -5968312139836765016}
+  - {fileID: -5755069361493728230}
+  - {fileID: -5184926085578191154}
+  - {fileID: -841191185978134558}
+  - {fileID: -347981163391965980}
+  - {fileID: 570305081346967085}
+  - {fileID: 3048826299979223780}
+  - {fileID: 5437595327289076625}
+  - {fileID: 8962186866246695369}
+  MigratedPlatforms: 05000000060000000a000000080000000b00000012000000150000000c000000090000000200000001000000
+--- !u!114 &-841191185978134558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92d0baf34dae0e4ea032a42bd6107c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  identifier: fd7c55dab0fce234b8c25f6ffca523c1
+  identifier: 52eb9df5db46521439908db3a29a1bbb
+
   parentIdentifier: default
   active: 0
   Properties:
