@@ -15,6 +15,7 @@ public class SyringeScript : MonoBehaviour
             {
                 enemy.isDying = false;
                 enemy.Health = 3;
+                enemy.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(true);
                 enemy.DeadOrAlive();
             }
         }
