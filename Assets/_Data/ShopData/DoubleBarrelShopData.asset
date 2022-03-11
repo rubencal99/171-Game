@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb4a34f08ded4d4ab1818c56cc5dc3c, type: 3}
   m_Name: DoubleBarrelShopData
   m_EditorClassIdentifier: 
+  Prefab: {fileID: 1476660274796361644, guid: 0a7fccce428c45a4ba571ca9898072aa, type: 3}
+  Name: Double Barrel
+  Cost: 45
