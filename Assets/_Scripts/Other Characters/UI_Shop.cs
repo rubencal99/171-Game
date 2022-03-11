@@ -19,19 +19,23 @@ public class UI_Shop : MonoBehaviour
         shopItemTemplate.gameObject.SetActive(false);
     }
 
-    private void Start()
+    private async void Start()
     {
         
         
-        int i = 0;
-        foreach(ShopItemSO itemData in ShopInventory)
+      //  int i = 0;
+      //  foreach(ShopItemSO itemData in ShopInventory)
+      for(int i = 0; i < 3; i++)
         {
+            int index = Random.Range(0, ShopInventory.Count - 1);
+            ShopItemSO itemData = ShopInventory[index];
             GameObject prefab = itemData.Prefab;
             string name = itemData.Name;
             int price = itemData.Cost;
             Sprite sprite = prefab.GetComponent<SpriteRenderer>().sprite;
             CreateItemButton(itemData, sprite, name, price, i);
-            i++;
+            ShopInventory.RemoveAt(index);
+           // i++;
         }
     }
 

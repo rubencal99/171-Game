@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 831301174554269326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireArm: {fileID: 8960519738105143089, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
   tag: UZ
-  name: 
+  name: a shmoozy uzi
 --- !u!114 &1527448678322504625
 MonoBehaviour:
   m_ObjectHideFlags: 0
