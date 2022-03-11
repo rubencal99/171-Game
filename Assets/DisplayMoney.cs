@@ -13,6 +13,7 @@ public class DisplayMoney : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      obj = GameObject.Find("Player");
            p = obj.GetComponent<Player>();
          // 
     }
