@@ -115,11 +115,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
         var tempAlpha = (float)(1f - currHealth);
         tempColor.a = tempAlpha;
         overlay.color = tempColor;
-        yield return new WaitForSeconds(3f);
-        for(var alpha = tempAlpha; alpha > 0f; alpha -= 0.1f) {
-            tempColor.a = alpha;
+        yield return new WaitForSeconds(1f);
+        // for(var alpha = tempAlpha; alpha > 0f; alpha -= 0.1f) {
+        //     tempColor.a = alpha;
+        //     overlay.color = tempColor;
+        //     yield return null;
+        // }
+        for(float t = 1f; t > 0f; t -= 0.01f) {
+            var newAlpha = Mathf.Lerp(tempAlpha, 0f, (1-t)* (1-t));
+            tempColor.a = newAlpha;
             overlay.color = tempColor;
             yield return null;
+
         }
         tempColor.a = 0f;
         

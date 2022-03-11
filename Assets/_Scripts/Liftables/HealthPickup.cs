@@ -10,9 +10,9 @@ public class HealthPickup : MonoBehaviour
       {
           
            Player player = FindObjectOfType<Player>();
-           player?.Heal();
+           player?.Heal(10);
            popup popup = FindObjectOfType<popup>();
-            popup.SetText("health");
+            popup.SetText("10 health");
             popup.ShowText();
              Destroy(gameObject);
            

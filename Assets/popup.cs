@@ -19,6 +19,11 @@ public class popup : MonoBehaviour
         GetComponent<Text>().text = txt;
     }
 
+     public void SetAltText(string text) {
+        txt = text;
+        GetComponent<Text>().text = txt;
+    }
+
     public void ShowText() {
         var color = GetComponent<Text>().color;
         color.a = 255f;
@@ -28,12 +33,20 @@ public class popup : MonoBehaviour
 
     public IEnumerator FadeText() {
          var color = GetComponent<Text>().color;
+         yield return new WaitForSeconds(3f);
        
-        while(color.a > 0f) {
-             color.a -= 1f;
+         for(float t = 1f; t > 0f; t -= 0.01f) {
+            var newAlpha = Mathf.Lerp(1f, 0f, (1-t)* (1-t));
+            color.a = newAlpha;
              GetComponent<Text>().color = color;
-              yield return null;
+            yield return null;
+
         }
+        // while(color.a > 0f) {
+        //      color.a -= 1f;
+        //      GetComponent<Text>().color = color;
+        //       yield return null;
+        // }
        
     }
 }

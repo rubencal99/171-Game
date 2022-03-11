@@ -21,7 +21,7 @@ public class BulletPickup : MonoBehaviour
                 weapon.Fill();
             }
             popup popup = FindObjectOfType<popup>();
-            popup.SetText("ammo");
+            popup.SetText("ammo refill");
             popup.ShowText();
              Destroy(gameObject);
         }
