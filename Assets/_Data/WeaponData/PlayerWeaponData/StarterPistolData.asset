@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: StarterPistolData
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 69c7bb5fd8905ad4aba93c6b52b94fe9, type: 2}
-  <MagazineCapacity>k__BackingField: 8
-  <MaxAmmoCapacity>k__BackingField: 120
+  <MagazineCapacity>k__BackingField: 10
+  <MaxAmmoCapacity>k__BackingField: 250
   <AutomaticFire>k__BackingField: 0
   <WeaponDelay>k__BackingField: 0.253
+  <WeaponDelayRandomizer>k__BackingField: 0.1
   <ReloadSpeed>k__BackingField: 0.65
   <SpreadAngle>k__BackingField: 2
   multiBulletShot: 0

@@ -19,7 +19,7 @@ MonoBehaviour:
   <WeaponDelay>k__BackingField: 0.25
   <WeaponDelayRandomizer>k__BackingField: 0.1
   <ReloadSpeed>k__BackingField: 1.3
-  <SpreadAngle>k__BackingField: 0.1
+  <SpreadAngle>k__BackingField: 0.4
   multiBulletShot: 0
   bulletCount: 1
   recoilIntensity: 0

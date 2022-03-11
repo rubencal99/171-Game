@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: MissileLauncher
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: d99b2f269133e4a20b44e9c91388974e, type: 2}
-  <MagazineCapacity>k__BackingField: 100
-  <MaxAmmoCapacity>k__BackingField: 400
+  <MagazineCapacity>k__BackingField: 2
+  <MaxAmmoCapacity>k__BackingField: 30
   <AutomaticFire>k__BackingField: 0
-  <WeaponDelay>k__BackingField: 0.14
-  <ReloadSpeed>k__BackingField: 2.45
+  <WeaponDelay>k__BackingField: 1.75
+  <WeaponDelayRandomizer>k__BackingField: 0.1
+  <ReloadSpeed>k__BackingField: 2.4
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
-  bulletCount: 0
+  bulletCount: 1
   recoilIntensity: 5
   recoilFrequency: 1
   recoilTime: 0.1
