@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Spawner
+  - Enemy
+  - Door
+  - Avatar
+  - Gun Muzzle
+  - AStar
+  - Map Gen
+  - Loot
+  - shadow
+  - AR
+  - LG
+  - SG
+  - SN
+  - SP
+  - UZ
+  - DB
+  - ML
+  - LB
+  - bloodparticles
+  - LP
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Bullets
+  - Player
+  - Enemy
+  - Obstacles
+  - EnemyMovementCollider
+  - PlayerMovementCollider
+  - Minimap
+  - Glow
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Glow
+    uniqueID: 1722596947
+    locked: 0
+  - name: Floor
+    uniqueID: 3538385617
+    locked: 0
+  - name: Background
+    uniqueID: 1651720869
+    locked: 0
+  - name: Agents
+    uniqueID: 470539697
+    locked: 0
+  - name: Foreground
+    uniqueID: 1648441835
+    locked: 0
+  - name: Hands
+    uniqueID: 1313430193
+    locked: 0
+  - name: Bullets
+    uniqueID: 1722504919
+    locked: 0
+  - name: UI
+    uniqueID: 491266117
+    locked: 0
+  - name: Debug
+    uniqueID: 3146635093
+    locked: 0
