@@ -4,30 +4,177 @@ using UnityEngine;
 
 public class SquidBoss : MonoBehaviour
 {
+    public AIState currentState;
+
     public static bool inCyclone = false;
+    public bool InCyclone;
     public static int cycloneAttempts = 3;
+    public int CycloneAttempts;
     public static int cycloneRange = 3;
     public static bool atCycloneDest = false;
+    public bool AtCycloneDest;
+    public static float CycloneDuration = 4f;
+    public static float cycloneTimer;
+    public float CycloneTimer;
+
+
+    public static bool inDecision = false;
+    public bool InDecision;
+    public static float decisionDuration = 3f;
+    public static float decisionTimer;
+    public float DecisionTimer;
+
+
+    public static bool inShoot = false;
+    public bool InShoot;
+    public static float shootDuration = 4f;
+    public static float shootTimer;
+    public float ShootTimer;
+
+
+    public static bool inChase = false;
+    public bool InChase;
+    public static float chaseDuration = 4f;
+    public static float chaseTimer;
+    public float ChaseTimer;
+
+
+    public static bool inSpawn = false;
+    public bool InSpawn;
+    public static float spawnDuration = 3f;
+    public static float spawnTimer;
+    public float SpawnTimer;
+
+
+
     public BossMovement bossMovement;
     public BossAnimations bossAnimator;
+    EnemyBrain brain;
 
     public void Start()
     {
-        inCyclone = false;
-        atCycloneDest = false;
-        cycloneAttempts = 3;
+        Reset();
+        
+        brain = transform.parent.GetComponent<EnemyBrain>();
+        currentState = brain.CurrentState;
         bossMovement = transform.parent.GetComponent<BossMovement>();
         bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
     }
 
     public void Update()
     {
+        currentState = brain.CurrentState;
+        CheckDecision();
         CheckCyclone();
+        CheckChase();
+        CheckShoot();
+        CheckSpawn();
+    }
+
+    public void Reset()
+    {
+        inCyclone = false;
+        InCyclone = inCyclone;
+        atCycloneDest = false;
+        AtCycloneDest = atCycloneDest;
+        cycloneAttempts = 3;
+        CycloneAttempts = cycloneAttempts;
+        cycloneTimer = CycloneDuration;
+        CycloneTimer = cycloneTimer;
+
+        inDecision = true;
+        InDecision = inDecision;
+        decisionTimer = decisionDuration;
+        DecisionTimer = decisionTimer;
+
+        inShoot = false;
+        InShoot = inShoot;
+        shootTimer = shootDuration;
+        ShootTimer = shootTimer;
+
+        inChase = false;
+        InChase = inChase;
+        chaseTimer = chaseDuration;
+        ChaseTimer = chaseTimer;
+
+        inSpawn = false;
+        InSpawn = inSpawn;
+        spawnTimer = spawnDuration;
+        SpawnTimer = spawnTimer;
+    }
+
+    public void CheckDecision()
+    {
+        InDecision = inDecision;
+        DecisionTimer = decisionTimer;
+        if(inDecision)
+        {
+            decisionTimer -= Time.deltaTime;
+            if(decisionTimer <= 0)
+            {
+                inDecision = false;
+                decisionTimer = decisionDuration;
+            }
+        }
     }
 
     public void CheckCyclone()
     {
-        bossAnimator.SetCycloneAnimation(!atCycloneDest);
+        InCyclone = inCyclone;
+        CycloneTimer = cycloneTimer;
+        CycloneAttempts = cycloneAttempts;
+        AtCycloneDest = atCycloneDest;
+        if(inCyclone)
+        {
+            bossAnimator.SetCycloneAnimation(!atCycloneDest);
+
+            if(!atCycloneDest)
+            {
+                cycloneTimer -= Time.deltaTime;
+                if(cycloneTimer <= 0)
+                {
+                    atCycloneDest = true;
+                    cycloneTimer = CycloneDuration;
+                }
+            }
+            
+        }
+        
+    }
+
+    public void CheckChase()
+    {
+        InChase = inChase;
+        ChaseTimer = chaseTimer;
+        if(inChase)
+        {
+            chaseTimer -= Time.deltaTime;
+            if(chaseTimer <= 0)
+            {
+                inChase = false;
+                chaseTimer = chaseDuration;
+            }
+        }
+    }
+
+    public void CheckShoot()
+    {
+        InShoot = inShoot;
+        ShootTimer = shootTimer;
+        if(inShoot)
+        {
+            shootTimer -= Time.deltaTime;
+            if(shootTimer <= 0)
+            {
+                inShoot = false;
+                shootTimer = shootDuration;
+            }
+        }
+    }
+
+    public void CheckSpawn()
+    {
+        InSpawn = inSpawn;
     }
 
     public void AdjustCycloneSpeed(bool val)
