@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d3986392302e14f9448dab89cc4937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
+  <EnemyData>k__BackingField: {fileID: 11400000, guid: ee1b0c3709768459ea6065b02de2f7b8, type: 2}
   <Health>k__BackingField: 5
   <Damage>k__BackingField: 1
   <Range>k__BackingField: 0
