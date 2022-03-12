@@ -13,20 +13,22 @@ public class BossDecisionAction : AIAction
       if (r <= 30)
       {
           SquidBoss.inCyclone = true;
+          Debug.Log("In Cyclone = " + SquidBoss.inCyclone);
       }
       else if (r <= 50)
       {
-          Debug.Log("In Chase = true");
           SquidBoss.inChase = true;
+          Debug.Log("In Chase = " + SquidBoss.inChase);
       }
       else// if (r <= 90)
       {
           SquidBoss.inShoot = true;
+          Debug.Log("In Shoot = " + SquidBoss.inShoot);
       }
       /*else
       {
           SquidBoss.inSpawn = true;
       }*/
-      SquidBoss.inDecision = false;
+      //SquidBoss.inDecision = false;
   }
 }

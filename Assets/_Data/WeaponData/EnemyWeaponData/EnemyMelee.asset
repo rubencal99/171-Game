@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: EnemyMelee
   m_EditorClassIdentifier: 
   <BulletData>k__BackingField: {fileID: 11400000, guid: 30a3279d7bd0a6a4abdc1715e06032d6, type: 2}
-  <MagazineCapacity>k__BackingField: 100
+  <MagazineCapacity>k__BackingField: 3
   <MaxAmmoCapacity>k__BackingField: 400
   <AutomaticFire>k__BackingField: 1
-  <WeaponDelay>k__BackingField: 0.993
-  <ReloadSpeed>k__BackingField: 0.1
+  <WeaponDelay>k__BackingField: 0.4
+  <WeaponDelayRandomizer>k__BackingField: 0.1
+  <ReloadSpeed>k__BackingField: 1
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
   bulletCount: 0
