@@ -14,7 +14,7 @@ public class WeaponDataSO : ScriptableObject
     public int MagazineCapacity { get; set; } = 30;
 
     [field: SerializeField]
-    [field: Range(20,400)]
+    [field: Range(20,1000)]
     public int MaxAmmoCapacity { get; set; } = 100;
 
     /* [field: SerializeField]

@@ -10,6 +10,6 @@ public class PanicAction : AIAction
     }
 
     public override void TakeAction(){
-         self.GetComponentInChildren<AgentAnimations>().SetPanicAnimation();
+         self.GetComponentInChildren<AgentAnimations>().SetPanicAnimation(true);
     }
 }
