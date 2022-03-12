@@ -10,7 +10,7 @@ public class Shop : MonoBehaviour
     public bool inDistance = false;
     public GameObject Player;
     public SpriteRenderer ShopKeeper;
-    public bool inShop;
+    public static bool inShop;
     public GameObject Key;
     // Start is called before the first frame update
     void Start()
