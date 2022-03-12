@@ -4483,8 +4483,8 @@ MonoBehaviour:
   EntryCollider: {fileID: 7688404469582539259, guid: 32b18192863f2f542a442d9ef8bc0ce5, type: 3}
   Exit: {fileID: 6561165705246468781, guid: 283b59b6fed28f847b61afcd6a78628f, type: 3}
   controls: {fileID: 1078493531}
-  columns: 160
-  rows: 120
+  columns: 180
+  rows: 140
   minRoomDim: {x: 20, y: 20}
   minEntryDim: {x: 16, y: 16}
   maxEntryDim: {x: 0, y: 0}
