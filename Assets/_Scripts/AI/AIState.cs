@@ -16,8 +16,8 @@ public class AIState : MonoBehaviour
     private void Awake()
     {
         enemyBrain = transform.root.GetComponent<EnemyBrain>();
-         Actions.Clear();
-         Actions = new List<AIAction>(GetComponents<AIAction>());
+         //Actions.Clear();
+         //Actions = new List<AIAction>(GetComponents<AIAction>());
         Transitions.Clear();
         Transitions = new List<AITransition>(GetComponentsInChildren<AITransition>());
     }

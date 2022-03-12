@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 92973836147436932, guid: 581ddc4f6e5217340b73ebb62e166fe5, type: 3}
+      propertyPath: <Damage>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 92973836147436932, guid: 581ddc4f6e5217340b73ebb62e166fe5, type: 3}
       propertyPath: <Health>k__BackingField
       value: 4
       objectReference: {fileID: 0}
