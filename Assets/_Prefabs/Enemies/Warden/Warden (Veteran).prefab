@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: <Health>k__BackingField
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5290292573299933810, guid: da4956b77813a0549ab86311545a253c, type: 3}
+      propertyPath: <EnemyData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1170d7479e0044b4d967da1f476ee90e, type: 2}
     - target: {fileID: 5290292573299933811, guid: da4956b77813a0549ab86311545a253c, type: 3}
       propertyPath: m_Name
       value: Warden (Veteran)
