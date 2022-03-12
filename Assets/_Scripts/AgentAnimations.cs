@@ -58,6 +58,13 @@ public class AgentAnimations : MonoBehaviour
         Debug.Log("Triggering Panic Animation");
     }
 
+     public void SetAttackAnimation()
+    {
+        agentAnimator.SetTrigger("isAttacking");
+        Debug.Log("Triggering Panic Animation");
+    }
+
+
     public void AnimatePlayer(float velocity)
     {
         SetWalkAnimation(velocity > 0);
