@@ -2131,8 +2131,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Art: Marc Anthony\n        Alejandro Silva\n       Anthony Molle\n   
-    Aidan Lamb\n\n"
+  m_Text: "Art: Marc Anthony\n        Alejandro Silva\n      Anthony Molle\n       
+    Aidan Mallinson\n\n"
 --- !u!222 &2022234203
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -4889,7 +4889,7 @@ Transform:
   m_GameObject: {fileID: 8918393634435686408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.574, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children:
   - {fileID: 2689852374677622063}
   - {fileID: 1430577089808635625}
@@ -4936,7 +4936,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dec948719747f2846ba3f6a0151a9eb2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4828fc75aff534c48922067f63023103, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4984,6 +4984,7 @@ MonoBehaviour:
   reloadCoroutine: 0
   meleeCoroutine: 0
   name: 
+  sprite: {fileID: 0}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
