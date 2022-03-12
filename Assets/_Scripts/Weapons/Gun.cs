@@ -86,7 +86,6 @@ public class Gun : MonoBehaviour
         weaponParent = transform.parent.GetComponent<AgentWeapon>();
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
-        GetComponent<SpriteRenderer>().sprite = sprite;
        // sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
@@ -161,7 +160,7 @@ public class Gun : MonoBehaviour
         reloadCoroutine = false;
         rateOfFireCoroutine = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
-        //GetComponent<Animator>().Play("idle");
+        GetComponent<Animator>().Play("idle");
     }
 
     public void AmmoFill()
