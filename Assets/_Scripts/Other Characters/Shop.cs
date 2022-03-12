@@ -14,10 +14,6 @@ public class Shop : MonoBehaviour
     public bool inShop;
     public GameObject Key;
 
-<<<<<<< Updated upstream
-    public FMODUnity.EventReference shopBG;
-=======
->>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
