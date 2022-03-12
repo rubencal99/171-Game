@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1651720869
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ff6642bf959468a48bdfa07a1ae5dd48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
-  <Health>k__BackingField: 2
+  <Health>k__BackingField: 4
   <Damage>k__BackingField: 0
   <Range>k__BackingField: 0
   <OnGetHit>k__BackingField:
@@ -764,7 +764,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 470539697
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 7124621374147906806, guid: aae5977d1af33b54d99e49711753c497, type: 3}
   m_Color: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}

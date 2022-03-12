@@ -225,7 +225,7 @@ MonoBehaviour:
   <IsAlone>k__BackingField: 0
   <Arrived>k__BackingField: 0
   <Attack>k__BackingField: 0
-  Range: 10
+  Range: 24.4
 --- !u!1 &3485089708210883578
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
   <Health>k__BackingField: 5
   <Damage>k__BackingField: 1
-  <Range>k__BackingField: 0
+  <Range>k__BackingField: 10
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Target>k__BackingField: {fileID: 0}
+  <Target>k__BackingField: {fileID: 7261923253359743249, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
   <Weapon>k__BackingField: {fileID: 0}
   enemy: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 7003599507522047168}
@@ -1013,7 +1013,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 118146
+  m_InstanceId: 131378
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
