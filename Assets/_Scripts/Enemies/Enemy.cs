@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         isDying = true;
         DeadOrAlive();
         int odds = Random.Range(1, 100);
-        if (odds > 25) 
+        if (odds > 60) 
         {
             Loot thisLoot = FindObjectOfType<Loot>();
             thisLoot?.Pick(gameObject);
