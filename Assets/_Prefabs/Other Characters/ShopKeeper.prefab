@@ -2502,8 +2502,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemsForSale:
   - {fileID: 11400000, guid: 07af80be4025e4744a37c00ba1ed47dd, type: 2}
-  - {fileID: 11400000, guid: dff7c14d01d227045a5fbe37dcad8705, type: 2}
   - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
+  - {fileID: 11400000, guid: dff7c14d01d227045a5fbe37dcad8705, type: 2}
+  - {fileID: 11400000, guid: 39716e2cb3e326a4c9aebb036b7615fd, type: 2}
+  - {fileID: 11400000, guid: 8d7b0cbd5e131ee48a7532124b49ae49, type: 2}
+  - {fileID: 11400000, guid: 18bebea0d46a3a547aa7591010eba69d, type: 2}
+  - {fileID: 11400000, guid: 89b7db6a1e07ab941b49992ebf1a9e8b, type: 2}
+  - {fileID: 11400000, guid: c030c03c4d8752143bc24ad5b28476e1, type: 2}
   ShopUI: {fileID: 7913448435673951792}
   ShopDistance: 4
   inDistance: 0
@@ -2511,6 +2516,13 @@ MonoBehaviour:
   ShopKeeper: {fileID: 2489636180351665501}
   inShop: 0
   Key: {fileID: 295850234816966257}
+  shopBG:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &6638867990098400945
 GameObject:
   m_ObjectHideFlags: 0
