@@ -2346,7 +2346,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 58598
+  m_InstanceId: 151728
 --- !u!114 &7543102797016051392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2426,8 +2426,8 @@ GameObject:
   - component: {fileID: 1767438655047901930}
   - component: {fileID: 4351218224180188724}
   - component: {fileID: 3325469368070554820}
-  - component: {fileID: 442583905519050982}
   - component: {fileID: 442583905519050983}
+  - component: {fileID: 442583905519050982}
   m_Layer: 0
   m_Name: DecisionState
   m_TagString: Untagged
@@ -2480,18 +2480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14bad0cc8972be4587e58322e2bb744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &442583905519050982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2624876749484134638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ff13030cccf3849af607a24f62b276, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &442583905519050983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2505,6 +2493,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 554958458929735776}
+--- !u!114 &442583905519050982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2624876749484134638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9ff13030cccf3849af607a24f62b276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3276285444679211360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2626,9 @@ MonoBehaviour:
   SpawnTimer: 0
   bossMovement: {fileID: 0}
   bossAnimator: {fileID: 0}
+  WeaponParent: {fileID: 0}
+  Melee: {fileID: 0}
+  Spray: {fileID: 0}
 --- !u!114 &4658009025384466773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,7 +3038,7 @@ PrefabInstance:
     - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 9a8c95b22d8d86c4a858095601e7fb5e, type: 2}
+      objectReference: {fileID: 11400000, guid: 7ec6c7d87b95262409f923f9fde71117, type: 2}
     - target: {fileID: 8918393634435686408, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: m_Name
       value: Melee
@@ -3344,7 +3347,15 @@ PrefabInstance:
     - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: weaponData
       value: 
-      objectReference: {fileID: 11400000, guid: 00ec620f71d290d47a8a5a59bbb2be72, type: 2}
+      objectReference: {fileID: 11400000, guid: e3c3459584ac35449b7ed0468252d4b0, type: 2}
+    - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
+      propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8918393634435686408, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: m_Name
       value: EnemyAR

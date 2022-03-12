@@ -13,7 +13,7 @@ public class CycloneAction : AIAction
             SquidBoss.atCycloneDest = false;
         }*/
         Tracker = tracker;
-        Debug.Log("Distance from player: " + Vector2.Distance((Vector2)transform.position, aiMovementData.PointOfInterest));
+        // Debug.Log("Distance from player: " + Vector2.Distance((Vector2)transform.position, aiMovementData.PointOfInterest));
         if(SquidBoss.inCyclone && tracker)
         {
             Debug.Log("In Cyclone");

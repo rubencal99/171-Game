@@ -50,29 +50,41 @@ public class SquidBoss : MonoBehaviour
     public BossMovement bossMovement;
     public BossAnimations bossAnimator;
     EnemyBrain brain;
+    StarChaseAction StarChase;
+    public AgentWeapon WeaponParent;
+    public GameObject Melee;
+    public GameObject Spray;
 
     public void Start()
     {
+        StarChase = GetComponentInChildren<StarChaseAction>();
         Reset();
         
         brain = transform.parent.GetComponent<EnemyBrain>();
         currentState = brain.CurrentState;
         bossMovement = transform.parent.GetComponent<BossMovement>();
         bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
+        WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
+        Melee = WeaponParent.transform.Find("Melee").gameObject;
+        Spray = WeaponParent.transform.Find("Spray").gameObject;
     }
 
     public void Update()
     {
         currentState = brain.CurrentState;
         CheckDecision();
-        CheckCyclone();
-        CheckChase();
-        CheckShoot();
-        CheckSpawn();
+        if(!inDecision)
+        {
+            CheckCyclone();
+            CheckChase();
+            CheckShoot();
+            CheckSpawn();
+        }
     }
 
     public void Reset()
     {
+        Debug.Log("In Reset");
         inCyclone = false;
         InCyclone = inCyclone;
         atCycloneDest = false;
@@ -96,6 +108,7 @@ public class SquidBoss : MonoBehaviour
         InChase = inChase;
         chaseTimer = chaseDuration;
         ChaseTimer = chaseTimer;
+        StarChase.enabled = false;
 
         inSpawn = false;
         InSpawn = inSpawn;
@@ -148,12 +161,23 @@ public class SquidBoss : MonoBehaviour
         ChaseTimer = chaseTimer;
         if(inChase)
         {
+            StarChase.enabled = true;
             chaseTimer -= Time.deltaTime;
+            if(Spray.activeSelf)
+            {
+                Melee.SetActive(true);
+                Spray.SetActive(false);
+                WeaponParent.AssignWeapon();
+            }
             if(chaseTimer <= 0)
             {
                 inChase = false;
                 chaseTimer = chaseDuration;
             }
+        }
+        else
+        {
+            StarChase.enabled = false;
         }
     }
 
@@ -163,6 +187,12 @@ public class SquidBoss : MonoBehaviour
         ShootTimer = shootTimer;
         if(inShoot)
         {
+            if(Melee.activeSelf)
+            {
+                Spray.SetActive(true);
+                Melee.SetActive(false);
+                WeaponParent.AssignWeapon();
+            }
             shootTimer -= Time.deltaTime;
             if(shootTimer <= 0)
             {
