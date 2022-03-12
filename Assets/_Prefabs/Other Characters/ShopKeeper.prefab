@@ -852,6 +852,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
   - {fileID: 11400000, guid: 35ac109d00b39144c96a66d9287d954f, type: 2}
   - {fileID: 11400000, guid: 18bebea0d46a3a547aa7591010eba69d, type: 2}
+  - {fileID: 11400000, guid: 7309623288826a24ab0b2e60a0624b49, type: 2}
+  - {fileID: 11400000, guid: f53255f5a4b5899408a6ec31d241ead2, type: 2}
+  - {fileID: 11400000, guid: b51ab2b1c2cc7a94bbc61c14fff51b8f, type: 2}
 --- !u!1 &2289999641662597928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,7 +2026,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 125560
+  m_InstanceId: 48250
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2677,7 +2680,13 @@ MonoBehaviour:
   ItemsForSale:
   - {fileID: 11400000, guid: 07af80be4025e4744a37c00ba1ed47dd, type: 2}
   - {fileID: 11400000, guid: dff7c14d01d227045a5fbe37dcad8705, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
+  - {fileID: 11400000, guid: 39716e2cb3e326a4c9aebb036b7615fd, type: 2}
+  - {fileID: 11400000, guid: 8d7b0cbd5e131ee48a7532124b49ae49, type: 2}
+  - {fileID: 11400000, guid: 18bebea0d46a3a547aa7591010eba69d, type: 2}
+  - {fileID: 11400000, guid: 35ac109d00b39144c96a66d9287d954f, type: 2}
+  - {fileID: 11400000, guid: f53255f5a4b5899408a6ec31d241ead2, type: 2}
+  - {fileID: 11400000, guid: b51ab2b1c2cc7a94bbc61c14fff51b8f, type: 2}
+  - {fileID: 11400000, guid: c55198440f2e6c54cad5089bc987a088, type: 2}
   ShopUI: {fileID: 7913448435673951792}
   ShopDistance: 4
   inDistance: 0
@@ -2685,6 +2694,13 @@ MonoBehaviour:
   ShopKeeper: {fileID: 2489636180351665501}
   inShop: 0
   Key: {fileID: 295850234816966257}
+  shopBG:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &6638867990098400945
 GameObject:
   m_ObjectHideFlags: 0
@@ -2824,7 +2840,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 76730
+  m_InstanceId: 48300
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
