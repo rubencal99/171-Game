@@ -83,8 +83,8 @@ public class RegularBullet : Bullet
 
     public void HitObstacle()
     {
-         Debug.Log("Hitting obstacle");
-           animator.Play("bulletdestructionobstacle");
+         // Debug.Log("Hitting obstacle");
+        animator.Play("bulletdestructionobstacle");
     }
 
     public IEnumerator destruction() {

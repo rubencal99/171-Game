@@ -6,12 +6,6 @@ public class CycloneDestinationDecision : AIDecision
 {
     public override bool MakeADecision()
     {
-        if(SquidBoss.atCycloneDest)
-        {
-            
-        }
         return SquidBoss.atCycloneDest;
     }
-
-
 }
