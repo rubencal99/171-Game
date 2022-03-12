@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SharpShooter Warden
       objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868803, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
       propertyPath: m_RootOrder
       value: 0

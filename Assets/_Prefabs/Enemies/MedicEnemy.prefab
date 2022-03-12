@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
-  <Health>k__BackingField: 2
+  <Health>k__BackingField: 6
   <Damage>k__BackingField: 0
   <Range>k__BackingField: 0
   <OnGetHit>k__BackingField:
@@ -1495,14 +1495,14 @@ PrefabInstance:
     - {fileID: 4166236928070218022, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
     - {fileID: 4173212850514091514, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
---- !u!4 &8144298215097433880 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
-  m_PrefabInstance: {fileID: 7239631586699485670}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9016499086331787293 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1826593068742810107, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
+  m_PrefabInstance: {fileID: 7239631586699485670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8144298215097433880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1548686873752329982, guid: 804afc6f0a561cf4588c62e218cbb7bc, type: 3}
   m_PrefabInstance: {fileID: 7239631586699485670}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &7432175099431475798

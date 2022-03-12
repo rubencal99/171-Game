@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
-  <Health>k__BackingField: 2
+  <Health>k__BackingField: 4
   <Damage>k__BackingField: 0
   <Range>k__BackingField: 0
   <OnGetHit>k__BackingField:

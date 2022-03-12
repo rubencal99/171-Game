@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_InstanceId
       value: -392310
       objectReference: {fileID: 0}
+    - target: {fileID: 5290292573299933810, guid: da4956b77813a0549ab86311545a253c, type: 3}
+      propertyPath: <Health>k__BackingField
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5290292573299933811, guid: da4956b77813a0549ab86311545a253c, type: 3}
       propertyPath: m_Name
       value: Warden (Veteran)
@@ -182,18 +186,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 65731948965220752, guid: da4956b77813a0549ab86311545a253c, type: 3}
   m_PrefabInstance: {fileID: 4540353229998954187}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7511410186027506688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420289458492439851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3034e8ec66b30241a52878360f12ff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6712470015240629396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +193,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3952497427245894554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3034e8ec66b30241a52878360f12ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7511410186027506688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420289458492439851}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3034e8ec66b30241a52878360f12ff5, type: 3}

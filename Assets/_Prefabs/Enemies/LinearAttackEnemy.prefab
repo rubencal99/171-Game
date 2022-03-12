@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1651720869
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ff6642bf959468a48bdfa07a1ae5dd48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -225,7 +225,7 @@ MonoBehaviour:
   <IsAlone>k__BackingField: 0
   <Arrived>k__BackingField: 0
   <Attack>k__BackingField: 0
-  Range: 10
+  Range: 24.4
 --- !u!1 &3485089708210883578
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,9 +612,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
-  <Health>k__BackingField: 2
-  <Damage>k__BackingField: 0
-  <Range>k__BackingField: 0
+  <Health>k__BackingField: 5
+  <Damage>k__BackingField: 1
+  <Range>k__BackingField: 10
   <OnGetHit>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6131138db38168a49b848c528004bb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Target>k__BackingField: {fileID: 0}
+  <Target>k__BackingField: {fileID: 7261923253359743249, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
   <Weapon>k__BackingField: {fileID: 0}
   enemy: {fileID: 0}
   <CurrentState>k__BackingField: {fileID: 7003599507522047168}
@@ -891,7 +891,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 470539697
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -3709464250471344649, guid: d9af8daa03ce62e4e989bd9a777d00be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -957,7 +957,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 118146
+  m_InstanceId: 131378
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c90bcbc7eea4134bb8bc86380a01bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Distance>k__BackingField: 2.63
+  <Distance>k__BackingField: 2.79
 --- !u!114 &3123253957016155601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1459,7 +1459,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1722504919
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Positions:
   - {x: 12, y: 12, z: 0}
