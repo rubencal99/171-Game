@@ -74,6 +74,8 @@ public class Gun : MonoBehaviour
     [SerializeField]
     public string name;
 
+    public Sprite sprite;
+
     private void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
@@ -84,7 +86,9 @@ public class Gun : MonoBehaviour
         weaponParent = transform.parent.GetComponent<AgentWeapon>();
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
+        sprite = GetComponent<SpriteRenderer>().sprite;
     }
+
 
     [field: SerializeField]
     public UnityEvent OnShoot { get; set; }
@@ -150,6 +154,12 @@ public class Gun : MonoBehaviour
             FinishReloading();
             
         }
+    }
+
+    public void ForceReload() {
+        reloadCoroutine = false;
+        rateOfFireCoroutine = false;
+        GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     public void AmmoFill()
