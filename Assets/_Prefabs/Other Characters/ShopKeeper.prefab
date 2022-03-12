@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08737136f23ca3b429b960601337949d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 0}
+  obj: {fileID: 7261923253359743249, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
   p: {fileID: 7261923253359743260, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
   money: 0
   MoneyText: {fileID: 2921111164654379869}
@@ -2121,7 +2121,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 74308
+  m_InstanceId: 76394
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2831,7 +2831,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 74358
+  m_InstanceId: 76444
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
