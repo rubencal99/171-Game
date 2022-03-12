@@ -24,4 +24,4 @@ MonoBehaviour:
   <KnockbackPower>k__BackingField: 6.11
   <KnockbackDuration>k__BackingField: 0.1
   <hasDecay>k__BackingField: 1
-  <decayTime>k__BackingField: 0.2
+  <decayTime>k__BackingField: 5.44
