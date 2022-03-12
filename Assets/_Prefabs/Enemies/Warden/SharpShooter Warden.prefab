@@ -35,6 +35,10 @@ PrefabInstance:
       propertyPath: <Health>k__BackingField
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5148991598613868803, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
+      propertyPath: <EnemyData>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1ced0ad4c3c984da69e499502f410955, type: 2}
     - target: {fileID: 5148991598613868814, guid: 4d13aa3dd553d1449bd4da893364b620, type: 3}
       propertyPath: m_RootOrder
       value: 0

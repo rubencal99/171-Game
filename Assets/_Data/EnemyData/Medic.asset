@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be31c037722d8d04494cd23d80547684, type: 3}
-  m_Name: EnemyData 2
+  m_Name: Medic
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 6
   <Damage>k__BackingField: 1
-  Range: 71
+  Range: 200
