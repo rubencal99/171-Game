@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 5290292573299933811, guid: da4956b77813a0549ab86311545a253c, type: 3}
   - {fileID: 8532199391070295224, guid: b670f2a1e5e1f43439a8759f80c1557c, type: 3}
   - {fileID: 4837684477894360397, guid: 5a0d9bb6bf8f3914892c52a54abde9a6, type: 3}
-  - {fileID: 6638867989798731449, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
+  - {fileID: 6454577251786558054, guid: 89d934a341a75084cb7f986b2ded7ea8, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1722504919
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
