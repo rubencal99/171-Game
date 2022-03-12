@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class ShopSoundManager : MonoBehaviour
 {
@@ -9,28 +10,28 @@ public class ShopSoundManager : MonoBehaviour
 
     public FMODUnity.EventReference fmodEvent;
 
+    [ParamRef]
+    public string shop;
+
     // Start is called before the first frame update
     void Start()
     {
-        //instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-        //instance.start();
-        FMODUnity.RuntimeManager.PlayOneShot(fmodEvent, transform.position);
+        instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        instance.start();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
         if(Shop.inShop){
-            //instance.setParameterByName("inShop", 1);
-            FMODUnity.RuntimeManager.PlayOneShot(fmodEvent, transform.position);
+            RuntimeManager.StudioSystem.setParameterByName(shop, 1);
         }
         else
-            instance.setParameterByName("inShop", 0);
-        */
+            RuntimeManager.StudioSystem.setParameterByName(shop, 0);
     }
 
     void OnDestroy(){
-        //instance.release();
+        instance.release();
     }
 }
