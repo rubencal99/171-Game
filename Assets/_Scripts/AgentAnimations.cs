@@ -52,18 +52,11 @@ public class AgentAnimations : MonoBehaviour
         Debug.Log("Triggering Search Animation");
     }
 
-     public void SetPanicAnimation()
+     public void SetPanicAnimation(bool val)
     {
-        agentAnimator.SetTrigger("isPanic");
+        agentAnimator.SetBool("isPanic", val);
         Debug.Log("Triggering Panic Animation");
     }
-
-     public void SetAttackAnimation()
-    {
-        agentAnimator.SetTrigger("isAttacking");
-        Debug.Log("Triggering Panic Animation");
-    }
-
 
     public void AnimatePlayer(float velocity)
     {

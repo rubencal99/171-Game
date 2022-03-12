@@ -15,7 +15,7 @@ public class HasDeadAllyDecision : AIDecision
             foreach (GameObject ally in allies)
             {
                 Enemy allyInfo = ally.GetComponent<Enemy>();
-                if (allyInfo.isDying)
+                if (allyInfo.isDying && allyInfo != null)
                 {
                     enemyBrain.Target = ally;
                     return true;

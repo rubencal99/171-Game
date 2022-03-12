@@ -124,6 +124,7 @@ MonoBehaviour:
   reloadCoroutine: 0
   meleeCoroutine: 0
   name: Missle Launcher
+  sprite: {fileID: -9034623371229140294, guid: aeb02d8bc97b3480c9e933fab12cab41, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:

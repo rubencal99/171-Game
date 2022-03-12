@@ -15,7 +15,7 @@ public class EnemyBullet : RegularBullet
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("Hitting player!");
+            // Debug.Log("Hitting player!");
             HitEnemy(collision);
             Destroy(gameObject);
         }

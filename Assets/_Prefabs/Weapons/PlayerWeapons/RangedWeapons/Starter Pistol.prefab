@@ -124,6 +124,7 @@ MonoBehaviour:
   reloadCoroutine: 0
   meleeCoroutine: 0
   name: Pistol
+  sprite: {fileID: 21300000, guid: d7a805483f2bf6448b9c93bc5f46a385, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:

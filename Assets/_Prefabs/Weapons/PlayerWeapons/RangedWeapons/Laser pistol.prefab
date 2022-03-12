@@ -124,6 +124,7 @@ MonoBehaviour:
   reloadCoroutine: 0
   meleeCoroutine: 0
   name: Lazer Pistol
+  sprite: {fileID: 21300000, guid: 8f886e8ee08e8014b8e2ff36652c6689, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
