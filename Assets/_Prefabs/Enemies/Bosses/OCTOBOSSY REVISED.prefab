@@ -2039,7 +2039,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2298060378588646562}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d8a3c248d96b114099612ca0accdcf7, type: 3}
   m_Name: 
@@ -2560,8 +2560,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 3325469368070554820}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 442583905519050983}
+  - {fileID: 442583905519050982}
   Transitions:
   - {fileID: 0}
 --- !u!114 &3325469368070554820
@@ -2707,7 +2707,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e7c93e27784d24eace94f0f768992d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+  InCyclone: 0
   CycloneAttempts: 0
+  AtCycloneDest: 0
   CycloneTimer: 0
   InDecision: 0
   DecisionTimer: 0
@@ -2951,7 +2954,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 5900845653700829686}
-  - {fileID: 0}
+  - {fileID: 4501466049258426195}
   Transitions:
   - {fileID: 0}
 --- !u!114 &4501466049258426195
@@ -3089,7 +3092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Actions:
   - {fileID: 1887614045640982429}
-  - {fileID: 0}
+  - {fileID: 2198390408487322070}
   Transitions:
   - {fileID: 0}
   - {fileID: 0}
