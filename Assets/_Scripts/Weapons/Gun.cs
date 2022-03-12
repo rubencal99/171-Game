@@ -86,7 +86,7 @@ public class Gun : MonoBehaviour
         weaponParent = transform.parent.GetComponent<AgentWeapon>();
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
-        sprite = GetComponent<SpriteRenderer>().sprite;
+       // sprite = GetComponent<SpriteRenderer>().sprite;
     }
 
 
