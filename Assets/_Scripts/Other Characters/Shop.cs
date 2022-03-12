@@ -14,7 +14,10 @@ public class Shop : MonoBehaviour
     public bool inShop;
     public GameObject Key;
 
+<<<<<<< Updated upstream
     public FMODUnity.EventReference shopBG;
+=======
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +67,8 @@ public class Shop : MonoBehaviour
     // This function when invoked disables the Shop UI
     public void CloseShop()
     {
+        Debug.Log("Music stops");
+        //shopBGMInst.setParameterByName("InShop", 0);
         ShopUI.gameObject.SetActive(false);
         StartCoroutine(closingShop());
     }

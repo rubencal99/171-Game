@@ -2023,7 +2023,11 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
+<<<<<<< Updated upstream
   m_InstanceId: 125560
+=======
+  m_InstanceId: 74162
+>>>>>>> Stashed changes
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2622,6 +2626,7 @@ Transform:
   - {fileID: 2336522138358982710}
   - {fileID: 8740905999826100554}
   - {fileID: 5818610706781268411}
+  - {fileID: 2509118932996494564}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2697,8 +2702,11 @@ GameObject:
   - component: {fileID: 6638867990098400908}
   - component: {fileID: 6638867990098400944}
   - component: {fileID: 6638867990098400911}
+<<<<<<< Updated upstream
   - component: {fileID: 3128835130343464155}
   - component: {fileID: 1927202829762752866}
+=======
+>>>>>>> Stashed changes
   m_Layer: 5
   m_Name: avatar
   m_TagString: Untagged
@@ -2824,6 +2832,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
+<<<<<<< Updated upstream
   m_InstanceId: 76730
 --- !u!114 &3128835130343464155
 MonoBehaviour:
@@ -2954,6 +2963,9 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  m_InstanceId: 74206
+>>>>>>> Stashed changes
 --- !u!1 &6638867990841983294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,6 +3038,56 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &6639763672703500949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2509118932996494564}
+  - component: {fileID: 1559547716963746307}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2509118932996494564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639763672703500949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6638867989798731445}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1559547716963746307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6639763672703500949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d02312df2fbf442831ba9d8f692041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopBGMEvent:
+    Guid:
+      Data1: 333445031
+      Data2: 1317945471
+      Data3: -1832706929
+      Data4: -1429646065
+    Path: event:/Music/SHOP-BGM1
 --- !u!1 &7097047293905270589
 GameObject:
   m_ObjectHideFlags: 0
