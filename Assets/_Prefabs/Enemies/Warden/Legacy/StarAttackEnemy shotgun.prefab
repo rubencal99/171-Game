@@ -266,7 +266,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1651720869
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ff6642bf959468a48bdfa07a1ae5dd48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -409,6 +409,7 @@ MonoBehaviour:
   deathTimer: 10
   agentAnimations: {fileID: 0}
   knockback: 0
+  blood: {fileID: 0}
 --- !u!114 &4224652976851562825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,7 +728,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 470539697
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5989c1fad2493aa47af4da86f6146f23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -793,7 +794,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 65604
+  m_InstanceId: 76614
 --- !u!82 &138440696315084505
 AudioSource:
   m_ObjectHideFlags: 0
@@ -908,14 +909,14 @@ MonoBehaviour:
       Data2: 1244580679
       Data3: -164810101
       Data4: -492396689
-    Path: event:/BIO-S/S-Hurt
+    Path: event:/Characters/BIO-S/S-Hurt
   deathEvent:
     Guid:
       Data1: -282551224
       Data2: 1123922648
       Data3: 623627917
       Data4: -712787353
-    Path: event:/BIO-S/S-Death
+    Path: event:/Characters/BIO-S/S-Death
   stepEvent:
     Guid:
       Data1: 331476970

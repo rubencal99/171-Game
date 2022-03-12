@@ -76,6 +76,22 @@ PrefabInstance:
       propertyPath: shootBulletEvent.Path
       value: event:/WEP/BAL/L-Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 5933921913812107941, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
+      propertyPath: shootBulletEvent.Guid.Data1
+      value: 464072015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933921913812107941, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
+      propertyPath: shootBulletEvent.Guid.Data2
+      value: 1269425925
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933921913812107941, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
+      propertyPath: shootBulletEvent.Guid.Data3
+      value: 1819750786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5933921913812107941, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
+      propertyPath: shootBulletEvent.Guid.Data4
+      value: -1465140383
+      objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143088, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -303,13 +319,45 @@ PrefabInstance:
       propertyPath: damageTakenEvent.Path
       value: event:/Characters/BIO-S/S-Hurt
       objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: deathEvent.Guid.Data1
+      value: -282551224
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: deathEvent.Guid.Data2
+      value: 1123922648
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: deathEvent.Guid.Data3
+      value: 623627917
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: deathEvent.Guid.Data4
+      value: -712787353
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: damageTakenEvent.Guid.Data1
+      value: -830976992
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: damageTakenEvent.Guid.Data2
+      value: 1244580679
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: damageTakenEvent.Guid.Data3
+      value: -164810101
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261923253008125776, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
+      propertyPath: damageTakenEvent.Guid.Data4
+      value: -492396689
+      objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253008125778, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_InstanceId
-      value: -383404
+      value: -79218
       objectReference: {fileID: 0}
     - target: {fileID: 7261923253359743248, guid: 42704e2b7f31e65469e348318703d9d9, type: 3}
       propertyPath: m_RootOrder
