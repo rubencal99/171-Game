@@ -36,7 +36,7 @@ public class EnemySpanwer : MonoBehaviour
         //     InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         // else {
         //     for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
-                 StartCoroutine(invoke_spawn());
+                 StartSpawn();
         //     }
         // }
     }
@@ -45,6 +45,11 @@ public class EnemySpanwer : MonoBehaviour
     //     if(spawned)
     //         oneStepCloser();
     // }
+
+    public void StartSpawn()
+    {
+        StartCoroutine(invoke_spawn());
+    }
 
     public IEnumerator invoke_spawn() {
         // canSpawn = false;
