@@ -200,6 +200,7 @@ MonoBehaviour:
   - b7716510a1f36934c87976f3a81dbf3d
   - c88d16e5272a4e241b0ef0ac2e53b73d
   - fd7c55dab0fce234b8c25f6ffca523c1
+  - 52eb9df5db46521439908db3a29a1bbb
 --- !u!114 &-6730249649929498412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,6 +395,8 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131588
   Platforms:
+  - {fileID: -7183655795063378270}
+  - {fileID: 5024354656932400898}
   - {fileID: -841191185978134558}
   - {fileID: -4339107127532036112}
   - {fileID: -6730249649929498412}
@@ -403,8 +406,6 @@ MonoBehaviour:
   - {fileID: 6706541499511639093}
   - {fileID: -2750615799121549956}
   - {fileID: 5493140958216448134}
-  - {fileID: 5024354656932400898}
-  - {fileID: -7183655795063378270}
   MigratedPlatforms: 05000000060000000a000000080000000b00000012000000150000000c000000090000000200000001000000
 --- !u!114 &-2750615799121549956
 MonoBehaviour:
@@ -483,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   identifier: 52eb9df5db46521439908db3a29a1bbb
-  parentIdentifier: 
+  parentIdentifier: default
   active: 0
   Properties:
     LiveUpdate:
@@ -580,6 +581,7 @@ MonoBehaviour:
   - BAL-RF
   - BAL-SG
   - BAL-SMG
+  - BGM
   - BIO-L
   - BIO-S
   - LAS-H
@@ -599,6 +601,8 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131588
   Platforms:
+  - {fileID: -7183655795063378270}
+  - {fileID: 5024354656932400898}
   - {fileID: -841191185978134558}
   - {fileID: -4339107127532036112}
   - {fileID: -6730249649929498412}
