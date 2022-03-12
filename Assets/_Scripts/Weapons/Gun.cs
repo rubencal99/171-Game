@@ -160,6 +160,7 @@ public class Gun : MonoBehaviour
         reloadCoroutine = false;
         rateOfFireCoroutine = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
+        GetComponent<Animator>().Play("idle");
     }
 
     public void AmmoFill()
