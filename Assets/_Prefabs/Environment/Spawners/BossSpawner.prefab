@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemies:
-  - {fileID: 2285083215370425694, guid: c163af4f37ea83944868e61f60940388, type: 3}
+  - {fileID: 2285083215370425694, guid: 9873ee6cc203c764ca46ebcb81c2b5f0, type: 3}
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1722504919
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
