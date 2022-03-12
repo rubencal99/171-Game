@@ -4928,6 +4928,7 @@ MonoBehaviour:
   reloadCoroutine: 0
   meleeCoroutine: 0
   name: Shotgun
+  sprite: {fileID: 21300000, guid: 8027fde5f661e5b4f9f5f552c4f95003, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
