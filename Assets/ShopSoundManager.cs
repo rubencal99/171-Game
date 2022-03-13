@@ -28,17 +28,17 @@ public class ShopSoundManager : MonoBehaviour
     {
         if(Shop.inShop){
             RuntimeManager.StudioSystem.setParameterByName(shop, 1);
-            if (Greeted){
-                RuntimeManager.PlayOneShot(ShopGreeting); 
+            if (!Greeted){
+                FMODUnity.RuntimeManager.PlayOneShot(ShopGreeting); 
                 Greeted = true;
             }
             
         }
-        else
+        else {
             RuntimeManager.StudioSystem.setParameterByName(shop, 0);
-            if (Greeted){
-                Greeted = false;
-            }
+            Greeted = false;
+        }  
+        Debug.Log("greeting = " + Greeted);
     }
 
     void OnDestroy(){

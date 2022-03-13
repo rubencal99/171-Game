@@ -2121,7 +2121,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 96972
+  m_InstanceId: 74486
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2184,13 +2184,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d02312df2fbf442831ba9d8f692041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fmodEvent:
+  ShopMusicEvent:
     Guid:
       Data1: 333445031
       Data2: 1317945471
       Data3: -1832706929
       Data4: -1429646065
     Path: event:/Music/SHOP-BGM1
+  ShopGreeting:
+    Guid:
+      Data1: -1892265047
+      Data2: 1324334031
+      Data3: -1516891511
+      Data4: 25386480
+    Path: event:/Characters/SHOP/Greeting
   shop: InShop
 --- !u!1 &4879599776242170722
 GameObject:
@@ -2882,7 +2889,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 97022
+  m_InstanceId: 74536
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
