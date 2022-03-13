@@ -125,4 +125,9 @@ public class BackgroundSoundManager : MonoBehaviour
             RuntimeManager.StudioSystem.setParameterByName(supportParam, 0.0f);
         }
     }
+
+    void OnDestroy()
+    {
+        CombatMusicInst.release();
+    }
 }

@@ -6,9 +6,9 @@ using FMODUnity;
 public class ShopSoundManager : MonoBehaviour
 {
 
-    private FMOD.Studio.EventInstance instance;
+    private FMOD.Studio.EventInstance ShopMusicInst;
 
-    public FMODUnity.EventReference fmodEvent;
+    public FMODUnity.EventReference ShopMusicEvent;
 
     [ParamRef]
     public string shop;
@@ -16,9 +16,9 @@ public class ShopSoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = FMODUnity.RuntimeManager.CreateInstance(fmodEvent);
-        instance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
-        instance.start();
+        ShopMusicInst = FMODUnity.RuntimeManager.CreateInstance(ShopMusicEvent);
+        ShopMusicInst.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
+        ShopMusicInst.start();
     }
 
     // Update is called once per frame
@@ -32,6 +32,6 @@ public class ShopSoundManager : MonoBehaviour
     }
 
     void OnDestroy(){
-        instance.release();
+        ShopMusicInst.release();
     }
 }
