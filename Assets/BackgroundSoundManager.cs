@@ -14,7 +14,8 @@ public class BackgroundSoundManager : MonoBehaviour
 
     // Update is called once per frame
  
-    void OnCollisionEnter2D(Collider2D collider){
+    void OnCollisionEnter2D(Collider2D collider)
+    {
         
     }
 }
