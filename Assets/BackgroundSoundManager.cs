@@ -20,6 +20,10 @@ public class BackgroundSoundManager : MonoBehaviour
     public string wardenParam;
     [ParamRef]
     public string supportParam;
+    public Vector3 shopPos;
+    public float shopDist;
+    [ParamRef]
+    public string shopDistanceParam;
     void Start()
     {
         detect = GetComponent<CircleCollider2D>();
@@ -61,6 +65,12 @@ public class BackgroundSoundManager : MonoBehaviour
             {
                 supportCount += 1;
             }
+        }
+
+        if (collider.gameObject.name == "ShopKeeper")
+        {
+            shopPos = collider.gameObject.transform.position;
+            // Debug.Log("shopkeeper at " + shopPos); 
         }
     }
 
@@ -123,6 +133,14 @@ public class BackgroundSoundManager : MonoBehaviour
         }
         else {
             RuntimeManager.StudioSystem.setParameterByName(supportParam, 0.0f);
+        }
+
+        // set shopDist and update ShopDistance param
+        if (shopPos != null)
+        {
+            shopDist = Vector3.Distance(shopPos, transform.position);
+            // Debug.Log("distance from shop: " + shopDist);
+            CombatMusicInst.setParameterByName("ShopDistance", shopDist);
         }
     }
 

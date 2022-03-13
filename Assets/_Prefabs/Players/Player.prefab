@@ -307,9 +307,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detect: {fileID: 0}
+  CombatMusicEvent:
+    Guid:
+      Data1: -1822174840
+      Data2: 1094170241
+      Data3: 1210371256
+      Data4: 1964297901
+    Path: event:/Music/COM-BGM1
+  prisonerCount: 0
+  wardenCount: 0
+  supportCount: 0
   prisonerParam: Prisoner
   wardenParam: Warden
   supportParam: Support
+  shopPos: {x: 0, y: 0, z: 0}
+  shopDist: 0
+  shopDistanceParam: 
 --- !u!1 &7124482323357766900
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +639,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 56792
+  m_InstanceId: 42222
 --- !u!114 &7261923253008125776
 MonoBehaviour:
   m_ObjectHideFlags: 0
