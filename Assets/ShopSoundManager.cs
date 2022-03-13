@@ -38,7 +38,7 @@ public class ShopSoundManager : MonoBehaviour
             RuntimeManager.StudioSystem.setParameterByName(shop, 0);
             Greeted = false;
         }  
-        Debug.Log("greeting = " + Greeted);
+        // Debug.Log("greeting = " + Greeted);
     }
 
     void OnDestroy(){
