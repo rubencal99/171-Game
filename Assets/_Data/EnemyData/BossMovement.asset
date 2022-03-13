@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e01acebfaabbb7478a926635131ac60, type: 3}
   m_Name: BossMovement
   m_EditorClassIdentifier: 
-  maxDodgeSpeed: 10
-  maxRunSpeed: 5
+  maxDodgeSpeed: 8
+  maxRunSpeed: 4.6
   maxProneSpeed: 3
-  acceleration: 50
+  acceleration: 30
   decceleration: 50
   standingDelay: 0

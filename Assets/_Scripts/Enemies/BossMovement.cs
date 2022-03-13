@@ -25,4 +25,23 @@ public class BossMovement : AgentMovement
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
     }
+
+    // this function integrates acceleration
+    protected virtual float calculateSpeed(Vector2 movementInput)
+    {
+        if (movementInput.magnitude > 0)
+        {
+            currentVelocity += MovementData.acceleration * Time.deltaTime ;
+        }
+        else
+        {
+            currentVelocity -= MovementData.decceleration * Time.deltaTime;
+        }
+        // Returns velocity between 0 and maxSpeed
+        if(SquidBoss.inCyclone && !SquidBoss.atCycloneDest)
+        {
+            return Mathf.Clamp(currentVelocity, 0, MovementData.maxDodgeSpeed);
+        }
+        return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
+    }
 }
