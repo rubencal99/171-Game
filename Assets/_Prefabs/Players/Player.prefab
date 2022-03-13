@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 6350174754247243072}
   - component: {fileID: 6350174754247243073}
   - component: {fileID: 6350174754247243074}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: EnemySoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,6 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detect: {fileID: 0}
+  prisonerParam: Prisoner
+  wardenParam: Warden
+  supportParam: Support
 --- !u!1 &7124482323357766900
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +626,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 44550
+  m_InstanceId: 56792
 --- !u!114 &7261923253008125776
 MonoBehaviour:
   m_ObjectHideFlags: 0
