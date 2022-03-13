@@ -152,7 +152,10 @@ public class SquidBoss : MonoBehaviour
             }
             
         }
-        
+        else
+        {
+            bossAnimator.SetCycloneAnimation(false);
+        }
     }
 
     public void CheckChase()
@@ -185,6 +188,7 @@ public class SquidBoss : MonoBehaviour
     {
         InShoot = inShoot;
         ShootTimer = shootTimer;
+        bossAnimator.SetShootAnimation(inShoot);
         if(inShoot)
         {
             if(Melee.activeSelf)
