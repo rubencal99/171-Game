@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetEnemyDeadDecision : MonoBehaviour
+public class TargetEnemyDeadDecision : AIDecision
 {
-    // Start is called before the first frame update
-    void Start()
+    public override bool MakeADecision()
     {
-        
+        return enemyBrain.Target == null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

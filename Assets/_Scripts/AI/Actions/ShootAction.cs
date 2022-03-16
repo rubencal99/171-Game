@@ -17,10 +17,10 @@ public class ShootAction : AIAction
         }
     }
 
-    protected void OnDrawGizmos()
+    /*protected void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, aiActionData.Range);
         Gizmos.color = Color.white;
-    }
+    }*/
 }

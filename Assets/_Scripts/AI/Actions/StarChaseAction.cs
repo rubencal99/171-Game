@@ -32,7 +32,8 @@ public class StarChaseAction : AIAction
     }
 
     public virtual void Update() {
-        if(target)
+        target = enemyBrain.Target;
+        if(target && enemyBrain.enemy.EnemyData.aimsAtTarget == true)
             aiMovementData.PointOfInterest = (Vector2)target.transform.position;
         // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
