@@ -14,4 +14,10 @@ public class EnemyDataSO : ScriptableObject
     [field: SerializeField]
     [Range(1f, 200)]
     public float Range = 10;         // Might want to make the set private
+
+    [field: SerializeField]
+    [Range(0, 10)]
+    public int Priority = 1;         // Might want to make the set private
+
+    public bool aimsAtTarget = true;
 }
