@@ -21,4 +21,36 @@ public class EnemyBullet : RegularBullet
         }
         
     }
+
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            bounce--;
+            if(bounce < 0)
+            {
+                HitObstacle();
+                StartCoroutine(destruction());
+            }
+            else
+            {
+                BounceBullet(collision);
+
+            }
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            HitEnemy(collision);
+            // This check is for bullets that go through enemies like snipers or lasers etc.
+            if (!BulletData.GoThroughHittable) {
+                animator.Play("bulletdestructionenemy");
+                 StartCoroutine(destruction());
+            }
+        }
+        else
+        {
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), transform.GetComponent<Collider>());
+        }
+        
+    }
 }

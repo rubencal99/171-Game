@@ -11,7 +11,7 @@ public class RegularBullet : Bullet
     protected float decay;
 
     protected Animator animator;
-    int bounce;
+    protected int bounce;
 
     public override BulletDataSO BulletData
     {
