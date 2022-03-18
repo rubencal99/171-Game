@@ -89,7 +89,7 @@ public class TileSpritePlacer : MonoBehaviour
 
     public void Clear()
     {
-        Debug.Log("In Clear");
+        // Debug.Log("In Clear");
         if (prevNodes != null)
         {
             Vector2 position = Vector2.zero;
