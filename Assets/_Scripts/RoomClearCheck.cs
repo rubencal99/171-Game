@@ -21,7 +21,7 @@ public class RoomClearCheck : MonoBehaviour
                spawners.Add(child.gameObject);
               }
         }
-        Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
+        // Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
     }
 
      void Update() {

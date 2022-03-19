@@ -20,6 +20,7 @@ public class RoomNode : MonoBehaviour
     public List<RoomNode> NeighborRooms = new List<RoomNode>();
     public List<RoomNode> ConnectedRooms = new List<RoomNode>();
     public List<RoomNode> RoomsByDistance = new List<RoomNode>();
+    public int DistanceFromStart;
 
     public void CreateRoomObject()
     {
@@ -63,6 +64,7 @@ public class RoomNode : MonoBehaviour
         length = l;
         width = w;
         tileList = new TileNode[length, width];
+        DistanceFromStart = -1;
     }
 
     public void CalculateCenter()
