@@ -8,7 +8,7 @@ public class BuffAction : AIAction
 
     GameObject self;
 
-    GameObject allyToBuff;
+    public GameObject allyToBuff;
     AgentRenderer allySprite;
 
     public float buffTimer;
