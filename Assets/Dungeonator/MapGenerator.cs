@@ -293,6 +293,7 @@ public class MapGenerator : MonoBehaviour
         }
         SortRooms();
         AddCorridors();
+        AddBossRoom();
         AddEntryColliders();
         AddSpawners();
         for(int i = 0; i < 2; i++)
@@ -421,6 +422,8 @@ public class MapGenerator : MonoBehaviour
 
                 SortByDistance(room, neighbor);
             }
+        }
+        /*
             if((room.RoomType) == "Start")
             {
                 RoomNode bossRoom = room.RoomsByDistance[room.RoomsByDistance.Count-1];
@@ -439,7 +442,7 @@ public class MapGenerator : MonoBehaviour
             shop = BossRoom.RoomsByDistance[index-1];
         }
         shop.RoomType = "Shop";
-        ShopRoom = shop;
+        ShopRoom = shop;*/
     }
 
     // This function goes through current list of rooms and inserts room in question accordingly
@@ -458,6 +461,60 @@ public class MapGenerator : MonoBehaviour
         }
         // If neighbor is furthest away out of all compared so far add it to back of list
         room.RoomsByDistance.Add(neighbor);
+    }
+
+    void AddBossRoom()
+    {
+        int distance = 0;
+        RoomNode boss = new RoomNode();
+        foreach(RoomNode room in Rooms)
+        {
+            if(room.DistanceFromStart > distance)
+            {
+                distance = room.DistanceFromStart;
+                boss = room;
+                //boss.RoomType = "Boss";
+            }
+        }
+        BossRoom = boss;
+        BossRoom.RoomType = "Boss";
+        /*Debug.Log("Boss distance: " + BossRoom.DistanceFromStart);
+        int r = Random.Range(1, 4);
+        if(r >= BossRoom.RoomsByDistance.Count)
+        {
+            r = 1;
+        }
+        int distanceFromBoss = BossRoom.DistanceFromStart - r;
+        Debug.Log("Shop's distance: " + distanceFromBoss);
+        foreach(RoomNode room in Rooms)
+        {
+            if(room.DistanceFromStart == distanceFromBoss)
+            {
+                ShopRoom = room;
+                break;
+            }
+        }
+
+        
+        //RoomNode shop = BossRoom.RoomsByDistance[distanceFromBoss];
+        if(ShopRoom == StartRoom)
+        {
+            ShopRoom = BossRoom.RoomsByDistance[r-1];
+        }
+        ShopRoom.RoomType = "Shop";
+        //ShopRoom = shop;*/
+        int index = Random.Range(1, 4);
+        if(index >= BossRoom.RoomsByDistance.Count)
+        {
+            index = 1;
+        }
+        RoomNode shop = BossRoom.RoomsByDistance[index];
+        if(shop == StartRoom)
+        {
+            shop = BossRoom.RoomsByDistance[index-1];
+        }
+        shop.RoomType = "Shop";
+        ShopRoom = shop;
     }
 
     void AddCorridors()
@@ -493,6 +550,31 @@ public class MapGenerator : MonoBehaviour
             {
                 ConnectRooms(room, neighbor);
             }
+        }
+        AddDistanceFromStart();
+    }
+
+    public void AddDistanceFromStart()
+    {
+        StartRoom.DistanceFromStart = 0;
+        Queue<RoomNode> roomsToSearch = new Queue<RoomNode>();
+        roomsToSearch.Enqueue(StartRoom);
+        //Debug.Log("In Distance From Start");
+        while(roomsToSearch.Count > 0)
+        {
+            RoomNode currentRoom = roomsToSearch.Dequeue();
+            //Debug.Log("Current Room Distance From Start: " + currentRoom.DistanceFromStart);
+            //Debug.Log("Current Room Neighbor Count: " + currentRoom.NeighborRooms.Count);
+            foreach(RoomNode room in currentRoom.NeighborRooms)
+            {
+                //Debug.Log("In For Loop");
+                if(room.DistanceFromStart <= 0 && room != StartRoom)
+                {
+                    room.DistanceFromStart = currentRoom.DistanceFromStart + 1;
+                    roomsToSearch.Enqueue(room);
+                }
+            }
+            //Debug.Log("Rooms To Search Count: " + roomsToSearch.Count);
         }
     }
 

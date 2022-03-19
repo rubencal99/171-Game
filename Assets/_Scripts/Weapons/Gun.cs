@@ -208,7 +208,7 @@ public class Gun : MonoBehaviour
         if (isMelee)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             OnMelee?.Invoke();
-            SpawnMelee(muzzle.transform.position, CalculateAngle(muzzle));
+            SpawnMelee(muzzle.transform.position, CalculateAngle(muzzle, muzzle.transform.position));
             }
             else
             {
@@ -270,7 +270,7 @@ public class Gun : MonoBehaviour
 
     protected void ShootBullet()
     {
-        SpawnBullet(muzzle.transform.position + muzzle.transform.right, CalculateAngle(muzzle));
+        SpawnBullet(muzzle.transform.position + muzzle.transform.right);//, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
        if (isPlayer)
        {
@@ -289,19 +289,26 @@ public class Gun : MonoBehaviour
        meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }
 
-    private void SpawnBullet(Vector3 position, Quaternion rotation)
+    private void SpawnBullet(Vector3 position)//, Quaternion rotation)
     {
-        var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
-        bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = position - transform.position;
+        Quaternion rotation = CalculateAngle(muzzle, position);
+        //var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
+        //bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+        //bulletPrefab.GetComponent<Bullet>().direction = bulletPrefab.transform.rotation * (position - transform.position);
     }
 
     // Here we add some randomness for weapon spread
-    protected Quaternion CalculateAngle(GameObject muzzle)
+    protected Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
     {
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));
-        return muzzle.transform.rotation * bulletSpreadRotation;
+        Quaternion rotation = muzzle.transform.rotation * bulletSpreadRotation;
+
+        var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
+        bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
+        bulletPrefab.GetComponent<Bullet>().direction = bulletSpreadRotation * (position - transform.position);
+
+        return rotation;
     }
 
     protected void displayReloadProgressBar() {
