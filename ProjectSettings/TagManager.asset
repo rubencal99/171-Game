@@ -24,6 +24,7 @@ TagManager:
   - LB
   - bloodparticles
   - LP
+  - BAS
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - PlayerMovementCollider
   - Minimap
   - Glow
-  - 
+  - MouseCollider
   - 
   - 
   - 

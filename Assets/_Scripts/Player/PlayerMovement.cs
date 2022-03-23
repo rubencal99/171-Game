@@ -11,19 +11,19 @@ public class PlayerMovement : AgentMovement
 
 
     protected PlayerStateManager PlayerState;
-    public CapsuleCollider2D collider;
-    public Vector2 oriCollider;
+    public CapsuleCollider collider;
+    //public Vector2 oriCollider;
 
     protected void Start()
     {
         PlayerState = GetComponent<PlayerStateManager>();
-        collider = GetComponent<CapsuleCollider2D>();
-        oriCollider = collider.size;
+        collider = GetComponent<CapsuleCollider>();
+        //oriCollider = collider.size;
     }
 
 
     // this function integrates acceleration
-    protected override float calculateSpeed(Vector2 movementInput)
+    protected override float calculateSpeed(Vector3 movementInput)
     {
         if (movementInput.magnitude > 0)
         {
@@ -52,14 +52,14 @@ public class PlayerMovement : AgentMovement
 
     //********** Dodge function
     // Should player be able to dodge when not moving??
-    public void dodge(Vector2 dodgeDirection) {
-        collider.size = new Vector2(1.1f, 0.6f);
-        rigidbody2D.velocity = Vector2.zero; // set speed to zero
-        rigidbody2D.velocity += dodgeDirection * dodgeVelocity; // create dodge
-        Debug.Log("Dodge Velocity: " + rigidbody2D.velocity);
-        Debug.Log("Collider size: " + collider.size);
-        Debug.Log("Original height and width:" + oriCollider);
-        collider.size = oriCollider;
+    public void dodge(Vector3 dodgeDirection) {
+        //collider.size = new Vector2(1.1f, 0.6f);
+        rigidbody.velocity = Vector2.zero; // set speed to zero
+        rigidbody.velocity += (Vector3)(dodgeDirection * dodgeVelocity); // create dodge
+        Debug.Log("Dodge Velocity: " + rigidbody.velocity);
+        //Debug.Log("Collider size: " + collider.size);
+        //Debug.Log("Original height and width:" + oriCollider);
+        //collider.size = oriCollider;
     }
 
     public void ResetSpeed()

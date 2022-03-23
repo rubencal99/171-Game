@@ -114,7 +114,7 @@ public class AgentRenderer : MonoBehaviour
         material.SetColor("SkinTone", skinTone);
     }
     
-    public void FaceDirection(Vector2 pointerInput)
+    public void FaceDirection(Vector3 pointerInput)
     {
         var direction = (Vector3)pointerInput - transform.position;
 

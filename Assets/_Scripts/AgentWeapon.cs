@@ -8,7 +8,7 @@ public class AgentWeapon : MonoBehaviour
     protected float desiredAngle;
     protected float xMax;
     protected float xMin;
-    protected bool flipY;
+    protected bool flipX;
 
     // Need our weaponRenderer to call it's functions
     [SerializeField]
@@ -31,20 +31,21 @@ public class AgentWeapon : MonoBehaviour
         weapon = GetComponentInChildren<Gun>();
         xMax = gameObject.transform.position.x + 0.5f;
         xMin = gameObject.transform.position.x - 0.5f;
-        flipY = false;
+        flipX = false;
     }
 
 
-    public virtual void AimWeapon(Vector2 pointerPosition)
+    public virtual void AimWeapon(Vector3 pointerPosition)
     {
 
         var aimDirection = (Vector3)pointerPosition - transform.position;
         // Use arctan to find angle from our x-axis and convert to degrees
-        desiredAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        desiredAngle = Mathf.Atan2(aimDirection.z, aimDirection.x) * Mathf.Rad2Deg;
+
+        // Calculates rotation between angle A and angle B
+        transform.rotation = Quaternion.AngleAxis(desiredAngle, Vector3.up);
 
         AdjustWeaponRendering();
-        // Calculates rotation between angle A and angle B
-        transform.rotation = Quaternion.AngleAxis(desiredAngle, Vector3.forward);
 
     }
 
@@ -63,16 +64,16 @@ public class AgentWeapon : MonoBehaviour
            // weaponRenderer.RenderBehindHead(desiredAngle < 150 && desiredAngle > 0);
 
             if(desiredAngle > 90 || desiredAngle < -90){ // 6 to 12 Clockwise or LEFT
-             current_pos.x = -0.45f;
-             current_pos.y = -0.20f;
-            flipY = true;
+                //current_pos.x = -0.45f;
+                //current_pos.y = -0.20f;
+                flipX = true;
             } else { // 12 to 6 clockwise or RIGHT
-            current_pos.x = 0.25f;
-            current_pos.y = 0f;
-            flipY = false;
+                //current_pos.x = 0.25f;
+                //current_pos.y = 0f;
+                flipX = false;
             }   
              gameObject.transform.localPosition = current_pos;
-             weaponRenderer.FlipSprite(flipY);
+             weaponRenderer.FlipSprite(flipX);
             // gameObject.GetComponent<SpriteRenderer>().flipY = flipY;
         }
 

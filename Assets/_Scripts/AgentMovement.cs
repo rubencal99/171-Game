@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 // Script requires RigidBody attached to Player object
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody))]
 public class AgentMovement : MonoBehaviour
 {
-    public Rigidbody2D rigidbody2D;
+    public Rigidbody rigidbody;
 
     protected PlayerPassives Passives;
 
@@ -20,7 +20,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField]
     public float currentVelocity = 0;
     [SerializeField]
-    public Vector2 movementDirection;
+    public Vector3 movementDirection;
 
     // This passes currentVelocity to AgentAnimations.AnimatePlayer
     // Hence SerializeField
@@ -36,7 +36,7 @@ public class AgentMovement : MonoBehaviour
     protected void Awake()
     {
         // Grabs RigidBody that the script is attached to
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody>();
 
         // Grabs PlayerPassives script
         Passives = GetComponent<PlayerPassives>();
@@ -46,7 +46,7 @@ public class AgentMovement : MonoBehaviour
     }
 
     // Takes Vector2 from AgentInput OnMovementKeyPressed
-    public virtual void MoveAgent(Vector2 movementInput)
+    public virtual void MoveAgent(Vector3 movementInput)
     {
         // rigidbody2D.velocity = movementInput.normalized * currentVelocity;
         if (movementInput.magnitude > 0)
@@ -66,7 +66,7 @@ public class AgentMovement : MonoBehaviour
     }
     
     // this function integrates acceleration
-    protected virtual float calculateSpeed(Vector2 movementInput)
+    protected virtual float calculateSpeed(Vector3 movementInput)
     {
         if (movementInput.magnitude > 0)
         {
@@ -80,7 +80,7 @@ public class AgentMovement : MonoBehaviour
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
 
-    public void Knockback(float duration, float power, Vector2 direction)
+    public void Knockback(float duration, float power, Vector3 direction)
     {
         knockback = true;
         // Vector2 direction = (bullet.direction).normalized;
@@ -88,7 +88,7 @@ public class AgentMovement : MonoBehaviour
         knockbackTimer = duration;
         knockbackDirection = direction;
         Vector2 k = -knockbackDirection * knockbackPower;
-        rigidbody2D.AddForce(k, ForceMode2D.Impulse);
+        rigidbody.AddForce(k, ForceMode.Impulse);
         //knockback = false;
     }
 
@@ -107,6 +107,6 @@ public class AgentMovement : MonoBehaviour
             return;
         }
         OnVelocityChange?.Invoke(currentVelocity);
-        rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
+        rigidbody.velocity = currentVelocity * movementDirection.normalized;
     }
 }
