@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
+
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class AgentRenderer : MonoBehaviour
@@ -30,11 +32,14 @@ public class AgentRenderer : MonoBehaviour
     public Color generatedColor;
     private Color originalColor;
     private Color deathColor;
+    public Color currentColor;
+    public Light2D light2D;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = GetComponent<SpriteRenderer>().material;
+        light2D = transform.parent.GetComponentInChildren<Light2D>();
         SetSkinTone();
         originalColor = spriteRenderer.color;
         // Debug.Log("Original Color: " + originalColor);
@@ -56,21 +61,43 @@ public class AgentRenderer : MonoBehaviour
         {
             AdjustColors();
         }
+        currentColor = spriteRenderer.color;
     }
 
     void AdjustColors()
     {
         if (isEnraged)
         {
-            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
+            Enrage();
         }
         if (isBuffed)
         {
-            spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 0.1f);
+            Buff();
         }
         else{
-            spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
+            Normal();
         }
+    }
+
+    public void Enrage()
+    {
+        spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
+        light2D.intensity = Mathf.Lerp(light2D.intensity, 1, 0.1f);
+        light2D.color = Color.Lerp(light2D.color, Color.red, 0.1f);
+    }
+
+    public void Buff()
+    {
+        //spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 0.1f);
+        light2D.intensity = Mathf.Lerp(light2D.intensity, 10, 0.1f);
+        light2D.color = Color.Lerp(light2D.color, Color.green, 0.1f);
+    }
+
+    public void Normal()
+    {
+        spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
+        light2D.intensity = Mathf.Lerp(light2D.intensity, 0, 0.1f);
+        //light.color = Color.Lerp(light.color, Color.red, 0.1f);
     }
 
     void SetSkinTone()

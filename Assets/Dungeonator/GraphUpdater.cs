@@ -5,11 +5,18 @@ using Pathfinding;
 
 public class GraphUpdater : MonoBehaviour
 {
-    public static GraphUpdateObject GUO = new GraphUpdateObject();
+    // public static GraphUpdateObject GUO = new GraphUpdateObject();
     public static bool InRoom;
     static Bounds b;
     void Start()
     {
+        AstarPath graph = transform.GetComponent<AstarPath>();
+        //NavGraph ObstacleGraph = graph.graphs[1];
+        /*for(int i = 0; i < graph.graphs.Length; i++)
+        {
+            Debug.Log("Graph " + i + ": " + graph.graphs[i]);
+        }*/
+        
         InvokeRepeating("GraphUpdate", 1f, .1f);
     }
     
