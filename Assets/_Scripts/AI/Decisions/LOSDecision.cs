@@ -6,7 +6,7 @@ public class LOSDecision : AIDecision
 {
     public LayerMask layerMask;
     GameObject lastHit;
-    Vector2 collision = Vector2.zero;
+    Vector3 collision = Vector3.zero;
     // LayerMask enemies = LayerMask.GetMask("Enemy");
     // LayerMask Colliders;
     public override bool MakeADecision()
@@ -32,7 +32,8 @@ public class LOSDecision : AIDecision
         return false;*/
 
         // Arbitrary distance, may be changed using EnemyData Range
-        RaycastHit2D hit = Physics2D.Raycast(pos, direction, 100, layerMask);
+        RaycastHit hit;
+        Physics.Raycast(pos, direction, out hit, 100, layerMask);
         // Debug.Log("Hit point = " + hit.transform.position);
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
             // Debug.Log("LOS Hitting Obstacles");

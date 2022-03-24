@@ -6,7 +6,7 @@ public class StandStillAction : AIAction
 {
     public override void TakeAction()
     {
-        aiMovementData.Direction = Vector2.zero;
+        aiMovementData.Direction = Vector3.zero;
         // aiMovementData.PointOfInterest = transform.position;
         enemyBrain.Move(aiMovementData.Direction);
         enemyBrain.Aim(aiMovementData.PointOfInterest);
