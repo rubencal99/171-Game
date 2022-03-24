@@ -24,10 +24,10 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     public UnityEvent OnFireButtonReleased { get; set; }
 
     [field: SerializeField]
-    public UnityEvent<Vector2> OnMovementKeyPressed { get; set; }
+    public UnityEvent<Vector3> OnMovementKeyPressed { get; set; }
 
     [field: SerializeField]
-    public UnityEvent<Vector2> OnPointerPositionChange { get; set; }
+    public UnityEvent<Vector3> OnPointerPositionChange { get; set; }
 
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
@@ -36,7 +36,7 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     {
         if (Target == null)
         {
-            OnMovementKeyPressed?.Invoke(Vector2.zero);
+            OnMovementKeyPressed?.Invoke(Vector3.zero);
         }
         CurrentState.UpdateState();
     }
@@ -51,12 +51,13 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
         OnFireButtonReleased?.Invoke();
     }
 
-    public void Move(Vector2 movementDirection)
+    public void Move(Vector3 movementDirection)
     {
+        //Debug.Log("Movement Direction: " + movementDirection);
         OnMovementKeyPressed?.Invoke(movementDirection);
     }
 
-    public void Aim(Vector2 targetPosition)
+    public void Aim(Vector3 targetPosition)
     {   
         OnPointerPositionChange?.Invoke(targetPosition);
     }

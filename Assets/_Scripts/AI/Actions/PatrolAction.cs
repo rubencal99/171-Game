@@ -15,7 +15,7 @@ public class PatrolAction : StarChaseAction
     public override void Start()
     {
         seeker = transform.parent.parent.GetComponent<Seeker>();
-        rb = transform.parent.parent.GetComponent<Rigidbody2D>();
+        rb = transform.parent.parent.GetComponent<Rigidbody>();
         target = enemyBrain.Target;
         currentWait = waitTime;
 
@@ -30,10 +30,10 @@ public class PatrolAction : StarChaseAction
     protected void ChoosePoint() 
     {
         float x = UnityEngine.Random.Range(-radius, radius);
-        float y = UnityEngine.Random.Range(-radius, radius);
-        aiMovementData.PointOfInterest = new Vector2(rb.position.x + x, rb.position.y + y);
+        float z = UnityEngine.Random.Range(-radius, radius);
+        aiMovementData.PointOfInterest = new Vector3(rb.position.x + x, 0, rb.position.z + z);
 
-        Vector2 direction = (aiMovementData.PointOfInterest - rb.position).normalized;
+        Vector3 direction = (aiMovementData.PointOfInterest - rb.position).normalized;
         aiMovementData.Direction = direction;
         // Debug.Log("Patrol point: (" + aiMovementData.PointOfInterest.x + ", " + aiMovementData.PointOfInterest.y + ")");
     }
@@ -48,10 +48,10 @@ public class PatrolAction : StarChaseAction
             enemyBrain.Aim(aiMovementData.PointOfInterest);
             currentWait = waitTime;
         }
-        var distance = Vector2.Distance(aiMovementData.PointOfInterest, rb.position);
+        var distance = Vector3.Distance(aiMovementData.PointOfInterest, rb.position);
         // Debug.Log("Distance = " + distance);
         if (distance < pointDistance){
-            aiMovementData.Direction = Vector2.zero;
+            aiMovementData.Direction = Vector3.zero;
             enemyBrain.Move(aiMovementData.Direction);
             enemyBrain.Aim(aiMovementData.PointOfInterest);
         }

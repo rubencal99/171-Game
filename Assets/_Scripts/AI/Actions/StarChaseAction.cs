@@ -14,18 +14,18 @@ public class StarChaseAction : AIAction
     public float nextWaypointDistance = 0.5f;
 
     protected Seeker seeker;
-    protected Rigidbody2D rb;
-    protected CapsuleCollider2D movementCollider;
+    protected Rigidbody rb;
+    protected CapsuleCollider movementCollider;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         seeker = transform.parent.parent.GetComponentInChildren<Seeker>();
-        rb = transform.parent.parent.GetComponent<Rigidbody2D>();
-        movementCollider = seeker.transform.GetComponent<CapsuleCollider2D>();
+        rb = transform.parent.parent.GetComponent<Rigidbody>();
+        movementCollider = seeker.transform.GetComponent<CapsuleCollider>();
         target = enemyBrain.Target;
 
-        aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+        aiMovementData.PointOfInterest = (Vector3)target.transform.position;
 
         // This calls our UpdatePath func on 0.5 sec loop
         InvokeRepeating("UpdatePath", 0f, .1f);
@@ -34,7 +34,7 @@ public class StarChaseAction : AIAction
     public virtual void Update() {
         target = enemyBrain.Target;
         if(target && enemyBrain.enemy.EnemyData.aimsAtTarget == true)
-            aiMovementData.PointOfInterest = (Vector2)target.transform.position;
+            aiMovementData.PointOfInterest = (Vector3)target.transform.position;
         // Debug.Log("Point of Interest: " + aiMovementData.PointOfInterest);
     }    
 
@@ -71,14 +71,19 @@ public class StarChaseAction : AIAction
             reachedEnd = false;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - (Vector2)movementCollider.transform.position).normalized;
+        Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint + 1] - (Vector3)movementCollider.transform.position).normalized;
+        Debug.Log("Path point: " + path.vectorPath[currentWaypoint + 1]);
+        Debug.Log("Movement collider position: " + movementCollider.transform.position);
+        //direction.z = direction.y;
+        //direction.y = 0;
+        Debug.Log("Star Chase Direction: " + direction);
         aiMovementData.Direction = direction;
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
 
         enemyBrain.Move(aiMovementData.Direction);
         // enemyBrain.Aim(aiMovementData.PointOfInterest);
 
-        float distance = Vector2.Distance(movementCollider.transform.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector3.Distance(movementCollider.transform.position, path.vectorPath[currentWaypoint]);
 
 
         if (distance < nextWaypointDistance)

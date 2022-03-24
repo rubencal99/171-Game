@@ -30,7 +30,7 @@ public class AgentMovement : MonoBehaviour
     public bool knockback;
     public float knockbackPower;
     public float knockbackTimer;
-    public Vector2 knockbackDirection;
+    public Vector3 knockbackDirection;
 
 
     protected void Awake()
@@ -55,6 +55,7 @@ public class AgentMovement : MonoBehaviour
             if (Vector2.Dot(movementInput.normalized, movementDirection) < 0)
                 currentVelocity = 0;
             */
+            //Debug.Log("Movement input: " + movementInput);
             movementDirection = movementInput.normalized;
         }
         /*else{
@@ -87,7 +88,7 @@ public class AgentMovement : MonoBehaviour
         knockbackPower = power;
         knockbackTimer = duration;
         knockbackDirection = direction;
-        Vector2 k = -knockbackDirection * knockbackPower;
+        Vector3 k = -knockbackDirection * knockbackPower;
         rigidbody.AddForce(k, ForceMode.Impulse);
         //knockback = false;
     }

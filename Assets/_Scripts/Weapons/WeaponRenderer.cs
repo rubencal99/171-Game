@@ -19,8 +19,8 @@ public class WeaponRenderer : MonoBehaviour
     public void FlipSprite(bool val)
     {
         //weaponRenderer.flipX = val;
-        Debug.Log("In flip sprite");
-        weaponRenderer.flipX = val;
+        //Debug.Log("In flip sprite");
+        weaponRenderer.flipY = val;
     }
 
     // Changes sortingOrder of weapon sprite depending on val

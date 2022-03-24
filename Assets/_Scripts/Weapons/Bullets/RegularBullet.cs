@@ -6,7 +6,7 @@ using UnityEngine;
 public class RegularBullet : Bullet
 {
     // Need reference to our bullet's rigidbody
-    protected Rigidbody2D rigidbody2D;
+    protected Rigidbody rigidbody;
 
     protected float decay;
 
@@ -19,9 +19,9 @@ public class RegularBullet : Bullet
         set
         {
             base.BulletData = value;
-            rigidbody2D = GetComponent<Rigidbody2D>();
+            rigidbody = GetComponent<Rigidbody>();
             // drag is for bullets that slow down (ex. shotgun shells)
-            rigidbody2D.drag = BulletData.Friction;
+            rigidbody.drag = BulletData.Friction;
             // decay is for bullets that expire (melee)
             decay = BulletData.decayTime;
             bounce = BulletData.Bounce;
@@ -46,10 +46,10 @@ public class RegularBullet : Bullet
 
     public void FixedUpdate()
     {
-        if(rigidbody2D != null && BulletData != null)
+        if(rigidbody != null && BulletData != null)
         {
             // this moves our bullet in the direction that it is facing
-            rigidbody2D.MovePosition(transform.position + BulletData.BulletSpeed * (Vector3)direction * Time.fixedDeltaTime);
+            rigidbody.MovePosition(transform.position + BulletData.BulletSpeed * (Vector3)direction * Time.fixedDeltaTime);
             
         }
     }

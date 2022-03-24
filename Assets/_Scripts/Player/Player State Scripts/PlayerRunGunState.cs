@@ -150,15 +150,15 @@ public class PlayerRunGunState : PlayerBaseState
     {
         FindMousePOS();
         Vector3 mousePos = playerInput.MousePos;
-        mousePos.z = mainCamera.nearClipPlane;
-        var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        //mousePos.z = mainCamera.nearClipPlane;
+        //var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         // This invokes AgentRenderer.FaceDirection and PlayerWeapon.AimWeapon
-        playerInput.OnPointerPositionChange?.Invoke(mouseInWorldSpace);
+        playerInput.OnPointerPositionChange?.Invoke(mousePos);
     }
 
     private void FindMousePOS()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out RaycastHit raycastHit, 999f, playerInput.mouseColliderLayerMask))
         {
             playerInput.MousePos = raycastHit.point;
