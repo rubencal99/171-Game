@@ -21,6 +21,9 @@ public class MapGenerator : MonoBehaviour
     private GameObject EntryCollider;
     [SerializeField]
     public GameObject Exit;
+
+    [SerializeField]
+    private GameObject wallVertical, wallHorizontal;
      [SerializeField]
     public placecontrols controls;
     public int columns;
@@ -298,8 +301,100 @@ public class MapGenerator : MonoBehaviour
         AddSpawners();
         for(int i = 0; i < 2; i++)
             AddObstacles();
+        AddWalls();
+    }
+    void AddWalls()
+    {
+        GameObject wallParent = new GameObject("WallParent");
+        wallParent.transform.parent = transform;
+        List<Vector3Int> possibleDoorVerticalPosition = new List<Vector3Int>();
+        List<Vector3Int> possibleDoorHorizontalPosition = new List<Vector3Int>();
+        List<Vector3Int> possibleWallHorizontalPosition = new List<Vector3Int>();
+        List<Vector3Int> possibleWallVerticalPosition = new List<Vector3Int>();
+
+        foreach(RoomNode room in Rooms)
+        {
+           PopulateWallLists(possibleDoorVerticalPosition, possibleDoorHorizontalPosition,
+                             possibleWallHorizontalPosition, possibleWallVerticalPosition, room);
+        }
+
+         foreach(CorridorNode corr in Corridors)
+        {
+           PopulateWallLists(possibleDoorVerticalPosition, possibleDoorHorizontalPosition,
+                             possibleWallHorizontalPosition, possibleWallVerticalPosition, corr);
+        }
+
+       
+
+         foreach (var wallPosition in possibleWallHorizontalPosition)
+        {
+            CreateWall(wallParent, wallPosition, wallHorizontal);
+        }
+        foreach (var wallPosition in possibleWallVerticalPosition)
+        {
+            CreateWall(wallParent, wallPosition, wallVertical);
+        }
+
     }
 
+    //Function to add Corridor wall positions to list
+    void  PopulateWallLists(List<Vector3Int> doorVertPos, List<Vector3Int> doorHorPos,
+                                 List<Vector3Int> wallHorPos, List<Vector3Int> wallVertPos, CorridorNode corr)
+        {
+            
+
+
+
+        }
+
+    //function to add Room wall positions to list
+    void  PopulateWallLists(List<Vector3Int> doorVertPos, List<Vector3Int> doorHorPos,
+                                 List<Vector3Int> wallHorPos, List<Vector3Int> wallVertPos, RoomNode room) {
+        for (int row = (int)room.bottomLeftCorner.x; row < (int)room.bottomRightCorner.x; row++)
+        {
+            //uncomment lines + switch .y to .z to enable third dimension
+
+           // var wallPosition = new Vector3(row, 0, room.bottomLeftCorner.y);
+           var wallPosition = new Vector3(row, room.bottomLeftCorner.y, 0);
+            AddWallPositionToList(wallPosition, wallHorPos, doorHorPos);
+        }
+        for (int row = (int)room.topLeftCorner.x; row < (int)room.topRightCorner.x; row++)
+        {
+            //var wallPosition = new Vector3(row, 0, room.topRightCorner.y);
+            var wallPosition = new Vector3(row, room.topRightCorner.y, 0);
+            AddWallPositionToList(wallPosition, wallHorPos, doorHorPos);
+        }
+        for (int col = (int)room.bottomLeftCorner.y; col < (int)room.topLeftCorner.y; col++)
+        {
+            //var wallPosition = new Vector3(room.bottomLeftCorner.x, 0, col);
+            var wallPosition = new Vector3(room.bottomLeftCorner.x, col, 0);
+            AddWallPositionToList(wallPosition, wallVertPos, doorVertPos);
+        }
+        for (int col = (int)room.bottomRightCorner.y; col < (int)room.topRightCorner.y; col++)
+        {
+            //var wallPosition = new Vector3(room.bottomRightCorner.x, 0, col);
+            var wallPosition = new Vector3(room.bottomRightCorner.x,col, 0);
+            AddWallPositionToList(wallPosition, wallVertPos, doorVertPos);
+        }
+    }
+
+    private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
+    {
+        Vector3Int point = Vector3Int.CeilToInt(wallPosition);
+        if (wallList.Contains(point)){
+            doorList.Add(point);
+            wallList.Remove(point);
+        }
+        else
+        {
+            wallList.Add(point);
+        }
+    }
+
+    private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject Wall)
+    {
+        Instantiate(Wall, wallPosition, Quaternion.identity, wallParent.transform);
+    }
     void AddObstacles()
     {
         foreach(RoomNode room in Rooms)

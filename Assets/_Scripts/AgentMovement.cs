@@ -107,6 +107,7 @@ public class AgentMovement : MonoBehaviour
             return;
         }
         OnVelocityChange?.Invoke(currentVelocity);
-        rigidbody.velocity = currentVelocity * movementDirection.normalized;
+        if(rigidbody != null)
+         rigidbody.velocity = currentVelocity * movementDirection.normalized;
     }
 }
