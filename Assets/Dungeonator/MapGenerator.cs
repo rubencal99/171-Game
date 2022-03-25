@@ -6,6 +6,8 @@ using System.Linq;
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField]
+    private GameObject Grid;
+    [SerializeField]
     private TileSpritePlacer AutoTiler;
     [SerializeField]
     private GameObject LightPrefab;
@@ -77,15 +79,24 @@ public class MapGenerator : MonoBehaviour
     public TileNode[,] GenerateMap()
     {
         map = new TileNode[columns, rows];
+        Debug.Log("Before Everything");
+        //Grid.transform.Rotate(Vector3.right * 90);
+        Debug.Log("Grid rotation = " + Grid.transform.localRotation);
 
         FillMap();
         BinarySpace();
 
         DrawMap();
+        Debug.Log("After draw map");
+        Grid.transform.Rotate(Vector3.right * 90);
+        
         // AStar = GameObject.FindGameObjectWithTag("AStar").GetComponent<AstarPath>();
         AstarPath.active.Scan();
 
         OnDrawGizmos();
+        Debug.Log("Before rotation");
+        //Grid.transform.localRotation = Quaternion.Euler(90, 0, 0);
+        Debug.Log("Grid rotation = " + Grid.transform.rotation);
 
         return map;
     }
@@ -411,13 +422,13 @@ public class MapGenerator : MonoBehaviour
     {
         foreach(RoomNode room in Rooms)
         {
-            Vector3 pos1 = new Vector3(room.roomCenter.x + 3, room.roomCenter.y + 3, 0);
+            Vector3 pos1 = new Vector3(room.roomCenter.x + 3, 0, room.roomCenter.y + 3);
             if (room.RoomType == "Start")
             {
                 // Instantiate(ShopKeeper, pos1, Quaternion.identity);
                 continue;
             }
-            pos1 = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
+            pos1 = new Vector3(room.roomCenter.x, 0, room.roomCenter.y);
             GameObject spawnedObject;
             if(room.RoomType == "Boss")
             {
@@ -445,7 +456,7 @@ public class MapGenerator : MonoBehaviour
         foreach(RoomNode room in Rooms) {
              if(room.RoomType != "Start")
              {
-                Vector3 pos1 = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
+                Vector3 pos1 = new Vector3(room.roomCenter.x, 0, room.roomCenter.y);
                 GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
                 entryCollider1.transform.parent = room.transform;
             }
@@ -484,7 +495,7 @@ public class MapGenerator : MonoBehaviour
     void SpawnPlayer(RoomNode SpawnRoom)
     {
         var Player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, SpawnRoom.roomCenter.y, 0);
+        Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 0, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
         controls.SetPosition();
     }
@@ -848,26 +859,6 @@ public class MapGenerator : MonoBehaviour
         return corridor;
     }
 
-    // this function checks if a corridor is bordering a room it's not supposed to
-    /*public bool IsBorderingRoom(CorridorNode corridor)
-    {
-        foreach(TileNode tile in corridor.tileList)
-        {
-            for(int x = -1; x <= 1; x++)
-            {
-                for(int y = -1; y <= 1; y++)
-                {   
-                    TileNode check = map[tile.x + x, tile.y + y];
-                    if(check.value == 1 && check.room != corridor.roomList[0] && check.room != corridor.roomList[1])
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }*/
-
     private void AddCorridorTile(CorridorNode corridor, TileNode tile1, TileNode tile2)
     {
         if (tile1.value == 0 && tile1.value == 0)
@@ -914,10 +905,10 @@ public class MapGenerator : MonoBehaviour
 
     void AddLights(int x1, int y1, int x2, int y2, RoomNode room)
     {
-        var lightPrefab1 = Instantiate(LightPrefab, new Vector2(x1 + 4, y1 + 4), Quaternion.identity);
-        var lightPrefab2 = Instantiate(LightPrefab, new Vector2(x1 + 4, y2 - 4), Quaternion.identity);
-        var lightPrefab3 = Instantiate(LightPrefab, new Vector2(x2 - 4, y1 + 4), Quaternion.identity);
-        var lightPrefab4 = Instantiate(LightPrefab, new Vector2(x2 - 4, y2 - 4), Quaternion.identity);
+        var lightPrefab1 = Instantiate(LightPrefab, new Vector3(x1 + 4, 0, y1 + 4), Quaternion.identity);
+        var lightPrefab2 = Instantiate(LightPrefab, new Vector3(x1 + 4, 0, y2 - 4), Quaternion.identity);
+        var lightPrefab3 = Instantiate(LightPrefab, new Vector3(x2 - 4, 0, y1 + 4), Quaternion.identity);
+        var lightPrefab4 = Instantiate(LightPrefab, new Vector3(x2 - 4, 0, y2 - 4), Quaternion.identity);
 
         lightPrefab1.transform.parent = room.gameObject.transform;
         lightPrefab2.transform.parent = room.gameObject.transform;
@@ -1020,7 +1011,7 @@ public class MapGenerator : MonoBehaviour
                     Gizmos.color = new Color(0, 255, 255, 1f);
                 }
 
-                Gizmos.DrawCube(new Vector3(x, y, 0), new Vector3(1, 1, 1));
+                Gizmos.DrawCube(new Vector3(x, 0, y), new Vector3(1, 1, 1));
             }
         }
     }

@@ -15,7 +15,7 @@ public class EntryCollider : MonoBehaviour
 
        // boxCol = GetComponent<BoxCollider2D>();
         room = this.transform.parent.GetComponent<RoomNode>();
-        this.gameObject.transform.localScale = new Vector3((float)room.length, (float)room.width, 1f);
+        this.gameObject.transform.localScale = new Vector3((float)room.length, 5, (float)room.width);
     }
     
     private bool guarded = false;
@@ -23,12 +23,27 @@ public class EntryCollider : MonoBehaviour
     public void toggleGuarded() {
         this.guarded = !this.guarded;
     }
-    void OnTriggerEnter2D(Collider2D other) {
+    /*void OnTriggerEnter2D(Collider2D other) {
        // if(!guarded) {
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
                 GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
+            //this.GetComponent<Collider2D>().isTrigger = false;
+            //this.transform.GetChild(0).gameObject.SetActive(true);
+            this.gameObject.SetActive(false);
+           //  Debug.Log("leaving collider");
+            }
+     //   }
+    }*/
+
+    void OnTriggerEnter(Collider other) {
+       // if(!guarded) {
+           Debug.Log("Just entered room");
+            if(other.tag == "Player") {
+                this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
+                Player.instance.currentRoom = room;
+                //GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
             //this.GetComponent<Collider2D>().isTrigger = false;
             //this.transform.GetChild(0).gameObject.SetActive(true);
             this.gameObject.SetActive(false);

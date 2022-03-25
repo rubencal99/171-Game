@@ -14,6 +14,7 @@ public class Dungeon : MonoBehaviour
     void Start()
     {
         GenerateMap();
+        Debug.Log("After Generate Map");
     }
 
     // Update is called once per frame
