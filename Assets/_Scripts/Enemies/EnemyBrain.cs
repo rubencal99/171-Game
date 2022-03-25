@@ -66,6 +66,7 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     {
         Target = FindObjectOfType<Player>().gameObject;
         Weapon = transform.GetComponentInChildren<EnemyGun>();
+        enemy = transform.GetComponent<Enemy>();
     }
 
     private void Start()

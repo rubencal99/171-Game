@@ -32,6 +32,10 @@ public class StarChaseAction : AIAction
     }
 
     public virtual void Update() {
+        if(enemyBrain == null)
+        {
+            return;
+        }
         target = enemyBrain.Target;
         if(target && enemyBrain.enemy.EnemyData.aimsAtTarget == true)
             aiMovementData.PointOfInterest = (Vector3)target.transform.position;
