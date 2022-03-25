@@ -311,8 +311,8 @@ public class Gun : MonoBehaviour
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
         bulletPrefab.GetComponent<Bullet>().direction = weaponParent.aimDirection;//bulletSpreadRotation * (weaponParent.aimDirection);
-        Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
-        Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
+     //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
+      //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 
         return rotation;
     }

@@ -72,11 +72,11 @@ public class StarChaseAction : AIAction
         }
 
         Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint + 1] - (Vector3)movementCollider.transform.position).normalized;
-        Debug.Log("Path point: " + path.vectorPath[currentWaypoint + 1]);
-        Debug.Log("Movement collider position: " + movementCollider.transform.position);
+       // Debug.Log("Path point: " + path.vectorPath[currentWaypoint + 1]);
+       // Debug.Log("Movement collider position: " + movementCollider.transform.position);
         //direction.z = direction.y;
         //direction.y = 0;
-        Debug.Log("Star Chase Direction: " + direction);
+      //  Debug.Log("Star Chase Direction: " + direction);
         aiMovementData.Direction = direction;
         // aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
 

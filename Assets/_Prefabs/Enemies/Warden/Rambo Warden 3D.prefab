@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1478533788559925077, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: a0a343055fc53f44c97931d3ddc5a5d6, type: 2}
     - target: {fileID: 5231307999731054906, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: m_InstanceId
-      value: -3455240
+      value: -101038
       objectReference: {fileID: 0}
     - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: m_RootOrder

@@ -55,8 +55,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         blood.Play();
         BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
         Debug.Log("In Enemy Get Hit");
-        Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
-        Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
+       // Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
+       // Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
 
         // Temp();
         agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);

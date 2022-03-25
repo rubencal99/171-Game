@@ -56,10 +56,11 @@ public class RegularBullet : Bullet
 
     // There's a bug where the bullets collide with themselves if using multishot,
     // which is why Destroy() is inside the if instead of at the end on the func
-    public virtual void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
+            Debug.Log("In trigger enter obstacle");
             /*bounce--;
             if(bounce < 0)
             {
@@ -77,6 +78,7 @@ public class RegularBullet : Bullet
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
+            Debug.Log("In trigger enter enemy");
             HitEnemy(collision);
             // This check is for bullets that go through enemies like snipers or lasers etc.
             if (!BulletData.GoThroughHittable) {
@@ -87,7 +89,7 @@ public class RegularBullet : Bullet
         
     }
 
-    public void HitEnemy(Collider2D collision)
+    public void HitEnemy(Collider collision)
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.GetComponent<IHittable>();
@@ -95,7 +97,7 @@ public class RegularBullet : Bullet
         
     }
 
-    public virtual void OnCollisionEnter2D(Collision2D collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
@@ -127,11 +129,11 @@ public class RegularBullet : Bullet
         
     }
 
-    public void BounceBullet(Collision2D collision)
+    public void BounceBullet(Collision collision)
     {
         //Vector2 inDirection = GetComponent<Rigidbody2D>().velocity;
-        Vector2 inNormal = collision.contacts[0].normal;
-        Vector2 newDirection = Vector2.Reflect(direction, inNormal);
+        Vector3 inNormal = collision.contacts[0].normal;
+        Vector3 newDirection = Vector3.Reflect(direction, inNormal);
         Debug.Log("In Bounce Bullet");
         Debug.Log("CURRENT Direction: " + direction);
         Debug.Log("New Direction: " + newDirection);
@@ -148,7 +150,7 @@ public class RegularBullet : Bullet
         direction = newDirection;
     }
 
-    public void HitEnemy(Collision2D collision)
+    public void HitEnemy(Collision collision)
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.gameObject.GetComponent<IHittable>();

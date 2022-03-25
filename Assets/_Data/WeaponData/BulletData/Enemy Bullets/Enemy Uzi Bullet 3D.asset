@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
-  m_Name: RegularBullet
+  m_Name: Enemy Uzi Bullet 3D
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 1dd2812be8bc08f4d90d8ac238b7270a, type: 3}
-  <BulletSpeed>k__BackingField: 22.3
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 3ecf984356cc9a04dadf51b3818ab8bf, type: 3}
+  <BulletSpeed>k__BackingField: 10
   <Damage>k__BackingField: 1
-  <Friction>k__BackingField: 49.7
+  <Friction>k__BackingField: 0.5
   <Bounce>k__BackingField: 0
   <GoThroughHittable>k__BackingField: 0
   <IsRaycast>k__BackingField: 0
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
   <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
-  <KnockbackPower>k__BackingField: 9.5
-  <KnockbackDuration>k__BackingField: 0.12
+  <KnockbackPower>k__BackingField: 6.11
+  <KnockbackDuration>k__BackingField: 0.1
   <hasDecay>k__BackingField: 0
   <decayTime>k__BackingField: 5
