@@ -312,7 +312,7 @@ public class MapGenerator : MonoBehaviour
         AddSpawners();
         for(int i = 0; i < 2; i++)
             AddObstacles();
-        AddWalls();
+       // AddWalls();
     }
     void AddWalls()
     {
