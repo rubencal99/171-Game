@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
   m_Name: Enemy Uzi Bullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: e34bcef653d63084da177b2f38d35a78, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 3ecf984356cc9a04dadf51b3818ab8bf, type: 3}
   <BulletSpeed>k__BackingField: 10
   <Damage>k__BackingField: 1
   <Friction>k__BackingField: 0.5
@@ -20,7 +20,7 @@ MonoBehaviour:
   <GoThroughHittable>k__BackingField: 0
   <IsRaycast>k__BackingField: 0
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
-  <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
+  <ImpactEnemyPrefab>k__BackingField: {fileID: 3792883734615811447, guid: 3fbb6c301aa588a46a133208a7d41930, type: 3}
   <KnockbackPower>k__BackingField: 6.11
   <KnockbackDuration>k__BackingField: 0.1
   <hasDecay>k__BackingField: 0

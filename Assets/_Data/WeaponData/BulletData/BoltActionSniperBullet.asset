@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
   m_Name: BoltActionSniperBullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: c29ed59394f488944a3244c6e9d217fd, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: c9dc195526bea1644820782416a071cd, type: 3}
   <BulletSpeed>k__BackingField: 70
   <Damage>k__BackingField: 10
   <Friction>k__BackingField: 0.1
@@ -22,6 +22,6 @@ MonoBehaviour:
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}
   <ImpactEnemyPrefab>k__BackingField: {fileID: 0}
   <KnockbackPower>k__BackingField: 7.5
-  <KnockbackDelay>k__BackingField: 0.1
+  <KnockbackDuration>k__BackingField: 0.1
   <hasDecay>k__BackingField: 0
   <decayTime>k__BackingField: 5
