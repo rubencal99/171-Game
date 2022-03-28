@@ -19,7 +19,7 @@ public class LOSDecision : AIDecision
         var direction = (enemyBrain.Target.transform.position - pos);
         var ray = new Ray(pos, direction);
         Debug.DrawRay(pos, direction);
-        // Debug.Log("In LOS Decision");
+        Debug.Log("In LOS Decision");
 
         /*RaycastHit hit;// = Physics2D.Raycast(pos, direction, layerMask);
         //Debug.Log("Hit point = " + hit.transform.position);

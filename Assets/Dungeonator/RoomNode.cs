@@ -131,8 +131,10 @@ public class RoomNode : MonoBehaviour
                                         Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
 
         var count = 0;
+        //Debug.Log("Room Center: " + roomCenter);
+        //Debug.Log("Tile location: " + r);
         TileNode tile = FindTileByPoint(r.x, r.y);
-        while(tile.value != 1)
+        while(tile == null || tile.value != 1)
         {
             if(count >= 3)
             {

@@ -60,7 +60,7 @@ public class RegularBullet : Bullet
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
-            Debug.Log("In trigger enter obstacle");
+            //Debug.Log("In trigger enter obstacle");
             /*bounce--;
             if(bounce < 0)
             {

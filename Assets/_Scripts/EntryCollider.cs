@@ -39,7 +39,7 @@ public class EntryCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
        // if(!guarded) {
-           Debug.Log("Just entered room");
+           //Debug.Log("Just entered room");
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
