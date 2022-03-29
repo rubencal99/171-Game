@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider))]
 public class BossColliderTrigger : MonoBehaviour
 {
     public float knockbackDuration;
     public float knockbackPower;
     public Vector2 direction;
     public int damage;
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: BossMelee
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 3b4fc2a1c5235b145858769caa572d7c, type: 2}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: a09350f59217846d095d10652dab7995, type: 2}
   <MagazineCapacity>k__BackingField: 3
   <MaxAmmoCapacity>k__BackingField: 10000
   <AutomaticFire>k__BackingField: 1
