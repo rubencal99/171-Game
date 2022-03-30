@@ -20,7 +20,7 @@ public class AIPathfinding : MonoBehaviour
     bool reachedEnd = false;
 
     Seeker seeker;
-    Rigidbody2D rb;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +30,7 @@ public class AIPathfinding : MonoBehaviour
         brain = GetComponent<EnemyBrain>();
 
         seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         target = brain.Target;
 
         // This calls our UpdatePath func on 0.5 sec loop
@@ -72,14 +72,14 @@ public class AIPathfinding : MonoBehaviour
         }
 
         // try transform.position instead of Parent<Transform>().position
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector3 direction = (path.vectorPath[currentWaypoint] - rb.position).normalized;
         Debug.Log(direction);
         aiMovementData.Direction = direction;
         aiMovementData.PointOfInterest = path.vectorPath[currentWaypoint];
         brain.Move(aiMovementData.Direction);
         brain.Aim(aiMovementData.PointOfInterest);
 
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector3.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
 
         if(distance < nextWaypointDistance)

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
   m_Name: MissileBullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 10459a0fa6d4b2a4291cbdaa1b4bab60, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: dbc237403f17dff42adc2246fb0d1755, type: 3}
   <BulletSpeed>k__BackingField: 50
   <Damage>k__BackingField: 8
   <Friction>k__BackingField: 0.1

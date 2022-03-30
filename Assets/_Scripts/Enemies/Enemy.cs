@@ -54,20 +54,28 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         Health -= damage;
         blood.Play();
         BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
-        Debug.Log("In Enemy Get Hit");
-        Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
-        Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
+        //Debug.Log("In Enemy Get Hit");
+       // Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
+       // Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
 
         // Temp();
         agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
         
-        Debug.Log("After Enemy Knockback");
-        if (Health >= 0)
+        //Debug.Log("After Enemy Knockback");
+        Debug.Log("Health = " + Health);
+        if (Health > 0)
+        {
             OnGetHit?.Invoke();
+        }
         else
         {
-            OnDie?.Invoke();
             StartCoroutine(WaitToDie());
+            Debug.Log("After WaitToDie coroutine");
+            Debug.Log("Before OnDie");
+            OnDie?.Invoke();
+            Debug.Log("After OnDie");
+            //StartCoroutine(WaitToDie());
+            //Debug.Log("After WaitToDie coroutine");
         }
     }
 
@@ -78,6 +86,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
 
     IEnumerator WaitToDie(){
+        Debug.Log("In wait to die");
         isDying = true;
         DeadOrAlive();
         int odds = Random.Range(1, 100);

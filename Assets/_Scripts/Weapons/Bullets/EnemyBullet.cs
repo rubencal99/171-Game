@@ -6,7 +6,7 @@ public class EnemyBullet : RegularBullet
 {
     // There's a bug where the bullets collide with themselves if using multishot,
     // which is why Destroy() is inside the if instead of at the end on the func
-    public override void OnTriggerEnter2D(Collider2D collision)
+    public override void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {
@@ -22,7 +22,7 @@ public class EnemyBullet : RegularBullet
         
     }
 
-    public override void OnCollisionEnter2D(Collision2D collision)
+    public override void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
         {

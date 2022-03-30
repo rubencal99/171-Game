@@ -10,6 +10,13 @@ public class RoomNode : MonoBehaviour
     public int tileCount = 0;
     public TileNode CenterTile;
     public Vector2Int roomCenter;
+    public Vector2Int bottomLeftCorner;
+
+    public Vector2Int bottomRightCorner;
+
+    public Vector2Int topRightCorner;
+
+    public Vector2Int topLeftCorner;
     public int length;
     public int width;
     public int area;
@@ -97,6 +104,25 @@ public class RoomNode : MonoBehaviour
         length = lastTile.x - firstTile.x;
         width = lastTile.y - firstTile.y;
         area = length * width;
+
+        CalculateCorners();
+    }
+
+    void CalculateCorners()
+    {
+  
+        bottomLeftCorner.x = roomCenter.x - (length / 2);
+        bottomLeftCorner.y = roomCenter.y - (width / 2);
+
+        bottomRightCorner.x = roomCenter.x + (length / 2);
+        bottomRightCorner.y = roomCenter.y - (width / 2);
+
+        topLeftCorner.x = roomCenter.x - (length / 2);
+        topLeftCorner.y = roomCenter.y + (width / 2);
+
+        topRightCorner.x = roomCenter.x + (length / 2);
+        topRightCorner.y = roomCenter.y + (width / 2);
+
     }
 
     public TileNode GrabValidTile()
@@ -105,8 +131,10 @@ public class RoomNode : MonoBehaviour
                                         Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
 
         var count = 0;
+        //Debug.Log("Room Center: " + roomCenter);
+        //Debug.Log("Tile location: " + r);
         TileNode tile = FindTileByPoint(r.x, r.y);
-        while(tile.value != 1)
+        while(tile == null || tile.value != 1)
         {
             if(count >= 3)
             {

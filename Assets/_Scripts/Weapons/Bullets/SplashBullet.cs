@@ -43,7 +43,7 @@ public class SplashBullet : RegularBullet
 
     private void splash() {
 
-       var inRange =  Physics2D.OverlapCircleAll(transform.position, radius);
+       var inRange =  Physics.OverlapSphere(transform.position, radius);
        foreach(var entity in inRange) {
            if(entity.gameObject.layer == LayerMask.NameToLayer("Enemy"))
                 HitEnemy(entity);

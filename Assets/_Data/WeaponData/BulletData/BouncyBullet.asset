@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
   m_Name: BouncyBullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 86f899138df942c4c9ed6932b0ae2005, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 127b28d30b7c0f243b7309561b0c45a4, type: 3}
   <BulletSpeed>k__BackingField: 22.3
   <Damage>k__BackingField: 1
   <Friction>k__BackingField: 49.7

@@ -8,6 +8,8 @@ public class PlayerInput : MonoBehaviour
     public PlayerMovement PlayerMovement;
     public CapsuleCollider2D Collider;
     public Shop ShopKeeper;
+    public LayerMask mouseColliderLayerMask;
+    public Vector3 MousePos;
 
     private void Start()
     {
@@ -20,18 +22,18 @@ public class PlayerInput : MonoBehaviour
     // (0, 0), (0, 1), (1, 0), (1, 1), (0, -1), (-1, 0), (-1, -1), (1, -1), (-1, 1)
     // Passes the Vector2 to AgentMovement.MoveAgent hence SerializeField
     [field: SerializeField]
-    public UnityEvent<Vector2> OnMovementKeyPressed { get; set; }
+    public UnityEvent<Vector3> OnMovementKeyPressed { get; set; }
 
     // Vector2 coresponds to the position of the mouse on the screen
     // This funciton is used to aim the weapon and change player direction
     [field: SerializeField]
-    public UnityEvent<Vector2> OnPointerPositionChange { get; set; }
+    public UnityEvent<Vector3> OnPointerPositionChange { get; set; }
 
     // Dodge Mechanic
     // Vector2 Corresponds towards the movement of where the dodge roll happens
     // *************************
     [field: SerializeField]
-    public UnityEvent<Vector2> OnDodgeKeyPressed { get; set; }
+    public UnityEvent<Vector3> OnDodgeKeyPressed { get; set; }
     // *************************
 
     // Calls PlayerWeapon.shoot

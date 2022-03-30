@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossMovement : AgentMovement
 {
     // Takes Vector2 from AgentInput OnMovementKeyPressed
-    public override void MoveAgent(Vector2 movementInput)
+    public override void MoveAgent(Vector3 movementInput)
     {
         // rigidbody2D.velocity = movementInput.normalized * currentVelocity;
         if (movementInput.magnitude > 0)
@@ -27,7 +27,7 @@ public class BossMovement : AgentMovement
     }
 
     // this function integrates acceleration
-    protected virtual float calculateSpeed(Vector2 movementInput)
+    protected virtual float calculateSpeed(Vector3 movementInput)
     {
         if (movementInput.magnitude > 0)
         {

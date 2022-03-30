@@ -10,7 +10,9 @@ public class DistanceDecision : AIDecision
 
     public override bool MakeADecision()
     {
-        if (Vector3.Distance(aiMovementData.PointOfInterest, transform.position) < Distance)
+        var d = Vector3.Distance(aiMovementData.PointOfInterest, transform.position);
+        //Debug.Log("Distance from Target: " + d);
+        if (d < Distance)
         {
             aiActionData.TargetSpotted = true;
         }

@@ -70,11 +70,11 @@ public class EnemySpanwer : MonoBehaviour
         // offsetPosition.x += Random.Range(-offset, offset);
         // offsetPosition.y += Random.Range(-offset, offset); 
         RoomNode room = this.transform.parent.GetComponent<RoomNode>();
-        Vector3 room_center = new Vector3((float)room.roomCenter.x, (float)room.roomCenter.y, 0f);
+        //Vector3 room_center = new Vector3((float)room.roomCenter.x, (float)room.roomCenter.y, 0f);
 
         TileNode spawnTile = room.GrabValidTile();
 
-        Vector3 offsetPosition = new Vector3(spawnTile.x, spawnTile.y, 0f);
+        Vector3 offsetPosition = new Vector3(spawnTile.x, 2f, spawnTile.y);
 
         var source = Enemies[Random.Range(0, Enemies.Length)];
         var clone = Instantiate(source, offsetPosition, Quaternion.identity);

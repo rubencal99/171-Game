@@ -5,22 +5,30 @@ using UnityEngine;
 public class Reticule : MonoBehaviour
 {
     
-    private float minX = 0.0f;
-    private float minY = 0.0f;
+    private float minX = -40f;
+    private float minZ = -40f;
     private float maxX = Screen.width;
-    private float maxY = Screen.height;
+    private float maxZ = Screen.height;
    
     public float bias = 0.65f;
+
+    PlayerInput playerInput;
+
+    void Awake()
+    {
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+    }
     
     
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos =  Input.mousePosition;
+        Vector3 mousePos =  playerInput.MousePos;
         mousePos.x = Mathf.Clamp(mousePos.x, minX, maxX);
-        mousePos.y = Mathf.Clamp(mousePos.y, minY, maxY);
-        mousePos.z = /*Camera.main.nearClipPlane*/ 1.0f;
-        this.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+        mousePos.z = Mathf.Clamp(mousePos.z, minZ, maxZ);
+        mousePos.y = /*Camera.main.nearClipPlane*/ 0;
+        //this.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+        this.transform.position = mousePos;
         calculateMidPoint();
     }
 
@@ -33,7 +41,7 @@ public class Reticule : MonoBehaviour
         midpoint = Vector3.Lerp(reticule, player, bias);
         // midpoint.x = reticule.x + (player.x - reticule.x) / 2.0f ;
         // midpoint.y = reticule.y + (player.y - reticule.y) / 2.0f ;
-        midpoint.z = 1.0f ;
+        midpoint.y = 0;
 
         this.transform.GetChild(0).position = midpoint;
 

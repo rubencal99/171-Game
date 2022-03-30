@@ -300,13 +300,19 @@ public class Gun : MonoBehaviour
     // Here we add some randomness for weapon spread
     protected Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
     {
+        //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));
-        Quaternion rotation = muzzle.transform.rotation * bulletSpreadRotation;
+        Quaternion rotation = weaponParent.transform.localRotation * bulletSpreadRotation;
+
+        //Debug.Log("Bullet rotation: " + rotation);
+        //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
 
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = bulletSpreadRotation * (position - transform.position);
+        bulletPrefab.GetComponent<Bullet>().direction = weaponParent.aimDirection;//bulletSpreadRotation * (weaponParent.aimDirection);
+     //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
+      //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 
         return rotation;
     }

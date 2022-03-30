@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc52f36930c0d44eb42ee28f7719626, type: 3}
   m_Name: LaserPistolBullet
   m_EditorClassIdentifier: 
-  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 63c1beb30be22d84b8b4c7159322229e, type: 3}
+  <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 52ccb2bf443a6495e919b91f121a66d6, type: 3}
   <BulletSpeed>k__BackingField: 60
   <Damage>k__BackingField: 1
   <Friction>k__BackingField: 0

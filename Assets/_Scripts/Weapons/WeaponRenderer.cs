@@ -19,6 +19,7 @@ public class WeaponRenderer : MonoBehaviour
     public void FlipSprite(bool val)
     {
         //weaponRenderer.flipX = val;
+        //Debug.Log("In flip sprite");
         weaponRenderer.flipY = val;
     }
 

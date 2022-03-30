@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: BossSpray
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: b6f3ce3bdbfea0a479254041d2471b74, type: 2}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 39f01955759013c40a6d7762a7ef106a, type: 2}
   <MagazineCapacity>k__BackingField: 100
   <MaxAmmoCapacity>k__BackingField: 1000
   <AutomaticFire>k__BackingField: 1

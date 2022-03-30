@@ -6,17 +6,17 @@ public class ProtectPresidentAction : AIAction
 {
     public LayerMask layerMask;
     public int DistanceFromPresident;
-    Vector2 shieldPos;
+    Vector3 shieldPos;
     public override void TakeAction(){
         // Use LOS of President to Player
-        Vector2 point = FindPoint();
+        Vector3 point = FindPoint();
         aiMovementData.PointOfInterest = point;
     }
 
-    public Vector2 FindPoint()
+    public Vector3 FindPoint()
     {
-        Vector2 presidentPos = enemyBrain.Target.transform.position;
-        Vector2 playerPos = Player.instance.transform.position;
+        Vector3 presidentPos = enemyBrain.Target.transform.position;
+        Vector3 playerPos = Player.instance.transform.position;
 
         var direction = (playerPos - presidentPos).normalized;
 
