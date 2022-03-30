@@ -397,10 +397,10 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
-  HasPlatforms: 1
+  HasSourceProject: 0
+  HasPlatforms: 0
   sourceProjectPath: 
-  sourceBankPath: 
+  sourceBankPath: Assets/Desktop
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -422,8 +422,20 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - BAL-AR
+  - BAL-L
+  - BAL-RF
+  - BAL-SG
+  - BAL-SMG
+  - BGM
+  - BIO-L
+  - BIO-S
+  - LAS-H
+  - LAS-L
+  - SHOP
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
@@ -436,19 +448,19 @@ MonoBehaviour:
   SharedLibraryTimeSinceStart: 0
   CurrentVersion: 131588
   HideSetupWizard: 1
-  LastEventReferenceScanVersion: 0
+  LastEventReferenceScanVersion: 131588
   Platforms:
+  - {fileID: -6476915873820425884}
   - {fileID: -5725342920733364533}
-  - {fileID: 8417330344148439107}
-  - {fileID: 6352019966603596192}
+  - {fileID: -5227138291988598458}
   - {fileID: -4616558680169045424}
   - {fileID: -4591636968061268198}
   - {fileID: -474632478170804329}
-  - {fileID: 7574374723309158647}
-  - {fileID: -5227138291988598458}
-  - {fileID: 1097926849330435061}
-  - {fileID: -6476915873820425884}
   - {fileID: 512090078486375995}
+  - {fileID: 1097926849330435061}
+  - {fileID: 6352019966603596192}
+  - {fileID: 7574374723309158647}
+  - {fileID: 8417330344148439107}
   MigratedPlatforms: 15000000060000000c0000000a0000000500000009000000120000000b000000080000000200000001000000
 --- !u!114 &512090078486375995
 MonoBehaviour:
@@ -770,12 +782,12 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
-  - 2c5177b11d81d824dbb064f9ac8527da
+  - c88d16e5272a4e241b0ef0ac2e53b73d
+  - b7716510a1f36934c87976f3a81dbf3d
   - 0f8eb3f400726694eb47beb1a9f94ce8
   - e7a046c753c3c3d4aacc91f6597f310d
   - 52eb9df5db46521439908db3a29a1bbb
-  - fd7c55dab0fce234b8c25f6ffca523c1
-  - b7716510a1f36934c87976f3a81dbf3d
-  - 2fea114e74ecf3c4f920e1d5cc1c4c40
-  - c88d16e5272a4e241b0ef0ac2e53b73d
   - 46fbfdf3fc43db0458918377fd40293e
+  - 2fea114e74ecf3c4f920e1d5cc1c4c40
+  - 2c5177b11d81d824dbb064f9ac8527da
+  - fd7c55dab0fce234b8c25f6ffca523c1
