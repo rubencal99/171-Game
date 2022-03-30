@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3908459687515027161}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Floor Collider
   m_TagString: Map Gen
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5650440464069366467}
   - component: {fileID: 697390431286585329}
   - component: {fileID: 7155527925274985244}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
