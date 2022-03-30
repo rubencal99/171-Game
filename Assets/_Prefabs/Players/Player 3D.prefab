@@ -470,7 +470,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 79636
+  m_InstanceId: 34236
 --- !u!114 &1500494838912752689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +566,7 @@ Transform:
   - {fileID: 6079316670084512030}
   - {fileID: 5160564747728843359}
   - {fileID: 1142879905408940472}
+  - {fileID: 7557532808939559342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -1427,6 +1428,79 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PRESS SPACE
+--- !u!1 &2336153867180187333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7557532808939559342}
+  - component: {fileID: 6090575399665141259}
+  - component: {fileID: 8411110767140958890}
+  m_Layer: 0
+  m_Name: BGMmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7557532808939559342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336153867180187333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500494839163732593}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6090575399665141259
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336153867180187333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8411110767140958890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336153867180187333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a099e99c2764d928a65bb5c6241fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detect: {fileID: 0}
+  CombatMusicEvent:
+    Guid:
+      Data1: -1822174840
+      Data2: 1094170241
+      Data3: 1210371256
+      Data4: 1964297901
+    Path: event:/Music/COM-BGM1
+  prisonerCount: 0
+  wardenCount: 0
+  supportCount: 0
+  prisonerParam: Prisoner
+  wardenParam: Warden
+  supportParam: Support
+  shopPos: {x: 0, y: 0, z: 0}
+  shopDist: 0
 --- !u!1 &4265340160141005940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,11 +1914,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
---- !u!198 &5435229704463610582 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4285329235244527328, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
-  m_PrefabInstance: {fileID: 8076463359281388598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &887056948673667513 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8960519738536017295, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
@@ -1859,6 +1928,11 @@ MonoBehaviour:
 --- !u!4 &887056949387903750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8960519738105143088, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+  m_PrefabInstance: {fileID: 8076463359281388598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5435229704463610582 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4285329235244527328, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
   m_PrefabInstance: {fileID: 8076463359281388598}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8076463359709381668
