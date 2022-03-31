@@ -89,11 +89,11 @@ public class PlayerRunGunState : PlayerBaseState
 
     private void GetThrowInput()
     {
-        if (Input.GetAxisRaw("Fire3") > 0)
+        if (Input.GetAxisRaw("Throw") > 0)
         {
             if (throwButtonDown == false)
             {
-                Debug.Log("In throw");
+                Debug.Log("throw pressed");
                 throwButtonDown = true;
                 playerInput.OnThrowButtonPressed?.Invoke();
             }
@@ -102,7 +102,9 @@ public class PlayerRunGunState : PlayerBaseState
         {
             if (throwButtonDown == true)
             {
+                 Debug.Log("throw released");
                 throwButtonDown = false;
+                 playerInput.OnThrowButtonReleased?.Invoke();
             }
         }
     }

@@ -8,6 +8,8 @@ public class AgentWeapon : MonoBehaviour
     public Vector3 aimDirection;
     public Quaternion rotation;
     public float desiredAngle;
+
+    public Vector3 pointerPos;
     protected float xMax;
     protected float xMin;
     protected bool flipY;
@@ -15,6 +17,10 @@ public class AgentWeapon : MonoBehaviour
     // Need our weaponRenderer to call it's functions
     [SerializeField]
     protected WeaponRenderer weaponRenderer;
+
+    [SerializeField]
+    protected PlayerWeapon playerWeapon;
+
 
     [SerializeField]
     public Gun weapon;
@@ -31,6 +37,7 @@ public class AgentWeapon : MonoBehaviour
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
         weapon = GetComponentInChildren<Gun>();
+        playerWeapon = GetComponentInChildren<PlayerWeapon>();
         xMax = gameObject.transform.position.x + 0.5f;
         xMin = gameObject.transform.position.x - 0.5f;
         flipY = false;
@@ -41,6 +48,7 @@ public class AgentWeapon : MonoBehaviour
     {
 
         aimDirection = ((Vector3)pointerPosition - transform.position).normalized;
+        pointerPos = (Vector3)pointerPosition;
         aimDirection.y = 0;
         //Debug.Log("Aim Direction: " + aimDirection);
         // Use arctan to find angle from our x-axis and convert to degrees
@@ -123,10 +131,21 @@ public class AgentWeapon : MonoBehaviour
 
     }
 
+    public void throwAttack()
+    {
+        if (playerWeapon != null)
+        {
+              Debug.Log("In throw");
+            playerWeapon.ThrowItem();
+        }
+
+    }
+
     public void StopShooting()
     {
         if (weapon != null)
         {
+            Debug.Log("shooting ceased");
             weapon.StopShooting();
         }
 

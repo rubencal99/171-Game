@@ -497,7 +497,7 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
-        controls.SetPosition();
+        controls.SetPosition(Player.transform.position);
     }
 
     /* RoomNode CreateRoom(int x1, int y1, int x2, int y2)

@@ -111,6 +111,7 @@ public class AgentInput : MonoBehaviour, IAgentInput
     {
         if (Input.GetAxisRaw("Reload") > 0)
         {
+             Debug.Log("In throw");
              if (reloadButtonDown == false) {
                 reloadButtonDown = true;
                 OnReloadButtonPressed?.Invoke();
@@ -127,22 +128,22 @@ public class AgentInput : MonoBehaviour, IAgentInput
 
     private void GetThrowInput()
     {
-        if (Input.GetAxisRaw("Fire3") > 0)
+        if (Input.GetAxisRaw("Throw") > 0)
         {
+            Debug.Log("In throw");
             if (throwButtonDown == false)
             {
-                Debug.Log("In throw");
                 throwButtonDown = true;
                 OnThrowButtonPressed?.Invoke();
             }
         }
-        else
-        {
-            if (throwButtonDown == true)
-            {
-                throwButtonDown = false;
-            }
-        }
+        // else
+        // {
+        //     if (throwButtonDown == true)
+        //     {
+        //         throwButtonDown = false;
+        //     }
+        // }
     }
 
      private void GetMeleeInput()

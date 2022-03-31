@@ -13,7 +13,7 @@ public class SplashBullet : RegularBullet
         lifetime = BulletData.decayTime;
     }
 
-    void Update() {
+    public void FixedUpdate() {
        // if(lifetime < 0.0f)
        //     splash();//Destroy(gameObject);
         

@@ -16,7 +16,7 @@ public class PlayerDiveState : PlayerBaseState
     private float DiveTimer = 0.3f;
     private float diveTime;
     public PlayerInput playerInput;
-    public CapsuleCollider2D collider;
+    public CapsuleCollider collider;
     float m_ScaleX, m_ScaleY, m_ScaleZ;
     //public Slider m_SliderX, m_SliderY, m_SliderZ;
     public override void EnterState(PlayerStateManager Player)
@@ -27,7 +27,7 @@ public class PlayerDiveState : PlayerBaseState
         diveTime = DiveTimer;
         playerInput = Player.playerInput;
         collider = playerInput.Collider;
-        Debug.Log("Current collider size:" + collider.size);
+       // Debug.Log("Current collider size:" + collider.size);
         Player.GetComponentInChildren<AgentAnimations>().SetDodgeAnimation();
         //collider.enabled = false;
         PlayerSignaler.CallBulletTime();
@@ -95,6 +95,6 @@ public class PlayerDiveState : PlayerBaseState
 
     private void GetMovementInput()
     {
-        playerInput.OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        playerInput.OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
     }
 }

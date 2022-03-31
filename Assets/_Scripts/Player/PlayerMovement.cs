@@ -54,7 +54,7 @@ public class PlayerMovement : AgentMovement
     // Should player be able to dodge when not moving??
     public void dodge(Vector3 dodgeDirection) {
         //collider.size = new Vector2(1.1f, 0.6f);
-        rigidbody.velocity = Vector2.zero; // set speed to zero
+        rigidbody.velocity = Vector3.zero; // set speed to zero
         rigidbody.velocity += (Vector3)(dodgeDirection * dodgeVelocity); // create dodge
         Debug.Log("Dodge Velocity: " + rigidbody.velocity);
         //Debug.Log("Collider size: " + collider.size);

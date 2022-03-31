@@ -12,6 +12,8 @@ public class PlayerWeapon : AgentWeapon
     public int numGrenades = 5;
     public GameObject Grenade;
 
+    public RenderThrowableArc throwableArc;
+
     Vector3 mousePos;
 
 
@@ -77,6 +79,12 @@ public class PlayerWeapon : AgentWeapon
         AssignWeapon();
     }
 
+    public void prepThrow()
+    {
+        Debug.Log("throw prepped");
+        //throwableArc.SetArcAngle(this.desiredAngle);
+
+    }
     public void ThrowItem()
     {
         if (numGrenades > 0)
@@ -85,6 +93,7 @@ public class PlayerWeapon : AgentWeapon
             SpawnItem(transform.position, transform.rotation);
         }
     }
+
 
     private void SpawnItem(Vector3 position, Quaternion rotation)
     {
