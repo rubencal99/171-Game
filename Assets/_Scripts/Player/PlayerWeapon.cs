@@ -12,6 +12,8 @@ public class PlayerWeapon : AgentWeapon
     public int numGrenades = 5;
     public GameObject Grenade;
 
+    public GameObject itemPrefab;
+
     public RenderThrowableArc throwableArc;
 
     Vector3 mousePos;
@@ -81,24 +83,25 @@ public class PlayerWeapon : AgentWeapon
 
     public void prepThrow()
     {
-        Debug.Log("throw prepped");
-        //throwableArc.SetArcAngle(this.desiredAngle);
-
+        if (numGrenades > 0)
+        {
+            Debug.Log("throw prepped");
+            SpawnItem(transform.position, transform.rotation);
+            //throwableArc.SetArcAngle(this.desiredAngle);
+        }
     }
     public void ThrowItem()
     {
-        if (numGrenades > 0)
-        {
             Debug.Log("Item Thrown");
-            SpawnItem(transform.position, transform.rotation);
-        }
+            itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
     }
 
 
     private void SpawnItem(Vector3 position, Quaternion rotation)
     {
         Debug.Log("Before instantiate");
-        var itemPrefab = Instantiate(Grenade, position, rotation);
+        itemPrefab = Instantiate(Grenade, position, rotation);
+        itemPrefab.transform.parent = this.transform;
         Debug.Log("After instantiate");
     }
 }
