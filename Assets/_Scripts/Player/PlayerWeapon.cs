@@ -64,7 +64,7 @@ public class PlayerWeapon : AgentWeapon
             if (i == selectedWeapon)
             {
                 weapon.gameObject.SetActive(true);
-                weapon.GetComponent<Gun>().ForceReload();
+                weapon.GetComponent<IWeapon>().ForceReload();
             }
             else
             {

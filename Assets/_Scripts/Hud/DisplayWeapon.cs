@@ -30,7 +30,7 @@ public class DisplayWeapon : MonoBehaviour
 
     public void UpdateWeapon()
     {
-        SR = w.weapon.GetComponent<SpriteRenderer>();
+        SR = w.weapon.transform.GetComponent<SpriteRenderer>();
         weaponSprite = SR.sprite;
         weaponImage.sprite = weaponSprite;
     }

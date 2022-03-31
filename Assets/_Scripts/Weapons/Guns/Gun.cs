@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 // This script is responsible for firing bullets from the selected weapon
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour, IWeapon
 {
     // This gives us a place to instantiate the bullet ie reference to our gun
     [SerializeField]
@@ -29,10 +29,6 @@ public class Gun : MonoBehaviour
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
     public WeaponDataSO weaponData;
-
-    // WeaponDataSO Holds all our weapon data
-    [SerializeField]
-    protected MeleeDataSO swordData;
 
     [SerializeField]
     public bool isPlayer;
@@ -58,8 +54,6 @@ public class Gun : MonoBehaviour
 
     protected bool isShooting = false;
 
-    protected bool isMelee = false;
-
     protected bool isReloading = false;
 
     [SerializeField]
@@ -71,8 +65,8 @@ public class Gun : MonoBehaviour
     [SerializeField]
     protected bool meleeCoroutine = false;
 
-    [SerializeField]
-    public string name;
+    /*[SerializeField]
+    public string name;*/
 
     public Sprite sprite;
 
@@ -93,9 +87,6 @@ public class Gun : MonoBehaviour
     [field: SerializeField]
     public UnityEvent OnShoot { get; set; }
 
-     [field: SerializeField]
-    public UnityEvent OnMelee { get; set; }
-
     [field: SerializeField]
     public UnityEvent OnShootNoAmmo { get; set; }
     
@@ -115,15 +106,6 @@ public class Gun : MonoBehaviour
     public void StopShooting()
     {
         isShooting = false;
-    }
-
-     public void TryMelee()
-    {
-        isMelee = true;
-    }
-    public void StopMelee()
-    {
-        isMelee = false;
     }
 
     public void TryReloading()
@@ -171,7 +153,7 @@ public class Gun : MonoBehaviour
     protected void Update()
     {
         UseWeapon();
-        UseMelee();
+        //UseMelee();
         Reload();
         infAmmo = weaponParent.InfAmmo;
     }
@@ -203,21 +185,22 @@ public class Gun : MonoBehaviour
         }
     }
 
+    /*
     public void UseMelee()
     {
         if (isMelee)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             OnMelee?.Invoke();
             SpawnMelee(muzzle.transform.position, CalculateAngle(muzzle, muzzle.transform.position));
-            }
-            else
-            {
-                isMelee = false;
-                // Reload();                 // Use this if we want to reload automatically
-                return;
-            }
-            FinishMelee();
         }
+        else
+        {
+            isMelee = false;
+            // Reload();                 // Use this if we want to reload automatically
+            return;
+        }
+        FinishMelee();
+    }*/
 
     protected void FinishShooting()
     {
@@ -227,13 +210,13 @@ public class Gun : MonoBehaviour
             isShooting = false;
         }
     }
-
+    /*
     private void FinishMelee()
     {
         StartCoroutine(DelayNextMeleeCoroutine());
         
         isMelee = false;
-    }
+    }*/
 
     private void FinishReloading()
     {
@@ -250,12 +233,12 @@ public class Gun : MonoBehaviour
         rateOfFireCoroutine = false;
     }
 
-     protected IEnumerator DelayNextMeleeCoroutine()
+     /*protected IEnumerator DelayNextMeleeCoroutine()
     {
         meleeCoroutine = true;
         yield return new WaitForSeconds(swordData.RecoveryLength / passives.ROFMultiplier);
         meleeCoroutine = false;
-    }
+    }*/
 
     protected IEnumerator DelayNextReloadingCoroutine()
     {
@@ -278,7 +261,7 @@ public class Gun : MonoBehaviour
            //CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
        }
     }
-
+    /*
     private void SpawnMelee(Vector3 position, Quaternion rotation)
     {
         Debug.Log("Melee");
@@ -287,7 +270,7 @@ public class Gun : MonoBehaviour
         var meleePrefab = Instantiate(swordData.BulletData.BulletPrefab, position, rotation);
        // meleePrefab.transform.parent = this.transform;
        meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-    }
+    }*/
 
     private void SpawnBullet(Vector3 position)//, Quaternion rotation)
     {

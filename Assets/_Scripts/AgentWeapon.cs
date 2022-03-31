@@ -17,7 +17,13 @@ public class AgentWeapon : MonoBehaviour
     protected WeaponRenderer weaponRenderer;
 
     [SerializeField]
-    public Gun weapon;
+    public Gun gun;
+
+    [SerializeField]
+    public Melee melee;
+
+    [SerializeField]
+    public GameObject weapon;
 
     [SerializeField]
     public bool InfAmmo;
@@ -30,7 +36,20 @@ public class AgentWeapon : MonoBehaviour
     public void AssignWeapon()
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
-        weapon = GetComponentInChildren<Gun>();
+        if(GetComponentInChildren<Gun>())
+        {
+            gun = GetComponentInChildren<Gun>();
+            weapon = gun.gameObject;
+            melee = null;
+        }
+        else if(GetComponentInChildren<Melee>())
+        {
+            melee = GetComponentInChildren<Melee>();
+            weapon = melee.gameObject;
+            gun = null;
+        }
+
+        
         xMax = gameObject.transform.position.x + 0.5f;
         xMin = gameObject.transform.position.x - 0.5f;
         flipY = false;
@@ -93,41 +112,44 @@ public class AgentWeapon : MonoBehaviour
 
     public void Reload()
     {
-        if (weapon != null && weapon.TotalAmmo > 0 && !(weapon.ammo >= weapon.totalAmmo))
+        if (gun != null && gun.TotalAmmo > 0 && !(gun.ammo >= gun.totalAmmo))
         {
-            weapon.TryReloading();
+            gun.TryReloading();
         }
 
     }
 
     public void Fill()
     {
-        weapon.AmmoFill();
+        gun.AmmoFill();
     }
 
     public void Shoot()
     {
-        if (weapon != null)
+        if (gun != null)
         {
-            weapon.TryShooting();
+            gun.TryShooting();
         }
-
+        else if (melee != null)
+        {
+            melee.TryMelee();
+        }
     }
 
     public void MeleeAttack()
     {
-        if (weapon != null)
+        if (melee != null)
         {
-            weapon.TryMelee();
+            melee.TryMelee();
         }
 
     }
 
     public void StopShooting()
     {
-        if (weapon != null)
+        if (gun != null)
         {
-            weapon.StopShooting();
+            gun.StopShooting();
         }
 
     }
