@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class _BaseThrowable : MonoBehaviour
 {
-    public float Speed;
+     float Speed;
+
+    public float SpeedMultiplier = 1.0f;
     public Vector3 LaunchOffset;
     public bool Thrown = false;
 
@@ -12,34 +14,48 @@ public class _BaseThrowable : MonoBehaviour
 
     Vector3[] pos;
 
+    Vector3[] targetPos;
+
     PlayerWeapon pw;
 
     int posCount = 0;
 
     // Start is called before the first frame update
-    public void Start()
+    public async void Start()
     {
-        
-        //var direction = transform.right + Vector3.up;
-       // GetComponent<Rigidbody>().AddForce(direction * Speed, ForceMode.Impulse);
+         pw = this.transform.parent.GetComponent<PlayerWeapon>();
         //transform.Translate(LaunchOffset);
-        pw = this.transform.parent.GetComponent<PlayerWeapon>();
-        pos = pw.throwableArc.arcArray;
+       
+        pos = (Vector3[])pw.throwableArc.arcArray.Clone();
+        targetPos = new Vector3[pos.Length];
+        Speed = pw.throwableArc.maxDistance;
+        for(int i = 0; i < pos.Length; i++) {
+            targetPos[i] = pos[i];
+        }
         //pos = this.transform.parent.GetComponent<PlayerWeapon>().throwableArc.arcArray;
 
         // Automatically destroy throwable after 5 seconds
-       // Destroy(gameObject, 5);
+        Destroy(gameObject, 5);
     }
 
     public void Update()
-    {
-        // if(Thrown) {
-        //     moveToPosition(pos[posCount]);
-        //     if(transform.position.x >= pos[posCount].x)
-        //         posCount++;
-        // }
-        transform.position += transform.position * pw.desiredAngle * Speed  * Time.deltaTime;
+     {
+    //     if(Thrown && posCount < targetPos.Length) {
+    //         moveToPosition(targetPos[posCount]);
+    //         if(transform.position.x == pos[posCount].x && transform.position.z == pos[posCount].z)
+    //             posCount++;
+    //     }
+      //  transform.position += transform.position * pw.desiredAngle * Speed  * Time.deltaTime;
+        if(!Thrown) {
+            transform.position = transform.parent.parent.position;
+        }
+    }
 
+    public void addForce() {
+          var direction = pw.aimDirection + Vector3.up;
+         GetComponent<Rigidbody>().useGravity = true;
+         GetComponent<Rigidbody>().AddForce(direction * Speed * SpeedMultiplier, ForceMode.Impulse);
+         transform.parent = null;
     }
 
     void moveToPosition(Vector3 targetPos) {
@@ -53,7 +69,8 @@ public class _BaseThrowable : MonoBehaviour
         if(enemy)
         {
             enemy.GetHit(damage, gameObject);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+       
     }
 }

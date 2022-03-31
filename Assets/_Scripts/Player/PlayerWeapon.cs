@@ -94,6 +94,8 @@ public class PlayerWeapon : AgentWeapon
     {
             Debug.Log("Item Thrown");
             itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
+            itemPrefab.GetComponent<_BaseThrowable>().addForce();
+            
     }
 
 

@@ -28,7 +28,7 @@ public class RenderThrowableArc : MonoBehaviour
 
     float radianAngle;
 
-    float maxDistance = 0;
+    public float maxDistance = 0;
 
     public Vector3[] arcArray;
 
