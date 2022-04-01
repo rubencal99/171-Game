@@ -87,13 +87,14 @@ public class MapGenerator : MonoBehaviour
         BinarySpace();
 
         DrawMap();
+        AstarPath.active.Scan();
         Debug.Log("After draw map");
         Grid.transform.Rotate(Vector3.right * 90);
         
         // AStar = GameObject.FindGameObjectWithTag("AStar").GetComponent<AstarPath>();
         AstarPath.active.Scan();
 
-        OnDrawGizmos();
+        //OnDrawGizmos();
         Debug.Log("Before rotation");
         //Grid.transform.localRotation = Quaternion.Euler(90, 0, 0);
         Debug.Log("Grid rotation = " + Grid.transform.rotation);
