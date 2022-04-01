@@ -43,7 +43,7 @@ public class PrefabHolder : MonoBehaviour
     {
         GameObject prefab = itemData.Prefab;
         Player playerInfo = Player.GetComponent<Player>();
-         popup popup = FindObjectOfType<popup>();
+        popup popup = FindObjectOfType<popup>();
         if (playerInfo.CanPurchase(itemData.Cost))
         {
             if (prefab.GetComponent<Gun>())

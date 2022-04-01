@@ -10,12 +10,8 @@ public class MeleeDataSO : ScriptableObject
     public int Damage { get; set; } = 10;
 
     [field: SerializeField]
-    public BulletDataSO BulletData { get; set; }
-
-
-    [field: SerializeField]
     [field: Range(0.01f, 2f)]
-    public float RecoveryLength { get; set; }
+    public float RecoveryLength { get; set; } = 1f;
 
     [field: SerializeField]
     [field: Range(1, 20)]

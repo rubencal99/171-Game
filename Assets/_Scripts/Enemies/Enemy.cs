@@ -53,16 +53,10 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         Health -= damage;
         blood.Play();
-        BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
-        //Debug.Log("In Enemy Get Hit");
-       // Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
-       // Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
-
-        // Temp();
-        agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+        DamageType(damageDealer);
         
         //Debug.Log("After Enemy Knockback");
-        Debug.Log("Health = " + Health);
+        //Debug.Log("Health = " + Health);
         if (Health > 0)
         {
             OnGetHit?.Invoke();
@@ -70,18 +64,29 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         else
         {
             StartCoroutine(WaitToDie());
-            Debug.Log("After WaitToDie coroutine");
-            Debug.Log("Before OnDie");
+            //Debug.Log("After WaitToDie coroutine");
+            //Debug.Log("Before OnDie");
             OnDie?.Invoke();
-            Debug.Log("After OnDie");
+            //Debug.Log("After OnDie");
             //StartCoroutine(WaitToDie());
             //Debug.Log("After WaitToDie coroutine");
         }
     }
 
-    public void Temp()
+    public void DamageType(GameObject damageDealer)
     {
-        Debug.Log("Temp test");
+        if(damageDealer.GetComponent<Bullet>())
+        {
+            BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
+            agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+        }
+        else if(damageDealer.GetComponent<Melee>())
+        {
+            MeleeDataSO meleeData = damageDealer.GetComponent<Melee>().meleeData;
+            var weaponPosition = damageDealer.transform.parent.position;
+            var direction = transform.position - weaponPosition;
+            agentMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower, -direction);
+        }
     }
 
 
