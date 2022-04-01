@@ -35,10 +35,10 @@ public class _BaseThrowable : MonoBehaviour
         //pos = this.transform.parent.GetComponent<PlayerWeapon>().throwableArc.arcArray;
 
         // Automatically destroy throwable after 5 seconds
-        Destroy(gameObject, 5);
+        //Destroy(gameObject, 5);
     }
 
-    public void Update()
+    public virtual void Update()
      {
     //     if(Thrown && posCount < targetPos.Length) {
     //         moveToPosition(targetPos[posCount]);
@@ -65,6 +65,7 @@ public class _BaseThrowable : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        
         var enemy = collision.collider.GetComponent<Enemy>();
         if(enemy)
         {

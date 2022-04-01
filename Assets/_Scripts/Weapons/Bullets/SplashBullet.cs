@@ -20,13 +20,13 @@ public class SplashBullet : RegularBullet
       //  lifetime -= Time.fixedDeltaTime;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision) {
+    public void OnTriggerEnter(Collider collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacles") ||
                 collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
 
             Vector3 location = transform.position;
             splash();
-            Destroy(this.GetComponent<Rigidbody2D>());
+            Destroy(this.GetComponent<Rigidbody>());
             StartCoroutine(particles());
         }
 

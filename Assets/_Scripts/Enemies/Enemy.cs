@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public AgentAnimations agentAnimations;
     private EnemyBrain enemyBrain;
     private AgentMovement agentMovement;
+
+    private bool DontFreeze = false;
     public bool knockback;
 
     [SerializeField]
@@ -79,6 +81,29 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
     }
 
+     public void GetHit(int damage) {
+         Health -= damage;
+        blood.Play();
+       
+        //Debug.Log("After Enemy Knockback");
+        Debug.Log("Health = " + Health);
+        if (Health > 0)
+        {
+            OnGetHit?.Invoke();
+        }
+        else
+        {
+            DontFreeze = true;
+            StartCoroutine(WaitToDie());
+            Debug.Log("After WaitToDie coroutine");
+            Debug.Log("Before OnDie");
+            OnDie?.Invoke();
+            Debug.Log("After OnDie");
+            //StartCoroutine(WaitToDie());
+            //Debug.Log("After WaitToDie coroutine");
+        }
+     }
+
     public void Temp()
     {
         Debug.Log("Temp test");
@@ -90,7 +115,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         isDying = true;
         DeadOrAlive();
         int odds = Random.Range(1, 100);
-        TimeManager.Instance.Freeze();
+        if(!DontFreeze)
+            TimeManager.Instance.Freeze();
+        DontFreeze = false;
         if (odds > 60) 
         {
             Loot thisLoot = FindObjectOfType<Loot>();
