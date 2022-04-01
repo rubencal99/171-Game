@@ -19,9 +19,9 @@ public class DisplayAmmo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (w != null){
-            ammo = w.weapon.ammo;
-            totalAmmo = w.weapon.TotalAmmo;
+        if (w.gun != null){
+            ammo = w.gun.ammo;
+            totalAmmo = w.gun.TotalAmmo;
             AmmoText.text = ammo.ToString() + "      " + totalAmmo.ToString();
         }
     }

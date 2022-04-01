@@ -18,6 +18,14 @@ public class DisplayGunName : MonoBehaviour
     async void Update()
     {
         if (w != null) {
+            /*if(w.gun)
+            {
+                GunNameText.text = w.gun.name;
+            }
+            else if(w.melee)
+            {
+                GunNameText.text = w.melee.name;
+            }*/
             GunNameText.text = w.weapon.name;
         }
     }
