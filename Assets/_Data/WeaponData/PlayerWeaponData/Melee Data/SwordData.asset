@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SwordData
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 1
-  <RecoveryLength>k__BackingField: 1
-  <KnockbackPower>k__BackingField: 5
-  <KnockbackDelay>k__BackingField: 0.1
+  <RecoveryLength>k__BackingField: 0.069
+  <KnockbackPower>k__BackingField: 10.17
+  <KnockbackDelay>k__BackingField: 1

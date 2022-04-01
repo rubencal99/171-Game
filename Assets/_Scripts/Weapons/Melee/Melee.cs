@@ -17,7 +17,7 @@ public class Melee : MonoBehaviour, IWeapon
 
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
-    public MeleeDataSO weaponData;
+    public MeleeDataSO meleeData;
 
     [SerializeField]
     public bool isPlayer;
@@ -80,6 +80,7 @@ public class Melee : MonoBehaviour, IWeapon
         }
         else
         {
+            StopMelee();
             return;
         }
         FinishMelee();
@@ -95,7 +96,7 @@ public class Melee : MonoBehaviour, IWeapon
     protected IEnumerator DelayNextMeleeCoroutine()
     {
         meleeCoroutine = true;
-        yield return new WaitForSeconds(weaponData.RecoveryLength / passives.ROFMultiplier);
+        yield return new WaitForSeconds(meleeData.RecoveryLength / passives.ROFMultiplier);
         meleeCoroutine = false;
     }
 
@@ -110,13 +111,24 @@ public class Melee : MonoBehaviour, IWeapon
         // Damage enemies
         foreach(Collider enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
+            //Debug.Log("We hit " + enemy.name);
+            HitEnemy(enemy);
         }
 
     }
 
+    public void HitEnemy(Collider collision)
+    {
+        // This drops enemy health / destroys enemy
+        var hittable = collision.GetComponent<IHittable>();
+        hittable?.GetHit(meleeData.Damage, gameObject);
+    }
+
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        if(attackPoint != null)
+        {
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        }
     }
 }

@@ -31,7 +31,7 @@ public class AgentAnimations : MonoBehaviour
     public void SetTakeDamageAnimation()
     {
         agentAnimator.SetTrigger("Got hit");
-        Debug.Log("Triggering Hurt Animation");
+        //Debug.Log("Triggering Hurt Animation");
     }
 
     public void SetDeathAnimation(bool val)
