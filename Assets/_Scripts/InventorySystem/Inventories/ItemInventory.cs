@@ -6,7 +6,7 @@ public class ItemInventory
 {
     private List<ItemObject> itemList;
 
-    public TabInventory() {
+    public ItemInventory() {
         itemList = new List<ItemObject>(); 
 
         Debug.Log("Inventory"); 
