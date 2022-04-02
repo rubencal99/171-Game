@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TabInventory
+public class ItemInventory
 {
     private List<ItemObject> itemList;
 
