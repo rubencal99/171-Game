@@ -8,24 +8,28 @@ public class PlayerWeapon : AgentWeapon
 {
     private float timeToReload = 0.0f;
 
-    public int selectedWeapon = 0;
+    public GameObject selectedWeapon;
     public int numGrenades = 5;
     public GameObject Grenade;
+
+    public GameObject Primary;
+    public GameObject Secondary;
 
     Vector3 mousePos;
 
 
     private void Start()
     {
-        SelectWeapon();
+        Primary.SetActive(true);
+        Secondary.SetActive(false);
         InfAmmo = false;
     }
 
 
-    private void Update()
+    /*private void Update()
     {
 
-        int previousSelectedWeapon = selectedWeapon;
+        GameObject previousSelectedWeapon = selectedWeapon;
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
@@ -37,6 +41,10 @@ public class PlayerWeapon : AgentWeapon
             {
                 selectedWeapon++;
             }
+            Primary.SetActive(true);
+            Secondary.SetActive(false);
+            Primary.GetComponent<IWeapon>().ForceReload();
+            selectedWeapon = Primary;
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
@@ -48,17 +56,43 @@ public class PlayerWeapon : AgentWeapon
             {
                 selectedWeapon--;
             }
+            Primary.SetActive(false);
+            Secondary.SetActive(true);
+            Secondary.GetComponent<IWeapon>().ForceReload();
+            selectedWeapon = Secondary;
         }
         if (previousSelectedWeapon != selectedWeapon)
         {
             SelectWeapon();
             DisplayWeapon.Instance.UpdateWeapon();
         }
+    }*/
+
+    public void TogglePrimary()
+    {
+        if(!Primary.activeSelf)
+        {
+            Primary.SetActive(true);
+            Secondary.SetActive(false);
+            Primary.GetComponent<IWeapon>().ForceReload();
+            AssignWeapon();
+        }
+    }
+
+    public void ToggleSecondary()
+    {
+        if(!Secondary.activeSelf)
+        {
+            Primary.SetActive(false);
+            Secondary.SetActive(true);
+            Secondary.GetComponent<IWeapon>().ForceReload();
+            AssignWeapon();
+        }
     }
 
     private void SelectWeapon()
     {
-        int i = 0;
+        /*int i = 0;
         foreach (Transform weapon in transform)
         {
             if (i == selectedWeapon)
@@ -71,7 +105,7 @@ public class PlayerWeapon : AgentWeapon
                 weapon.gameObject.SetActive(false);
             }
             i++;
-        }
+        }*/
 
 
         AssignWeapon();

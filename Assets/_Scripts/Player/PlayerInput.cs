@@ -38,19 +38,22 @@ public class PlayerInput : MonoBehaviour
 
     // Calls PlayerWeapon.shoot
     [field: SerializeField]
-    public UnityEvent OnFireButtonPressed { get; set; }
+    public UnityEvent OnPrimaryButtonPressed { get; set; }
 
     // Calls PlayerWeapon.StopShooting
     [field: SerializeField]
-    public UnityEvent OnFireButtonReleased { get; set; }
+    public UnityEvent OnPrimaryButtonReleased { get; set; }
+
+    // Calls Player.ThowItem
+    [field: SerializeField]
+    public UnityEvent OnSecondaryButtonPressed { get; set; }
+    [field: SerializeField]
+    public UnityEvent OnSecondaryButtonReleased { get; set; }
+
 
     // Calls PlayerWeapon.StopShooting
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
-
-    // Calls Player.ThowItem
-    [field: SerializeField]
-    public UnityEvent OnThrowButtonPressed { get; set; }
 
     // Calls SceneManager.RestartScene
     [field: SerializeField]

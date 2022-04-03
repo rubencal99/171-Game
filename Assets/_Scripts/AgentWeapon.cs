@@ -132,6 +132,7 @@ public class AgentWeapon : MonoBehaviour
         }
         else if (melee != null)
         {
+            Debug.Log("Before TRy Melee");
             melee.TryMelee();
         }
     }
@@ -151,7 +152,10 @@ public class AgentWeapon : MonoBehaviour
         {
             gun.StopShooting();
         }
-
+        if(melee != null)
+        {
+            melee.StopMelee();
+        }
     }
 
 }
