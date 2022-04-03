@@ -118,12 +118,11 @@ MonoBehaviour:
   totalAmmo: 0
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: b04eaefcbb20d69458fca1e64c60e738, type: 2}
-  swordData: {fileID: 0}
+  weaponItem: {fileID: 11400000, guid: c6987e1975c244084b5621ab6d5af05d, type: 2}
   isPlayer: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  name: Assult Rifle
   sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
@@ -152,9 +151,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  <OnMelee>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls:

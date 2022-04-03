@@ -5,41 +5,117 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class ItemInventory : ScriptableObject
 {
-    public List<InventorySlot> Container = new List<InventorySlot>();
-    public void AddItem(ItemObject _item, int _amount)
+    public  List<InventorySlot> Container = new List<InventorySlot>();
+    public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
+    public  List<AugSlot> AContainer = new List<AugSlot>();
+    public void AddItemToInventory(ItemObject _item, int _amount)
     {
         // check if item is already in inventory
         // assume we don't
         bool hasItem = false;
-        for (int i = 0; i < Container.Count; i++)
+        foreach (InventorySlot slot in Container)
         {
-            if(Container[i].item == _item)
+            if(slot.item == _item)
             {
-                Container[i].AddAmount(_amount);
-                hasItem = true;
-                break;
+                if (slot.item.stackable)
+                {
+                    slot.AddAmount(_amount);
+                    hasItem = true;
+                    Debug.Log("stacking items");
+                    break;
+                }
+                else
+                {
+                    hasItem = true;
+                    break;
+                }
             }
         }
         // if after all that business still no item, put it in a new slot
         if (!hasItem)
         {
-            Container.Add(new InventorySlot(_item, _amount));
+            foreach (InventorySlot slot in Container)
+            {
+                if(slot.item == null)
+                {
+                    slot.item = _item;
+                    hasItem = true;
+                    //Debug.Log("item is now in inventory");
+                    Print();
+                    break;
+                }
+            }
+        }
+    }
+
+    public void ClearInventory()
+    {
+        foreach (InventorySlot slot in Container)
+        {
+            slot.item = null;
+        }
+        foreach (AugSlot slot in AContainer)
+        {
+            slot.item = null;
+        }
+        foreach (WeaponSlot slot in WContainer)
+        {
+            slot.item = null;
+        }
+        Debug.Log("Inventory Cleared");
+    }
+
+    public void Print()
+    {
+        for (int i = 0; i < Container.Count; i++)
+        {
+            Debug.Log(i + ": " + Container[i].item + ": " + Container[i].amount);
         }
     }
 }
 
 [System.Serializable]
-public class InventorySlot
+public class InventorySlot : Slot
 {
-    public ItemObject item;
-    public int amount;
     public InventorySlot(ItemObject _item, int _amount)
     {
         item = _item;
         amount = _amount;
     }
+}
+[System.Serializable]
+public class WeaponSlot : Slot
+{
+    public WeaponItemSO item;
+    public WeaponType slotType;
+    public WeaponSlot(WeaponItemSO _item, int _amount)
+    {
+        item = _item;
+        amount = _amount;
+
+    }
+}
+[System.Serializable]
+public class AugSlot : Slot
+{
+    public AugmentationItemSO item;
+    public AugType slotType;
+    public AugSlot(AugmentationItemSO _item, int _amount)
+    {
+        item = _item;
+        amount = _amount;
+
+    }
+    
+}
+
+public class Slot
+{
+    public ItemObject item;
+    public int amount;
     public void AddAmount(int value)
     {
         amount += value;
     }
 }
+

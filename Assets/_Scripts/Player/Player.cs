@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public ItemInventory inventory;
     public RoomNode currentRoom;
 
     
@@ -228,5 +229,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
         invincible = true;
         yield return new WaitForSeconds((float)damage_iframes / 60f);
         invincible = false;
+    }
+
+    private void OnApplicationQuit()
+    {
+        inventory.ClearInventory();
     }
 }

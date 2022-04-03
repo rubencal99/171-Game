@@ -470,7 +470,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 34236
+  m_InstanceId: 68686
 --- !u!114 &1500494838912752689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,6 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f9f634b5d579488525203ac936218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 8c3978625738743df9ac7de2f78e3db7, type: 2}
   currentRoom: {fileID: 0}
   invincible: 0
   damage_iframes: 20
@@ -1221,7 +1222,9 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 0}
   desiredAngle: 0
   weaponRenderer: {fileID: 0}
-  weapon: {fileID: 8960519738105143103, guid: e9f57b69ebde592418964205e514804a, type: 3}
+  gun: {fileID: 0}
+  melee: {fileID: 0}
+  weapon: {fileID: 0}
   InfAmmo: 0
   selectedWeapon: 0
   numGrenades: 5

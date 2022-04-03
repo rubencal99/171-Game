@@ -29,6 +29,7 @@ public class Gun : MonoBehaviour, IWeapon
     // WeaponDataSO Holds all our weapon data
     [SerializeField]
     public WeaponDataSO weaponData;
+    public WeaponItemSO weaponItem;
 
     [SerializeField]
     public bool isPlayer;
@@ -81,6 +82,9 @@ public class Gun : MonoBehaviour, IWeapon
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
        // sprite = GetComponent<SpriteRenderer>().sprite;
+
+       //weaponItem.prefab = transform.gameObject;
+       //Debug.Log(weaponItem.prefab);
     }
 
 
