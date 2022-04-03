@@ -6,7 +6,7 @@ public class _BaseThrowable : MonoBehaviour
 {
      float Speed;
 
-    public float SpeedMultiplier = 1.0f;
+    public float SpeedBonus = 1.0f;
     public Vector3 LaunchOffset;
     public bool Thrown = false;
 
@@ -54,7 +54,7 @@ public class _BaseThrowable : MonoBehaviour
     public void addForce() {
           var direction = pw.aimDirection + Vector3.up;
          GetComponent<Rigidbody>().useGravity = true;
-         GetComponent<Rigidbody>().AddForce(direction * Speed * SpeedMultiplier, ForceMode.Impulse);
+         GetComponent<Rigidbody>().AddForce(direction * (Speed + SpeedBonus), ForceMode.Impulse);
          transform.parent = null;
     }
 

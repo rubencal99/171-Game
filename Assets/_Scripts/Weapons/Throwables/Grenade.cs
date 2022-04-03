@@ -16,6 +16,7 @@ public class Grenade : _BaseThrowable
 
         if(!Thrown) {
             transform.position = transform.parent.parent.position;
+
         }
     }
    

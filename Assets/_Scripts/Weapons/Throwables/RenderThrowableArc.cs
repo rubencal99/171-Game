@@ -36,7 +36,7 @@ public class RenderThrowableArc : MonoBehaviour
 
     GameObject Player;
 
-
+    public float xOffset, yOffset, zOffset = 0.0f;
 
     private async void Awake()
 
@@ -117,6 +117,7 @@ public class RenderThrowableArc : MonoBehaviour
 
         lr.SetPositions(CalculateArcArray());
         lr.SetPosition(0,  Player.transform.localPosition);
+        transform.position = new Vector3(transform.position.x + xOffset, transform.position.y + yOffset, transform.position.z + zOffset);
 
     }
 
