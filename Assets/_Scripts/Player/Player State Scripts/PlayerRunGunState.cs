@@ -95,7 +95,7 @@ public class PlayerRunGunState : PlayerBaseState
             {
                 Debug.Log("throw pressed");
                 throwButtonDown = true;
-                playerInput.OnSecondaryButtonPressed?.Invoke();
+                playerInput.OnThrowButtonPressed?.Invoke();
             }
         }
         else

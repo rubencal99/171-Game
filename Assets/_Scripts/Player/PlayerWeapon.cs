@@ -14,7 +14,7 @@ public class PlayerWeapon : AgentWeapon
 
     public GameObject Primary;
     public GameObject Secondary;
-    public GameObject itemPrefab;
+    private GameObject itemPrefab;
 
     public RenderThrowableArc throwableArc;
 

@@ -58,6 +58,9 @@ public class PlayerInput : MonoBehaviour
      [field: SerializeField]
     public UnityEvent OnThrowButtonReleased { get; set; }
 
+     [field: SerializeField]
+    public UnityEvent OnThrowButtonPressed { get; set; }
+
     // Calls SceneManager.RestartScene
     [field: SerializeField]
     public UnityEvent OnRestartButtonPressed { get; set; }

@@ -52,6 +52,9 @@ public class AgentInput : MonoBehaviour, IAgentInput
     // Calls Player.ThowItem
     [field: SerializeField]
     public UnityEvent OnThrowButtonPressed { get; set; }
+     [field: SerializeField]
+    public UnityEvent OnThrowButtonReleased { get; set; }
+
 
     // Calls SceneManager.RestartScene
     [field: SerializeField]
@@ -137,13 +140,14 @@ public class AgentInput : MonoBehaviour, IAgentInput
                 OnThrowButtonPressed?.Invoke();
             }
         }
-        // else
-        // {
-        //     if (throwButtonDown == true)
-        //     {
-        //         throwButtonDown = false;
-        //     }
-        // }
+        else
+        {
+            if (throwButtonDown == true)
+            {
+                throwButtonDown = false;
+                OnThrowButtonReleased?.Invoke();
+            }
+        }
     }
 
      private void GetMeleeInput()
