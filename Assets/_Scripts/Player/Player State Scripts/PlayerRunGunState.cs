@@ -7,9 +7,9 @@ public class PlayerRunGunState : PlayerBaseState
 {
     private Camera mainCamera;
 
-    private bool fireButtonDown = false;
+    private bool primaryButtonDown = false;
     private bool throwButtonDown = false;
-    private bool meleeButtonDown = false;
+    private bool secondaryButtonDown = false;
     private bool tabButtonDown = false;
 
     public bool dodging = false; // bool to check if dodging
@@ -38,13 +38,13 @@ public class PlayerRunGunState : PlayerBaseState
     {
         GetMovementInput();
         GetPointerInput();
-        GetFireInput();
+        GetPrimaryInput();
         GetThrowInput();
-        GetMeleeInput();
+        GetSecondaryInput();
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
-        GetDodgeInput();
+        //GetDodgeInput();
         GetTabInput();
         GetInteractInput();
         if (dodging)
@@ -59,22 +59,22 @@ public class PlayerRunGunState : PlayerBaseState
         }
     }
 
-    private void GetFireInput()
+    private void GetPrimaryInput()
     {
         if (Input.GetAxisRaw("Fire1") > 0)
         {
-            if (fireButtonDown == false)
+            if (primaryButtonDown == false)
             {
-                fireButtonDown = true;
-                playerInput.OnFireButtonPressed?.Invoke();
+                primaryButtonDown = true;
+                playerInput.OnPrimaryButtonPressed?.Invoke();
             }
         }
         else
         {
-            if (fireButtonDown == true)
+            if (primaryButtonDown == true)
             {
-                fireButtonDown = false;
-                playerInput.OnFireButtonReleased?.Invoke();
+                primaryButtonDown = false;
+                playerInput.OnPrimaryButtonReleased?.Invoke();
             }
         }
     }
@@ -95,7 +95,7 @@ public class PlayerRunGunState : PlayerBaseState
             {
                 Debug.Log("In throw");
                 throwButtonDown = true;
-                playerInput.OnThrowButtonPressed?.Invoke();
+                playerInput.OnSecondaryButtonPressed?.Invoke();
             }
         }
         else
@@ -107,22 +107,23 @@ public class PlayerRunGunState : PlayerBaseState
         }
     }
 
-     private void GetMeleeInput()
+     private void GetSecondaryInput()
     {
         if (Input.GetAxisRaw("Fire2") > 0)
         {
-            if (meleeButtonDown == false)
+            if (secondaryButtonDown == false)
             {
                 // Debug.Log("In melee");
-                meleeButtonDown = true;
-                playerInput.OnMeleeButtonPressed?.Invoke();
+                secondaryButtonDown = true;
+                playerInput.OnSecondaryButtonPressed?.Invoke();
             }
         }
         else
         {
-            if (meleeButtonDown == true)
+            if (secondaryButtonDown == true)
             {
-                meleeButtonDown = false;
+                secondaryButtonDown = false;
+                playerInput.OnSecondaryButtonReleased?.Invoke();
             }
         }
     }

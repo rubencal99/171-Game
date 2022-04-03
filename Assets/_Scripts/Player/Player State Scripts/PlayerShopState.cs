@@ -46,7 +46,7 @@ public class PlayerShopState : PlayerBaseState
             if (fireButtonDown == false)
             {
                 fireButtonDown = true;
-                playerInput.OnFireButtonPressed?.Invoke();
+                playerInput.OnPrimaryButtonPressed?.Invoke();
             }
         }
         else
@@ -54,7 +54,7 @@ public class PlayerShopState : PlayerBaseState
             if (fireButtonDown == true)
             {
                 fireButtonDown = false;
-                playerInput.OnFireButtonReleased?.Invoke();
+                playerInput.OnPrimaryButtonReleased?.Invoke();
             }
         }
     }
