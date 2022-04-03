@@ -38,6 +38,7 @@ public class Melee : MonoBehaviour, IWeapon
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
         }
+        //sprite = GetComponent<SpriteRenderer>().sprite;
         weaponParent = transform.parent.GetComponent<AgentWeapon>();
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         attackPoint = transform.Find("AttackPoint");
