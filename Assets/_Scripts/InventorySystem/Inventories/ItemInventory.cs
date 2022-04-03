@@ -21,7 +21,7 @@ public class ItemInventory : ScriptableObject
                 {
                     slot.AddAmount(_amount);
                     hasItem = true;
-                    Debug.Log("stacking items");
+                    //Debug.Log("stacking items");
                     break;
                 }
                 else
@@ -39,9 +39,10 @@ public class ItemInventory : ScriptableObject
                 if(slot.item == null)
                 {
                     slot.item = _item;
+                    slot.AddAmount(_amount);
                     hasItem = true;
                     //Debug.Log("item is now in inventory");
-                    Print();
+                    //Print();
                     break;
                 }
             }
@@ -78,6 +79,7 @@ public class ItemInventory : ScriptableObject
 [System.Serializable]
 public class InventorySlot : Slot
 {
+    public ItemObject item;
     public InventorySlot(ItemObject _item, int _amount)
     {
         item = _item;
@@ -112,7 +114,6 @@ public class AugSlot : Slot
 
 public class Slot
 {
-    public ItemObject item;
     public int amount;
     public void AddAmount(int value)
     {

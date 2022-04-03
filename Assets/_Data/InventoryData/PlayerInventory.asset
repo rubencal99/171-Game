@@ -13,25 +13,38 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   Container:
-  - item: {fileID: 11400000, guid: c03d83ad3ac234c8d9d0d3e48aba8ec1, type: 2}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
-  - item: {fileID: 0}
-    amount: 0
+  - amount: 0
+    item: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
   WContainer:
-  - item: {fileID: 0}
-    amount: 0
+  - amount: 0
     item: {fileID: 0}
     slotType: 0
-  - item: {fileID: 0}
-    amount: 0
+  - amount: 0
     item: {fileID: 0}
     slotType: 1
-  AContainer: []
+  AContainer:
+  - amount: 0
+    item: {fileID: 0}
+    slotType: 0
+  - amount: 0
+    item: {fileID: 0}
+    slotType: 1
+  - amount: 0
+    item: {fileID: 0}
+    slotType: 2
+  - amount: 0
+    item: {fileID: 0}
+    slotType: 3
+  - amount: 0
+    item: {fileID: 0}
+    slotType: 4
