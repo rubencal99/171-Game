@@ -117,7 +117,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
          }
 
          //raise defelction shield
-         if(!ShieldActivated && Input.GetButtonDown("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
+         if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
              StartCoroutine(RaiseShield());
          }
 
@@ -160,7 +160,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void setMaxHp(int amount) {
         MaxHealth = amount;
-
     }
 
 
@@ -250,6 +249,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     }
 
     public IEnumerator RaiseShield(){
+        Debug.Log("raise shield");
         ShieldActivated = true;
         shield.enabled = true;
         //Maybe get an animation here

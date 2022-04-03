@@ -26,7 +26,7 @@ public static class PlayerAugmentations : object
 
     public static bool CasingRecycle = false;
 
-    public static int CasingRecPer = 100; 
+    public static int CasingRecPer = 15; 
 
     public static bool Whiskers = false;
 
@@ -57,10 +57,4 @@ public static class PlayerAugmentations : object
         }
     }
 
-    // Start is called before the first frame update
-    /*public static void Start()
-    {
-        Epinephrine = true;
-        BulletTime = false;
-    }*/
 }

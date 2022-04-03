@@ -182,6 +182,7 @@ public class Gun : MonoBehaviour
         {
             if (Ammo > 0)
             {
+                Debug.Log(PlayerSignaler.CallCasingRecycler());
                 if(!PlayerSignaler.CallCasingRecycler()){
                     Ammo--;
                 }

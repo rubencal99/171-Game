@@ -174,7 +174,7 @@ public class PlayerRunGunState : PlayerBaseState
     private void GetDodgeInput()
     {
         // Create new Vector2 when dodge button (left shift) pressed
-        if (Input.GetMouseButtonDown(1)) 
+        if (Input.GetButtonDown("Dodge")) 
         {
             if (playerInput.PlayerMovement.currentVelocity == 0)
             {
