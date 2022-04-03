@@ -51,7 +51,7 @@ public class RoomNode : MonoBehaviour
         {
             MaxNeighbors = 2;
         }
-        if(RoomType == "Normal")
+        if(RoomType == "Normal" || RoomType == "Auxiliary")
         {
             MaxNeighbors = 2;
         }
