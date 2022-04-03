@@ -42,4 +42,16 @@ public static class PlayerSignaler : object
             Player.Heal(PlayerAugmentations.EpinephrineBoost);
         }
     }
+
+    public static bool CallCasingRecycler(){
+        if(PlayerAugmentations.AugmentationList["CasingRecycle"]){
+             var recycleChance = Random.Range(0, PlayerAugmentations.CasingRecPer);
+             if(recycleChance <= 15){
+                 return true;
+             }
+             return false;
+        }else{
+            return false;
+        }
+    }
 }

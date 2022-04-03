@@ -67,6 +67,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private bool HitLastFiveSec;
 
+    //Defelction Shield logic
+    private bool ShieldActivated = false;
+    [SerializeField]
+    private SphereCollider shield;
+
     private AgentRenderer agentRenderer;
     [SerializeField]
 
@@ -96,17 +101,31 @@ public class Player : MonoBehaviour, IAgent, IHittable
         overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
+        shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
-    private void Update()
+    void Update()
     {
          if (isDead==true){                      //For Debug the instance kill 
              Health -= Health;
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
+
          if(HitLastFiveSec){
             StartCoroutine(fadeOverlay());
+         }
+
+         //raise defelction shield
+         if(!ShieldActivated && Input.GetButtonDown("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
+             StartCoroutine(RaiseShield());
+         }
+
+         //hipposkin
+        //Debug.Log("HippoApplied from outside statement: " + PlayerAugmentations.HippoApplied);
+         if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
+             //Debug.Log("HippoApplied: " + PlayerAugmentations.HippoApplied);
+             StartCoroutine(ApplyHippo());
          }
     }
     public IEnumerator fadeOverlay(){
@@ -228,5 +247,21 @@ public class Player : MonoBehaviour, IAgent, IHittable
         invincible = true;
         yield return new WaitForSeconds((float)damage_iframes / 60f);
         invincible = false;
+    }
+
+    public IEnumerator RaiseShield(){
+        ShieldActivated = true;
+        shield.enabled = true;
+        //Maybe get an animation here
+        yield return new WaitForSeconds(PlayerAugmentations.DefelctionTime);
+        shield.enabled = false;
+        ShieldActivated = false;
+    }
+
+    public IEnumerator ApplyHippo(){
+        PlayerAugmentations.HippoApplied = true;
+        yield return null;
+        setMaxHp(MaxHealth + Mathf.FloorToInt(0.15f * MaxHealth));
+        Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied);
     }
 }
