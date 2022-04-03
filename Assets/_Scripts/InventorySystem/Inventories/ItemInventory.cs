@@ -53,6 +53,7 @@ public class ItemInventory : ScriptableObject
         foreach (InventorySlot slot in Container)
         {
             slot.item = null;
+            slot.amount = 0;
         }
         foreach (AugSlot slot in AContainer)
         {
