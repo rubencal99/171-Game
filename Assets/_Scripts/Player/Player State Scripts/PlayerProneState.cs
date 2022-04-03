@@ -54,7 +54,7 @@ public class PlayerProneState : PlayerBaseState
             if (fireButtonDown == false)
             {
                 fireButtonDown = true;
-                playerInput.OnFireButtonPressed?.Invoke();
+                playerInput.OnPrimaryButtonPressed?.Invoke();
             }
         }
         else
@@ -62,7 +62,7 @@ public class PlayerProneState : PlayerBaseState
             if (fireButtonDown == true)
             {
                 fireButtonDown = false;
-                playerInput.OnFireButtonReleased?.Invoke();
+                playerInput.OnPrimaryButtonReleased?.Invoke();
             }
         }
     }
