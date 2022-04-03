@@ -8,6 +8,8 @@ public class AgentWeapon : MonoBehaviour
     public Vector3 aimDirection;
     public Quaternion rotation;
     public float desiredAngle;
+
+    public Vector3 pointerPos;
     protected float xMax;
     protected float xMin;
     protected bool flipY;
@@ -24,6 +26,7 @@ public class AgentWeapon : MonoBehaviour
 
     [SerializeField]
     public GameObject weapon;
+    protected PlayerWeapon playerWeapon;
 
     [SerializeField]
     public bool InfAmmo;
@@ -60,6 +63,7 @@ public class AgentWeapon : MonoBehaviour
     {
 
         aimDirection = ((Vector3)pointerPosition - transform.position).normalized;
+        pointerPos = (Vector3)pointerPosition;
         aimDirection.y = 0;
         //Debug.Log("Aim Direction: " + aimDirection);
         // Use arctan to find angle from our x-axis and convert to degrees
@@ -142,6 +146,16 @@ public class AgentWeapon : MonoBehaviour
         if (melee != null)
         {
             melee.TryMelee();
+        }
+
+    }
+
+    public void throwAttack()
+    {
+        if (playerWeapon != null)
+        {
+              Debug.Log("In throw");
+            playerWeapon.ThrowItem();
         }
 
     }
