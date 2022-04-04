@@ -49,6 +49,11 @@ public class ItemInventory : ScriptableObject
         }
     }
 
+    public void MoveItemToSlot(InventorySlot fromSlot, InventorySlot toSlot)
+    {
+        //
+    }
+
     public void ClearInventory()
     {
         foreach (InventorySlot slot in Container)
@@ -59,10 +64,12 @@ public class ItemInventory : ScriptableObject
         foreach (AugSlot slot in AContainer)
         {
             slot.item = null;
+            slot.amount = 0;
         }
         foreach (WeaponSlot slot in WContainer)
         {
             slot.item = null;
+            slot.amount = 0;
         }
         Debug.Log("Inventory Cleared");
     }
