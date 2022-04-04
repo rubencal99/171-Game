@@ -9,6 +9,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject Grid;
     [SerializeField]
+    private bool hasBoss;
+    [SerializeField]
     private TileSpritePlacer AutoTiler;
     [SerializeField]
     private GameObject LightPrefab;
@@ -78,8 +80,9 @@ public class MapGenerator : MonoBehaviour
     //private AstarPath AStar;
 
     private RoomNode StartRoom;
-    private RoomNode BossRoom;
+    private RoomNode EndRoom;
     private RoomNode ShopRoom;
+    private RoomNode DoorRoom;
 
 
     public TileNode[,] GenerateMap()
@@ -366,7 +369,7 @@ public class MapGenerator : MonoBehaviour
         }
         SortRooms();
         AddCorridors();
-        AddBossRoom();
+        AddEndRoom();
         AddEntryColliders();
         AddSpawners();
         for(int i = 0; i < 2; i++)
@@ -636,21 +639,28 @@ public class MapGenerator : MonoBehaviour
         room.RoomsByDistance.Add(neighbor);
     }
 
-    void AddBossRoom()
+    void AddEndRoom()
     {
         int distance = 0;
-        RoomNode boss = new RoomNode();
+        RoomNode end = new RoomNode();
         foreach(RoomNode room in Rooms)
         {
             if(room.DistanceFromStart > distance)
             {
                 distance = room.DistanceFromStart;
-                boss = room;
+                end = room;
                 //boss.RoomType = "Boss";
             }
         }
-        BossRoom = boss;
-        BossRoom.RoomType = "Boss";
+        EndRoom = end;
+        if(hasBoss)
+        {
+            EndRoom.RoomType = "Boss";
+        }
+        else
+        {
+            EndRoom.RoomType = "Key";
+        }
         /*Debug.Log("Boss distance: " + BossRoom.DistanceFromStart);
         int r = Random.Range(1, 4);
         if(r >= BossRoom.RoomsByDistance.Count)
@@ -676,18 +686,37 @@ public class MapGenerator : MonoBehaviour
         }
         ShopRoom.RoomType = "Shop";
         //ShopRoom = shop;*/
-        int index = UnityEngine.Random.Range(1, 4);
-        if(index >= BossRoom.RoomsByDistance.Count)
+
+        //---------------- SHOP ----------------
+        int shopIndex = UnityEngine.Random.Range(1, 4);
+        if(shopIndex >= EndRoom.RoomsByDistance.Count)
         {
-            index = 1;
+            shopIndex = 1;
         }
-        RoomNode shop = BossRoom.RoomsByDistance[index];
+        RoomNode shop = EndRoom.RoomsByDistance[shopIndex];
         if(shop == StartRoom)
         {
-            shop = BossRoom.RoomsByDistance[index-1];
+            shop = EndRoom.RoomsByDistance[shopIndex-1];
         }
         shop.RoomType = "Shop";
         ShopRoom = shop;
+
+        //---------------- DOOR ----------------
+        if(!hasBoss)
+        {
+            int doorIndex = UnityEngine.Random.Range(roomsList.Count / 3, roomsList.Count / 2);
+            if(doorIndex == shopIndex)
+            {
+                doorIndex = 1;
+            }
+            RoomNode door = StartRoom.RoomsByDistance[doorIndex];
+            if(door == StartRoom)
+            {
+                door = StartRoom.RoomsByDistance[doorIndex-1];
+            }
+            door.RoomType = "Door";
+            DoorRoom = door;
+        }
     }
 
     void AddCorridors()
@@ -1075,9 +1104,13 @@ public class MapGenerator : MonoBehaviour
                     {
                         Gizmos.color = new Color(0, 255, 0, 1f);
                     }
-                    else if (map[x, y].room.RoomType == "Boss")
+                    else if (map[x, y].room.RoomType == "Boss" || map[x, y].room.RoomType == "Key")
                     {
                         Gizmos.color = new Color(255, 0, 0, 1f);
+                    }
+                    else if (map[x, y].room.RoomType == "Door")
+                    {
+                        Gizmos.color = new Color(155/255f, 0, 0, 1f);
                     }
                     else if (map[x, y].room.RoomType == "Shop")
                     {
