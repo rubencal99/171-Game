@@ -86,7 +86,7 @@ public class PlayerProneState : PlayerBaseState
 
     private void GetMovementInput()
     {
-        playerInput.OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        playerInput.OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
     }
 
     private void CalculateStandTime()

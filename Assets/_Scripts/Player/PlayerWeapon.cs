@@ -14,6 +14,9 @@ public class PlayerWeapon : AgentWeapon
 
     public GameObject Primary;
     public GameObject Secondary;
+    private GameObject itemPrefab;
+
+    public RenderThrowableArc throwableArc;
 
     Vector3 mousePos;
 
@@ -111,19 +114,29 @@ public class PlayerWeapon : AgentWeapon
         AssignWeapon();
     }
 
-    public void ThrowItem()
+    public void prepThrow()
     {
         if (numGrenades > 0)
         {
-            Debug.Log("Item Thrown");
+            Debug.Log("throw prepped");
             SpawnItem(transform.position, transform.rotation);
+            //throwableArc.SetArcAngle(this.desiredAngle);
         }
     }
+    public void ThrowItem()
+    {
+            Debug.Log("Item Thrown");
+            itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
+            itemPrefab.GetComponent<_BaseThrowable>().addForce();
+            
+    }
+
 
     private void SpawnItem(Vector3 position, Quaternion rotation)
     {
         Debug.Log("Before instantiate");
-        var itemPrefab = Instantiate(Grenade, position, rotation);
+        itemPrefab = Instantiate(Grenade, position, rotation);
+        itemPrefab.transform.parent = this.transform;
         Debug.Log("After instantiate");
     }
 }

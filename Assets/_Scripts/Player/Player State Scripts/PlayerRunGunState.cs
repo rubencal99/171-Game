@@ -44,7 +44,7 @@ public class PlayerRunGunState : PlayerBaseState
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
-        //GetDodgeInput();
+        GetDodgeInput();
         GetTabInput();
         GetInteractInput();
         if (dodging)
@@ -89,20 +89,22 @@ public class PlayerRunGunState : PlayerBaseState
 
     private void GetThrowInput()
     {
-        if (Input.GetAxisRaw("Fire3") > 0)
+        if (Input.GetAxisRaw("Throw") > 0)
         {
             if (throwButtonDown == false)
             {
-                Debug.Log("In throw");
+                Debug.Log("throw pressed");
                 throwButtonDown = true;
-                playerInput.OnSecondaryButtonPressed?.Invoke();
+                playerInput.OnThrowButtonPressed?.Invoke();
             }
         }
         else
         {
             if (throwButtonDown == true)
             {
+                 Debug.Log("throw released");
                 throwButtonDown = false;
+                 playerInput.OnThrowButtonReleased?.Invoke();
             }
         }
     }
@@ -175,7 +177,7 @@ public class PlayerRunGunState : PlayerBaseState
     private void GetDodgeInput()
     {
         // Create new Vector2 when dodge button (left shift) pressed
-        if (Input.GetMouseButtonDown(1)) 
+        if (Input.GetAxisRaw("Space")  > 0) 
         {
             if (playerInput.PlayerMovement.currentVelocity == 0)
             {

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     public PlayerMovement PlayerMovement;
-    public CapsuleCollider2D Collider;
+    public CapsuleCollider Collider;
     public Shop ShopKeeper;
     public LayerMask mouseColliderLayerMask;
     public Vector3 MousePos;
@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         PlayerMovement = GetComponent<PlayerMovement>();
-        Collider = GetComponent<CapsuleCollider2D>();
+        Collider = GetComponent<CapsuleCollider>();
         // ShopKeeper = GameObject.Find("ShopKeeper").GetComponent<Shop>();
     }
 
@@ -55,11 +55,18 @@ public class PlayerInput : MonoBehaviour
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
+     [field: SerializeField]
+    public UnityEvent OnThrowButtonReleased { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnThrowButtonPressed { get; set; }
+
     // Calls SceneManager.RestartScene
     [field: SerializeField]
     public UnityEvent OnRestartButtonPressed { get; set; }
 
     // Calls SceneManager.RestartScene
+    
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 

@@ -13,6 +13,8 @@ public class CameraShake : MonoBehaviour
     private float shakeTimer;
     private float shakeTimerTotal;
 
+    private Vector3 originalCameraPos;
+
     
     private void Awake()
     {
@@ -29,6 +31,11 @@ public class CameraShake : MonoBehaviour
 
             CameraPerlin.m_AmplitudeGain = Mathf.Lerp(startingIntensity, 0f, shakeTimer / shakeTimerTotal);
         }
+        else
+        {
+            this.transform.localPosition = originalCameraPos;
+
+        }
     }
 
     public void ShakeCamera(float intensity, float frequency, float time)
@@ -39,6 +46,7 @@ public class CameraShake : MonoBehaviour
         startingFrequency = frequency;
         shakeTimer = time;
         shakeTimerTotal = time;
+        originalCameraPos = this.transform.localPosition;
     }
 }
  
