@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55a29734c22b51479084dbceb44f272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Key: {fileID: 3843688268372915400, guid: 1526818d41ccf494ba39d13efab950a4, type: 3}
+  Door: {fileID: 3957995694000068420, guid: e989aaddf18a7aa4b8f6c505b33c8015, type: 3}
   LootItems:
   - {fileID: 7810571008584226850, guid: 8fb8b324595d41c4ba7ef4e6b54f3714, type: 3}
   - {fileID: 9132335765561888777, guid: 9f874bd786b93a448a58e7b5d572f558, type: 3}

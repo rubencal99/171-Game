@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class LootClear : MonoBehaviour
 {
+    public GameObject Key;
+    public GameObject Door;
     public GameObject[] LootItems;
     public GameObject[] LootWeapons;
     public static LootClear Instance;
@@ -17,13 +19,33 @@ public class LootClear : MonoBehaviour
     public void Pick(RoomNode room)
     {
         int odds = Random.Range(1, 5);
-        if (odds == 1)
+        if(room.RoomType == "Key")
+        {
+            PickKey(room);
+        }
+        else if(room.RoomType == "Door")
+        {
+            PickDoor(room);
+        }
+        else if (odds == 1)
         {
             PickWeapon(room);
-        } else
+        } 
+        else
         {
             PickItem(room);
         }
+    }
+
+    private void PickKey(RoomNode room)
+    {
+        GameObject thisItemLoot = Instantiate(Key) as GameObject;
+        thisItemLoot.transform.position = CalculateSpawn(room);
+    }
+    private void PickDoor(RoomNode room)
+    {
+        GameObject thisItemLoot = Instantiate(Door) as GameObject;
+        thisItemLoot.transform.position = CalculateSpawn(room);
     }
 
     private void PickItem(RoomNode room)
@@ -52,11 +74,11 @@ public class LootClear : MonoBehaviour
         if(room.FindTileByPoint(room.roomCenter.x, room.roomCenter.y).value != 1)
         {
             var tile = room.GrabValidTile();
-            spawnPosition = new Vector3(tile.x, tile.y, 0);
+            spawnPosition = new Vector3(tile.x, 1, tile.y);
         }
         else
         {
-            spawnPosition = new Vector3(room.roomCenter.x, room.roomCenter.y, 0);
+            spawnPosition = new Vector3(room.roomCenter.x, 1, room.roomCenter.y);
         }
         return spawnPosition;
     }
