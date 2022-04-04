@@ -44,7 +44,7 @@ public class PlayerRunGunState : PlayerBaseState
         GetReloadInput();
         // GetRestartInput();
         GetRespawnInput();
-        //GetDodgeInput();
+        GetDodgeInput();
         GetTabInput();
         GetInteractInput();
         if (dodging)
@@ -177,7 +177,7 @@ public class PlayerRunGunState : PlayerBaseState
     private void GetDodgeInput()
     {
         // Create new Vector2 when dodge button (left shift) pressed
-        if (Input.GetMouseButtonDown(1)) 
+        if (Input.GetAxisRaw("Space")  > 0) 
         {
             if (playerInput.PlayerMovement.currentVelocity == 0)
             {

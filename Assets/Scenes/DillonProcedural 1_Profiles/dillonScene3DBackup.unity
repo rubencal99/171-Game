@@ -1148,7 +1148,7 @@ PrefabInstance:
     - target: {fileID: 1500494839165980664, guid: de3483e5257414d2799c6881d7757b41, type: 3}
       propertyPath: throwableArc
       value: 
-      objectReference: {fileID: 1185166585}
+      objectReference: {fileID: 1185166586}
     - target: {fileID: 4407361856226980841, guid: de3483e5257414d2799c6881d7757b41, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -4071,6 +4071,17 @@ MonoBehaviour:
   xOffset: 0
   yOffset: 0
   zOffset: 0
+--- !u!114 &1185166586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1185166585, guid: de3483e5257414d2799c6881d7757b41, type: 3}
+  m_PrefabInstance: {fileID: 271897215}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185166583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e8e89a2c0f705c41889d70e8920c6eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1300450121
 PrefabInstance:
   m_ObjectHideFlags: 0
