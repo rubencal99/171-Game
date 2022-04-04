@@ -8,7 +8,7 @@ public class ShopSpawner : EnemySpanwer
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount = this.numToSpawn;
+       // enemyCount = this.numToSpawn;
         // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
@@ -26,9 +26,10 @@ public class ShopSpawner : EnemySpanwer
         offsetPosition.x += Random.Range(-offset, offset);
         offsetPosition.y += Random.Range(-offset, offset);
 
-        var source = Enemies[Random.Range(0, Enemies.Length)];
-        var clone = Instantiate(source, offsetPosition, Quaternion.identity);
-        clone.name = source.name;
+       // var source = Enemies[Random.Range(0, Enemies.Count)];
+        var source = Enemies[0];
+        var clone = Instantiate(source.Enemy, offsetPosition, Quaternion.identity);
+        clone.name = source.Enemy.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
 
         // PlayerInput Player = clone.GetComponent<Shop>().Player.GetComponent<PlayerInput>();
