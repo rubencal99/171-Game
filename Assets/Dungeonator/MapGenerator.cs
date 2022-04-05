@@ -806,7 +806,8 @@ public class MapGenerator : MonoBehaviour
         {
             return;
         }
-        CorridorNode corridor = CreateCorridor(room, neighbor);
+        //CorridorNode corridor = CreateCorridor(room, neighbor);
+        CorridorNode corridor = Helper.CreateCorridor(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);
         if (corridor == null)
         {
             corridor = Helper.CreatePassage(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);

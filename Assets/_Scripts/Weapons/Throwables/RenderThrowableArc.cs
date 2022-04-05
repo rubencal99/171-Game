@@ -166,7 +166,7 @@ public class RenderThrowableArc : MonoBehaviour
     private Vector3 CalculateArcPoint(float t, Vector3 normalDistance)
 
     {
-        Debug.Log("t =" + t + ", normal dist x =" +  normalDistance.x + ", normal dist z =" +  normalDistance.z);  
+        // Debug.Log("t =" + t + ", normal dist x =" +  normalDistance.x + ", normal dist z =" +  normalDistance.z);  
         float x = t * normalDistance.x;
         float z = t * normalDistance.z;
        // float y = t * ;
