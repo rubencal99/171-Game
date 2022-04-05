@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CorridorNode
 {
@@ -11,6 +12,14 @@ public class CorridorNode
     public void AdjustConnectedRooms()
     {
         
+    }
+
+    public void MergeCorridors(CorridorNode c2)
+    {
+        //A.Union<int>(B).ToList<int>()
+        //tileList = tileList.Union<TileNode>(c2).ToList<TileNode>();
+        tileList.AddRange(c2.tileList);
+        tileList = tileList.Distinct().ToList();
     }
 
     public bool IsBorderingRoom()
@@ -34,6 +43,10 @@ public class CorridorNode
 
     public void NullifyCorridor()
     {
+        if(this == null)
+        {
+            return;
+        }
         foreach(TileNode tile in tileList)
         {
             MapGenerator.map[tile.x, tile.y].value = 0;

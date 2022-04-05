@@ -12,6 +12,64 @@ public static class Helper
     {
 
     }
+    public static CorridorNode CreateCorridor(RoomNode roomA, RoomNode roomB, TileNode tileA, TileNode tileB, ref TileNode[,] map)
+    {
+        TileNode meetPoint;
+        Vector2Int currentRoomCenter = roomA.roomCenter;
+        Vector2Int destination = roomB.roomCenter;
+        var position = currentRoomCenter;
+        CorridorNode corridor = new CorridorNode();
+        CorridorNode c1;
+        CorridorNode c2;
+        // Here we randomly choose a directional preference
+        if (UnityEngine.Random.Range(0, 100) < 50)
+        {
+            meetPoint = map[currentRoomCenter.x, destination.y];
+            c1 = CreatePassage(roomA, roomB, tileA, meetPoint, ref map);
+            c2 = CreatePassage(roomA, roomB, meetPoint, tileB, ref map);
+            if(c1 == null || c2 == null)
+            {
+                NullifyTwoCorridors(c1, c2);
+                meetPoint = map[destination.x, currentRoomCenter.y];
+                c1 = CreatePassage(roomA, roomB, tileA, meetPoint, ref map);
+                c2 = CreatePassage(roomA, roomB, meetPoint, tileB, ref map);
+            }
+        }
+        else
+        {
+            meetPoint = map[destination.x, currentRoomCenter.y];
+            c1 = CreatePassage(roomA, roomB, tileA, meetPoint, ref map);
+            c2 = CreatePassage(roomA, roomB, meetPoint, tileB, ref map);
+            if(c1 == null || c2 == null)
+            {
+                NullifyTwoCorridors(c1, c2);
+                meetPoint = map[currentRoomCenter.x, destination.y];
+                c1 = CreatePassage(roomA, roomB, tileA, meetPoint, ref map);
+                c2 = CreatePassage(roomA, roomB, meetPoint, tileB, ref map);
+            }
+        }
+        if(c1 == null || c2 == null)
+        {
+            NullifyTwoCorridors(c1, c2);
+            return null;
+        }
+        c1.MergeCorridors(c2);
+        return c1;
+        
+
+    }
+
+    public static void NullifyTwoCorridors(CorridorNode c1, CorridorNode c2)
+    {
+        if(c1 != null)
+        {
+            c1.NullifyCorridor();
+        }
+        if(c2 != null)
+        {
+            c2.NullifyCorridor();
+        }       
+    }
 
     public static CorridorNode CreatePassage(RoomNode roomA, RoomNode roomB, TileNode tileA, TileNode tileB, ref TileNode[,] map)
     {
