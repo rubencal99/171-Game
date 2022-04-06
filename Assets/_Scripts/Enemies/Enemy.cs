@@ -31,6 +31,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public AgentAnimations agentAnimations;
     private EnemyBrain enemyBrain;
     private AgentMovement agentMovement;
+
+    private bool DontFreeze = false;
     public bool knockback;
 
     [SerializeField]
@@ -53,14 +55,31 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         Health -= damage;
         blood.Play();
-        BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
-        //Debug.Log("In Enemy Get Hit");
-       // Debug.Log("Bullet KDuration: " + bulletData.KnockbackDuration);
-       // Debug.Log("Bullet KPower: " + bulletData.KnockbackPower);
-
-        // Temp();
-        agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+        DamageType(damageDealer);
         
+        //Debug.Log("After Enemy Knockback");
+        //Debug.Log("Health = " + Health);
+        if (Health > 0)
+        {
+            OnGetHit?.Invoke();
+        }
+        else
+        {
+            StartCoroutine(WaitToDie());
+            //Debug.Log("After WaitToDie coroutine");
+            //Debug.Log("Before OnDie");
+            OnDie?.Invoke();
+            //Debug.Log("After OnDie");
+            //StartCoroutine(WaitToDie());
+            //Debug.Log("After WaitToDie coroutine");
+        }
+    }
+
+    
+     public void GetHit(int damage) {
+         Health -= damage;
+        blood.Play();
+       
         //Debug.Log("After Enemy Knockback");
         Debug.Log("Health = " + Health);
         if (Health > 0)
@@ -69,6 +88,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
         else
         {
+            DontFreeze = true;
             StartCoroutine(WaitToDie());
             Debug.Log("After WaitToDie coroutine");
             Debug.Log("Before OnDie");
@@ -77,11 +97,22 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             //StartCoroutine(WaitToDie());
             //Debug.Log("After WaitToDie coroutine");
         }
-    }
+     }
 
-    public void Temp()
+   public void DamageType(GameObject damageDealer)
     {
-        Debug.Log("Temp test");
+        if(damageDealer.GetComponent<Bullet>())
+        {
+            BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
+            agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+        }
+        else if(damageDealer.GetComponent<Melee>())
+        {
+            MeleeDataSO meleeData = damageDealer.GetComponent<Melee>().meleeData;
+            var weaponPosition = damageDealer.transform.parent.position;
+            var direction = transform.position - weaponPosition;
+            agentMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower, -direction);
+        }
     }
 
 
@@ -90,7 +121,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         isDying = true;
         DeadOrAlive();
         int odds = Random.Range(1, 100);
-        TimeManager.Instance.Freeze();
+        if(!DontFreeze)
+            TimeManager.Instance.Freeze();
+        DontFreeze = false;
         if (odds > 60) 
         {
             Loot thisLoot = FindObjectOfType<Loot>();
@@ -122,7 +155,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         {
             enemyBrain.OnFireButtonReleased?.Invoke();
             gameObject.layer = 0;
-            enemyBrain.Move(Vector2.zero);
+            enemyBrain.Move(Vector3.zero);
             agentMovement.currentVelocity = 0;
             enemyBrain.enabled = false;
             agentRenderer.isDying = true;

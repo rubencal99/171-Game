@@ -8,6 +8,8 @@ public class AgentWeapon : MonoBehaviour
     public Vector3 aimDirection;
     public Quaternion rotation;
     public float desiredAngle;
+
+    public Vector3 pointerPos;
     protected float xMax;
     protected float xMin;
     protected bool flipY;
@@ -17,7 +19,14 @@ public class AgentWeapon : MonoBehaviour
     protected WeaponRenderer weaponRenderer;
 
     [SerializeField]
-    public Gun weapon;
+    public Gun gun;
+
+    [SerializeField]
+    public Melee melee;
+
+    [SerializeField]
+    public GameObject weapon;
+    protected PlayerWeapon playerWeapon;
 
     [SerializeField]
     public bool InfAmmo;
@@ -30,7 +39,20 @@ public class AgentWeapon : MonoBehaviour
     public void AssignWeapon()
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
-        weapon = GetComponentInChildren<Gun>();
+        if(GetComponentInChildren<Gun>())
+        {
+            gun = GetComponentInChildren<Gun>();
+            weapon = gun.gameObject;
+            melee = null;
+        }
+        else if(GetComponentInChildren<Melee>())
+        {
+            melee = GetComponentInChildren<Melee>();
+            weapon = melee.gameObject;
+            gun = null;
+        }
+
+        
         xMax = gameObject.transform.position.x + 0.5f;
         xMin = gameObject.transform.position.x - 0.5f;
         flipY = false;
@@ -41,6 +63,7 @@ public class AgentWeapon : MonoBehaviour
     {
 
         aimDirection = ((Vector3)pointerPosition - transform.position).normalized;
+        pointerPos = (Vector3)pointerPosition;
         aimDirection.y = 0;
         //Debug.Log("Aim Direction: " + aimDirection);
         // Use arctan to find angle from our x-axis and convert to degrees
@@ -93,43 +116,60 @@ public class AgentWeapon : MonoBehaviour
 
     public void Reload()
     {
-        if (weapon != null && weapon.TotalAmmo > 0 && !(weapon.ammo >= weapon.totalAmmo))
+        if (gun != null && gun.TotalAmmo > 0 && !(gun.ammo >= gun.totalAmmo))
         {
-            weapon.TryReloading();
+            gun.TryReloading();
         }
 
     }
 
     public void Fill()
     {
-        weapon.AmmoFill();
+        gun.AmmoFill();
     }
 
     public void Shoot()
     {
-        if (weapon != null)
+        if (gun != null)
         {
-            weapon.TryShooting();
+            gun.TryShooting();
         }
-
+        else if (melee != null)
+        {
+            Debug.Log("Before TRy Melee");
+            melee.TryMelee();
+        }
     }
 
     public void MeleeAttack()
     {
-        if (weapon != null)
+        if (melee != null)
         {
-            weapon.TryMelee();
+            melee.TryMelee();
+        }
+
+    }
+
+    public void throwAttack()
+    {
+        if (playerWeapon != null)
+        {
+              Debug.Log("In throw");
+            playerWeapon.ThrowItem();
         }
 
     }
 
     public void StopShooting()
     {
-        if (weapon != null)
+        if (gun != null)
         {
-            weapon.StopShooting();
+            gun.StopShooting();
         }
-
+        if(melee != null)
+        {
+            melee.StopMelee();
+        }
     }
 
 }

@@ -88,8 +88,10 @@ public class AgentMovement : MonoBehaviour
         knockbackPower = power;
         knockbackTimer = duration;
         knockbackDirection = direction;
+        Debug.Log("Knockback direction: " + knockbackDirection);
         Vector3 k = -knockbackDirection * knockbackPower;
-        rigidbody.AddForce(k, ForceMode.Impulse);
+        Debug.Log("k: " + k);
+        rigidbody.AddForce(k.x, 0, k.z, ForceMode.Impulse);
         //knockback = false;
     }
 
@@ -108,7 +110,7 @@ public class AgentMovement : MonoBehaviour
             return;
         }
         OnVelocityChange?.Invoke(currentVelocity);
-        if(rigidbody != null)
+        if(rigidbody != null && !knockback)
          rigidbody.velocity = currentVelocity * movementDirection.normalized;
     }
 }

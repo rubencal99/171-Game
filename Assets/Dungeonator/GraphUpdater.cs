@@ -17,7 +17,9 @@ public class GraphUpdater : MonoBehaviour
             Debug.Log("Graph " + i + ": " + graph.graphs[i]);
         }*/
         
-        InvokeRepeating("GraphUpdate", 1f, .1f);
+        //InvokeRepeating("GraphUpdate", 1f, .1f);
+        //GraphUpdateWhole();
+        //Invoke("GraphUpdateWhole", 0.5f);
     }
     
     void GraphUpdate()
@@ -34,5 +36,11 @@ public class GraphUpdater : MonoBehaviour
         b = bounds;
         // GUO = new GraphUpdateObject(bounds);
         // GUO.updatePhysics = true;
+    }
+
+    void GraphUpdateWhole()
+    {
+        Debug.Log("Active Graphs: " + AstarPath.active);
+        AstarPath.active.Scan();
     }
 }

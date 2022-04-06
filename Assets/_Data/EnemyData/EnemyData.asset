@@ -15,3 +15,5 @@ MonoBehaviour:
   <MaxHealth>k__BackingField: 2
   <Damage>k__BackingField: 1
   Range: 200
+  Priority: 1
+  aimsAtTarget: 1

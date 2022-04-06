@@ -35,6 +35,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     [field: SerializeField]                         
     public bool isDead; 
+    [field: SerializeField]                         
+    public bool hasKey; 
 
     [field: SerializeField]                         
     public float getHitFrequency;
@@ -97,6 +99,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         agentRenderer = GetComponentInChildren<AgentRenderer>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
+        hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
         overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
