@@ -9340,10 +9340,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlotElement
       objectReference: {fileID: 0}
-    - target: {fileID: 5102801350114226728, guid: bc0075ca86e3d461eb80c2f6d087caf8, type: 3}
-      propertyPath: slotIndex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8199174213335771912, guid: bc0075ca86e3d461eb80c2f6d087caf8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

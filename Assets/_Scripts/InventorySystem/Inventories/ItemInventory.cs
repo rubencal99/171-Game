@@ -8,6 +8,12 @@ public class ItemInventory : ScriptableObject
     public  List<InventorySlot> Container = new List<InventorySlot>();
     public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
     public  List<AugSlot> AContainer = new List<AugSlot>();
+    
+    public void AddItemToSlot(ItemObject _item, int _amount, Slot _slot)
+    {
+        _slot.item = _item;
+        _slot.AddAmount(_amount);
+    }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
         // check if item is already in inventory
@@ -86,7 +92,7 @@ public class ItemInventory : ScriptableObject
 [System.Serializable]
 public class InventorySlot : Slot
 {
-    public ItemObject item;
+    //public ItemObject item;
     public InventorySlot(ItemObject _item, int _amount)
     {
         item = _item;
@@ -96,7 +102,7 @@ public class InventorySlot : Slot
 [System.Serializable]
 public class WeaponSlot : Slot
 {
-    public WeaponItemSO item;
+    //public WeaponItemSO item;
     public WeaponType slotType;
     public WeaponSlot(WeaponItemSO _item, int _amount)
     {
@@ -108,7 +114,7 @@ public class WeaponSlot : Slot
 [System.Serializable]
 public class AugSlot : Slot
 {
-    public AugmentationItemSO item;
+    //public AugmentationItemSO item;
     public AugType slotType;
     public AugSlot(AugmentationItemSO _item, int _amount)
     {
@@ -121,6 +127,7 @@ public class AugSlot : Slot
 
 public class Slot
 {
+    public ItemObject item;
     public int amount;
     public void AddAmount(int value)
     {
