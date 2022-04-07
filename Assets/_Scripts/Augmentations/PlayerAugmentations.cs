@@ -30,6 +30,10 @@ public static class PlayerAugmentations : object
 
     public static bool Whiskers = false;
 
+    public static float whiskersDist = 5f;
+
+    public static bool HookShot = false;
+
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {
         {"Epinephrine", Epinephrine},
@@ -38,7 +42,8 @@ public static class PlayerAugmentations : object
         {"DeflectionShield", DeflectionShield},
         {"HippoSkin", HippoSkin},
         {"CasingRecycle", CasingRecycle},
-        {"Whiskers", Whiskers}
+        {"Whiskers", Whiskers},
+        {"HookShot", HookShot}
     };
 
     public static void ResetAugmentations()

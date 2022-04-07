@@ -130,6 +130,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
              //Debug.Log("HippoApplied: " + PlayerAugmentations.HippoApplied);
              StartCoroutine(ApplyHippo());
          }
+         if(Input.GetButtonUp("Teleport")){
+             Debug.Log("Teleport");
+             PlayerSignaler.CallWhiskers();
+         }
     }
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;

@@ -179,14 +179,20 @@ public class PlayerRunGunState : PlayerBaseState
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Space")  > 0)
         {
-            if (playerInput.PlayerMovement.currentVelocity == 0)
-            {
-                return;
-            }
-            if (dodging == false)
-            {
-                dodging = true;
-                playerInput.OnDodgeKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+            if(PlayerAugmentations.AugmentationList["Whiskers"] && !PlayerAugmentations.AugmentationList["HookShot"]){ 
+                PlayerSignaler.CallWhiskers();
+            }else if(PlayerAugmentations.AugmentationList["HookShot"] && !PlayerAugmentations.AugmentationList["Whiskers"]){
+
+            }else{
+                if (playerInput.PlayerMovement.currentVelocity == 0)
+                {
+                    return;
+                }
+                if (dodging == false)
+                {
+                    dodging = true;
+                    playerInput.OnDodgeKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+                }
             }
         }
         else{

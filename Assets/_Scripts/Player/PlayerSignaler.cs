@@ -8,6 +8,8 @@ public static class PlayerSignaler : object
     public static Player Player = obj.GetComponent<Player>();
     public static PlayerPassives playerPassives = obj.GetComponent<PlayerPassives>();
 
+    public static PlayerWeapon playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
+
     
     /*private static void Awake()
     {
@@ -55,8 +57,19 @@ public static class PlayerSignaler : object
         }
     }
 
-    public static bool CallWhiskers(){
-        return false;
+    public static void CallWhiskers(){
+        var mousepos = playerWeapon.pointerPos;
+        var direction = mousepos - Player.transform.position;
+        RaycastHit hit = new RaycastHit();
+        var dist = PlayerAugmentations.whiskersDist;
+        Physics.Raycast(Player.transform.position, direction, out hit, dist);
+        if(hit.transform == null){
+            //Player.transform.position += direction.normalized;
+            Player.transform.position += direction.normalized * dist;
+        }else if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
+            Debug.Log("Teleport into obstacle");
+        }
+    
     }
 
     public static bool CallHookShot(){
