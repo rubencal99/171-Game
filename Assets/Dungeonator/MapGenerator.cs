@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using System.Linq;
+using Random=UnityEngine.Random;
+
 
 public class MapGenerator : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject ShopKeeper;
     [SerializeField]
-    private GameObject Spawner;
+    private List<GameObject> Spawner;
     [SerializeField]
     private GameObject BossSpawner;
     [SerializeField]
@@ -511,9 +513,15 @@ public class MapGenerator : MonoBehaviour
                 // Not implemented yet
                 return;
             }
+            else if(room.RoomType == "Large")
+            {
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 1)], pos1, Quaternion.identity);
+            }
             else
             {
-                spawnedObject = Instantiate(Spawner, pos1, Quaternion.identity);
+
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 1)], pos1, Quaternion.identity);
+
             }
             spawnedObject.transform.parent = room.transform;
 

@@ -17,7 +17,7 @@ public class RoomClearCheck : MonoBehaviour
            if(child.tag == "Spawner")
            {
                child.GetComponent<EnemySpanwer>().enabled = true;
-               enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
+               enemyCount += child.GetComponent<EnemySpanwer>().enemyCount;
                spawners.Add(child.gameObject);
               }
         }
