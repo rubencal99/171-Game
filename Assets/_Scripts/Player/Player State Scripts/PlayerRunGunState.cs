@@ -182,7 +182,7 @@ public class PlayerRunGunState : PlayerBaseState
             if(PlayerAugmentations.AugmentationList["Whiskers"] && !PlayerAugmentations.AugmentationList["HookShot"]){ 
                 PlayerSignaler.CallWhiskers();
             }else if(PlayerAugmentations.AugmentationList["HookShot"] && !PlayerAugmentations.AugmentationList["Whiskers"]){
-
+                Debug.Log("HookShot is manged by script");
             }else{
                 if (playerInput.PlayerMovement.currentVelocity == 0)
                 {
