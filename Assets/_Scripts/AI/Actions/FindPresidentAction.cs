@@ -48,6 +48,7 @@ public class FindPresidentAction : AIAction
         }
         // Sets Enemy w highest priority to assist
         enemyBrain.Target = President;
+        aiMovementData.PointOfInterest = President.transform.position;
     }
 
     public bool InRoom()

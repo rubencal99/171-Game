@@ -7,7 +7,10 @@ public class AgentWeapon : MonoBehaviour
 {
     public Vector3 aimDirection;
     public Quaternion rotation;
+    public Quaternion startingRotation;
     public float desiredAngle;
+
+    public Vector3 pointerPos;
     protected float xMax;
     protected float xMin;
     protected bool flipY;
@@ -24,12 +27,16 @@ public class AgentWeapon : MonoBehaviour
 
     [SerializeField]
     public GameObject weapon;
+    protected PlayerWeapon playerWeapon;
 
     [SerializeField]
     public bool InfAmmo;
 
     private void Awake()
     {
+        Debug.Log("Starting local rotation: " + transform.localRotation);
+        startingRotation = transform.localRotation;
+        Debug.Log("Starting global rotation: " + transform.rotation);
         AssignWeapon();
     }
 
@@ -60,6 +67,7 @@ public class AgentWeapon : MonoBehaviour
     {
 
         aimDirection = ((Vector3)pointerPosition - transform.position).normalized;
+        pointerPos = (Vector3)pointerPosition;
         aimDirection.y = 0;
         //Debug.Log("Aim Direction: " + aimDirection);
         // Use arctan to find angle from our x-axis and convert to degrees
@@ -69,9 +77,11 @@ public class AgentWeapon : MonoBehaviour
         // Calculates rotation between angle A and angle B
         //Debug.Log("Axis of Rotation: " + Vector3.up);
         rotation = Quaternion.AngleAxis(desiredAngle, Vector3.up);
-        rotation.x = 0;
+        
+        rotation.x = startingRotation.x;
         rotation.z = rotation.y;
         rotation.y = 0;
+        //Debug.Log("Weapon Rotation: " + rotation);
         //Debug.Log("Rotation: " + rotation);
         transform.localRotation = rotation;
         //transform.right = aimDirection;
@@ -132,6 +142,7 @@ public class AgentWeapon : MonoBehaviour
         }
         else if (melee != null)
         {
+            //Debug.Log("Before TRy Melee");
             melee.TryMelee();
         }
     }
@@ -145,13 +156,26 @@ public class AgentWeapon : MonoBehaviour
 
     }
 
+    public void throwAttack()
+    {
+        if (playerWeapon != null)
+        {
+              Debug.Log("In throw");
+            playerWeapon.ThrowItem();
+        }
+
+    }
+
     public void StopShooting()
     {
         if (gun != null)
         {
             gun.StopShooting();
         }
-
+        if(melee != null)
+        {
+            melee.StopMelee();
+        }
     }
 
 }

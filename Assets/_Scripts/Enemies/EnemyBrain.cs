@@ -13,6 +13,7 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     public EnemyGun Weapon { get; set; }
 
     public Enemy enemy;
+    private GameObject player;
 
     [field: SerializeField]
     public AIState CurrentState { get; set; }
@@ -64,7 +65,8 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
 
     private void Awake()
     {
-        Target = FindObjectOfType<Player>().gameObject;
+        player = FindObjectOfType<Player>().gameObject;
+        Target = player;
         Weapon = transform.GetComponentInChildren<EnemyGun>();
         enemy = transform.GetComponent<Enemy>();
     }
@@ -77,6 +79,17 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
 
     internal void ChangetoState(AIState State)
     {
+        
+        ToggleChase(false);
         CurrentState = State;
+        ToggleChase(true);
+    }
+
+    void ToggleChase(bool val)
+    {
+        if(CurrentState.GetComponent<StarChaseAction>())
+        {
+            CurrentState.GetComponent<StarChaseAction>().enabled = val;
+        }
     }
 }

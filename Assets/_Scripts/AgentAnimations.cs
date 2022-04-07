@@ -20,12 +20,12 @@ public class AgentAnimations : MonoBehaviour
     public void SetDodgeAnimation()
     {
         agentAnimator.SetTrigger("dodge");
-         Debug.Log("Triggering Dive Animation");
+         //Debug.Log("Triggering Dive Animation");
     }
     public void SetStandAnimation()
     {
         agentAnimator.SetTrigger("stand");
-         Debug.Log("Triggering stand Animation");
+         //Debug.Log("Triggering stand Animation");
     }
 
     public void SetTakeDamageAnimation()
@@ -37,25 +37,31 @@ public class AgentAnimations : MonoBehaviour
     public void SetDeathAnimation(bool val)
     {
         agentAnimator.SetBool("isDead", val);
-        Debug.Log("Triggering Death Animation");
+        //Debug.Log("Triggering Death Animation");
     }
+
+    /*public void SetReviveAnimation(bool val)
+    {
+        agentAnimator.SetBool("isDead", val);
+        Debug.Log("Triggering Death Animation");
+    }*/
 
     public void SetBuffAnimation(bool val)
     {
         agentAnimator.SetBool("isBuffing", val);
-        Debug.Log("Triggering Buff Animation");
+        //Debug.Log("Triggering Buff Animation");
     }
 
     public void SetSearchAnimation(bool val)
     {
         agentAnimator.SetBool("isSearching", val);
-        Debug.Log("Triggering Search Animation");
+        //Debug.Log("Triggering Search Animation");
     }
 
      public void SetPanicAnimation(bool val)
     {
         agentAnimator.SetBool("isPanic", val);
-        Debug.Log("Triggering Panic Animation");
+        //Debug.Log("Triggering Panic Animation");
     }
 
     public void AnimatePlayer(float velocity)

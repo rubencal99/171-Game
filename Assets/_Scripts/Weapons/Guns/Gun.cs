@@ -256,7 +256,7 @@ public class Gun : MonoBehaviour, IWeapon
 
     protected void ShootBullet()
     {
-        SpawnBullet(muzzle.transform.position + muzzle.transform.right);//, CalculateAngle(muzzle));
+        SpawnBullet(muzzle.transform.position);// + muzzle.transform.right);//, CalculateAngle(muzzle));
        // Debug.Log("Bullet shot");
        if (isPlayer)
        {
@@ -288,15 +288,18 @@ public class Gun : MonoBehaviour, IWeapon
     {
         //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
-        Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, 0, spread));
+        Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, spread, 0));
+        //Debug.Log("Bullet Spread Rotation: " + bulletSpreadRotation);
         Quaternion rotation = weaponParent.transform.localRotation * bulletSpreadRotation;
+        //Debug.Log("weaponParent.transform.localRotation: " + weaponParent.transform.localRotation);
+       // Debug.Log("Rotation: " + rotation);
 
         //Debug.Log("Bullet rotation: " + rotation);
         //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
 
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = weaponParent.aimDirection;//bulletSpreadRotation * (weaponParent.aimDirection);
+        bulletPrefab.GetComponent<Bullet>().direction = bulletSpreadRotation * (weaponParent.aimDirection);//bulletSpreadRotation * (weaponParent.aimDirection);
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

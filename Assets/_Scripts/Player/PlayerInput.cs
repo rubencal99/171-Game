@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     public PlayerMovement PlayerMovement;
-    public CapsuleCollider2D Collider;
+    public CapsuleCollider Collider;
     public Shop ShopKeeper;
     public LayerMask mouseColliderLayerMask;
     public Vector3 MousePos;
@@ -14,7 +14,7 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         PlayerMovement = GetComponent<PlayerMovement>();
-        Collider = GetComponent<CapsuleCollider2D>();
+        Collider = GetComponent<CapsuleCollider>();
         // ShopKeeper = GameObject.Find("ShopKeeper").GetComponent<Shop>();
     }
 
@@ -38,18 +38,27 @@ public class PlayerInput : MonoBehaviour
 
     // Calls PlayerWeapon.shoot
     [field: SerializeField]
-    public UnityEvent OnFireButtonPressed { get; set; }
+    public UnityEvent OnPrimaryButtonPressed { get; set; }
 
     // Calls PlayerWeapon.StopShooting
     [field: SerializeField]
-    public UnityEvent OnFireButtonReleased { get; set; }
+    public UnityEvent OnPrimaryButtonReleased { get; set; }
+
+    // Calls Player.ThowItem
+    [field: SerializeField]
+    public UnityEvent OnSecondaryButtonPressed { get; set; }
+    [field: SerializeField]
+    public UnityEvent OnSecondaryButtonReleased { get; set; }
+
 
     // Calls PlayerWeapon.StopShooting
     [field: SerializeField]
     public UnityEvent OnReloadButtonPressed { get; set; }
 
-    // Calls Player.ThowItem
-    [field: SerializeField]
+     [field: SerializeField]
+    public UnityEvent OnThrowButtonReleased { get; set; }
+
+     [field: SerializeField]
     public UnityEvent OnThrowButtonPressed { get; set; }
 
     // Calls SceneManager.RestartScene
@@ -57,6 +66,7 @@ public class PlayerInput : MonoBehaviour
     public UnityEvent OnRestartButtonPressed { get; set; }
 
     // Calls SceneManager.RestartScene
+    
     [field: SerializeField]
     public UnityEvent OnRespawnButtonPressed { get; set; }
 

@@ -1,5 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System.Linq;
 
@@ -7,6 +8,8 @@ public class MapGenerator : MonoBehaviour
 {
     [SerializeField]
     private GameObject Grid;
+    [SerializeField]
+    private bool hasBoss;
     [SerializeField]
     private TileSpritePlacer AutoTiler;
     [SerializeField]
@@ -43,6 +46,11 @@ public class MapGenerator : MonoBehaviour
     public Vector2Int minLargeDim;
     public Vector2Int maxLargeDim;
 
+    public Vector2Int minRewardDim;
+    public Vector2Int maxRewardDim;
+    [Range(0, 100)]
+    public int rewardPercent;
+
     public Vector2Int minBossDim;
     public Vector2Int maxBossDim;
 
@@ -64,7 +72,7 @@ public class MapGenerator : MonoBehaviour
 
     // Queues for the BSP algorithm
     private List<int[]> queue = new List<int[]>();
-    private Queue<int[]> roomsList = new Queue<int[]>();
+    private Queue<Tuple<int[], string>> roomsList = new Queue<Tuple<int[], string>>();
     private List<TileNode> roomTiles = new List<TileNode>();
     private List<RoomNode> Rooms = new List<RoomNode>();
     private List<CorridorNode> Corridors = new List<CorridorNode>();
@@ -72,8 +80,9 @@ public class MapGenerator : MonoBehaviour
     //private AstarPath AStar;
 
     private RoomNode StartRoom;
-    private RoomNode BossRoom;
+    private RoomNode EndRoom;
     private RoomNode ShopRoom;
+    private RoomNode DoorRoom;
 
 
     public TileNode[,] GenerateMap()
@@ -165,8 +174,9 @@ public class MapGenerator : MonoBehaviour
             var width = x2 - x1;
             var height = y2 - y1;
 
+            var r = UnityEngine.Random.Range(0, 100);
             // This gives us larger rooms
-            if (UnityEngine.Random.Range(0, 100) < 20)
+            if (r < 20)
             {
                 if (width > minNormalDim.x && height > minNormalDim.y)
                 {
@@ -183,7 +193,7 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            roomsList.Enqueue(space);
+                            roomsList.Enqueue(new Tuple<int[], string>(space, "Large"));
                         }
                     }
                     else
@@ -198,13 +208,13 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            roomsList.Enqueue(space);
+                            roomsList.Enqueue(new Tuple<int[], string>(space, "Large"));
                         }
                     }
                 }
             }
             // This gives us smaller rooms
-            else
+            else if (r < 75)
             {
                 if (width > minRoomDim.x && height > minRoomDim.y)
                 {
@@ -221,7 +231,14 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            roomsList.Enqueue(space);
+                            if(UnityEngine.Random.Range(0, 100) > rewardPercent)
+                            {
+                                roomsList.Enqueue(new Tuple<int[], string>(space, "Normal"));
+                            }
+                            else
+                            {
+                                roomsList.Enqueue(new Tuple<int[], string>(space, "Auxiliary"));
+                            }
                         }
                     }
                     else
@@ -236,7 +253,51 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            roomsList.Enqueue(space);
+                            if(UnityEngine.Random.Range(0, 100) > rewardPercent)
+                            {
+                                roomsList.Enqueue(new Tuple<int[], string>(space, "Normal"));
+                            }
+                            else
+                            {
+                                roomsList.Enqueue(new Tuple<int[], string>(space, "Auxiliary"));
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (width > minRewardDim.x && height > minRewardDim.y)
+                {
+                    // Randomly choose which split we prefer
+                    if (UnityEngine.Random.Range(0, 100) < 50)
+                    {
+                        if (height >= minRewardDim.y * 2)
+                        {
+                            SplitHorizontal(space);
+                        }
+                        else if (width >= minRewardDim.x * 2)
+                        {
+                            SplitVertical(space);
+                        }
+                        else
+                        {
+                            roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
+                        }
+                    }
+                    else
+                    {
+                        if (width >= minRewardDim.x * 2)
+                        {
+                            SplitVertical(space);
+                        }
+                        else if (height >= minRewardDim.y * 2)
+                        {
+                            SplitHorizontal(space);
+                        }
+                        else
+                        {
+                            roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
                         }
                     }
                 }
@@ -248,7 +309,7 @@ public class MapGenerator : MonoBehaviour
         int tempCount = 0;
         while (roomsList.Count > 0)
         {
-            int[] room = roomsList.Dequeue();
+            (int[] room, string roomType) = roomsList.Dequeue();
 
             int x1 = (int)room[0];
             int y1 = (int)room[1];
@@ -278,7 +339,7 @@ public class MapGenerator : MonoBehaviour
             }*/
             else
             {
-                NewRoom.RoomType = "Normal";
+                NewRoom.RoomType = roomType;
                 NewRoom.MaxNeighbors = 3;
             }
 
@@ -308,7 +369,7 @@ public class MapGenerator : MonoBehaviour
         }
         SortRooms();
         AddCorridors();
-        AddBossRoom();
+        AddEndRoom();
         AddEntryColliders();
         AddSpawners();
         for(int i = 0; i < 2; i++)
@@ -411,7 +472,10 @@ public class MapGenerator : MonoBehaviour
     {
         foreach(RoomNode room in Rooms)
         {
-            if (room.RoomType == "Start" || room.RoomType == "Shop" || room.RoomType == "Boss")
+            if (room.RoomType == "Start" || 
+                room.RoomType == "Shop" || 
+                room.RoomType == "Boss" ||
+                room.RoomType == "Reward")
             {
                 continue;
             }
@@ -441,6 +505,11 @@ public class MapGenerator : MonoBehaviour
                 //spawnedObject.transform.parent = room.transform;
                 //ShopKeeper = spawnedObject.transform.Find("ShopKeeper(clone)").gameObject;
                 //ShopKeeper.name = "ShopKeeper";
+            }
+            else if(room.RoomType == "Reward")
+            {
+                // Not implemented yet
+                return;
             }
             else
             {
@@ -498,7 +567,7 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
-        controls.SetPosition();
+        controls.SetPosition(Player.transform.position);
     }
 
     /* RoomNode CreateRoom(int x1, int y1, int x2, int y2)
@@ -570,21 +639,28 @@ public class MapGenerator : MonoBehaviour
         room.RoomsByDistance.Add(neighbor);
     }
 
-    void AddBossRoom()
+    void AddEndRoom()
     {
         int distance = 0;
-        RoomNode boss = new RoomNode();
+        RoomNode end = new RoomNode();
         foreach(RoomNode room in Rooms)
         {
             if(room.DistanceFromStart > distance)
             {
                 distance = room.DistanceFromStart;
-                boss = room;
+                end = room;
                 //boss.RoomType = "Boss";
             }
         }
-        BossRoom = boss;
-        BossRoom.RoomType = "Boss";
+        EndRoom = end;
+        if(hasBoss)
+        {
+            EndRoom.RoomType = "Boss";
+        }
+        else
+        {
+            EndRoom.RoomType = "Key";
+        }
         /*Debug.Log("Boss distance: " + BossRoom.DistanceFromStart);
         int r = Random.Range(1, 4);
         if(r >= BossRoom.RoomsByDistance.Count)
@@ -610,18 +686,37 @@ public class MapGenerator : MonoBehaviour
         }
         ShopRoom.RoomType = "Shop";
         //ShopRoom = shop;*/
-        int index = Random.Range(1, 4);
-        if(index >= BossRoom.RoomsByDistance.Count)
+
+        //---------------- SHOP ----------------
+        int shopIndex = UnityEngine.Random.Range(1, 4);
+        if(shopIndex >= EndRoom.RoomsByDistance.Count)
         {
-            index = 1;
+            shopIndex = 1;
         }
-        RoomNode shop = BossRoom.RoomsByDistance[index];
+        RoomNode shop = EndRoom.RoomsByDistance[shopIndex];
         if(shop == StartRoom)
         {
-            shop = BossRoom.RoomsByDistance[index-1];
+            shop = EndRoom.RoomsByDistance[shopIndex-1];
         }
         shop.RoomType = "Shop";
         ShopRoom = shop;
+
+        //---------------- DOOR ----------------
+        if(!hasBoss)
+        {
+            int doorIndex = UnityEngine.Random.Range(roomsList.Count / 3, roomsList.Count / 2);
+            if(doorIndex == shopIndex)
+            {
+                doorIndex = 1;
+            }
+            RoomNode door = StartRoom.RoomsByDistance[doorIndex];
+            if(door == StartRoom)
+            {
+                door = StartRoom.RoomsByDistance[doorIndex-1];
+            }
+            door.RoomType = "Door";
+            DoorRoom = door;
+        }
     }
 
     void AddCorridors()
@@ -685,8 +780,24 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    bool RoomsIncompatible(RoomNode room, RoomNode neighbor)
+    {
+        // Checks if the two rooms are the start and a reward room
+        if(room.RoomType == "Start" || room.RoomType == "Reward")
+        {
+            if(neighbor.RoomType == "Start" || neighbor.RoomType == "Reward")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     void ConnectRooms(RoomNode room, RoomNode neighbor)
     {
+        if(RoomsIncompatible(room, neighbor))
+        {
+            return;
+        }
         if (room.NeighborCount >= room.MaxNeighbors)
         {
             return;
@@ -695,7 +806,8 @@ public class MapGenerator : MonoBehaviour
         {
             return;
         }
-        CorridorNode corridor = CreateCorridor(room, neighbor);
+        //CorridorNode corridor = CreateCorridor(room, neighbor);
+        CorridorNode corridor = Helper.CreateCorridor(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);
         if (corridor == null)
         {
             corridor = Helper.CreatePassage(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);
@@ -725,7 +837,7 @@ public class MapGenerator : MonoBehaviour
         var position = currentRoomCenter;
         CorridorNode corridor = new CorridorNode();
         // Here we randomly choose a directional preference
-        if (Random.Range(0, 100) < 50)
+        if (UnityEngine.Random.Range(0, 100) < 50)
         {
             // Moving vertically
             while (position.y != destination.y)
@@ -993,13 +1105,25 @@ public class MapGenerator : MonoBehaviour
                     {
                         Gizmos.color = new Color(0, 255, 0, 1f);
                     }
-                    else if (map[x, y].room.RoomType == "Boss")
+                    else if (map[x, y].room.RoomType == "Boss" || map[x, y].room.RoomType == "Key")
                     {
                         Gizmos.color = new Color(255, 0, 0, 1f);
+                    }
+                    else if (map[x, y].room.RoomType == "Door")
+                    {
+                        Gizmos.color = new Color(155/255f, 0, 0, 1f);
                     }
                     else if (map[x, y].room.RoomType == "Shop")
                     {
                         Gizmos.color = new Color(210/255f, 105/255f, 30/255f, 1f);
+                    }
+                    else if(map[x, y].room.RoomType == "Reward")
+                    {
+                        Gizmos.color = new Color(0, 0, 255, 1f);
+                    }
+                    else if(map[x, y].room.RoomType == "Auxiliary")
+                    {
+                        Gizmos.color = new Color(130/255f, 115/255f, 150/255f, 1f);
                     }
                     else
                     {
