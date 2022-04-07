@@ -7,6 +7,7 @@ public class AgentWeapon : MonoBehaviour
 {
     public Vector3 aimDirection;
     public Quaternion rotation;
+    public Quaternion startingRotation;
     public float desiredAngle;
 
     public Vector3 pointerPos;
@@ -33,6 +34,9 @@ public class AgentWeapon : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Starting local rotation: " + transform.localRotation);
+        startingRotation = transform.localRotation;
+        Debug.Log("Starting global rotation: " + transform.rotation);
         AssignWeapon();
     }
 
@@ -73,9 +77,11 @@ public class AgentWeapon : MonoBehaviour
         // Calculates rotation between angle A and angle B
         //Debug.Log("Axis of Rotation: " + Vector3.up);
         rotation = Quaternion.AngleAxis(desiredAngle, Vector3.up);
-        rotation.x = 0;
+        
+        rotation.x = startingRotation.x;
         rotation.z = rotation.y;
         rotation.y = 0;
+        //Debug.Log("Weapon Rotation: " + rotation);
         //Debug.Log("Rotation: " + rotation);
         transform.localRotation = rotation;
         //transform.right = aimDirection;
@@ -136,7 +142,7 @@ public class AgentWeapon : MonoBehaviour
         }
         else if (melee != null)
         {
-            Debug.Log("Before TRy Melee");
+            //Debug.Log("Before TRy Melee");
             melee.TryMelee();
         }
     }

@@ -135,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimDirection: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  startingRotation: {x: 0, y: 0, z: 0, w: 0}
   desiredAngle: 0
   pointerPos: {x: 0, y: 0, z: 0}
   weaponRenderer: {fileID: 0}
@@ -350,7 +351,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: 1
+    value: 2
 --- !u!136 &1147769729731270944
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -361,10 +362,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.052647572
-  m_Height: 0.4431224
+  m_Radius: 0.03806214
+  m_Height: 0.256477
   m_Direction: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.008235648, y: 0.02573647, z: -0.013724349}
 --- !u!1 &5231307999731054852
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,13 +395,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5231307999731054852}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5231308000031674624}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
 --- !u!212 &5231307999731054905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -507,7 +508,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 77646
+  m_InstanceId: -175870
 --- !u!114 &4599146443566265198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +698,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnRevive>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   isDying: 0
   deathTimer: 5
   agentAnimations: {fileID: 0}
@@ -991,7 +995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7995493230965849677}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.022, y: -0.505, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.38, z: 0.33}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.7692308}
   m_Children: []
   m_Father: {fileID: 5231308000031674624}

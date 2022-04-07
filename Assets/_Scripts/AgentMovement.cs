@@ -61,6 +61,7 @@ public class AgentMovement : MonoBehaviour
         /*else{
             movementDirection = Vector2.zero;
         }*/
+        
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
@@ -78,6 +79,7 @@ public class AgentMovement : MonoBehaviour
             currentVelocity -= MovementData.decceleration * Time.deltaTime;
         }
         // Returns velocity between 0 and maxSpeed
+        //Vector3 v = Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
 
@@ -88,9 +90,9 @@ public class AgentMovement : MonoBehaviour
         knockbackPower = power;
         knockbackTimer = duration;
         knockbackDirection = direction;
-        Debug.Log("Knockback direction: " + knockbackDirection);
+        //Debug.Log("Knockback direction: " + knockbackDirection);
         Vector3 k = -knockbackDirection * knockbackPower;
-        Debug.Log("k: " + k);
+        //Debug.Log("k: " + k);
         rigidbody.AddForce(k.x, 0, k.z, ForceMode.Impulse);
         //knockback = false;
     }

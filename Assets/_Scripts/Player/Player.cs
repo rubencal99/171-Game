@@ -68,6 +68,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private Image overlay;
 
     private bool HitLastFiveSec;
+    private PlayerMovement playerMovement;
 
     private AgentRenderer agentRenderer;
     [SerializeField]
@@ -92,6 +93,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death 
         hasKey = false;
@@ -158,7 +160,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
-
+        DamageType(damageDealer);
         Health -= damage;
         HitLastFiveSec = true;
         blood.Play();
@@ -171,6 +173,22 @@ public class Player : MonoBehaviour, IAgent, IHittable
         {
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());   
+        }
+    }
+
+    public void DamageType(GameObject damageDealer)
+    {
+        if(damageDealer.GetComponent<Bullet>())
+        {
+            BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
+            playerMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+        }
+        else if(damageDealer.GetComponent<Melee>())
+        {
+            MeleeDataSO meleeData = damageDealer.GetComponent<Melee>().meleeData;
+            var weaponPosition = damageDealer.transform.parent.position;
+            var direction = transform.position - weaponPosition;
+            playerMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower, -direction);
         }
     }
 

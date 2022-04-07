@@ -6,7 +6,7 @@ public class TargetDeadDecision : AIDecision
 {
     public override bool MakeADecision()
     {
-        if (enemyBrain.Target == null || enemyBrain.Target.GetComponent<Enemy>().isDying == true)
+        if (enemyBrain.Target == null || enemyBrain.Target == Player.instance.gameObject)
         {
             return true;
         }
