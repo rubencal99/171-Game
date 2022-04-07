@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Laser Rifle
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+  icon: {fileID: 21300000, guid: fff44a4cd265e4bb4870042f48eb8050, type: 3}
   type: 1
   description: 
   stackable: 0

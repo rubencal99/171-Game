@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MissileLauncher
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: edb236018f4a54972b230c3300211bc7, type: 3}
+  icon: {fileID: 21300000, guid: 233f60ee45aac4f13a17225a6e76b4de, type: 3}
   type: 1
   description: 
   stackable: 0
