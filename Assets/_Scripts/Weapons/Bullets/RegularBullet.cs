@@ -12,6 +12,7 @@ public class RegularBullet : Bullet
 
     protected Animator animator;
     protected int bounce;
+    GameObject camera;
 
     public override BulletDataSO BulletData
     {
@@ -30,6 +31,7 @@ public class RegularBullet : Bullet
 
     public virtual void Start() {
         animator = GetComponent<Animator>();
+        camera = CameraShake.Instance.gameObject;
     }
 
     public virtual void Update()
@@ -42,6 +44,11 @@ public class RegularBullet : Bullet
                 Destroy(this.gameObject);
             }
         }
+        
+    }
+    void LateUpdate()
+    {
+        transform.LookAt(camera.transform);
     }
 
     public void FixedUpdate()

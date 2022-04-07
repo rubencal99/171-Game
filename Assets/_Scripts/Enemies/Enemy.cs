@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     [field: SerializeField]
     public UnityEvent OnDie { get; set; }
+    [field: SerializeField]
+    public UnityEvent OnRevive { get; set; }
     public bool isDying = false;
     public float deathTimer = 10.0f;
 
@@ -159,12 +161,15 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             agentMovement.currentVelocity = 0;
             enemyBrain.enabled = false;
             agentRenderer.isDying = true;
+            GetComponent<CapsuleCollider>().direction = 0;
         }
         else
         {
             gameObject.layer = 8;
             enemyBrain.enabled = true;
             agentRenderer.isDying = false;
+            OnRevive?.Invoke();
+            GetComponent<CapsuleCollider>().direction = 1;
         }
     }
 
