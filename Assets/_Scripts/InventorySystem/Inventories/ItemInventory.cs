@@ -9,9 +9,30 @@ public class ItemInventory : ScriptableObject
     public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
     public  List<AugSlot> AContainer = new List<AugSlot>();
 
-    public void SwapItems(Slot _slot1, Slot _slot2)
+    public void SwapCombine(Slot _fromslot, Slot _toslot)
     {
-        // swaps items between the 2 slots
+        // facilitates the movement of items between slots
+        // if items are the same, just call _toslot.AddAmount() and clear _fromslot
+        // if not, swap item and amount data
+        if (_fromslot.item == _toslot.item)
+        {
+            _toslot.AddAmount(_fromslot.amount);
+            _fromslot.Clear();
+        }
+        else
+        {
+            ItemObject toitem = _toslot.item;
+            int toamount = _toslot.amount;
+            ItemObject fromitem = _fromslot.item;
+            int fromamount = _fromslot.amount;
+            
+            _toslot.Clear();
+            _fromslot.Clear();
+
+            _fromslot.AddItemToSlot(toitem, toamount);
+            _toslot.AddItemToSlot(fromitem, fromamount);
+            
+        }
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
@@ -43,8 +64,7 @@ public class ItemInventory : ScriptableObject
             {
                 if(slot.item == null)
                 {
-                    slot.item = _item;
-                    slot.AddAmount(_amount);
+                    slot.AddItemToSlot(_item, _amount);
                     hasItem = true;
                     //Debug.Log("item is now in inventory");
                     //Print();
@@ -88,7 +108,7 @@ public class ItemInventory : ScriptableObject
     }
 }
 
-// HERE BE SLOTS, LOTS OF SLOTS
+// HERE BE SLOTS, LOTS AND LOTS
 
 [System.Serializable]
 public class InventorySlot : Slot
@@ -174,6 +194,13 @@ public abstract class Slot
         }
         
         
+    }
+
+    public void Clear()
+    {
+        // clears the slot
+        amount = 0;
+        item = null;
     }
 }
 
