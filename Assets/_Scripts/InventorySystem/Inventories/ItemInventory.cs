@@ -11,8 +11,20 @@ public class ItemInventory : ScriptableObject
     
     public void AddItemToSlot(ItemObject _item, int _amount, Slot _slot)
     {
-        _slot.item = _item;
-        _slot.AddAmount(_amount);
+        if (_slot.item == null)
+        {
+            _slot.item = _item;
+            _slot.AddAmount(_amount);
+        }
+        else if (_slot.item == _item)
+        {
+            _slot.AddAmount(_amount);
+        }
+        else 
+        {
+            // swap items with cached slot
+        }
+        
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
