@@ -142,6 +142,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 0}
   attackRange: 0.15
+  passives: {fileID: 0}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 0
+  meleeData: {fileID: 11400000, guid: 18efb5ab3e73f4cd0b691d1afd687daa, type: 2}
+  isPlayer: 0
+  meleeCoroutine: 0
+  sprite: {fileID: 0}
+  <OnMelee>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
