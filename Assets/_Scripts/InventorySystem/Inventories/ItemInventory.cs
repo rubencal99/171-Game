@@ -8,23 +8,10 @@ public class ItemInventory : ScriptableObject
     public  List<InventorySlot> Container = new List<InventorySlot>();
     public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
     public  List<AugSlot> AContainer = new List<AugSlot>();
-    
-    public void AddItemToSlot(ItemObject _item, int _amount, Slot _slot)
+
+    public void SwapItems(Slot _slot1, Slot _slot2)
     {
-        if (_slot.item == null)
-        {
-            _slot.item = _item;
-            _slot.AddAmount(_amount);
-        }
-        else if (_slot.item == _item)
-        {
-            _slot.AddAmount(_amount);
-        }
-        else 
-        {
-            // swap items with cached slot
-        }
-        
+        // swaps items between the 2 slots
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
@@ -101,6 +88,8 @@ public class ItemInventory : ScriptableObject
     }
 }
 
+// HERE BE SLOTS, LOTS OF SLOTS
+
 [System.Serializable]
 public class InventorySlot : Slot
 {
@@ -110,17 +99,25 @@ public class InventorySlot : Slot
         item = _item;
         amount = _amount;
     }
+    public void Awake()
+    {
+        allows = typeof(ItemObject);
+    }
 }
 [System.Serializable]
 public class WeaponSlot : Slot
 {
     //public WeaponItemSO item;
     public WeaponType slotType;
-    public WeaponSlot(WeaponItemSO _item, int _amount)
+    public WeaponSlot(ItemObject _item, int _amount)
     {
         item = _item;
         amount = _amount;
 
+    }
+    public void Awake()
+    {
+        allows = typeof(WeaponItemSO);
     }
 }
 [System.Serializable]
@@ -128,22 +125,55 @@ public class AugSlot : Slot
 {
     //public AugmentationItemSO item;
     public AugType slotType;
-    public AugSlot(AugmentationItemSO _item, int _amount)
+    public AugSlot(ItemObject _item, int _amount)
     {
         item = _item;
         amount = _amount;
 
     }
+    public void Awake()
+    {
+        allows = typeof(AugmentationItemSO);
+    }
     
 }
 
-public class Slot
+public abstract class Slot
 {
     public ItemObject item;
     public int amount;
+    public System.Type allows;
     public void AddAmount(int value)
     {
         amount += value;
+    }
+
+    public void AddItemToSlot(ItemObject _item, int _amount)
+    {
+        if (_item.GetType() == allows)
+        {
+            // does the thing
+            if (item == null)
+            {
+                item = _item;
+                AddAmount(_amount);
+            }
+            else if (item == _item && item.stackable)
+            {
+                AddAmount(_amount);
+            }
+            else 
+            {
+                Debug.Log("There's already an item in this slot");
+            }
+        }
+        else 
+        { 
+            // does not do the thing
+            Debug.Log("Item Type not accepted");
+        }
+        
+        
     }
 }
 
