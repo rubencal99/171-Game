@@ -286,10 +286,10 @@ public class Gun : MonoBehaviour, IWeapon
         //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, spread, 0));
-        Debug.Log("Bullet Spread Rotation: " + bulletSpreadRotation);
+        //Debug.Log("Bullet Spread Rotation: " + bulletSpreadRotation);
         Quaternion rotation = weaponParent.transform.localRotation * bulletSpreadRotation;
-        Debug.Log("weaponParent.transform.localRotation: " + weaponParent.transform.localRotation);
-        Debug.Log("Rotation: " + rotation);
+        //Debug.Log("weaponParent.transform.localRotation: " + weaponParent.transform.localRotation);
+       // Debug.Log("Rotation: " + rotation);
 
         //Debug.Log("Bullet rotation: " + rotation);
         //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
