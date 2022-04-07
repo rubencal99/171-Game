@@ -77,6 +77,8 @@ public class RoomClearCheck : MonoBehaviour
             Instantiate(exit, exit_pos, Quaternion.identity);
         }
 
+        
+
         LootClear thisLoot = LootClear.Instance;
         thisLoot?.Pick(room);
         Debug.Log("room cleared");
@@ -87,7 +89,7 @@ public class RoomClearCheck : MonoBehaviour
          Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
-                   child.GetChild(0).gameObject.SetActive(true);
+                   //child.GetChild(0).gameObject.SetActive(true);
                    child.GetComponent<EntryCollider>().toggleGuarded();
            }
            if(child.tag == "Spawner")
