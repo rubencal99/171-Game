@@ -8,14 +8,16 @@ public class ItemInventory : ScriptableObject
     public  List<InventorySlot> Container = new List<InventorySlot>();
     public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
     public  List<AugSlot> AContainer = new List<AugSlot>();
+    public  List<InventorySlot> MContainer = new List<InventorySlot>();
 
-    public void SwapCombine(Slot _fromslot, Slot _toslot)
+    public void MoveSwapCombine(Slot _fromslot, Slot _toslot)
     {
         // facilitates the movement of items between slots
-        // if items are the same, just call _toslot.AddAmount() and clear _fromslot
+        // if items are the same or _toslot is empty, just add item and amount to _toslot
         // if not, swap item and amount data
-        if (_fromslot.item == _toslot.item)
+        if (_fromslot.item == _toslot.item || _toslot.item == null)
         {
+            _toslot.item = _fromslot.item;
             _toslot.AddAmount(_fromslot.amount);
             _fromslot.Clear();
         }
@@ -66,35 +68,27 @@ public class ItemInventory : ScriptableObject
                 {
                     slot.AddItemToSlot(_item, _amount);
                     hasItem = true;
-                    //Debug.Log("item is now in inventory");
-                    //Print();
+                    Debug.Log("item is now in inventory");
+                    Print();
                     break;
                 }
             }
         }
     }
 
-    public void MoveItemToSlot(InventorySlot fromSlot, InventorySlot toSlot)
-    {
-        //
-    }
-
     public void ClearInventory()
     {
         foreach (InventorySlot slot in Container)
         {
-            slot.item = null;
-            slot.amount = 0;
+            slot.Clear();
         }
         foreach (AugSlot slot in AContainer)
         {
-            slot.item = null;
-            slot.amount = 0;
+            slot.Clear();
         }
         foreach (WeaponSlot slot in WContainer)
         {
-            slot.item = null;
-            slot.amount = 0;
+            slot.Clear();
         }
         Debug.Log("Inventory Cleared");
     }
@@ -121,7 +115,7 @@ public class InventorySlot : Slot
     }
     public void Awake()
     {
-        allows = typeof(ItemObject);
+        allows = null;
     }
 }
 [System.Serializable]
@@ -170,7 +164,7 @@ public abstract class Slot
 
     public void AddItemToSlot(ItemObject _item, int _amount)
     {
-        if (_item.GetType() == allows)
+        if (_item.GetType() == allows || allows == null)
         {
             // does the thing
             if (item == null)
@@ -190,7 +184,7 @@ public abstract class Slot
         else 
         { 
             // does not do the thing
-            Debug.Log("Item Type not accepted");
+            Debug.Log("Item Type " + _item.GetType() + " not accepted");
         }
         
         

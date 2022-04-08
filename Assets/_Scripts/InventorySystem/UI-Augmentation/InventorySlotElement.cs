@@ -4,38 +4,58 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotElement : MonoBehaviour
+public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField]
-    private Sprite background;
+    private Sprite defaultBG;
+    [SerializeField]
+    private Sprite hasItemBG;
     private Sprite current;
-    public Image image;
+    public Image background;
+    public Image itemDisplay;
     public ItemInventory inventory;
     [SerializeField]
     private int slotIndex;
-    private InventorySlot slot;
+    private Slot slot;
     
-    void Awake()
+    public void Awake()
     {
         slot = inventory.Container[slotIndex];
-        image = gameObject.GetComponent<Image>();
+        //background = gameObject.GetComponentInChildren<Image>();
 
-        current = background;
-        image.sprite = current;
+        current = null;
+        background.sprite = defaultBG;
+        itemDisplay.sprite = current;
+    }
+
+    public void OnPointerDown()
+    {
+        // Moves item from this slot to MContainer[0]
+    }
+
+    public void OnPointerUp()
+    {
+        // Moves item from MContainer[0] to this slot
     }
 
     public void Update()
     {
         // if slot.item changes, update current to slot.item.icon
-        if (slot.item != null && current == background)
+        if (slot.item != null && itemDisplay.sprite == null)
         {
             current = slot.item.icon;
-            image.sprite = current;
+            itemDisplay.sprite = current;
+            itemDisplay.color = new Color (255, 255, 255, 1);
+
+            background.sprite = hasItemBG;
         }
-        else if (slot.item == null && current != background)
+        else if (slot.item == null && itemDisplay.sprite != null)
         {
-            current = background;
-            image.sprite = current;
+            current = null;
+            itemDisplay.sprite = current;
+            itemDisplay.color = new Color (255, 255, 255, 0);
+
+            background.sprite = defaultBG;
         }
     }
     

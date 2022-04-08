@@ -38,9 +38,9 @@ public class WeaponPickup : MonoBehaviour
                 thisFireArm.transform.localPosition = new Vector3(0f, -0.25f, 0f);
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
-                 popup popup = FindObjectOfType<popup>();
-                popup.SetText(name);
-                popup.ShowText();
+                // popup popup = FindObjectOfType<popup>();
+                //popup.SetText(name);
+                //popup.ShowText();
                 Destroy(gameObject);
             }
         }
