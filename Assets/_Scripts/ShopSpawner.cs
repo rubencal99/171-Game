@@ -13,7 +13,7 @@ public class ShopSpawner : EnemySpanwer
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
-        SpawnObject();
+      //  SpawnObject();
     }
 
     // void Update() {
@@ -27,7 +27,7 @@ public class ShopSpawner : EnemySpanwer
         offsetPosition.y += Random.Range(-offset, offset);
 
        // var source = Enemies[Random.Range(0, Enemies.Count)];
-        var source = Enemies[0];
+        var source = Waves[0].Enemies[0];
         var clone = Instantiate(source.Enemy, offsetPosition, Quaternion.identity);
         clone.name = source.Enemy.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;

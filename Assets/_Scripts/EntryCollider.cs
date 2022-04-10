@@ -93,7 +93,7 @@ public class EntryCollider : MonoBehaviour
              newLocation.z = minPosition.y;
          }    
 
-        Player.instance.transform.localPosition = newLocation;
+       // Player.instance.transform.localPosition = newLocation;
 
         }
     }
