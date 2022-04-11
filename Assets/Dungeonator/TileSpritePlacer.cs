@@ -24,6 +24,10 @@ public class TileSpritePlacer : MonoBehaviour
 
     private List<TileNode> prevNodes;
 
+    public Tilemap GetTilemap() {
+        return this.Tilemap;
+    }
+
     public void PaintFloorTiles(List<TileNode> tileNodes)
     {
         Clear();
