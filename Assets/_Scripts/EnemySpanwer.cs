@@ -11,7 +11,18 @@ public class EnemySpanwer : MonoBehaviour
         public GameObject Enemy;
         public int SpawnCount = 1;
     }
-    public List<enemiesToSpawn> Enemies = new List<enemiesToSpawn>();
+
+     [System.Serializable]
+    public class waves
+    {
+        public List<enemiesToSpawn> Enemies;
+
+        public float waveDelay;
+
+    }
+   // public List<enemiesToSpawn> Enemies = new List<enemiesToSpawn>();
+
+   public List<waves> Waves = new List<waves>();
     public bool infiniteSpawn = false;
     public bool stopSpawn = false;
     public float spawnTime = 0.1f;
@@ -29,21 +40,32 @@ public class EnemySpanwer : MonoBehaviour
 
     private RoomNode thisroom;
 
+    private float checkTimer = 1.0f;
+
     private string SpawnType;
 
+    private int curEnemies;
+
     private bool canSpawn = true;
+
+    private waves curWave;
 
 
     // Start is called before the first frame update
     void Start()
     {
         thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
-        foreach(var order in Enemies) {
-           for(int i = 0; i < order.SpawnCount; i++) {
-               enemyCount++;
-           }
-       }
-        // Debug.Log("initial Enemy count = " + enemyCount);
+        foreach(var wave in Waves)
+            foreach(var order in wave.Enemies) {
+            for(int i = 0; i < order.SpawnCount; i++) {
+               // wave.enemyCount++;
+                enemyCount++;
+                if(wave == Waves[0])
+                    curEnemies++;
+            }
+        }
+        curWave = Waves[0];
+         Debug.Log("initial Enemy count = " + Waves.Count);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
@@ -51,33 +73,52 @@ public class EnemySpanwer : MonoBehaviour
         //     InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         // else {
         //     for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
-                 StartSpawn();
+        
         //     }
         // }
     }
 
-    // void Update() {
-    //     if(spawned)
-    //         oneStepCloser();
-    // }
+    void Update() {
+         Debug.Log("Wave count = " + Waves.Count + "curEnemies = " + curEnemies);
+        if(Waves.Count > 0) {
+            if(curEnemies <= 0)
+                Waves[0].waveDelay -= Time.deltaTime;
+                          
 
-    public void StartSpawn()
-    {
-        StartCoroutine(invoke_spawn());
+            if(Waves[0].waveDelay <= 0.0f) {
+                StartSpawn(Waves[0].Enemies);
+                //Waves[0] = Waves[0];
+                Waves.Remove(Waves[0]);
+                checkTimer = spawnTime + spawnDelay + 0.1f;
+            }
+        }
+        else if(curEnemies <= 0 && checkTimer <= 0.0f)
+            transform.parent.GetComponent<RoomClearCheck>().checkIfClear();
+
+        curEnemies = oneStepCloser();
+        checkTimer -= Time.deltaTime;
+       
     }
 
-    public IEnumerator invoke_spawn() {
+    public void StartSpawn(List<enemiesToSpawn> e)
+    {
+        StartCoroutine(invoke_spawn(e));
+    }
+
+    public IEnumerator invoke_spawn(List<enemiesToSpawn> e) {
         // canSpawn = false;
         // yield return new WaitForSeconds(spawnTime);
         // Invoke("SpawnObject", spawnTime);
         // canSpawn = true;
-       foreach(var order in Enemies) {
+       foreach(var order in e) {
            for(int i = 0; i < order.SpawnCount; i++) {
                 StartCoroutine(SpawnObject(order.Enemy));
-               Debug.Log("enemy spawned");
+              // Debug.Log("enemy spawned");
                yield return new WaitForSeconds(spawnDelay);
            }
        }
+       
+         spawned = true;
         // for(int i = 0; i < Random.Range(); i++) {
         //     Invoke("SpawnObject", spawnTime);
         //     yield return new WaitForSeconds(spawnTime);
@@ -107,17 +148,17 @@ public class EnemySpanwer : MonoBehaviour
     }
 
     // Update is called once per frame
-   public void oneStepCloser() {
-      enemyCount = 0;
-       foreach(Transform child in transform)
+   public int oneStepCloser() {
+     int currentEnemyCount = 0;
+       foreach(Transform child in transform.parent)
        { 
-           if(child.tag == "Enemy") {
-                enemyCount++;
-           }
-             // Debug.Log("current enemy count = " + enemyCount); 
+            if(child.tag == "Enemy") {
+                if(!child.GetComponent<Enemy>().isDying)
+                    currentEnemyCount++;
+            }  
         }
-        // if(enemyCount <= 0)
-        //     checkIfClear();
+         Debug.Log("current enemy count = " + currentEnemyCount); 
+      return currentEnemyCount;
        
    }
 
