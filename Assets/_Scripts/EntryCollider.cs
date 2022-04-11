@@ -45,6 +45,9 @@ public class EntryCollider : MonoBehaviour
         minPosition.x -= boundsOffset; minPosition.y -= boundsOffset;
         maxPosition = room.topRightCorner;
         maxPosition.x += boundsOffset; maxPosition.y += boundsOffset;
+
+       // if(transform.parent.transform.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1)
+        //    barriers_on = true;
         // List<Vector2> corner_points = new List<Vector2>()
         // {
         //     room.bottomLeftCorner,
