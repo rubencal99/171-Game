@@ -13,6 +13,8 @@ public class EntryCollider : MonoBehaviour
 
     public Tilemap tilemap;
 
+    public bool barriers_on = false;
+
     RoomNode room;
 
 
@@ -120,7 +122,8 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                StartCoroutine(WaitToUpdateTiles(barrier_tile));
+                if(barriers_on)
+                 StartCoroutine(WaitToUpdateTiles(barrier_tile));
                 //GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
             //this.GetComponent<Collider2D>().isTrigger = false;
             //this.transform.GetChild(0).gameObject.SetActive(true);

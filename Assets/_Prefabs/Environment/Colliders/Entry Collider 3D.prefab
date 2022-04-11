@@ -492,11 +492,12 @@ MonoBehaviour:
   boxCol: {fileID: -7507423176530542272}
   boundsOffset: 1
   tilemap: {fileID: 0}
+  barriers_on: 0
   arcArray: []
   resolution: 0
   normal_tile: {fileID: 11400000, guid: 96631b5a36966564b9a9d488b91853d0, type: 2}
   barrier_tile: {fileID: 11400000, guid: 80916899e778aab46a48a0430b959e6d, type: 2}
-  guarded: 0
+  guarded: 1
 --- !u!65 &-7507423176530542272
 BoxCollider:
   m_ObjectHideFlags: 0
