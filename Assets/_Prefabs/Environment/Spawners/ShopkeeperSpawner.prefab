@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - Enemies:
-    - Enemy: {fileID: 5694068309932514625}
+    - Enemy: {fileID: 6638867989798731449, guid: 8f91563d5f7c589499134d8ed31be76f, type: 3}
       SpawnCount: 1
     waveDelay: 0
   infiniteSpawn: 0
