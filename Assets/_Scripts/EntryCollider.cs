@@ -13,8 +13,6 @@ public class EntryCollider : MonoBehaviour
 
     public Tilemap tilemap;
 
-    public bool barriers_on = false;
-
     RoomNode room;
 
 
@@ -117,20 +115,18 @@ public class EntryCollider : MonoBehaviour
     }*/
 
     void OnTriggerEnter(Collider other) {
-        if(!guarded) {
            //Debug.Log("Just entered room");
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                if(barriers_on)
-                 StartCoroutine(WaitToUpdateTiles(barrier_tile));
+                StartCoroutine(WaitToUpdateTiles(barrier_tile));
                 //GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
             //this.GetComponent<Collider2D>().isTrigger = false;
             //this.transform.GetChild(0).gameObject.SetActive(true);
             //this.gameObject.SetActive(false);
            //  Debug.Log("leaving collider");
             }
-       }
+       
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
