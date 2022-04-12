@@ -4,31 +4,70 @@ using UnityEngine;
 
 public class EnemySpanwer : MonoBehaviour
 {
-    public GameObject[]  Enemies;
+ 
+    [System.Serializable]
+    public class enemiesToSpawn
+    {
+        public GameObject Enemy;
+        public int SpawnCount = 1;
+    }
+
+     [System.Serializable]
+    public class waves
+    {
+        public List<enemiesToSpawn> Enemies;
+
+        public float waveDelay;
+
+    }
+   // public List<enemiesToSpawn> Enemies = new List<enemiesToSpawn>();
+
+   public List<waves> Waves = new List<waves>();
     public bool infiniteSpawn = false;
     public bool stopSpawn = false;
     public float spawnTime = 0.1f;
     public float spawnDelay = 0.2f;
-    public int numToSpawn = 1;
-    public int enemyCount;
+   // public int numToSpawn = 1;
 
-     public int enemyDensity = 20;
+    // public int enemyDensity = 20;
+
 
     public float offset = 1.0f;
 
     public bool spawned = false;
 
+     public int enemyCount = 0;
+
     private RoomNode thisroom;
 
+    private float checkTimer = 1.0f;
+
+    private string SpawnType;
+
+    private int curEnemies;
+
     private bool canSpawn = true;
+
+    private waves curWave;
+
 
     // Start is called before the first frame update
     void Start()
     {
         thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
-        enemyCount = thisroom.area / enemyDensity;
+        foreach(var wave in Waves)
+            foreach(var order in wave.Enemies) {
+            for(int i = 0; i < order.SpawnCount; i++) {
+               // wave.enemyCount++;
+                enemyCount++;
+                if(wave == Waves[0])
+                    curEnemies++;
+            }
+        }
+        curWave = Waves[0];
 
-        // Debug.Log("initial Enemy count = " + enemyCount);
+        if(Waves.Count > 1) thisroom.GetComponentInChildren<EntryCollider>().barriers_on = true;
+         Debug.Log("initial Enemy count = " + Waves.Count);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
@@ -36,39 +75,62 @@ public class EnemySpanwer : MonoBehaviour
         //     InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
         // else {
         //     for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
-                 StartSpawn();
+        
         //     }
         // }
     }
 
-    // void Update() {
-    //     if(spawned)
-    //         oneStepCloser();
-    // }
+    void Update() {
+         Debug.Log("Wave count = " + Waves.Count + "curEnemies = " + curEnemies);
+        if(Waves.Count > 0) {
+            if(curEnemies <= 0)
+                Waves[0].waveDelay -= Time.deltaTime;
+                          
 
-    public void StartSpawn()
-    {
-        StartCoroutine(invoke_spawn());
+            if(Waves[0].waveDelay <= 0.0f) {
+                StartSpawn(Waves[0].Enemies);
+                //Waves[0] = Waves[0];
+                Waves.Remove(Waves[0]);
+                checkTimer = spawnTime + spawnDelay + 0.1f;
+            }
+        }
+        else if(curEnemies <= 0 && checkTimer <= 0.0f)
+            transform.parent.GetComponent<RoomClearCheck>().checkIfClear();
+
+        curEnemies = oneStepCloser();
+        checkTimer -= Time.deltaTime;
+       
     }
 
-    public IEnumerator invoke_spawn() {
+    public void StartSpawn(List<enemiesToSpawn> e)
+    {
+        StartCoroutine(invoke_spawn(e));
+    }
+
+    public IEnumerator invoke_spawn(List<enemiesToSpawn> e) {
         // canSpawn = false;
         // yield return new WaitForSeconds(spawnTime);
         // Invoke("SpawnObject", spawnTime);
         // canSpawn = true;
-         if(infiniteSpawn)
-            InvokeRepeating("SpawnObject", spawnTime, spawnDelay);
-        else {
-            for(int i = 0; i < Random.Range(numToSpawn/2  + 1, numToSpawn + (numToSpawn/4) + 1); i++) {
-                Invoke("SpawnObject", spawnTime);
-                yield return new WaitForSeconds(spawnTime);
-            }
-        }
+       foreach(var order in e) {
+           for(int i = 0; i < order.SpawnCount; i++) {
+                StartCoroutine(SpawnObject(order.Enemy));
+              // Debug.Log("enemy spawned");
+               yield return new WaitForSeconds(spawnDelay);
+           }
+       }
+       
+         spawned = true;
+        // for(int i = 0; i < Random.Range(); i++) {
+        //     Invoke("SpawnObject", spawnTime);
+        //     yield return new WaitForSeconds(spawnTime);
+        // }
     }
-    public void SpawnObject(){
+    public IEnumerator SpawnObject(GameObject source){
         // Vector3 offsetPosition = transform.position;
         // offsetPosition.x += Random.Range(-offset, offset);
         // offsetPosition.y += Random.Range(-offset, offset); 
+        yield return new WaitForSeconds(spawnTime);
         RoomNode room = this.transform.parent.GetComponent<RoomNode>();
         //Vector3 room_center = new Vector3((float)room.roomCenter.x, (float)room.roomCenter.y, 0f);
 
@@ -76,32 +138,29 @@ public class EnemySpanwer : MonoBehaviour
 
         Vector3 offsetPosition = new Vector3(spawnTile.x, 2f, spawnTile.y);
 
-        var source = Enemies[Random.Range(0, Enemies.Length)];
+        //var source = Enemies[Random.Range(0, Enemies.Length)];
         var clone = Instantiate(source, offsetPosition, Quaternion.identity);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
         StartCoroutine(enable_brain(clone));
       //  clone.GetComponent<EnemyBrain>().enabled = true;
-        if(stopSpawn){
-            CancelInvoke("SpawnObject");
-        }
 
         spawned = true;
 
     }
 
     // Update is called once per frame
-   public void oneStepCloser() {
-      enemyCount = 0;
-       foreach(Transform child in transform)
+   public int oneStepCloser() {
+     int currentEnemyCount = 0;
+       foreach(Transform child in transform.parent)
        { 
-           if(child.tag == "Enemy") {
-                enemyCount++;
-           }
-             // Debug.Log("current enemy count = " + enemyCount); 
+            if(child.tag == "Enemy") {
+                if(!child.GetComponent<Enemy>().isDying)
+                    currentEnemyCount++;
+            }  
         }
-        // if(enemyCount <= 0)
-        //     checkIfClear();
+         Debug.Log("current enemy count = " + currentEnemyCount); 
+      return currentEnemyCount;
        
    }
 

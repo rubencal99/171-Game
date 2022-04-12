@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using System.Linq;
+using Random=UnityEngine.Random;
+
 
 public class MapGenerator : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject ShopKeeper;
     [SerializeField]
-    private GameObject Spawner;
+    private List<GameObject> Spawner;
     [SerializeField]
     private GameObject BossSpawner;
     [SerializeField]
@@ -428,25 +430,25 @@ public class MapGenerator : MonoBehaviour
             //uncomment lines + switch .y to .z to enable third dimension
 
            // var wallPosition = new Vector3(row, 0, room.bottomLeftCorner.y);
-           var wallPosition = new Vector3(row, room.bottomLeftCorner.y, 0);
+           var wallPosition = new Vector3(row, 1f, room.bottomLeftCorner.y);
             AddWallPositionToList(wallPosition, wallHorPos, doorHorPos);
         }
         for (int row = (int)room.topLeftCorner.x; row < (int)room.topRightCorner.x; row++)
         {
-            //var wallPosition = new Vector3(row, 0, room.topRightCorner.y);
-            var wallPosition = new Vector3(row, room.topRightCorner.y, 0);
+            //var wallPosition = new Vector3(row, 1f, room.topRightCorner.y);
+            var wallPosition = new Vector3(row, 1f, room.topRightCorner.y);
             AddWallPositionToList(wallPosition, wallHorPos, doorHorPos);
         }
         for (int col = (int)room.bottomLeftCorner.y; col < (int)room.topLeftCorner.y; col++)
         {
-            //var wallPosition = new Vector3(room.bottomLeftCorner.x, 0, col);
-            var wallPosition = new Vector3(room.bottomLeftCorner.x, col, 0);
+            //var wallPosition = new Vector3(room.bottomLeftCorner.x, 1f, col);
+            var wallPosition = new Vector3(room.bottomLeftCorner.x,1f, col);
             AddWallPositionToList(wallPosition, wallVertPos, doorVertPos);
         }
         for (int col = (int)room.bottomRightCorner.y; col < (int)room.topRightCorner.y; col++)
         {
-            //var wallPosition = new Vector3(room.bottomRightCorner.x, 0, col);
-            var wallPosition = new Vector3(room.bottomRightCorner.x,col, 0);
+            //var wallPosition = new Vector3(room.bottomRightCorner.x, 1f, col);
+            var wallPosition = new Vector3(room.bottomRightCorner.x,1f, col);
             AddWallPositionToList(wallPosition, wallVertPos, doorVertPos);
         }
     }
@@ -487,7 +489,7 @@ public class MapGenerator : MonoBehaviour
     {
         foreach(RoomNode room in Rooms)
         {
-            Vector3 pos1 = new Vector3(room.roomCenter.x + 3, 0, room.roomCenter.y + 3);
+            Vector3 pos1 = new Vector3(room.roomCenter.x , 0, room.roomCenter.y);
             if (room.RoomType == "Start")
             {
                 // Instantiate(ShopKeeper, pos1, Quaternion.identity);
@@ -511,9 +513,15 @@ public class MapGenerator : MonoBehaviour
                 // Not implemented yet
                 return;
             }
+            else if(room.RoomType == "Large")
+            {
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 1)], pos1, Quaternion.identity);
+            }
             else
             {
-                spawnedObject = Instantiate(Spawner, pos1, Quaternion.identity);
+
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 1)], pos1, Quaternion.identity);
+
             }
             spawnedObject.transform.parent = room.transform;
 
@@ -529,6 +537,7 @@ public class MapGenerator : MonoBehaviour
                 Vector3 pos1 = new Vector3(room.roomCenter.x, 0, room.roomCenter.y);
                 GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
                 entryCollider1.transform.parent = room.transform;
+                entryCollider1.GetComponent<EntryCollider>().tilemap = this.AutoTiler.GetTilemap();
             }
         }
         foreach(CorridorNode corridor in Corridors)

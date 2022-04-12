@@ -85,7 +85,7 @@ public class RoomNode : MonoBehaviour
         //roomCenter = (Vector2Int)((firstPoint + lastPoint) / 2);
         // CenterTile = tileList[(int)tileList.Count/2];
         //roomCenter = new Vector2Int(CenterTile.x, CenterTile.y);
-        roomCenter = new Vector2Int((firstPoint.x + lastPoint.x) / 2 + 1, (firstPoint.y + lastPoint.y) / 2);
+        roomCenter = new Vector2Int((firstPoint.x + lastPoint.x) / 2, (firstPoint.y + lastPoint.y) / 2);
         
         foreach(TileNode tile in tileList)
         {
@@ -102,7 +102,7 @@ public class RoomNode : MonoBehaviour
         }
         
         length = lastTile.x - firstTile.x;
-        width = lastTile.y - firstTile.y;
+        width = lastTile.y - firstTile.y +1;
         area = length * width;
 
         CalculateCorners();
@@ -111,17 +111,17 @@ public class RoomNode : MonoBehaviour
     void CalculateCorners()
     {
   
-        bottomLeftCorner.x = roomCenter.x - (length / 2);
-        bottomLeftCorner.y = roomCenter.y - (width / 2);
+        bottomLeftCorner.x = roomCenter.x - (int)Mathf.Ceil(length / 2);
+        bottomLeftCorner.y = roomCenter.y - (int)Mathf.Ceil(width / 2);
 
-        bottomRightCorner.x = roomCenter.x + (length / 2);
-        bottomRightCorner.y = roomCenter.y - (width / 2);
+        bottomRightCorner.x = roomCenter.x + (int)Mathf.Ceil(length / 2);
+        bottomRightCorner.y = roomCenter.y - (int)Mathf.Ceil(width / 2);
 
-        topLeftCorner.x = roomCenter.x - (length / 2);
-        topLeftCorner.y = roomCenter.y + (width / 2);
+        topLeftCorner.x = roomCenter.x - (int)Mathf.Ceil(length / 2);
+        topLeftCorner.y = roomCenter.y + (int)Mathf.Ceil(width / 2);
 
-        topRightCorner.x = roomCenter.x + (length / 2);
-        topRightCorner.y = roomCenter.y + (width / 2);
+        topRightCorner.x = roomCenter.x + (int)Mathf.Ceil(length / 2);
+        topRightCorner.y = roomCenter.y + (int)Mathf.Ceil(width / 2);
 
     }
 
