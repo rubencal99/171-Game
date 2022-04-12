@@ -123,7 +123,7 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss" || barriers_on)
+                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
                  StartCoroutine(WaitToUpdateTiles(barrier_tile));
                 //GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
             //this.GetComponent<Collider2D>().isTrigger = false;

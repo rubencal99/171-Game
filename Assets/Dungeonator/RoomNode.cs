@@ -116,12 +116,14 @@ public class RoomNode : MonoBehaviour
 
         bottomRightCorner.x = roomCenter.x + (int)Mathf.Ceil(length / 2);
         bottomRightCorner.y = roomCenter.y - (int)Mathf.Ceil(width / 2);
+        if(length % 2 != 0) bottomRightCorner.x++;
 
         topLeftCorner.x = roomCenter.x - (int)Mathf.Ceil(length / 2);
         topLeftCorner.y = roomCenter.y + (int)Mathf.Ceil(width / 2);
 
         topRightCorner.x = roomCenter.x + (int)Mathf.Ceil(length / 2);
         topRightCorner.y = roomCenter.y + (int)Mathf.Ceil(width / 2);
+        if(length % 2 != 0) topRightCorner.x++;
 
     }
 
