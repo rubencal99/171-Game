@@ -34,9 +34,9 @@ public class AgentWeapon : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Starting local rotation: " + transform.localRotation);
+        //Debug.Log("Starting local rotation: " + transform.localRotation);
         startingRotation = transform.localRotation;
-        Debug.Log("Starting global rotation: " + transform.rotation);
+        //Debug.Log("Starting global rotation: " + transform.rotation);
         AssignWeapon();
     }
 

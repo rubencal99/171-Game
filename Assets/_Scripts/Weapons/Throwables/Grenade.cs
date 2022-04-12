@@ -20,21 +20,21 @@ public class Grenade : _BaseThrowable
         }
     }
    
-    private void destruction() {
+    protected void destruction() {
          Vector3 location = transform.position;
             splash();
             Destroy(this.GetComponent<Rigidbody>());
             StartCoroutine(particles());
     }
     
-    public void OnTriggerEnter(Collider collision) {
+    public virtual void OnTriggerEnter(Collider collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
            destruction();
         }
 
     }
   
-    private IEnumerator particles() {
+    protected IEnumerator particles() {
              var sh = this.gameObject.GetComponentInChildren<ParticleSystem>().shape;
             sh.radius = radius;
             this.gameObject.GetComponentInChildren<ParticleSystem>().Play();
@@ -42,7 +42,7 @@ public class Grenade : _BaseThrowable
             Destroy(gameObject);
     }
 
-    private void splash() {
+    protected virtual void splash() {
 
        var inRange =  Physics.OverlapSphere(transform.position, radius);
        foreach(var entity in inRange) {

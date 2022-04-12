@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class _BaseThrowable : MonoBehaviour
 {
-     float Speed;
+    float Speed;
 
     public float SpeedBonus = 1.0f;
     public Vector3 LaunchOffset;
