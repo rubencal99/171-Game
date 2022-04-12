@@ -65,6 +65,8 @@ public class EnemySpanwer : MonoBehaviour
             }
         }
         curWave = Waves[0];
+
+        if(Waves.Count > 1) thisroom.GetComponentInChildren<EntryCollider>().barriers_on = true;
          Debug.Log("initial Enemy count = " + Waves.Count);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 

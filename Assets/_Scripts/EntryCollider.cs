@@ -46,6 +46,7 @@ public class EntryCollider : MonoBehaviour
         maxPosition = room.topRightCorner;
         maxPosition.x += boundsOffset; maxPosition.y += boundsOffset;
 
+
        // if(transform.parent.transform.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1)
         //    barriers_on = true;
         // List<Vector2> corner_points = new List<Vector2>()
@@ -120,12 +121,11 @@ public class EntryCollider : MonoBehaviour
     }*/
 
     void OnTriggerEnter(Collider other) {
-        if(!guarded) {
            //Debug.Log("Just entered room");
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                if(barriers_on)
+                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss" || barriers_on)
                  StartCoroutine(WaitToUpdateTiles(barrier_tile));
                 //GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
             //this.GetComponent<Collider2D>().isTrigger = false;
@@ -133,7 +133,6 @@ public class EntryCollider : MonoBehaviour
             //this.gameObject.SetActive(false);
            //  Debug.Log("leaving collider");
             }
-       }
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
