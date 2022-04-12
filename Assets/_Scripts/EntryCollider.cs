@@ -13,8 +13,6 @@ public class EntryCollider : MonoBehaviour
 
     public Tilemap tilemap;
 
-    public bool barriers_on = false;
-
     RoomNode room;
 
 
