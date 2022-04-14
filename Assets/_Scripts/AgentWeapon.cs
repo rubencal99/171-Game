@@ -138,6 +138,7 @@ public class AgentWeapon : MonoBehaviour
     {
         if (gun != null)
         {
+            Debug.Log("About to try shooting");
             gun.TryShooting();
         }
         else if (melee != null)

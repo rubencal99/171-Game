@@ -52,6 +52,8 @@ public class MapGenerator : MonoBehaviour
     public Vector2Int maxRewardDim;
     [Range(0, 100)]
     public int rewardPercent;
+    [Range(0, 100)]
+    public int auxiliaryPercent;
 
     public Vector2Int minBossDim;
     public Vector2Int maxBossDim;
@@ -177,10 +179,13 @@ public class MapGenerator : MonoBehaviour
             var height = y2 - y1;
 
             var r = UnityEngine.Random.Range(0, 100);
+            bool successfulLarge = false;
+            bool successfulNormal = false;
+            bool successfulReward = false;
             // This gives us larger rooms
-            if (r < 20)
+            if (!successfulLarge)
             {
-                if (width > minNormalDim.x && height > minNormalDim.y)
+                if (width > minLargeDim.x && height > minLargeDim.y)
                 {
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
@@ -213,12 +218,13 @@ public class MapGenerator : MonoBehaviour
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Large"));
                         }
                     }
+                    successfulLarge = true;
                 }
             }
-            // This gives us smaller rooms
-            else if (r < 75)
+            // This gives us normal rooms
+            if (!successfulLarge)
             {
-                if (width > minRoomDim.x && height > minRoomDim.y)
+                if (width > minNormalDim.x && height > minNormalDim.y)
                 {
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
@@ -233,7 +239,7 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            if(UnityEngine.Random.Range(0, 100) > rewardPercent)
+                            if(UnityEngine.Random.Range(0, 100) > auxiliaryPercent)
                             {
                                 roomsList.Enqueue(new Tuple<int[], string>(space, "Normal"));
                             }
@@ -255,7 +261,7 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            if(UnityEngine.Random.Range(0, 100) > rewardPercent)
+                            if(UnityEngine.Random.Range(0, 100) > auxiliaryPercent)
                             {
                                 roomsList.Enqueue(new Tuple<int[], string>(space, "Normal"));
                             }
@@ -265,9 +271,12 @@ public class MapGenerator : MonoBehaviour
                             }
                         }
                     }
+                    successfulNormal = true;
                 }
             }
-            else
+            // THis gives us reward rooms
+
+            if(!successfulLarge && !successfulNormal)
             {
                 if (width > minRewardDim.x && height > minRewardDim.y)
                 {
@@ -282,7 +291,7 @@ public class MapGenerator : MonoBehaviour
                         {
                             SplitVertical(space);
                         }
-                        else
+                        else if(UnityEngine.Random.Range(0, 100) < rewardPercent)
                         {
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
                         }
@@ -297,7 +306,7 @@ public class MapGenerator : MonoBehaviour
                         {
                             SplitHorizontal(space);
                         }
-                        else
+                        else if(UnityEngine.Random.Range(0, 100) < rewardPercent)
                         {
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
                         }
@@ -654,7 +663,7 @@ public class MapGenerator : MonoBehaviour
         RoomNode end = new RoomNode();
         foreach(RoomNode room in Rooms)
         {
-            if(room.DistanceFromStart > distance)
+            if(room.DistanceFromStart > distance && room.RoomType != "Reward")
             {
                 distance = room.DistanceFromStart;
                 end = room;
