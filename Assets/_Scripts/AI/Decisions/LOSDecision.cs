@@ -15,7 +15,7 @@ public class LOSDecision : AIDecision
     {
         // Colliders = ~enemies;
         var poi = aiMovementData.PointOfInterest;
-        var pos = enemyBrain.Weapon.muzzle.transform.position;
+        var pos = enemyBrain.transform.position;
         var direction = (enemyBrain.Target.transform.position - pos);
         var ray = new Ray(pos, direction);
         Debug.DrawRay(pos, direction);

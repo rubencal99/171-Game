@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public AgentAnimations agentAnimations;
     private EnemyBrain enemyBrain;
-    private AgentMovement agentMovement;
+    public AgentMovement agentMovement;
 
     private bool DontFreeze = false;
     public bool knockback;

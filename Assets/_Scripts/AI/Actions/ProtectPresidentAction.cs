@@ -21,11 +21,11 @@ public class ProtectPresidentAction : AIAction
         var direction = (playerPos - presidentPos).normalized;
 
         Debug.DrawRay(presidentPos, direction);
-        Debug.Log("President POS: " + presidentPos);
-        Debug.Log("Player POS: " + playerPos);
+        //Debug.Log("President POS: " + presidentPos);
+        //Debug.Log("Player POS: " + playerPos);
 
         shieldPos = presidentPos + (direction * DistanceFromPresident);
-
+        shieldPos.y = 1;
         //RaycastHit2D hit = Physics2D.Raycast(presidentPos, direction, 100, layerMask);
 
         return shieldPos;
