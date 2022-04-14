@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloorExit : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter(Collider other) {
        // if(!guarded) {
             if(other.tag == "Player") {
                // this.GetComponent<Collider2D>().isTrigger = true;
