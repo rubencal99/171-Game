@@ -43,7 +43,7 @@ public class RoomNode : MonoBehaviour
     public RoomNode(string roomType)
     {
         RoomType = roomType;
-        if (RoomType == "Start" || RoomType == "Reward")
+        if (RoomType == "Start" || RoomType == "Reward" || RoomType == "Auxiliary")
         {
             MaxNeighbors = 1;
         }
@@ -51,7 +51,7 @@ public class RoomNode : MonoBehaviour
         {
             MaxNeighbors = 2;
         }
-        if(RoomType == "Normal" || RoomType == "Auxiliary")
+        if(RoomType == "Normal" /*|| RoomType == "Auxiliary"*/)
         {
             MaxNeighbors = 2;
         }
@@ -101,8 +101,8 @@ public class RoomNode : MonoBehaviour
             CenterTile = tileList[(int)(length/2), (int)(width/2)];
         }
         
-        length = lastTile.x - firstTile.x;
-        width = lastTile.y - firstTile.y +1;
+        length = lastTile.x - firstTile.x + 1;
+        width = lastTile.y - firstTile.y + 1;
         area = length * width;
 
         CalculateCorners();

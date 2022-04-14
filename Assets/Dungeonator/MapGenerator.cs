@@ -33,6 +33,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject wallVertical, wallHorizontal;
      [SerializeField]
     public placecontrols controls;
+
+    [SerializeField]
     public int columns;
     public int rows;
     public static TileNode[,] map;
@@ -365,7 +367,7 @@ public class MapGenerator : MonoBehaviour
             {
                 SpawnPlayer(NewRoom);
             }
-
+            //else NewRoom.RoomType = "Auxiliary";
             Rooms.Add(NewRoom);
             tempCount++;
         }
@@ -376,6 +378,8 @@ public class MapGenerator : MonoBehaviour
         AddSpawners();
         for(int i = 0; i < 2; i++)
             AddObstacles();
+
+        AddAuxObstacles();
        // AddWalls();
     }
     void AddWalls()
@@ -477,11 +481,24 @@ public class MapGenerator : MonoBehaviour
             if (room.RoomType == "Start" || 
                 room.RoomType == "Shop" || 
                 room.RoomType == "Boss" ||
-                room.RoomType == "Reward")
+                room.RoomType == "Reward" ||
+                room.RoomType == "Auxiliary")
             {
                 continue;
             }
             ObstacleInjector.PlaceObstacles(room);
+        }
+    }
+
+     void AddAuxObstacles()
+    {
+        foreach(RoomNode room in Rooms)
+        {
+            if (room.RoomType == "Auxiliary")
+            {
+                AuxRoomObstacleInjector.ChooseLayout(room);
+            }
+           
         }
     }
 
