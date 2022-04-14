@@ -16,7 +16,7 @@ public class AugmentationUI : MonoBehaviour
 
     private void Awake()
     {
-        augmentationUI = transform.Find("AugmentationUI");
+        augmentationUI = transform.Find("InventoryUI");
         container = augmentationUI.transform.Find("container");
         augmentationTemplate = container.Find("AugmentationTemplate");
         augmentationTemplate.gameObject.SetActive(false);

@@ -10,7 +10,7 @@ public enum WeaponType{
 [CreateAssetMenu(fileName = "New Weapon Item", menuName = "Inventory System/Items/Weapon")]
 public class WeaponItemSO : ItemObject
 {
-    public WeaponType weaponType;
+    public WeaponType itemType;
     void Awake()
     {
         // initialize as type Weapon

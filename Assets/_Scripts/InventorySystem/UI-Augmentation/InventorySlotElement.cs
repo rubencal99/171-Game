@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
     [SerializeField]
     private Sprite defaultBG;
@@ -15,8 +15,8 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IPointer
     public Image itemDisplay;
     public ItemInventory inventory;
     [SerializeField]
-    private int slotIndex;
-    private Slot slot;
+    public int slotIndex;
+    public Slot slot;
     
     public void Awake()
     {
@@ -28,20 +28,28 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IPointer
         itemDisplay.sprite = current;
     }
 
-    public void OnPointerDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
-        // Moves item from this slot to MContainer[0]
+        // 
+        //Debug.Log("OnPointerDown called on slot " + slotIndex);
     }
 
-    public void OnPointerUp()
+    public void OnDrop(PointerEventData eventData)
     {
-        // Moves item from MContainer[0] to this slot
+        Debug.Log("OnDrop called on slot " + slotIndex);
+        //swaps this slot's contents with MContainer
+        if (eventData.pointerDrag.GetComponent<DragDrop>() != null)
+        {
+            inventory.MoveSwapCombine(eventData.pointerDrag.GetComponent<DragDrop>().parent.GetComponent<InventorySlotElement>().slot, slot);
+            inventory.Print();
+        }
+        
     }
 
     public void Update()
     {
         // if slot.item changes, update current to slot.item.icon
-        if (slot.item != null && itemDisplay.sprite == null)
+        if (slot.item != null && itemDisplay.sprite != slot.item.icon)
         {
             current = slot.item.icon;
             itemDisplay.sprite = current;

@@ -8,33 +8,42 @@ public class ItemInventory : ScriptableObject
     public  List<InventorySlot> Container = new List<InventorySlot>();
     public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
     public  List<AugSlot> AContainer = new List<AugSlot>();
-    public  List<InventorySlot> MContainer = new List<InventorySlot>();
+    public  Slot tempSlot;
 
     public void MoveSwapCombine(Slot _fromslot, Slot _toslot)
     {
         // facilitates the movement of items between slots
         // if items are the same or _toslot is empty, just add item and amount to _toslot
         // if not, swap item and amount data
-        if (_fromslot.item == _toslot.item || _toslot.item == null)
+        if (_fromslot != _toslot)
         {
-            _toslot.item = _fromslot.item;
-            _toslot.AddAmount(_fromslot.amount);
-            _fromslot.Clear();
-        }
-        else
-        {
-            ItemObject toitem = _toslot.item;
-            int toamount = _toslot.amount;
-            ItemObject fromitem = _fromslot.item;
-            int fromamount = _fromslot.amount;
-            
-            _toslot.Clear();
-            _fromslot.Clear();
+            //
+            if (_fromslot.item == _toslot.item || _toslot.item == null)
+            {
+                Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                _toslot.item = _fromslot.item;
+                _toslot.AddAmount(_fromslot.amount);
+                _fromslot.Clear();
+                
+                
+            }
+            else
+            {
+                Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                ItemObject toitem = _toslot.item;
+                int toamount = _toslot.amount;
+                ItemObject fromitem = _fromslot.item;
+                int fromamount = _fromslot.amount;
+                
+                _toslot.Clear();
+                _fromslot.Clear();
 
-            _fromslot.AddItemToSlot(toitem, toamount);
-            _toslot.AddItemToSlot(fromitem, fromamount);
-            
+                _fromslot.AddItemToSlot(toitem, toamount);
+                _toslot.AddItemToSlot(fromitem, fromamount);
+                
+            }
         }
+        
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
@@ -133,6 +142,25 @@ public class WeaponSlot : Slot
     {
         allows = typeof(WeaponItemSO);
     }
+    public override bool VerifyItem(ItemObject _item)
+    {
+        // checks item for type, then checks for augType or weaponType
+        if (_item.GetType() == allows || allows == null)
+        {
+            if (_item == _item)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
 [System.Serializable]
 public class AugSlot : Slot
@@ -164,7 +192,7 @@ public abstract class Slot
 
     public void AddItemToSlot(ItemObject _item, int _amount)
     {
-        if (_item.GetType() == allows || allows == null)
+        if (VerifyItem(_item))
         {
             // does the thing
             if (item == null)
@@ -181,13 +209,20 @@ public abstract class Slot
                 Debug.Log("There's already an item in this slot");
             }
         }
-        else 
-        { 
-            // does not do the thing
-            Debug.Log("Item Type " + _item.GetType() + " not accepted");
+        
+    }
+
+    public virtual bool VerifyItem(ItemObject _item)
+    {
+        // checks item for type, then checks for augType or weaponType
+        if (_item.GetType() == allows || allows == null)
+        {
+            return true;
         }
-        
-        
+        else
+        {
+            return false;
+        }
     }
 
     public void Clear()

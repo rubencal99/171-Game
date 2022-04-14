@@ -13,7 +13,7 @@ public enum AugType{
 [CreateAssetMenu(fileName = "New Weapon Item", menuName = "Inventory System/Items/Augmentation")]
 public class AugmentationItemSO : ItemObject
 {
-    public AugType augType;
+    public AugType itemType;
     void Awake()
     {
         // initialize as type Augmentation
