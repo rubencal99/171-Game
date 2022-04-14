@@ -101,8 +101,8 @@ public class RoomNode : MonoBehaviour
             CenterTile = tileList[(int)(length/2), (int)(width/2)];
         }
         
-        length = lastTile.x - firstTile.x;
-        width = lastTile.y - firstTile.y +1;
+        length = (lastTile.x + 1) - (firstTile.x - 1);
+        width = (lastTile.y + 1) - (firstTile.y -1);
         area = length * width;
 
         CalculateCorners();
@@ -154,9 +154,9 @@ public class RoomNode : MonoBehaviour
 
     public TileNode FindTileByPoint(int x, int y)
     {
-        for(int i = 0; i < length; i++)
+        for(int i = 0; i < length - 1; i++)
         {
-            for(int j = 0; j < width; j++)
+            for(int j = 0; j < width - 1; j++)
             {
                 if(tileList[i, j].x == x && tileList[i, j].y == y)
                 {
