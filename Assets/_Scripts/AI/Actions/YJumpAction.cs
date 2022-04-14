@@ -9,5 +9,6 @@ public class YJumpAction : AIAction
     public override void TakeAction()
     {
         enemyBrain.enemy.agentMovement.rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        RatchetBoss.inAir = true;
     }
 }

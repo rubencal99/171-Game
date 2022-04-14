@@ -38,6 +38,8 @@ public class RatchetBoss : _BaseBoss
 
     public static bool inJump = false;
     public bool InJump;
+    public static bool inAir = false;
+    public bool InAir;
 
 
     public static bool inSpawn = false;
@@ -52,7 +54,7 @@ public class RatchetBoss : _BaseBoss
     StarChaseAction StarChase;
     public AgentWeapon WeaponParent;
     public GameObject Melee;
-    public GameObject Spray;
+    public GameObject LandSpray;
 
     public void Start()
     {
@@ -64,8 +66,8 @@ public class RatchetBoss : _BaseBoss
         bossMovement = transform.parent.GetComponent<BossMovement>();
         bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
         WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
-        //Melee = WeaponParent.transform.Find("Melee").gameObject;
-        //Spray = WeaponParent.transform.Find("Spray").gameObject;
+        Melee = WeaponParent.transform.Find("Melee").gameObject;
+        LandSpray = WeaponParent.transform.Find("LandSpray").gameObject;
     }
 
     public void Update()
@@ -77,12 +79,13 @@ public class RatchetBoss : _BaseBoss
             CheckChase();
             CheckRecovery();
             CheckSpawn();
+            CheckJump();
         }
     }
 
     public override void Reset()
     {
-        Debug.Log("In Reset");
+        //Debug.Log("In Reset");
 
         inDecision = true;
         InDecision = inDecision;
@@ -106,6 +109,8 @@ public class RatchetBoss : _BaseBoss
 
         inJump = false;
         InJump = inJump;
+        inAir = false;
+        InAir = inAir;
 
         inRecovery = false;
         InRecovery = inRecovery;
@@ -140,10 +145,10 @@ public class RatchetBoss : _BaseBoss
         {
             //StarChase.enabled = true;
             chaseTimer -= Time.deltaTime;
-            if(Spray.activeSelf)
+            if(LandSpray.activeSelf)
             {
                 Melee.SetActive(true);
-                Spray.SetActive(false);
+                LandSpray.SetActive(false);
                 WeaponParent.AssignWeapon();
             }
             if(chaseTimer <= 0)
@@ -185,6 +190,20 @@ public class RatchetBoss : _BaseBoss
             {
                 recoveryTimer = recoveryDuration;
                 inRecovery = false;
+            }
+        }
+    }
+
+    public void CheckJump()
+    {
+        InJump = inJump;
+        if(inJump)
+        {
+            if(!LandSpray.activeSelf)
+            {
+                Melee.SetActive(false);
+                LandSpray.SetActive(true);
+                WeaponParent.AssignWeapon();
             }
         }
     }

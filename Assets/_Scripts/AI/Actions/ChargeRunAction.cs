@@ -28,6 +28,10 @@ public class ChargeRunAction : AIAction
 
   public void OnDrawGizmos()
   {
+    if(hit.transform == null)
+    {
+      return;
+    }
     Gizmos.DrawSphere(hit.transform.position, 1);
   }
 }
