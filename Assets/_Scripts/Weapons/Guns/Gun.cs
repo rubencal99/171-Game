@@ -223,7 +223,7 @@ public class Gun : MonoBehaviour, IWeapon
         }
     }
 
-    protected void FinishShooting()
+    protected virtual void FinishShooting()
     {
         StartCoroutine(DelayNextShootCoroutine());
         if (weaponData.AutomaticFire == false)

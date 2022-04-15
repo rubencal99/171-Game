@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public EnemyDataSO EnemyData { get; set; }
 
     [field: SerializeField]
-    public int Health { get; set; }
+    public float Health { get; set; }
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         //blood = FindComponentInChildWithTag
     }
 
-    public void GetHit(int damage, GameObject damageDealer)
+    public void GetHit(float damage, GameObject damageDealer)
     {
         Health -= damage;
         blood.Play();

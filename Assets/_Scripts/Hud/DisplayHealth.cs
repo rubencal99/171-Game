@@ -9,7 +9,7 @@ public class DisplayHealth : MonoBehaviour
     private Player p1;
      private Image HealthBar;
     public Text healthText;
-    private int health;
+    private float health;
     private int lastHealth;
 
     // Start is called before the first frame update
