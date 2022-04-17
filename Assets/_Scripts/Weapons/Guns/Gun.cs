@@ -81,6 +81,9 @@ public class Gun : MonoBehaviour, IWeapon
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
        // sprite = GetComponent<SpriteRenderer>().sprite;
+
+       //weaponItem.prefab = transform.gameObject;
+       //Debug.Log(weaponItem.prefab);
     }
 
 
