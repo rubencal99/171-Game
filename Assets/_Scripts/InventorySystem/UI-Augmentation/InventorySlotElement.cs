@@ -14,13 +14,26 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
     public Image background;
     public Image itemDisplay;
     public ItemInventory inventory;
+    public SlotType slotType;
     [SerializeField]
     public int slotIndex;
     public Slot slot;
     
     public void Awake()
     {
-        slot = inventory.Container[slotIndex];
+        if (slotType == SlotType.Inventory)
+        {
+            slot = inventory.Container[slotIndex];
+        }
+        else if (slotType == SlotType.Augmentation)
+        {
+            slot = inventory.AContainer[slotIndex];
+        }
+        else if (slotType == SlotType.Weapon)
+        {
+            slot = inventory.WContainer[slotIndex];
+        }
+        
         //background = gameObject.GetComponentInChildren<Image>();
 
         current = null;

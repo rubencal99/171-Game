@@ -1,6 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum SlotType {
+    Inventory,
+    Augmentation,
+    Weapon
+}
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class ItemInventory : ScriptableObject
@@ -9,13 +16,14 @@ public class ItemInventory : ScriptableObject
     public  List<WeaponSlot> WContainer = new List<WeaponSlot>();
     public  List<AugSlot> AContainer = new List<AugSlot>();
     public  Slot tempSlot;
+    
 
     public void MoveSwapCombine(Slot _fromslot, Slot _toslot)
     {
         // facilitates the movement of items between slots
         // if items are the same or _toslot is empty, just add item and amount to _toslot
         // if not, swap item and amount data
-        if (_fromslot != _toslot)
+        if (_fromslot != _toslot && _toslot.VerifyItem(_fromslot.item))
         {
             //
             if (_fromslot.item == _toslot.item || _toslot.item == null)
@@ -43,6 +51,10 @@ public class ItemInventory : ScriptableObject
                 
             }
         }
+        else
+        {
+            Debug.Log("MoveSwapCombine failed");
+        }
         
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
@@ -63,7 +75,6 @@ public class ItemInventory : ScriptableObject
                 }
                 else
                 {
-                    hasItem = true;
                     break;
                 }
             }
@@ -121,10 +132,7 @@ public class InventorySlot : Slot
     {
         item = _item;
         amount = _amount;
-    }
-    public void Awake()
-    {
-        allows = null;
+        //allows = null;
     }
 }
 [System.Serializable]
@@ -136,18 +144,13 @@ public class WeaponSlot : Slot
     {
         item = _item;
         amount = _amount;
-
-    }
-    public void Awake()
-    {
-        allows = typeof(WeaponItemSO);
     }
     public override bool VerifyItem(ItemObject _item)
     {
         // checks item for type, then checks for augType or weaponType
-        if (_item.GetType() == allows || allows == null)
+        if (_item.GetType() == typeof(WeaponItemSO))
         {
-            if (_item == _item)
+            if (_item.itemType == Convert.ToInt32(slotType) || slotType == WeaponType.Primary)
             {
                 return true;
             }
@@ -171,11 +174,36 @@ public class AugSlot : Slot
     {
         item = _item;
         amount = _amount;
-
     }
-    public void Awake()
+    
+    public override bool VerifyItem(ItemObject _item)
     {
-        allows = typeof(AugmentationItemSO);
+        // checks item for type, then checks for augType or weaponType
+        if (_item.GetType() == typeof(AugmentationItemSO))
+        {
+            if (slotType == AugType.Aux)
+            {
+                return true;
+            }
+            else
+            {
+                if (_item.itemType == Convert.ToInt32(slotType))
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("Wrong Item Subtype");
+                    return false;
+                }
+            }
+            
+        }
+        else
+        {
+            Debug.Log("Wrong Item Type");
+            return false;
+        }
     }
     
 }
@@ -184,7 +212,6 @@ public abstract class Slot
 {
     public ItemObject item;
     public int amount;
-    public System.Type allows;
     public void AddAmount(int value)
     {
         amount += value;
@@ -214,15 +241,7 @@ public abstract class Slot
 
     public virtual bool VerifyItem(ItemObject _item)
     {
-        // checks item for type, then checks for augType or weaponType
-        if (_item.GetType() == allows || allows == null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
 
     public void Clear()

@@ -167,6 +167,7 @@ MonoBehaviour:
   background: {fileID: 8063114432035063673}
   itemDisplay: {fileID: 6258990652819129325}
   inventory: {fileID: 11400000, guid: 8c3978625738743df9ac7de2f78e3db7, type: 2}
+  slotType: 0
   slotIndex: 0
 --- !u!1 &2468093968240285978
 GameObject:
