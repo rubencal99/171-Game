@@ -40,6 +40,7 @@ public class RatchetBoss : _BaseBoss
     public bool InJump;
     public static bool inAir = false;
     public bool InAir;
+    public CapsuleCollider jumpCollider;
 
 
     public static bool inSpawn = false;
@@ -199,12 +200,17 @@ public class RatchetBoss : _BaseBoss
         InJump = inJump;
         if(inJump)
         {
+            jumpCollider.enabled = true;
             if(!LandSpray.activeSelf)
             {
                 Melee.SetActive(false);
                 LandSpray.SetActive(true);
                 WeaponParent.AssignWeapon();
             }
+        }
+        else
+        {
+            jumpCollider.enabled = false;   
         }
     }
 

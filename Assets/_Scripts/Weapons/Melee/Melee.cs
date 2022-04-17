@@ -100,7 +100,7 @@ public class Melee : MonoBehaviour, IWeapon
         meleeCoroutine = false;
     }
 
-    void Attack()
+    public void Attack()
     {
         // Play attack animation
 
