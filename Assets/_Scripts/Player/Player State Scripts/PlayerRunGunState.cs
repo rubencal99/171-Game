@@ -201,7 +201,7 @@ public class PlayerRunGunState : PlayerBaseState
     {
         if (Input.GetAxisRaw("Tab") > 0)
         {
-            Debug.Log("Tab key pressed");
+            //Debug.Log("Tab key pressed");
             if (tabButtonDown == false)
             {
                 tabButtonDown = true;

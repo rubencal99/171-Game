@@ -6,6 +6,7 @@ using UnityEngine;
 // Extends AgentWeapon so we can use the functions from it
 public class PlayerWeapon : AgentWeapon
 {
+    public static PlayerWeapon instance;
     private float timeToReload = 0.0f;
 
     public GameObject selectedWeapon;
@@ -26,6 +27,7 @@ public class PlayerWeapon : AgentWeapon
         Primary.SetActive(true);
         Secondary.SetActive(false);
         InfAmmo = false;
+        instance = this;
     }
 
 
