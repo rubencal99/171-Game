@@ -34,9 +34,9 @@ public class AgentWeapon : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("Starting local rotation: " + transform.localRotation);
+        //Debug.Log("Starting local rotation: " + transform.localRotation);
         startingRotation = transform.localRotation;
-        Debug.Log("Starting global rotation: " + transform.rotation);
+        //Debug.Log("Starting global rotation: " + transform.rotation);
         AssignWeapon();
     }
 
@@ -138,6 +138,7 @@ public class AgentWeapon : MonoBehaviour
     {
         if (gun != null)
         {
+            Debug.Log("About to try shooting");
             gun.TryShooting();
         }
         else if (melee != null)

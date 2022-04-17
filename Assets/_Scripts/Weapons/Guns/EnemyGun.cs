@@ -23,6 +23,7 @@ public class EnemyGun : Gun
     {
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
+            Debug.Log("In Use Weapon");
             if (Ammo > 0)
             {
                 Ammo--;
@@ -32,6 +33,7 @@ public class EnemyGun : Gun
                 OnShoot?.Invoke();
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
+                    Debug.Log("Before shoot bullet");
                     ShootBullet();
                 }
             }

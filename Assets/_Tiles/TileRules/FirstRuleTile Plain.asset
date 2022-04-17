@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FirstRuleTile Plain
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 21301170, guid: d21555ce72e390f49ba41fd54c373b1b, type: 3}
-  m_DefaultGameObject: {fileID: 6491939475053275967, guid: 19b20665080e2c747ad9a4e286a2f3ef, type: 3}
+  m_DefaultGameObject: {fileID: 6491939475053275967, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
   m_DefaultColliderType: 2
   m_TilingRules: []

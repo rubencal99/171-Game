@@ -99,7 +99,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;                                         //Debuging death 
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
-        overlay = GameObject.Find("Overlay").GetComponent<Image>();
+        //overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
     }
@@ -111,9 +111,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
          }
-         if(HitLastFiveSec){
+         /*if(HitLastFiveSec){
             StartCoroutine(fadeOverlay());
-         }
+         }*/
     }
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;

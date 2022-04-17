@@ -52,7 +52,7 @@ public class Gun : MonoBehaviour, IWeapon
     // Returns true if ammo full
     public bool AmmoFull { get => Ammo >= weaponData.MagazineCapacity; }
 
-    protected bool isShooting = false;
+    public bool isShooting = false;
 
     protected bool isReloading = false;
 
@@ -105,6 +105,7 @@ public class Gun : MonoBehaviour, IWeapon
     public void TryShooting()
     {
         isShooting = true;
+        Debug.Log("Is shooting = " + isShooting);
     }
     public void StopShooting()
     {
@@ -163,8 +164,11 @@ public class Gun : MonoBehaviour, IWeapon
 
     protected virtual void UseWeapon()
     {
+        
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
+            Debug.Log("ROF: " + rateOfFireCoroutine);
+            Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)
             {
                 Ammo--;
@@ -174,6 +178,7 @@ public class Gun : MonoBehaviour, IWeapon
                 OnShoot?.Invoke();
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
+                    
                     ShootBullet();
                 }
             }
@@ -204,6 +209,22 @@ public class Gun : MonoBehaviour, IWeapon
         }
         FinishMelee();
     }*/
+    public void ForceShoot()
+    {
+        if (Ammo > 0)
+        {
+            Ammo--;
+            //I'd like the UI of this to show the ammo decreasing & increasing rapidly
+            if (infAmmo)
+                Ammo++;
+            OnShoot?.Invoke();
+            for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
+            {
+                
+                ShootBullet();
+            }
+        }
+    }
 
     protected void FinishShooting()
     {
