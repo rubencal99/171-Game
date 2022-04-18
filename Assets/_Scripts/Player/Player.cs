@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public ItemInventory inventory;
     public RoomNode currentRoom;
 
 
@@ -33,18 +34,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public int Damage { get; private set; }
 
-    [field: SerializeField]                         
-    public bool isDead; 
-    [field: SerializeField]                         
-    public bool hasKey; 
+    [field: SerializeField]
+    public bool isDead;
+    [field: SerializeField]
+    public bool hasKey;
 
-    [field: SerializeField]                         
+    [field: SerializeField]
     public float getHitFrequency;
 
-    [field: SerializeField]                         
-    public float getHitIntensity; 
-    
-    [field: SerializeField]                         
+    [field: SerializeField]
+    public float getHitIntensity;
+
+    [field: SerializeField]
     public float getHitTime;                           //For debug
 
     [field: SerializeField]
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private Image overlay;
 
     private bool HitLastFiveSec;
+    private PlayerMovement playerMovement;
 
     //Defelction Shield logic
     private bool ShieldActivated = false;
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
 
     public PlayerStateManager PlayerState; // game odject for agent input
-    // private AgentInput w; // var to hold agent input 
+    // private AgentInput w; // var to hold agent input
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
@@ -97,11 +99,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
         //DeathMenuUI.SetActive(false);
-        isDead = false;                                         //Debuging death 
+        isDead = false;                                         //Debuging death
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
-        overlay = GameObject.Find("Overlay").GetComponent<Image>();
+        //overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
         shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
@@ -109,7 +112,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     void Update()
     {
-        if (isDead==true){                      //For Debug the instance kill 
+        if (isDead==true){                      //For Debug the instance kill
              Health -= Health;
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
@@ -157,10 +160,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         }
         tempColor.a = 0f;
-        
+
         HitLastFiveSec = false;
     }
-    
+
     public void Heal(int amount) {
         Health += amount;
         if(Health > MaxHealth)
@@ -173,7 +176,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
 
     public void GetHit(int damage, GameObject damageDealer)
-    {    
+    {
         if(invincible)
         {
             return;
@@ -182,19 +185,35 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
-
+        DamageType(damageDealer);
         Health -= damage;
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
-        if (Health > 0) {   
+        if (Health > 0) {
             OnGetHit?.Invoke();
             StartCoroutine(iframes_damage());
         }
         else
         {
             OnDie?.Invoke();
-            StartCoroutine(WaitToDie());   
+            StartCoroutine(WaitToDie());
+        }
+    }
+
+    public void DamageType(GameObject damageDealer)
+    {
+        if(damageDealer.GetComponent<Bullet>())
+        {
+            BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
+            playerMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+        }
+        else if(damageDealer.GetComponent<Melee>())
+        {
+            MeleeDataSO meleeData = damageDealer.GetComponent<Melee>().meleeData;
+            var weaponPosition = damageDealer.transform.parent.position;
+            var direction = transform.position - weaponPosition;
+            playerMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower, -direction);
         }
     }
 
@@ -283,5 +302,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public IEnumerator AutoDocCoolDown(){
         yield return new WaitForSeconds(PlayerAugmentations.AutoDocCoolDown);
         PlayerAugmentations.AutoDocUsed = false;
+    }
+    private void OnApplicationQuit()
+    {
+        inventory.ClearInventory();
     }
 }

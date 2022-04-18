@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 public enum AugType{
-    Head, 
+    Head,
     Body,
     Arm,
     Leg,
@@ -15,7 +15,7 @@ public enum AugType{
 public class AugmentationItemSO : ItemObject
 {
     public AugType augType;
-   
+
     void Awake()
     {
         // initialize as type Augmentation
@@ -24,4 +24,3 @@ public class AugmentationItemSO : ItemObject
         itemType = Convert.ToInt32(augType);
     }
 }
-
