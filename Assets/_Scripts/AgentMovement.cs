@@ -85,6 +85,7 @@ public class AgentMovement : MonoBehaviour
 
     public void Knockback(float duration, float power, Vector3 direction)
     {
+        Debug.Log("In knockback");
         knockback = true;
         // Vector2 direction = (bullet.direction).normalized;
         knockbackPower = power;
@@ -96,6 +97,10 @@ public class AgentMovement : MonoBehaviour
         rigidbody.AddForce(k.x, 0, k.z, ForceMode.Impulse);
         //knockback = false;
     }
+
+    
+
+
 
     protected void FixedUpdate()
     {   

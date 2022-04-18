@@ -9,7 +9,12 @@ public class PlayerInventory : MonoBehaviour
     public PlayerPassives stats;
 
     public Player player;
+    public static PlayerInventory instance;
 
+    void Awake()
+    {
+        instance = this;
+    }
     
     void Start()
     {

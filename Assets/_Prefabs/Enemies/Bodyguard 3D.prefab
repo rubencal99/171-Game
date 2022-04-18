@@ -1019,6 +1019,7 @@ MonoBehaviour:
   isDying: 0
   deathTimer: 10
   agentAnimations: {fileID: 0}
+  agentMovement: {fileID: 0}
   knockback: 0
   blood: {fileID: 8389336572025734190}
 --- !u!114 &2447108988747857650
@@ -1216,12 +1217,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867989798731449}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.18557149
-  m_Height: 1
+  m_Radius: 0.29
+  m_Height: 0.88
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.03, z: -0.21}
 --- !u!1 &6638867990098400945
 GameObject:
   m_ObjectHideFlags: 0

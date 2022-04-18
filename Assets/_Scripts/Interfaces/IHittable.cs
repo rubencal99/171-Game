@@ -8,7 +8,7 @@ public interface IHittable
 
     UnityEvent OnGetHit { get; set; }
 
-    void GetHit(int damage, GameObject damageDealer);
+    void GetHit(float damage, GameObject damageDealer);
 
 
 }

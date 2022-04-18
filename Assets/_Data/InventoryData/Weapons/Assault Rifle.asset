@@ -15,6 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 8960519738105143089, guid: 428d34962cd88104caf5ffc79d5c5ad1, type: 3}
   icon: {fileID: 21300000, guid: cf8f4e6bca2d24e199e36bc629ed9ee7, type: 3}
   type: 1
+  itemType: 0
   description: 
   stackable: 0
   weaponType: 0

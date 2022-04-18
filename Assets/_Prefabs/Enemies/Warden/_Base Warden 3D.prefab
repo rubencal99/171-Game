@@ -318,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5231307999660189819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.38, z: 0.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5231308000031674624}
@@ -704,6 +704,7 @@ MonoBehaviour:
   isDying: 0
   deathTimer: 5
   agentAnimations: {fileID: 0}
+  agentMovement: {fileID: 0}
   knockback: 0
   blood: {fileID: 8684177484211044405}
 --- !u!114 &3840806334699999559

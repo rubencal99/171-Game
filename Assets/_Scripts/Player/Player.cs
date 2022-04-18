@@ -20,7 +20,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public int damage_iframes = 200;
 
     [field: SerializeField]
-    public int Health { get; set; } = 6;
+    public float Health { get; set; } = 6;
 
      [field: SerializeField]
     public int MaxHealth { get; private set; } = 6;
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     }
 
 
-    public void GetHit(int damage, GameObject damageDealer)
+    public void GetHit(float damage, GameObject damageDealer)
     {    
         if(invincible)
         {
