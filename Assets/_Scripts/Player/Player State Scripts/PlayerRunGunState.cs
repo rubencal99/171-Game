@@ -16,7 +16,6 @@ public class PlayerRunGunState : PlayerBaseState
     public bool shopping = false; // bool to check if dodging
 
     public PlayerInput playerInput;
-
     [SerializeField]
     public float DodgeTimer;
 
@@ -61,7 +60,7 @@ public class PlayerRunGunState : PlayerBaseState
 
     private void GetPrimaryInput()
     {
-        if (Input.GetAxisRaw("Fire1") > 0)
+        if (Input.GetAxisRaw("Fire1") > 0 && PlayerWeapon.instance.Primary)
         {
             if (primaryButtonDown == false)
             {
@@ -111,7 +110,7 @@ public class PlayerRunGunState : PlayerBaseState
 
      private void GetSecondaryInput()
     {
-        if (Input.GetAxisRaw("Fire2") > 0)
+        if (Input.GetAxisRaw("Fire2") > 0 && PlayerWeapon.instance.Secondary)
         {
             if (secondaryButtonDown == false)
             {
@@ -207,11 +206,12 @@ public class PlayerRunGunState : PlayerBaseState
     {
         if (Input.GetAxisRaw("Tab") > 0)
         {
-            Debug.Log("Tab key pressed");
+            //Debug.Log("Tab key pressed");
             if (tabButtonDown == false)
             {
                 tabButtonDown = true;
                 playerInput.OnTabKeyPressed?.Invoke();
+                PlayerStateManager.instance.SwitchState(PlayerStateManager.instance.TabState);
             }
             // Debug.Log("Tab key pressed");
         }

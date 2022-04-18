@@ -12,6 +12,7 @@ public enum ItemType{
 public abstract class ItemObject : ScriptableObject 
 {
     public GameObject prefab;
+    public GameObject prefabClone;
     public Sprite icon;
     public ItemType type;
     public int itemType;

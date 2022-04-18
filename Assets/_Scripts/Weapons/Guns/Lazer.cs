@@ -8,6 +8,17 @@ public class Lazer : Gun
     public LayerMask layerMask;
     RaycastHit hit;
 
+    [SerializeField]
+    private float defDistanceRay = 100f;
+    public LineRenderer m_lineRenderer;
+    Transform m_transform;
+
+    private void Awake()
+    {
+        m_transform = GetComponent<Transform>();
+        m_lineRenderer = GetComponent<LineRenderer>();
+    }
+
     protected override void UseWeapon()
     {
         if (isShooting && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
@@ -29,6 +40,10 @@ public class Lazer : Gun
                 // Reload();                 // Use this if we want to reload automatically
                 return;
             }
+            
+        }
+        else
+        {
             FinishShooting();
         }
     }
@@ -41,13 +56,31 @@ public class Lazer : Gun
         hit = new RaycastHit();
         if(Physics.Raycast(transform.position, direction, out hit, 100, layerMask))
         {
+            Draw3DRay(transform.position, hit.transform.position);
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
                 //Debug.Log("Lazer Hitting Obstacles");
             }
             if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy")){
                 Debug.Log("Lazer Hitting Enemy");
+                hit.transform.GetComponent<Enemy>().GetHit(Time.deltaTime, gameObject);
             }
         }
+    }
+
+    void Draw3DRay(Vector3 start, Vector3 end)
+    {
+        m_lineRenderer.SetPosition(0, start);
+        m_lineRenderer.SetPosition(1, end);
+    }
+
+    protected override void FinishShooting()
+    {
+        StartCoroutine(DelayNextShootCoroutine());
+        if (weaponData.AutomaticFire == false)
+        {
+            isShooting = false;
+        }
+        Draw3DRay(transform.position, transform.position);
     }
 
     void OnDrawGizmos()
