@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 759019135663807278}
   - component: {fileID: 1768876609989755148}
   - component: {fileID: 3874886208797789332}
-  - component: {fileID: 3098135676551619057}
   m_Layer: 12
   m_Name: MapCam
   m_TagString: Untagged
@@ -109,20 +108,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &3098135676551619057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408568608439564529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
-  ListenerNumber: -1
 --- !u!1 &544295840545329334
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +567,7 @@ Transform:
   - {fileID: 6079316670084512030}
   - {fileID: 5160564747728843359}
   - {fileID: 1142879905408940472}
+  - {fileID: 7557532808939559342}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -815,6 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f9f634b5d579488525203ac936218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 8c3978625738743df9ac7de2f78e3db7, type: 2}
   currentRoom: {fileID: 0}
   invincible: 0
   damage_iframes: 20
@@ -937,7 +924,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500494839163732592}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
@@ -1487,6 +1474,79 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PRESS SPACE
+--- !u!1 &2336153867180187333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7557532808939559342}
+  - component: {fileID: 6090575399665141259}
+  - component: {fileID: 8411110767140958890}
+  m_Layer: 0
+  m_Name: BGMmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7557532808939559342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336153867180187333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500494839163732593}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6090575399665141259
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336153867180187333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8411110767140958890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336153867180187333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a099e99c2764d928a65bb5c6241fb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detect: {fileID: 0}
+  CombatMusicEvent:
+    Guid:
+      Data1: -1822174840
+      Data2: 1094170241
+      Data3: 1210371256
+      Data4: 1964297901
+    Path: event:/Music/COM-BGM1
+  prisonerCount: 0
+  wardenCount: 0
+  supportCount: 0
+  prisonerParam: Prisoner
+  wardenParam: Warden
+  supportParam: Support
+  shopPos: {x: 0, y: 0, z: 0}
+  shopDist: 0
 --- !u!1 &4265340160141005940
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,7 +2030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
       propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
       propertyPath: <OnShootNoAmmo>k__BackingField.m_PersistentCalls.m_Calls.Array.size
@@ -1981,12 +2041,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5435229704463610582}
     - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 887056948673667513}
+    - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
       propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayShootSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
       propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.ParticleSystem, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: WeaponAudio, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960519738105143103, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+      propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
@@ -2003,6 +2079,11 @@ Transform:
 --- !u!1 &887056949387903751 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8960519738105143089, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
+  m_PrefabInstance: {fileID: 8076463359281388598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5435229704463610582 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4285329235244527328, guid: 3d77582c2c8c05246955826e112658dc, type: 3}
   m_PrefabInstance: {fileID: 8076463359281388598}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8076463359709381668
