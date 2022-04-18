@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    public static PlayerStateManager instance;
     public PlayerInput playerInput;
     [SerializeField]
     public PlayerBaseState currentState;
@@ -9,6 +10,13 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerDiveState DiveState = new PlayerDiveState();
     public PlayerProneState ProneState = new PlayerProneState();
     public PlayerShopState ShopState = new PlayerShopState();
+    public PlayerTabState TabState = new PlayerTabState();
+
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

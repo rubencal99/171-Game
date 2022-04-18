@@ -20,14 +20,19 @@ public class PlayerWeapon : AgentWeapon
     public RenderThrowableArc throwableArc;
 
     Vector3 mousePos;
+    public ItemInventory itemInventory;
 
+    void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
+        CheckInventory();
         Primary.SetActive(true);
         Secondary.SetActive(false);
         InfAmmo = false;
-        instance = this;
     }
 
 
@@ -73,12 +78,36 @@ public class PlayerWeapon : AgentWeapon
         }
     }*/
 
+    public void CheckInventory()
+    {
+        WeaponSlot slot1 = itemInventory.WContainer[0];
+        WeaponSlot slot2 = itemInventory.WContainer[1];
+        if(slot1.item != null)
+        {
+            slot1.ReplacePrimary(slot1.item.prefabClone);
+        }
+        else
+        {
+            Primary = null;
+        }
+        if(slot2.item != null)
+        {
+            slot2.ReplaceSecondary(slot2.item.prefabClone);
+        }
+        else
+        {
+            Secondary = null;
+        }
+
+    }
+
     public void TogglePrimary()
     {
-        if(!Primary.activeSelf)
+        if(Primary && !Primary.activeSelf)
         {
             Primary.SetActive(true);
-            Secondary.SetActive(false);
+            if(Secondary != null)
+                Secondary.SetActive(false);
             Primary.GetComponent<IWeapon>().ForceReload();
             AssignWeapon();
         }
@@ -86,9 +115,10 @@ public class PlayerWeapon : AgentWeapon
 
     public void ToggleSecondary()
     {
-        if(!Secondary.activeSelf)
+        if(Secondary && !Secondary.activeSelf)
         {
-            Primary.SetActive(false);
+            if(Primary != null)
+                Primary.SetActive(false);
             Secondary.SetActive(true);
             Secondary.GetComponent<IWeapon>().ForceReload();
             AssignWeapon();

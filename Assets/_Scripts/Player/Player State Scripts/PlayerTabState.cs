@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerRunGunState : PlayerBaseState
+public class PlayerTabState : PlayerBaseState
 {
     private Camera mainCamera;
 
@@ -16,7 +16,6 @@ public class PlayerRunGunState : PlayerBaseState
     public bool shopping = false; // bool to check if dodging
 
     public PlayerInput playerInput;
-    //public PlayerWeapon playerWeapon;
     
     [SerializeField]
     public float DodgeTimer;
@@ -32,23 +31,17 @@ public class PlayerRunGunState : PlayerBaseState
         mainCamera = Camera.main;
         dodging = false;
         TimeManager.RevertSlowMotion();
-        Player.transform.Find("shadow").gameObject.SetActive(true);  
+        Player.transform.Find("shadow").gameObject.SetActive(true); 
+        playerInput.OnMovementKeyPressed?.Invoke(Vector3.zero); 
     }
 
     public override void UpdateState(PlayerStateManager Player)
     {
-        GetMovementInput();
+        //GetMovementInput();
         GetPointerInput();
-        GetPrimaryInput();
-        GetThrowInput();
-        GetSecondaryInput();
-        GetReloadInput();
-        // GetRestartInput();
-        GetRespawnInput();
-        GetDodgeInput();
         GetTabInput();
-        GetInteractInput();
-        if (dodging)
+        //GetInteractInput();
+        /*if (dodging)
         {
             Debug.Log("Switching to Dive State");
             Player.SwitchState(Player.DiveState);
@@ -57,12 +50,12 @@ public class PlayerRunGunState : PlayerBaseState
         {
             Debug.Log("Switching to Shop State");
             Player.SwitchState(Player.ShopState);
-        }
+        }*/
     }
 
-    private void GetPrimaryInput()
+    /*private void GetPrimaryInput()
     {
-        if (Input.GetAxisRaw("Fire1") > 0 && PlayerWeapon.instance.Primary)
+        if (Input.GetAxisRaw("Fire1") > 0)
         {
             if (primaryButtonDown == false)
             {
@@ -112,7 +105,7 @@ public class PlayerRunGunState : PlayerBaseState
 
      private void GetSecondaryInput()
     {
-        if (Input.GetAxisRaw("Fire2") > 0 && PlayerWeapon.instance.Secondary)
+        if (Input.GetAxisRaw("Fire2") > 0)
         {
             if (secondaryButtonDown == false)
             {
@@ -148,7 +141,7 @@ public class PlayerRunGunState : PlayerBaseState
             // This will respawn the player to their original position at start of scene
             playerInput.OnRespawnButtonPressed?.Invoke();
         }
-    }
+    }*/
 
     private void GetPointerInput()
     {
@@ -170,7 +163,7 @@ public class PlayerRunGunState : PlayerBaseState
     }
 
 
-    private void GetMovementInput()
+    /*private void GetMovementInput()
     {
         playerInput.OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
     }
@@ -196,7 +189,7 @@ public class PlayerRunGunState : PlayerBaseState
                 dodging = false;
             }
         }
-    }
+    }*/
 
     private void GetTabInput()
     {
@@ -207,7 +200,7 @@ public class PlayerRunGunState : PlayerBaseState
             {
                 tabButtonDown = true;
                 playerInput.OnTabKeyPressed?.Invoke();
-                PlayerStateManager.instance.SwitchState(PlayerStateManager.instance.TabState);
+                PlayerStateManager.instance.SwitchState(PlayerStateManager.instance.RunGunState);
             }
             // Debug.Log("Tab key pressed");
         }
@@ -220,7 +213,7 @@ public class PlayerRunGunState : PlayerBaseState
         }
     }
 
-    private void GetInteractInput()
+    /*private void GetInteractInput()
     {
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Interact") > 0) 
@@ -239,7 +232,7 @@ public class PlayerRunGunState : PlayerBaseState
                 shopping = false;
             }
         }
-    }
+    }*/
 
     /*private void GetDodgeInput()
     {   

@@ -27,9 +27,9 @@ public class ItemInventory : ScriptableObject
             if (_fromslot.item == _toslot.item || _toslot.item == null)
             {
                 Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
-                _toslot.item = _fromslot.item;
-                _toslot.AddAmount(_fromslot.amount);
-                //_toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
+                //_toslot.item = _fromslot.item;
+                //_toslot.AddAmount(_fromslot.amount);
+                _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
                 _fromslot.Clear();
                 
                 
@@ -117,7 +117,7 @@ public class ItemInventory : ScriptableObject
     {
         for (int i = 0; i < Container.Count; i++)
         {
-            Debug.Log(i + ": " + Container[i].item + ": " + Container[i].amount);
+            //Debug.Log(i + ": " + Container[i].item + ": " + Container[i].amount);
         }
     }
 }
@@ -140,6 +140,7 @@ public class WeaponSlot : Slot
 {
     //public WeaponItemSO item;
     public WeaponType slotType;
+    public ItemObject prevItem;
     public WeaponSlot(ItemObject _item, int _amount)
     {
         item = _item;
@@ -160,14 +161,12 @@ public class WeaponSlot : Slot
                 if(slotType == WeaponType.Primary)
                 {
                     Debug.Log("In Primary");
-                    item.prefabClone.transform.parent = PlayerWeapon.instance.transform;
-                    PlayerWeapon.instance.Primary = item.prefabClone;
+                    ReplacePrimary(item.prefabClone);
                 }
                 else if(slotType == WeaponType.Secondary)
                 {
                     Debug.Log("In Secondary");
-                    item.prefabClone.transform.parent = PlayerWeapon.instance.transform;
-                    PlayerWeapon.instance.Secondary = item.prefabClone;
+                    ReplaceSecondary(item.prefabClone);
                 }
             }
             /*else if (item == _item && item.stackable)
@@ -200,6 +199,63 @@ public class WeaponSlot : Slot
         {
             return false;
         }
+    }
+
+    public override void Clear()
+    {
+        // Moves current item to PlayerInventory
+        prevItem = item;
+        GameObject prev = prevItem.prefabClone;
+        if(prev != null)
+        {
+            prev.transform.parent = PlayerInventory.instance.transform;
+            prev.SetActive(false);
+        }
+
+        // Clears the slot and resets PlayerWeapon variable
+        amount = 0;
+        item = null;
+        if(slotType == WeaponType.Primary)
+        {
+            PlayerWeapon.instance.Primary.SetActive(false);
+            PlayerWeapon.instance.Primary = null;
+        }
+        if(slotType == WeaponType.Secondary)
+        {
+            PlayerWeapon.instance.Secondary.SetActive(false);
+            PlayerWeapon.instance.Secondary = null;
+        }
+    }
+
+    public void ReplacePrimary(GameObject clone)
+    {
+        Debug.Log("Prefab Clone: " + item.prefabClone);
+        Debug.Log("Player weapon instance: " + PlayerWeapon.instance);
+        clone.transform.parent = PlayerWeapon.instance.transform;
+        clone.transform.position = Vector3.zero;
+        clone.transform.localPosition = Vector3.zero;
+        //item.prefabClone.transform.rotation = Quaternion.identity;
+        clone.transform.rotation = new Quaternion(0, 0, 0, 0);
+        PlayerWeapon.instance.Primary = clone;
+        PlayerWeapon.instance.TogglePrimary();
+    }
+
+    public void ReplaceSecondary(GameObject clone)
+    {
+        Debug.Log("Prefab Clone: " + item.prefabClone);
+        Debug.Log("Player weapon instance: " + PlayerWeapon.instance);
+        clone.transform.parent = PlayerWeapon.instance.transform;
+        clone.transform.position = Vector3.zero;
+        clone.transform.localPosition = Vector3.zero;
+        //item.prefabClone.transform.rotation = Quaternion.identity;
+        clone.transform.rotation = new Quaternion(0, 0, 0, 0);
+        if(PlayerWeapon.instance.Secondary != null)
+        {
+            PlayerWeapon.instance.Secondary.SetActive(false);
+            PlayerWeapon.instance.Secondary.transform.parent = PlayerInventory.instance.transform;
+        }
+        PlayerWeapon.instance.Secondary = clone;
+        PlayerWeapon.instance.ToggleSecondary();
     }
 }
 [System.Serializable]
@@ -281,7 +337,7 @@ public abstract class Slot
         return true;
     }
 
-    public void Clear()
+    public virtual void Clear()
     {
         // clears the slot
         amount = 0;

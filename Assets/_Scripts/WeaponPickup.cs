@@ -32,13 +32,15 @@ public class WeaponPickup : MonoBehaviour
             else {
                 Debug.Log("GUN_Acquired");
                 GameObject thisFireArm = Instantiate(FireArm.prefab) as GameObject;
-                FireArm.prefabClone = thisFireArm;
-                Player.instance.inventory.AddItemToInventory(FireArm, 1);
+                
                 
                 thisFireArm.transform.parent = GameObject.Find("InventoryParent").transform;
                 thisFireArm.transform.localPosition = new Vector3(0f, -0.25f, 0f);
+                thisFireArm.transform.position = Vector3.zero;
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
+                FireArm.prefabClone = thisFireArm;
+                Player.instance.inventory.AddItemToInventory(FireArm, 1);
                 // popup popup = FindObjectOfType<popup>();
                 //popup.SetText(name);
                 //popup.ShowText();
