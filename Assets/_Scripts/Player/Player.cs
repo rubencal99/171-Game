@@ -109,30 +109,32 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     void Update()
     {
-         if (isDead==true){                      //For Debug the instance kill 
+        if (isDead==true){                      //For Debug the instance kill 
              Health -= Health;
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
-         }
+        }
 
-         if(HitLastFiveSec){
+        if(HitLastFiveSec){
             StartCoroutine(fadeOverlay());
-         }
+        }
 
          //raise defelction shield
-         if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
+        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
              StartCoroutine(RaiseShield());
-         }
+        }
 
          //hipposkin
-        //Debug.Log("HippoApplied from outside statement: " + PlayerAugmentations.HippoApplied);
-         if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
-             //Debug.Log("HippoApplied: " + PlayerAugmentations.HippoApplied);
+        if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
              StartCoroutine(ApplyHippo());
          }
          if(Input.GetButtonUp("Teleport")){
-             Debug.Log("Teleport");
+             //Debug.Log("Teleport");
              PlayerSignaler.CallWhiskers();
+         }
+         if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
+            InvokeRepeating("RunAutoDoc",1f,2f);
+            StartCoroutine(AutoDocCoolDown());
          }
     }
     public IEnumerator fadeOverlay(){
@@ -249,6 +251,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
         transform.position = SpawnPosition;
     }
 
+    public void RunAutoDoc(){
+        int toHeal = Mathf.CeilToInt(PlayerAugmentations.AutoDocHeal * MaxHealth);
+        Heal(toHeal);
+        PlayerAugmentations.AutoDocUsed = true;
+    }
+
      public IEnumerator iframes_damage() {
         invincible = true;
         yield return new WaitForSeconds((float)damage_iframes / 60f);
@@ -270,5 +278,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
         yield return null;
         setMaxHp(MaxHealth + Mathf.FloorToInt(0.15f * MaxHealth));
         Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied);
+    }
+
+    public IEnumerator AutoDocCoolDown(){
+        yield return new WaitForSeconds(PlayerAugmentations.AutoDocCoolDown);
+        PlayerAugmentations.AutoDocUsed = false;
     }
 }

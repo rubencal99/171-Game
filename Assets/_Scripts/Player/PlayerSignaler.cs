@@ -43,6 +43,7 @@ public static class PlayerSignaler : object
             Debug.Log("Epinephrine = true");
             Player.Heal(PlayerAugmentations.EpinephrineBoost);
         }
+
     }
 
     public static bool CallCasingRecycler(){
@@ -52,9 +53,8 @@ public static class PlayerSignaler : object
                  return true;
              }
              return false;
-        }else{
-            return false;
         }
+        return false;
     }
 
     public static void CallWhiskers(){
@@ -68,11 +68,6 @@ public static class PlayerSignaler : object
             Player.transform.position += direction.normalized * dist;
         }else if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
             Debug.Log("Teleport into obstacle");
-        }
-    
-    }
-
-    public static bool CallHookShot(){
-        return false;
+        }  
     }
 }
