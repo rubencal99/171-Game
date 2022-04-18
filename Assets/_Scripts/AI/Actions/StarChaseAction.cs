@@ -23,9 +23,9 @@ public class StarChaseAction : AIAction
         seeker = transform.parent.parent.GetComponentInChildren<Seeker>();
         rb = transform.parent.parent.GetComponent<Rigidbody>();
         movementCollider = seeker.transform.GetComponent<CapsuleCollider>();
-        target = enemyBrain.Target;
+        //target = enemyBrain.Target;
 
-        aiMovementData.PointOfInterest = (Vector3)target.transform.position;
+        //aiMovementData.PointOfInterest = (Vector3)target.transform.position;
 
         // This calls our UpdatePath func on 0.5 sec loop
         InvokeRepeating("UpdatePath", 0f, .1f);
@@ -44,7 +44,7 @@ public class StarChaseAction : AIAction
 
     protected void UpdatePath()
     {
-        if (seeker.IsDone())
+        if (seeker.IsDone() && target)
         {
             seeker.StartPath(movementCollider.transform.position, target.transform.position, OnPathComplete);
         }
@@ -61,6 +61,10 @@ public class StarChaseAction : AIAction
 
     public override void TakeAction()
     {
+        if(target == null)
+        {
+            return;
+        }
         if (path == null)
         {
             return;
@@ -75,7 +79,8 @@ public class StarChaseAction : AIAction
             reachedEnd = false;
         }
 
-        Vector3 direction = ((Vector3)path.vectorPath[currentWaypoint + 1] - (Vector3)movementCollider.transform.position).normalized;
+        Vector3 d = ((Vector3)path.vectorPath[currentWaypoint + 1] - (Vector3)movementCollider.transform.position).normalized;
+        Vector3 direction = new Vector3(d.x, 0, d.z);
        // Debug.Log("Path point: " + path.vectorPath[currentWaypoint + 1]);
        // Debug.Log("Movement collider position: " + movementCollider.transform.position);
         //direction.z = direction.y;

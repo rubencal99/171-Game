@@ -243,7 +243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimDirection: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  startingRotation: {x: 0, y: 0, z: 0, w: 0}
   desiredAngle: 0
+  pointerPos: {x: 0, y: 0, z: 0}
   weaponRenderer: {fileID: 0}
   gun: {fileID: 0}
   melee: {fileID: 0}
@@ -628,6 +630,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnRevive>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   isDying: 0
   deathTimer: 10
   agentAnimations: {fileID: 0}
@@ -891,9 +896,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.12
-  m_Height: 5.53
+  m_Height: 4.51274
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.30701542, z: 8.102387e-16}
 --- !u!1 &5738853248839715589
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5738853248839715589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2, z: 0}
+  m_LocalPosition: {x: -0.15, y: -1.62, z: 1.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5738853248683192958}
@@ -964,10 +969,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.33
-  m_Height: 3.16
+  m_Radius: 0.23434544
+  m_Height: 1.9682164
   m_Direction: 0
-  m_Center: {x: 0, y: 0.22, z: 0}
+  m_Center: {x: -0.017604828, y: 0.31565458, z: 9.330085e-16}
 --- !u!1 &5738853249054104186
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,13 +1002,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5738853249054104186}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.40673664, y: 0, z: 0, w: 0.9135455}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 5738853248683192958}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -48, y: 0, z: 0}
 --- !u!212 &5738853249054104135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1276,7 +1281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5818478895607887012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3094406292970958824}
@@ -1298,7 +1303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimDirection: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  startingRotation: {x: 0, y: 0, z: 0, w: 0}
   desiredAngle: 0
+  pointerPos: {x: 0, y: 0, z: 0}
   weaponRenderer: {fileID: 0}
   gun: {fileID: 0}
   melee: {fileID: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossResetAction : AIAction
 {
-  public SquidBoss boss;
+  public _BaseBoss boss;
 
   public override void TakeAction()
   {

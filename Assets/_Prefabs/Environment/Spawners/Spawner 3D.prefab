@@ -44,18 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d8a3c248d96b114099612ca0accdcf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemies:
-  - {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
-  - {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+  Waves:
+  - Enemies:
+    - Enemy: {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+      SpawnCount: 3
+    waveDelay: 0
+  - Enemies:
+    - Enemy: {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
+      SpawnCount: 2
+    waveDelay: 2
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
-  numToSpawn: 5
-  enemyCount: 0
-  enemyDensity: 20
   offset: 1
   spawned: 0
+  enemyCount: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0

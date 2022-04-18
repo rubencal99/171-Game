@@ -17,7 +17,7 @@ public class RoomClearCheck : MonoBehaviour
            if(child.tag == "Spawner")
            {
                child.GetComponent<EnemySpanwer>().enabled = true;
-               enemyCount += child.GetComponent<EnemySpanwer>().numToSpawn;
+               enemyCount += child.GetComponent<EnemySpanwer>().enemyCount;
                spawners.Add(child.gameObject);
               }
         }
@@ -25,16 +25,16 @@ public class RoomClearCheck : MonoBehaviour
     }
 
      void Update() {
-         // Debug.Log("hello " +  spawners.Count);
-         foreach(GameObject sp in spawners)
-         {
-            if (sp!= null)
-            {
-                // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
-                if(sp.GetComponent<EnemySpanwer>().spawned)
-                    oneStepCloser();
-            }
-         }
+        //  // Debug.Log("hello " +  spawners.Count);
+        //  foreach(GameObject sp in spawners)
+        //  {
+        //     if (sp!= null)
+        //     {
+        //         // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
+        //         if(sp.GetComponent<EnemySpanwer>().spawned)
+        //             oneStepCloser();
+        //     }
+        //  }
     }
 
 
@@ -56,8 +56,8 @@ public class RoomClearCheck : MonoBehaviour
            }
             // Debug.Log("current enemy count = " + enemyCount); 
         }
-        if(enemyCount <= 0)
-            checkIfClear();
+        //if(enemyCount <= 0 && spawners[0].GetComponent<EnemySpanwer>().Waves.Count <= 0)
+        //    checkIfClear();
        
    }
     public void checkIfClear() {
@@ -77,6 +77,8 @@ public class RoomClearCheck : MonoBehaviour
             Instantiate(exit, exit_pos, Quaternion.identity);
         }
 
+        
+
         LootClear thisLoot = LootClear.Instance;
         thisLoot?.Pick(room);
         Debug.Log("room cleared");
@@ -87,7 +89,7 @@ public class RoomClearCheck : MonoBehaviour
          Debug.Log("room set active");
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
-                   child.GetChild(0).gameObject.SetActive(true);
+                   //child.GetChild(0).gameObject.SetActive(true);
                    child.GetComponent<EntryCollider>().toggleGuarded();
            }
            if(child.tag == "Spawner")

@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public static Player instance;
     public RoomNode currentRoom;
 
-    
+
     public bool invincible = false;
 
    // public int damage_iframes = 20;

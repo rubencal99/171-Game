@@ -375,8 +375,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimDirection: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  startingRotation: {x: 0, y: 0, z: 0, w: 0}
   desiredAngle: 0
+  pointerPos: {x: 0, y: 0, z: 0}
   weaponRenderer: {fileID: 0}
+  gun: {fileID: 0}
+  melee: {fileID: 0}
   weapon: {fileID: 0}
   InfAmmo: 0
 --- !u!1 &2365015089062891130
@@ -1009,6 +1013,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnRevive>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   isDying: 0
   deathTimer: 10
   agentAnimations: {fileID: 0}
@@ -1398,7 +1405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6638867990160967629}
-  - component: {fileID: 6638867990160967628}
+  - component: {fileID: 8358922013587424146}
   m_Layer: 10
   m_Name: MovementCollider
   m_TagString: Untagged
@@ -1420,22 +1427,20 @@ Transform:
   m_Father: {fileID: 6638867989798731445}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &6638867990160967628
-CapsuleCollider2D:
+--- !u!136 &8358922013587424146
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867990160967630}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0450005, y: -0.4516089}
-  m_Size: {x: 0.57572347, y: 0.15464844}
-  m_Direction: 1
+  m_Enabled: 1
+  m_Radius: 0.076574385
+  m_Height: 0.37929773
+  m_Direction: 0
+  m_Center: {x: 0.014146566, y: -0.4234256, z: 0}
 --- !u!1 &6638867990841983294
 GameObject:
   m_ObjectHideFlags: 0

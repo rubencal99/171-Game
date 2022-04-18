@@ -21,6 +21,7 @@ public class CameraShake : MonoBehaviour
         Instance = this;
         Camera = GetComponent<CinemachineVirtualCamera>();
         CameraPerlin = Camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        originalCameraPos = transform.position;
     }
 
     private void Update()
@@ -40,13 +41,18 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float frequency, float time)
     {
+        /*
+        originalCameraPos = transform.localPosition;
+        
+
         // CameraPerlin.m_AmplitudeGain = intensity;
         startingIntensity = intensity;
         // CameraPerlin.m_FrequencyGain = frequency;
         startingFrequency = frequency;
         shakeTimer = time;
         shakeTimerTotal = time;
-        originalCameraPos = this.transform.localPosition;
+        //originalCameraPos = this.transform.localPosition;
+        */
     }
 }
  

@@ -14,7 +14,7 @@ public class SpawnAction : AIAction
         if(SquidBoss.inSpawn)
         {
             Debug.Log("In Spawn");
-            spawner.StartSpawn();
+            //spawner.StartSpawn();
             SquidBoss.inSpawn = false; 
         }
     }

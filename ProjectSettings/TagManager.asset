@@ -25,6 +25,7 @@ TagManager:
   - bloodparticles
   - LP
   - BAS
+  - Tilemap
   layers:
   - Default
   - TransparentFX

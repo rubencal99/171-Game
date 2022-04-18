@@ -37,7 +37,7 @@ public class WeaponDataSO : ScriptableObject
     public float ReloadSpeed { get; set; } = 1;
 
     [field: SerializeField]
-    [field: Range(0, 25)]
+    [field: Range(0, 180)]
     public float SpreadAngle { get; set; } = 5;
 
     [SerializeField]

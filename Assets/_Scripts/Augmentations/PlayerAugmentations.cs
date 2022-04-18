@@ -5,12 +5,12 @@ using System.Linq;
 
 public static class PlayerAugmentations : object
 {
+    public static ItemInventory Ii;
 
     [SerializeField]
     //////////////////////////////EPINEPHRINE////////////////////////////////////
     public static bool Epinephrine = false;
     public static int EpinephrineBoost = 1;
- 
     //////////////////////////////BULLETTIME/////////////////////////////////////
     public static bool BulletTime = false;
     public static float BulletTT = 0.5f;
@@ -47,15 +47,6 @@ public static class PlayerAugmentations : object
     public static bool DamageBuff = false;
 
     public static bool Drone = false;
-
-    public static Dictionary<string, bool> AugLoc = new Dictionary<string, bool>(){
-        {"Head", false},
-        {"Body", false},
-        {"Arms",false},
-        {"Legs", false},
-        {"Aux", false}
-       
-    };
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {

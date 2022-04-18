@@ -11,6 +11,7 @@ public class HasAllyDecision : AIDecision
 
     bool HasAlly(){
         var allies = GameObject.FindGameObjectsWithTag("Enemy");
+        //Debug.Log("Number of allies: " + allies.Length);
         if(allies.Length > 1){
             return true;
         }

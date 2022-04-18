@@ -21,7 +21,7 @@ public class CycloneAction : AIAction
             enemyBrain.Aim(aiMovementData.PointOfInterest);
             tracker = false;
             //SquidBoss.inCyclone = true;
-            // SquidBoss.cycloneAttempts--;
+            SquidBoss.cycloneAttempts--;
         }
         else if(Vector2.Distance((Vector2)transform.position, aiMovementData.PointOfInterest) <= 0.5 && SquidBoss.atCycloneDest == false)
         {
