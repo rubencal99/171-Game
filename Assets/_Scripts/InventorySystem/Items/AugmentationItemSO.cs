@@ -11,7 +11,7 @@ public enum AugType{
     Leg,
     Aux
 }
-[CreateAssetMenu(fileName = "New Weapon Item", menuName = "Inventory System/Items/Augmentation")]
+[CreateAssetMenu(fileName = "New Augmentation Item", menuName = "Inventory System/Items/Augmentation")]
 public class AugmentationItemSO : ItemObject
 {
     public AugType augType;
@@ -21,6 +21,11 @@ public class AugmentationItemSO : ItemObject
         // initialize as type Augmentation
         type = ItemType.Augmentation;
         stackable = false;
+        itemType = Convert.ToInt32(augType);
+    }
+    void OnValidate()
+    {
+        // update itemType when augType is changed
         itemType = Convert.ToInt32(augType);
     }
 }
