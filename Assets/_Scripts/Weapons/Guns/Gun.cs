@@ -171,7 +171,10 @@ public class Gun : MonoBehaviour, IWeapon
             Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)
             {
-                Ammo--;
+                Debug.Log(PlayerSignaler.CallCasingRecycler());
+                if(!PlayerSignaler.CallCasingRecycler()){
+                    Ammo--;
+                }
                 //I'd like the UI of this to show the ammo decreasing & increasing rapidly
                 if (infAmmo)
                     Ammo++;
