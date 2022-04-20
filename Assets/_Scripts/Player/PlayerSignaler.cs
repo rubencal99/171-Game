@@ -73,7 +73,7 @@ public static class PlayerSignaler : object
 
     public static float CallDamageBuff(float damage){
         var curDamage = damage;
-        if(PlayerAugmentations.AugmentationList["DamgeBuff"]){
+        if(PlayerAugmentations.AugmentationList["DamageBuff"]){
             return curDamage + curDamage * PlayerAugmentations.BuffAmount;
         }
         return curDamage;

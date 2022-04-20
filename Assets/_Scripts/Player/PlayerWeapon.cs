@@ -21,6 +21,7 @@ public class PlayerWeapon : AgentWeapon
 
     Vector3 mousePos;
     public ItemInventory itemInventory;
+    public bool useInventory;
 
     void Awake()
     {
@@ -86,7 +87,7 @@ public class PlayerWeapon : AgentWeapon
         {
             slot1.ReplacePrimary(slot1.item.prefabClone);
         }
-        else
+        else if(useInventory)
         {
             Primary = null;
         }
@@ -94,7 +95,7 @@ public class PlayerWeapon : AgentWeapon
         {
             slot2.ReplaceSecondary(slot2.item.prefabClone);
         }
-        else
+        else if(useInventory)
         {
             Secondary = null;
         }

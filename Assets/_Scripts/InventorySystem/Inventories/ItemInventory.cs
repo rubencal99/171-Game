@@ -108,7 +108,7 @@ public class ItemInventory : ScriptableObject
         }
         foreach (WeaponSlot slot in WContainer)
         {
-            slot.Clear();
+            slot.Wipe();
         }
         Debug.Log("Inventory Cleared");
     }
@@ -199,6 +199,13 @@ public class WeaponSlot : Slot
         {
             return false;
         }
+    }
+
+    public void Wipe()
+    {
+        item = null;
+        prevItem = null;
+        amount = 0;
     }
 
     public override void Clear()
@@ -320,9 +327,12 @@ public class AugSlot : Slot
     }
 
     public override void Clear(){
-        amount = 0;
-        PlayerAugmentations.AugmentationList[item.Name] = false;
-        item = null;
+        if(item)
+        {
+            amount = 0;
+            PlayerAugmentations.AugmentationList[item.Name] = false;
+            item = null;
+        }
     }
 }
 
