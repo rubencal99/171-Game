@@ -55,7 +55,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public void GetHit(float damage, GameObject damageDealer)
     {
-        Health -= damage;
+        float d = PlayerSignaler.CallDamageBuff(damage);
+        Health -= d;
         blood.Play();
         DamageType(damageDealer);
         

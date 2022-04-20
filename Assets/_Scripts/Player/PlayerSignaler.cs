@@ -70,4 +70,12 @@ public static class PlayerSignaler : object
             Debug.Log("Teleport into obstacle");
         }  
     }
+
+    public static float CallDamageBuff(float damage){
+        var curDamage = damage;
+        if(PlayerAugmentations.AugmentationList["DamgeBuff"]){
+            return curDamage + curDamage * PlayerAugmentations.BuffAmount;
+        }
+        return curDamage;
+    }
 }

@@ -298,7 +298,32 @@ public class AugSlot : Slot
             return false;
         }
     }
-    
+    public override void AddItemToSlot(ItemObject _Item, int _amount){
+        if (VerifyItem(_Item))
+        {
+            // does the thing
+            if (item == null)
+            {
+                item = _Item;
+                AddAmount(_amount);
+            }
+            else if (item == _Item && item.stackable)
+            {
+                AddAmount(_amount);
+            }
+            else 
+            {
+                Debug.Log("There's already an item in this slot");
+            }
+        }
+        PlayerAugmentations.AugmentationList[_Item.Name] = true;
+    }
+
+    public override void Clear(){
+        amount = 0;
+        PlayerAugmentations.AugmentationList[item.Name] = false;
+        item = null;
+    }
 }
 
 public abstract class Slot

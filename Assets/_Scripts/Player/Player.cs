@@ -176,7 +176,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
 
     public void GetHit(float damage, GameObject damageDealer)
-    {    
+    {   
         if(invincible)
         {
             return;

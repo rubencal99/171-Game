@@ -45,20 +45,22 @@ public static class PlayerAugmentations : object
     public static bool AutoDocUsed = false;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
     public static bool DamageBuff = false;
+    public static float BuffAmount = 0.25f;
 
     public static bool Drone = false;
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {
-        {"Epinephrine", Epinephrine},
-        {"BulletTime", BulletTime},
-        {"GunnerGloves", GunnerGloves},
+        {"Epinephrine", Epinephrine}, // passive
+        {"BulletTime", BulletTime}, //passive
+        {"GunnerGloves", GunnerGloves}, //passive
         {"DeflectionShield", DeflectionShield},
-        {"HippoSkin", HippoSkin},
-        {"CasingRecycle", CasingRecycle},
+        {"HippoSkin", HippoSkin}, //passive
+        {"CasingRecycle", CasingRecycle}, //passive
         {"Whiskers", Whiskers},
         {"HookShot", HookShot},
-        {"AutoDoc", AutoDoc}
+        {"AutoDoc", AutoDoc}, //passive
+        {"DamageBuff", DamageBuff} //passive
     };
 
     public static void ResetAugmentations()
