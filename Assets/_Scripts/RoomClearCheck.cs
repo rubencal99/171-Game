@@ -24,27 +24,6 @@ public class RoomClearCheck : MonoBehaviour
         // Debug.Log(" Room Enemy count = " + enemyCount + ", spawner count = " + spawners.Count);
     }
 
-     void Update() {
-        //  // Debug.Log("hello " +  spawners.Count);
-        //  foreach(GameObject sp in spawners)
-        //  {
-        //     if (sp!= null)
-        //     {
-        //         // Debug.Log("finished spawning? " + sp.GetComponent<EnemySpanwer>().spawned);
-        //         if(sp.GetComponent<EnemySpanwer>().spawned)
-        //             oneStepCloser();
-        //     }
-        //  }
-    }
-
-
-    // Update is called once per frame
-//    public void oneStepCloser() {
-//        enemyCount --;
-//        Debug.Log("One step closer, " + enemyCount + "enemies remaining");
-//        checkIfClear();
-       
-//    }
 
  public void oneStepCloser() {
       enemyCount = 0;
@@ -63,8 +42,9 @@ public class RoomClearCheck : MonoBehaviour
     public void checkIfClear() {
           foreach(Transform child in transform)
         {
-        if(child.tag == "Spawner" || child.tag == "Door")
-            Destroy(child.gameObject);
+        if(child.tag == "Spawner") Destroy(child.gameObject);
+         if(child.tag == "Door") child.GetComponent<EntryCollider>().enabled = false;
+            
             // GraphUpdater.InRoom = false;
         }
 
@@ -72,7 +52,7 @@ public class RoomClearCheck : MonoBehaviour
             Debug.Log("Boss defeated");
             exit = GameObject.FindWithTag("Map Gen").GetComponent<MapGenerator>().Exit;
 
-            Vector3 exit_pos = new Vector3((float)this.GetComponent<RoomNode>().roomCenter.x, (float)this.GetComponent<RoomNode>().roomCenter.y, 0f);
+            Vector3 exit_pos = new Vector3((float)this.GetComponent<RoomNode>().roomCenter.x, 0f, (float)this.GetComponent<RoomNode>().roomCenter.y);
             //exit.transform.position = exit_pos;
             Instantiate(exit, exit_pos, Quaternion.identity);
         }
@@ -90,7 +70,7 @@ public class RoomClearCheck : MonoBehaviour
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    //child.GetChild(0).gameObject.SetActive(true);
-                   child.GetComponent<EntryCollider>().toggleGuarded();
+
            }
            if(child.tag == "Spawner")
                child.gameObject.SetActive(true);

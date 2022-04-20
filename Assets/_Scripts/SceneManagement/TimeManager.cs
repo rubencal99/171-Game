@@ -33,7 +33,7 @@ public class TimeManager : MonoBehaviour
         // freezeQueue++;
         // pendingFreeze = freezeDuration;
         Debug.Log("In Freeze");
-        StartCoroutine(DoFreeze());
+       if(freezeQueue < 1) StartCoroutine(DoFreeze());
     }
 
     IEnumerator DoFreeze()
