@@ -26,6 +26,7 @@ public class PlayerWeapon : AgentWeapon
     void Awake()
     {
         instance = this;
+
     }
 
     private void Start()

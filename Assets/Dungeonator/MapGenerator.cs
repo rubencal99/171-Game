@@ -594,12 +594,11 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
-        // if(PlayerProgressManager.currentPlayerState != null 
-        //     && PlayerProgressManager.currentPlayerWeaponState != null) {
+         if(PlayerProgressManager.hasData) {
             PlayerProgressManager.LoadPlayer(Player.GetComponentInChildren<PlayerWeapon>().gameObject, Player.gameObject);
            // Player.GetComponent<Player>() = PlayerProgressManager.currentPlayerState;
            // Player.GetComponentInChildren<PlayerWeapon>() = PlayerProgressManager.currentPlayerWeaponState;
-            // }
+             }
         controls.SetPosition(Player.transform.position);
         Vector3 weaponSpawn = new Vector3(spawnPosition.x - 3, spawnPosition.y, spawnPosition.z);
         GameObject spawnWeapon = Instantiate(SpawnWeapon, weaponSpawn, Quaternion.identity);
