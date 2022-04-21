@@ -10,6 +10,7 @@ public class PlayerInventory : MonoBehaviour
 
     public Player player;
     public static PlayerInventory instance;
+    public ItemInventory itemInventory;
 
     void Awake()
     {
@@ -20,6 +21,31 @@ public class PlayerInventory : MonoBehaviour
     {
         stats = this.transform.parent.GetComponent<PlayerPassives>();
         player = this.transform.parent.GetComponent<Player>();
+        CheckInventory();
+    }
+
+    public void CheckInventory()
+    {
+        foreach(InventorySlot slot in itemInventory.Container)
+        {
+            if(slot.item != null)
+            {
+                InstantiateItem(slot.item);
+                
+            }
+        }
+    }
+
+    public void InstantiateItem(ItemObject slotItem)
+    {
+        GameObject item = Instantiate(slotItem.prefab);
+        item.transform.parent = GameObject.Find("InventoryParent").transform;
+        item.transform.localPosition = new Vector3(0f, -0.25f, 0f);
+        item.transform.position = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
+        item.SetActive(false);
+        slotItem.prefabClone = item;
+        //Player.instance.inventory.AddItemToInventory(slotItem, 1);
     }
 
     public void applyEffects() {
