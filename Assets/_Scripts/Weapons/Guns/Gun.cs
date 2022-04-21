@@ -107,7 +107,7 @@ public class Gun : MonoBehaviour, IWeapon
     public void TryShooting()
     {
         isShooting = true;
-        Debug.Log("Is shooting = " + isShooting);
+        //Debug.Log("Is shooting = " + isShooting);
     }
     public void StopShooting()
     {
@@ -169,11 +169,11 @@ public class Gun : MonoBehaviour, IWeapon
         
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
-            Debug.Log("ROF: " + rateOfFireCoroutine);
-            Debug.Log("Reload: " + reloadCoroutine);
+            //Debug.Log("ROF: " + rateOfFireCoroutine);
+            //Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)
             {
-                Debug.Log(PlayerSignaler.CallCasingRecycler());
+                //Debug.Log(PlayerSignaler.CallCasingRecycler());
                 if(!PlayerSignaler.CallCasingRecycler()){
                     Ammo--;
                 }

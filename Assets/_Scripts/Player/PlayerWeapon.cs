@@ -86,6 +86,8 @@ public class PlayerWeapon : AgentWeapon
         WeaponSlot slot2 = itemInventory.WContainer[1];
         if(slot1.item != null)
         {
+            Debug.Log("Before instantiate item");
+            PlayerInventory.instance.InstantiateItem(slot1.item);
             slot1.ReplacePrimary(slot1.item.prefabClone);
         }
         else if(useInventory)
@@ -94,6 +96,7 @@ public class PlayerWeapon : AgentWeapon
         }
         if(slot2.item != null)
         {
+            PlayerInventory.instance.InstantiateItem(slot2.item);
             slot2.ReplaceSecondary(slot2.item.prefabClone);
         }
         else if(useInventory)
