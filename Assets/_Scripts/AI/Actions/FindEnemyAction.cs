@@ -8,7 +8,7 @@ public class FindEnemyAction : AIAction
     public float radius;
   public override void TakeAction()
   {
-    if(companion.enemyTarget == null)
+    if(companion.enemyTarget == null || companion.enemyTarget.isDying)
     {
         FindEnemy();
     }
@@ -23,7 +23,7 @@ public class FindEnemyAction : AIAction
     foreach(Collider collider in colliders)
     {
         Enemy temp = collider.gameObject.GetComponent<Enemy>();
-        if(temp)
+        if(temp && !temp.isDying)
         {
             float d = Vector3.Distance(collider.transform.position, transform.position);
             if(1 <= d && d < closestDistance)
