@@ -10,7 +10,7 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     public GameObject Target { get; set; }
 
     [field: SerializeField]
-    public EnemyGun Weapon { get; set; }
+    public Gun Weapon { get; set; }
 
     public Enemy enemy;
     private GameObject player;
@@ -67,7 +67,7 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
     {
         player = FindObjectOfType<Player>().gameObject;
         Target = player;
-        Weapon = transform.GetComponentInChildren<EnemyGun>();
+        Weapon = transform.GetComponentInChildren<Gun>();
         enemy = transform.GetComponent<Enemy>();
     }
 
