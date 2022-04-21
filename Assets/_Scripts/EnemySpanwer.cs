@@ -141,7 +141,8 @@ public class EnemySpanwer : MonoBehaviour
         var clone = Instantiate(source, offsetPosition, source.transform.rotation);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
-        StartCoroutine(enable_brain(clone));
+        if(clone.GetComponent<EnemyBrain>() != null)
+            StartCoroutine(enable_brain(clone));
       //  clone.GetComponent<EnemyBrain>().enabled = true;
 
         spawned = true;

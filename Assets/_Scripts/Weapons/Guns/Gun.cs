@@ -77,9 +77,11 @@ public class Gun : MonoBehaviour, IWeapon
         }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
-        weaponParent = transform.parent.GetComponent<AgentWeapon>();
-        passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
-        infAmmo = weaponParent.InfAmmo;
+        if(isPlayer) {
+            weaponParent = transform.parent.GetComponent<AgentWeapon>();
+            passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
+            infAmmo = weaponParent.InfAmmo;
+        }
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -159,7 +161,7 @@ public class Gun : MonoBehaviour, IWeapon
         UseWeapon();
         //UseMelee();
         Reload();
-        infAmmo = weaponParent.InfAmmo;
+        //infAmmo = weaponParent.InfAmmo;
     }
 
     protected virtual void UseWeapon()
