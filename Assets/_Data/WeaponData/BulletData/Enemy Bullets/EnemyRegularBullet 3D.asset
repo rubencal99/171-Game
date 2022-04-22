@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyRegularBullet 3D
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 3ecf984356cc9a04dadf51b3818ab8bf, type: 3}
-  <BulletSpeed>k__BackingField: 8.1
+  <BulletSpeed>k__BackingField: 19.8
   <Damage>k__BackingField: 1
   <Friction>k__BackingField: 20
   <Bounce>k__BackingField: 0

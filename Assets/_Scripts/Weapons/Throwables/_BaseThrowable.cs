@@ -16,6 +16,8 @@ public class _BaseThrowable : MonoBehaviour
 
     Vector3[] targetPos;
 
+    float distance;
+
     PlayerWeapon pw;
 
     int posCount = 0;
@@ -28,10 +30,15 @@ public class _BaseThrowable : MonoBehaviour
        
         pos = (Vector3[])pw.throwableArc.arcArray.Clone();
         targetPos = new Vector3[pos.Length];
-        Speed = pw.throwableArc.maxDistance;
-        for(int i = 0; i < pos.Length; i++) {
+        Speed = 1;
+       
+         if(!Thrown) {
+            transform.position = transform.parent.parent.position;
+        }
+         for(int i = 0; i < pos.Length; i++) {
             targetPos[i] = pos[i];
         }
+        distance = Vector3.Distance( pw.GetComponent<AgentWeapon>().pointerPos ,pw.transform.parent.localPosition);
         //pos = this.transform.parent.GetComponent<PlayerWeapon>().throwableArc.arcArray;
 
         // Automatically destroy throwable after 5 seconds
@@ -46,15 +53,15 @@ public class _BaseThrowable : MonoBehaviour
     //             posCount++;
     //     }
       //  transform.position += transform.position * pw.desiredAngle * Speed  * Time.deltaTime;
-        if(!Thrown) {
-            transform.position = transform.parent.parent.position;
-        }
+       
     }
 
     public void addForce() {
           var direction = pw.aimDirection + Vector3.up;
+          Vector3.Normalize(direction);
          GetComponent<Rigidbody>().useGravity = true;
-         GetComponent<Rigidbody>().AddForce(direction * (Speed + SpeedBonus), ForceMode.Impulse);
+         Debug.Log("distance = " + distance);
+         GetComponent<Rigidbody>().AddForce(direction * distance, ForceMode.Impulse);
          transform.parent = null;
     }
 

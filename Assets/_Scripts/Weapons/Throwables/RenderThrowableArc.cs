@@ -53,6 +53,7 @@ public class RenderThrowableArc : MonoBehaviour
 
         for(int i = 1; i < resolution; i++) {
              dotArray[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+             dotArray[i].GetComponent<SphereCollider>().enabled = false;
              dotArray[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
              dotArray[i].transform.parent = this.transform;
             //. dotArray[i].s

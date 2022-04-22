@@ -19,7 +19,7 @@ public class PlayerWeapon : AgentWeapon
 
     public RenderThrowableArc throwableArc;
 
-    Vector3 mousePos;
+    public Vector3 mousePos;
     private ItemInventory itemInventory;
     public bool useInventory;
 
@@ -37,6 +37,7 @@ public class PlayerWeapon : AgentWeapon
         
         Secondary.SetActive(false);
         InfAmmo = false;
+        AssignWeapon();
     }
 
 
