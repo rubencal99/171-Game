@@ -89,6 +89,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Awake()
     {
         instance = this;
+         //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()

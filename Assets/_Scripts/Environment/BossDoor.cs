@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorDoor : MonoBehaviour
+public class BossDoor : MonoBehaviour
 {
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider other)
     {
-        if(Player.instance.hasKey)
+        if(other.tag == "Player")
         {
             Debug.Log("Player can continue to next floor");
             FloorExit.instance.GetComponent<FloorExit>().CallLoadScene();

@@ -30,29 +30,29 @@ public class TimeManager : MonoBehaviour
 
     public void Freeze()
     {
-        // freezeQueue++;
-        // pendingFreeze = freezeDuration;
-        Debug.Log("In Freeze");
-       if(freezeQueue < 1) StartCoroutine(DoFreeze());
+    //     // freezeQueue++;
+    //     // pendingFreeze = freezeDuration;
+    //     Debug.Log("In Freeze");
+    //    if(freezeQueue < 1) StartCoroutine(DoFreeze());
     }
 
-    IEnumerator DoFreeze()
-    {
-        freezeQueue++;
-        inFreeze = true;
-        var original = Time.timeScale;
-        Time.timeScale = 0f;
+    // IEnumerator DoFreeze()
+    // {
+    //     // freezeQueue++;
+    //     // inFreeze = true;
+    //     // var original = Time.timeScale;
+    //     // Time.timeScale = 0f;
         
-        yield return new WaitForSecondsRealtime(freezeDuration);
+    //     // yield return new WaitForSecondsRealtime(freezeDuration);
 
-        freezeQueue--;
-        if(freezeQueue <= 0)
-        {
-            Time.timeScale = original;
-            pendingFreeze = 0;
-            inFreeze = false;
-        }
-    }
+    //     // freezeQueue--;
+    //     // if(freezeQueue <= 0)
+    //     // {
+    //     //     Time.timeScale = original;
+    //     //     pendingFreeze = 0;
+    //     //     inFreeze = false;
+    //     // }
+    // }
 
     /*public void Update()
     {

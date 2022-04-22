@@ -20,18 +20,21 @@ public class PlayerWeapon : AgentWeapon
     public RenderThrowableArc throwableArc;
 
     Vector3 mousePos;
-    public ItemInventory itemInventory;
+    private ItemInventory itemInventory;
     public bool useInventory;
 
     void Awake()
     {
         instance = this;
+
     }
 
     private void Start()
     {
+        itemInventory = transform.parent.GetComponent<Player>().inventory;
         CheckInventory();
         Primary.SetActive(true);
+        
         Secondary.SetActive(false);
         InfAmmo = false;
     }
@@ -88,6 +91,7 @@ public class PlayerWeapon : AgentWeapon
             Debug.Log("Before instantiate item");
             PlayerInventory.instance.InstantiateItem(slot1.item);
             slot1.ReplacePrimary(slot1.item.prefabClone);
+            
         }
         else if(useInventory)
         {
