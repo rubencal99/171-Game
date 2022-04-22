@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb4a34f08ded4d4ab1818c56cc5dc3c, type: 3}
   m_Name: UziShopData
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8960519738105143089, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
+  Prefab: {fileID: 831301174554269326, guid: 812450d867f0e424f88b79c03209a563, type: 3}
   Name: Uzi
   Cost: 25
-  ItemSprite: {fileID: 0}
