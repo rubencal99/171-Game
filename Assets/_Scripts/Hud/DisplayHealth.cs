@@ -10,12 +10,13 @@ public class DisplayHealth : MonoBehaviour
      private Image HealthBar;
     public Text healthText;
     private float health;
-    private int lastHealth;
+    private float lastHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         p1 = obj.GetComponent<Player>(); // Get Player class from player object
+        lastHealth = p1.Health;
     }
 
     // Update is called once per frame
@@ -24,6 +25,8 @@ public class DisplayHealth : MonoBehaviour
         if (p1 != null){
             health = p1.Health; // set health int to player health
              healthText.text = "HP: " + health.ToString(); //Display player health
+            if(p1.Health != lastHealth) CallUpdateHealthBar();
+            lastHealth = p1.Health;
            // if(health != lastHealth)
               //  StartCoroutine(UpdateHealthBar());
             

@@ -107,7 +107,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         //overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
-        shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
+        //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
     void Update()
