@@ -29,9 +29,9 @@ public class EntryCollider : MonoBehaviour
 
        // boxCol = GetComponent<BoxCollider2D>();
         room = this.transform.parent.GetComponent<RoomNode>();
-      //  tilemap = TileSpritePlacer.instance.Tilemap;
-      //  normal_tile = TileSpritePlacer.instance.Tile;
-       // barrier_tile = TileSpritePlacer.instance.colliderTile;
+        //tilemap = TileSpritePlacer.instance.Tilemap;
+        //normal_tile = TileSpritePlacer.instance.Tile;
+        //barrier_tile = TileSpritePlacer.instance.colliderTile;
 
         //GameObject[] tilesArray =  GameObject.FindGameObjectsWithTag("Tilemap");
        // Tilemap tiles = tilesArray[0].GetComponent<Tilemap>();
@@ -58,8 +58,8 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                //if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
-                 //StartCoroutine(WaitToUpdateTiles(barrier_tile));
+                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
+                    StartCoroutine(WaitToUpdateTiles(barrier_tile));
                
             }
     }
@@ -107,7 +107,7 @@ public class EntryCollider : MonoBehaviour
 
 
     void OnDisable() {
-        //UpdateTiles(normal_tile);
+        UpdateTiles(normal_tile);
     }
 
 }

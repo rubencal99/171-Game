@@ -595,6 +595,7 @@ public class MapGenerator : MonoBehaviour
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
          if(PlayerProgressManager.hasData) {
+            Debug.Log("Loading player data");
             PlayerProgressManager.LoadPlayer(Player.GetComponentInChildren<PlayerWeapon>().gameObject, Player.gameObject);
            // Player.GetComponent<Player>() = PlayerProgressManager.currentPlayerState;
            // Player.GetComponentInChildren<PlayerWeapon>() = PlayerProgressManager.currentPlayerWeaponState;
