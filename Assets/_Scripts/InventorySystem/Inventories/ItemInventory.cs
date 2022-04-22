@@ -24,15 +24,13 @@ public class ItemInventory : ScriptableObject
         if (_fromslot != _toslot && _toslot.VerifyItem(_fromslot.item))
         {
             // if items are the same or _toslot is empty, just add item and amount to _toslot
-            if (_fromslot.item == _toslot.item || _toslot.item == null)
+            if ((_fromslot.item == _toslot.item && _fromslot.amount + _toslot.amount <= _toslot.item.stackLimit)|| _toslot.item == null)
             {
                 Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 //_toslot.item = _fromslot.item;
                 //_toslot.AddAmount(_fromslot.amount);
                 _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
                 _fromslot.Clear();
-                
-                
             }
             // if not, swap item and amount data
             else
@@ -66,7 +64,7 @@ public class ItemInventory : ScriptableObject
         {
             if(slot.item == _item)
             {
-                if (slot.item.stackable)
+                if (slot.amount < slot.item.stackLimit)
                 {
                     slot.AddAmount(_amount);
                     hasItem = true;
@@ -169,14 +167,14 @@ public class WeaponSlot : Slot
                     ReplaceSecondary(item.prefabClone);
                 }
             }
-            /*else if (item == _item && item.stackable)
+            else if (item == _item && amount + _amount < item.stackLimit)
             {
                 AddAmount(_amount);
             }
             else 
             {
                 Debug.Log("There's already an item in this slot");
-            }*/
+            }
         }
         
     }
@@ -298,16 +296,16 @@ public class AugSlot : Slot
             return false;
         }
     }
-    public override void AddItemToSlot(ItemObject _Item, int _amount){
-        if (VerifyItem(_Item))
+    public override void AddItemToSlot(ItemObject _item, int _amount){
+        if (VerifyItem(_item))
         {
             // does the thing
             if (item == null)
             {
-                item = _Item;
+                item = _item;
                 AddAmount(_amount);
             }
-            else if (item == _Item && item.stackable)
+            else if (item == _item && amount + _amount < item.stackLimit)
             {
                 AddAmount(_amount);
             }
@@ -316,7 +314,7 @@ public class AugSlot : Slot
                 Debug.Log("There's already an item in this slot");
             }
         }
-        PlayerAugmentations.AugmentationList[_Item.Name] = true;
+        PlayerAugmentations.AugmentationList[_item.Name] = true;
     }
 
     public override void Clear(){
@@ -329,7 +327,19 @@ public class AugSlot : Slot
 public abstract class Slot
 {
     public ItemObject item;
-    public int amount;
+    private int _amount = 0; // backing store
+    public int amount {
+        get => _amount; 
+        set{
+            if (value >= 0 && value <= item.stackLimit){
+                _amount = value;
+            }
+            else if (value > item.stackLimit){
+                _amount = item.stackLimit;
+            }
+            else { _amount = 0; }
+        }
+    }
     public void AddAmount(int value)
     {
         amount += value;
@@ -345,7 +355,7 @@ public abstract class Slot
                 item = _item;
                 AddAmount(_amount);
             }
-            else if (item == _item && item.stackable)
+            else if (item == _item && amount + _amount < item.stackLimit)
             {
                 AddAmount(_amount);
             }

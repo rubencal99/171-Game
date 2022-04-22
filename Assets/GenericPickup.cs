@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AugmentationPickup : MonoBehaviour
+public class GenericPickup : MonoBehaviour
 {
-    public AugmentationItemSO augmentation;
+    public ItemObject pickupItem;
+    public int pickupAmount = 1;
 
     private void OnTriggerEnter(Collider col)
     {
         //Debug.Log("Collided with object " + col.tag);
         if (col.tag == "Player")
         {
-            Player.instance.inventory.AddItemToInventory(augmentation, 1);
+            Player.instance.inventory.AddItemToInventory(pickupItem, pickupAmount);
             Destroy(gameObject);
         }
     } 

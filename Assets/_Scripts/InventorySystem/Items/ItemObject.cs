@@ -18,6 +18,6 @@ public abstract class ItemObject : ScriptableObject
     public int itemType;
     [TextArea(15,20)]
     public string description;
-    public bool stackable; 
+    public int stackLimit = 99;
     public string Name;
 }

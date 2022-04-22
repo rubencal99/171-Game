@@ -20,7 +20,7 @@ public class AugmentationItemSO : ItemObject
     {
         // initialize as type Augmentation
         type = ItemType.Augmentation;
-        stackable = false;
+        stackLimit = 1;
         itemType = Convert.ToInt32(augType);
     }
     void OnValidate()
