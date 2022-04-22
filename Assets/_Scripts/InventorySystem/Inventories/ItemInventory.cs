@@ -42,6 +42,11 @@ public class ItemInventory : ScriptableObject
                 int toamount = _toslot.amount;
                 ItemObject fromitem = _fromslot.item;
                 int fromamount = _fromslot.amount;
+
+                if(CheckEdgeCases(_fromslot, _toslot))
+                {
+                    return;
+                }
                 
                 _toslot.Clear();
                 _fromslot.Clear();
@@ -56,6 +61,23 @@ public class ItemInventory : ScriptableObject
             Debug.Log("MoveSwapCombine failed");
         }
         
+    }
+    bool CheckEdgeCases(Slot from, Slot to)
+    {
+        if(from is WeaponSlot && to is WeaponSlot)
+        {
+            Debug.Log("We're swapping between weapon slots right now");
+            WeaponSlot f = (WeaponSlot)from;
+            WeaponSlot t = (WeaponSlot)to;
+            // If you're dragging from secondary to primary
+            WeaponItemSO tItem = (WeaponItemSO)t.item;
+            if(tItem.weaponType == WeaponType.Primary)
+            {
+                Debug.Log("Error: Attempted to swap secondary with primary weapon");
+                return true;
+            }
+        }
+        return false;
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
