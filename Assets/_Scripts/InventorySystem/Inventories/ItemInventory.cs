@@ -368,5 +368,6 @@ public abstract class Slot
         amount = 0;
         item = null;
     }
+    
 }
 
