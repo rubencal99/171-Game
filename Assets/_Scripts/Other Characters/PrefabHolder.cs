@@ -46,27 +46,29 @@ public class PrefabHolder : MonoBehaviour
         popup popup = FindObjectOfType<popup>();
         if (playerInfo.CanPurchase(itemData.Cost))
         {
-            if (prefab.GetComponent<Gun>())
-            {
-                weaponParent = FindObjectOfType<PlayerWeapon>();
-                var weapon = Instantiate(prefab, weaponParent.transform.position, Quaternion.identity);
-                weapon.transform.parent = weaponParent.transform;
-                
-                playerInfo.Purchase(itemData.Cost);
-                // weapon.transform.position = weaponParent.transform.position;
+            //if (prefab.GetComponent<Gun>())
+            //{
+            Debug.Log("Purchased weapon");
+            weaponParent = FindObjectOfType<PlayerWeapon>();
+            var pos = transform.root.transform.position + Vector3.forward * 4;
+            var weapon = Instantiate(prefab, pos, Quaternion.identity);
+            weapon.transform.parent = transform.root;
+            
+            playerInfo.Purchase(itemData.Cost);
+            // weapon.transform.position = weaponParent.transform.position;
 
-                weapon.transform.localPosition = new Vector3(0, -0.25F, 0);
-                popup.SetText(itemData.Name);
-                popup.ShowText();
-                weapon.SetActive(false);
+            //weapon.transform.localPosition = new Vector3(0, -0.25F, 0);
+            //popup.SetText(itemData.Name);
+            //popup.ShowText();
+            //weapon.SetActive(false);
 
-                /* 
-                Vector3 p = weapon.transform.position;
-                p.x = 0.574f;
-                weapon.transform.position = p;
-                
+            /* 
+            Vector3 p = weapon.transform.position;
+            p.x = 0.574f;
+            weapon.transform.position = p;
+            
                 */
-            }
+            //}
         }
         else if (!playerInfo.CanPurchase(itemData.Cost))
         {
