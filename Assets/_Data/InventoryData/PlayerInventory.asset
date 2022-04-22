@@ -26,12 +26,12 @@ MonoBehaviour:
   - item: {fileID: 0}
     amount: 0
   WContainer:
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: 000c55c83aa114c80ab75080ddfa0ba0, type: 2}
+    amount: 1
     slotType: 0
     prevItem: {fileID: 0}
-  - item: {fileID: 0}
-    amount: 0
+  - item: {fileID: 11400000, guid: efb77a9ad19324bfdb6f2d9264d91fc9, type: 2}
+    amount: 1
     slotType: 1
     prevItem: {fileID: 0}
   AContainer:
