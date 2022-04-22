@@ -29,6 +29,10 @@ public class EntryCollider : MonoBehaviour
 
        // boxCol = GetComponent<BoxCollider2D>();
         room = this.transform.parent.GetComponent<RoomNode>();
+        //tilemap = TileSpritePlacer.instance.Tilemap;
+        //normal_tile = TileSpritePlacer.instance.Tile;
+        //barrier_tile = TileSpritePlacer.instance.colliderTile;
+
         //GameObject[] tilesArray =  GameObject.FindGameObjectsWithTag("Tilemap");
        // Tilemap tiles = tilesArray[0].GetComponent<Tilemap>();
         this.gameObject.transform.localScale = new Vector3((float)room.length, 3f, (float)room.width);
@@ -55,7 +59,7 @@ public class EntryCollider : MonoBehaviour
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
                 if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
-                 StartCoroutine(WaitToUpdateTiles(barrier_tile));
+                    StartCoroutine(WaitToUpdateTiles(barrier_tile));
                
             }
     }

@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class TileSpritePlacer : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap Tilemap;
+    public Tilemap Tilemap;
     [SerializeField]
     private Tilemap Collisions;
 
@@ -15,15 +15,20 @@ public class TileSpritePlacer : MonoBehaviour
 
     // We can create an array of TileBase for multiple tiles
     [SerializeField]
-    private TileBase Tile;
+    public TileBase Tile;
     [SerializeField]
-    private TileBase colliderTile;
+    public TileBase colliderTile;
 
     [SerializeField]
     private TileBase obstaclesTile;
 
     private List<TileNode> prevNodes;
 
+     public static TileSpritePlacer instance;
+    
+    private void Awake() {
+        instance = this;
+    }
     public Tilemap GetTilemap() {
         return this.Tilemap;
     }

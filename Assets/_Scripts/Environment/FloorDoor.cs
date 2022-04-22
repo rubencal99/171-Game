@@ -9,6 +9,7 @@ public class FloorDoor : MonoBehaviour
         if(Player.instance.hasKey)
         {
             Debug.Log("Player can continue to next floor");
+            FloorExit.instance.GetComponent<FloorExit>().CallLoadScene();
         }
         else
         {
