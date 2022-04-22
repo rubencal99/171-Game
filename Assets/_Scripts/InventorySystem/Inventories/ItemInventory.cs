@@ -244,6 +244,10 @@ public class WeaponSlot : Slot
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         PlayerWeapon.instance.Primary = clone;
+        if(PlayerWeapon.instance.Primary.GetComponent<Gun>() != null)
+            if(PlayerProgressManager.hasData) {
+                Debug.Log("Loading saved primary ammo");
+            }
         PlayerWeapon.instance.TogglePrimary();
     }
 
