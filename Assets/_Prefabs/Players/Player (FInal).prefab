@@ -515,7 +515,8 @@ MonoBehaviour:
   Grenade: {fileID: 4749110423052994011, guid: fbd6cbaab64c87343b44244e56518638, type: 3}
   Primary: {fileID: 0}
   Secondary: {fileID: 0}
-  throwableArc: {fileID: 2579900480822998317}
+  throwableArc: {fileID: 6192999896000237652}
+  itemInventory: {fileID: 0}
   useInventory: 0
 --- !u!212 &3265718702522262477
 SpriteRenderer:
@@ -617,6 +618,7 @@ Transform:
   - {fileID: 2579900480822998319}
   - {fileID: 1934708572633660962}
   - {fileID: 5952393449312908741}
+  - {fileID: 6192999896000237654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}

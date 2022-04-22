@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DisplayAmmo : MonoBehaviour
+public class DisplayAmmoSecondary : MonoBehaviour
 {   
     public GameObject obj;
     private PlayerWeapon w;
@@ -17,12 +17,13 @@ public class DisplayAmmo : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    async void Update()
     {
-        if (w.gun != null){
-            ammo = w.gun.ammo;
-            totalAmmo = w.gun.TotalAmmo;
+        if (w.Secondary != null  && w.Secondary.GetComponent<Gun>() != null){
+            var weap = w.Secondary.GetComponent<Gun>();
+            ammo = weap.ammo;
+            totalAmmo = weap.TotalAmmo;
             AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
-        }
+        }else  AmmoText.enabled = false;
     }
 }

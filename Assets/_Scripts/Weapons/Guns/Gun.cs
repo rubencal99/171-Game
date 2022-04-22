@@ -161,7 +161,7 @@ public class Gun : MonoBehaviour, IWeapon
         UseWeapon();
         //UseMelee();
         Reload();
-        //infAmmo = weaponParent.InfAmmo;
+       // infAmmo = weaponParent.InfAmmo;
     }
 
     protected virtual void UseWeapon()
