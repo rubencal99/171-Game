@@ -23,8 +23,8 @@ public class ShopSpawner : EnemySpanwer
 
     new public void SpawnObject(){
         Vector3 offsetPosition = transform.position;
-        offsetPosition.x += Random.Range(-offset, offset);
-        offsetPosition.y += Random.Range(-offset, offset);
+        //offsetPosition.x += Random.Range(-offset, offset);
+        //offsetPosition.y += Random.Range(-offset, offset);
 
        // var source = Enemies[Random.Range(0, Enemies.Count)];
         var source = Waves[0].Enemies[0];

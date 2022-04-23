@@ -550,7 +550,6 @@ GameObject:
   - component: {fileID: 5738853248683192947}
   - component: {fileID: 3864051883030570510}
   - component: {fileID: 73759089389963177}
-  - component: {fileID: 3466642453416052261}
   - component: {fileID: 1756928746761075832}
   - component: {fileID: 2704029724805624508}
   - component: {fileID: 5782860665297831384}
@@ -569,7 +568,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5738853248683192946}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.3525567, y: 6.47, z: 6.2980957}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -583,7 +582,7 @@ Transform:
   - {fileID: 8621544003766214609}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &5738853248683192947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,17 +617,17 @@ MonoBehaviour:
   <OnDie>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
-        m_MethodName: PlayDeathSound
-        m_Mode: 1
+      - m_Target: {fileID: 5021307947888430738}
+        m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
+        m_MethodName: SetDeathAnimation
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   <OnRevive>k__BackingField:
     m_PersistentCalls:
@@ -813,22 +812,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3466642453416052261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5738853248683192946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1cd339f41456543b428ddf4b1e51b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brain: {fileID: 73759089389963177}
-  target: {fileID: 0}
-  speed: 1
-  nextWaypointDistance: 3
 --- !u!114 &1756928746761075832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -955,7 +938,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: 0
+    value: 1
 --- !u!136 &5782860665801083604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -999,13 +982,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5738853249054104186}
-  m_LocalRotation: {x: -0.40673664, y: 0, z: 0, w: 0.9135455}
+  m_LocalRotation: {x: -0.19680187, y: 0, z: 0, w: 0.98044336}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 5738853248683192958}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -48, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -22.7, y: 0, z: 0}
 --- !u!212 &5738853249054104135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1112,7 +1095,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 283606
+  m_InstanceId: 414896
 --- !u!114 &4102397892194668560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,9 +3119,9 @@ MonoBehaviour:
   SpawnTimer: 0
   bossMovement: {fileID: 0}
   bossAnimator: {fileID: 0}
-  WeaponParent: {fileID: 0}
-  Melee: {fileID: 0}
-  Spray: {fileID: 0}
+  WeaponParent: {fileID: 5062027800659244280}
+  Melee: {fileID: 3287901880241355989}
+  Spray: {fileID: 6608265319888152830}
 --- !u!114 &1217180971966429061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3315,6 +3298,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d8877b83a323943981414369d59a63, type: 3}
+--- !u!1 &6608265319888152830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8918393634435686408, guid: 27d8877b83a323943981414369d59a63, type: 3}
+  m_PrefabInstance: {fileID: 2337712944819964150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6693533478969736131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8977095406529770293, guid: 27d8877b83a323943981414369d59a63, type: 3}
@@ -3456,6 +3444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d8877b83a323943981414369d59a63, type: 3}
+--- !u!1 &3287901880241355989 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8918393634435686408, guid: 27d8877b83a323943981414369d59a63, type: 3}
+  m_PrefabInstance: {fileID: 6225248560778779869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3094406292970958824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8977095406529770293, guid: 27d8877b83a323943981414369d59a63, type: 3}

@@ -48,6 +48,7 @@ public class AgentWeapon : MonoBehaviour
             gun = GetComponentInChildren<Gun>();
             weapon = gun.gameObject;
             melee = null;
+            gun.ForceReload();
         }
         else if(GetComponentInChildren<Melee>())
         {

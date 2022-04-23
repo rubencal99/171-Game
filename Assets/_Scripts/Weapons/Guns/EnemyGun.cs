@@ -48,4 +48,18 @@ public class EnemyGun : Gun
             FinishShooting();
         }
     }
+
+    // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
+    // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
+    /*public override void Reload()
+    {
+        if(isReloading && !reloadCoroutine) {
+
+            var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+            Ammo += neededAmmo;
+            TotalAmmo -= neededAmmo;
+            FinishReloading();
+            
+        }
+    }*/
 }
