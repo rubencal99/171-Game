@@ -16,7 +16,12 @@ public class WeaponItemSO : ItemObject
     {
         // initialize as type Weapon
         type = ItemType.Weapon;
-        stackable = false;
+        stackLimit = 1;
+        itemType = Convert.ToInt32(weaponType);
+    }
+    void OnValidate()
+    {
+        // update itemType when weaponType is changed
         itemType = Convert.ToInt32(weaponType);
     }
 }
