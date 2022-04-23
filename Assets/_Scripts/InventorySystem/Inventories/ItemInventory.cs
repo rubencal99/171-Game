@@ -86,15 +86,19 @@ public class ItemInventory : ScriptableObject
         {
             if(slot.item == _item)
             {
-                if (slot.amount < slot.item.stackLimit)
+                Debug.Log("incoming amount: " + _amount + " slot amount: " + slot.amount);
+                if (slot.amount + _amount <= slot.item.stackLimit)
                 {
                     slot.AddAmount(_amount);
                     hasItem = true;
-                    //Debug.Log("stacking items");
                     break;
                 }
-                else
+                else if (slot.amount < slot.item.stackLimit && slot.amount + _amount > slot.item.stackLimit)
                 {
+                    int _excess = (slot.amount + _amount) - slot.item.stackLimit;
+                    slot.AddAmount(_amount);
+                    AddItemToInventory(_item, _excess);
+                    hasItem = true;
                     break;
                 }
             }
@@ -189,7 +193,7 @@ public class WeaponSlot : Slot
                     ReplaceSecondary(item.prefabClone);
                 }
             }
-            else if (item == _item && amount + _amount < item.stackLimit)
+            else if (item == _item && amount + _amount <= item.stackLimit)
             {
                 AddAmount(_amount);
             }
@@ -338,7 +342,7 @@ public class AugSlot : Slot
                 item = _item;
                 AddAmount(_amount);
             }
-            else if (item == _item && amount + _amount < item.stackLimit)
+            else if (item == _item && amount + _amount <= item.stackLimit)
             {
                 AddAmount(_amount);
             }
@@ -367,13 +371,17 @@ public abstract class Slot
     public int amount {
         get => _amount; 
         set{
-            if (value >= 0 && value <= item.stackLimit){
-                _amount = value;
-            }
-            else if (value > item.stackLimit){
-                _amount = item.stackLimit;
+            if (item != null){
+                if (value >= 0 && value <= item.stackLimit){
+                    _amount = value;
+                }
+                else if (value > item.stackLimit){
+                    _amount = item.stackLimit;
+                }
+                else { _amount = 0; }
             }
             else { _amount = 0; }
+            
         }
     }
     public void AddAmount(int value)
@@ -391,7 +399,7 @@ public abstract class Slot
                 item = _item;
                 AddAmount(_amount);
             }
-            else if (item == _item && amount + _amount < item.stackLimit)
+            else if (item == _item && amount + _amount <= item.stackLimit)
             {
                 AddAmount(_amount);
             }

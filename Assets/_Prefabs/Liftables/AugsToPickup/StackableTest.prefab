@@ -148,4 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupItem: {fileID: 11400000, guid: 68506b2dcd54d4d7c979597e27d9c2c4, type: 2}
-  pickupAmount: 1
+  pickupAmount: 2
