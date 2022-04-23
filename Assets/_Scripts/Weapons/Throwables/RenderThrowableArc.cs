@@ -36,6 +36,8 @@ public class RenderThrowableArc : MonoBehaviour
 
     GameObject Player;
 
+    public Material material;
+
     public float xOffset, yOffset, zOffset = 0.0f;
 
     private async void Awake()
@@ -57,8 +59,8 @@ public class RenderThrowableArc : MonoBehaviour
              dotArray[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
              dotArray[i].transform.parent = this.transform;
              dotArray[i].GetComponent<SphereCollider>().isTrigger = true;
-             int LayerIgnoreRaycast = LayerMask.NameToLayer("UI");
-               gameObject.layer = LayerIgnoreRaycast;
+             var renderer = dotArray[i].GetComponent<Renderer>();
+            renderer.sharedMaterial = material;
             //. dotArray[i].s
         }
 
