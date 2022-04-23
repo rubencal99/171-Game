@@ -17,4 +17,4 @@ MonoBehaviour:
   maxProneSpeed: 3
   acceleration: 59.9
   decceleration: 50
-  standingDelay: 0.23
+  standingDelay: 0.59

@@ -129,8 +129,8 @@ public class RoomNode : MonoBehaviour
 
     public TileNode GrabValidTile()
     {
-        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 3, roomCenter.x + (width /2) - 3),
-                                        Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
+        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 5, roomCenter.x + (width /2) - 5),
+                                        Random.Range(roomCenter.y - (length /2) + 5, roomCenter.y + (length /2) - 5));
 
         var count = 0;
         //Debug.Log("Room Center: " + roomCenter);

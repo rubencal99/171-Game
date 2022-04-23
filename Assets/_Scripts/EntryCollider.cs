@@ -15,10 +15,6 @@ public class EntryCollider : MonoBehaviour
 
     RoomNode room;
 
-
-    public Vector3[] arcArray;
-    GameObject[] dotArray;
-
     Vector2 minPosition;
     Vector2 maxPosition;
     public int resolution;
@@ -26,7 +22,6 @@ public class EntryCollider : MonoBehaviour
     public TileBase normal_tile;
     public TileBase barrier_tile;
 
-    LineRenderer lr;
 
     
     // Start is called before the first frame update
@@ -34,89 +29,29 @@ public class EntryCollider : MonoBehaviour
 
        // boxCol = GetComponent<BoxCollider2D>();
         room = this.transform.parent.GetComponent<RoomNode>();
-        lr = this.GetComponent<LineRenderer>();
+        //tilemap = TileSpritePlacer.instance.Tilemap;
+        //normal_tile = TileSpritePlacer.instance.Tile;
+        //barrier_tile = TileSpritePlacer.instance.colliderTile;
+
         //GameObject[] tilesArray =  GameObject.FindGameObjectsWithTag("Tilemap");
        // Tilemap tiles = tilesArray[0].GetComponent<Tilemap>();
-        this.gameObject.transform.localScale = new Vector3((float)room.length + 1.0f, 3f, (float)room.width + 1.0f);
+        this.gameObject.transform.localScale = new Vector3((float)room.length, 3f, (float)room.width);
         
         minPosition = room.bottomLeftCorner;
         minPosition.x -= boundsOffset; minPosition.y -= boundsOffset;
         maxPosition = room.topRightCorner;
         maxPosition.x += boundsOffset; maxPosition.y += boundsOffset;
 
-
-       // if(transform.parent.transform.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1)
-        //    barriers_on = true;
-        // List<Vector2> corner_points = new List<Vector2>()
-        // {
-        //     room.bottomLeftCorner,
-        //     room.topLeftCorner,
-        //     room.topRightCorner,
-        //     room.bottomRightCorner
-        // };
-        // edge = GetComponentInChildren<EdgeCollider2D>();
-        // edge.SetPoints(corner_points);
-        // Debug.Log(edge);
-        
-        // arcArray = new Vector3[4];
-        // dotArray = new GameObject[4];
-        // lr.positionCount = 4;
-
-        // for(int i = 0; i < 4; i++) {
-        //      dotArray[i] = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //      dotArray[i].transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-        //      dotArray[i].transform.parent = this.transform;
-        //     //. dotArray[i].s
-        // }
-
-            // RenderArc();
-
+        var spr = this.GetComponentInChildren<SpriteRenderer>();
+        if(room.RoomType == "Boss" || room.RoomType == "Key") spr.color = Color.yellow;
+        if(room.RoomType == "Shop") spr.color = Color.green;
+        if(room.RoomType == "Reward") spr.color = Color.cyan;
+        if(room.RoomType == "Door") spr.color = Color.magenta;
+        if(room.RoomType == "Auxiliary") spr.color = Color.red;
+        if(room.RoomType == "Normal" || room.RoomType == "Large") spr.enabled = false;  
+       
     }
 
-
-
-    // void RenderArc() {
-
-    //     // obsolete: lr.SetVertexCount(resolution + 1);
-
-    //     lr.SetPositions(CalculateArcArray());
-    //     //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-
-    // }
-
-    // Vector3[] CalculateArcArray() {
-    //     Vector3[] ArcArray = new Vector3[]{
-    //         new Vector3(room.bottomLeftCorner.x, 0.5f, room.bottomLeftCorner.y),
-    //         new Vector3(room.bottomRightCorner.x, 0.5f, room.bottomRightCorner.y),
-    //         new Vector3(room.topRightCorner.x, 0.5f, room.topRightCorner.y),
-    //         new Vector3(room.topLeftCorner.x, 0.5f, room.topLeftCorner.y),
-    //     };
-
-    //     return ArcArray;
-    // }
-    
-    public bool guarded = false;
-
-    public void toggleGuarded() {
-        this.guarded = !this.guarded;
-    }
-
-    public void setGuarded(bool val) {
-        this.guarded = val;
-    }
-    /*void OnTriggerEnter2D(Collider2D other) {
-       // if(!guarded) {
-            if(other.tag == "Player") {
-                this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
-                Player.instance.currentRoom = room;
-                GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
-            //this.GetComponent<Collider2D>().isTrigger = false;
-            //this.transform.GetChild(0).gameObject.SetActive(true);
-            this.gameObject.SetActive(false);
-           //  Debug.Log("leaving collider");
-            }
-     //   }
-    }*/
 
     void OnTriggerEnter(Collider other) {
            //Debug.Log("Just entered room");
@@ -124,17 +59,13 @@ public class EntryCollider : MonoBehaviour
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
                 if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
-                 StartCoroutine(WaitToUpdateTiles(barrier_tile));
-                //GraphUpdater.SetNewBounds(GetComponent<Collider2D>().bounds);
-            //this.GetComponent<Collider2D>().isTrigger = false;
-            //this.transform.GetChild(0).gameObject.SetActive(true);
-            //this.gameObject.SetActive(false);
-           //  Debug.Log("leaving collider");
+                    StartCoroutine(WaitToUpdateTiles(barrier_tile));
+               
             }
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         UpdateTiles(tile);
     }
 
@@ -174,51 +105,9 @@ public class EntryCollider : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
-        Vector3 newLocation = Player.instance.transform.localPosition;
-       
-        if(guarded) {
-            
-         if (newLocation.x > maxPosition.x)
-         {
-             newLocation.x = maxPosition.x;
-         }
-         else if (newLocation.x < minPosition.x)
-         {
-             newLocation.x = minPosition.x;
-         }
-         if (newLocation.z > maxPosition.y)
-         {
-             newLocation.z = maxPosition.y;
-         }
-         else if (newLocation.z < minPosition.y)
-         {
-             newLocation.z = minPosition.y;
-         }    
 
-        // Player.instance.transform.localPosition = newLocation;
-
-        }
-    }
-     void OnTriggerExit(Collider other)
-    { 
-        if(guarded) {    
-            if(other.gameObject.tag == "Player") {
-                GetComponent<BoxCollider>().enabled = true;
-            } 
-        }
-    }
-
-    void OnDestroy() {
+    void OnDisable() {
         UpdateTiles(normal_tile);
     }
 
-    // void OnTriggerExit2D(Collider2D other) {
-
-    //     if(other.tag == "Player") {
-           
-    //     }
-    // //    this.transform.parent.Find("Exit Collider").GetChild(0).gameObject.SetActive(true);
-       
-    // }
 }

@@ -40,6 +40,11 @@ public class ItemInventory : ScriptableObject
                 int toamount = _toslot.amount;
                 ItemObject fromitem = _fromslot.item;
                 int fromamount = _fromslot.amount;
+
+                if(CheckEdgeCases(_fromslot, _toslot))
+                {
+                    return;
+                }
                 
                 _toslot.Clear();
                 _fromslot.Clear();
@@ -54,6 +59,23 @@ public class ItemInventory : ScriptableObject
             Debug.Log("MoveSwapCombine failed");
         }
         
+    }
+    bool CheckEdgeCases(Slot from, Slot to)
+    {
+        if(from is WeaponSlot && to is WeaponSlot)
+        {
+            Debug.Log("We're swapping between weapon slots right now");
+            WeaponSlot f = (WeaponSlot)from;
+            WeaponSlot t = (WeaponSlot)to;
+            // If you're dragging from secondary to primary
+            WeaponItemSO tItem = (WeaponItemSO)t.item;
+            if(tItem.weaponType == WeaponType.Primary)
+            {
+                Debug.Log("Error: Attempted to swap secondary with primary weapon");
+                return true;
+            }
+        }
+        return false;
     }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
@@ -106,7 +128,7 @@ public class ItemInventory : ScriptableObject
         }
         foreach (WeaponSlot slot in WContainer)
         {
-            slot.Clear();
+            slot.Wipe();
         }
         Debug.Log("Inventory Cleared");
     }
@@ -199,6 +221,13 @@ public class WeaponSlot : Slot
         }
     }
 
+    public void Wipe()
+    {
+        item = null;
+        prevItem = null;
+        amount = 0;
+    }
+
     public override void Clear()
     {
         // Moves current item to PlayerInventory
@@ -235,6 +264,10 @@ public class WeaponSlot : Slot
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         PlayerWeapon.instance.Primary = clone;
+        if(PlayerWeapon.instance.Primary.GetComponent<Gun>() != null)
+            if(PlayerProgressManager.hasData) {
+                Debug.Log("Loading saved primary ammo");
+            }
         PlayerWeapon.instance.TogglePrimary();
     }
 
@@ -318,9 +351,12 @@ public class AugSlot : Slot
     }
 
     public override void Clear(){
-        amount = 0;
-        PlayerAugmentations.AugmentationList[item.Name] = false;
-        item = null;
+        if(item)
+        {
+            amount = 0;
+            PlayerAugmentations.AugmentationList[item.Name] = false;
+            item = null;
+        }
     }
 }
 

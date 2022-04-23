@@ -89,6 +89,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Awake()
     {
         instance = this;
+         //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -107,7 +108,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         //overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
-        shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
+        //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
     void Update()
@@ -131,10 +132,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
              StartCoroutine(ApplyHippo());
          }
-         if(Input.GetButtonUp("Teleport")){
+         /*if(Input.GetButtonUp("Teleport")){
              //Debug.Log("Teleport");
              PlayerSignaler.CallWhiskers();
-         }
+         }*/
          if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
