@@ -52,7 +52,7 @@ public class RoomClearCheck : MonoBehaviour
             Debug.Log("Boss defeated");
             exit = GameObject.FindWithTag("Map Gen").GetComponent<MapGenerator>().Exit;
 
-            Vector3 exit_pos = new Vector3((float)this.GetComponent<RoomNode>().roomCenter.x, 0f, (float)this.GetComponent<RoomNode>().roomCenter.y);
+            Vector3 exit_pos = new Vector3((float)this.GetComponent<RoomNode>().roomCenter.x, 1f, (float)this.GetComponent<RoomNode>().roomCenter.y);
             //exit.transform.position = exit_pos;
             Instantiate(exit, exit_pos, Quaternion.identity);
         }

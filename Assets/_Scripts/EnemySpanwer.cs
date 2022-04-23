@@ -135,7 +135,7 @@ public class EnemySpanwer : MonoBehaviour
 
         TileNode spawnTile = room.GrabValidTile();
 
-        Vector3 offsetPosition = new Vector3(spawnTile.x, 2f, spawnTile.y);
+        Vector3 offsetPosition = new Vector3(spawnTile.x, 1f, spawnTile.y);
 
         //var source = Enemies[Random.Range(0, Enemies.Length)];
         var clone = Instantiate(source, offsetPosition, source.transform.rotation);

@@ -45,10 +45,10 @@ public class EntryCollider : MonoBehaviour
         var spr = this.GetComponentInChildren<SpriteRenderer>();
         if(room.RoomType == "Boss" || room.RoomType == "Key") spr.color = Color.yellow;
         if(room.RoomType == "Shop") spr.color = Color.green;
-        if(room.RoomType == "Reward") spr.color = Color.cyan;
+        //if(room.RoomType == "Reward") spr.color = Color.cyan;
         if(room.RoomType == "Door") spr.color = Color.magenta;
         if(room.RoomType == "Auxiliary") spr.color = Color.red;
-        if(room.RoomType == "Normal" || room.RoomType == "Large") spr.enabled = false;  
+        if(room.RoomType == "Normal" || room.RoomType == "Large" || room.RoomType == "Reward") spr.enabled = false;  
        
     }
 
@@ -65,7 +65,7 @@ public class EntryCollider : MonoBehaviour
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         UpdateTiles(tile);
     }
 
@@ -78,7 +78,7 @@ public class EntryCollider : MonoBehaviour
            // var wallPosition = new Vector3(row, 0, room.bottomLeftCorner.y);
            var tilePos = new Vector3Int(row, 0, room.bottomLeftCorner.y);
            var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-           tilemap.SetTile(tilePosition, tile);
+                tilemap.SetTile(tilePosition, tile);
             
         }
         for (int row = (int)room.topLeftCorner.x; row <= (int)room.topRightCorner.x; row++)

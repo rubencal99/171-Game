@@ -9,11 +9,11 @@ public class WeaponAudio : MonoBehaviour
 
     public void PlayShootSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(shootBulletEvent, transform.position);
+       // FMODUnity.RuntimeManager.PlayOneShot(shootBulletEvent, transform.position);
     }
 
     public void PlayNoBulletsSound()
     {
-        FMODUnity.RuntimeManager.PlayOneShot(outOfBulletsEvent, transform.position);
+       // FMODUnity.RuntimeManager.PlayOneShot(outOfBulletsEvent, transform.position);
     }
 }
