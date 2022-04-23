@@ -61,7 +61,7 @@ public class _BaseThrowable : MonoBehaviour
           Vector3.Normalize(direction);
          GetComponent<Rigidbody>().useGravity = true;
          Debug.Log("distance = " + distance);
-         GetComponent<Rigidbody>().AddForce(direction * distance, ForceMode.Impulse);
+         GetComponent<Rigidbody>().AddForce(direction * (distance - (distance/10)), ForceMode.Impulse);
          transform.parent = null;
     }
 
