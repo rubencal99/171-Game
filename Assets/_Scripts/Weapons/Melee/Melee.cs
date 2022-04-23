@@ -75,6 +75,7 @@ public class Melee : MonoBehaviour, IWeapon
     {
         if(isMelee && !meleeCoroutine)
         {
+            Debug.Log("In Melee UseWeapon");
             OnMelee.Invoke();
             Attack();
         }
@@ -103,7 +104,7 @@ public class Melee : MonoBehaviour, IWeapon
     public void Attack()
     {
         // Play attack animation
-
+        //Debug.Log("In Melee Attack");
         // Detect enemies in range of attack
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 

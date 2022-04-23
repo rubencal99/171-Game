@@ -10,7 +10,7 @@ public class EnemyGun : Gun
     {
         rateOfFireCoroutine = true;
         float delay = UnityEngine.Random.Range(weaponData.WeaponDelay, weaponData.WeaponDelay + weaponData.WeaponDelayRandomizer);
-        yield return new WaitForSeconds(delay / passives.ROFMultiplier);
+        yield return new WaitForSeconds(delay);// / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
 
@@ -33,7 +33,7 @@ public class EnemyGun : Gun
                 OnShoot?.Invoke();
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
-                    Debug.Log("Before shoot bullet");
+                    //Debug.Log("Before shoot bullet");
                     ShootBullet();
                 }
             }

@@ -14,17 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Container:
   - item: {fileID: 0}
-    amount: 0
   - item: {fileID: 0}
-    amount: 0
   - item: {fileID: 0}
-    amount: 0
   - item: {fileID: 0}
-    amount: 0
   - item: {fileID: 0}
-    amount: 0
   - item: {fileID: 0}
-    amount: 0
   WContainer:
   - item: {fileID: 11400000, guid: 000c55c83aa114c80ab75080ddfa0ba0, type: 2}
     amount: 1
@@ -36,17 +30,12 @@ MonoBehaviour:
     prevItem: {fileID: 0}
   AContainer:
   - item: {fileID: 0}
-    amount: 0
     slotType: 0
   - item: {fileID: 0}
-    amount: 0
     slotType: 1
   - item: {fileID: 0}
-    amount: 0
     slotType: 2
   - item: {fileID: 0}
-    amount: 0
     slotType: 3
   - item: {fileID: 0}
-    amount: 0
     slotType: 4
