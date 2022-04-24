@@ -25,7 +25,7 @@ public class RoomClearCheck : MonoBehaviour
     }
 
 
- public void oneStepCloser() {
+    public void oneStepCloser() {
       enemyCount = 0;
        foreach(Transform child in transform)
        { 
@@ -38,14 +38,15 @@ public class RoomClearCheck : MonoBehaviour
         //if(enemyCount <= 0 && spawners[0].GetComponent<EnemySpanwer>().Waves.Count <= 0)
         //    checkIfClear();
        
-   }
+    }
     public void checkIfClear() {
-          foreach(Transform child in transform)
+        Debug.Log("In check if clear");
+        foreach(Transform child in transform)
         {
-        if(child.tag == "Spawner") Destroy(child.gameObject);
-         if(child.tag == "Door") child.GetComponent<EntryCollider>().enabled = false;
-            
-            // GraphUpdater.InRoom = false;
+            if(child.tag == "Spawner") Destroy(child.gameObject);
+            if(child.tag == "Door") child.GetComponent<EntryCollider>().enabled = false;
+                
+                // GraphUpdater.InRoom = false;
         }
 
         if(this.GetComponent<RoomNode>().RoomType == "Boss") {

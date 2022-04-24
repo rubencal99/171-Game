@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SwordData
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 10
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 30a3279d7bd0a6a4abdc1715e06032d6, type: 2}
-  <RecoveryLength>k__BackingField: 0
+  <RecoveryLength>k__BackingField: 0.4
+  <ComboWindow>k__BackingField: 0.2
+  <ComboLength>k__BackingField: 3
   <KnockbackPower>k__BackingField: 5.72
   <KnockbackDelay>k__BackingField: 0.1

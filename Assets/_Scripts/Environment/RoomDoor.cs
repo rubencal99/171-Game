@@ -10,6 +10,7 @@ public class RoomDoor : MonoBehaviour
         {
             // Clear room
             Debug.Log("Puzzle complete");
+            transform.parent.GetComponent<RoomClearCheck>().checkIfClear();
             Destroy(gameObject);
         }
     }

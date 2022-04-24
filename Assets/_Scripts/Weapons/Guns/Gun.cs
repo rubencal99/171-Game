@@ -77,7 +77,10 @@ public class Gun : MonoBehaviour, IWeapon
         }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
-         weaponParent = transform.parent.GetComponent<AgentWeapon>();
+        if(transform.parent.GetComponent<AgentWeapon>())
+        {
+            weaponParent = transform.parent.GetComponent<AgentWeapon>();
+        }
         if(isPlayer) {           
             passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
             infAmmo = weaponParent.InfAmmo;
