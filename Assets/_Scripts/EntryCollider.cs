@@ -107,7 +107,7 @@ public class EntryCollider : MonoBehaviour
 
 
     void OnDisable() {
-        UpdateTiles(normal_tile);
+        StartCoroutine(WaitToUpdateTiles(normal_tile));
     }
 
 }
