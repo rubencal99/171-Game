@@ -49,8 +49,8 @@ public class PrefabHolder : MonoBehaviour
             //if (prefab.GetComponent<Gun>())
             //{
             Debug.Log("Purchased weapon");
-            weaponParent = FindObjectOfType<PlayerWeapon>();
-            var pos = transform.root.transform.position + Vector3.forward * 4;
+            //weaponParent = FindObjectOfType<PlayerWeapon>();
+            var pos = transform.parent.parent.parent.transform.position + Vector3.forward * 4;
             var weapon = Instantiate(prefab, pos, Quaternion.identity);
             weapon.transform.parent = transform.root;
             
