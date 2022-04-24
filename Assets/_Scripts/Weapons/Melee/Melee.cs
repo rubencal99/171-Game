@@ -88,7 +88,7 @@ public class Melee : MonoBehaviour, IWeapon
         }
         else if(isMelee && !meleeCoroutine)
         {
-            Debug.Log("In Melee UseWeapon");
+            //Debug.Log("In Melee UseWeapon");
             comboCounter++;
             OnMelee.Invoke();
             comboTimer = 0;
@@ -123,6 +123,9 @@ public class Melee : MonoBehaviour, IWeapon
         {
             comboCounter++;
             comboTimer = 0;
+            Debug.Log("Combo attack triggered");
+            OnMelee.Invoke();
+            Attack();
         }
     }
 
