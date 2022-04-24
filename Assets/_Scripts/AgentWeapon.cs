@@ -147,7 +147,7 @@ public class AgentWeapon : MonoBehaviour
         }
         else if (melee != null)
         {
-            Debug.Log("About to try Melee");
+            //Debug.Log("About to try Melee");
             //Debug.Log("Before TRy Melee");
             melee.TryMelee();
         }
