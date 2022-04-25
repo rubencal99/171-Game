@@ -276,7 +276,7 @@ public class Gun : MonoBehaviour, IWeapon
         meleeCoroutine = false;
     }*/
 
-    protected IEnumerator DelayNextReloadingCoroutine()
+    protected virtual IEnumerator DelayNextReloadingCoroutine()
     {
         reloadCoroutine = true;
         yield return new WaitForSeconds( weaponData.ReloadSpeed / passives.ROFMultiplier);
