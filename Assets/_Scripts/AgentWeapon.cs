@@ -48,6 +48,7 @@ public class AgentWeapon : MonoBehaviour
             gun = GetComponentInChildren<Gun>();
             weapon = gun.gameObject;
             melee = null;
+            gun.ForceReload();
         }
         else if(GetComponentInChildren<Melee>())
         {
@@ -146,7 +147,7 @@ public class AgentWeapon : MonoBehaviour
         }
         else if (melee != null)
         {
-            Debug.Log("About to try Melee");
+            //Debug.Log("About to try Melee");
             //Debug.Log("Before TRy Melee");
             melee.TryMelee();
         }

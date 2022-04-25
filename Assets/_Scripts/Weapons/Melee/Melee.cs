@@ -22,6 +22,7 @@ public class Melee : MonoBehaviour, IWeapon
     [SerializeField]
     public bool isPlayer;
 
+    [SerializeField]
     protected bool isMelee = false;
 
     [SerializeField]
@@ -31,6 +32,10 @@ public class Melee : MonoBehaviour, IWeapon
     public string name;*/
 
     public Sprite sprite;
+    public int comboCounter = 0;
+    public float comboTime1;
+    public float comboTime2;
+    public float comboTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +46,10 @@ public class Melee : MonoBehaviour, IWeapon
         weaponParent = transform.parent.GetComponent<AgentWeapon>();
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         attackPoint = transform.Find("AttackPoint");
+        comboCounter = 0;
+        comboTimer = 0f;
+        comboTime1 = meleeData.RecoveryLength - meleeData.ComboWindow;
+        comboTime2 = meleeData.RecoveryLength + meleeData.ComboWindow;
     }
 
     [field: SerializeField]
@@ -73,10 +82,16 @@ public class Melee : MonoBehaviour, IWeapon
 
     protected virtual void UseWeapon()
     {
-        if(isMelee && !meleeCoroutine)
+        if(comboCounter > 0)
         {
-            Debug.Log("In Melee UseWeapon");
+            CheckComboCounter();
+        }
+        else if(isMelee && !meleeCoroutine)
+        {
+            //Debug.Log("In Melee UseWeapon");
+            comboCounter++;
             OnMelee.Invoke();
+            comboTimer = 0;
             Attack();
         }
         else
@@ -85,6 +100,33 @@ public class Melee : MonoBehaviour, IWeapon
             return;
         }
         FinishMelee();
+    }
+
+    protected void CheckComboCounter()
+    {
+        if(comboTimer > comboTime2)
+        {
+            comboCounter = 0;
+            comboTimer = 0;
+            return;
+        }
+        if(comboCounter > 0)
+        {
+            comboTimer += Time.deltaTime;
+        }
+        if(comboCounter >= meleeData.ComboLength)
+        {
+            return;
+        }
+        // If we have pressed the melee key during the combo window
+        if(isMelee && comboTime1 <= comboTimer && comboTimer <= comboTime2)
+        {
+            comboCounter++;
+            comboTimer = 0;
+            Debug.Log("Combo attack triggered");
+            OnMelee.Invoke();
+            Attack();
+        }
     }
 
     private void FinishMelee()

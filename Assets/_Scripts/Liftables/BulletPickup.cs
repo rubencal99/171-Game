@@ -9,7 +9,7 @@ public class BulletPickup : MonoBehaviour
       [field: SerializeField]
     public UnityEvent OnPickup { get; set; }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {   
         if(collision.tag == "Player")
         {

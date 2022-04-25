@@ -77,7 +77,10 @@ public class Gun : MonoBehaviour, IWeapon
         }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
-         weaponParent = transform.parent.GetComponent<AgentWeapon>();
+        if(transform.parent.GetComponent<AgentWeapon>())
+        {
+            weaponParent = transform.parent.GetComponent<AgentWeapon>();
+        }
         if(isPlayer) {           
             passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
             infAmmo = weaponParent.InfAmmo;
@@ -126,7 +129,7 @@ public class Gun : MonoBehaviour, IWeapon
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
     // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
-    public void Reload()
+    public virtual void Reload()
     {
         if(isReloading && !reloadCoroutine) {
 
@@ -145,10 +148,14 @@ public class Gun : MonoBehaviour, IWeapon
     }
 
     public void ForceReload() {
+        Debug.Log("In Force Reload");
         reloadCoroutine = false;
         rateOfFireCoroutine = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
-        GetComponent<Animator>().Play("idle");
+        if(isPlayer)
+        {
+            GetComponent<Animator>().Play("idle");
+        }
     }
 
     public void AmmoFill()
@@ -247,7 +254,7 @@ public class Gun : MonoBehaviour, IWeapon
         isMelee = false;
     }*/
 
-    private void FinishReloading()
+    protected void FinishReloading()
     {
         StartCoroutine(DelayNextReloadingCoroutine());
         

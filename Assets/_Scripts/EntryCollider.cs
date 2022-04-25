@@ -58,7 +58,7 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
+                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss" || room.RoomType == "Auxiliary")
                     StartCoroutine(WaitToUpdateTiles(barrier_tile));
                
             }
@@ -107,7 +107,7 @@ public class EntryCollider : MonoBehaviour
 
 
     void OnDisable() {
-        UpdateTiles(normal_tile);
+        StartCoroutine(WaitToUpdateTiles(normal_tile));
     }
 
 }
