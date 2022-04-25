@@ -18,6 +18,5 @@ MonoBehaviour:
   type: 3
   itemType: 0
   description: 
-  stackable: 1
-  stackLimit: 49
+  stackLimit: 3
   Name: 
