@@ -269,7 +269,7 @@ public class Gun : MonoBehaviour, IWeapon
         rateOfFireCoroutine = false;
     }
 
-     /*protected IEnumerator DelayNextMeleeCoroutine()
+    /*protected IEnumerator DelayNextMeleeCoroutine()
     {
         meleeCoroutine = true;
         yield return new WaitForSeconds(swordData.RecoveryLength / passives.ROFMultiplier);
