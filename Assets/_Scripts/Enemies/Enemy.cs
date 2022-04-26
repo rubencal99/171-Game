@@ -40,6 +40,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private ParticleSystem blood;
 
+    [SerializeField]
+    public bool predator = false;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -147,7 +150,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     private void Die()
     {
-
+        if(PlayerSignaler.CallPredatoryInstinct()){
+            PlayerSignaler.usePredator = true;
+        }
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
