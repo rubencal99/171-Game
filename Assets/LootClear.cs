@@ -74,7 +74,7 @@ public class LootClear : MonoBehaviour
         if(room.FindTileByPoint(room.roomCenter.x, room.roomCenter.y).value != 1)
         {
             var tile = room.GrabValidTile();
-            spawnPosition = new Vector3(tile.x, 1, tile.y);
+            spawnPosition = new Vector3(tile.x, 3, tile.y);
         }
         else
         {

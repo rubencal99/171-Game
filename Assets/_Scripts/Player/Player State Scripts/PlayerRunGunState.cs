@@ -24,6 +24,11 @@ public class PlayerRunGunState : PlayerBaseState
     {
         mainCamera = Camera.main;
     }
+    private void Update()
+    {
+        mainCamera = Camera.main;
+    }
+    
     public override void EnterState(PlayerStateManager Player)
     {
         Debug.Log("Entered RunGun State");

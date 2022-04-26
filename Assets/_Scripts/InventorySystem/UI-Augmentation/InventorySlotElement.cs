@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHandler
 {
@@ -13,6 +14,8 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
     private Sprite current;
     public Image background;
     public Image itemDisplay;
+    public GameObject amountDisplay;
+    private TMP_Text amountText;
     public ItemInventory inventory;
     public SlotType slotType;
     [SerializeField]
@@ -39,6 +42,8 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
         current = null;
         background.sprite = defaultBG;
         itemDisplay.sprite = current;
+        amountText = amountDisplay.GetComponent<TMP_Text>();
+        
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -77,6 +82,20 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
             itemDisplay.color = new Color (255, 255, 255, 0);
 
             background.sprite = defaultBG;
+        }
+        
+        if (slot.amount < 1 && amountDisplay.activeSelf)
+        {
+            amountDisplay.SetActive(false);
+        }
+        else if (slot.amount > 1 && !amountDisplay.activeSelf)
+        {
+            amountDisplay.SetActive(true);
+        }
+
+        if (slot.amount != int.Parse(amountText.text))
+        {
+            amountText.text = slot.amount.ToString();
         }
     }
     

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 10
   <Damage>k__BackingField: 3
-  Range: 10
+  Range: 91
+  Priority: 1
+  aimsAtTarget: 1

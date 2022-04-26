@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb4a34f08ded4d4ab1818c56cc5dc3c, type: 3}
   m_Name: ShotgunShopData
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5516205167494534619, guid: 75f049e8acf54a94b89ae58b7beb20e6, type: 3}
+  Prefab: {fileID: 6436781124620589926, guid: 6e4fef45fb5b6234ab567bc3841b27f0, type: 3}
   Name: Shotgun
   Cost: 30
-  ItemSprite: {fileID: 0}

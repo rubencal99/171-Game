@@ -90,6 +90,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Awake()
     {
         instance = this;
+         //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -105,10 +106,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;                                         //Debuging death
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
-        //overlay = GameObject.Find("Overlay").GetComponent<Image>();
+        overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
-        shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
+        //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
     void Update()
@@ -134,8 +135,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         //AutoDoc
-        if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
-            InvokeRepeating("RunAutoDoc",1f,15f);
+         if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
+            InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
         }
     }

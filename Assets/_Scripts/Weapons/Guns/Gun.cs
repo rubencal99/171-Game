@@ -77,9 +77,14 @@ public class Gun : MonoBehaviour, IWeapon
         }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
-        weaponParent = transform.parent.GetComponent<AgentWeapon>();
-        passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
-        infAmmo = weaponParent.InfAmmo;
+        if(transform.parent.GetComponent<AgentWeapon>())
+        {
+            weaponParent = transform.parent.GetComponent<AgentWeapon>();
+        }
+        if(isPlayer) {           
+            passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
+            infAmmo = weaponParent.InfAmmo;
+        }
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -105,7 +110,7 @@ public class Gun : MonoBehaviour, IWeapon
     public void TryShooting()
     {
         isShooting = true;
-        Debug.Log("Is shooting = " + isShooting);
+        //Debug.Log("Is shooting = " + isShooting);
     }
     public void StopShooting()
     {
@@ -124,7 +129,7 @@ public class Gun : MonoBehaviour, IWeapon
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
     // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
-    public void Reload()
+    public virtual void Reload()
     {
         if(isReloading && !reloadCoroutine) {
 
@@ -143,10 +148,14 @@ public class Gun : MonoBehaviour, IWeapon
     }
 
     public void ForceReload() {
+        Debug.Log("In Force Reload");
         reloadCoroutine = false;
         rateOfFireCoroutine = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
-        GetComponent<Animator>().Play("idle");
+        if(isPlayer)
+        {
+            GetComponent<Animator>().Play("idle");
+        }
     }
 
     public void AmmoFill()
@@ -159,7 +168,7 @@ public class Gun : MonoBehaviour, IWeapon
         UseWeapon();
         //UseMelee();
         Reload();
-        infAmmo = weaponParent.InfAmmo;
+       // infAmmo = weaponParent.InfAmmo;
     }
 
     protected virtual void UseWeapon()
@@ -167,11 +176,11 @@ public class Gun : MonoBehaviour, IWeapon
         
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
-            Debug.Log("ROF: " + rateOfFireCoroutine);
-            Debug.Log("Reload: " + reloadCoroutine);
+            //Debug.Log("ROF: " + rateOfFireCoroutine);
+            //Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)
             {
-                Debug.Log(PlayerSignaler.CallCasingRecycler());
+                //Debug.Log(PlayerSignaler.CallCasingRecycler());
                 if(!PlayerSignaler.CallCasingRecycler()){
                     Ammo--;
                 }
@@ -245,7 +254,7 @@ public class Gun : MonoBehaviour, IWeapon
         isMelee = false;
     }*/
 
-    private void FinishReloading()
+    protected void FinishReloading()
     {
         StartCoroutine(DelayNextReloadingCoroutine());
         
@@ -313,7 +322,6 @@ public class Gun : MonoBehaviour, IWeapon
         //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, spread, 0));
-        //Debug.Log("Bullet Spread Rotation: " + bulletSpreadRotation);
         Quaternion rotation = weaponParent.transform.localRotation * bulletSpreadRotation;
         //Debug.Log("weaponParent.transform.localRotation: " + weaponParent.transform.localRotation);
        // Debug.Log("Rotation: " + rotation);

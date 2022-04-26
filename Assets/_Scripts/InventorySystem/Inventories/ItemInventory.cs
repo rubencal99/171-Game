@@ -24,15 +24,13 @@ public class ItemInventory : ScriptableObject
         if (_fromslot != _toslot && _toslot.VerifyItem(_fromslot.item))
         {
             // if items are the same or _toslot is empty, just add item and amount to _toslot
-            if (_fromslot.item == _toslot.item || _toslot.item == null)
+            if ((_fromslot.item == _toslot.item && _fromslot.amount + _toslot.amount <= _toslot.item.stackLimit)|| _toslot.item == null)
             {
                 Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 //_toslot.item = _fromslot.item;
                 //_toslot.AddAmount(_fromslot.amount);
                 _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
                 _fromslot.Clear();
-                
-                
             }
             // if not, swap item and amount data
             else
@@ -42,6 +40,11 @@ public class ItemInventory : ScriptableObject
                 int toamount = _toslot.amount;
                 ItemObject fromitem = _fromslot.item;
                 int fromamount = _fromslot.amount;
+
+                if(CheckEdgeCases(_fromslot, _toslot))
+                {
+                    return;
+                }
                 
                 _toslot.Clear();
                 _fromslot.Clear();
@@ -57,6 +60,23 @@ public class ItemInventory : ScriptableObject
         }
         
     }
+    bool CheckEdgeCases(Slot from, Slot to)
+    {
+        if(from is WeaponSlot && to is WeaponSlot)
+        {
+            Debug.Log("We're swapping between weapon slots right now");
+            WeaponSlot f = (WeaponSlot)from;
+            WeaponSlot t = (WeaponSlot)to;
+            // If you're dragging from secondary to primary
+            WeaponItemSO tItem = (WeaponItemSO)t.item;
+            if(tItem.weaponType == WeaponType.Primary)
+            {
+                Debug.Log("Error: Attempted to swap secondary with primary weapon");
+                return true;
+            }
+        }
+        return false;
+    }
     public void AddItemToInventory(ItemObject _item, int _amount)
     {
         // check if item is already in inventory
@@ -66,15 +86,19 @@ public class ItemInventory : ScriptableObject
         {
             if(slot.item == _item)
             {
-                if (slot.item.stackable)
+                Debug.Log("incoming amount: " + _amount + " slot amount: " + slot.amount);
+                if (slot.amount + _amount <= slot.item.stackLimit)
                 {
                     slot.AddAmount(_amount);
                     hasItem = true;
-                    //Debug.Log("stacking items");
                     break;
                 }
-                else
+                else if (slot.amount < slot.item.stackLimit && slot.amount + _amount > slot.item.stackLimit)
                 {
+                    int _excess = (slot.amount + _amount) - slot.item.stackLimit;
+                    slot.AddAmount(_amount);
+                    AddItemToInventory(_item, _excess);
+                    hasItem = true;
                     break;
                 }
             }
@@ -108,7 +132,7 @@ public class ItemInventory : ScriptableObject
         }
         foreach (WeaponSlot slot in WContainer)
         {
-            slot.Clear();
+            slot.Wipe();
         }
         Debug.Log("Inventory Cleared");
     }
@@ -169,14 +193,14 @@ public class WeaponSlot : Slot
                     ReplaceSecondary(item.prefabClone);
                 }
             }
-            /*else if (item == _item && item.stackable)
+            else if (item == _item && amount + _amount <= item.stackLimit)
             {
                 AddAmount(_amount);
             }
             else 
             {
                 Debug.Log("There's already an item in this slot");
-            }*/
+            }
         }
         
     }
@@ -199,6 +223,13 @@ public class WeaponSlot : Slot
         {
             return false;
         }
+    }
+
+    public void Wipe()
+    {
+        item = null;
+        prevItem = null;
+        amount = 0;
     }
 
     public override void Clear()
@@ -237,6 +268,10 @@ public class WeaponSlot : Slot
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         PlayerWeapon.instance.Primary = clone;
+        if(PlayerWeapon.instance.Primary.GetComponent<Gun>() != null)
+            if(PlayerProgressManager.hasData) {
+                Debug.Log("Loading saved primary ammo");
+            }
         PlayerWeapon.instance.TogglePrimary();
     }
 
@@ -298,16 +333,16 @@ public class AugSlot : Slot
             return false;
         }
     }
-    public override void AddItemToSlot(ItemObject _Item, int _amount){
-        if (VerifyItem(_Item))
+    public override void AddItemToSlot(ItemObject _item, int _amount){
+        if (VerifyItem(_item))
         {
             // does the thing
             if (item == null)
             {
-                item = _Item;
+                item = _item;
                 AddAmount(_amount);
             }
-            else if (item == _Item && item.stackable)
+            else if (item == _item && amount + _amount <= item.stackLimit)
             {
                 AddAmount(_amount);
             }
@@ -316,20 +351,39 @@ public class AugSlot : Slot
                 Debug.Log("There's already an item in this slot");
             }
         }
-        PlayerAugmentations.AugmentationList[_Item.Name] = true;
+        PlayerAugmentations.AugmentationList[_item.Name] = true;
     }
 
     public override void Clear(){
-        amount = 0;
-        PlayerAugmentations.AugmentationList[item.Name] = false;
-        item = null;
+        if(item)
+        {
+            amount = 0;
+            PlayerAugmentations.AugmentationList[item.Name] = false;
+            item = null;
+        }
     }
 }
 
 public abstract class Slot
 {
     public ItemObject item;
-    public int amount;
+    private int _amount = 0; // backing store
+    public int amount {
+        get => _amount; 
+        set{
+            if (item != null){
+                if (value >= 0 && value <= item.stackLimit){
+                    _amount = value;
+                }
+                else if (value > item.stackLimit){
+                    _amount = item.stackLimit;
+                }
+                else { _amount = 0; }
+            }
+            else { _amount = 0; }
+            
+        }
+    }
     public void AddAmount(int value)
     {
         amount += value;
@@ -345,7 +399,7 @@ public abstract class Slot
                 item = _item;
                 AddAmount(_amount);
             }
-            else if (item == _item && item.stackable)
+            else if (item == _item && amount + _amount <= item.stackLimit)
             {
                 AddAmount(_amount);
             }
@@ -368,5 +422,6 @@ public abstract class Slot
         amount = 0;
         item = null;
     }
+    
 }
 

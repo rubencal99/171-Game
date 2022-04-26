@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7156936085080626188}
   - component: {fileID: 6196113241872680666}
   - component: {fileID: 890520252095959510}
-  - component: {fileID: 7478996201851335686}
   - component: {fileID: -134014491641170299}
+  - component: {fileID: 8551499445416311819}
   m_Layer: 0
   m_Name: ROFPassive
   m_TagString: Untagged
@@ -126,22 +126,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!58 &7478996201851335686
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4886039924621977508}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.25
 --- !u!114 &-134014491641170299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,3 +140,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   multiplier: 2
+--- !u!136 &8551499445416311819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4886039924621977508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 0.25
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

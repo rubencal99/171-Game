@@ -7,7 +7,7 @@ public class PlayerMovement : AgentMovement
     // Modifyable field for Dodge
     // **************
     [SerializeField]
-    protected float dodgeVelocity = 200;
+    protected float dodgeVelocity = 600;
 
 
     protected PlayerStateManager PlayerState;
@@ -54,12 +54,25 @@ public class PlayerMovement : AgentMovement
     // Should player be able to dodge when not moving??
     public void dodge(Vector3 dodgeDirection) {
         //collider.size = new Vector2(1.1f, 0.6f);
+        Vector3 dodge_dir = dodgeDirection;
+        dodge_dir.y += 1.0f;
+        Debug.Log("Dodge Dir: " + dodge_dir * dodgeVelocity);
         rigidbody.velocity = Vector3.zero; // set speed to zero
-        rigidbody.velocity += (Vector3)(dodgeDirection * dodgeVelocity); // create dodge
+        rigidbody.velocity += (Vector3)(dodge_dir * dodgeVelocity); // create dodge
         Debug.Log("Dodge Velocity: " + rigidbody.velocity);
         //Debug.Log("Collider size: " + collider.size);
         //Debug.Log("Original height and width:" + oriCollider);
         //collider.size = oriCollider;
+    }
+
+    public void CollisionsOff() {
+        rigidbody.Sleep();
+        rigidbody.detectCollisions  = false;
+    }
+
+    public void CollisionsOn() {
+         rigidbody.WakeUp();
+        rigidbody.detectCollisions  = true;
     }
 
     public void ResetSpeed()

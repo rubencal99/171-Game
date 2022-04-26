@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(CapsuleCollider))]
 public abstract class _BasePassive : MonoBehaviour
 {
     [SerializeField]
     protected float duration;
 
-    void OnTriggerEnter2D(Collider2D collision){
+    void OnTriggerEnter(Collider collision){
         if (collision.CompareTag("Player")){
             // Here we instantiate a visual effect
 
@@ -20,5 +20,5 @@ public abstract class _BasePassive : MonoBehaviour
         }
     }
 
-    public abstract IEnumerator Pickup(Collider2D player);
+    public abstract IEnumerator Pickup(Collider player);
 }
