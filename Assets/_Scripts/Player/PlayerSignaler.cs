@@ -115,5 +115,5 @@ public static class PlayerSignaler : object
         return speedScalar;
     }
 
-
+    
 }
