@@ -100,7 +100,7 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
             background.sprite = defaultBG;
         }
         
-        if (slot.amount < 1 && amountDisplay.activeSelf)
+        if (slot.amount <= 1 && amountDisplay.activeSelf)
         {
             amountDisplay.SetActive(false);
         }
