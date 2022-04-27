@@ -210,7 +210,7 @@ public class WeaponSlot : Slot
         // checks item for type, then checks for augType or weaponType
         if (_item.GetType() == typeof(WeaponItemSO))
         {
-            if (_item.itemType == Convert.ToInt32(slotType) || slotType == WeaponType.Primary)
+            if (_item.itemType == Convert.ToInt32(slotType) || (slotType == WeaponType.Primary && _item.itemType == 1))
             {
                 return true;
             }
