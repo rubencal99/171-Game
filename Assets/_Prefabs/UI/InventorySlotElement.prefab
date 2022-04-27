@@ -164,7 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBG: {fileID: 21300000, guid: f84b65f92d67d4110be51c72e6e82192, type: 3}
-  hasItemBG: {fileID: 21300000, guid: 0a7a97ac3d4d74ad6ad1ac74ec6f789f, type: 3}
+  hasItemBG: {fileID: 21300000, guid: 6dcfb80497a994d3b951ffdbce9d9a8d, type: 3}
+  hasAugBG: {fileID: 21300000, guid: 6069712ecd42149b8947c122de572b5a, type: 3}
+  hasWepBG: {fileID: 21300000, guid: 9c8d32f8be91649d78a51e083bc5ed20, type: 3}
   background: {fileID: 8063114432035063673}
   itemDisplay: {fileID: 6258990652819129325}
   amountDisplay: {fileID: 1494461211187899507}
@@ -189,7 +191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2688437868864248235
 RectTransform:
   m_ObjectHideFlags: 0
