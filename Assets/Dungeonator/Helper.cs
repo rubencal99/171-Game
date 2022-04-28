@@ -6,7 +6,7 @@ using System.Linq;
 
 public static class Helper
 {
-    public static int passageSize = 1;
+    public static int passageSize = 2;
 
     public static void ConnectClosestRooms(ref List<RoomNode> allRooms, ref TileNode[,] map)
     {

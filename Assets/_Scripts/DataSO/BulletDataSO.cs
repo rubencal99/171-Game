@@ -20,6 +20,9 @@ public class BulletDataSO : ScriptableObject
     [field: Range(0, 100)]
     public float Friction { get; internal set; } = 0;
 
+    [field: SerializeField]
+    public bool Rebound { get; internal set; } = false;
+
     //[field: SerializeField]
     //public bool Bounce { get; set; } = false;
 

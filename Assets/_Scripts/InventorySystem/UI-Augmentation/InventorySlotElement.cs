@@ -88,7 +88,7 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
         {
             amountDisplay.SetActive(false);
         }
-        else if (slot.amount > 1 && amountDisplay.activeSelf == false)
+        else if (slot.amount > 1 && !amountDisplay.activeSelf)
         {
             amountDisplay.SetActive(true);
         }

@@ -27,4 +27,22 @@ public class InfiniteAmmoPassive : _BasePassive
 
         Destroy(gameObject);
     }
+
+    public override IEnumerator Pickup(Collision player)
+    {
+        weaponParent = player.gameObject.GetComponentInChildren<PlayerWeapon>();
+        weaponParent.InfAmmo = true;
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        popup popup = FindObjectOfType<popup>();
+            popup.SetText("infinite ammo");
+            popup.ShowText();
+        yield return new WaitForSeconds(duration);
+
+        weaponParent.InfAmmo = false;
+
+        Destroy(gameObject);
+    }
 }

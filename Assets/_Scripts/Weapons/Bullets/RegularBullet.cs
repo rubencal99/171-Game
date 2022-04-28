@@ -12,6 +12,7 @@ public class RegularBullet : Bullet
 
     protected Animator animator;
     protected int bounce;
+    protected float speed;
     GameObject camera;
 
     public override BulletDataSO BulletData
@@ -26,6 +27,7 @@ public class RegularBullet : Bullet
             // decay is for bullets that expire (melee)
             decay = BulletData.decayTime;
             bounce = BulletData.Bounce;
+            speed = BulletData.BulletSpeed;
         }
     }
 
@@ -36,6 +38,12 @@ public class RegularBullet : Bullet
 
     public virtual void Update()
     {
+        CheckDecay();
+        CheckFriction();     
+    }
+
+    void CheckDecay()
+    {
         if(BulletData.hasDecay)
         {
             decay -= Time.deltaTime;
@@ -44,8 +52,22 @@ public class RegularBullet : Bullet
                 Destroy(this.gameObject);
             }
         }
-        
     }
+
+    void CheckFriction()
+    {
+        if(BulletData.Friction > 0)
+        {
+            if(speed <= 0 && !BulletData.Rebound)
+            {
+                StartCoroutine(destruction());  
+                return;
+            }
+            speed -= BulletData.Friction * Time.deltaTime;
+            Debug.Log("Bullet speed = " + speed);
+        }
+    }
+
     void LateUpdate()
     {
         transform.LookAt(camera.transform);
@@ -56,7 +78,7 @@ public class RegularBullet : Bullet
         if(rigidbody != null && BulletData != null)
         {
             // this moves our bullet in the direction that it is facing
-            rigidbody.MovePosition(transform.position + BulletData.BulletSpeed * (Vector3)direction * Time.fixedDeltaTime);
+            rigidbody.MovePosition(transform.position + speed * (Vector3)direction * Time.fixedDeltaTime);
             
         }
     }
