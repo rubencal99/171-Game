@@ -18,4 +18,19 @@ public class HealthPickup : MonoBehaviour
            
       }
    }
+
+   private void OnCollisionEnter(Collision collision)
+   {
+      if (collision.gameObject.tag == "Player")
+      {
+          
+           Player player = FindObjectOfType<Player>();
+           player?.Heal(10);
+           popup popup = FindObjectOfType<popup>();
+            popup.SetText("10 health");
+            popup.ShowText();
+             Destroy(gameObject);
+           
+      }
+   }
 }
