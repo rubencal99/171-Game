@@ -80,7 +80,7 @@ public class EntryCollider : MonoBehaviour
            // var wallPosition = new Vector3(row, 0, room.bottomLeftCorner.y);
            var tilePos = new Vector3Int(row, 0, room.bottomLeftCorner.y);
            var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-           Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+        //    Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
            //tilePosition.y = 0;
            if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
                 tilemap.SetTile(tilePosition, tile);
@@ -91,7 +91,7 @@ public class EntryCollider : MonoBehaviour
             //var wallPosition = new Vector3(row, 0, room.topRightCorner.y);
             var tilePos = new Vector3Int(row, 0, room.topLeftCorner.y);
              var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-               Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+            //    Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
              if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
                 tilemap.SetTile(tilePosition, tile);
             
@@ -103,7 +103,7 @@ public class EntryCollider : MonoBehaviour
             var tilePos  = new Vector3Int(room.bottomLeftCorner.x ,0, col);
               
              var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-             Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+            //  Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
              if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
                 tilemap.SetTile(tilePosition, tile);
         }
@@ -113,7 +113,7 @@ public class EntryCollider : MonoBehaviour
             var tilePos = new Vector3Int(room.bottomRightCorner.x,0, col);
               
               var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-              Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+            //   Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
               if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
                     tilemap.SetTile(tilePosition, tile);
         }
