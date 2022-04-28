@@ -26,4 +26,22 @@ public class BulletPickup : MonoBehaviour
              Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {   
+        if(collision.gameObject.tag == "Player")
+        {
+           
+            Player player = FindObjectOfType<Player>();
+            weapon = player.gameObject.GetComponentInChildren<PlayerWeapon>();
+            if (weapon != null)
+            {
+                weapon.Fill();
+            }
+            popup popup = FindObjectOfType<popup>();
+            popup.SetText("ammo refill");
+            popup.ShowText();
+             Destroy(gameObject);
+        }
+    }
 }

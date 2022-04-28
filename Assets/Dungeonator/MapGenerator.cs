@@ -387,7 +387,7 @@ public class MapGenerator : MonoBehaviour
         AddEndRoom();
         AddEntryColliders();
         AddSpawners();
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 1; i++)
             AddObstacles();
        // AddWalls();
     }
@@ -495,7 +495,8 @@ public class MapGenerator : MonoBehaviour
             {
                 continue;
             }
-            ObstacleInjector.PlaceObstacles(room);
+            //ObstacleInjector.PlaceObstacles(room);
+            ObstacleInjector.PlacePillars(room);
         }
     }
 
