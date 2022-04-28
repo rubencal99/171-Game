@@ -50,7 +50,7 @@ public class RatchetBoss : _BaseBoss
     public float SpawnTimer;
 
     public BossMovement bossMovement;
-    public BossAnimations bossAnimator;
+    public RatchetBossAnimations bossAnimator;
     EnemyBrain brain;
     StarChaseAction StarChase;
     public AgentWeapon WeaponParent;
@@ -65,7 +65,7 @@ public class RatchetBoss : _BaseBoss
         brain = transform.parent.GetComponent<EnemyBrain>();
         currentState = brain.CurrentState;
         bossMovement = transform.parent.GetComponent<BossMovement>();
-        bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
+        bossAnimator = transform.parent.GetComponentInChildren<RatchetBossAnimations>();
         WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
         Melee = WeaponParent.transform.Find("Melee").gameObject;
         LandSpray = WeaponParent.transform.Find("LandSpray").gameObject;
@@ -77,7 +77,7 @@ public class RatchetBoss : _BaseBoss
         CheckDecision();
         if(!inDecision)
         {
-            CheckChase();
+            CheckCharge();
             CheckRecovery();
             CheckSpawn();
             CheckJump();
@@ -171,6 +171,7 @@ public class RatchetBoss : _BaseBoss
         ChargeDirection = chargeDirection;
         if(inCharge)
         {
+            bossAnimator.SetChargeAnimation();
             chargeTimer -= Time.deltaTime;
             if(chargeTimer <= 0)
             {
@@ -186,6 +187,7 @@ public class RatchetBoss : _BaseBoss
         RecoveryTimer = recoveryTimer;
         if(inRecovery)
         {
+            bossAnimator.SetStunAnimation();
             recoveryTimer -= Time.deltaTime;
             if(recoveryTimer <= 0)
             {
@@ -200,6 +202,7 @@ public class RatchetBoss : _BaseBoss
         InJump = inJump;
         if(inJump)
         {
+            bossAnimator.SetSlamAnimation();
             jumpCollider.enabled = true;
             if(!LandSpray.activeSelf)
             {
