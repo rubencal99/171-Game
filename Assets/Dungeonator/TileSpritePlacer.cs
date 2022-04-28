@@ -86,7 +86,7 @@ public class TileSpritePlacer : MonoBehaviour
             var visual = (Vector3Int)tilemap.WorldToCell((Vector3)position);
             // tilenode.x = visual.x;
             // tilenode.y = visual.y;
-            Debug.Log("painting tiles, data pos = " + position + ", visual pos = " + visual);
+            //Debug.Log("painting tiles, data pos = " + position + ", visual pos = " + visual);
             PaintSingleTile(tilemap, tile, position);
         }
         prevNodes = tileNodes;
