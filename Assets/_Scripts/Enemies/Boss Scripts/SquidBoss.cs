@@ -48,7 +48,7 @@ public class SquidBoss : _BaseBoss
 
 
     public BossMovement bossMovement;
-    public BossAnimations bossAnimator;
+    public SquidBossAnimations bossAnimator;
     EnemyBrain brain;
     StarChaseAction StarChase;
     public AgentWeapon WeaponParent;
@@ -63,7 +63,7 @@ public class SquidBoss : _BaseBoss
         brain = transform.parent.GetComponent<EnemyBrain>();
         currentState = brain.CurrentState;
         bossMovement = transform.parent.GetComponent<BossMovement>();
-        bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
+        bossAnimator = transform.parent.GetComponentInChildren<SquidBossAnimations>();
         //WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
         if(Melee == null)
         {
