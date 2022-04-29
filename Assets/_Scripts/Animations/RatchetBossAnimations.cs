@@ -8,12 +8,27 @@ public class RatchetBossAnimations : AgentAnimations
     public CapsuleCollider chargeCollider;
     public BoxCollider boxCollider;
     public CapsuleCollider movementCollider;
+    public EnemyGun GroundSlam;
+    public EnemyGun PoundGun;
     void Start()
     {
         boss = transform.parent.GetComponentInChildren<RatchetBoss>();
         //chargeCollider = boss.transform.gameObject.GetComponent<CapsuleCollider>();
         boxCollider = boss.transform.parent.gameObject.GetComponent<BoxCollider>();
         movementCollider = boss.transform.parent.transform.Find("MovementCollider").GetComponent<CapsuleCollider>();
+    }
+
+    public void Slam()
+    {
+        //GroundSlam.enabled = true;
+        GroundSlam.ForceReload();
+        GroundSlam.TryShooting();
+    }
+
+    public void Pound()
+    {
+        PoundGun.ForceReload();
+        PoundGun.TryShooting();
     }
 
     public void SetChargeAnimation()

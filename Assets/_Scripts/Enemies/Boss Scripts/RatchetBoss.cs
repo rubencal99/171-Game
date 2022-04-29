@@ -49,13 +49,19 @@ public class RatchetBoss : _BaseBoss
     public static float spawnTimer;
     public float SpawnTimer;
 
+    public static bool inSlam = false;
+    public bool InSlam;
+    public static float slamDuration = 3f;
+    public static float slamTimer;
+    public float SlamTimer;
+
     public BossMovement bossMovement;
     public RatchetBossAnimations bossAnimator;
     EnemyBrain brain;
     StarChaseAction StarChase;
     public AgentWeapon WeaponParent;
-    public GameObject Melee;
-    public GameObject LandSpray;
+    public GameObject GroundSlam;
+    public GameObject PoundGun;
 
     public void Start()
     {
@@ -67,8 +73,14 @@ public class RatchetBoss : _BaseBoss
         bossMovement = transform.parent.GetComponent<BossMovement>();
         bossAnimator = transform.parent.GetComponentInChildren<RatchetBossAnimations>();
         WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
-        Melee = WeaponParent.transform.Find("Melee").gameObject;
-        LandSpray = WeaponParent.transform.Find("LandSpray").gameObject;
+        if(GroundSlam == null)
+        {
+            GroundSlam = WeaponParent.transform.Find("GroundSlam").gameObject;
+        }
+        if(PoundGun == null)
+        {
+            PoundGun = WeaponParent.transform.Find("Pound").gameObject;
+        }
     }
 
     public void Update()
@@ -77,6 +89,7 @@ public class RatchetBoss : _BaseBoss
         CheckDecision();
         if(!inDecision)
         {
+            CheckSlam();
             CheckCharge();
             CheckRecovery();
             CheckSpawn();
@@ -92,6 +105,11 @@ public class RatchetBoss : _BaseBoss
         InDecision = inDecision;
         decisionTimer = decisionDuration;
         DecisionTimer = decisionTimer;
+
+        inSlam = false;
+        InSlam = inSlam;
+        slamTimer = slamDuration;
+        SlamTimer = slamTimer;
 
         inChase = false;
         InChase = inChase;
@@ -138,7 +156,31 @@ public class RatchetBoss : _BaseBoss
         }
     }
 
-    public void CheckChase()
+    public void CheckSlam()
+    {
+        InSlam = inSlam;
+        SlamTimer = slamTimer;
+        if(inSlam)
+        {
+            if(slamTimer == slamDuration)
+            {
+                bossAnimator.SetSlamAnimation();
+            }
+            if(GroundSlam.activeSelf == false)
+            {
+                GroundSlam.SetActive(true);
+                PoundGun.SetActive(false);
+            }
+            slamTimer -= Time.deltaTime;
+            if(slamTimer <= 0)
+            {
+                inSlam = false;
+                slamTimer = slamDuration;
+            }
+        }
+    }
+
+    /*public void CheckChase()
     {
         InChase = inChase;
         ChaseTimer = chaseTimer;
@@ -148,7 +190,7 @@ public class RatchetBoss : _BaseBoss
             chaseTimer -= Time.deltaTime;
             if(LandSpray.activeSelf)
             {
-                Melee.SetActive(true);
+                GroundSlam.SetActive(true);
                 LandSpray.SetActive(false);
                 WeaponParent.AssignWeapon();
             }
@@ -162,7 +204,7 @@ public class RatchetBoss : _BaseBoss
         {
             //StarChase.enabled = false;
         }
-    }
+    }*/
 
     public void CheckCharge()
     {
@@ -171,6 +213,11 @@ public class RatchetBoss : _BaseBoss
         ChargeDirection = chargeDirection;
         if(inCharge)
         {
+            if(PoundGun.activeSelf == false)
+            {
+                GroundSlam.SetActive(false);
+                PoundGun.SetActive(true);
+            }
             bossAnimator.SetChargeAnimation();
             chargeTimer -= Time.deltaTime;
             if(chargeTimer <= 0)
@@ -204,10 +251,10 @@ public class RatchetBoss : _BaseBoss
         {
             bossAnimator.SetSlamAnimation();
             jumpCollider.enabled = true;
-            if(!LandSpray.activeSelf)
+            if(!PoundGun.activeSelf)
             {
-                Melee.SetActive(false);
-                LandSpray.SetActive(true);
+                GroundSlam.SetActive(false);
+                PoundGun.SetActive(true);
                 WeaponParent.AssignWeapon();
             }
         }
