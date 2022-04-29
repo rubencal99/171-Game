@@ -36,6 +36,9 @@ public static class PlayerAugmentations : object
     //////////////////////////////WHISKERS//////////////////////////////////////////
     public static bool Whiskers = false;
     public static float whiskersDist = 5f;
+    public static float whiskersDistv2 = 7f;
+    public static float whiskersDistv3 = 11f;
+
 
     //////////////////////////////HOOKSHOT//////////////////////////////////////////
     public static bool HookShot = false;
@@ -82,7 +85,8 @@ public static class PlayerAugmentations : object
         {"SecondSkin", SecondSkin},//passive, body, "damge negation"
         {"AngelsGrace", AngelsGrace}, //passive, head, "revive"
         {"Drone", Drone},//passive, head, "companion"
-        {"CheetahSpeed", CheetahSpeed}// passive, legs, "Move faster"
+        {"CheetahSpeed", CheetahSpeed},// passive, legs, "Move faster"
+        {"PredatoryInstinct", PredatoryInstinct}
 
     };
 
