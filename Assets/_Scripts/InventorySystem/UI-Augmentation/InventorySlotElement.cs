@@ -11,6 +11,10 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
     private Sprite defaultBG;
     [SerializeField]
     private Sprite hasItemBG;
+    [SerializeField]
+    private Sprite hasAugBG;
+    [SerializeField]
+    private Sprite hasWepBG;
     private Sprite current;
     public Image background;
     public Image itemDisplay;
@@ -24,6 +28,11 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
     
     public void Awake()
     {
+        current = null;
+        amountText = amountDisplay.GetComponent<TMP_Text>();
+    }
+    void OnValidate()
+    {
         if (slotType == SlotType.Inventory)
         {
             slot = inventory.Container[slotIndex];
@@ -36,14 +45,9 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
         {
             slot = inventory.WContainer[slotIndex];
         }
-        
-        //background = gameObject.GetComponentInChildren<Image>();
 
-        current = null;
         background.sprite = defaultBG;
         itemDisplay.sprite = current;
-        amountText = amountDisplay.GetComponent<TMP_Text>();
-        
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -73,7 +77,19 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
             itemDisplay.sprite = current;
             itemDisplay.color = new Color (255, 255, 255, 1);
 
-            background.sprite = hasItemBG;
+            if (slot.item.GetType() == typeof(AugmentationItemSO))
+            {
+                background.sprite = hasAugBG;
+            }
+            else if (slot.item.GetType() == typeof(WeaponItemSO))
+            {
+                background.sprite = hasWepBG;
+            }
+            else 
+            {
+                background.sprite = hasItemBG;
+            }
+            
         }
         else if (slot.item == null && itemDisplay.sprite != null)
         {
@@ -84,7 +100,7 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
             background.sprite = defaultBG;
         }
         
-        if (slot.amount < 1 && amountDisplay.activeSelf)
+        if (slot.amount <= 1 && amountDisplay.activeSelf)
         {
             amountDisplay.SetActive(false);
         }
