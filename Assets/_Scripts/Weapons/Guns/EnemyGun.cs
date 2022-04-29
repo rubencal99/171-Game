@@ -23,7 +23,7 @@ public class EnemyGun : Gun
     {
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
-            //Debug.Log("In Use Weapon");
+            Debug.Log("In Use Weapon");
             if (Ammo > 0)
             {
                 Ammo--;
@@ -42,8 +42,7 @@ public class EnemyGun : Gun
                 isShooting = false;
                 OnShootNoAmmo?.Invoke();
                 Debug.Log("About to reload");
-                Reload();
-                //TryReloading();                 // Use this if we want to reload automatically
+                TryReloading();                 // Use this if we want to reload automatically
                 return;
             }
             FinishShooting();
@@ -52,7 +51,7 @@ public class EnemyGun : Gun
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
     // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
-    public override void Reload()
+    /*public override void Reload()
     {
         if(isReloading && !reloadCoroutine) {
 
@@ -62,15 +61,5 @@ public class EnemyGun : Gun
             FinishReloading();
             
         }
-    }
-
-    protected override IEnumerator DelayNextReloadingCoroutine()
-    {
-        reloadCoroutine = true;
-        yield return new WaitForSeconds( weaponData.ReloadSpeed);
-        //var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
-        //Ammo += neededAmmo;
-        //TotalAmmo -= neededAmmo;
-        reloadCoroutine = false;
-    }
+    }*/
 }

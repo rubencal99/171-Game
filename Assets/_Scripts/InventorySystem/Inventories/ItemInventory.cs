@@ -26,7 +26,7 @@ public class ItemInventory : ScriptableObject
             // if items are the same or _toslot is empty, just add item and amount to _toslot
             if ((_fromslot.item == _toslot.item && _fromslot.amount + _toslot.amount <= _toslot.item.stackLimit)|| _toslot.item == null)
             {
-                Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                //Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 //_toslot.item = _fromslot.item;
                 //_toslot.AddAmount(_fromslot.amount);
                 _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
@@ -35,7 +35,7 @@ public class ItemInventory : ScriptableObject
             // if not, swap item and amount data
             else
             {
-                Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                //Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 ItemObject toitem = _toslot.item;
                 int toamount = _toslot.amount;
                 ItemObject fromitem = _fromslot.item;
@@ -210,7 +210,7 @@ public class WeaponSlot : Slot
         // checks item for type, then checks for augType or weaponType
         if (_item.GetType() == typeof(WeaponItemSO))
         {
-            if (_item.itemType == Convert.ToInt32(slotType) || slotType == WeaponType.Primary)
+            if (_item.itemType == Convert.ToInt32(slotType) || (slotType == WeaponType.Primary && _item.itemType == 1))
             {
                 return true;
             }
@@ -352,6 +352,7 @@ public class AugSlot : Slot
             }
         }
         PlayerAugmentations.AugmentationList[_item.Name] = true;
+        Debug.Log("Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
     }
 
     public override void Clear(){
@@ -359,6 +360,7 @@ public class AugSlot : Slot
         {
             amount = 0;
             PlayerAugmentations.AugmentationList[item.Name] = false;
+            Debug.Log("Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
             item = null;
         }
     }
