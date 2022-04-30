@@ -24,6 +24,12 @@ public class Shop : MonoBehaviour
         ShopUI = transform.Find("Canvas-ShopUI");
         CloseShop();
         inShop = false;
+
+        RoomNode spawnRoom = transform.parent.GetComponent<RoomNode>();
+        if(spawnRoom)
+        {
+            transform.position = new Vector3(spawnRoom.roomCenter.x, 1, spawnRoom.roomCenter.y);
+        }
         
     }
 

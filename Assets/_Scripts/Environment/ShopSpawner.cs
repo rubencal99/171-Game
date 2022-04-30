@@ -24,6 +24,8 @@ public class ShopSpawner : EnemySpanwer
 
     new public void SpawnObject(){
         Vector3 offsetPosition = new Vector3(thisroom.roomCenter.x, 1, thisroom.roomCenter.y);
+        Debug.Log("Shop Room Center: " + thisroom.roomCenter);
+        Debug.Log("Shopkeeper spawn position: " + offsetPosition);
         //offsetPosition.x += Random.Range(-offset, offset);
         //offsetPosition.y += Random.Range(-offset, offset);
 
