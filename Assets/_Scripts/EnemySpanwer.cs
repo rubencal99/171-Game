@@ -57,12 +57,12 @@ public class EnemySpanwer : MonoBehaviour
         thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
         foreach(var wave in Waves)
             foreach(var order in wave.Enemies) {
-            for(int i = 0; i < order.SpawnCount; i++) {
-               // wave.enemyCount++;
-                enemyCount++;
-                if(wave == Waves[0])
-                    curEnemies++;
-            }
+                for(int i = 0; i < order.SpawnCount; i++) {
+                // wave.enemyCount++;
+                    enemyCount++;
+                    if(wave == Waves[0])
+                        curEnemies++;
+                }
         }
         curWave = Waves[0];
 
@@ -138,10 +138,11 @@ public class EnemySpanwer : MonoBehaviour
         Vector3 offsetPosition = new Vector3(spawnTile.x, 2f, spawnTile.y);
 
         //var source = Enemies[Random.Range(0, Enemies.Length)];
-        var clone = Instantiate(source, offsetPosition, Quaternion.identity);
+        var clone = Instantiate(source, offsetPosition, source.transform.rotation);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
-        StartCoroutine(enable_brain(clone));
+        if(clone.GetComponent<EnemyBrain>() != null)
+            StartCoroutine(enable_brain(clone));
       //  clone.GetComponent<EnemyBrain>().enabled = true;
 
         spawned = true;

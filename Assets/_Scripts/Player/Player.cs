@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public ItemInventory inventory;
     public RoomNode currentRoom;
 
-    
+
     public bool invincible = false;
 
    // public int damage_iframes = 20;
@@ -34,18 +34,18 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [field: SerializeField]
     public int Damage { get; private set; }
 
-    [field: SerializeField]                         
-    public bool isDead; 
-    [field: SerializeField]                         
-    public bool hasKey; 
+    [field: SerializeField]
+    public bool isDead;
+    [field: SerializeField]
+    public bool hasKey;
 
-    [field: SerializeField]                         
+    [field: SerializeField]
     public float getHitFrequency;
 
-    [field: SerializeField]                         
-    public float getHitIntensity; 
-    
-    [field: SerializeField]                         
+    [field: SerializeField]
+    public float getHitIntensity;
+
+    [field: SerializeField]
     public float getHitTime;                           //For debug
 
     [field: SerializeField]
@@ -71,12 +71,17 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private bool HitLastFiveSec;
     private PlayerMovement playerMovement;
 
+    //Defelction Shield logic
+    private bool ShieldActivated = false;
+    [SerializeField]
+    private SphereCollider shield;
+
     private AgentRenderer agentRenderer;
     [SerializeField]
 
 
     public PlayerStateManager PlayerState; // game odject for agent input
-    // private AgentInput w; // var to hold agent input 
+    // private AgentInput w; // var to hold agent input
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
@@ -84,6 +89,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void Awake()
     {
         instance = this;
+         //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -96,24 +102,44 @@ public class Player : MonoBehaviour, IAgent, IHittable
         agentRenderer = GetComponentInChildren<AgentRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
         //DeathMenuUI.SetActive(false);
-        isDead = false;                                         //Debuging death 
+        isDead = false;                                         //Debuging death
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
         //overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
+        //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
-    private void Update()
+    void Update()
     {
-         if (isDead==true){                      //For Debug the instance kill 
+        if (isDead==true){                      //For Debug the instance kill
              Health -= Health;
              OnDie?.Invoke();
              StartCoroutine(WaitToDie());
-         }
-         /*if(HitLastFiveSec){
+        }
+
+        if(HitLastFiveSec){
             StartCoroutine(fadeOverlay());
+        }
+
+         //raise defelction shield
+        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
+             StartCoroutine(RaiseShield());
+        }
+
+         //hipposkin
+        if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
+             StartCoroutine(ApplyHippo());
+         }
+         /*if(Input.GetButtonUp("Teleport")){
+             //Debug.Log("Teleport");
+             PlayerSignaler.CallWhiskers();
          }*/
+         if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
+            InvokeRepeating("RunAutoDoc",1f,2f);
+            StartCoroutine(AutoDocCoolDown());
+         }
     }
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
@@ -135,10 +161,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         }
         tempColor.a = 0f;
-        
+
         HitLastFiveSec = false;
     }
-    
+
     public void Heal(int amount) {
         Health += amount;
         if(Health > MaxHealth)
@@ -147,12 +173,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void setMaxHp(int amount) {
         MaxHealth = amount;
-
     }
 
 
     public void GetHit(float damage, GameObject damageDealer)
-    {    
+    {   
         if(invincible)
         {
             return;
@@ -166,14 +191,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
-        if (Health > 0) {   
+        if (Health > 0) {
             OnGetHit?.Invoke();
             StartCoroutine(iframes_damage());
         }
         else
         {
             OnDie?.Invoke();
-            StartCoroutine(WaitToDie());   
+            StartCoroutine(WaitToDie());
         }
     }
 
@@ -246,12 +271,39 @@ public class Player : MonoBehaviour, IAgent, IHittable
         transform.position = SpawnPosition;
     }
 
+    public void RunAutoDoc(){
+        int toHeal = Mathf.CeilToInt(PlayerAugmentations.AutoDocHeal * MaxHealth);
+        Heal(toHeal);
+        PlayerAugmentations.AutoDocUsed = true;
+    }
+
      public IEnumerator iframes_damage() {
         invincible = true;
         yield return new WaitForSeconds((float)damage_iframes / 60f);
         invincible = false;
     }
 
+    public IEnumerator RaiseShield(){
+        Debug.Log("raise shield");
+        ShieldActivated = true;
+        shield.enabled = true;
+        //Maybe get an animation here
+        yield return new WaitForSeconds(PlayerAugmentations.DefelctionTime);
+        shield.enabled = false;
+        ShieldActivated = false;
+    }
+
+    public IEnumerator ApplyHippo(){
+        PlayerAugmentations.HippoApplied = true;
+        yield return null;
+        setMaxHp(MaxHealth + Mathf.FloorToInt(0.15f * MaxHealth));
+        Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied);
+    }
+
+    public IEnumerator AutoDocCoolDown(){
+        yield return new WaitForSeconds(PlayerAugmentations.AutoDocCoolDown);
+        PlayerAugmentations.AutoDocUsed = false;
+    }
     private void OnApplicationQuit()
     {
         inventory.ClearInventory();

@@ -29,9 +29,11 @@ MonoBehaviour:
   - item: {fileID: 0}
     amount: 0
     slotType: 0
+    prevItem: {fileID: 0}
   - item: {fileID: 0}
     amount: 0
     slotType: 1
+    prevItem: {fileID: 0}
   AContainer:
   - item: {fileID: 0}
     amount: 0

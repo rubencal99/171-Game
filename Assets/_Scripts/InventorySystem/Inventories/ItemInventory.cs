@@ -108,7 +108,7 @@ public class ItemInventory : ScriptableObject
         }
         foreach (WeaponSlot slot in WContainer)
         {
-            slot.Clear();
+            slot.Wipe();
         }
         Debug.Log("Inventory Cleared");
     }
@@ -201,6 +201,13 @@ public class WeaponSlot : Slot
         }
     }
 
+    public void Wipe()
+    {
+        item = null;
+        prevItem = null;
+        amount = 0;
+    }
+
     public override void Clear()
     {
         // Moves current item to PlayerInventory
@@ -237,6 +244,10 @@ public class WeaponSlot : Slot
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         PlayerWeapon.instance.Primary = clone;
+        if(PlayerWeapon.instance.Primary.GetComponent<Gun>() != null)
+            if(PlayerProgressManager.hasData) {
+                Debug.Log("Loading saved primary ammo");
+            }
         PlayerWeapon.instance.TogglePrimary();
     }
 
@@ -298,7 +309,35 @@ public class AugSlot : Slot
             return false;
         }
     }
-    
+    public override void AddItemToSlot(ItemObject _Item, int _amount){
+        if (VerifyItem(_Item))
+        {
+            // does the thing
+            if (item == null)
+            {
+                item = _Item;
+                AddAmount(_amount);
+            }
+            else if (item == _Item && item.stackable)
+            {
+                AddAmount(_amount);
+            }
+            else 
+            {
+                Debug.Log("There's already an item in this slot");
+            }
+        }
+        PlayerAugmentations.AugmentationList[_Item.Name] = true;
+    }
+
+    public override void Clear(){
+        if(item)
+        {
+            amount = 0;
+            PlayerAugmentations.AugmentationList[item.Name] = false;
+            item = null;
+        }
+    }
 }
 
 public abstract class Slot

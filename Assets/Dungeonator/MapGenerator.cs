@@ -28,6 +28,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject EntryCollider;
     [SerializeField]
     public GameObject Exit;
+    [SerializeField]
+    public GameObject SpawnWeapon;
 
     [SerializeField]
     private GameObject wallVertical, wallHorizontal;
@@ -486,6 +488,7 @@ public class MapGenerator : MonoBehaviour
             if (room.RoomType == "Start" || 
                 room.RoomType == "Shop" || 
                 room.RoomType == "Boss" ||
+                room.RoomType == "Auxiliary" ||
                 room.RoomType == "Reward")
             {
                 continue;
@@ -520,16 +523,22 @@ public class MapGenerator : MonoBehaviour
             else if(room.RoomType == "Reward")
             {
                 // Not implemented yet
-                return;
+                continue;
+            }
+            else if(room.RoomType == "Auxiliary")
+            {
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 2)], pos1, Quaternion.identity);
+                GameObject lk = Instantiate(Spawner[Spawner.Count - 1], pos1, Quaternion.identity);
+                lk.transform.parent = room.transform;
             }
             else if(room.RoomType == "Large")
             {
-                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 1)], pos1, Quaternion.identity);
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 2)], pos1, Quaternion.identity);
             }
             else
             {
 
-                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 1)], pos1, Quaternion.identity);
+                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 2)], pos1, Quaternion.identity);
 
             }
             spawnedObject.transform.parent = room.transform;
@@ -585,7 +594,15 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
+         if(PlayerProgressManager.hasData) {
+            Debug.Log("Loading player data");
+            PlayerProgressManager.LoadPlayer(Player.GetComponentInChildren<PlayerWeapon>().gameObject, Player.gameObject);
+           // Player.GetComponent<Player>() = PlayerProgressManager.currentPlayerState;
+           // Player.GetComponentInChildren<PlayerWeapon>() = PlayerProgressManager.currentPlayerWeaponState;
+             }
         controls.SetPosition(Player.transform.position);
+        Vector3 weaponSpawn = new Vector3(spawnPosition.x - 3, spawnPosition.y, spawnPosition.z);
+        GameObject spawnWeapon = Instantiate(SpawnWeapon, weaponSpawn, Quaternion.identity);
     }
 
     /* RoomNode CreateRoom(int x1, int y1, int x2, int y2)
