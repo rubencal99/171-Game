@@ -8,7 +8,7 @@ public class RatchetBossDecisionAction : AIAction
   {
       //SquidBoss.inDecision = true;
       //RatchetBoss.inDecision = true;
-      int r = Random.Range(0, 100);
+      int r = Random.Range(0, 50);
       Debug.Log("In Ratchet Boss decision action");
       Debug.Log("Random number = " + r);
       if(r < 50)
@@ -18,8 +18,8 @@ public class RatchetBossDecisionAction : AIAction
       }
       else
       {
-        RatchetBoss.inJump = true;
-        Debug.Log("In Jump = " + RatchetBoss.inJump);
+        RatchetBoss.inSlam = true;
+        Debug.Log("In Slam = " + RatchetBoss.inSlam);
       }
       
   }
