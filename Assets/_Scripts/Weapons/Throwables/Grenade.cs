@@ -8,10 +8,19 @@ public class Grenade : _BaseThrowable
      public float radius = 0.000025f;
 
     public float lifetime = 3.0f;
+    bool isDetonated = false;
+
      public override void Update() {
         if(lifetime < 0.0f)
+        {
+            if(!Thrown && !isDetonated)
+            {
+                PlayerInput.instance.OnThrowButtonPressed?.Invoke();
+            }
+            isDetonated = true;
            destruction();
-        
+        }
+
         lifetime -= Time.fixedDeltaTime;
 
         if(!Thrown) {

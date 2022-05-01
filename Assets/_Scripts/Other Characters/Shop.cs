@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public static Shop instance;
     public List<ShopItemSO> ItemsForSale;
     public Transform ShopUI;
     public float ShopDistance;
@@ -12,6 +13,10 @@ public class Shop : MonoBehaviour
     public SpriteRenderer ShopKeeper;
     public bool inShop;
     public GameObject Key;
+    void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {

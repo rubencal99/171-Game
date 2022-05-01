@@ -60,7 +60,7 @@ public class _BaseThrowable : MonoBehaviour
           var direction = pw.aimDirection + Vector3.up;
           Vector3.Normalize(direction);
          GetComponent<Rigidbody>().useGravity = true;
-         Debug.Log("distance = " + distance);
+         //Debug.Log("distance = " + distance);
          GetComponent<Rigidbody>().AddForce(direction * (distance - (distance/10)), ForceMode.Impulse);
          transform.parent = null;
     }
