@@ -45,10 +45,10 @@ public class EntryCollider : MonoBehaviour
         var spr = this.GetComponentInChildren<SpriteRenderer>();
         if(room.RoomType == "Boss" || room.RoomType == "Key") spr.color = Color.yellow;
         if(room.RoomType == "Shop") spr.color = Color.green;
-        if(room.RoomType == "Reward") spr.color = Color.cyan;
+        //if(room.RoomType == "Reward") spr.color = Color.cyan;
         if(room.RoomType == "Door") spr.color = Color.magenta;
         if(room.RoomType == "Auxiliary") spr.color = Color.red;
-        if(room.RoomType == "Normal" || room.RoomType == "Large") spr.enabled = false;  
+        if(room.RoomType == "Normal" || room.RoomType == "Large" || room.RoomType == "Reward") spr.enabled = false;  
        
     }
 
@@ -58,19 +58,21 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss")
+                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss" || room.RoomType == "Auxiliary")
                     StartCoroutine(WaitToUpdateTiles(barrier_tile));
                
             }
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.8f);
         UpdateTiles(tile);
     }
 
 
     void UpdateTiles(TileBase tile) {
+        var firstTile = room.tileList[0, 0];
+        TileNode check = MapGenerator.map[0, 0];
         for (int row = (int)room.bottomLeftCorner.x; row <= (int)room.bottomRightCorner.x; row++)
         {
             //uncomment lines + switch .y to .z to enable third dimension
@@ -78,36 +80,48 @@ public class EntryCollider : MonoBehaviour
            // var wallPosition = new Vector3(row, 0, room.bottomLeftCorner.y);
            var tilePos = new Vector3Int(row, 0, room.bottomLeftCorner.y);
            var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-           tilemap.SetTile(tilePosition, tile);
+        //    Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+           //tilePosition.y = 0;
+           if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+                tilemap.SetTile(tilePosition, tile);
             
         }
         for (int row = (int)room.topLeftCorner.x; row <= (int)room.topRightCorner.x; row++)
         {
             //var wallPosition = new Vector3(row, 0, room.topRightCorner.y);
-            var tilePos = new Vector3Int(row, 0, room.topRightCorner.y);
+            var tilePos = new Vector3Int(row, 0, room.topLeftCorner.y);
              var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-           tilemap.SetTile(tilePosition, tile);
+            //    Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+             if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+                tilemap.SetTile(tilePosition, tile);
             
         }
         for (int col = (int)room.bottomLeftCorner.y; col <= (int)room.topLeftCorner.y; col++)
         {
             //var wallPosition = new Vector3(room.bottomLeftCorner.x, 0, col);
+            
             var tilePos  = new Vector3Int(room.bottomLeftCorner.x ,0, col);
+              
              var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-           tilemap.SetTile(tilePosition, tile);
+            //  Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+             if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+                tilemap.SetTile(tilePosition, tile);
         }
         for (int col = (int)room.bottomRightCorner.y; col <= (int)room.topRightCorner.y; col++)
         {
             //var wallPosition = new Vector3(room.bottomRightCorner.x, 0f, col);
             var tilePos = new Vector3Int(room.bottomRightCorner.x,0, col);
+              
               var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
-           tilemap.SetTile(tilePosition, tile);
+            //   Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
+              if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+                    tilemap.SetTile(tilePosition, tile);
         }
     }
 
 
     void OnDisable() {
-        UpdateTiles(normal_tile);
+        StartCoroutine(WaitToUpdateTiles(normal_tile));
     }
 
 }

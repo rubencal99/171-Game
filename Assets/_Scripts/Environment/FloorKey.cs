@@ -15,6 +15,17 @@ public class FloorKey : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collider)
+    {
+        if(collider.gameObject.tag == "Player")
+        {
+            Debug.Log("Player has aquired key");
+            Player.instance.hasKey = true;
+            KillAllEnemies();
+            Destroy(gameObject);    
+        }
+    }
+
     // Goes through all enemies in the room and hits them for 1000
     void KillAllEnemies()
     {

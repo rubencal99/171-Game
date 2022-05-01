@@ -105,7 +105,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;                                         //Debuging death
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
-        //overlay = GameObject.Find("Overlay").GetComponent<Image>();
+        overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         HitLastFiveSec = false;
         //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();

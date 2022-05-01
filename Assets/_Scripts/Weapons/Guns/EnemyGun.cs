@@ -10,7 +10,7 @@ public class EnemyGun : Gun
     {
         rateOfFireCoroutine = true;
         float delay = UnityEngine.Random.Range(weaponData.WeaponDelay, weaponData.WeaponDelay + weaponData.WeaponDelayRandomizer);
-        yield return new WaitForSeconds(delay / passives.ROFMultiplier);
+        yield return new WaitForSeconds(delay);// / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
 
@@ -33,7 +33,7 @@ public class EnemyGun : Gun
                 OnShoot?.Invoke();
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
-                    Debug.Log("Before shoot bullet");
+                    //Debug.Log("Before shoot bullet");
                     ShootBullet();
                 }
             }
@@ -48,4 +48,18 @@ public class EnemyGun : Gun
             FinishShooting();
         }
     }
+
+    // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
+    // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
+    /*public override void Reload()
+    {
+        if(isReloading && !reloadCoroutine) {
+
+            var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
+            Ammo += neededAmmo;
+            TotalAmmo -= neededAmmo;
+            FinishReloading();
+            
+        }
+    }*/
 }

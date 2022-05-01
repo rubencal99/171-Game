@@ -9,9 +9,27 @@ public class BulletPickup : MonoBehaviour
       [field: SerializeField]
     public UnityEvent OnPickup { get; set; }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {   
         if(collision.tag == "Player")
+        {
+           
+            Player player = FindObjectOfType<Player>();
+            weapon = player.gameObject.GetComponentInChildren<PlayerWeapon>();
+            if (weapon != null)
+            {
+                weapon.Fill();
+            }
+            popup popup = FindObjectOfType<popup>();
+            popup.SetText("ammo refill");
+            popup.ShowText();
+             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {   
+        if(collision.gameObject.tag == "Player")
         {
            
             Player player = FindObjectOfType<Player>();

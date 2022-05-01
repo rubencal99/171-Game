@@ -7,7 +7,7 @@ public class ReloadPassive : _BasePassive
     [SerializeField]
     protected float multiplier;
 
-    public override IEnumerator Pickup(Collider2D player)
+    public override IEnumerator Pickup(Collider player)
     {
         PlayerPassives passives = player.GetComponent<PlayerPassives>();
         passives.ReloadMultiplier *= multiplier;
@@ -16,7 +16,26 @@ public class ReloadPassive : _BasePassive
             popup.ShowText();
 
         GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<CircleCollider2D>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        passives.ReloadMultiplier /= multiplier;
+
+       
+        Destroy(gameObject);
+    }
+
+    public override IEnumerator Pickup(Collision player)
+    {
+        PlayerPassives passives = player.gameObject.GetComponent<PlayerPassives>();
+        passives.ReloadMultiplier *= multiplier;
+         popup popup = FindObjectOfType<popup>();
+            popup.SetText("reload speed increase");
+            popup.ShowText();
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
 
         yield return new WaitForSeconds(duration);
 

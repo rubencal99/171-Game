@@ -65,6 +65,16 @@ public class PlayerMovement : AgentMovement
         //collider.size = oriCollider;
     }
 
+    public void CollisionsOff() {
+        rigidbody.Sleep();
+        rigidbody.detectCollisions  = false;
+    }
+
+    public void CollisionsOn() {
+         rigidbody.WakeUp();
+        rigidbody.detectCollisions  = true;
+    }
+
     public void ResetSpeed()
     {
         currentVelocity = 0;

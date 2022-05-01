@@ -12,7 +12,9 @@ public class RegularBullet : Bullet
 
     protected Animator animator;
     protected int bounce;
-    GameObject camera;
+    protected float speed;
+    protected GameObject camera;
+    protected bool hasRebounded = false;
 
     public override BulletDataSO BulletData
     {
@@ -26,6 +28,7 @@ public class RegularBullet : Bullet
             // decay is for bullets that expire (melee)
             decay = BulletData.decayTime;
             bounce = BulletData.Bounce;
+            speed = BulletData.BulletSpeed;
         }
     }
 
@@ -36,6 +39,12 @@ public class RegularBullet : Bullet
 
     public virtual void Update()
     {
+        CheckDecay();
+        CheckFriction();     
+    }
+
+    protected void CheckDecay()
+    {
         if(BulletData.hasDecay)
         {
             decay -= Time.deltaTime;
@@ -44,9 +53,36 @@ public class RegularBullet : Bullet
                 Destroy(this.gameObject);
             }
         }
-        
     }
-    void LateUpdate()
+
+    protected void CheckFriction()
+    {
+        if(BulletData.Friction > 0)
+        {
+            if(speed <= 0 && !BulletData.Rebound)
+            {
+                StartCoroutine(destruction());  
+                return;
+            }
+            else if(speed <= 0 && !hasRebounded)
+            {
+                hasRebounded = true;
+                direction = -direction; 
+            }
+            if (!hasRebounded)
+            {
+                speed -= BulletData.Friction * Time.deltaTime;
+            }
+            else
+            {
+                speed += BulletData.Friction * Time.deltaTime;
+            }
+            
+            //Debug.Log("Bullet speed = " + speed);
+        }
+    }
+
+    protected void LateUpdate()
     {
         transform.LookAt(camera.transform);
     }
@@ -56,7 +92,7 @@ public class RegularBullet : Bullet
         if(rigidbody != null && BulletData != null)
         {
             // this moves our bullet in the direction that it is facing
-            rigidbody.MovePosition(transform.position + BulletData.BulletSpeed * (Vector3)direction * Time.fixedDeltaTime);
+            rigidbody.MovePosition(transform.position + speed * (Vector3)direction * Time.fixedDeltaTime);
             
         }
     }
@@ -143,8 +179,9 @@ public class RegularBullet : Bullet
         Vector3 newDirection = Vector3.Reflect(direction, inNormal);
         Debug.Log("In Bounce Bullet");
         Debug.Log("CURRENT Direction: " + direction);
+        newDirection.y = 0;
         Debug.Log("New Direction: " + newDirection);
-        Debug.Log("CURRENT Rotation: " + transform.rotation);
+        //Debug.Log("CURRENT Rotation: " + transform.rotation);
         /*if(newDirection.x != direction.x)
         {
             transform.Rotate(new Vector3(-transform.rotation.x, 0, 0));
@@ -153,7 +190,7 @@ public class RegularBullet : Bullet
         {
             transform.Rotate(new Vector3(0, -transform.rotation.y, 0));
         }*/
-        Debug.Log("New Rotation: " + transform.rotation);
+        //Debug.Log("New Rotation: " + transform.rotation);
         direction = newDirection;
     }
 

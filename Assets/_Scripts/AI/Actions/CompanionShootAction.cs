@@ -7,6 +7,10 @@ public class CompanionShootAction : AIAction
     public Companion companion;
     public override void TakeAction()
     {
+        if(companion.enemyTarget == null)
+        {
+            return;
+        }
         // Debug.Log("In shoot");
         // This is basically the distance decision
         var distance = Vector3.Distance(companion.enemyTarget.transform.position, transform.position);

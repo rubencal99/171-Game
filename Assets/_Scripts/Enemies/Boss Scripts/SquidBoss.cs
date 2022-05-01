@@ -48,7 +48,7 @@ public class SquidBoss : _BaseBoss
 
 
     public BossMovement bossMovement;
-    public BossAnimations bossAnimator;
+    public SquidBossAnimations bossAnimator;
     EnemyBrain brain;
     StarChaseAction StarChase;
     public AgentWeapon WeaponParent;
@@ -63,10 +63,17 @@ public class SquidBoss : _BaseBoss
         brain = transform.parent.GetComponent<EnemyBrain>();
         currentState = brain.CurrentState;
         bossMovement = transform.parent.GetComponent<BossMovement>();
-        bossAnimator = transform.parent.GetComponentInChildren<BossAnimations>();
-        WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
-        Melee = WeaponParent.transform.Find("Melee").gameObject;
-        Spray = WeaponParent.transform.Find("Spray").gameObject;
+        bossAnimator = transform.parent.GetComponentInChildren<SquidBossAnimations>();
+        //WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
+        if(Melee == null)
+        {
+            Melee = WeaponParent.transform.Find("Melee").gameObject;
+        }
+        if(Spray == null)
+        {
+            Spray = WeaponParent.transform.Find("Spray").gameObject;
+        }
+        
     }
 
     public void Update()

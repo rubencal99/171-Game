@@ -4979,10 +4979,11 @@ MonoBehaviour:
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: be2dd75d0c841cf4a8212df0ad03216b, type: 2}
   isPlayer: 0
+  isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:

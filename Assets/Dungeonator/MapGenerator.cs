@@ -25,6 +25,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject ShopKeeperSpawner;
     [SerializeField]
+    private GameObject PuzzleSpawner;
+    [SerializeField]
     private GameObject EntryCollider;
     [SerializeField]
     public GameObject Exit;
@@ -385,7 +387,7 @@ public class MapGenerator : MonoBehaviour
         AddEndRoom();
         AddEntryColliders();
         AddSpawners();
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 1; i++)
             AddObstacles();
        // AddWalls();
     }
@@ -493,7 +495,8 @@ public class MapGenerator : MonoBehaviour
             {
                 continue;
             }
-            ObstacleInjector.PlaceObstacles(room);
+            //ObstacleInjector.PlaceObstacles(room);
+            ObstacleInjector.PlacePillars(room);
         }
     }
 
@@ -527,9 +530,9 @@ public class MapGenerator : MonoBehaviour
             }
             else if(room.RoomType == "Auxiliary")
             {
-                spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 2)], pos1, Quaternion.identity);
-                GameObject lk = Instantiate(Spawner[Spawner.Count - 1], pos1, Quaternion.identity);
-                lk.transform.parent = room.transform;
+                spawnedObject = Instantiate(PuzzleSpawner, pos1, Quaternion.identity);
+                //GameObject lk = Instantiate(PuzzleSpawner, pos1, Quaternion.identity);
+                //lk.transform.parent = room.transform;
             }
             else if(room.RoomType == "Large")
             {

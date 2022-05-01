@@ -120,17 +120,19 @@ public class RoomNode : MonoBehaviour
 
         topLeftCorner.x = roomCenter.x - (int)Mathf.Ceil(length / 2);
         topLeftCorner.y = roomCenter.y + (int)Mathf.Ceil(width / 2);
-
+         if(width % 2 != 0) topLeftCorner.y++;
+        
         topRightCorner.x = roomCenter.x + (int)Mathf.Ceil(length / 2);
         topRightCorner.y = roomCenter.y + (int)Mathf.Ceil(width / 2);
         if(length % 2 != 0) topRightCorner.x++;
+        if(width % 2 != 0) topRightCorner.y++;
 
     }
 
     public TileNode GrabValidTile()
     {
-        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 5, roomCenter.x + (width /2) - 5),
-                                        Random.Range(roomCenter.y - (length /2) + 5, roomCenter.y + (length /2) - 5));
+        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - ((width /2) + 2), roomCenter.x + ((width /2) - 2)),
+                                        Random.Range(roomCenter.y - ((length /3) + 2), roomCenter.y + ((length /3) - 2)));
 
         var count = 0;
         //Debug.Log("Room Center: " + roomCenter);
@@ -138,14 +140,14 @@ public class RoomNode : MonoBehaviour
         TileNode tile = FindTileByPoint(r.x, r.y);
         while(tile == null || tile.value != 1)
         {
-            if(count >= 3)
+            if(count >= 20)
             {
                 Debug.Log("Couldn't find valid tile.");
-                tile = FindTileByPoint(roomCenter.x, roomCenter.y + 6);
+                tile = FindTileByPoint(roomCenter.x, roomCenter.y);
                 break;
             }
-            r = new Vector2Int(Random.Range(roomCenter.x - (width /2) + 3, roomCenter.x + (width /2) - 3),
-                                Random.Range(roomCenter.y - (length /2) + 3, roomCenter.y + (length /2) - 3));
+            r = new Vector2Int(Random.Range(roomCenter.x - ((width /2) + 2), roomCenter.x + ((width /2) - 2)),
+                                Random.Range(roomCenter.y - ((length /3) + 2), roomCenter.y + ((length /3) - 2)));
             tile = FindTileByPoint(r.x, r.y);
             count++;
         }

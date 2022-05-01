@@ -14,6 +14,12 @@ public class MeleeDataSO : ScriptableObject
     public float RecoveryLength { get; set; } = 1f;
 
     [field: SerializeField]
+    [field: Range(0.01f, 2f)]
+    public float ComboWindow { get; set; } = 0.2f;
+    [field: SerializeField]
+    public int ComboLength { get; set; } = 3;
+
+    [field: SerializeField]
     [field: Range(1, 20)]
     public float KnockbackPower { get; set; } = 5;
 
