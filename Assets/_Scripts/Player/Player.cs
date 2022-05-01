@@ -259,6 +259,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
+        isDead = true;
         yield return new WaitForSeconds(3f);
         //Destroy(gameObject);
         // Play End Game Screen here

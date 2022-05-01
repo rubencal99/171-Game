@@ -14,9 +14,12 @@ public class Reticule : MonoBehaviour
 
     PlayerInput playerInput;
 
+    protected GameObject camera;
+
     void Awake()
     {
         playerInput = transform.parent.GetComponent<PlayerInput>();
+        camera = CameraShake.Instance.gameObject;
     }
     
     
@@ -26,10 +29,15 @@ public class Reticule : MonoBehaviour
         Vector3 mousePos =  playerInput.MousePos;
         mousePos.x = Mathf.Clamp(mousePos.x, minX, maxX);
         mousePos.z = Mathf.Clamp(mousePos.z, minZ, maxZ);
-        mousePos.y = /*Camera.main.nearClipPlane*/ 0;
+        //mousePos.y = /*Camera.main.nearClipPlane*/ 1;
         //this.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
         this.transform.position = mousePos;
         calculateMidPoint();
+    }
+
+    protected void LateUpdate()
+    {
+        transform.LookAt(camera.transform);
     }
 
     void calculateMidPoint() {
