@@ -12,6 +12,12 @@ public class TileNode
     // 1 = room
     // 2 = corridor
     public int value;
+    // Gym, lab, lobby, rec, cafeterti, etc.
+    public char roomType;
+    // Gym: weights, more weights
+    // Lab: surgery equipment, eperiment vessels
+    // Cafeteria: Lunch tables, trash cans, self-serve area
+    public Dictionary<char, char> roomDecorations;
     public int x;
     public int y;
     // public bool isDoor;

@@ -382,13 +382,13 @@ public class MapGenerator : MonoBehaviour
                     {
                         // Here is where we'd want to randomly choose from a static list
                         map[x1 + 1 + i, y1 + 1 + j].value = RoomInjector.normal[i, j];
-                        //if(RoomInjector.normal[i, j] == 1)
-                        //{
-                        map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
-                        roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                        if(RoomInjector.normal[i, j] == 1)
+                        {
+                            map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
+                            roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                        }
                         NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
                         NewRoom.tileCount++;
-                        //}
                     }
                 }
                 //Debug.Log("Before Add Lights");
@@ -529,6 +529,7 @@ public class MapGenerator : MonoBehaviour
             if (room.RoomType == "Start" || 
                 room.RoomType == "Shop" || 
                 room.RoomType == "Boss" ||
+                room.RoomType == "Normal" ||
                 room.RoomType == "Auxiliary" ||
                 room.RoomType == "Reward")
             {
