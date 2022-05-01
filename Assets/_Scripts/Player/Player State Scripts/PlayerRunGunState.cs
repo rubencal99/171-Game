@@ -93,6 +93,8 @@ public class PlayerRunGunState : PlayerBaseState
 
     private void GetThrowInput()
     {
+        //Debug.Log("ThrowButtonDown = " + throwButtonDown);
+        //Debug.Log("Throw Input = " + Input.GetAxisRaw("Throw"));
         if (Input.GetAxisRaw("Throw") > 0)
         {
             if (throwButtonDown == false)
