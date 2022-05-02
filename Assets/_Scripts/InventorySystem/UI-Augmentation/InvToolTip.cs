@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InvToolTip : MonoBehaviour, IEventSystemHandler
 {
-    [SerializeField] private Canvas canvas; 
+    [SerializeField] private GameObject canvas; 
     public RectTransform rectTransform;
     public TMP_Text nameText;
     public TMP_Text typeText;
@@ -48,7 +48,13 @@ public class InvToolTip : MonoBehaviour, IEventSystemHandler
     void Update()
     {
         Vector2 position = Input.mousePosition;
+        
+        float pivotX = position.x / Screen.width;
+        float pivotY = position.y / Screen.height;
+
+        rectTransform.pivot = new Vector2(pivotX, pivotY);
         rectTransform.position = position;
+        
     }
     
 }

@@ -56,13 +56,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         // update InvToolTip
         toolTip.ShowToolTip(slotElement.slot.item);
-        Debug.Log("OnPointerEnter " + slotElement.slot.item); 
+        //Debug.Log("OnPointerEnter " + slotElement.slot.item); 
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         // Update InvToolTip to null
         toolTip.HideToolTip();
-        Debug.Log("OnPointerExit " + slotElement.slot.item); 
+        //Debug.Log("OnPointerExit " + slotElement.slot.item); 
     }
 
     
