@@ -7,7 +7,7 @@ public class SquidBossDecisionAction : AIAction
   public override void TakeAction()
   {
       //SquidBoss.inDecision = true;
-      int r = Random.Range(0, 90);
+      int r = Random.Range(30, 50);
       Debug.Log("In Boss decision action");
       Debug.Log("Random number = " + r);
       if (r <= 30)
