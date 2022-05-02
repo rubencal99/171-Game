@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b2c6cf6b2a84169ac827fe259fb309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
+  canvas: {fileID: 881359901121183524}
   rectTransform: {fileID: 0}
   nameText: {fileID: 881359901890916310}
   typeText: {fileID: 881359901306606455}

@@ -17,6 +17,10 @@ public class InvToolTip : MonoBehaviour, IEventSystemHandler
     {
         rectTransform = GetComponent<RectTransform>();
         // we need to hide it here rather than in the hierarchy, otherwise DragDrop can't find it
+        // HideToolTip();
+    }
+    void Start()
+    {
         HideToolTip();
     }
 
