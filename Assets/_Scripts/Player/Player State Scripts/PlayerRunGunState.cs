@@ -69,6 +69,7 @@ public class PlayerRunGunState : PlayerBaseState
         {
             if (primaryButtonDown == false)
             {
+                //Debug.Log("About to activate Primary button");
                 primaryButtonDown = true;
                 playerInput.OnPrimaryButtonPressed?.Invoke();
             }
@@ -77,6 +78,7 @@ public class PlayerRunGunState : PlayerBaseState
         {
             if (primaryButtonDown == true)
             {
+                //Debug.Log("About to release Primary button");
                 primaryButtonDown = false;
                 playerInput.OnPrimaryButtonReleased?.Invoke();
             }

@@ -308,7 +308,7 @@ public class Gun : MonoBehaviour, IWeapon
        meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }*/
 
-    private void SpawnBullet(Vector3 position)//, Quaternion rotation)
+    protected void SpawnBullet(Vector3 position)//, Quaternion rotation)
     {
         Quaternion rotation = CalculateAngle(muzzle, position);
         //var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
@@ -317,7 +317,7 @@ public class Gun : MonoBehaviour, IWeapon
     }
 
     // Here we add some randomness for weapon spread
-    protected Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
+    protected virtual Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
     {
         //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);

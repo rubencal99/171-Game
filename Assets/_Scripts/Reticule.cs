@@ -12,15 +12,21 @@ public class Reticule : MonoBehaviour
    
     public float bias = 0.65f;
 
-    PlayerInput playerInput;
+    public PlayerInput playerInput;
 
-    protected GameObject camera;
+    public GameObject Camera;
 
     void Awake()
     {
         playerInput = transform.parent.GetComponent<PlayerInput>();
-        camera = CameraShake.Instance.gameObject;
+        Camera = CameraShake.Instance.gameObject;
     }
+
+    /*void Start()
+    {
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+        Camera = CameraShake.Instance.gameObject;
+    }*/
     
     
     // Update is called once per frame
@@ -37,7 +43,7 @@ public class Reticule : MonoBehaviour
 
     protected void LateUpdate()
     {
-        transform.LookAt(camera.transform);
+        //transform.LookAt(Camera.transform);
     }
 
     void calculateMidPoint() {
