@@ -155,9 +155,9 @@ public class Gun : MonoBehaviour, IWeapon
             Ammo += neededAmmo;
             TotalAmmo -= neededAmmo;
             if(isPlayer) {
-                Debug.Log("In Reload");
+                Debug.Log("In Reload, speed = " + getReloadSpeed());
                 displayReloadProgressBar();
-                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (getReloadSpeed())) / 10.0f);
+               // this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (getReloadSpeed())) / 10.0f);
                 this.GetComponent<Animator>().Play("reload");
             }
             FinishReloading();
