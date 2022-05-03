@@ -411,7 +411,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 218980
+  m_InstanceId: 767770
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1795,10 +1795,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5302321582063947849}
     m_Modifications:
-    - target: {fileID: 8375424768523143741, guid: 683d928c8521ab74e9b3cdb0a683d8a4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8375424768523143742, guid: 683d928c8521ab74e9b3cdb0a683d8a4, type: 3}
       propertyPath: m_RootOrder
       value: 0

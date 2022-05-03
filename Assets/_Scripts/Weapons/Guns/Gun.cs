@@ -33,6 +33,11 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool isPlayer;
 
+    [SerializeField]
+    protected float swapTime = 0.5f;
+    [SerializeField]
+    protected float swapTimer;
+
     public int Ammo
     {
         get { return ammo; }
@@ -69,6 +74,11 @@ public class Gun : MonoBehaviour, IWeapon
     public string name;*/
 
     public Sprite sprite;
+
+    protected void OnEnable()
+    {
+        swapTimer = swapTime;
+    }
 
     private void Start()
     {
@@ -126,6 +136,14 @@ public class Gun : MonoBehaviour, IWeapon
     {
         isReloading = false;
     }
+    public bool CheckSwap()
+    {
+        if(swapTimer <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
     // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
@@ -173,7 +191,10 @@ public class Gun : MonoBehaviour, IWeapon
 
     protected virtual void UseWeapon()
     {
-        
+        if(swapTimer > 0)
+        {
+            swapTimer -= Time.deltaTime;
+        }
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             //Debug.Log("ROF: " + rateOfFireCoroutine);
