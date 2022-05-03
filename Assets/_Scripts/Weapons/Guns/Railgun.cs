@@ -46,6 +46,7 @@ public class Railgun : Gun
 
     protected override void UseWeapon()
     {
+        swapTimer -= Time.deltaTime;
         //Debug.Log("isShooting = " + isShooting);
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {

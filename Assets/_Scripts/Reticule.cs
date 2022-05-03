@@ -16,17 +16,24 @@ public class Reticule : MonoBehaviour
 
     public GameObject Camera;
 
-    void Awake()
+    /*void Awake()
     {
         playerInput = transform.parent.GetComponent<PlayerInput>();
-        Camera = CameraShake.Instance.gameObject;
-    }
-
-    /*void Start()
-    {
-        playerInput = transform.parent.GetComponent<PlayerInput>();
-        Camera = CameraShake.Instance.gameObject;
+        if(!Camera)
+        {
+            Camera = CameraShake.Instance.gameObject;
+        }
+        
     }*/
+
+    void Start()
+    {
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+        if(!Camera)
+        {
+            Camera = CameraShake.Instance.gameObject;
+        }
+    }
     
     
     // Update is called once per frame
@@ -42,10 +49,11 @@ public class Reticule : MonoBehaviour
         //transform.LookAt(Camera.transform);
     }
 
-    /*protected void LateUpdate()
+    protected void LateUpdate()
     {
-        transform.LookAt(Camera.transform);
-    }*/
+        //transform.LookAt(Camera.transform.position);
+        //transform.rotation = Quaternion.LookRotation(transform.position - Camera.transform.position, transform.up);
+    }
 
     void calculateMidPoint() {
         Vector3 reticule = this.transform.position;
