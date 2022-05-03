@@ -80,7 +80,7 @@ public class Gun : MonoBehaviour, IWeapon
         swapTimer = swapTime;
     }
 
-    private void Start()
+    protected void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;

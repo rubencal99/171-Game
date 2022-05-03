@@ -176,13 +176,13 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
         else
         {
-            enemyBrain.enabled = true;
             if(hasDied)
             {
                 gameObject.layer = 8;
                 agentRenderer.isDying = false;
                 OnRevive?.Invoke();
                 GetComponent<CapsuleCollider>().direction = 1;
+                enemyBrain.enabled = true;
                 hasDied = false;
             }
             
