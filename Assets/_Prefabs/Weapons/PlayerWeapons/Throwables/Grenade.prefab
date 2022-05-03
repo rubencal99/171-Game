@@ -4953,9 +4953,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4749110423052994011}
   serializedVersion: 2
-  m_Mass: 0.32
-  m_Drag: 1.54
-  m_AngularDrag: 0.05
+  m_Mass: 0.28
+  m_Drag: 2.24
+  m_AngularDrag: 0.96
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -4973,9 +4973,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ce64bc2267f5146ae4f5adcacb47ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpeedBonus: 8.92
-  LaunchOffset: {x: 0, y: 0, z: 0}
+  SpeedBonus: 0.9
+  LaunchOffset: {x: 14.49, y: 26.6, z: 0}
   Thrown: 0
-  damage: 13
+  damage: 5
   radius: 2.5
-  lifetime: 3
+  lifetime: 2

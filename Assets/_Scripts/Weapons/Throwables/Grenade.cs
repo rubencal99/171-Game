@@ -7,7 +7,7 @@ public class Grenade : _BaseThrowable
     // Special calls for Grenade if we need them
      public float radius = 0.000025f;
 
-    public float lifetime = 3.0f;
+    public float lifetime = 2.0f;
     bool isDetonated = false;
 
      public override void Update() {
@@ -21,7 +21,8 @@ public class Grenade : _BaseThrowable
            destruction();
         }
 
-        lifetime -= Time.fixedDeltaTime;
+        if(Thrown)
+            lifetime -= Time.fixedDeltaTime;
 
         if(!Thrown) {
             transform.position = transform.parent.parent.position;
