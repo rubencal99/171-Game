@@ -49,7 +49,7 @@ public class Railgun : Gun
         //Debug.Log("isShooting = " + isShooting);
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
-            Debug.Log("In useWeapon rail");
+            //Debug.Log("In useWeapon rail");
             //Debug.Log("ROF: " + rateOfFireCoroutine);
             //Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)

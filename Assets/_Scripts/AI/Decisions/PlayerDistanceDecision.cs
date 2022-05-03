@@ -11,7 +11,7 @@ public class PlayerDistanceDecision : AIDecision
     public override bool MakeADecision()
     {
         var d = Vector3.Distance(Player.instance.transform.position, transform.position);
-        Debug.Log("Distance: " + d);
+        //Debug.Log("Distance: " + d);
         //Debug.Log("Distance from Target: " + d);
         if (d < Distance)
         {

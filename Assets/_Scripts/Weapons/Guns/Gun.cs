@@ -139,7 +139,7 @@ public class Gun : MonoBehaviour, IWeapon
             if(isPlayer) {
                 Debug.Log("In Reload");
                 displayReloadProgressBar();
-                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (weaponData.ReloadSpeed / passives.ReloadMultiplier)) / 10.0f);
+                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (getReloadSpeed())) / 10.0f);
                 this.GetComponent<Animator>().Play("reload");
             }
             FinishReloading();
@@ -180,7 +180,7 @@ public class Gun : MonoBehaviour, IWeapon
             //Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)
             {
-                //Debug.Log(PlayerSignaler.CallCasingRecycler());
+                //Debug.Log("Casing Recycle = " + PlayerAugmentations.AugmentationList["CasingRecycle"]);
                 if(!PlayerSignaler.CallCasingRecycler()){
                     Ammo--;
                 }
@@ -279,7 +279,7 @@ public class Gun : MonoBehaviour, IWeapon
     protected IEnumerator DelayNextReloadingCoroutine()
     {
         reloadCoroutine = true;
-        yield return new WaitForSeconds( weaponData.ReloadSpeed / passives.ROFMultiplier);
+        yield return new WaitForSeconds(getReloadSpeed());
         //var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
         //Ammo += neededAmmo;
         //TotalAmmo -= neededAmmo;

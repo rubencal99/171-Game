@@ -38,6 +38,14 @@ public class BossColliderTrigger : MonoBehaviour
                 BounceBoss(collision);
             }
         }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            direction = (transform.position - collision.gameObject.transform.position).normalized;
+            Debug.Log("In player knockback");
+            collision.gameObject.transform.GetComponent<PlayerMovement>().Knockback(knockbackDuration, knockbackPower, direction);
+            collision.gameObject.transform.GetComponent<Player>().GetHit(damage, gameObject);
+        }
         
     }
 

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: Epinephrine
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 3227130039294860668, guid: 4c8fcae11a2e5f84d9a2004f3bbe7b93, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 21300000, guid: a006e313869f7c4479b5e38ca85aa8fa, type: 3}
+  icon: {fileID: 21300000, guid: 53e92261ede9de64a89ece9bcd835f94, type: 3}
   type: 0
-  itemType: 1
+  itemType: 2
   description: Test description
   stackLimit: 1
-  Name: Whiskers
-  augType: 1
+  Name: Epinephrine
+  augType: 2

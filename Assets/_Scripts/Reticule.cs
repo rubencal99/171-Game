@@ -39,12 +39,13 @@ public class Reticule : MonoBehaviour
         //this.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
         this.transform.position = mousePos;
         calculateMidPoint();
-    }
-
-    protected void LateUpdate()
-    {
         //transform.LookAt(Camera.transform);
     }
+
+    /*protected void LateUpdate()
+    {
+        transform.LookAt(Camera.transform);
+    }*/
 
     void calculateMidPoint() {
         Vector3 reticule = this.transform.position;
