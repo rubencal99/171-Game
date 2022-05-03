@@ -16,7 +16,7 @@ public class FindEnemyAction : AIAction
 
   public void FindEnemy()
   {
-      Debug.Log("In find enemy");
+    //Debug.Log("In find enemy");
     Enemy closestEnemy = null;
     float closestDistance = 999f;
     Collider[] colliders = Physics.OverlapSphere(transform.position, radius);

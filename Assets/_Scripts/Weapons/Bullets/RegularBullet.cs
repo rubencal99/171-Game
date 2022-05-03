@@ -13,7 +13,8 @@ public class RegularBullet : Bullet
     protected Animator animator;
     protected int bounce;
     protected float speed;
-    GameObject camera;
+    protected GameObject camera;
+    protected bool hasRebounded = false;
 
     public override BulletDataSO BulletData
     {
@@ -42,7 +43,7 @@ public class RegularBullet : Bullet
         CheckFriction();     
     }
 
-    void CheckDecay()
+    protected void CheckDecay()
     {
         if(BulletData.hasDecay)
         {
@@ -54,7 +55,7 @@ public class RegularBullet : Bullet
         }
     }
 
-    void CheckFriction()
+    protected void CheckFriction()
     {
         if(BulletData.Friction > 0)
         {
@@ -63,12 +64,25 @@ public class RegularBullet : Bullet
                 StartCoroutine(destruction());  
                 return;
             }
-            speed -= BulletData.Friction * Time.deltaTime;
-            Debug.Log("Bullet speed = " + speed);
+            else if(speed <= 0 && !hasRebounded)
+            {
+                hasRebounded = true;
+                direction = -direction; 
+            }
+            if (!hasRebounded)
+            {
+                speed -= BulletData.Friction * Time.deltaTime;
+            }
+            else
+            {
+                speed += BulletData.Friction * Time.deltaTime;
+            }
+            
+            //Debug.Log("Bullet speed = " + speed);
         }
     }
 
-    void LateUpdate()
+    protected void LateUpdate()
     {
         transform.LookAt(camera.transform);
     }
@@ -163,10 +177,11 @@ public class RegularBullet : Bullet
         //Vector2 inDirection = GetComponent<Rigidbody2D>().velocity;
         Vector3 inNormal = collision.contacts[0].normal;
         Vector3 newDirection = Vector3.Reflect(direction, inNormal);
-        Debug.Log("In Bounce Bullet");
-        Debug.Log("CURRENT Direction: " + direction);
-        Debug.Log("New Direction: " + newDirection);
-        Debug.Log("CURRENT Rotation: " + transform.rotation);
+        //Debug.Log("In Bounce Bullet");
+        //Debug.Log("CURRENT Direction: " + direction);
+        newDirection.y = 0;
+        //Debug.Log("New Direction: " + newDirection);
+        //Debug.Log("CURRENT Rotation: " + transform.rotation);
         /*if(newDirection.x != direction.x)
         {
             transform.Rotate(new Vector3(-transform.rotation.x, 0, 0));
@@ -175,7 +190,7 @@ public class RegularBullet : Bullet
         {
             transform.Rotate(new Vector3(0, -transform.rotation.y, 0));
         }*/
-        Debug.Log("New Rotation: " + transform.rotation);
+        //Debug.Log("New Rotation: " + transform.rotation);
         direction = newDirection;
     }
 

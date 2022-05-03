@@ -33,6 +33,11 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool isPlayer;
 
+    [SerializeField]
+    protected float swapTime = 0.5f;
+    [SerializeField]
+    protected float swapTimer;
+
     public int Ammo
     {
         get { return ammo; }
@@ -70,7 +75,12 @@ public class Gun : MonoBehaviour, IWeapon
 
     public Sprite sprite;
 
-    private void Start()
+    protected void OnEnable()
+    {
+        swapTimer = swapTime;
+    }
+
+    protected void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
@@ -126,6 +136,14 @@ public class Gun : MonoBehaviour, IWeapon
     {
         isReloading = false;
     }
+    public bool CheckSwap()
+    {
+        if(swapTimer <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
     // There's a bug where if you switch weapons while reloading, the Coroutine is paused until you reload again
     // Doesn't play reload sound if this happens maybe adjust ammo inside Coroutine?
@@ -139,7 +157,7 @@ public class Gun : MonoBehaviour, IWeapon
             if(isPlayer) {
                 Debug.Log("In Reload");
                 displayReloadProgressBar();
-                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (weaponData.ReloadSpeed / passives.ReloadMultiplier)) / 10.0f);
+                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (getReloadSpeed())) / 10.0f);
                 this.GetComponent<Animator>().Play("reload");
             }
             FinishReloading();
@@ -173,14 +191,17 @@ public class Gun : MonoBehaviour, IWeapon
 
     protected virtual void UseWeapon()
     {
-        
+        if(swapTimer > 0)
+        {
+            swapTimer -= Time.deltaTime;
+        }
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             //Debug.Log("ROF: " + rateOfFireCoroutine);
             //Debug.Log("Reload: " + reloadCoroutine);
             if (Ammo > 0)
             {
-                //Debug.Log(PlayerSignaler.CallCasingRecycler());
+                //Debug.Log("Casing Recycle = " + PlayerAugmentations.AugmentationList["CasingRecycle"]);
                 if(!PlayerSignaler.CallCasingRecycler()){
                     Ammo--;
                 }
@@ -269,17 +290,17 @@ public class Gun : MonoBehaviour, IWeapon
         rateOfFireCoroutine = false;
     }
 
-    /*protected IEnumerator DelayNextMeleeCoroutine()
+     /*protected IEnumerator DelayNextMeleeCoroutine()
     {
         meleeCoroutine = true;
         yield return new WaitForSeconds(swordData.RecoveryLength / passives.ROFMultiplier);
         meleeCoroutine = false;
     }*/
 
-    protected virtual IEnumerator DelayNextReloadingCoroutine()
+    protected IEnumerator DelayNextReloadingCoroutine()
     {
         reloadCoroutine = true;
-        yield return new WaitForSeconds( weaponData.ReloadSpeed / passives.ROFMultiplier);
+        yield return new WaitForSeconds(getReloadSpeed());
         //var neededAmmo = Mathf.Min(weaponData.MagazineCapacity - Ammo, TotalAmmo);
         //Ammo += neededAmmo;
         //TotalAmmo -= neededAmmo;
@@ -308,7 +329,7 @@ public class Gun : MonoBehaviour, IWeapon
        meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }*/
 
-    private void SpawnBullet(Vector3 position)//, Quaternion rotation)
+    protected void SpawnBullet(Vector3 position)//, Quaternion rotation)
     {
         Quaternion rotation = CalculateAngle(muzzle, position);
         //var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
@@ -317,7 +338,7 @@ public class Gun : MonoBehaviour, IWeapon
     }
 
     // Here we add some randomness for weapon spread
-    protected Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
+    protected virtual Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
     {
         //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);

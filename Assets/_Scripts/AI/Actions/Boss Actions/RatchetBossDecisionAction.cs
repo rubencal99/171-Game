@@ -13,13 +13,14 @@ public class RatchetBossDecisionAction : AIAction
       Debug.Log("Random number = " + r);
       if(r < 50)
       {
+        RatchetBoss.inChargeStart = true;
         RatchetBoss.inCharge = true;
-        Debug.Log("In Charge = " + RatchetBoss.inCharge);
+        Debug.Log("In Charge = " + RatchetBoss.inChargeStart);
       }
       else
       {
-        RatchetBoss.inJump = true;
-        Debug.Log("In Jump = " + RatchetBoss.inJump);
+        RatchetBoss.inSlam = true;
+        Debug.Log("In Slam = " + RatchetBoss.inSlam);
       }
       
   }

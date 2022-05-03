@@ -10,7 +10,7 @@ public static class PlayerAugmentations : object
     [SerializeField]
     //////////////////////////////EPINEPHRINE////////////////////////////////////
     public static bool Epinephrine = false;
-    public static int EpinephrineBoost = 1;
+    public static float EpinephrineBoost = 1f;
     //////////////////////////////BULLETTIME/////////////////////////////////////
     public static bool BulletTime = false;
     public static float BulletTT = 0.5f;
@@ -18,7 +18,7 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////GUNNERGLOVE/////////////////////////////////////
     public static bool  GunnerGloves = false;
-    public static float GunnerGlovesSpeed = 1.5f;
+    public static float GunnerGlovesSpeed = 5f;
 
     //////////////////////////////DEFLECTIONSHIELD////////////////////////////////
     public static bool DeflectionShield = false;
@@ -27,6 +27,7 @@ public static class PlayerAugmentations : object
     //////////////////////////////HIPPOSKIN////////////////////////////////////////
     public static bool HippoSkin = false;
     public static bool HippoApplied = false;
+    public static float HippoHealth = 5f;
 
     //////////////////////////////CASINGRECYCLE/////////////////////////////////////
     public static bool CasingRecycle = false;
@@ -43,11 +44,13 @@ public static class PlayerAugmentations : object
     public static float AutoDocHeal = 0.05f;
     public static float AutoDocCoolDown = 10f;
     public static bool AutoDocUsed = false;
+
+    //////////////////////////////Drone////////////////////////////////////////
+    public static bool Drone = false;
+
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
     public static bool DamageBuff = false;
     public static float BuffAmount = 0.25f;
-
-    public static bool Drone = false;
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {
@@ -60,7 +63,8 @@ public static class PlayerAugmentations : object
         {"Whiskers", Whiskers},
         {"HookShot", HookShot},
         {"AutoDoc", AutoDoc}, //passive
-        {"DamageBuff", DamageBuff} //passive
+        {"DamageBuff", DamageBuff}, //passive
+        {"Drone", Drone} //passive
     };
 
     public static void ResetAugmentations()
@@ -69,6 +73,18 @@ public static class PlayerAugmentations : object
         {
             AugmentationList[key] = false;
         }
+        Epinephrine = false;
+        BulletTime = false;
+        GunnerGloves = false;
+        DeflectionShield = false;
+        HippoSkin = false;
+        HippoApplied = false;
+        CasingRecycle = false;
+        Whiskers = false;
+        HookShot = false;
+        AutoDoc = false;
+        AutoDocUsed = false;
+        Drone = false;
     }
 
     public static void PrintDictionary()

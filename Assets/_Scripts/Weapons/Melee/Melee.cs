@@ -37,6 +37,16 @@ public class Melee : MonoBehaviour, IWeapon
     public float comboTime2;
     public float comboTimer = 0f;
 
+    [SerializeField]
+    protected float swapTime = 0.5f;
+    [SerializeField]
+    protected float swapTimer;
+
+    protected void OnEnable()
+    {
+        swapTimer = swapTime;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +79,15 @@ public class Melee : MonoBehaviour, IWeapon
         isMelee = false;
     }
 
+    public bool CheckSwap()
+    {
+        if(swapTimer <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void ForceReload() {
         meleeCoroutine = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
@@ -82,6 +101,7 @@ public class Melee : MonoBehaviour, IWeapon
 
     protected virtual void UseWeapon()
     {
+        swapTimer -= Time.deltaTime;
         if(comboCounter > 0)
         {
             CheckComboCounter();

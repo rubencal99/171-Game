@@ -407,7 +407,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23188
+  m_InstanceId: 375700
 --- !u!114 &4163365371028737556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 8813092399407536006}
-  passives: {fileID: 0}
+  passives: {fileID: 618747773148331457}
   ammo: 0
   totalAmmo: 0
   infAmmo: 0

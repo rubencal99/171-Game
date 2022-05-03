@@ -18,6 +18,7 @@ public class PlayerShopState : PlayerBaseState
     }
     public override void EnterState(PlayerStateManager Player)
     {
+        Debug.Log("Entered Shop State");
         playerInput = Player.playerInput;
         mainCamera = Camera.main;
         running = false;
@@ -36,6 +37,10 @@ public class PlayerShopState : PlayerBaseState
             running = true;
             playerInput.ShopKeeper.CloseShop();
             Player.SwitchState(Player.RunGunState);
+        }
+        if(tabButtonDown)
+        {
+            Player.SwitchState(Player.TabState);
         }
     }
 
@@ -78,10 +83,12 @@ public class PlayerShopState : PlayerBaseState
     {
         if (Input.GetAxisRaw("Tab") > 0)
         {
-            Debug.Log("Tab key pressed");
+            //Debug.Log("Tab key pressed");
             if (tabButtonDown == false)
             {
+                Debug.Log("Tab key pressed");
                 tabButtonDown = true;
+                Shop.instance.CloseShop();
                 playerInput.OnTabKeyPressed?.Invoke();
             }
             // Debug.Log("Tab key pressed");

@@ -10,11 +10,16 @@ public class CutoutObject : MonoBehaviour
     [SerializeField]
     private LayerMask wallMask;
 
+    [SerializeField]
     private Camera mainCamera;
 
     private void Awake()
     {
-        mainCamera = transform.root.parent.GetComponent<Camera>();
+        if(!mainCamera)
+        {
+            mainCamera = transform.root.parent.GetComponent<Camera>();
+        }
+        
         targetObject = this.transform;
     }
 
