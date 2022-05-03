@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloorKey : MonoBehaviour
 {
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collider collider)
     {
         if(collider.tag == "Player")
         {

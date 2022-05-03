@@ -530,6 +530,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8466089445196674806, guid: 3bd1e28265e07d24685f94030416ef92, type: 3}
+      propertyPath: m_TagString
+      value: spheremask
+      objectReference: {fileID: 0}
     - target: {fileID: 8574865287385209548, guid: 3bd1e28265e07d24685f94030416ef92, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -865,11 +869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f794985335060834fb5b93f4e9d26821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &472599569 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5302321582063947849, guid: 3bd1e28265e07d24685f94030416ef92, type: 3}
-  m_PrefabInstance: {fileID: 83081343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &473220380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,7 +3093,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6651186777079894348, guid: 4c70b547443101d419396819002321c6, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6651186777079894348, guid: 4c70b547443101d419396819002321c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3575,8 +3574,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1565033949
-PrefabInstance:
+--- !u!43 &1580418487
+Mesh:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
