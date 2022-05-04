@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 // This script is responsible for firing bullets from the selected weapon
 public class Gun : MonoBehaviour, IWeapon
 {
+    [field: SerializeField]
+    public Vector3 startOffset {get; set;} = Vector3.zero;
+
     // This gives us a place to instantiate the bullet ie reference to our gun
     [SerializeField]
     public GameObject muzzle;
@@ -26,9 +29,9 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool infAmmo;
 
-    // WeaponDataSO Holds all our weapon data
+    // GunDataSO Holds all our weapon data
     [SerializeField]
-    public WeaponDataSO weaponData;
+    public GunDataSO weaponData;
 
     [SerializeField]
     public bool isPlayer;
