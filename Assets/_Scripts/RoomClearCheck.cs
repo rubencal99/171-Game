@@ -68,6 +68,7 @@ public class RoomClearCheck : MonoBehaviour
 
     public void setRoomActive() {
          Debug.Log("room set active");
+         Player.instance.GetComponent<Player>().setSpawnPoint(new Vector3(room.roomCenter.x, 1.2f, room.roomCenter.y));
         foreach(Transform child in transform) {
            if(child.tag == "Door"){
                    //child.GetChild(0).gameObject.SetActive(true);
