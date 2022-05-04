@@ -333,7 +333,7 @@ public class Gun : MonoBehaviour, IWeapon
        meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }*/
 
-    protected void SpawnBullet(Vector3 position)//, Quaternion rotation)
+    private void SpawnBullet(Vector3 position)//, Quaternion rotation)
     {
         Quaternion rotation = CalculateAngle(muzzle, position);
         //var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);

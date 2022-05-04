@@ -50,6 +50,4 @@ public class SquidMovement : BossMovement
         }
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
-
-
 }

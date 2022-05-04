@@ -17,12 +17,6 @@ public class Grenade : _BaseThrowable
     // }
      public override void Update() {
         if(lifetime < 0.0f)
-        {
-            if(!Thrown && !isDetonated)
-            {
-                PlayerInput.instance.OnThrowButtonPressed?.Invoke();
-            }
-            isDetonated = true;
            destruction();
         }
 

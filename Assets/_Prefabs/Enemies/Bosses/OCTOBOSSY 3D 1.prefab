@@ -1,65 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &254786967
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 254786968}
-  - component: {fileID: 254786970}
-  - component: {fileID: 254786969}
-  m_Layer: 0
-  m_Name: Transition DecisionState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &254786968
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254786967}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2554336068600539063}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &254786970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254786967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81410c163fc360499088303a306384b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Decisions>k__BackingField:
-  - {fileID: 0}
-  <PositiveResult>k__BackingField: {fileID: 0}
-  <NegativeResult>k__BackingField: {fileID: 7791923111926032612}
---- !u!114 &254786969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254786967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9664826fe3ea2749b86872e31a6ad14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &258600362122990761
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +77,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1564086105058752028
 Transform:
   m_ObjectHideFlags: 0
@@ -245,9 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tracker: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &118460253280427814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +357,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1564086105058752028}
-  - {fileID: 254786968}
   m_Father: {fileID: 7938292422437763644}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -467,9 +403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tracker: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &4312182078610102487
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,8 +554,6 @@ GameObject:
   - component: {fileID: 2704029724805624508}
   - component: {fileID: 5782860665297831384}
   - component: {fileID: 5782860665297831391}
-  - component: {fileID: 1164103570}
-  - component: {fileID: 1164103571}
   m_Layer: 8
   m_Name: OCTOBOSSY 3D 1
   m_TagString: Enemy
@@ -948,41 +879,6 @@ CapsuleCollider:
   m_Height: 4.51274
   m_Direction: 1
   m_Center: {x: 0, y: 0.30701542, z: 8.102387e-16}
---- !u!135 &1164103570
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5738853248683192946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 2.2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1164103571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5738853248683192946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bef6ed6a8855e439274c66a6eccd46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockbackDuration: 3
-  knockbackPower: 15
-  direction: {x: 0, y: 0}
-  damage: 1
-  squidMovement: {fileID: 3864051883030570510}
-  enemyBrain: {fileID: 73759089389963177}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  aiMovementData: {fileID: 4904072619711595913}
 --- !u!1 &5738853248839715589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,13 +982,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5738853249054104186}
-  m_LocalRotation: {x: -0.6381634, y: 0, z: 0, w: 0.76990104}
+  m_LocalRotation: {x: -0.19680187, y: 0, z: 0, w: 0.98044336}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 5738853248683192958}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -79.31, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -22.7, y: 0, z: 0}
 --- !u!212 &5738853249054104135
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1199,7 +1095,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -571164
+  m_InstanceId: 414896
 --- !u!114 &4102397892194668560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3129,6 +3025,8 @@ GameObject:
   - component: {fileID: 5645379864718955750}
   - component: {fileID: 4904072619711595913}
   - component: {fileID: 6337482654411937456}
+  - component: {fileID: 1217180971966429061}
+  - component: {fileID: 5782860665214970863}
   m_Layer: 8
   m_Name: AI
   m_TagString: Enemy
@@ -3208,8 +3106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
   InCyclone: 0
-  HasDirection: 0
-  CycloneDirection: {x: 0, y: 0, z: 0}
   CycloneAttempts: 0
   AtCycloneDest: 0
   CycloneTimer: 0
@@ -3222,11 +3118,39 @@ MonoBehaviour:
   InSpawn: 0
   SpawnTimer: 0
   bossMovement: {fileID: 0}
-  movementCollider: {fileID: 5782860665801083604}
   bossAnimator: {fileID: 0}
   WeaponParent: {fileID: 5062027800659244280}
   Melee: {fileID: 3287901880241355989}
   Spray: {fileID: 6608265319888152830}
+--- !u!114 &1217180971966429061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022800647259793328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82bef6ed6a8855e439274c66a6eccd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackDuration: 3
+  knockbackPower: 15
+  direction: {x: 0, y: 0}
+  damage: 1
+--- !u!135 &5782860665214970863
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022800647259793328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 3.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1680033608552881749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3458,10 +3382,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5833134981672727028}
     m_Modifications:
-    - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
-      propertyPath: passives
-      value: 
-      objectReference: {fileID: 1756928746761075832}
     - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: weaponData
       value: 

@@ -26,7 +26,7 @@ public class PlayerTabState : PlayerBaseState
     }
     public override void EnterState(PlayerStateManager Player)
     {
-        Debug.Log("Entered Tab State");
+        Debug.Log("Entered RunGun State");
         playerInput = Player.playerInput;
         mainCamera = Camera.main;
         dodging = false;
@@ -37,7 +37,7 @@ public class PlayerTabState : PlayerBaseState
 
     public override void UpdateState(PlayerStateManager Player)
     {
-        GetMovementInput();
+        //GetMovementInput();
         GetPointerInput();
         GetTabInput();
         //GetInteractInput();
@@ -163,11 +163,11 @@ public class PlayerTabState : PlayerBaseState
     }
 
 
-    private void GetMovementInput()
+    /*private void GetMovementInput()
     {
         playerInput.OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
     }
-    /*
+
     private void GetDodgeInput()
     {
         // Create new Vector2 when dodge button (left shift) pressed

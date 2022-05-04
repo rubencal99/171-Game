@@ -9,12 +9,6 @@ public class BossColliderTrigger : MonoBehaviour
     public float knockbackPower;
     public Vector2 direction;
     public int damage;
-    public SquidMovement squidMovement;
-    public EnemyBrain enemyBrain;
-    public LayerMask layerMask;
-    public AIMovementData aiMovementData;
-    RaycastHit hit;
-
     public void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
