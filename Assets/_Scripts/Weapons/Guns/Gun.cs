@@ -338,7 +338,7 @@ public class Gun : MonoBehaviour, IWeapon
     }
 
     // Here we add some randomness for weapon spread
-    protected Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
+    protected virtual Quaternion CalculateAngle(GameObject muzzle, Vector3 position)
     {
         //muzzle.transform.localRotation = weaponParent.transform.localRotation;
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
