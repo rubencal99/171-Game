@@ -18,7 +18,7 @@ public class Grenade : _BaseThrowable
      public override void Update() {
         if(lifetime < 0.0f)
            destruction();
-        }
+        
 
         // if(lifetime == lifetime_max && Thrown)
         //      this.GetComponent<FlashObject>().Flash();
