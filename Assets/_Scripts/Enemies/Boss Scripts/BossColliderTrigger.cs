@@ -19,4 +19,49 @@ public class BossColliderTrigger : MonoBehaviour
             other.transform.GetComponent<Player>().GetHit(damage, gameObject);
         }
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Boss collided with somthing");
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            Debug.Log("Boss collided with obstacle");
+            if(SquidBoss.inCyclone)
+            {
+                Debug.Log("Before bounce boss");
+                BounceBoss(collision);
+            }
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            direction = (transform.position - collision.gameObject.transform.position).normalized;
+            Debug.Log("In player knockback");
+            collision.gameObject.transform.GetComponent<PlayerMovement>().Knockback(knockbackDuration, knockbackPower, direction);
+            collision.gameObject.transform.GetComponent<Player>().GetHit(damage, gameObject);
+        }
+        
+    }
+
+    void BounceBoss(Collision collision)
+    {
+        /*Vector3 inNormal = collision.contacts[0].normal;
+        Vector3 newDirection = Vector3.Reflect(squidMovement.movementDirection, inNormal);
+        newDirection.y = 0;*/
+
+        Vector3 newDirection = enemyBrain.Target.transform.position - transform.position;
+        newDirection.y = 0;
+
+        Debug.Log("In Bounce Boss");
+        Debug.Log("CURRENT Direction: " + squidMovement.movementDirection);
+        Debug.Log("New Direction: " + newDirection);
+        squidMovement.movementDirection = newDirection;
+        SquidBoss.cycloneDirection = newDirection;
+
+         Debug.DrawRay(transform.position, SquidBoss.cycloneDirection);
+        hit = new RaycastHit();
+        Physics.Raycast(transform.position, SquidBoss.cycloneDirection, out hit, 100, layerMask);
+        aiMovementData.PointOfInterest = hit.transform.position;
+        aiMovementData.PointerPosition = hit.transform.position;
+    }
 }

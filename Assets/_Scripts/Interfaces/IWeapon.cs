@@ -8,4 +8,8 @@ public interface IWeapon
     public string name {get; set;}
 
     public void ForceReload();
+
+    public bool CheckSwap();
+
+
 }

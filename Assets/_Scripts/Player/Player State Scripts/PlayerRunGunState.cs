@@ -47,7 +47,7 @@ public class PlayerRunGunState : PlayerBaseState
         GetSecondaryInput();
         GetReloadInput();
         // GetRestartInput();
-        GetRespawnInput();
+        //GetRespawnInput();
         GetDodgeInput();
         GetTabInput();
         GetInteractInput();

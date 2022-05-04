@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1957701704751158774}
   - component: {fileID: 3648493867438136447}
   m_Layer: 0
-  m_Name: AugmentationTest
+  m_Name: GunnerGloves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,4 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e575490526b40219e913282480a0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupItem: {fileID: 11400000, guid: c61ac395a0b9e4887a5c0d8dea865a00, type: 2}
+  pickupItem: {fileID: 11400000, guid: 2b8f3b9191206a24e8a450f129f867ce, type: 2}
+  pickupAmount: 1

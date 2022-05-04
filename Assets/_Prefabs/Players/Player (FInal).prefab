@@ -268,8 +268,9 @@ Transform:
   m_GameObject: {fileID: 5302321582063947862}
   m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_Children:
+  - {fileID: 8466089445196674807}
   m_Father: {fileID: 5302321582215384588}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
@@ -292,7 +293,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f53a08be0fe9e944ca34735c25a14c2d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,7 +314,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d6129c6340a24e04c865f1a5d83934ff, type: 3}
+  m_Sprite: {fileID: -7629838692933230633, guid: d36caf39cb2934a41a78754ac709ca6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -410,7 +411,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 183380
+  m_InstanceId: 767770
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,8 +516,8 @@ MonoBehaviour:
   Grenade: {fileID: 4749110423052994011, guid: fbd6cbaab64c87343b44244e56518638, type: 3}
   Primary: {fileID: 0}
   Secondary: {fileID: 0}
-  throwableArc: {fileID: 6192999896000237652}
-  itemInventory: {fileID: 0}
+  throwableArc: {fileID: 0}
+  mousePos: {x: 0, y: 0, z: 0}
   useInventory: 0
 --- !u!212 &3265718702522262477
 SpriteRenderer:
@@ -618,7 +619,6 @@ Transform:
   - {fileID: 2579900480822998319}
   - {fileID: 1934708572633660962}
   - {fileID: 5952393449312908741}
-  - {fileID: 6192999896000237654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -854,6 +854,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 8c3978625738743df9ac7de2f78e3db7, type: 2}
   currentRoom: {fileID: 0}
+  DronePrefab: {fileID: 0}
+  Drone: {fileID: 0}
   invincible: 0
   damage_iframes: 20
   <Health>k__BackingField: 25
@@ -1002,6 +1004,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   MousePos: {x: 0, y: 0, z: 0}
+  reticule: {fileID: 0}
   <OnMovementKeyPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -1531,6 +1534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bias: 0.65
+  playerInput: {fileID: 0}
+  Camera: {fileID: 0}
 --- !u!1 &6407764126677267596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,17 +1925,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3781322767427240897, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
   m_PrefabInstance: {fileID: 1708079031465375470}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2579900480822998317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3781322767427240899, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
-  m_PrefabInstance: {fileID: 1708079031465375470}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2579900480822998315}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8e89a2c0f705c41889d70e8920c6eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3311520647969851141
 PrefabInstance:
   m_ObjectHideFlags: 0
