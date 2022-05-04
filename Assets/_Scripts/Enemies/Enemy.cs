@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         //blood = FindComponentInChildWithTag
     }
 
-    public void GetHit(float damage, GameObject damageDealer)
+    public virtual void GetHit(float damage, GameObject damageDealer)
     {
         float d = PlayerSignaler.CallDamageBuff(damage);
         Health -= d;
@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
     }
 
-    private void Die()
+    public void Die()
     {
 
         PlayerSignaler.CallPlayerEpiBoost();

@@ -54,14 +54,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8e89a2c0f705c41889d70e8920c6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arcHeight: 2
-  angle: 41.78
+  arcHeight: 4
+  angle: 41.8
   resolution: 10
-  maxDistance: 0
-  arcArray: []
+  maxDistance: 5.981858
+  arcArray:
+  - {x: 0, y: 0, z: 0}
+  - {x: 114.48786, y: 0.95782113, z: 16.318302}
+  - {x: 114.97572, y: 1.7027935, z: 16.636606}
+  - {x: 115.463585, y: 2.2349172, z: 16.954908}
+  - {x: 115.95145, y: 2.5541918, z: 17.273212}
+  - {x: 116.439316, y: 2.6606178, z: 17.591515}
+  - {x: 116.92718, y: 2.5541918, z: 17.909817}
+  - {x: 117.41504, y: 2.2349172, z: 18.22812}
+  - {x: 117.9029, y: 1.7027935, z: 18.546423}
+  - {x: 118.39076, y: 0.95782113, z: 18.864727}
+  - {x: 118.878624, y: 2.05, z: 19.18303}
   material: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   xOffset: 0
-  yOffset: 0
+  yOffset: 1.16
   zOffset: 0
 --- !u!23 &3781322767427240900
 MeshRenderer:
