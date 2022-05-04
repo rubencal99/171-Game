@@ -9,6 +9,12 @@ public class BossColliderTrigger : MonoBehaviour
     public float knockbackPower;
     public Vector2 direction;
     public int damage;
+    public SquidMovement squidMovement;
+    public EnemyBrain enemyBrain;
+    public LayerMask layerMask;
+    public AIMovementData aiMovementData;
+    RaycastHit hit;
+
     public void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
@@ -19,7 +25,7 @@ public class BossColliderTrigger : MonoBehaviour
             other.transform.GetComponent<Player>().GetHit(damage, gameObject);
         }
     }
-
+ 
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Boss collided with somthing");

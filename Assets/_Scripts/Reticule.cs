@@ -14,7 +14,9 @@ public class Reticule : MonoBehaviour
 
     PlayerInput playerInput;
 
-    /*void Awake()
+    GameObject Camera;
+
+    void Awake()
     {
         playerInput = transform.parent.GetComponent<PlayerInput>();
         if(!Camera)
@@ -22,7 +24,7 @@ public class Reticule : MonoBehaviour
             Camera = CameraShake.Instance.gameObject;
         }
         
-    }*/
+    }
 
     void Start()
     {

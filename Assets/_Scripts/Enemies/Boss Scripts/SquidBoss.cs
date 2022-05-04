@@ -8,12 +8,16 @@ public class SquidBoss : _BaseBoss
     public AIState currentState;
     public static bool inCyclone = false;
     public bool InCyclone;
+    public static bool hasDirection = false;
+    public bool HasDirection;
+    public static Vector3 cycloneDirection;
+    public Vector3 CycloneDirection;
     public static int cycloneAttempts = 3;
     public int CycloneAttempts;
     public static int cycloneRange = 3;
     public static bool atCycloneDest = false;
     public bool AtCycloneDest;
-    public static float CycloneDuration = 4f;
+    public static float CycloneDuration = 8f;
     public static float cycloneTimer;
     public float CycloneTimer;
 
@@ -48,6 +52,7 @@ public class SquidBoss : _BaseBoss
 
 
     public BossMovement bossMovement;
+    public CapsuleCollider movementCollider;
     public SquidBossAnimations bossAnimator;
     EnemyBrain brain;
     StarChaseAction StarChase;
@@ -94,6 +99,9 @@ public class SquidBoss : _BaseBoss
         Debug.Log("In Reset");
         inCyclone = false;
         InCyclone = inCyclone;
+        hasDirection = false;
+        cycloneDirection = Vector3.zero;
+        CycloneDirection = cycloneDirection;
         atCycloneDest = false;
         AtCycloneDest = atCycloneDest;
         cycloneAttempts = 3;
@@ -144,24 +152,35 @@ public class SquidBoss : _BaseBoss
         CycloneTimer = cycloneTimer;
         CycloneAttempts = cycloneAttempts;
         AtCycloneDest = atCycloneDest;
+        HasDirection = hasDirection;
+        CycloneDirection = cycloneDirection;
         if(inCyclone)
         {
+            if(movementCollider.enabled)
+            {
+                movementCollider.enabled = false;
+            }
             bossAnimator.SetCycloneAnimation(!atCycloneDest);
 
-            if(!atCycloneDest)
+            //if(!atCycloneDest)
+            //{
+            cycloneTimer -= Time.deltaTime;
+            if(cycloneTimer <= 0)
             {
-                cycloneTimer -= Time.deltaTime;
-                if(cycloneTimer <= 0)
-                {
-                    atCycloneDest = true;
-                    cycloneTimer = CycloneDuration;
-                    cycloneAttempts--;
-                }
+                atCycloneDest = true;
+                cycloneTimer = CycloneDuration;
+                cycloneAttempts--;
+                inCyclone = false;
             }
+            //}
             
         }
         else
         {
+            if(!movementCollider.enabled)
+            {
+                movementCollider.enabled = true;
+            }
             bossAnimator.SetCycloneAnimation(false);
         }
     }
