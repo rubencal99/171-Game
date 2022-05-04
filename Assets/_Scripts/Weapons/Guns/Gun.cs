@@ -80,7 +80,7 @@ public class Gun : MonoBehaviour, IWeapon
         swapTimer = swapTime;
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
@@ -99,6 +99,14 @@ public class Gun : MonoBehaviour, IWeapon
 
        //weaponItem.prefab = transform.gameObject;
        //Debug.Log(weaponItem.prefab);
+    }
+
+    protected virtual void Update()
+    {
+        UseWeapon();
+        //UseMelee();
+        Reload();
+       // infAmmo = weaponParent.InfAmmo;
     }
 
 
@@ -179,14 +187,6 @@ public class Gun : MonoBehaviour, IWeapon
     public void AmmoFill()
     {
         TotalAmmo = weaponData.MaxAmmoCapacity;
-    }
-
-    protected void Update()
-    {
-        UseWeapon();
-        //UseMelee();
-        Reload();
-       // infAmmo = weaponParent.InfAmmo;
     }
 
     protected virtual void UseWeapon()
