@@ -29,9 +29,9 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool infAmmo;
 
-    // GunDataSO Holds all our weapon data
+    // WeaponData Holds all our weapon data
     [SerializeField]
-    public GunDataSO weaponData;
+    public WeaponData weaponData;
 
     [SerializeField]
     public bool isPlayer;

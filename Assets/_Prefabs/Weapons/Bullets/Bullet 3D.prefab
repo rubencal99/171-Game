@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168e49f3698a15140a5c60e71983c856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 0}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: c45caa0c42ffb10488343ef3060b35cc, type: 2}
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &-4525825636214258528
 MonoBehaviour:
