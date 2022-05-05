@@ -8,7 +8,6 @@ public class ShopSpawner : EnemySpanwer
     // Start is called before the first frame update
     void Start()
     {
-        thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
        // enemyCount = this.numToSpawn;
         // Debug.Log("initial Enemy count = " + enemyCount);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
@@ -23,7 +22,7 @@ public class ShopSpawner : EnemySpanwer
     // }
 
     new public void SpawnObject(){
-        Vector3 offsetPosition = new Vector3(thisroom.roomCenter.x, 1, thisroom.roomCenter.y);
+        Vector3 offsetPosition = transform.position;
         //offsetPosition.x += Random.Range(-offset, offset);
         //offsetPosition.y += Random.Range(-offset, offset);
 

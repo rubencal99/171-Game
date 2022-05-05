@@ -14,9 +14,25 @@ public class Reticule : MonoBehaviour
 
     PlayerInput playerInput;
 
+    GameObject Camera;
+
     void Awake()
     {
         playerInput = transform.parent.GetComponent<PlayerInput>();
+        if(!Camera)
+        {
+            Camera = CameraShake.Instance.gameObject;
+        }
+        
+    }
+
+    void Start()
+    {
+        playerInput = transform.parent.GetComponent<PlayerInput>();
+        if(!Camera)
+        {
+            Camera = CameraShake.Instance.gameObject;
+        }
     }
     
     
@@ -30,6 +46,13 @@ public class Reticule : MonoBehaviour
         //this.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
         this.transform.position = mousePos;
         calculateMidPoint();
+        //transform.LookAt(Camera.transform);
+    }
+
+    protected void LateUpdate()
+    {
+        //transform.LookAt(Camera.transform.position);
+        //transform.rotation = Quaternion.LookRotation(transform.position - Camera.transform.position, transform.up);
     }
 
     void calculateMidPoint() {

@@ -21,6 +21,10 @@ public class Lazer : Gun
 
     protected override void UseWeapon()
     {
+        if(swapTimer > 0)
+        {
+            swapTimer -= Time.deltaTime;
+        }
         if (isShooting && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             if (Ammo > 0)

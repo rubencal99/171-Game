@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: obstacle rule tile
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 21300000, guid: 8cc778ef9df76834ba397ce94e58b731, type: 3}
-  m_DefaultGameObject: {fileID: 6491939475053275967, guid: 4daa09342106f0c46a1b5e599aef4697, type: 3}
+  m_DefaultGameObject: {fileID: 6491939475053275967, guid: 04f9e3b2363f0ef4994747df5f25ed32, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
@@ -26,14 +26,25 @@ MonoBehaviour:
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
-    m_Neighbors: 
+    m_Neighbors: 02000000020000000200000002000000
     m_NeighborPositions:
-    - {x: -1, y: 1, z: 0}
-    - {x: 0, y: 1, z: 0}
-    - {x: 1, y: 1, z: 0}
     - {x: -1, y: 0, z: 0}
     - {x: 1, y: 0, z: 0}
-    - {x: -1, y: -1, z: 0}
+    - {x: 0, y: 1, z: 0}
     - {x: 0, y: -1, z: 0}
-    - {x: 1, y: -1, z: 0}
     m_RuleTransform: 0
+  - m_Id: 1
+    m_Sprites:
+    - {fileID: 21300000, guid: 8cc778ef9df76834ba397ce94e58b731, type: 3}
+    m_GameObject: {fileID: 6491939475053275967, guid: 43365ded4dcecfb43a21a7109ee19012, type: 3}
+    m_MinAnimationSpeed: 1
+    m_MaxAnimationSpeed: 1
+    m_PerlinScale: 0.5
+    m_Output: 0
+    m_ColliderType: 1
+    m_RandomTransform: 0
+    m_Neighbors: 0100000002000000
+    m_NeighborPositions:
+    - {x: -1, y: 0, z: 0}
+    - {x: 1, y: 0, z: 0}
+    m_RuleTransform: 1

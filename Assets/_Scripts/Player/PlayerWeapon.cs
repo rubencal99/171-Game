@@ -114,6 +114,10 @@ public class PlayerWeapon : AgentWeapon
     {
         if(Primary && !Primary.activeSelf)
         {
+            if(Secondary && !Secondary.GetComponent<IWeapon>().CheckSwap())
+            {
+                return;
+            }
             Primary.SetActive(true);
             if(Secondary != null)
                 Secondary.SetActive(false);
@@ -126,6 +130,10 @@ public class PlayerWeapon : AgentWeapon
     {
         if(Secondary && !Secondary.activeSelf)
         {
+            if(Primary && !Primary.GetComponent<IWeapon>().CheckSwap())
+            {
+                return;
+            }
             if(Primary != null)
                 Primary.SetActive(false);
             Secondary.SetActive(true);

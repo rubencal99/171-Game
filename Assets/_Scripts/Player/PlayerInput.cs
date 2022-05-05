@@ -10,11 +10,13 @@ public class PlayerInput : MonoBehaviour
     public Shop ShopKeeper;
     public LayerMask mouseColliderLayerMask;
     public Vector3 MousePos;
+    public Reticule reticule;
 
     private void Start()
     {
         PlayerMovement = GetComponent<PlayerMovement>();
         Collider = GetComponent<CapsuleCollider>();
+        reticule.enabled = true;
         // ShopKeeper = GameObject.Find("ShopKeeper").GetComponent<Shop>();
     }
 

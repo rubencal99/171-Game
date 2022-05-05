@@ -15,8 +15,7 @@ MonoBehaviour:
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 51a9ede66d7b72e4eac9ed77a0f528df, type: 3}
   <BulletSpeed>k__BackingField: 10
   <Damage>k__BackingField: 1
-  <Friction>k__BackingField: 0
-  <Rebound>k__BackingField: 0
+  <Friction>k__BackingField: 20
   <Bounce>k__BackingField: 1
   <GoThroughHittable>k__BackingField: 0
   <IsRaycast>k__BackingField: 0

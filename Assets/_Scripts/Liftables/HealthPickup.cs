@@ -9,12 +9,16 @@ public class HealthPickup : MonoBehaviour
       if (collision.tag == "Player")
       {
           
-           Player player = FindObjectOfType<Player>();
-           player?.Heal(10);
+           Player player = Player.instance;
+           player?.Heal(5);
            popup popup = FindObjectOfType<popup>();
-            popup.SetText("10 health");
-            popup.ShowText();
-             Destroy(gameObject);
+           if(popup)
+           {
+               popup.SetText("10 health");
+               popup.ShowText();
+           }
+
+            Destroy(gameObject);
            
       }
    }
@@ -24,12 +28,15 @@ public class HealthPickup : MonoBehaviour
       if (collision.gameObject.tag == "Player")
       {
           
-           Player player = FindObjectOfType<Player>();
-           player?.Heal(10);
+           Player player = Player.instance;
+           player?.Heal(5);
            popup popup = FindObjectOfType<popup>();
-            popup.SetText("10 health");
-            popup.ShowText();
-             Destroy(gameObject);
+           if(popup)
+           {
+               popup.SetText("10 health");
+               popup.ShowText();
+           }
+            Destroy(gameObject);
            
       }
    }

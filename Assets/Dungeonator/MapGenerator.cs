@@ -495,8 +495,8 @@ public class MapGenerator : MonoBehaviour
             {
                 continue;
             }
-            //ObstacleInjector.PlaceObstacles(room);
-            ObstacleInjector.PlacePillars(room);
+            ObstacleInjector.PlaceObstacles(room);
+            //ObstacleInjector.PlacePillars(room);
         }
     }
 
@@ -555,7 +555,7 @@ public class MapGenerator : MonoBehaviour
         foreach(RoomNode room in Rooms) {
              if(room.RoomType != "Start")
              {
-                Vector3 pos1 = new Vector3(room.roomCenter.x, 0, room.roomCenter.y);
+                Vector3 pos1 = new Vector3(room.roomCenter.x + 1f, 0, room.roomCenter.y + 1f);
                 GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
                 entryCollider1.transform.parent = room.transform;
                 entryCollider1.GetComponent<EntryCollider>().tilemap = this.AutoTiler.GetTilemap();
@@ -597,6 +597,7 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
+        Player.GetComponent<Player>().setSpawnPoint(spawnPosition);
          if(PlayerProgressManager.hasData) {
             Debug.Log("Loading player data");
             PlayerProgressManager.LoadPlayer(Player.GetComponentInChildren<PlayerWeapon>().gameObject, Player.gameObject);

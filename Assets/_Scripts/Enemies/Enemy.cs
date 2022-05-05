@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [field: SerializeField]
     public UnityEvent OnRevive { get; set; }
     public bool isDying = false;
+    public bool hasDied = false;
     public float deathTimer = 10.0f;
 
     private AgentRenderer agentRenderer;
@@ -40,6 +41,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private ParticleSystem blood;
 
+    [SerializeField]
+    public bool predator = false;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -53,7 +57,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         //blood = FindComponentInChildWithTag
     }
 
-    public void GetHit(float damage, GameObject damageDealer)
+    public virtual void GetHit(float damage, GameObject damageDealer)
     {
         float d = PlayerSignaler.CallDamageBuff(damage);
         Health -= d;
@@ -84,7 +88,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         blood.Play();
        
         //Debug.Log("After Enemy Knockback");
-        Debug.Log("Health = " + Health);
+        //Debug.Log("Health = " + Health);
         if (Health > 0)
         {
             OnGetHit?.Invoke();
@@ -93,10 +97,10 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         {
             DontFreeze = true;
             StartCoroutine(WaitToDie());
-            Debug.Log("After WaitToDie coroutine");
-            Debug.Log("Before OnDie");
+            //Debug.Log("After WaitToDie coroutine");
+            //Debug.Log("Before OnDie");
             OnDie?.Invoke();
-            Debug.Log("After OnDie");
+            //Debug.Log("After OnDie");
             //StartCoroutine(WaitToDie());
             //Debug.Log("After WaitToDie coroutine");
         }
@@ -145,32 +149,48 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
     }
 
-    private void Die()
+    public void Die()
     {
-
+        if(PlayerSignaler.CallPredatoryInstinct()){
+            PlayerSignaler.usePredator = true;
+        }
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
 
+    void Update()
+    {
+        DeadOrAlive();
+    }
+
     public void DeadOrAlive()
     {
-        if(isDying == true)
+        if(isDying)
         {
-            enemyBrain.OnFireButtonReleased?.Invoke();
-            gameObject.layer = 0;
-            enemyBrain.Move(Vector3.zero);
-            agentMovement.currentVelocity = 0;
             enemyBrain.enabled = false;
-            agentRenderer.isDying = true;
-            GetComponent<CapsuleCollider>().direction = 0;
+            if(!hasDied)
+            {
+                enemyBrain.OnFireButtonReleased?.Invoke();
+                gameObject.layer = 0;
+                enemyBrain.Move(Vector3.zero);
+                agentMovement.currentVelocity = 0;
+                agentRenderer.isDying = true;
+                GetComponent<CapsuleCollider>().direction = 0;
+                hasDied = true;
+            }
         }
         else
         {
-            gameObject.layer = 8;
-            enemyBrain.enabled = true;
-            agentRenderer.isDying = false;
-            OnRevive?.Invoke();
-            GetComponent<CapsuleCollider>().direction = 1;
+            if(hasDied)
+            {
+                gameObject.layer = 8;
+                agentRenderer.isDying = false;
+                OnRevive?.Invoke();
+                GetComponent<CapsuleCollider>().direction = 1;
+                enemyBrain.enabled = true;
+                hasDied = false;
+            }
+            
         }
     }
 

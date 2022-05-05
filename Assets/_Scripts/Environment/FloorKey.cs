@@ -4,20 +4,9 @@ using UnityEngine;
 
 public class FloorKey : MonoBehaviour
 {
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collider collider)
     {
         if(collider.tag == "Player")
-        {
-            Debug.Log("Player has aquired key");
-            Player.instance.hasKey = true;
-            KillAllEnemies();
-            Destroy(gameObject);    
-        }
-    }
-
-    void OnCollisionEnter(Collision collider)
-    {
-        if(collider.gameObject.tag == "Player")
         {
             Debug.Log("Player has aquired key");
             Player.instance.hasKey = true;

@@ -10,6 +10,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public static Player instance;
     public ItemInventory inventory;
     public RoomNode currentRoom;
+    [SerializeField]
+    GameObject DronePrefab;
+    public GameObject Drone;
 
 
     public bool invincible = false;
@@ -23,7 +26,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public float Health { get; set; } = 6;
 
      [field: SerializeField]
-    public int MaxHealth { get; private set; } = 6;
+    public float MaxHealth { get; private set; } = 6f;
 
     [field: SerializeField]
     public int Wallet { get; private set; } = 80;
@@ -82,13 +85,19 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
+
+    [field: SerializeField]
+
+    public Vector3 respawnPoint;
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
 
+
     private void Awake()
     {
         instance = this;
+        PlayerSignaler.SetSignaler();
          //DontDestroyOnLoad(this.gameObject);
     }
 
@@ -111,6 +120,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
         //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
+    public void setSpawnPoint(Vector3 spawn) {
+        respawnPoint = spawn;
+    }
+    
+    public void resetToSpawnPoint() {
+        this.transform.position = respawnPoint;
+    }
+
     void Update()
     {
         if (isDead==true){                      //For Debug the instance kill
@@ -124,13 +141,17 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
          //raise defelction shield
-        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
+        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"]){
              StartCoroutine(RaiseShield());
         }
 
          //hipposkin
         if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
-             StartCoroutine(ApplyHippo());
+            StartCoroutine(ApplyHippo());
+         }
+         else if(!PlayerAugmentations.AugmentationList["HippoSkin"] && PlayerAugmentations.HippoApplied)
+         {
+             StartCoroutine(RemoveHippo());
          }
          /*if(Input.GetButtonUp("Teleport")){
              //Debug.Log("Teleport");
@@ -140,7 +161,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
          }
+
+         PlayerSignaler.CallDrone();
     }
+
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
         var currHealth = (float)Health/MaxHealth;
@@ -165,13 +189,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
         HitLastFiveSec = false;
     }
 
-    public void Heal(int amount) {
+    public void Heal(float amount) {
         Health += amount;
         if(Health > MaxHealth)
             Health = MaxHealth;
     }
 
-    public void setMaxHp(int amount) {
+    public void setMaxHp(float amount) {
         MaxHealth = amount;
     }
 
@@ -186,8 +210,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
+        float secondSkinDam = PlayerSignaler.CallSecondSkin(damage);
         DamageType(damageDealer);
-        Health -= damage;
+        if(Health - secondSkinDam <= 0){
+            CallAngelsGrace();
+        }else{
+            Health -= secondSkinDam;
+        }
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
@@ -296,16 +325,43 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public IEnumerator ApplyHippo(){
         PlayerAugmentations.HippoApplied = true;
         yield return null;
-        setMaxHp(MaxHealth + Mathf.FloorToInt(0.15f * MaxHealth));
+        setMaxHp(MaxHealth + PlayerAugmentations.HippoHealth);
         Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied);
+    }
+    public IEnumerator RemoveHippo(){
+        PlayerAugmentations.HippoApplied = false;
+        yield return null;
+        setMaxHp(MaxHealth - PlayerAugmentations.HippoHealth);
+        Debug.Log("Hippo Removed from RemoveHippo: " + PlayerAugmentations.HippoApplied);
     }
 
     public IEnumerator AutoDocCoolDown(){
         yield return new WaitForSeconds(PlayerAugmentations.AutoDocCoolDown);
         PlayerAugmentations.AutoDocUsed = false;
     }
+
+    public void InstantiateDrone()
+    {
+        Drone = Instantiate(DronePrefab, transform.position, DronePrefab.transform.rotation);
+    }
+
+    public void DestroyDrone()
+    {
+        Destroy(Drone);
+    }
+
     private void OnApplicationQuit()
     {
         inventory.ClearInventory();
+    }
+
+    public void CallAngelsGrace(){
+        foreach(Slot s in inventory.AContainer){
+            if(s.item.Name == "AngelsGrace"){
+                s.Clear();
+                break;
+            }
+        }
+        Heal(MaxHealth/2);
     }
 }

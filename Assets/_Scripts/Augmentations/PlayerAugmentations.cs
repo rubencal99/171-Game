@@ -5,12 +5,12 @@ using System.Linq;
 
 public static class PlayerAugmentations : object
 {
-    public static ItemInventory Ii;
+    //need to write backstory for each aug
 
     [SerializeField]
     //////////////////////////////EPINEPHRINE////////////////////////////////////
     public static bool Epinephrine = false;
-    public static int EpinephrineBoost = 1;
+    public static float EpinephrineBoost = 1f;
     //////////////////////////////BULLETTIME/////////////////////////////////////
     public static bool BulletTime = false;
     public static float BulletTT = 0.5f;
@@ -18,7 +18,7 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////GUNNERGLOVE/////////////////////////////////////
     public static bool  GunnerGloves = false;
-    public static float GunnerGlovesSpeed = 1.5f;
+    public static float GunnerGlovesSpeed = 5f;
 
     //////////////////////////////DEFLECTIONSHIELD////////////////////////////////
     public static bool DeflectionShield = false;
@@ -27,6 +27,7 @@ public static class PlayerAugmentations : object
     //////////////////////////////HIPPOSKIN////////////////////////////////////////
     public static bool HippoSkin = false;
     public static bool HippoApplied = false;
+    public static float HippoHealth = 5f;
 
     //////////////////////////////CASINGRECYCLE/////////////////////////////////////
     public static bool CasingRecycle = false;
@@ -35,6 +36,9 @@ public static class PlayerAugmentations : object
     //////////////////////////////WHISKERS//////////////////////////////////////////
     public static bool Whiskers = false;
     public static float whiskersDist = 5f;
+    public static float whiskersDistv2 = 7f;
+    public static float whiskersDistv3 = 11f;
+
 
     //////////////////////////////HOOKSHOT//////////////////////////////////////////
     public static bool HookShot = false;
@@ -43,24 +47,47 @@ public static class PlayerAugmentations : object
     public static float AutoDocHeal = 0.05f;
     public static float AutoDocCoolDown = 10f;
     public static bool AutoDocUsed = false;
-    //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
+    //////////////////////////////DamageBuff/////////////////////////////////////
     public static bool DamageBuff = false;
     public static float BuffAmount = 0.25f;
+    //////////////////////////////CheetahSpeed/////////////////////////////////////
+    public static bool CheetahSpeed = false;
+    public static float CSAmount = 0.3f;
+    //////////////////////////////Angels Grace/////////////////////////////////////
+    public static bool AngelsGrace = false;
+    //////////////////////////////Second Skin/////////////////////////////////////
+    public static bool SecondSkin = false;
+    public static float SkinAmount = 0.5f;
 
+    //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
     public static bool Drone = false;
 
-    public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
+    public static bool PredatoryInstinct = false;
+    public static float PredatoryAmount = 0.5f;
+
+    public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>() //head, body, legs, arms, aux
     {
-        {"Epinephrine", Epinephrine}, // passive
-        {"BulletTime", BulletTime}, //passive
-        {"GunnerGloves", GunnerGloves}, //passive
-        {"DeflectionShield", DeflectionShield},
-        {"HippoSkin", HippoSkin}, //passive
-        {"CasingRecycle", CasingRecycle}, //passive
-        {"Whiskers", Whiskers},
-        {"HookShot", HookShot},
-        {"AutoDoc", AutoDoc}, //passive
-        {"DamageBuff", DamageBuff} //passive
+        //head: bulletTime, AngelsGrace, Drone 3
+        //Body: HippoSkin, AutoDoc, SecondSkin 3 
+        //Arms: Epi, GunnerGloves, CasingRe, DamageBuff 4
+        //Legs CheetahSpeed 1
+        //Aux: Whiskers, Deflection 2
+        {"Epinephrine", Epinephrine}, // passive, arms, "Heals on kill"
+        {"BulletTime", BulletTime}, //passive, head, "Slows time"
+        {"GunnerGloves", GunnerGloves}, //passive, arms, "Faster reload"
+        {"DeflectionShield", DeflectionShield}, // active, aux, "Shield"
+        {"HippoSkin", HippoSkin}, //passive, body, "health multiplier"
+        {"CasingRecycle", CasingRecycle}, //passive, arms, "save bullets"
+        {"Whiskers", Whiskers},// active, aux, "teleport"
+        {"HookShot", HookShot},// active, aux , not ready
+        {"AutoDoc", AutoDoc}, //passive, body, "regeneration"
+        {"DamageBuff", DamageBuff}, //passive, amrs, "Increase damage"
+        {"SecondSkin", SecondSkin},//passive, body, "damge negation"
+        {"AngelsGrace", AngelsGrace}, //passive, head, "revive"
+        {"Drone", Drone},//passive, head, "companion"
+        {"CheetahSpeed", CheetahSpeed},// passive, legs, "Move faster"
+        {"PredatoryInstinct", PredatoryInstinct}
+
     };
 
     public static void ResetAugmentations()
@@ -69,6 +96,18 @@ public static class PlayerAugmentations : object
         {
             AugmentationList[key] = false;
         }
+        Epinephrine = false;
+        BulletTime = false;
+        GunnerGloves = false;
+        DeflectionShield = false;
+        HippoSkin = false;
+        HippoApplied = false;
+        CasingRecycle = false;
+        Whiskers = false;
+        HookShot = false;
+        AutoDoc = false;
+        AutoDocUsed = false;
+        Drone = false;
     }
 
     public static void PrintDictionary()

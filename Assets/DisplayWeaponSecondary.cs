@@ -23,18 +23,27 @@ public class DisplayWeaponSecondary : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(!obj)
+        {
+            obj = Player.instance.gameObject;
+        }
         w = obj.GetComponentInChildren<PlayerWeapon>();
         weaponImage = this.gameObject.GetComponent<Image>();
     }
 
     void Update()
     {
-        SR = w.Secondary.GetComponent<SpriteRenderer>();
-        weaponSprite = SR.sprite;
-        weaponImage.sprite = weaponSprite;
-        var col = weaponImage.color;
-        col.a = 100f;
-        weaponImage.color = col;
+        if(w.Secondary)
+        {
+            SR = w.Secondary.GetComponent<SpriteRenderer>();
+            weaponSprite = SR.sprite;
+            weaponImage.sprite = weaponSprite;
+            var col = weaponImage.color;
+            col.a = 100f;
+            weaponImage.color = col;
+             weaponImage.enabled = true;
+        } else weaponImage.enabled = false;
+        
     }
 
 }
