@@ -44,7 +44,7 @@ public class PlayerDiveState : PlayerBaseState
         {
             diving = false;
             collider.enabled = true;
-            Player.SwitchState(Player.ProneState);
+            Player.SwitchState(Player.RunGunState);
         }
     }
 
