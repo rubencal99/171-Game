@@ -57,10 +57,8 @@ public class PlayerMovement : AgentMovement
         Vector3 dodge_dir = dodgeDirection;
         dodge_dir.y += 1.0f;
         Debug.Log("Dodge Dir: " + dodge_dir * dodgeVelocity);
-        //dodgeVelocity.z *= 1.5f;
         rigidbody.velocity = Vector3.zero; // set speed to zero
         rigidbody.velocity += (Vector3)(dodge_dir * dodgeVelocity); // create dodge
-        rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3(1f, 1f, 2f));
         Debug.Log("Dodge Velocity: " + rigidbody.velocity);
         //Debug.Log("Collider size: " + collider.size);
         //Debug.Log("Original height and width:" + oriCollider);

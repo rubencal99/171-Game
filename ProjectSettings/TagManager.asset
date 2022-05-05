@@ -26,6 +26,7 @@ TagManager:
   - LP
   - BAS
   - Tilemap
+  - spheremask
   layers:
   - Default
   - TransparentFX
