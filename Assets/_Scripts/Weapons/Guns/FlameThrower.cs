@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 // This script is responsible for firing bullets from the selected weapon
 public class FlameThrower : Gun
 {
+    [field: SerializeField]
+    public UnityEvent OnStopShoot { get; set; }
     public float trueAmmo = 50f;
 
     public float radius;
@@ -47,6 +49,7 @@ public class FlameThrower : Gun
         }
         else
         {
+            OnStopShoot?.Invoke();
             FinishShooting();
         }
     }

@@ -336,7 +336,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void InstantiateDrone()
     {
-        Drone = Instantiate(DronePrefab, transform.position, DronePrefab.transform.rotation);
+        Vector3 spawn = new Vector3(transform.position.x, 1, transform.position.z);
+        Drone = Instantiate(DronePrefab, spawn, DronePrefab.transform.rotation);
     }
 
     public void DestroyDrone()

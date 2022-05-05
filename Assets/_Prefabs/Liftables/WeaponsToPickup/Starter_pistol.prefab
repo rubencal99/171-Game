@@ -95,12 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4346734895893382118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a35b33f1afe0a744ad525445c528f3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53db7613086fb3847962958cf7b75fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FireArm: {fileID: 11400000, guid: d66c62f8bfa284ee68c0660708b33951, type: 2}
-  tag: SP
-  name: your old reliable
+  tag: 
+  name: Starter Pistol
 --- !u!114 &8365223114590856189
 MonoBehaviour:
   m_ObjectHideFlags: 0
