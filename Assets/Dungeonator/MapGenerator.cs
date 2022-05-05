@@ -381,14 +381,29 @@ public class MapGenerator : MonoBehaviour
                     for (int j = 0; j < NewRoom.width; j++)
                     {
                         // Here is where we'd want to randomly choose from a static list
-                        map[x1 + 1 + i, y1 + 1 + j].value = RoomInjector.normal[i, j];
-                        if(RoomInjector.normal[i, j] == 1)
+                        if(int.TryParse(RoomInjector.normal[i, j],  out int result))
+                        {   
+                            Debug.Log("Int result = " + result);
+                            map[x1 + 1 + i, y1 + 1 + j].value = result;
+                            if(result == 1)
+                            {
+                                map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
+                                roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                            }
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                            NewRoom.tileCount++;
+                        }
+                        else
                         {
+                            Debug.Log("String result = " + result);
+                            map[x1 + 1 + i, y1 + 1 + j].value = 1;
                             map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
                             roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                            NewRoom.tileCount++;
+                            ObstacleLookUp.SpawnObstacle(RoomInjector.normal[i, j], x1 + 1 + i, y1 + 1 + j);
                         }
-                        NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
-                        NewRoom.tileCount++;
+                        
                     }
                 }
                 //Debug.Log("Before Add Lights");
@@ -422,7 +437,9 @@ public class MapGenerator : MonoBehaviour
         }
         Debug.Log("After Room Creation");
         SortRooms();
+        Debug.Log("Before Corridor creation");
         AddCorridors();
+        Debug.Log("After corrider creation");
         AddEndRoom();
         AddEntryColliders();
         AddSpawners();
