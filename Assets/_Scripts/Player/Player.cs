@@ -147,16 +147,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
          //hipposkin
         if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
-<<<<<<< HEAD
-             StartCoroutine(ApplyHippo());
-        }
-
-        //AutoDoc
-         if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
-            InvokeRepeating("RunAutoDoc",1f,2f);
-            StartCoroutine(AutoDocCoolDown());
-        }
-=======
             StartCoroutine(ApplyHippo());
          }
          else if(!PlayerAugmentations.AugmentationList["HippoSkin"] && PlayerAugmentations.HippoApplied)
@@ -173,7 +163,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
          }
 
          PlayerSignaler.CallDrone();
->>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
     }
 
     public IEnumerator fadeOverlay(){

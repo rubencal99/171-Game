@@ -10,12 +10,7 @@ public static class PlayerAugmentations : object
     [SerializeField]
     //////////////////////////////EPINEPHRINE////////////////////////////////////
     public static bool Epinephrine = false;
-<<<<<<< HEAD
-    public static int EpinephrineBoost = 1;
-
-=======
     public static float EpinephrineBoost = 1f;
->>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
     //////////////////////////////BULLETTIME/////////////////////////////////////
     public static bool BulletTime = false;
     public static float BulletTT = 0.5f;

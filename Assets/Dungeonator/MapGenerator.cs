@@ -495,8 +495,8 @@ public class MapGenerator : MonoBehaviour
             {
                 continue;
             }
-            //ObstacleInjector.PlaceObstacles(room);
-            ObstacleInjector.PlacePillars(room);
+            ObstacleInjector.PlaceObstacles(room);
+            //ObstacleInjector.PlacePillars(room);
         }
     }
 

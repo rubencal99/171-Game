@@ -5,6 +5,8 @@ using UnityEngine;
 public class DestructibleBox : Enemy
 {
     // Start is called before the first frame update
+
+    public bool isDestructible = true;
     public void  Start()
     {
         Health = 3;
@@ -14,7 +16,7 @@ public class DestructibleBox : Enemy
     public override void GetHit(float damage, GameObject damageDealer) {
         var agent = this.GetComponent<AgentMovement>();
         
-        if(Health > 0) {
+        if(Health > 0 && isDestructible) {
             Health -= 1;
         if(damageDealer.GetComponent<Bullet>())
         {
