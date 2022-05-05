@@ -7,8 +7,10 @@ public class LandAction : AIAction
   public bool landed = true;
   public override void TakeAction()
   {
+    Debug.Log("In land action");
     if(RatchetBoss.inAir)
     {
+      RatchetBoss.inJump = false;
       landed = false;
     }
   }
