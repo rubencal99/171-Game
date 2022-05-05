@@ -25,7 +25,7 @@ public class BossColliderTrigger : MonoBehaviour
             other.transform.GetComponent<Player>().GetHit(damage, gameObject);
         }
     }
-
+ 
     public void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Boss collided with somthing");

@@ -12,6 +12,7 @@ public class PlayerRunGunState : PlayerBaseState
     private bool secondaryButtonDown = false;
     private bool tabButtonDown = false;
 
+
     public bool dodging = false; // bool to check if dodging
     public bool shopping = false; // bool to check if dodging
 
@@ -69,7 +70,6 @@ public class PlayerRunGunState : PlayerBaseState
         {
             if (primaryButtonDown == false)
             {
-                //Debug.Log("About to activate Primary button");
                 primaryButtonDown = true;
                 playerInput.OnPrimaryButtonPressed?.Invoke();
             }
@@ -78,7 +78,6 @@ public class PlayerRunGunState : PlayerBaseState
         {
             if (primaryButtonDown == true)
             {
-                //Debug.Log("About to release Primary button");
                 primaryButtonDown = false;
                 playerInput.OnPrimaryButtonReleased?.Invoke();
             }
@@ -95,8 +94,6 @@ public class PlayerRunGunState : PlayerBaseState
 
     private void GetThrowInput()
     {
-        //Debug.Log("ThrowButtonDown = " + throwButtonDown);
-        //Debug.Log("Throw Input = " + Input.GetAxisRaw("Throw"));
         if (Input.GetAxisRaw("Throw") > 0)
         {
             if (throwButtonDown == false)
@@ -179,7 +176,17 @@ public class PlayerRunGunState : PlayerBaseState
 
     private void GetMovementInput()
     {
-        playerInput.OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+        float speedScalar = 1f;
+
+        if(PlayerSignaler.usePredator){
+            speedScalar +=  PlayerAugmentations.PredatoryAmount;
+            
+        }if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
+            speedScalar += PlayerSignaler.CallCheetahSpeed();
+        }
+        playerInput.OnMovementKeyPressed?.Invoke(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * speedScalar);
+
+
     }
 
     private void GetDodgeInput()
@@ -189,8 +196,8 @@ public class PlayerRunGunState : PlayerBaseState
         {
             if(PlayerAugmentations.AugmentationList["Whiskers"] && !PlayerAugmentations.AugmentationList["HookShot"]){ 
                 PlayerSignaler.CallWhiskers();
-            }else if(PlayerAugmentations.AugmentationList["HookShot"] && !PlayerAugmentations.AugmentationList["Whiskers"]){
-                Debug.Log("HookShot is manged by script");
+            //}else if(PlayerAugmentations.AugmentationList["HookShot"] && !PlayerAugmentations.AugmentationList["Whiskers"]){
+                //Debug.Log("HookShot is manged by script");
             }else{
                 if (playerInput.PlayerMovement.currentVelocity == 0)
                 {

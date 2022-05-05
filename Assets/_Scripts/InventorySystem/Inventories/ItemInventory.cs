@@ -26,7 +26,7 @@ public class ItemInventory : ScriptableObject
             // if items are the same or _toslot is empty, just add item and amount to _toslot
             if ((_fromslot.item == _toslot.item && _fromslot.amount + _toslot.amount <= _toslot.item.stackLimit)|| _toslot.item == null)
             {
-                //Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 //_toslot.item = _fromslot.item;
                 //_toslot.AddAmount(_fromslot.amount);
                 _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
@@ -35,7 +35,7 @@ public class ItemInventory : ScriptableObject
             // if not, swap item and amount data
             else
             {
-                //Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 ItemObject toitem = _toslot.item;
                 int toamount = _toslot.amount;
                 ItemObject fromitem = _fromslot.item;
@@ -46,11 +46,15 @@ public class ItemInventory : ScriptableObject
                     return;
                 }
                 
-                _toslot.Clear();
-                _fromslot.Clear();
+                if (_toslot.VerifyItem(_fromslot.item) && _fromslot.VerifyItem(_toslot.item))
+                {
+                    _toslot.Clear();
+                    _fromslot.Clear();
 
-                _fromslot.AddItemToSlot(toitem, toamount);
-                _toslot.AddItemToSlot(fromitem, fromamount);
+                    _fromslot.AddItemToSlot(toitem, toamount);
+                    _toslot.AddItemToSlot(fromitem, fromamount);
+                }
+
                 
             }
         }

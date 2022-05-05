@@ -5,18 +5,12 @@ using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
-    public static PlayerInput instance;
     public PlayerMovement PlayerMovement;
     public CapsuleCollider Collider;
     public Shop ShopKeeper;
     public LayerMask mouseColliderLayerMask;
     public Vector3 MousePos;
     public Reticule reticule;
-
-    void Awake()
-    {
-        instance = this;
-    }
 
     private void Start()
     {

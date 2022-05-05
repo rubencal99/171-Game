@@ -30,10 +30,7 @@ public class PlayerStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!Player.instance.isDead)
-        {
-            currentState.UpdateState(this);
-        }
+        currentState.UpdateState(this);
     }
 
     public void SwitchState(PlayerBaseState state)
