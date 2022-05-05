@@ -10,19 +10,11 @@ public static class PlayerSignaler : object
 
     public static PlayerWeapon playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
 
-<<<<<<< HEAD
     public static bool usePredator = false;
 
     public static float predatorTimer = 0f;
     public static float predatorTotalTime = 3f;
-=======
-    
-    /*private static void Awake()
-    {
-        obj =  GameObject.FindGameObjectWithTag("Player");
-        Player = obj.GetComponent<Player>();
-        playerPassives = obj.GetComponent<PlayerPassives>();
-    }*/
+
     public static void SetSignaler()
     {
         Player = Player.instance;
@@ -30,7 +22,6 @@ public static class PlayerSignaler : object
         playerPassives = obj.GetComponent<PlayerPassives>();
         playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
     }
->>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
 
      public static void Update(){
         if(usePredator){
@@ -104,7 +95,6 @@ public static class PlayerSignaler : object
         return curDamage;
     }
 
-<<<<<<< HEAD
     public static float CallSecondSkin(float damage){
         var curDamage = damage;
         if(PlayerAugmentations.AugmentationList["SecondSkin"]){
@@ -139,7 +129,6 @@ public static class PlayerSignaler : object
     }
 
     
-=======
     public static void CallDrone()
     {
         if(PlayerAugmentations.AugmentationList["Drone"] && Player.instance.Drone == null)
@@ -151,5 +140,4 @@ public static class PlayerSignaler : object
             Player.instance.DestroyDrone();
         }
     }
->>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
 }
