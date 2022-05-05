@@ -10,10 +10,6 @@ public static class PlayerSignaler : object
 
     public static PlayerWeapon playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
 
-    public static bool usePredator = false;
-
-    public static float predatorTimer = 0f;
-    public static float predatorTotalTime = 3f;
     
     /*private static void Awake()
     {
@@ -29,15 +25,6 @@ public static class PlayerSignaler : object
         playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
     }
 
-     public static void Update(){
-        if(usePredator){
-            predatorTimer += Time.deltaTime;
-        }
-        if(predatorTimer >= predatorTotalTime){
-            usePredator = false;
-            predatorTimer = 0;
-        }
-     }
     public static float CallGunnerGloves(Gun gun)
     {
         if(PlayerAugmentations.AugmentationList["GunnerGloves"] == true)
@@ -60,8 +47,10 @@ public static class PlayerSignaler : object
 
     public static void CallPlayerEpiBoost()
     {
+        // Debug.Log("In Epi Boost");
         if(PlayerAugmentations.AugmentationList["Epinephrine"] == true)
         {
+            Debug.Log("Epinephrine = true");
             Player.Heal(PlayerAugmentations.EpinephrineBoost);
         }
 
@@ -87,6 +76,7 @@ public static class PlayerSignaler : object
         var dist = PlayerAugmentations.whiskersDist;
         Physics.Raycast(Player.transform.position, direction, out hit, dist);
         if(hit.transform == null){
+            //Player.transform.position += direction.normalized;
             Player.transform.position += direction.normalized * dist;
         }else if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
             Debug.Log("Teleport into obstacle");
@@ -101,40 +91,6 @@ public static class PlayerSignaler : object
         return curDamage;
     }
 
-    public static float CallSecondSkin(float damage){
-        var curDamage = damage;
-        if(PlayerAugmentations.AugmentationList["SecondSkin"]){
-            return curDamage - curDamage * PlayerAugmentations.SkinAmount;
-        }
-        return curDamage;
-    }
-
-    public static float CallCheetahSpeed(){
-        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
-            return PlayerAugmentations.CSAmount;
-        }
-        return 2000f;
-        //return 1f;
-    }
-
-    public static bool CallPredatoryInstinct(){
-        if(PlayerAugmentations.AugmentationList["PredatoryInstinct"]){
-            return true;
-        }
-        return false;
-    }
-
-    public static float SetMovementSpeed(){
-        float speedScalar = 1f;
-        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
-            speedScalar += PlayerAugmentations.CSAmount;
-        }if(usePredator){
-            speedScalar += PlayerAugmentations.PredatoryAmount;
-        }
-        return speedScalar;
-    }
-
-    
     public static void CallDrone()
     {
         if(PlayerAugmentations.AugmentationList["Drone"] && Player.instance.Drone == null)

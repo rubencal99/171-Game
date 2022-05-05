@@ -9,7 +9,7 @@ public class GenericPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("Collided with object " + col.tag);
+        //Debug.Log("Collided with object " + col.tag);
         if (col.tag == "Player")
         {
             Player.instance.inventory.AddItemToInventory(pickupItem, pickupAmount);

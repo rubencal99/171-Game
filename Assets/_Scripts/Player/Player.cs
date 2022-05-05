@@ -82,17 +82,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private AgentRenderer agentRenderer;
     [SerializeField]
 
-
+     public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
-
-    [field: SerializeField]
-
-    public Vector3 respawnPoint;
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
-
 
     private void Awake()
     {
@@ -120,14 +115,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
         //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
-    public void setSpawnPoint(Vector3 spawn) {
-        respawnPoint = spawn;
-    }
-    
-    public void resetToSpawnPoint() {
-        this.transform.position = respawnPoint;
-    }
-
     void Update()
     {
         if (isDead==true){                      //For Debug the instance kill
@@ -141,7 +128,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
          //raise defelction shield
-        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"]){
+        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
              StartCoroutine(RaiseShield());
         }
 
@@ -165,6 +152,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
          PlayerSignaler.CallDrone();
     }
 
+    public void setSpawnPoint(Vector3 spawn) {
+        respawnPoint = spawn;
+    }
+    
+    public void resetToSpawnPoint() {
+        this.transform.position = respawnPoint;
+    }
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
         var currHealth = (float)Health/MaxHealth;
@@ -210,13 +204,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
-        float secondSkinDam = PlayerSignaler.CallSecondSkin(damage);
         DamageType(damageDealer);
-        if(Health - secondSkinDam <= 0){
-            CallAngelsGrace();
-        }else{
-            Health -= secondSkinDam;
-        }
+        Health -= damage;
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
@@ -288,6 +277,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     IEnumerator WaitToDie(){
         gameObject.layer = 0;
         agentRenderer.isDying = true;
+        isDead = true;
         yield return new WaitForSeconds(3f);
         //Destroy(gameObject);
         // Play End Game Screen here
@@ -342,7 +332,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     public void InstantiateDrone()
     {
-        Drone = Instantiate(DronePrefab, transform.position, DronePrefab.transform.rotation);
+        Vector3 spawn = new Vector3(transform.position.x, 1, transform.position.z);
+        Drone = Instantiate(DronePrefab, spawn, DronePrefab.transform.rotation);
     }
 
     public void DestroyDrone()
@@ -353,15 +344,5 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void OnApplicationQuit()
     {
         inventory.ClearInventory();
-    }
-
-    public void CallAngelsGrace(){
-        foreach(Slot s in inventory.AContainer){
-            if(s.item.Name == "AngelsGrace"){
-                s.Clear();
-                break;
-            }
-        }
-        Heal(MaxHealth/2);
     }
 }

@@ -73,4 +73,15 @@ public class AgentAnimations : MonoBehaviour
     {
         agentAnimator.SetTrigger("shoot");
     }
+
+    public void EnableSprite()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void DisableSprite()
+    {
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
 }

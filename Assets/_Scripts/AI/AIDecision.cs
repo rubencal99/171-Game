@@ -13,7 +13,7 @@ public abstract class AIDecision : MonoBehaviour
     {
         aiActionData = transform.root.GetComponentInChildren<AIActionData>();
         aiMovementData = transform.root.GetComponentInChildren<AIMovementData>();
-        enemyBrain = transform.root.GetComponent<EnemyBrain>();
+        enemyBrain = transform.parent.parent.parent.GetComponent<EnemyBrain>();
     }
 
     public abstract bool MakeADecision();
