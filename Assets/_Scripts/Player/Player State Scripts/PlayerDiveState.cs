@@ -13,7 +13,7 @@ public class PlayerDiveState : PlayerBaseState
     private bool fireButtonDown = false;
     public bool diving;
     [SerializeField]
-    private float DiveTimer = 0.5f;
+    private float DiveTimer = 0.3f;
     private float diveTime;
     public PlayerInput playerInput;
     public CapsuleCollider collider;

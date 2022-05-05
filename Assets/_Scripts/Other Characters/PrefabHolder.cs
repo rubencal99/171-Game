@@ -69,6 +69,7 @@ public class PrefabHolder : MonoBehaviour
             
                 */
             //}
+            Destroy(gameObject);
         }
         else if (!playerInfo.CanPurchase(itemData.Cost))
         {

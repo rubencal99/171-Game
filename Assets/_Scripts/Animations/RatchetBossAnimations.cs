@@ -10,6 +10,7 @@ public class RatchetBossAnimations : AgentAnimations
     public CapsuleCollider movementCollider;
     public EnemyGun GroundSlam;
     public EnemyGun PoundGun;
+    public EnemyGun ChargeSpray;
     void Start()
     {
         boss = transform.parent.GetComponentInChildren<RatchetBoss>();
@@ -27,8 +28,22 @@ public class RatchetBossAnimations : AgentAnimations
 
     public void Pound()
     {
+        Debug.Log("In Pound");
+        if(PoundGun.gameObject.activeSelf == false)
+        {
+            GroundSlam.gameObject.SetActive(false);
+            PoundGun.gameObject.SetActive(true);
+            ChargeSpray.gameObject.SetActive(false);
+            //WeaponParent.AssignWeapon();
+        }
         PoundGun.ForceReload();
         PoundGun.TryShooting();
+    }
+
+    public void TransitionChargeWeapon()
+    {
+        Debug.Log("In Transition Charge Weapon");
+        RatchetBoss.inChargeStart = false;
     }
 
     public void SetChargeAnimation()

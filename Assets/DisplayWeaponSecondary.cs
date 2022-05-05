@@ -41,8 +41,7 @@ public class DisplayWeaponSecondary : MonoBehaviour
             var col = weaponImage.color;
             col.a = 100f;
             weaponImage.color = col;
-             weaponImage.enabled = true;
-        } else weaponImage.enabled = false;
+        }
         
     }
 

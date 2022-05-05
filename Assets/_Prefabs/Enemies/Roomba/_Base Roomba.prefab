@@ -103,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 572603608035170094}
   m_LocalRotation: {x: -0.39586595, y: 0, z: 0, w: 0.9183083}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_Children: []
   m_Father: {fileID: 572603609278578474}
   m_RootOrder: 0
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7124621374147906806, guid: aae5977d1af33b54d99e49711753c497, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78c21691aadf1b34496f965a43605d4b, type: 3}
   m_Color: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 677672
+  m_InstanceId: 54716
 --- !u!114 &8122363185936162116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +428,7 @@ MonoBehaviour:
   isDying: 0
   deathTimer: 10
   agentAnimations: {fileID: 0}
+  agentMovement: {fileID: 0}
   knockback: 0
   blood: {fileID: 3440571548795422129}
 --- !u!114 &8801814988805570413
@@ -5546,6 +5547,7 @@ MonoBehaviour:
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: 809542db9f29afd4ca27f5bc6ca2d35c, type: 2}
   isPlayer: 0
+  isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0

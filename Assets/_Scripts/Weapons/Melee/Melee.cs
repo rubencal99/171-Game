@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class Melee : MonoBehaviour, IWeapon
 {
+    [field: SerializeField]
+    public Vector3 startOffset {get; set;} = Vector3.zero;
     public Transform attackPoint;
     public float attackRange = 0.15f;
     protected AgentWeapon weaponParent;
