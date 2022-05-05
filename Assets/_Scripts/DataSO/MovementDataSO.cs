@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Agent/MovementData")]
 public class MovementDataSO : ScriptableObject
 {   
-    [Range(1, 20)]
-    public float maxDodgeSpeed = 10;
+    [Range(1, 100)]
+    public float maxDodgeSpeed = 20;
 
     [Range(1, 10)]
     public float maxRunSpeed = 5;

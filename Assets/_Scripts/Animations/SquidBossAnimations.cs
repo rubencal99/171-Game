@@ -11,7 +11,7 @@ public class SquidBossAnimations : AgentAnimations
     void Start()
     {
         boss = transform.parent.GetComponentInChildren<SquidBoss>();
-        cycloneCollider = boss.transform.gameObject.GetComponent<SphereCollider>();
+        cycloneCollider = boss.transform.parent.gameObject.GetComponent<SphereCollider>();
         capsuleCollider = boss.transform.parent.gameObject.GetComponent<CapsuleCollider>();
         movementCollider = boss.transform.parent.transform.Find("MovementCollider").GetComponent<CapsuleCollider>();
     }

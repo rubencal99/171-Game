@@ -177,10 +177,10 @@ public class RegularBullet : Bullet
         //Vector2 inDirection = GetComponent<Rigidbody2D>().velocity;
         Vector3 inNormal = collision.contacts[0].normal;
         Vector3 newDirection = Vector3.Reflect(direction, inNormal);
-        Debug.Log("In Bounce Bullet");
-        Debug.Log("CURRENT Direction: " + direction);
+        //Debug.Log("In Bounce Bullet");
+        //Debug.Log("CURRENT Direction: " + direction);
         newDirection.y = 0;
-        Debug.Log("New Direction: " + newDirection);
+        //Debug.Log("New Direction: " + newDirection);
         //Debug.Log("CURRENT Rotation: " + transform.rotation);
         /*if(newDirection.x != direction.x)
         {
