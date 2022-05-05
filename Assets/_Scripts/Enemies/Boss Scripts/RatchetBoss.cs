@@ -274,7 +274,8 @@ public class RatchetBoss : _BaseBoss
         InJump = inJump;
         if(inJump)
         {
-            bossAnimator.SetSlamAnimation();
+            //bossAnimator.SetSlamAnimation();
+            bossMovement.rigidbody.useGravity = false;
             jumpCollider.enabled = true;
             if(!PoundGun.activeSelf)
             {
@@ -285,7 +286,8 @@ public class RatchetBoss : _BaseBoss
         }
         else
         {
-            jumpCollider.enabled = false;   
+            jumpCollider.enabled = false;
+            bossMovement.rigidbody.useGravity = true;
         }
     }
 

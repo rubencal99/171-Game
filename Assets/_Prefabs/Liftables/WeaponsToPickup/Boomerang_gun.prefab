@@ -95,12 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3997752655706308050}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a35b33f1afe0a744ad525445c528f3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53db7613086fb3847962958cf7b75fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FireArm: {fileID: 11400000, guid: 58945c3e5113e9b4bba3f8417fc56950, type: 2}
-  tag: SG
-  name: Boiiiiiing
+  tag: 
+  name: Boomerang
 --- !u!114 &6955790450368092334
 MonoBehaviour:
   m_ObjectHideFlags: 0

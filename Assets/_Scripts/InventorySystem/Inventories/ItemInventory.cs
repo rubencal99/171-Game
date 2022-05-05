@@ -263,8 +263,8 @@ public class WeaponSlot : Slot
         Debug.Log("Prefab Clone: " + item.prefabClone);
         Debug.Log("Player weapon instance: " + PlayerWeapon.instance);
         clone.transform.parent = PlayerWeapon.instance.transform;
-        clone.transform.position = Vector3.zero;
-        clone.transform.localPosition = Vector3.zero;
+        //clone.transform.position = Vector3.zero;
+        clone.transform.localPosition = clone.GetComponent<IWeapon>().startOffset;
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         PlayerWeapon.instance.Primary = clone;
@@ -280,8 +280,8 @@ public class WeaponSlot : Slot
         Debug.Log("Prefab Clone: " + item.prefabClone);
         Debug.Log("Player weapon instance: " + PlayerWeapon.instance);
         clone.transform.parent = PlayerWeapon.instance.transform;
-        clone.transform.position = Vector3.zero;
-        clone.transform.localPosition = Vector3.zero;
+        //clone.transform.position = Vector3.zero;
+        clone.transform.localPosition = clone.GetComponent<IWeapon>().startOffset;
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         if(PlayerWeapon.instance.Secondary != null)

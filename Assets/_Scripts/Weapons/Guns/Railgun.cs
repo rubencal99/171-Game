@@ -11,7 +11,7 @@ public class Railgun : Gun
     public bool holding;
     public float maxHold = 2f;
     public float holdTimer;
-    private void Start()
+    protected override void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
@@ -33,7 +33,7 @@ public class Railgun : Gun
        //Debug.Log(weaponItem.prefab);
     }
 
-    protected void Update()
+    protected override void Update()
     {
         UseWeapon();
         //UseMelee();

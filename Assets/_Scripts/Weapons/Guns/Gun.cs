@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 // This script is responsible for firing bullets from the selected weapon
 public class Gun : MonoBehaviour, IWeapon
 {
+    [field: SerializeField]
+    public Vector3 startOffset {get; set;} = Vector3.zero;
+
     // This gives us a place to instantiate the bullet ie reference to our gun
     [SerializeField]
     public GameObject muzzle;
@@ -26,9 +29,9 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool infAmmo;
 
-    // WeaponDataSO Holds all our weapon data
+    // WeaponData Holds all our weapon data
     [SerializeField]
-    public WeaponDataSO weaponData;
+    public WeaponData weaponData;
 
     [SerializeField]
     public bool isPlayer;
@@ -75,14 +78,12 @@ public class Gun : MonoBehaviour, IWeapon
 
     public Sprite sprite;
 
-    public float reloadAnimMultiplier;
-
     protected void OnEnable()
     {
         swapTimer = swapTime;
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
@@ -97,11 +98,18 @@ public class Gun : MonoBehaviour, IWeapon
             passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
             infAmmo = weaponParent.InfAmmo;
         }
-         reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
        //Debug.Log(weaponItem.prefab);
+    }
+
+    protected virtual void Update()
+    {
+        UseWeapon();
+        //UseMelee();
+        Reload();
+       // infAmmo = weaponParent.InfAmmo;
     }
 
 
@@ -160,8 +168,7 @@ public class Gun : MonoBehaviour, IWeapon
             if(isPlayer) {
                 Debug.Log("In Reload");
                 displayReloadProgressBar();
-                this.GetComponent<Animator>().SetFloat("reloadtime", reloadAnimMultiplier * 1 / (getReloadSpeed() / weaponData.ReloadSpeed));
-                
+                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (getReloadSpeed())) / 10.0f);
                 this.GetComponent<Animator>().Play("reload");
             }
             FinishReloading();
@@ -183,14 +190,6 @@ public class Gun : MonoBehaviour, IWeapon
     public void AmmoFill()
     {
         TotalAmmo = weaponData.MaxAmmoCapacity;
-    }
-
-    protected void Update()
-    {
-        UseWeapon();
-        //UseMelee();
-        Reload();
-       // infAmmo = weaponParent.InfAmmo;
     }
 
     protected virtual void UseWeapon()

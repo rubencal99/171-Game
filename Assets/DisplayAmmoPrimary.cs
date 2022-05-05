@@ -19,13 +19,11 @@ public class DisplayAmmoPrimary : MonoBehaviour
     // Update is called once per frame
     async void Update()
     {
-        w = obj.GetComponentInChildren<PlayerWeapon>();
         if (w.Primary != null && w.Primary.GetComponent<Gun>() != null){
             var weap = w.Primary.GetComponent<Gun>();
             ammo = weap.ammo;
             totalAmmo = weap.TotalAmmo;
             AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
-            AmmoText.enabled = true;
         }
         else AmmoText.enabled = false;
     }
