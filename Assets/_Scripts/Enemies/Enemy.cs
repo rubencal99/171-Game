@@ -151,7 +151,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
     }
 
-    private void Die()
+    public void Die()
     {
 
         PlayerSignaler.CallPlayerEpiBoost();
