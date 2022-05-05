@@ -1,0 +1,1320 @@
+fileFormatVersion: 2
+guid: 4ac713e4f43eae54085abc106066450f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 487107331051026421
+    second: shield_enemy_sprite_0
+  - first:
+      213: -2376333096923582897
+    second: shield_enemy_sprite_1
+  - first:
+      213: -907497511928245347
+    second: shield_enemy_sprite_2
+  - first:
+      213: 796785728347584532
+    second: shield_enemy_sprite_3
+  - first:
+      213: 6316452909084771673
+    second: shield_enemy_sprite_4
+  - first:
+      213: 3291522620869983211
+    second: shield_enemy_sprite_5
+  - first:
+      213: -5578411286717545341
+    second: shield_enemy_sprite_6
+  - first:
+      213: 8852073081601550320
+    second: shield_enemy_sprite_7
+  - first:
+      213: -4554273920857098305
+    second: shield_enemy_sprite_8
+  - first:
+      213: -7737567751759940492
+    second: shield_enemy_sprite_9
+  - first:
+      213: -5989428397136141630
+    second: shield_enemy_sprite_10
+  - first:
+      213: -4892859143467747011
+    second: shield_enemy_sprite_11
+  - first:
+      213: 8631719510306325383
+    second: shield_enemy_sprite_12
+  - first:
+      213: 6656564254231762679
+    second: shield_enemy_sprite_13
+  - first:
+      213: 5718616306239417747
+    second: shield_enemy_sprite_14
+  - first:
+      213: 7449822672592755204
+    second: shield_enemy_sprite_15
+  - first:
+      213: -1187818038570317656
+    second: shield_enemy_sprite_16
+  - first:
+      213: -1913883609585862811
+    second: shield_enemy_sprite_17
+  - first:
+      213: -108867020463437405
+    second: shield_enemy_sprite_18
+  - first:
+      213: 5177448187799691064
+    second: shield_enemy_sprite_19
+  - first:
+      213: -4838577946933207747
+    second: shield_enemy_sprite_20
+  - first:
+      213: -1222754367397957332
+    second: shield_enemy_sprite_21
+  - first:
+      213: 4053369228527895524
+    second: shield_enemy_sprite_22
+  - first:
+      213: 7814545918812665557
+    second: shield_enemy_sprite_23
+  - first:
+      213: -4688720504348644141
+    second: shield_enemy_sprite_24
+  - first:
+      213: -5597654192679040663
+    second: shield_enemy_sprite_25
+  - first:
+      213: -9003892840293938750
+    second: shield_enemy_sprite_26
+  - first:
+      213: 4233261890292208400
+    second: shield_enemy_sprite_27
+  - first:
+      213: -7193530518348219544
+    second: shield_enemy_sprite_28
+  - first:
+      213: 8985497299147180994
+    second: shield_enemy_sprite_29
+  - first:
+      213: -864518332663877486
+    second: shield_enemy_sprite_30
+  - first:
+      213: -5906254697731887412
+    second: shield_enemy_sprite_31
+  - first:
+      213: -8682150591389908831
+    second: shield_enemy_sprite_32
+  - first:
+      213: 2084908215886728417
+    second: shield_enemy_sprite_33
+  - first:
+      213: 1530298980188614427
+    second: shield_enemy_sprite_34
+  - first:
+      213: -8929572087779753530
+    second: shield_enemy_sprite_35
+  - first:
+      213: -5792050252304832625
+    second: shield_enemy_sprite_36
+  - first:
+      213: -5645599388478744747
+    second: shield_enemy_sprite_37
+  - first:
+      213: 3452835502928368954
+    second: shield_enemy_sprite_38
+  - first:
+      213: 9014765321690419814
+    second: shield_enemy_sprite_39
+  - first:
+      213: 4648850670547375416
+    second: shield_enemy_sprite_40
+  - first:
+      213: -4391998772827873756
+    second: shield_enemy_sprite_41
+  - first:
+      213: 8230619341164797334
+    second: shield_enemy_sprite_42
+  - first:
+      213: -8127714502625619990
+    second: shield_enemy_sprite_43
+  - first:
+      213: 1341062224501775788
+    second: shield_enemy_sprite_44
+  - first:
+      213: -5659046548578165341
+    second: shield_enemy_sprite_45
+  - first:
+      213: 3459360468424627626
+    second: shield_enemy_sprite_46
+  - first:
+      213: -6004911540385635141
+    second: shield_enemy_sprite_47
+  - first:
+      213: 3311739688218965103
+    second: shield_enemy_sprite_48
+  - first:
+      213: 6437700154322018623
+    second: shield_enemy_sprite_49
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shield_enemy_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 14
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7f8ca698d82c600800000000000000
+      internalID: 487107331051026421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 14
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4eadd183a1950fd0800000000000000
+      internalID: -2376333096923582897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 14
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9357fe22dbe763f0800000000000000
+      internalID: -907497511928245347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 14
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418324cf560ce0b00800000000000000
+      internalID: 796785728347584532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 14
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9550b7e647c88a750800000000000000
+      internalID: 6316452909084771673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 14
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb3e1b6266ddad20800000000000000
+      internalID: 3291522620869983211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 14
+        width: 26
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384cb2c8d708592b0800000000000000
+      internalID: -5578411286717545341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 14
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f768a24191e8da70800000000000000
+      internalID: 8852073081601550320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_8
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 14
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb7bc71aff7fbc0c0800000000000000
+      internalID: -4554273920857098305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_9
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 14
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 474b4da0023ae9490800000000000000
+      internalID: -7737567751759940492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_10
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 14
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c2201d2b9641eca0800000000000000
+      internalID: -5989428397136141630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_11
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 14
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3935915882191cb0800000000000000
+      internalID: -4892859143467747011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_12
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 14
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7830e9c69270ac770800000000000000
+      internalID: 8631719510306325383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_13
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 14
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f61c06dbedd06c50800000000000000
+      internalID: 6656564254231762679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_14
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 14
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39d28246b3b9c5f40800000000000000
+      internalID: 5718616306239417747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_15
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 14
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ada87ff36136760800000000000000
+      internalID: 7449822672592755204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_16
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 14
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8073989c5048fe0800000000000000
+      internalID: -1187818038570317656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_17
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 14
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 567313d4ff48075e0800000000000000
+      internalID: -1913883609585862811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_18
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 14
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9858d850a3d7ef0800000000000000
+      internalID: -108867020463437405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_19
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 14
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83f5acc02bdf9d740800000000000000
+      internalID: 5177448187799691064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_20
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 14
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3dd10f3efae9dcb0800000000000000
+      internalID: -4838577946933207747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_21
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 14
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21ffab9167e70fe0800000000000000
+      internalID: -1222754367397957332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_22
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 14
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e387e176d5704830800000000000000
+      internalID: 4053369228527895524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_23
+      rect:
+        serializedVersion: 2
+        x: 1495
+        y: 14
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6bec32c18d27c60800000000000000
+      internalID: 7814545918812665557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_24
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 14
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dc653f0b815eeeb0800000000000000
+      internalID: -4688720504348644141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_25
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 14
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969c3ed5b232152b0800000000000000
+      internalID: -5597654192679040663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_26
+      rect:
+        serializedVersion: 2
+        x: 1687
+        y: 14
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9c89a9a2fbb0380800000000000000
+      internalID: -9003892840293938750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_27
+      rect:
+        serializedVersion: 2
+        x: 1751
+        y: 14
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013d01ca2419fba30800000000000000
+      internalID: 4233261890292208400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_28
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 14
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b3ce44b127b2c90800000000000000
+      internalID: -7193530518348219544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_29
+      rect:
+        serializedVersion: 2
+        x: 1876
+        y: 14
+        width: 21
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb46e5bf26e2bc70800000000000000
+      internalID: 8985497299147180994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_30
+      rect:
+        serializedVersion: 2
+        x: 1940
+        y: 14
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290b1c7282d9004f0800000000000000
+      internalID: -864518332663877486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_31
+      rect:
+        serializedVersion: 2
+        x: 2004
+        y: 14
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cce65b425a4c80ea0800000000000000
+      internalID: -5906254697731887412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_32
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 14
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a0c1c1890ec28780800000000000000
+      internalID: -8682150591389908831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_33
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 14
+        width: 20
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ecc83dd9f41fec10800000000000000
+      internalID: 2084908215886728417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_34
+      rect:
+        serializedVersion: 2
+        x: 2198
+        y: 14
+        width: 21
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1fe84a80d6bc3510800000000000000
+      internalID: 1530298980188614427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_35
+      rect:
+        serializedVersion: 2
+        x: 2262
+        y: 14
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c105af3f79c31480800000000000000
+      internalID: -8929572087779753530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_36
+      rect:
+        serializedVersion: 2
+        x: 2326
+        y: 14
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87a82eabf08e9fa0800000000000000
+      internalID: -5792050252304832625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_37
+      rect:
+        serializedVersion: 2
+        x: 2390
+        y: 14
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 557df81944dc6a1b0800000000000000
+      internalID: -5645599388478744747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_38
+      rect:
+        serializedVersion: 2
+        x: 2454
+        y: 14
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3517e3989feaef20800000000000000
+      internalID: 3452835502928368954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_39
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 14
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6621edc3c41ea1d70800000000000000
+      internalID: 9014765321690419814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_40
+      rect:
+        serializedVersion: 2
+        x: 2582
+        y: 14
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83510dfdd09048040800000000000000
+      internalID: 4648850670547375416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_41
+      rect:
+        serializedVersion: 2
+        x: 2646
+        y: 14
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e94abc26c7c03c0800000000000000
+      internalID: -4391998772827873756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_42
+      rect:
+        serializedVersion: 2
+        x: 2709
+        y: 14
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69d569fdea8093270800000000000000
+      internalID: 8230619341164797334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_43
+      rect:
+        serializedVersion: 2
+        x: 2773
+        y: 14
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef853be8be843f80800000000000000
+      internalID: -8127714502625619990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_44
+      rect:
+        serializedVersion: 2
+        x: 2828
+        y: 14
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cad9f19ecf86c9210800000000000000
+      internalID: 1341062224501775788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_45
+      rect:
+        serializedVersion: 2
+        x: 2898
+        y: 14
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad1990a5270771b0800000000000000
+      internalID: -5659046548578165341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_46
+      rect:
+        serializedVersion: 2
+        x: 2966
+        y: 14
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa59a7e740e120030800000000000000
+      internalID: 3459360468424627626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_47
+      rect:
+        serializedVersion: 2
+        x: 3017
+        y: 14
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb4aba7f4c44aaca0800000000000000
+      internalID: -6004911540385635141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_48
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 15
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64bad833b9a5fd20800000000000000
+      internalID: 3311739688218965103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shield_enemy_sprite_49
+      rect:
+        serializedVersion: 2
+        x: 3145
+        y: 14
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3167d49e2e475950800000000000000
+      internalID: 6437700154322018623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 07d5acd679f063c498cd984315caeb5b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

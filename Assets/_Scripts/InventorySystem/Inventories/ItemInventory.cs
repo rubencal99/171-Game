@@ -46,11 +46,15 @@ public class ItemInventory : ScriptableObject
                     return;
                 }
                 
-                _toslot.Clear();
-                _fromslot.Clear();
+                if (_toslot.VerifyItem(_fromslot.item) && _fromslot.VerifyItem(_toslot.item))
+                {
+                    _toslot.Clear();
+                    _fromslot.Clear();
 
-                _fromslot.AddItemToSlot(toitem, toamount);
-                _toslot.AddItemToSlot(fromitem, fromamount);
+                    _fromslot.AddItemToSlot(toitem, toamount);
+                    _toslot.AddItemToSlot(fromitem, fromamount);
+                }
+
                 
             }
         }
@@ -210,7 +214,7 @@ public class WeaponSlot : Slot
         // checks item for type, then checks for augType or weaponType
         if (_item.GetType() == typeof(WeaponItemSO))
         {
-            if (_item.itemType == Convert.ToInt32(slotType) || slotType == WeaponType.Primary)
+            if (_item.itemType == Convert.ToInt32(slotType) || (slotType == WeaponType.Primary && _item.itemType == 1))
             {
                 return true;
             }
@@ -352,6 +356,7 @@ public class AugSlot : Slot
             }
         }
         PlayerAugmentations.AugmentationList[_item.Name] = true;
+        Debug.Log("Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
     }
 
     public override void Clear(){
@@ -359,6 +364,7 @@ public class AugSlot : Slot
         {
             amount = 0;
             PlayerAugmentations.AugmentationList[item.Name] = false;
+            Debug.Log("Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
             item = null;
         }
     }

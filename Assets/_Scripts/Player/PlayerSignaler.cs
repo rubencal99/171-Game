@@ -5,15 +5,32 @@ using UnityEngine;
 public static class PlayerSignaler : object
 {
     public static GameObject obj = GameObject.FindGameObjectWithTag("Player");
-    public static Player Player = obj.GetComponent<Player>();
+    public static Player Player = Player.instance;
     public static PlayerPassives playerPassives = obj.GetComponent<PlayerPassives>();
 
     public static PlayerWeapon playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
 
+<<<<<<< HEAD
     public static bool usePredator = false;
 
     public static float predatorTimer = 0f;
     public static float predatorTotalTime = 3f;
+=======
+    
+    /*private static void Awake()
+    {
+        obj =  GameObject.FindGameObjectWithTag("Player");
+        Player = obj.GetComponent<Player>();
+        playerPassives = obj.GetComponent<PlayerPassives>();
+    }*/
+    public static void SetSignaler()
+    {
+        Player = Player.instance;
+        obj = Player.gameObject;
+        playerPassives = obj.GetComponent<PlayerPassives>();
+        playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
+    }
+>>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
 
      public static void Update(){
         if(usePredator){
@@ -28,6 +45,9 @@ public static class PlayerSignaler : object
     {
         if(PlayerAugmentations.AugmentationList["GunnerGloves"] == true)
         {
+            Debug.Log("In Gunner Gloves");
+            Debug.Log("Reload Speed was " + gun.weaponData.ReloadSpeed);
+            Debug.Log("Reload Speed now " + gun.weaponData.ReloadSpeed / PlayerAugmentations.GunnerGlovesSpeed);
             return gun.weaponData.ReloadSpeed / gun.passives.ReloadMultiplier / PlayerAugmentations.GunnerGlovesSpeed;
         }
         return gun.weaponData.ReloadSpeed / gun.passives.ReloadMultiplier;
@@ -52,11 +72,13 @@ public static class PlayerSignaler : object
 
     public static bool CallCasingRecycler(){
         if(PlayerAugmentations.AugmentationList["CasingRecycle"]){
-             var recycleChance = Random.Range(0, 100);
-             if(recycleChance <= PlayerAugmentations.CasingRecPer){
-                 return true;
-             }
-             return false;
+            Debug.Log("In casing recycle");
+            var recycleChance = Random.Range(0, 100);
+            Debug.Log("Recycle percent = " + recycleChance);
+            if(recycleChance <= PlayerAugmentations.CasingRecPer){
+                return true;
+            }
+            return false;
         }
         return false;
     }
@@ -82,6 +104,7 @@ public static class PlayerSignaler : object
         return curDamage;
     }
 
+<<<<<<< HEAD
     public static float CallSecondSkin(float damage){
         var curDamage = damage;
         if(PlayerAugmentations.AugmentationList["SecondSkin"]){
@@ -116,4 +139,17 @@ public static class PlayerSignaler : object
     }
 
     
+=======
+    public static void CallDrone()
+    {
+        if(PlayerAugmentations.AugmentationList["Drone"] && Player.instance.Drone == null)
+        {
+            Player.instance.InstantiateDrone();
+        }
+        else if(!PlayerAugmentations.AugmentationList["Drone"] && Player.instance.Drone)
+        {
+            Player.instance.DestroyDrone();
+        }
+    }
+>>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
 }

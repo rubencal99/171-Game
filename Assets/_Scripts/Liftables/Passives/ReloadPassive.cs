@@ -25,4 +25,23 @@ public class ReloadPassive : _BasePassive
        
         Destroy(gameObject);
     }
+
+    public override IEnumerator Pickup(Collision player)
+    {
+        PlayerPassives passives = player.gameObject.GetComponent<PlayerPassives>();
+        passives.ReloadMultiplier *= multiplier;
+         popup popup = FindObjectOfType<popup>();
+            popup.SetText("reload speed increase");
+            popup.ShowText();
+
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+
+        yield return new WaitForSeconds(duration);
+
+        passives.ReloadMultiplier /= multiplier;
+
+       
+        Destroy(gameObject);
+    }
 }

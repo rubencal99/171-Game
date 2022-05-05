@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: Whiskers
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   prefab: {fileID: 0}
   prefabClone: {fileID: 0}
   icon: {fileID: 21300000, guid: 1cbbbd6d529d44a499d4741f77f746e1, type: 3}
@@ -21,3 +22,14 @@ MonoBehaviour:
   stackLimit: 1
   Name: Whiskers
   augType: 4
+=======
+  prefab: {fileID: 3227130039294860668, guid: 30fe8e62b10164fcda603396db27a9f8, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7b150646585606145b19e039b95ef534, type: 3}
+  type: 0
+  itemType: 1
+  description: Test description
+  stackLimit: 1
+  Name: Whiskers
+  augType: 1
+>>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3

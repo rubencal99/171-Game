@@ -17,7 +17,13 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a006e313869f7c4479b5e38ca85aa8fa, type: 3}
   type: 0
   itemType: 1
+<<<<<<< HEAD:Assets/_Data/InventoryData/Augmentations/DefelctionShield.asset
   description: 
   stackLimit: 1
   Name: Deflection Shield
+=======
+  description: Test description
+  stackLimit: 1
+  Name: Whiskers
+>>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3:Assets/_Data/InventoryData/Augmentations/New Augmentation Item.asset
   augType: 1

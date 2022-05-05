@@ -4,7 +4,7 @@ using UnityEngine;
 
 // This class handles every tile in our map
 // We can expand it to include special tiles ie environmental hazards
-public class TileNode
+public class TileNode 
 {
     public RoomNode room;
     public List<CorridorNode> corridors;
@@ -16,6 +16,8 @@ public class TileNode
     public int y;
     // public bool isDoor;
     public bool isObstacle = false;
+
+    public Vector3Int visual;
 
     public TileNode()
     {

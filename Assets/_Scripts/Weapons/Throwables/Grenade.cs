@@ -7,12 +7,26 @@ public class Grenade : _BaseThrowable
     // Special calls for Grenade if we need them
      public float radius = 0.000025f;
 
-    public float lifetime = 3.0f;
+    public float lifetime = 2.0f;
+
+    private float lifetime_max;
+    bool isDetonated = false;
+
+    // public void Start() {
+    //     lifetime_max = lifetime;
+    // }
      public override void Update() {
         if(lifetime < 0.0f)
            destruction();
         
-        lifetime -= Time.fixedDeltaTime;
+
+        // if(lifetime == lifetime_max && Thrown)
+        //      this.GetComponent<FlashObject>().Flash();
+            
+
+
+        if(Thrown)
+            lifetime -= Time.fixedDeltaTime;
 
         if(!Thrown) {
             transform.position = transform.parent.parent.position;

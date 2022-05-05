@@ -18,8 +18,8 @@ public class RatchetBossDecisionAction : AIAction
       }
       else
       {
-        RatchetBoss.inJump = true;
-        Debug.Log("In Jump = " + RatchetBoss.inJump);
+        RatchetBoss.inSlam = true;
+        Debug.Log("In Slam = " + RatchetBoss.inSlam);
       }
       
   }

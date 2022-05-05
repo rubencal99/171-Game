@@ -4,6 +4,62 @@ using UnityEngine;
 
 public static class ObstacleInjector
 {
+
+    public static void PlacePillars(RoomNode room)
+    {
+        int quarterX = (int)(room.length / 4);
+        int quarterY = (int)(room.width / 4);
+
+        int centerX = (int)(room.length / 2);
+        int centerY = (int)(room.width / 2);
+
+
+        for(int i = -1; i <= 1; i++)
+        {
+            for(int j = -1; j <= 1; j++)
+            {
+                if((j != 0 && i != 0) || (j == 0 && i == 0))
+                {
+                    //ObstacleInjector.PlaceSmallCross(room, centerX + i * quarterX, centerY + j * quarterY);
+                    room.tileList[centerX + i * quarterX, centerY + j * quarterY].value = 0;
+                    room.tileList[centerX + i * quarterX, centerY + j * quarterY].isObstacle = true;
+                }
+                //room.tileList[centerX + i * quarterX, centerY + j * quarterY].value = 0;
+            }
+        }
+    }
+
+    static void PlaceCenterPillar(RoomNode room)
+    {
+        int centerX = (int)(room.length / 2);
+        int centerY = (int)(room.width / 2);
+        
+        room.tileList[centerX, centerY].value = 0;
+        room.tileList[centerX, centerY].isObstacle = true;
+    }
+
+    static void PlaceCornerPillars(RoomNode room)
+    {
+        int quarterX = (int)(room.length / 4);
+        int quarterY = (int)(room.width / 4);
+
+        int centerX = (int)(room.length / 2);
+        int centerY = (int)(room.width / 2);
+
+
+        for(int i = -1; i <= 1; i++)
+        {
+            for(int j = -1; j <= 1; j++)
+            {
+                if((j != 0 && i != 0)) //|| (j == 0 && i == 0))
+                {
+                    ObstacleInjector.PlaceSmallCross(room, centerX + i * quarterX, centerY + j * quarterY);
+                }
+                //room.tileList[centerX + i * quarterX, centerY + j * quarterY].value = 0;
+            }
+        }
+    }
+
     public static void PlaceObstacles(RoomNode room)
     {
         int obstacleOdds = Random.Range(0, 100);

@@ -10,8 +10,12 @@ public static class PlayerAugmentations : object
     [SerializeField]
     //////////////////////////////EPINEPHRINE////////////////////////////////////
     public static bool Epinephrine = false;
+<<<<<<< HEAD
     public static int EpinephrineBoost = 1;
 
+=======
+    public static float EpinephrineBoost = 1f;
+>>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
     //////////////////////////////BULLETTIME/////////////////////////////////////
     public static bool BulletTime = false;
     public static float BulletTT = 0.5f;
@@ -19,7 +23,7 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////GUNNERGLOVE/////////////////////////////////////
     public static bool  GunnerGloves = false;
-    public static float GunnerGlovesSpeed = 1.5f;
+    public static float GunnerGlovesSpeed = 5f;
 
     //////////////////////////////DEFLECTIONSHIELD////////////////////////////////
     public static bool DeflectionShield = false;
@@ -28,6 +32,7 @@ public static class PlayerAugmentations : object
     //////////////////////////////HIPPOSKIN////////////////////////////////////////
     public static bool HippoSkin = false;
     public static bool HippoApplied = false;
+    public static float HippoHealth = 5f;
 
     //////////////////////////////CASINGRECYCLE/////////////////////////////////////
     public static bool CasingRecycle = false;
@@ -96,6 +101,18 @@ public static class PlayerAugmentations : object
         {
             AugmentationList[key] = false;
         }
+        Epinephrine = false;
+        BulletTime = false;
+        GunnerGloves = false;
+        DeflectionShield = false;
+        HippoSkin = false;
+        HippoApplied = false;
+        CasingRecycle = false;
+        Whiskers = false;
+        HookShot = false;
+        AutoDoc = false;
+        AutoDocUsed = false;
+        Drone = false;
     }
 
     public static void PrintDictionary()
