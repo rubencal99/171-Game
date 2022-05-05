@@ -93,6 +93,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 //     private AgentRenderer agentRender;
 // >>>>>>> master
 
+
     private void Awake()
     {
         instance = this;
@@ -140,12 +141,22 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
          //raise defelction shield
-        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
+        if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"]){
              StartCoroutine(RaiseShield());
         }
 
          //hipposkin
         if(PlayerAugmentations.AugmentationList["HippoSkin"] && !PlayerAugmentations.HippoApplied){
+<<<<<<< HEAD
+             StartCoroutine(ApplyHippo());
+        }
+
+        //AutoDoc
+         if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
+            InvokeRepeating("RunAutoDoc",1f,2f);
+            StartCoroutine(AutoDocCoolDown());
+        }
+=======
             StartCoroutine(ApplyHippo());
          }
          else if(!PlayerAugmentations.AugmentationList["HippoSkin"] && PlayerAugmentations.HippoApplied)
@@ -162,7 +173,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
          }
 
          PlayerSignaler.CallDrone();
+>>>>>>> 373b94f4d48841fc57b0c4e9a8dc9994758341d3
     }
+
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
         var currHealth = (float)Health/MaxHealth;
@@ -208,8 +221,13 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
+        float secondSkinDam = PlayerSignaler.CallSecondSkin(damage);
         DamageType(damageDealer);
-        Health -= damage;
+        if(Health - secondSkinDam <= 0){
+            CallAngelsGrace();
+        }else{
+            Health -= secondSkinDam;
+        }
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
@@ -346,5 +364,15 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void OnApplicationQuit()
     {
         inventory.ClearInventory();
+    }
+
+    public void CallAngelsGrace(){
+        foreach(Slot s in inventory.AContainer){
+            if(s.item.Name == "AngelsGrace"){
+                s.Clear();
+                break;
+            }
+        }
+        Heal(MaxHealth/2);
     }
 }
