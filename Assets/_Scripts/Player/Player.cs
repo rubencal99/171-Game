@@ -82,7 +82,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private AgentRenderer agentRenderer;
     [SerializeField]
 
-
+     public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
 // =======
@@ -150,6 +150,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
          }
 
          PlayerSignaler.CallDrone();
+    }
+
+    public void setSpawnPoint(Vector3 spawn) {
+        respawnPoint = spawn;
+    }
+    
+    public void resetToSpawnPoint() {
+        this.transform.position = respawnPoint;
     }
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
