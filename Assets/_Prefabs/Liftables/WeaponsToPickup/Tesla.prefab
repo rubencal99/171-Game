@@ -95,12 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3227130039294860668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a35b33f1afe0a744ad525445c528f3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53db7613086fb3847962958cf7b75fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireArm: {fileID: 11400000, guid: c03d83ad3ac234c8d9d0d3e48aba8ec1, type: 2}
-  tag: AR
-  name: a trusty assault rifle
+  FireArm: {fileID: 11400000, guid: 668cd3676277717499703e74366e07db, type: 2}
+  tag: 
+  name: Tesla
 --- !u!114 &1645225497004688467
 MonoBehaviour:
   m_ObjectHideFlags: 0
