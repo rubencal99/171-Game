@@ -130,11 +130,28 @@ MonoBehaviour:
   boxCol: {fileID: -7507423176530542272}
   boundsOffset: 1
   tilemap: {fileID: 0}
-  arcArray: []
   resolution: 0
   normal_tile: {fileID: 11400000, guid: 96631b5a36966564b9a9d488b91853d0, type: 2}
   barrier_tile: {fileID: 11400000, guid: 80916899e778aab46a48a0430b959e6d, type: 2}
-  guarded: 1
+  room_icons:
+  - icon: {fileID: 21300000, guid: a1c134e1523e61844ba361793ac35e98, type: 3}
+    name: aug
+  - icon: {fileID: 21300000, guid: 3edf1b6d55e05be49ada1878858f1072, type: 3}
+    name: aux
+  - icon: {fileID: 21300000, guid: 1eeb3c9c1f4a4d4428dabcad10678d94, type: 3}
+    name: boss
+  - icon: {fileID: 21300000, guid: 4c102e36db6a302408910354edd737f9, type: 3}
+    name: exit
+  - icon: {fileID: 21300000, guid: 7b65fc61aa2403c469fc4f26bda52d73, type: 3}
+    name: key
+  - icon: {fileID: 21300000, guid: 8fb424dd4b5972a4c95ca8db8888c6e0, type: 3}
+    name: reward
+  - icon: {fileID: 21300000, guid: fb5265fbc0c838c4bbfaa03453c420ca, type: 3}
+    name: shop
+  - icon: {fileID: 21300000, guid: 1a9fe2fa0d4ca4944841547506929980, type: 3}
+    name: start
+  - icon: {fileID: 21300000, guid: 4c102e36db6a302408910354edd737f9, type: 3}
+    name: door
 --- !u!65 &-7507423176530542272
 BoxCollider:
   m_ObjectHideFlags: 0
