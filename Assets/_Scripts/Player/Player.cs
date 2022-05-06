@@ -140,10 +140,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
          {
              StartCoroutine(RemoveHippo());
          }
-         /*if(Input.GetButtonUp("Teleport")){
-             //Debug.Log("Teleport");
-             PlayerSignaler.CallWhiskers();
-         }*/
          if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
