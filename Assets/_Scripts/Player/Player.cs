@@ -86,9 +86,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
 
-    [field: SerializeField]
-
-    public Vector3 respawnPoint;
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
@@ -117,14 +114,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         HitLastFiveSec = false;
         //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
-    }
-
-    public void setSpawnPoint(Vector3 spawn) {
-        respawnPoint = spawn;
-    }
-    
-    public void resetToSpawnPoint() {
-        this.transform.position = respawnPoint;
     }
 
     void Update()
