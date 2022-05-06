@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e01acebfaabbb7478a926635131ac60, type: 3}
   m_Name: PlayerMovementData
   m_EditorClassIdentifier: 
-  maxDodgeSpeed: 27
-  maxRunSpeed: 8.69
+  maxDodgeSpeed: 20.7
+  maxRunSpeed: 7.71
   maxProneSpeed: 3
-  acceleration: 32.4
-  decceleration: 46.1
+  acceleration: 56.6
+  decceleration: 50.8
   standingDelay: 2.19

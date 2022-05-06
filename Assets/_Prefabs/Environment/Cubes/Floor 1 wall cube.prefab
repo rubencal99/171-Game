@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7531675905200870778}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Floor 1 wall cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8677980968546638790}
   - component: {fileID: 3789676006557442218}
   - component: {fileID: 6036452808379102413}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Model (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 401650025034970022}
   - component: {fileID: 1819742264412958262}
   - component: {fileID: 2401439631519833830}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -13,11 +13,12 @@ public class DestructibleBox : Enemy
     }
 
     // Update is called once per frame
-    public  void GetHit(float damage, GameObject damageDealer) {
+    public override void GetHit(float damage, GameObject damageDealer) {
         var agent = this.GetComponent<AgentMovement>();
         
         if(Health > 0 && isDestructible) {
             Health -= 1;
+             OnGetHit?.Invoke();
         if(damageDealer.GetComponent<Bullet>())
         {
             BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
@@ -31,7 +32,7 @@ public class DestructibleBox : Enemy
             agent.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower / 2f, -direction);
         }
         }
-        else {
+        else if(isDestructible) {
             OnDie?.Invoke();
             Die();
         }

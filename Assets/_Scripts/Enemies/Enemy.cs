@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         //blood = FindComponentInChildWithTag
     }
 
-    public void GetHit(float damage, GameObject damageDealer)
+    public virtual void GetHit(float damage, GameObject damageDealer)
     {
         float d = PlayerSignaler.CallDamageBuff(damage);
         tempHealth = (int)Health;
@@ -66,13 +66,15 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         //Debug.Log("Health = " + Health);
         if (Health > 0 && (int)Health != tempHealth)
         {
-            blood.Play();
+             if(blood != null)
+                blood.Play();
             DamageType(damageDealer);
             OnGetHit?.Invoke();
         }
         else if (Health <= 0)
         {
-            blood.Play();
+            if(blood != null)
+                blood.Play();
             DamageType(damageDealer);
             StartCoroutine(WaitToDie());
             //Debug.Log("After WaitToDie coroutine");
@@ -167,12 +169,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         if(isDying)
         {
-            enemyBrain.enabled = false;
+            if(enemyBrain != null)
+                enemyBrain.enabled = false;
             if(!hasDied)
             {
                 enemyBrain.OnFireButtonReleased?.Invoke();
                 gameObject.layer = 0;
-                enemyBrain.Move(Vector3.zero);
+                if(enemyBrain != null)
+                    enemyBrain.Move(Vector3.zero);
                 agentMovement.currentVelocity = 0;
                 agentRenderer.isDying = true;
                 GetComponent<CapsuleCollider>().direction = 0;
@@ -187,7 +191,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
                 agentRenderer.isDying = false;
                 OnRevive?.Invoke();
                 GetComponent<CapsuleCollider>().direction = 1;
-                enemyBrain.enabled = true;
+                if(enemyBrain != null)
+                    enemyBrain.enabled = true;
                 hasDied = false;
             }
             
