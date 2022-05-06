@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     [field: SerializeField]
     public float Health { get; set; }
+    [field: SerializeField]
+    int tempHealth {get; set;}
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -41,9 +43,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private ParticleSystem blood;
 
-    [SerializeField]
-    public bool predator = false;
-
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -57,21 +56,24 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         //blood = FindComponentInChildWithTag
     }
 
-    public virtual void GetHit(float damage, GameObject damageDealer)
+    public void GetHit(float damage, GameObject damageDealer)
     {
         float d = PlayerSignaler.CallDamageBuff(damage);
+        tempHealth = (int)Health;
         Health -= d;
-        blood.Play();
-        DamageType(damageDealer);
         
         //Debug.Log("After Enemy Knockback");
         //Debug.Log("Health = " + Health);
-        if (Health > 0)
+        if (Health > 0 && (int)Health != tempHealth)
         {
+            blood.Play();
+            DamageType(damageDealer);
             OnGetHit?.Invoke();
         }
-        else
+        else if (Health <= 0)
         {
+            blood.Play();
+            DamageType(damageDealer);
             StartCoroutine(WaitToDie());
             //Debug.Log("After WaitToDie coroutine");
             //Debug.Log("Before OnDie");
@@ -151,9 +153,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public void Die()
     {
-        if(PlayerSignaler.CallPredatoryInstinct()){
-            PlayerSignaler.usePredator = true;
-        }
+
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
