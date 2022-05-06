@@ -119,7 +119,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.1833333
+  - time: 1.1166667
     functionName: TransitionChargeWeapon
     data: 
     objectReferenceParameter: {fileID: 0}
