@@ -6,6 +6,7 @@ public class GoToCenterAction : AIAction
 {
     public Vector2 center;
     public RoomNode room;
+    public YJumpAction jumpAction;
 
     void Start()
     {
@@ -21,9 +22,14 @@ public class GoToCenterAction : AIAction
         }
         Vector2 cpos = new Vector2(enemyBrain.transform.position.x, enemyBrain.transform.position.z);
 
-        var direction = center - cpos;
-        aiMovementData.Direction = direction.normalized;
-        aiMovementData.PointOfInterest = new Vector3(center.x, enemyBrain.transform.position.y, center.y);
+        var direction = (center - cpos).normalized;
+        aiMovementData.Direction = new Vector3(direction.x, 0, direction.y);
+        aiMovementData.PointOfInterest = new Vector3(center.x, jumpAction.height, center.y);
         enemyBrain.Move(aiMovementData.Direction);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(new Vector3(center.x, jumpAction.height, center.y), 1);
     }
 }

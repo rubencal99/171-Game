@@ -102,7 +102,7 @@ public class AgentMovement : MonoBehaviour
 
 
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {   
         if(knockback)
         {
