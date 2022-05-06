@@ -82,7 +82,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private AgentRenderer agentRenderer;
     [SerializeField]
 
-
+     public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
 
@@ -152,16 +152,20 @@ public class Player : MonoBehaviour, IAgent, IHittable
          {
              StartCoroutine(RemoveHippo());
          }
-         /*if(Input.GetButtonUp("Teleport")){
-             //Debug.Log("Teleport");
-             PlayerSignaler.CallWhiskers();
-         }*/
          if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
          }
 
          PlayerSignaler.CallDrone();
+    }
+
+    public void setSpawnPoint(Vector3 spawn) {
+        respawnPoint = spawn;
+    }
+    
+    public void resetToSpawnPoint() {
+        this.transform.position = respawnPoint;
     }
     public IEnumerator fadeOverlay(){
         var tempColor = overlay.color;
