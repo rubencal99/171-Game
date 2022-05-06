@@ -3460,6 +3460,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7096302332738980859, guid: 4c70b547443101d419396819002321c6, type: 3}
+      propertyPath: Shop
+      value: 
+      objectReference: {fileID: 3812894821008611875, guid: 8f91563d5f7c589499134d8ed31be76f, type: 3}
+    - target: {fileID: 7096302332738980859, guid: 4c70b547443101d419396819002321c6, type: 3}
+      propertyPath: PauseMenu
+      value: 
+      objectReference: {fileID: 115722148}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c70b547443101d419396819002321c6, type: 3}
 --- !u!1 &1328497320

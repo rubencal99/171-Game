@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3830861803729385532}
   - component: {fileID: 3830861803729385533}
   - component: {fileID: 3830861803729385529}
+  - component: {fileID: 3830861803729385524}
   - component: {fileID: 3830861803729385525}
   - component: {fileID: 3633534842547693881}
   - component: {fileID: 412745314}
@@ -116,6 +117,62 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 48
   m_CollisionDetection: 0
+--- !u!114 &3830861803729385524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830861803729385523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96504315fcadeab41b7ca7271bf63bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <EnemyData>k__BackingField: {fileID: 0}
+  <Health>k__BackingField: 0
+  <Damage>k__BackingField: 0
+  <Range>k__BackingField: 0
+  <OnGetHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3830861803729385526}
+        m_TargetAssemblyTypeName: FlashObject, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TutorialWall, Assembly-CSharp
+        m_MethodName: selfdestruct
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  <OnRevive>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  isDying: 0
+  hasDied: 0
+  deathTimer: 10
+  agentAnimations: {fileID: 0}
+  agentMovement: {fileID: 0}
+  knockback: 0
+  blood: {fileID: 0}
 --- !u!114 &3830861803729385525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +196,7 @@ MonoBehaviour:
   knockbackPower: 0
   knockbackTimer: 0
   knockbackDirection: {x: 0, y: 0, z: 0}
---- !u!114 &3633534842547693881
+--- !u!114 &3830861803729385526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +205,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3830861803729385523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3eb2aac801017e40b38b37d2cd18f1a, type: 3}
+  m_Script: {fileID: 11500000, guid: 09bdaab4fd5429b449292ea0a4ca63f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}

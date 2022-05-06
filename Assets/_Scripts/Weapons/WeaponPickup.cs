@@ -7,6 +7,7 @@ public class WeaponPickup : MonoBehaviour
     public WeaponItemSO FireArm;
     public string tag;
     private Gun weapon;
+    public int pickupAmount = 1;
 
     public string name;
 
@@ -40,7 +41,7 @@ public class WeaponPickup : MonoBehaviour
                 thisFireArm.transform.localRotation = Quaternion.identity;
                 thisFireArm.SetActive(false);
                 FireArm.prefabClone = thisFireArm;
-                Player.instance.inventory.AddItemToInventory(FireArm, 1);
+                Player.instance.inventory.AddItemToInventory(FireArm, pickupAmount);
                 // popup popup = FindObjectOfType<popup>();
                 //popup.SetText(name);
                 //popup.ShowText();

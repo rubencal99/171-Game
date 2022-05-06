@@ -17,11 +17,24 @@ public class LandAction : AIAction
 
   void OnTriggerEnter(Collider other)
   {
-    //Debug.Log("In Land Action collision");
+    Debug.Log("In Land Action trigger");
     // Checks if boss has collided with floor
-    if(other.gameObject.layer == LayerMask.NameToLayer("MouseCollider"))
+    if(other.gameObject.layer == LayerMask.NameToLayer("Base Floor"))
     {
-      //Debug.Log("About to attack");
+      Debug.Log("About to attack");
+      enemyBrain.Weapon.ForceShoot();
+      RatchetBoss.inAir = false;
+      landed = true;
+    }
+  }
+
+  void OnCollisionEnter(Collision other)
+  {
+    Debug.Log("In Land Action collision");
+    // Checks if boss has collided with floor
+    if(other.gameObject.layer == LayerMask.NameToLayer("Base Floor"))
+    {
+      Debug.Log("About to attack");
       enemyBrain.Weapon.ForceShoot();
       RatchetBoss.inAir = false;
       landed = true;

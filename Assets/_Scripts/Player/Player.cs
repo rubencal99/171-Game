@@ -85,6 +85,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
      public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
+
+    [field: SerializeField]
+
+    public Vector3 respawnPoint;
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master
@@ -115,6 +119,14 @@ public class Player : MonoBehaviour, IAgent, IHittable
         //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
     }
 
+    public void setSpawnPoint(Vector3 spawn) {
+        respawnPoint = spawn;
+    }
+    
+    public void resetToSpawnPoint() {
+        this.transform.position = respawnPoint;
+    }
+
     void Update()
     {
         if (isDead==true){                      //For Debug the instance kill
@@ -140,10 +152,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
          {
              StartCoroutine(RemoveHippo());
          }
-         /*if(Input.GetButtonUp("Teleport")){
-             //Debug.Log("Teleport");
-             PlayerSignaler.CallWhiskers();
-         }*/
          if(PlayerAugmentations.AugmentationList["AutoDoc"] && PlayerAugmentations.AutoDocUsed == false){
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());

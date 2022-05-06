@@ -28,6 +28,7 @@ public class AgentWeapon : MonoBehaviour
     [SerializeField]
     public GameObject weapon;
     protected PlayerWeapon playerWeapon;
+    protected EnemyBrain enemyBrain;
 
     [SerializeField]
     public bool InfAmmo;
@@ -36,6 +37,7 @@ public class AgentWeapon : MonoBehaviour
     {
         //Debug.Log("Starting local rotation: " + transform.localRotation);
         startingRotation = transform.localRotation;
+        enemyBrain = transform.parent.GetComponent<EnemyBrain>();
         //Debug.Log("Starting global rotation: " + transform.rotation);
         AssignWeapon();
     }
@@ -49,6 +51,7 @@ public class AgentWeapon : MonoBehaviour
             weapon = gun.gameObject;
             melee = null;
             gun.ForceReload();
+            enemyBrain.Weapon = gun.GetComponent<EnemyGun>();
         }
         else if(GetComponentInChildren<Melee>())
         {

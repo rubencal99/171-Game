@@ -46,9 +46,11 @@ public class RatchetBossAnimations : AgentAnimations
         RatchetBoss.inChargeStart = false;
     }
 
-    public void SetChargeAnimation()
+    public void SetChargeAnimation(bool val)
     {
-        agentAnimator.SetTrigger("Charge");
+        if(val)
+            agentAnimator.SetTrigger("Charge");
+        agentAnimator.SetBool("Charge 0", val);
     }
 
     public void SetStunAnimation()

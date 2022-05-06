@@ -65,6 +65,7 @@ public class RatchetBoss : _BaseBoss
     public GameObject GroundSlam;
     public GameObject PoundGun;
     public GameObject ChargeSpray;
+    public GameObject JumpSlam;
 
     public void Start()
     {
@@ -87,6 +88,10 @@ public class RatchetBoss : _BaseBoss
         if(ChargeSpray == null)
         {
             ChargeSpray = WeaponParent.transform.Find("ChaseSpray").gameObject;
+        }
+        if(JumpSlam == null)
+        {
+            JumpSlam = WeaponParent.transform.Find("JumpSlam").gameObject;
         }
     }
 
@@ -231,9 +236,10 @@ public class RatchetBoss : _BaseBoss
                 GroundSlam.SetActive(false);
                 PoundGun.SetActive(true);
                 ChargeSpray.SetActive(false);
+                JumpSlam.SetActive(false);
                 //WeaponParent.AssignWeapon();
             }
-            bossAnimator.SetChargeAnimation();
+            bossAnimator.SetChargeAnimation(true);
         }
         else if(inCharge)
         {
@@ -242,6 +248,7 @@ public class RatchetBoss : _BaseBoss
                 GroundSlam.SetActive(false);
                 PoundGun.SetActive(false);
                 ChargeSpray.SetActive(true);
+                JumpSlam.SetActive(false);
                 WeaponParent.AssignWeapon();
             }
             chargeTimer -= Time.deltaTime;
@@ -276,17 +283,18 @@ public class RatchetBoss : _BaseBoss
         {
             //bossAnimator.SetSlamAnimation();
             bossMovement.rigidbody.useGravity = false;
-            jumpCollider.enabled = true;
-            if(!PoundGun.activeSelf)
+            jumpCollider.enabled = false;
+            if(!JumpSlam.activeSelf)
             {
                 GroundSlam.SetActive(false);
-                PoundGun.SetActive(true);
+                PoundGun.SetActive(false);
+                JumpSlam.SetActive(true);
                 WeaponParent.AssignWeapon();
             }
         }
-        else
+        else if(RatchetBoss.inAir)
         {
-            jumpCollider.enabled = false;
+            jumpCollider.enabled = true;
             bossMovement.rigidbody.useGravity = true;
         }
     }

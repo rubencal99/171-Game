@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1fea048e8a747eb8c468f944f6c509, type: 3}
+  m_Name: Grenade
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4749110423052994011, guid: fbd6cbaab64c87343b44244e56518638, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 2454520177103679865, guid: aae5977d1af33b54d99e49711753c497, type: 3}
+  type: 1
+  itemType: 2
+  description: Gernude
+  stackLimit: 3
+  Name: Grenade
+  weaponType: 2
