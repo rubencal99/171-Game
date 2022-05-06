@@ -96,25 +96,25 @@ public class MapGenerator : MonoBehaviour
     public TileNode[,] GenerateMap()
     {
         map = new TileNode[columns, rows];
-        Debug.Log("Before Everything");
+        //Debug.Log("Before Everything");
         //Grid.transform.Rotate(Vector3.right * 90);
-        Debug.Log("Grid rotation = " + Grid.transform.localRotation);
+        //Debug.Log("Grid rotation = " + Grid.transform.localRotation);
 
         FillMap();
         BinarySpace();
 
         DrawMap();
         AstarPath.active.Scan();
-        Debug.Log("After draw map");
+        //Debug.Log("After draw map");
         Grid.transform.Rotate(Vector3.right * 90);
         
         // AStar = GameObject.FindGameObjectWithTag("AStar").GetComponent<AstarPath>();
         AstarPath.active.Scan();
 
         //OnDrawGizmos();
-        Debug.Log("Before rotation");
+        //Debug.Log("Before rotation");
         //Grid.transform.localRotation = Quaternion.Euler(90, 0, 0);
-        Debug.Log("Grid rotation = " + Grid.transform.rotation);
+        //Debug.Log("Grid rotation = " + Grid.transform.rotation);
 
         return map;
     }
@@ -338,7 +338,19 @@ public class MapGenerator : MonoBehaviour
             tempRoom.AddComponent<RoomNode>();
 
             RoomNode NewRoom = tempRoom.GetComponent<RoomNode>();
-            NewRoom.AddDimensions(length, width);
+            if(roomType == "Normal")
+            {
+                var roomLength = RoomInjector.normal.GetLength(0);
+                var roomWidth = RoomInjector.normal.GetLength(1);
+                Debug.Log("Normal room length: " + roomLength);
+                Debug.Log("Normal room width: " + roomWidth);
+                NewRoom.AddDimensions(roomLength, roomWidth);
+            }
+            else
+            {
+                NewRoom.AddDimensions(length, width);
+            }
+            
             if (!HasEntry)
             {
                 NewRoom.RoomType = "Start";
@@ -361,19 +373,60 @@ public class MapGenerator : MonoBehaviour
             
             // Here we fill the negative space with empty space 
             // I.e. room creation
-            for (int i = 0; i < length; i++)
+            if(roomType == "Normal")
             {
-                for (int j = 0; j < width; j++)
+                //Debug.Log("Before 2f");
+                for(int i = 0; i < NewRoom.length; i++)
                 {
-                    map[x1 + 1 + i, y1 + 1 + j].value = 1;
-                    map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
-                    roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
-                    NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
-                    NewRoom.tileCount++;
+                    for (int j = 0; j < NewRoom.width; j++)
+                    {
+                        // Here is where we'd want to randomly choose from a static list
+                        if(int.TryParse(RoomInjector.normal[i, j],  out int result))
+                        {   
+                            Debug.Log("Int result = " + result);
+                            map[x1 + 1 + i, y1 + 1 + j].value = result;
+                            if(result == 1)
+                            {
+                                map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
+                                roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                            }
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                            NewRoom.tileCount++;
+                        }
+                        else
+                        {
+                            Debug.Log("String result = " + result);
+                            map[x1 + 1 + i, y1 + 1 + j].value = 1;
+                            map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
+                            roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                            NewRoom.tileCount++;
+                            ObstacleLookUp.SpawnObstacle(RoomInjector.normal[i, j], x1 + 1 + i, y1 + 1 + j);
+                        }
+                        
+                    }
                 }
+                //Debug.Log("Before Add Lights");
+                AddLights(x1, y1, x2, y2, NewRoom);
             }
-            AddLights(x1, y1, x2, y2, NewRoom);
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    for (int j = 0; j < width; j++)
+                    {
+                        map[x1 + 1 + i, y1 + 1 + j].value = 1;
+                        map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
+                        roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                        NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                        NewRoom.tileCount++;
+                    }
+                }
+                AddLights(x1, y1, x2, y2, NewRoom);
+            }
+            //Debug.Log("Before Calculate Center");
             NewRoom.CalculateCenter();
+            //Debug.Log("After Calculate Center");
             if(NewRoom.RoomType == "Start")
             {
                 SpawnPlayer(NewRoom);
@@ -382,8 +435,11 @@ public class MapGenerator : MonoBehaviour
             Rooms.Add(NewRoom);
             tempCount++;
         }
+        Debug.Log("After Room Creation");
         SortRooms();
+        Debug.Log("Before Corridor creation");
         AddCorridors();
+        Debug.Log("After corrider creation");
         AddEndRoom();
         AddEntryColliders();
         AddSpawners();
@@ -490,6 +546,7 @@ public class MapGenerator : MonoBehaviour
             if (room.RoomType == "Start" || 
                 room.RoomType == "Shop" || 
                 room.RoomType == "Boss" ||
+                room.RoomType == "Normal" ||
                 room.RoomType == "Auxiliary" ||
                 room.RoomType == "Reward")
             {
@@ -555,7 +612,7 @@ public class MapGenerator : MonoBehaviour
         foreach(RoomNode room in Rooms) {
              if(room.RoomType != "Start")
              {
-                Vector3 pos1 = new Vector3(room.roomCenter.x + 1f, 0, room.roomCenter.y + 1f);
+                Vector3 pos1 = new Vector3(room.roomCenter.x, 0, room.roomCenter.y);
                 GameObject entryCollider1 = Instantiate(EntryCollider, pos1, Quaternion.identity);
                 entryCollider1.transform.parent = room.transform;
                 entryCollider1.GetComponent<EntryCollider>().tilemap = this.AutoTiler.GetTilemap();
@@ -597,7 +654,6 @@ public class MapGenerator : MonoBehaviour
         var Player = GameObject.FindGameObjectWithTag("Player");
         Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
-        Player.GetComponent<Player>().setSpawnPoint(spawnPosition);
          if(PlayerProgressManager.hasData) {
             Debug.Log("Loading player data");
             PlayerProgressManager.LoadPlayer(Player.GetComponentInChildren<PlayerWeapon>().gameObject, Player.gameObject);

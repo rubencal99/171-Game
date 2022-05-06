@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: obstacle rule tile
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 21300000, guid: 8cc778ef9df76834ba397ce94e58b731, type: 3}
-  m_DefaultGameObject: {fileID: 6491939475053275967, guid: 04f9e3b2363f0ef4994747df5f25ed32, type: 3}
+  m_DefaultGameObject: {fileID: 6491939475053275967, guid: 4daa09342106f0c46a1b5e599aef4697, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0

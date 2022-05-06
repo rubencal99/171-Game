@@ -10,6 +10,11 @@ public static class PlayerSignaler : object
 
     public static PlayerWeapon playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
 
+    public static bool usePredator = false;
+
+    public static float predatorTimer = 0f;
+    public static float predatorTotalTime = 3f;
+
     
     /*private static void Awake()
     {
@@ -17,6 +22,7 @@ public static class PlayerSignaler : object
         Player = obj.GetComponent<Player>();
         playerPassives = obj.GetComponent<PlayerPassives>();
     }*/
+    
     public static void SetSignaler()
     {
         Player = Player.instance;
@@ -89,6 +95,39 @@ public static class PlayerSignaler : object
             return curDamage + curDamage * PlayerAugmentations.BuffAmount;
         }
         return curDamage;
+    }
+
+    public static float CallSecondSkin(float damage){
+        var curDamage = damage;
+        if(PlayerAugmentations.AugmentationList["SecondSkin"]){
+            return curDamage - curDamage * PlayerAugmentations.SkinAmount;
+        }
+        return curDamage;
+    }
+
+    public static float CallCheetahSpeed(){
+        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
+            return PlayerAugmentations.CSAmount;
+        }
+        return 2000f;
+        //return 1f;
+    }
+
+    public static bool CallPredatoryInstinct(){
+        if(PlayerAugmentations.AugmentationList["PredatoryInstinct"]){
+            return true;
+        }
+        return false;
+    }
+
+    public static float SetMovementSpeed(){
+        float speedScalar = 1f;
+        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
+            speedScalar += PlayerAugmentations.CSAmount;
+        }if(usePredator){
+            speedScalar += PlayerAugmentations.PredatoryAmount;
+        }
+        return speedScalar;
     }
 
     public static void CallDrone()

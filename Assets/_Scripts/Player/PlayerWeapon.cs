@@ -33,11 +33,14 @@ public class PlayerWeapon : AgentWeapon
     {
         itemInventory = transform.parent.GetComponent<Player>().inventory;
         CheckInventory();
-        Primary.SetActive(true);
-        
-        Secondary.SetActive(false);
-
-        //numGrenades = itemInventory.WContainer[2].amount;
+        if(Primary)
+        {
+            Primary.SetActive(true);
+        }
+        if(Secondary)
+        {
+            Secondary.SetActive(false);
+        }
         InfAmmo = false;
         AssignWeapon();
     }

@@ -12,9 +12,11 @@ public class RatchetBoss : _BaseBoss
     public static float decisionTimer;
     public float DecisionTimer;
 
+    public static bool inChargeStart = false;
+    public bool InChargeStart;
     public static bool inCharge = false;
     public bool InCharge;
-    public static float chargeDuration = 4f;
+    public static float chargeDuration = 8f;
     public static float chargeTimer;
     public float ChargeTimer;
     public static int chargeAttempts = 3;
@@ -62,6 +64,8 @@ public class RatchetBoss : _BaseBoss
     public AgentWeapon WeaponParent;
     public GameObject GroundSlam;
     public GameObject PoundGun;
+    public GameObject ChargeSpray;
+    public GameObject JumpSlam;
 
     public void Start()
     {
@@ -80,6 +84,14 @@ public class RatchetBoss : _BaseBoss
         if(PoundGun == null)
         {
             PoundGun = WeaponParent.transform.Find("Pound").gameObject;
+        }
+        if(ChargeSpray == null)
+        {
+            ChargeSpray = WeaponParent.transform.Find("ChaseSpray").gameObject;
+        }
+        if(JumpSlam == null)
+        {
+            JumpSlam = WeaponParent.transform.Find("JumpSlam").gameObject;
         }
     }
 
@@ -100,6 +112,7 @@ public class RatchetBoss : _BaseBoss
     public override void Reset()
     {
         //Debug.Log("In Reset");
+        bossAnimator.SetIdleAnimation();
 
         inDecision = true;
         InDecision = inDecision;
@@ -117,6 +130,8 @@ public class RatchetBoss : _BaseBoss
         ChaseTimer = chaseTimer;
         //StarChase.enabled = false;
 
+        inChargeStart = false;
+        InChargeStart = inChargeStart;
         inCharge = false;
         InCharge = inCharge;
         chargeTimer = chargeDuration;
@@ -170,6 +185,8 @@ public class RatchetBoss : _BaseBoss
             {
                 GroundSlam.SetActive(true);
                 PoundGun.SetActive(false);
+                ChargeSpray.SetActive(false);
+                WeaponParent.AssignWeapon();
             }
             slamTimer -= Time.deltaTime;
             if(slamTimer <= 0)
@@ -208,17 +225,32 @@ public class RatchetBoss : _BaseBoss
 
     public void CheckCharge()
     {
+        InChargeStart = inChargeStart;
         InCharge = inCharge;
         ChargeTimer = chargeTimer;
         ChargeDirection = chargeDirection;
-        if(inCharge)
+        if(InChargeStart)
         {
             if(PoundGun.activeSelf == false)
             {
                 GroundSlam.SetActive(false);
                 PoundGun.SetActive(true);
+                ChargeSpray.SetActive(false);
+                JumpSlam.SetActive(false);
+                //WeaponParent.AssignWeapon();
             }
-            bossAnimator.SetChargeAnimation();
+            bossAnimator.SetChargeAnimation(true);
+        }
+        else if(inCharge)
+        {
+            if(ChargeSpray.activeSelf == false)
+            {
+                GroundSlam.SetActive(false);
+                PoundGun.SetActive(false);
+                ChargeSpray.SetActive(true);
+                JumpSlam.SetActive(false);
+                WeaponParent.AssignWeapon();
+            }
             chargeTimer -= Time.deltaTime;
             if(chargeTimer <= 0)
             {
@@ -249,18 +281,21 @@ public class RatchetBoss : _BaseBoss
         InJump = inJump;
         if(inJump)
         {
-            bossAnimator.SetSlamAnimation();
-            jumpCollider.enabled = true;
-            if(!PoundGun.activeSelf)
+            //bossAnimator.SetSlamAnimation();
+            bossMovement.rigidbody.useGravity = false;
+            jumpCollider.enabled = false;
+            if(!JumpSlam.activeSelf)
             {
                 GroundSlam.SetActive(false);
-                PoundGun.SetActive(true);
+                PoundGun.SetActive(false);
+                JumpSlam.SetActive(true);
                 WeaponParent.AssignWeapon();
             }
         }
-        else
+        else if(RatchetBoss.inAir)
         {
-            jumpCollider.enabled = false;   
+            jumpCollider.enabled = true;
+            bossMovement.rigidbody.useGravity = true;
         }
     }
 

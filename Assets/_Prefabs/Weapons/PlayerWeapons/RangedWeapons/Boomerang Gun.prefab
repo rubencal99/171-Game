@@ -4880,7 +4880,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8027fde5f661e5b4f9f5f552c4f95003, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47460232db6006140b53875bca345191, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4927,7 +4927,7 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  sprite: {fileID: 21300000, guid: 8027fde5f661e5b4f9f5f552c4f95003, type: 3}
+  sprite: {fileID: 21300000, guid: 47460232db6006140b53875bca345191, type: 3}
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
