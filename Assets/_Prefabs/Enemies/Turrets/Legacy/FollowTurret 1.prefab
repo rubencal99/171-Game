@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 8884484088575657342}
   - component: {fileID: 8884484088575657089}
   m_Layer: 8
-  m_Name: FollowTurret
+  m_Name: FollowTurret 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
