@@ -28,7 +28,7 @@ public class RatchetBoss : _BaseBoss
 
     public static bool inRecovery = false;
     public bool InRecovery;
-    public static float recoveryDuration = 4f;
+    public static float recoveryDuration = 7f;
     public static float recoveryTimer;
     public float RecoveryTimer;
 
@@ -59,6 +59,7 @@ public class RatchetBoss : _BaseBoss
 
     public BossMovement bossMovement;
     public RatchetBossAnimations bossAnimator;
+    public static RatchetBoss instance;
     EnemyBrain brain;
     StarChaseAction StarChase;
     public AgentWeapon WeaponParent;
@@ -67,6 +68,11 @@ public class RatchetBoss : _BaseBoss
     public GameObject ChargeSpray;
     public GameObject JumpSlam;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     public void Start()
     {
         StarChase = GetComponentInChildren<StarChaseAction>();
@@ -74,9 +80,15 @@ public class RatchetBoss : _BaseBoss
         
         brain = transform.parent.GetComponent<EnemyBrain>();
         currentState = brain.CurrentState;
-        bossMovement = transform.parent.GetComponent<BossMovement>();
+        if(bossMovement == null)
+        {
+            bossMovement = transform.parent.GetComponent<BossMovement>();
+        }
         bossAnimator = transform.parent.GetComponentInChildren<RatchetBossAnimations>();
-        WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
+        if(WeaponParent == null)
+        {
+            WeaponParent = transform.parent.GetComponentInChildren<AgentWeapon>();
+        }
         if(GroundSlam == null)
         {
             GroundSlam = WeaponParent.transform.Find("GroundSlam").gameObject;
@@ -145,15 +157,25 @@ public class RatchetBoss : _BaseBoss
         InJump = inJump;
         inAir = false;
         InAir = inAir;
+        jumpCollider.enabled = false;
+        bossMovement.rigidbody.useGravity = true;
 
-        inRecovery = false;
-        InRecovery = inRecovery;
-        recoveryTimer = recoveryDuration;
+        if(inRecovery)
+        {
+            inRecovery = false;
+            InRecovery = inRecovery;
+            recoveryTimer = recoveryDuration;
+        }
 
         inSpawn = false;
         InSpawn = inSpawn;
         spawnTimer = spawnDuration;
         SpawnTimer = spawnTimer;
+
+        GroundSlam.SetActive(false);
+        PoundGun.SetActive(false);
+        ChargeSpray.SetActive(false);
+        JumpSlam.SetActive(false);
     }
 
     public void CheckDecision()
@@ -264,15 +286,20 @@ public class RatchetBoss : _BaseBoss
     public void CheckRecovery()
     {
         RecoveryTimer = recoveryTimer;
+        InRecovery = inRecovery;
         if(inRecovery)
         {
-            bossAnimator.SetStunAnimation();
+            bossAnimator.SetRecoveryAnimation(true);
             recoveryTimer -= Time.deltaTime;
             if(recoveryTimer <= 0)
             {
                 recoveryTimer = recoveryDuration;
                 inRecovery = false;
             }
+        }
+        else
+        {
+            bossAnimator.SetRecoveryAnimation(false);
         }
     }
 

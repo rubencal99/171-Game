@@ -28,8 +28,8 @@ public class GoToCenterAction : AIAction
         enemyBrain.Move(aiMovementData.Direction);
     }
 
-    void OnDrawGizmos()
+    /*void OnDrawGizmos()
     {
         Gizmos.DrawSphere(new Vector3(center.x, jumpAction.height, center.y), 1);
-    }
+    }*/
 }
