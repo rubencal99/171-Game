@@ -26,7 +26,7 @@ public class UI_Shop : MonoBehaviour
 
     public void CreateButtons()
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 5; i++)
         {
             int index = Random.Range(0, ShopInventory.Count - 1);
             ShopItemSO itemData = ShopInventory[index];
@@ -54,10 +54,16 @@ public class UI_Shop : MonoBehaviour
             position = new Vector2(Screen.width / 7, Screen.height / 30);
         } else if(positionIndex == 1){
             position = new Vector2(- Screen.width / 5 , - Screen.height / 5);
-        }else{
+        }else if(positionIndex == 2){
             position = new Vector2(Screen.width / 5 ,- Screen.height / 5);
+        }else if(positionIndex == 3){
+            position = new Vector2(- Screen.width / 15 , - Screen.height / 5);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
+        }else{
+            position = new Vector2(Screen.width / 15 ,- Screen.height / 5);
+            Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
         }
-        //Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
+        
         
         // float shopItemHeight = 90f;
         //shopItemRectTransform.anchoredPosition = new Vector2 (0, shopItemHeight * positionIndex);
