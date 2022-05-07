@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     [field: SerializeField]
     public float Health { get; set; }
+    [field: SerializeField]
+    int tempHealth {get; set;}
 
     [field: SerializeField]
     public int Damage { get; private set; }
@@ -41,9 +43,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private ParticleSystem blood;
 
-    [SerializeField]
-    public bool predator = false;
-
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -60,18 +59,23 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     public virtual void GetHit(float damage, GameObject damageDealer)
     {
         float d = PlayerSignaler.CallDamageBuff(damage);
+        tempHealth = (int)Health;
         Health -= d;
-        blood.Play();
-        DamageType(damageDealer);
         
         //Debug.Log("After Enemy Knockback");
         //Debug.Log("Health = " + Health);
-        if (Health > 0)
+        if (Health > 0 && (int)Health != tempHealth)
         {
+             if(blood != null)
+                blood.Play();
+            DamageType(damageDealer);
             OnGetHit?.Invoke();
         }
-        else
+        else if (Health <= 0)
         {
+            if(blood != null)
+                blood.Play();
+            DamageType(damageDealer);
             StartCoroutine(WaitToDie());
             //Debug.Log("After WaitToDie coroutine");
             //Debug.Log("Before OnDie");
@@ -151,9 +155,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public void Die()
     {
-        if(PlayerSignaler.CallPredatoryInstinct()){
-            PlayerSignaler.usePredator = true;
-        }
+
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
     }
@@ -167,12 +169,14 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     {
         if(isDying)
         {
-            enemyBrain.enabled = false;
+            if(enemyBrain != null)
+                enemyBrain.enabled = false;
             if(!hasDied)
             {
                 enemyBrain.OnFireButtonReleased?.Invoke();
                 gameObject.layer = 0;
-                enemyBrain.Move(Vector3.zero);
+                if(enemyBrain != null)
+                    enemyBrain.Move(Vector3.zero);
                 agentMovement.currentVelocity = 0;
                 agentRenderer.isDying = true;
                 GetComponent<CapsuleCollider>().direction = 0;
@@ -187,7 +191,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
                 agentRenderer.isDying = false;
                 OnRevive?.Invoke();
                 GetComponent<CapsuleCollider>().direction = 1;
-                enemyBrain.enabled = true;
+                if(enemyBrain != null)
+                    enemyBrain.enabled = true;
                 hasDied = false;
             }
             

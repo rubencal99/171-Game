@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 // This script is responsible for firing bullets from the selected weapon
 public class Gun : MonoBehaviour, IWeapon
 {
+    [field: SerializeField]
+    public Vector3 startOffset {get; set;} = Vector3.zero;
+
     // This gives us a place to instantiate the bullet ie reference to our gun
     [SerializeField]
     public GameObject muzzle;
@@ -26,9 +29,9 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool infAmmo;
 
-    // WeaponDataSO Holds all our weapon data
+    // WeaponData Holds all our weapon data
     [SerializeField]
-    public WeaponDataSO weaponData;
+    public WeaponData weaponData;
 
     [SerializeField]
     public bool isPlayer;
@@ -82,7 +85,7 @@ public class Gun : MonoBehaviour, IWeapon
         swapTimer = swapTime;
     }
 
-    protected void Start()
+    protected virtual void Start()
     {
         if (transform.root.gameObject.tag == "Player"){
             isPlayer = true;
@@ -102,6 +105,14 @@ public class Gun : MonoBehaviour, IWeapon
 
        //weaponItem.prefab = transform.gameObject;
        //Debug.Log(weaponItem.prefab);
+    }
+
+    protected virtual void Update()
+    {
+        UseWeapon();
+        //UseMelee();
+        Reload();
+       // infAmmo = weaponParent.InfAmmo;
     }
 
 
@@ -183,14 +194,6 @@ public class Gun : MonoBehaviour, IWeapon
     public void AmmoFill()
     {
         TotalAmmo = weaponData.MaxAmmoCapacity;
-    }
-
-    protected void Update()
-    {
-        UseWeapon();
-        //UseMelee();
-        Reload();
-       // infAmmo = weaponParent.InfAmmo;
     }
 
     protected virtual void UseWeapon()
@@ -333,7 +336,7 @@ public class Gun : MonoBehaviour, IWeapon
        meleePrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
     }*/
 
-    private void SpawnBullet(Vector3 position)//, Quaternion rotation)
+    protected void SpawnBullet(Vector3 position)//, Quaternion rotation)
     {
         Quaternion rotation = CalculateAngle(muzzle, position);
         //var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
@@ -356,7 +359,7 @@ public class Gun : MonoBehaviour, IWeapon
 
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = bulletSpreadRotation * (weaponParent.aimDirection);//bulletSpreadRotation * (weaponParent.aimDirection);
+        bulletPrefab.GetComponent<Bullet>().direction = (bulletSpreadRotation * (weaponParent.aimDirection)).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

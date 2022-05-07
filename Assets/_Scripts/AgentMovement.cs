@@ -32,8 +32,6 @@ public class AgentMovement : MonoBehaviour
     public float knockbackTimer;
     public Vector3 knockbackDirection;
 
-    public float zMovementScaler = 1.45f;
-
 
     protected void Awake()
     {
@@ -64,7 +62,7 @@ public class AgentMovement : MonoBehaviour
             movementDirection = Vector2.zero;
         }*/
         
-        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier * PlayerSignaler.SetMovementSpeed();
+        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
     }
@@ -104,7 +102,7 @@ public class AgentMovement : MonoBehaviour
 
 
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {   
         if(knockback)
         {
@@ -119,9 +117,7 @@ public class AgentMovement : MonoBehaviour
             return;
         }
         OnVelocityChange?.Invoke(currentVelocity);
-        if(rigidbody != null && !knockback) {
+        if(rigidbody != null && !knockback)
          rigidbody.velocity = currentVelocity * movementDirection.normalized;
-         rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3(1f, 1f, zMovementScaler));
-        }
     }
 }

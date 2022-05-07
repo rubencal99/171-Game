@@ -21,11 +21,12 @@ public class UI_Shop : MonoBehaviour
 
     private async void Start()
     {
-        
-        
-      //  int i = 0;
-      //  foreach(ShopItemSO itemData in ShopInventory)
-      for(int i = 0; i < 3; i++)
+        CreateButtons();
+    }
+
+    public void CreateButtons()
+    {
+        for(int i = 0; i < 3; i++)
         {
             int index = Random.Range(0, ShopInventory.Count - 1);
             ShopItemSO itemData = ShopInventory[index];

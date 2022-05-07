@@ -26,6 +26,7 @@ TagManager:
   - LP
   - BAS
   - Tilemap
+  - spheremask
   layers:
   - Default
   - TransparentFX
@@ -43,8 +44,8 @@ TagManager:
   - Glow
   - MouseCollider
   - Throwables
-  - 
-  - 
+  - Base Floor
+  - Cutout
   - 
   - 
   - 

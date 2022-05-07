@@ -26,7 +26,7 @@ public class ItemInventory : ScriptableObject
             // if items are the same or _toslot is empty, just add item and amount to _toslot
             if ((_fromslot.item == _toslot.item && _fromslot.amount + _toslot.amount <= _toslot.item.stackLimit)|| _toslot.item == null)
             {
-                Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                //Debug.Log("MoveSwapCombine Case 1 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 //_toslot.item = _fromslot.item;
                 //_toslot.AddAmount(_fromslot.amount);
                 _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
@@ -35,7 +35,7 @@ public class ItemInventory : ScriptableObject
             // if not, swap item and amount data
             else
             {
-                Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
+                //Debug.Log("MoveSwapCombine Case 2 - fromSlot: " + _fromslot.item + ", toSlot: " + _toslot.item);
                 ItemObject toitem = _toslot.item;
                 int toamount = _toslot.amount;
                 ItemObject fromitem = _fromslot.item;
@@ -46,15 +46,11 @@ public class ItemInventory : ScriptableObject
                     return;
                 }
                 
-                if (_toslot.VerifyItem(_fromslot.item) && _fromslot.VerifyItem(_toslot.item))
-                {
-                    _toslot.Clear();
-                    _fromslot.Clear();
+                _toslot.Clear();
+                _fromslot.Clear();
 
-                    _fromslot.AddItemToSlot(toitem, toamount);
-                    _toslot.AddItemToSlot(fromitem, fromamount);
-                }
-
+                _fromslot.AddItemToSlot(toitem, toamount);
+                _toslot.AddItemToSlot(fromitem, fromamount);
                 
             }
         }
@@ -196,6 +192,11 @@ public class WeaponSlot : Slot
                     Debug.Log("In Secondary");
                     ReplaceSecondary(item.prefabClone);
                 }
+                else if (slotType == WeaponType.Throwable)
+                {
+                    Debug.Log("In Throwables");
+                    ReplaceThrowable(item.prefab);
+                }
             }
             else if (item == _item && amount + _amount <= item.stackLimit)
             {
@@ -260,6 +261,10 @@ public class WeaponSlot : Slot
             PlayerWeapon.instance.Secondary.SetActive(false);
             PlayerWeapon.instance.Secondary = null;
         }
+        if(slotType == WeaponType.Throwable)
+        {
+            PlayerWeapon.instance.Grenade = null;
+        }
     }
 
     public void ReplacePrimary(GameObject clone)
@@ -267,8 +272,8 @@ public class WeaponSlot : Slot
         Debug.Log("Prefab Clone: " + item.prefabClone);
         Debug.Log("Player weapon instance: " + PlayerWeapon.instance);
         clone.transform.parent = PlayerWeapon.instance.transform;
-        clone.transform.position = Vector3.zero;
-        clone.transform.localPosition = Vector3.zero;
+        //clone.transform.position = Vector3.zero;
+        clone.transform.localPosition = clone.GetComponent<IWeapon>().startOffset;
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         PlayerWeapon.instance.Primary = clone;
@@ -284,8 +289,8 @@ public class WeaponSlot : Slot
         Debug.Log("Prefab Clone: " + item.prefabClone);
         Debug.Log("Player weapon instance: " + PlayerWeapon.instance);
         clone.transform.parent = PlayerWeapon.instance.transform;
-        clone.transform.position = Vector3.zero;
-        clone.transform.localPosition = Vector3.zero;
+        //clone.transform.position = Vector3.zero;
+        clone.transform.localPosition = clone.GetComponent<IWeapon>().startOffset;
         //item.prefabClone.transform.rotation = Quaternion.identity;
         clone.transform.rotation = new Quaternion(0, 0, 0, 0);
         if(PlayerWeapon.instance.Secondary != null)
@@ -295,6 +300,12 @@ public class WeaponSlot : Slot
         }
         PlayerWeapon.instance.Secondary = clone;
         PlayerWeapon.instance.ToggleSecondary();
+    }
+
+    public void ReplaceThrowable(GameObject clone)
+    {
+        // 
+        PlayerWeapon.instance.Grenade = clone;
     }
 }
 [System.Serializable]
@@ -370,7 +381,7 @@ public class AugSlot : Slot
     }
 }
 
-public abstract class Slot
+public abstract class Slot 
 {
     public ItemObject item;
     private int _amount = 0; // backing store
@@ -385,9 +396,10 @@ public abstract class Slot
                     _amount = item.stackLimit;
                 }
                 else { _amount = 0; }
+
+                if (value == 0){ item = null; }
             }
             else { _amount = 0; }
-            
         }
     }
     public void AddAmount(int value)

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778427c1d310e1e4398f4143f2616f86, type: 3}
   m_Name: SwordData
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0.85, y: 0, z: 0}
   <Damage>k__BackingField: 10
   <RecoveryLength>k__BackingField: 0.4
   <ComboWindow>k__BackingField: 0.2

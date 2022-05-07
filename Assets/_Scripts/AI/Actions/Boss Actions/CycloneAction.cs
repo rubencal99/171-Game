@@ -6,13 +6,15 @@ public class CycloneAction : AIAction
 {
     public static bool tracker = true;
     public bool Tracker;
+    public LayerMask layerMask;
+    RaycastHit hit;
     public override void TakeAction()
     {
         /*if(SquidBoss.atCycloneDest == true)
         {
             SquidBoss.atCycloneDest = false;
         }*/
-        Tracker = tracker;
+        /*Tracker = tracker;
         // Debug.Log("Distance from player: " + Vector2.Distance((Vector2)transform.position, aiMovementData.PointOfInterest));
         if(SquidBoss.inCyclone && tracker)
         {
@@ -39,7 +41,27 @@ public class CycloneAction : AIAction
             SquidBoss.inCyclone = false;
             tracker = true;
         }
-        Tracker = tracker;
+        Tracker = tracker;*/
+        Debug.Log("SquidBoss hasDirection = " + SquidBoss.hasDirection);
+        if(!SquidBoss.hasDirection)
+        {
+            Debug.Log("Choosing Cyclone Direction");
+            var d = enemyBrain.Target.transform.position - transform.position;
+            SquidBoss.cycloneDirection = new Vector3(d.x, 0, d.z);
+            SquidBoss.hasDirection = true;
+
+            Debug.DrawRay(transform.position, SquidBoss.cycloneDirection);
+            hit = new RaycastHit();
+            Physics.Raycast(transform.position, SquidBoss.cycloneDirection, out hit, 100, layerMask);
+            aiMovementData.PointOfInterest = hit.transform.position;
+            aiMovementData.PointerPosition = hit.transform.position;
+        }
+        aiMovementData.Direction = SquidBoss.cycloneDirection.normalized;
+        // aiMovementData.PointOfInterest = enemyBrain.Target.transform.position;
+        enemyBrain.Move(aiMovementData.Direction);
+        //Debug.Log("Ratchet Charge Direction: " + SquidBoss.chargeDirection);
+
+
     }
 
     public IEnumerator FindNewDestination()
