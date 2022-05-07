@@ -37,7 +37,7 @@ public class RatchetMovement : BossMovement
             return;
         }
         OnVelocityChange?.Invoke(currentVelocity);
-        if(RatchetBoss.inAir && !RatchetBoss.inJump)
+        if((RatchetBoss.inAir && !RatchetBoss.inJump) || (RatchetBoss.inRecovery && transform.position.y >= 1))
           {
             rigidbody.velocity += Vector3.down * Time.fixedDeltaTime / 100;
             return;

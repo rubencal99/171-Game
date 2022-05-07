@@ -97,7 +97,7 @@ public static class PlayerSignaler : object
         return curDamage;
     }
 
-    public static float CallSecondSkin(float damage){
+    /*public static float CallSecondSkin(float damage){
         var curDamage = damage;
         if(PlayerAugmentations.AugmentationList["SecondSkin"]){
             return curDamage - curDamage * PlayerAugmentations.SkinAmount;
@@ -128,7 +128,7 @@ public static class PlayerSignaler : object
             speedScalar += PlayerAugmentations.PredatoryAmount;
         }
         return speedScalar;
-    }
+    }*/
 
     public static void CallDrone()
     {
