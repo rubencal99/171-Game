@@ -411,7 +411,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 767770
+  m_InstanceId: 1734360
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,6 +953,7 @@ MonoBehaviour:
   blood: {fileID: 6366704516652635215}
   overlay: {fileID: 0}
   shield: {fileID: 0}
+  respawnPoint: {x: 0, y: 0, z: 0}
   PlayerState: {fileID: 0}
 --- !u!114 &7719071730893520264
 MonoBehaviour:
