@@ -53,6 +53,12 @@ public class RatchetBossAnimations : AgentAnimations
         agentAnimator.SetBool("Charge 0", val);
     }
 
+    public void SetRecoveryAnimation(bool val)
+    {
+        Debug.Log("Boss Recovery anim = " + val);
+        agentAnimator.SetBool("Recovery", val);
+    }
+
     public void SetStunAnimation()
     {
         Debug.Log("Boss Stunned");
