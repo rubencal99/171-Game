@@ -106,7 +106,7 @@ public class BackgroundSoundManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // if count > 0, increment relevant FMOD param by 0.1 until == 1
         // else, decrement relevant FMOD param by 0.1 until == 0 
