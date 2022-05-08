@@ -338,10 +338,19 @@ public class MapGenerator : MonoBehaviour
             tempRoom.AddComponent<RoomNode>();
 
             RoomNode NewRoom = tempRoom.GetComponent<RoomNode>();
+            int roomIndex = -1;
+            string[,] tempString = null;
             if(roomType == "Normal")
             {
-                var roomLength = RoomInjector.normal.GetLength(0);
-                var roomWidth = RoomInjector.normal.GetLength(1);
+                roomIndex = UnityEngine.Random.Range(0, NormalRooms.RoomList.Count);
+                //Debug.Log("RoomList count = " + NormalRooms.RoomList.Count);
+                //Debug.Log("Room index = " + roomIndex);
+                tempString = (string[,])NormalRooms.RoomList[roomIndex];
+                //Debug.Log("Temp string = " + tempString);
+                // Amount of arrays
+                var roomLength = tempString.GetLength(0);
+                // Array length
+                var roomWidth = tempString.GetLength(1);
                 Debug.Log("Normal room length: " + roomLength);
                 Debug.Log("Normal room width: " + roomWidth);
                 NewRoom.AddDimensions(roomLength, roomWidth);
@@ -381,27 +390,27 @@ public class MapGenerator : MonoBehaviour
                     for (int j = 0; j < NewRoom.width; j++)
                     {
                         // Here is where we'd want to randomly choose from a static list
-                        if(int.TryParse(RoomInjector.normal[i, j],  out int result))
+                        if(int.TryParse(tempString[i, j], out int result))
                         {   
                             Debug.Log("Int result = " + result);
-                            map[x1 + 1 + i, y1 + 1 + j].value = result;
+                            map[x1 + 1 + i, y1 + j + 1].value = result;
                             if(result == 1)
                             {
-                                map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
-                                roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
+                                map[x1 + 1 + i, y1 +j + 1].room = NewRoom;
+                                roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
                             }
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
                             NewRoom.tileCount++;
                         }
                         else
                         {
                             Debug.Log("String result = " + result);
-                            map[x1 + 1 + i, y1 + 1 + j].value = 1;
-                            map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
-                            roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                            map[x1 + 1 + i, y1 + j + 1].value = 1;
+                            map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
+                            roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
                             NewRoom.tileCount++;
-                            ObstacleLookUp.SpawnObstacle(RoomInjector.normal[i, j], x1 + 1 + i, y1 + 1 + j);
+                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1);
                         }
                         
                     }
