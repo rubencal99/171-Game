@@ -30,11 +30,11 @@ public class CutoutObject : MonoBehaviour
         
            if(hit.collider.transform.tag == "spheremask") {
                targetObject.transform.localScale = new Vector3(0f, 0f, 0f);
-               Debug.Log("hit sphere");
+            //   Debug.Log("hit sphere");
            }
            else
            {
-                Debug.Log("enabling cutout");
+              //  Debug.Log("enabling cutout");
                targetObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
            }
 
