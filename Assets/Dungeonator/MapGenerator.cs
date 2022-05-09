@@ -92,7 +92,6 @@ public class MapGenerator : MonoBehaviour
     private RoomNode ShopRoom;
     private RoomNode DoorRoom;
 
-
     public TileNode[,] GenerateMap()
     {
         map = new TileNode[columns, rows];
@@ -406,6 +405,7 @@ public class MapGenerator : MonoBehaviour
                         {
                             Debug.Log("String result = " + result);
                             map[x1 + 1 + i, y1 + j + 1].value = 1;
+                            map[x1 + 1 + i, y1 + j + 1].isObstacle = true;
                             map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
                             roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
                             NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
@@ -556,6 +556,8 @@ public class MapGenerator : MonoBehaviour
                 room.RoomType == "Shop" || 
                 room.RoomType == "Boss" ||
                 room.RoomType == "Normal" ||
+                room.RoomType == "Key" ||
+                room.RoomType == "Door" ||
                 room.RoomType == "Auxiliary" ||
                 room.RoomType == "Reward")
             {
@@ -1200,7 +1202,7 @@ public class MapGenerator : MonoBehaviour
             for (int y = 0; y < rows; y++)
             {
                 // Debug.Log("(x, y) = (" + x + ", " + y+ ")");
-                if (map[x, y].value == 0)
+                if (map[x, y].value == 0 || map[x, y].isObstacle)
                 {
                     Gizmos.color = new Color(0, 0, 0, 1f);
                 }
