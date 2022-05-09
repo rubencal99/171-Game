@@ -97,38 +97,38 @@ public static class PlayerSignaler : object
         return curDamage;
     }
 
-    /*public static float CallSecondSkin(float damage){
-        var curDamage = damage;
-        if(PlayerAugmentations.AugmentationList["SecondSkin"]){
-            return curDamage - curDamage * PlayerAugmentations.SkinAmount;
-        }
-        return curDamage;
-    }
+    // public static float CallSecondSkin(float damage){
+    //     var curDamage = damage;
+    //     if(PlayerAugmentations.AugmentationList["SecondSkin"]){
+    //         return curDamage - curDamage * PlayerAugmentations.SkinAmount;
+    //     }
+    //     return curDamage;
+    // }
 
-    public static float CallCheetahSpeed(){
-        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
-            return PlayerAugmentations.CSAmount;
-        }
-        return 2000f;
-        //return 1f;
-    }
+    // public static float CallCheetahSpeed(){
+    //     if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
+    //         return PlayerAugmentations.CSAmount;
+    //     }
+    //     return 2000f;
+    //     //return 1f;
+    // }
 
-    public static bool CallPredatoryInstinct(){
-        if(PlayerAugmentations.AugmentationList["PredatoryInstinct"]){
-            return true;
-        }
-        return false;
-    }
+    // public static bool CallPredatoryInstinct(){
+    //     if(PlayerAugmentations.AugmentationList["PredatoryInstinct"]){
+    //         return true;
+    //     }
+    //     return false;
+    // }
 
-    public static float SetMovementSpeed(){
-        float speedScalar = 1f;
-        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
-            speedScalar += PlayerAugmentations.CSAmount;
-        }if(usePredator){
-            speedScalar += PlayerAugmentations.PredatoryAmount;
-        }
-        return speedScalar;
-    }*/
+    // public static float SetMovementSpeed(){
+    //     float speedScalar = 1f;
+    //     if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
+    //         speedScalar += PlayerAugmentations.CSAmount;
+    //     }if(usePredator){
+    //         speedScalar += PlayerAugmentations.PredatoryAmount;
+    //     }
+    //     return speedScalar;
+    // }
 
     public static void CallDrone()
     {

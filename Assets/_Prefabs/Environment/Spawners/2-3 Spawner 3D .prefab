@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9129812943651766922}
   - component: {fileID: 3392075588759141863}
   m_Layer: 8
-  m_Name: Spawner 3D
+  m_Name: '2-3 Spawner 3D '
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,11 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - Enemies:
-    - Enemy: {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+    - Enemy: {fileID: 92973836147436933, guid: 890818c6e9d09e2499e12d0e37021991, type: 3}
+      SpawnCount: 4
+    - Enemy: {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
       SpawnCount: 3
     waveDelay: 0.3
   - Enemies:
-    - Enemy: {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
+    - Enemy: {fileID: 8662534355877855768, guid: 2b145d71c64c04645812055c881b0032, type: 3}
+      SpawnCount: 2
+    - Enemy: {fileID: 304799391290785548, guid: 8ea6cc2470bda624691bce900ece957c, type: 3}
+      SpawnCount: 1
+    - Enemy: {fileID: 2328509941553751831, guid: 298ca68bec793e948abaf10602a57dc6, type: 3}
+      SpawnCount: 1
+    - Enemy: {fileID: 572603609278578470, guid: b00ab8da362c6994c8ad8b9eeb197ae3, type: 3}
+      SpawnCount: 2
+    waveDelay: 2
+  - Enemies:
+    - Enemy: {fileID: 8662534355877855768, guid: 2b145d71c64c04645812055c881b0032, type: 3}
       SpawnCount: 2
     waveDelay: 2
   infiniteSpawn: 0

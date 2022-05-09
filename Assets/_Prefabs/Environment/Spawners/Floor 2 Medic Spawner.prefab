@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9129812943651766922}
   - component: {fileID: 3392075588759141863}
   m_Layer: 8
-  m_Name: Spawner 3D
+  m_Name: Floor 2 Medic Spawner
   m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,13 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - Enemies:
+    - Enemy: {fileID: 2328509941553751831, guid: 8ebcd7d3f829b874aabe47b9712e33c4, type: 3}
+      SpawnCount: 1
     - Enemy: {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      SpawnCount: 3
+      SpawnCount: 5
     waveDelay: 0.3
-  - Enemies:
-    - Enemy: {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
-      SpawnCount: 2
-    waveDelay: 2
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
