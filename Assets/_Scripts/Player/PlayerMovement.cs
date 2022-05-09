@@ -9,7 +9,7 @@ public class PlayerMovement : AgentMovement
     [SerializeField]
     protected float dodgeVelocity = 600;
 
-
+    float drag = 2f;
     protected PlayerStateManager PlayerState;
     public CapsuleCollider collider;
     //public Vector2 oriCollider;
@@ -40,12 +40,16 @@ public class PlayerMovement : AgentMovement
     {
         if (PlayerState.DiveState.diving == true) {
             Debug.Log("In Dive velocity");
+            
             return Mathf.Clamp((currentVelocity * dodgeVelocity), 0, MovementData.maxDodgeSpeed);
         }
         if(PlayerState.ProneState.standing == false)
         {
             return Mathf.Clamp((currentVelocity), 0, MovementData.maxProneSpeed);
         }
+        // if(PlayerState.DiveState.diving == false) {
+        //  drag = 0;
+        // }s 
         // Returns velocity between 0 and maxSpeed
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
@@ -54,12 +58,14 @@ public class PlayerMovement : AgentMovement
     // Should player be able to dodge when not moving??
     public void dodge(Vector3 dodgeDirection) {
         //collider.size = new Vector2(1.1f, 0.6f);
+        drag = PlayerState.DiveState.CalculateDrag();
         Vector3 dodge_dir = dodgeDirection;
         dodge_dir.y += 1.0f;
         Debug.Log("Dodge Dir: " + dodge_dir * dodgeVelocity);
         rigidbody.velocity = Vector3.zero; // set speed to zero
         rigidbody.velocity += (Vector3)(dodge_dir * dodgeVelocity); // create dodge
-        rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3(1f, 1f, 1.2f));
+        rigidbody.drag = drag;
+        //rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3(1f, 1f, 1.2f));
         Debug.Log("Dodge Velocity: " + rigidbody.velocity);
         //Debug.Log("Collider size: " + collider.size);
         //Debug.Log("Original height and width:" + oriCollider);
@@ -79,5 +85,6 @@ public class PlayerMovement : AgentMovement
     public void ResetSpeed()
     {
         currentVelocity = 0;
+       
     }
 }
