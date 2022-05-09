@@ -16,7 +16,7 @@ MonoBehaviour:
   <BulletData>k__BackingField: {fileID: 11400000, guid: 94d92ec18feff6641a2fdec938578f26, type: 2}
   <MagazineCapacity>k__BackingField: 100
   <MaxAmmoCapacity>k__BackingField: 1000
-  <AutomaticFire>k__BackingField: 1
+  <AutomaticFire>k__BackingField: 0
   <WeaponDelay>k__BackingField: 0.26
   <WeaponDelayRandomizer>k__BackingField: 0
   <ReloadSpeed>k__BackingField: 1

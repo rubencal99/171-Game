@@ -310,14 +310,8 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 0
   Platforms:
-<<<<<<< HEAD
   - {fileID: -8771843266622658200}
   - {fileID: -7569326812612415516}
-=======
-  - {fileID: 7141301507356247555}
-  - {fileID: 1182201768445526504}
-  - {fileID: 465940485564645324}
->>>>>>> 95c038d7591a984a1ba18d90e1ec04c202f1537f
   - {fileID: -7209917541716015413}
   - {fileID: -3097886681678745886}
   - {fileID: -2335820075943023132}
