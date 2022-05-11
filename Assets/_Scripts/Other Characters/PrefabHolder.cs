@@ -12,10 +12,13 @@ public class PrefabHolder : MonoBehaviour
     public AugmentationSO augData;
     public AugmentationUI augmentationUI;
     public GameObject Player;
+    public GameObject MoneyReducePopUp;
+    public GameObject moneyreduce;
 
     public void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        MoneyReducePopUp = GameObject.FindWithTag("MoneyReduceText");
     }
 
     public void TryBuyAugmentation()
@@ -55,6 +58,10 @@ public class PrefabHolder : MonoBehaviour
             weapon.transform.parent = transform.root;
             
             playerInfo.Purchase(itemData.Cost);
+
+            //Money reduce pop up
+            // moneyreduce = itemData.Cost;
+
             // weapon.transform.position = weaponParent.transform.position;
 
             //weapon.transform.localPosition = new Vector3(0, -0.25F, 0);

@@ -22,14 +22,4 @@ public class ToolTip : MonoBehaviour
             transform.localPosition = point + offset;
     }
 
-
-    // public void Show()
-    // {
-    //     // tooltip.SetActive(true);
-    // }
-
-    // public void Hide()
-    // {
-    //     // tooltip.SetActive(false);
-    // }
 }
