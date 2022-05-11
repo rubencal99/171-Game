@@ -50,6 +50,8 @@ public class EnemySpanwer : MonoBehaviour
 
     protected waves curWave;
 
+    public bool justEntered = false;
+
 
     // Start is called before the first frame update
     protected void Start()

@@ -10,7 +10,7 @@ public class PlayerWeapon : AgentWeapon
     private float timeToReload = 0.0f;
 
     public GameObject selectedWeapon;
-    public int numGrenades;
+    public bool throwPrepped;
     public GameObject Grenade;
 
     public GameObject Primary;
@@ -185,14 +185,23 @@ public class PlayerWeapon : AgentWeapon
             Debug.Log("throw prepped");
             SpawnItem(transform.position, transform.rotation);
             itemInventory.WContainer[2].amount -= 1;
+            throwPrepped = true;
             //throwableArc.SetArcAngle(this.desiredAngle);
         }
     }
     public void ThrowItem()
     {
-            Debug.Log("Item Thrown");
-            itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
-            itemPrefab.GetComponent<_BaseThrowable>().addForce();
+            if (throwPrepped)
+            {
+                Debug.Log("Item Thrown");
+                itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
+                itemPrefab.GetComponent<_BaseThrowable>().addForce();
+                throwPrepped = false;
+            }
+            else
+            {
+                Debug.Log("No throwable prepped!");
+            }
             
     }
 
