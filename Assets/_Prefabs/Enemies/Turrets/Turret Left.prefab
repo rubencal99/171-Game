@@ -640,7 +640,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -471162
+  m_InstanceId: 120618
 --- !u!114 &1464042163316731052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,16 +957,16 @@ MonoBehaviour:
   <OnFireButtonPressed>k__BackingField:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7242126897627064573}
-        m_TargetAssemblyTypeName: AgentWeapon, Assembly-CSharp
-        m_MethodName: Shoot
-        m_Mode: 1
+      - m_Target: {fileID: 5563326745306656109}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Shoot
           m_BoolArgument: 0
         m_CallState: 2
   <OnFireButtonReleased>k__BackingField:
@@ -1173,7 +1173,7 @@ PrefabInstance:
     - target: {fileID: 4256470858328599626, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
       propertyPath: sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 533c4b98bfc31e44fb86ae4c996a835d, type: 3}
+      objectReference: {fileID: 2522914001957573164, guid: 887f2cde49ed5bf42ad288e74a3d6b4a, type: 3}
     - target: {fileID: 4256470858328599626, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
       propertyPath: weaponData
       value: 
@@ -1245,13 +1245,18 @@ PrefabInstance:
     - target: {fileID: 8979388240249039164, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 533c4b98bfc31e44fb86ae4c996a835d, type: 3}
+      objectReference: {fileID: 2522914001957573164, guid: 887f2cde49ed5bf42ad288e74a3d6b4a, type: 3}
     - target: {fileID: 8979388240249039164, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
+--- !u!1 &3406826805426293003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8918393634435686408, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
+  m_PrefabInstance: {fileID: 6089716823493863683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2888506768234453558 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8977095406529770293, guid: 45f26f58cb188864f8b230a50517ea87, type: 3}
@@ -1375,3 +1380,22 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 640
+--- !u!95 &5563326745306656109
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3406826805426293003}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a90617fe25bcf0b42a13e6b72999183b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
