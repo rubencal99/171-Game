@@ -53,9 +53,9 @@ public class UI_Shop : MonoBehaviour
         if(positionIndex == 0 ){
             position = new Vector2(Screen.width / 7, Screen.height / 30);
         } else if(positionIndex == 1){
-            position = new Vector2(- Screen.width / 5 , - Screen.height / 5);
+            position = new Vector2(- Screen.width / 4 , - Screen.height / 5);
         }else if(positionIndex == 2){
-            position = new Vector2(Screen.width / 5 ,- Screen.height / 5);
+            position = new Vector2(Screen.width / 4 ,- Screen.height / 5);
         }else if(positionIndex == 3){
             position = new Vector2(- Screen.width / 15 , - Screen.height / 5);
             Debug.Log("item "+ positionIndex +" position" + position.x +" "+ position.y);
