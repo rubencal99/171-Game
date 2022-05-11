@@ -30,7 +30,8 @@ using UnityEngine;
         {
             GameObject drop = Object.Instantiate(
                 ObstacleDictionary[ObstacleName],
-                new Vector3(x, 1f, z), Quaternion.identity);
+                new Vector3(x, 0f, z), 
+                ObstacleDictionary[ObstacleName].transform.rotation);
         }
         else
         {

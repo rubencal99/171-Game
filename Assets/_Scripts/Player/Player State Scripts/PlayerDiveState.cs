@@ -13,7 +13,9 @@ public class PlayerDiveState : PlayerBaseState
     private bool fireButtonDown = false;
     public bool diving;
     [SerializeField]
-    private float DiveTimer = 0.3f;
+    private float DiveTimer = 0.6f;
+
+    public float drag = 1f;
     private float diveTime;
     public PlayerInput playerInput;
     public CapsuleCollider collider;
@@ -27,6 +29,7 @@ public class PlayerDiveState : PlayerBaseState
         diveTime = DiveTimer;
         playerInput = Player.playerInput;
         collider = playerInput.Collider;
+         // Player.GetComponent<Rigidbody>().drag = 0f;
        // Debug.Log("Current collider size:" + collider.size);
         Player.GetComponentInChildren<AgentAnimations>().SetDodgeAnimation();
         //collider.enabled = false;
@@ -44,8 +47,12 @@ public class PlayerDiveState : PlayerBaseState
         {
             diving = false;
             collider.enabled = true;
+            Player.GetComponent<Rigidbody>().drag = 0f;
+              drag = 1f;
             Player.SwitchState(Player.RunGunState);
         }
+        else
+            drag *= 2f;
     }
 
     private void GetPointerInput()
@@ -90,7 +97,21 @@ public class PlayerDiveState : PlayerBaseState
         if (diveTime > 0)
         {
             diveTime -= Time.deltaTime;
+            
         }
+
+    }
+
+     public float CalculateDrag()
+    {
+        if (diveTime > 0)
+        {
+            drag*= 2f;
+            
+        }
+
+        return drag;
+
     }
 
     private void GetMovementInput()
