@@ -1088,7 +1088,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500282819}
   m_CullTransparentMesh: 1
---- !u!43 &517370803
+--- !u!43 &589973274
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3381,14 +3381,14 @@ MonoBehaviour:
   minRoomDim: {x: 18, y: 18}
   minEntryDim: {x: 16, y: 16}
   maxEntryDim: {x: 0, y: 0}
-  minNormalDim: {x: 22, y: 22}
+  minNormalDim: {x: 27, y: 27}
   maxNormalDim: {x: 28, y: 28}
   minLargeDim: {x: 30, y: 30}
   maxLargeDim: {x: 0, y: 0}
   minRewardDim: {x: 15, y: 15}
   maxRewardDim: {x: 26, y: 26}
-  rewardPercent: 0
-  auxiliaryPercent: 0
+  rewardPercent: 100
+  auxiliaryPercent: 40
   minBossDim: {x: 30, y: 30}
   maxBossDim: {x: 40, y: 40}
   UseCellular: 0

@@ -26,11 +26,12 @@ public class Toilet : MonoBehaviour
     {
         used = false;
         player = Player.instance.gameObject;
-        ToiletUI.transform.localScale = Vector3.zero;
+        ToiletUI.transform.localScale = Vector3.one;
+        ToiletUI.SetActive(false);
         LeftButton.interactable = false;
-        //LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = LeftSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+        LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = LeftSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
         RightButton.interactable = false;
-        //RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+        RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame
@@ -90,7 +91,7 @@ public class Toilet : MonoBehaviour
     // This function when invoked will display the Shop UI
     public void DisplayToilet()
     {
-        //ToiletUI.SetActive(true);
+        ToiletUI.SetActive(true);
         Debug.Log("In display toilet");
 
         inToilet = true;
@@ -98,20 +99,20 @@ public class Toilet : MonoBehaviour
         {
             Debug.Log("Should lean scale in");
         }
-        ToiletUI.LeanScale(Vector3.one, displayTime).setEaseOutQuart();
+        //ToiletUI.LeanScale(Vector3.one, displayTime).setEaseOutQuart();
         StartCoroutine(EnableButtons());
     }
 
     // This function when invoked disables the Shop UI
     public void CloseToilet()
     {
-        //ToiletUI.SetActive(false);
+        ToiletUI.SetActive(false);
         StartCoroutine(closingToilet());
         if(ToiletUI.GetComponent<RectTransform>().localScale == Vector3.one)
         {
             Debug.Log("Should lean scale out");
         }
-        ToiletUI.LeanScale(Vector3.zero, displayTime).setEaseInBack();
+        //ToiletUI.LeanScale(Vector3.zero, displayTime).setEaseInBack();
         LeftButton.interactable = false;
         RightButton.interactable = false;
     }
