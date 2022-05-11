@@ -42,6 +42,15 @@ public class EnemyBrain : MonoBehaviour, IAgentInput
         CurrentState.UpdateState();
     }
 
+    public void WaitToAttack(){
+
+    }
+
+    public IEnumerator timedAttack(){
+        yield return new WaitForSeconds(10);
+        //EnemySpanwer.
+    }
+
     public void Attack()
     {
         OnFireButtonPressed?.Invoke();
