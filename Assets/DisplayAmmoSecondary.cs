@@ -19,14 +19,11 @@ public class DisplayAmmoSecondary : MonoBehaviour
     // Update is called once per frame
     async void Update()
     {
-        w = obj.GetComponentInChildren<PlayerWeapon>();
         if (w.Secondary != null  && w.Secondary.GetComponent<Gun>() != null){
             var weap = w.Secondary.GetComponent<Gun>();
             ammo = weap.ammo;
             totalAmmo = weap.TotalAmmo;
             AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
-            AmmoText.enabled = true;
-        }else
-            AmmoText.enabled = false;
+        }else  AmmoText.enabled = false;
     }
 }

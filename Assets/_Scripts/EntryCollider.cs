@@ -35,7 +35,7 @@ public class EntryCollider : MonoBehaviour
 
         //GameObject[] tilesArray =  GameObject.FindGameObjectsWithTag("Tilemap");
        // Tilemap tiles = tilesArray[0].GetComponent<Tilemap>();
-        this.gameObject.transform.localScale = new Vector3((float)room.length - 2.5f, 2.5f, (float)room.width - 2.5f);
+        this.gameObject.transform.localScale = new Vector3((float)room.length, 3f, (float)room.width);
         
         minPosition = room.bottomLeftCorner;
         minPosition.x -= boundsOffset; minPosition.y -= boundsOffset;
@@ -65,7 +65,7 @@ public class EntryCollider : MonoBehaviour
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.8f);
         UpdateTiles(tile);
     }
 

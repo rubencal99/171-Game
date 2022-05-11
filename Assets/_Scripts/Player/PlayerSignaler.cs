@@ -15,6 +15,14 @@ public static class PlayerSignaler : object
     public static float predatorTimer = 0f;
     public static float predatorTotalTime = 3f;
 
+    
+    /*private static void Awake()
+    {
+        obj =  GameObject.FindGameObjectWithTag("Player");
+        Player = obj.GetComponent<Player>();
+        playerPassives = obj.GetComponent<PlayerPassives>();
+    }*/
+    
     public static void SetSignaler()
     {
         Player = Player.instance;
@@ -23,15 +31,6 @@ public static class PlayerSignaler : object
         playerWeapon = obj.GetComponentInChildren<PlayerWeapon>();
     }
 
-     public static void Update(){
-        if(usePredator){
-            predatorTimer += Time.deltaTime;
-        }
-        if(predatorTimer >= predatorTotalTime){
-            usePredator = false;
-            predatorTimer = 0;
-        }
-     }
     public static float CallGunnerGloves(Gun gun)
     {
         if(PlayerAugmentations.AugmentationList["GunnerGloves"] == true)
@@ -54,8 +53,10 @@ public static class PlayerSignaler : object
 
     public static void CallPlayerEpiBoost()
     {
+        // Debug.Log("In Epi Boost");
         if(PlayerAugmentations.AugmentationList["Epinephrine"] == true)
         {
+            Debug.Log("Epinephrine = true");
             Player.Heal(PlayerAugmentations.EpinephrineBoost);
         }
 
@@ -81,6 +82,7 @@ public static class PlayerSignaler : object
         var dist = PlayerAugmentations.whiskersDist;
         Physics.Raycast(Player.transform.position, direction, out hit, dist);
         if(hit.transform == null){
+            //Player.transform.position += direction.normalized;
             Player.transform.position += direction.normalized * dist;
         }else if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
             Debug.Log("Teleport into obstacle");
@@ -128,7 +130,6 @@ public static class PlayerSignaler : object
         return speedScalar;
     }
 
-    
     public static void CallDrone()
     {
         if(PlayerAugmentations.AugmentationList["Drone"] && Player.instance.Drone == null)

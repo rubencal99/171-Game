@@ -68,7 +68,7 @@ public class EnemySpanwer : MonoBehaviour
         }
         curWave = Waves[0];
 
-         Debug.Log("initial Enemy count = " + Waves.Count);
+         //Debug.Log("initial Enemy count = " + Waves.Count);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
@@ -82,7 +82,7 @@ public class EnemySpanwer : MonoBehaviour
     }
 
     public virtual void Update() {
-        Debug.Log("Wave count = " + Waves.Count + "curEnemies = " + curEnemies);
+        //Debug.Log("Wave count = " + Waves.Count + "curEnemies = " + curEnemies);
         if(Waves.Count > 0) {
             if(curEnemies <= 0)
                 Waves[0].waveDelay -= Time.deltaTime;
@@ -161,7 +161,7 @@ public class EnemySpanwer : MonoBehaviour
                     currentEnemyCount++;
             }  
         }
-         Debug.Log("current enemy count = " + currentEnemyCount); 
+         //Debug.Log("current enemy count = " + currentEnemyCount); 
       return currentEnemyCount;
        
    }

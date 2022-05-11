@@ -62,7 +62,7 @@ public class AgentMovement : MonoBehaviour
             movementDirection = Vector2.zero;
         }*/
         
-        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier * PlayerSignaler.SetMovementSpeed();
+        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
     }
@@ -102,7 +102,7 @@ public class AgentMovement : MonoBehaviour
 
 
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {   
         if(knockback)
         {
