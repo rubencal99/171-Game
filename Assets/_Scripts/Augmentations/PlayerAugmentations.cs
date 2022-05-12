@@ -50,6 +50,11 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////Drone////////////////////////////////////////
     public static bool Drone = false;
+    public static bool DroneHead = false;
+    public static bool DroneArms = false;
+    public static bool DroneBody = false;
+    public static bool DroneLegs = false;
+
     //////////////////////////////Thorns////////////////////////////////////////
     public static bool Thorns = false;
 
@@ -82,6 +87,10 @@ public static class PlayerAugmentations : object
         {"AutoDoc", AutoDoc}, //passive
         {"DamageBuff", DamageBuff}, //passive
         {"Drone", Drone}, //passive
+        {"DroneHead", DroneHead}, //passive
+        {"DroneArms", DroneArms}, //passive
+        {"DroneBody", DroneBody}, //passive
+        {"DroneLegs", DroneLegs}, //passive
         {"Thorns", Thorns}, //passive
         {"CheetahSpeed", CheetahSpeed},
         {"Predator", Predator},
@@ -107,6 +116,10 @@ public static class PlayerAugmentations : object
         AutoDoc = false;
         AutoDocUsed = false;
         Drone = false;
+        DroneHead = false;
+        DroneArms = false;
+        DroneBody = false;
+        DroneLegs = false;
         Thorns = false;
         CheetahSpeed = false;
         Predator = false;

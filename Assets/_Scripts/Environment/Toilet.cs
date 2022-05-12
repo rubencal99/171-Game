@@ -14,6 +14,7 @@ public class Toilet : MonoBehaviour
     public GameObject Key;
     public Button LeftButton;
     public Button RightButton;
+    public List<GameObject> weaponList;
     public GameObject LeftSpawnItem;
     public GameObject RightSpawnItem;
     public bool used;
@@ -28,10 +29,7 @@ public class Toilet : MonoBehaviour
         player = Player.instance.gameObject;
         ToiletUI.transform.localScale = Vector3.one;
         ToiletUI.SetActive(false);
-        LeftButton.interactable = false;
-        LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = LeftSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
-        RightButton.interactable = false;
-        RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+        ChooseItems();
     }
 
     // Update is called once per frame
@@ -46,6 +44,23 @@ public class Toilet : MonoBehaviour
             }
         }
         GetInteractInput();
+    }
+
+    void ChooseItems()
+    {
+        var index = UnityEngine.Random.Range(0, weaponList.Count);
+        LeftSpawnItem = weaponList[index];
+        RightSpawnItem = weaponList[index];
+        while(LeftSpawnItem == RightSpawnItem)
+        {
+            index = UnityEngine.Random.Range(0, weaponList.Count);
+            RightSpawnItem = weaponList[index];
+        }
+
+        LeftButton.interactable = false;
+        LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = LeftSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+        RightButton.interactable = false;
+        RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
     }
 
     void GetInteractInput()

@@ -384,7 +384,7 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.AddDimensions(length, width);
             }
             
-            if (!HasEntry)
+            if (!HasEntry && roomType != "Reward")
             {
                 NewRoom.RoomType = "Start";
                 NewRoom.MaxNeighbors = 1;
@@ -435,7 +435,7 @@ public class MapGenerator : MonoBehaviour
                             roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
                             NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
                             NewRoom.tileCount++;
-                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1);
+                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1, NewRoom);
                         }
                         
                     }
