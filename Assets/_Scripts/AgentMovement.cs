@@ -81,7 +81,7 @@ public class AgentMovement : MonoBehaviour
         }
         // Returns velocity between 0 and maxSpeed
         //Vector3 v = Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
-        return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
+        return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed * Passives.SpeedMultiplier);
     }
 
     public void Knockback(float duration, float power, Vector3 direction)

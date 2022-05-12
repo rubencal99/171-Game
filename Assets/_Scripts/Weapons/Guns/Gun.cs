@@ -96,10 +96,10 @@ public class Gun : MonoBehaviour, IWeapon
         {
             weaponParent = transform.parent.GetComponent<AgentWeapon>();
         }
-        if(isPlayer) {           
-            passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
-            infAmmo = weaponParent.InfAmmo;
-        }
+        //if(isPlayer) {           
+        passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
+        infAmmo = weaponParent.InfAmmo;
+        //}
          reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 

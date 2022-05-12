@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         timer = 0;
     }
 
-    public void Update(){
+    public virtual void Update(){
         if(PlayerSignaler.usePredator){
            timer  += Time.deltaTime;
         }
