@@ -192,6 +192,11 @@ public class WeaponSlot : Slot
                     Debug.Log("In Secondary");
                     ReplaceSecondary(item.prefabClone);
                 }
+                else if (slotType == WeaponType.Throwable)
+                {
+                    Debug.Log("In Throwables");
+                    ReplaceThrowable(item.prefab);
+                }
             }
             else if (item == _item && amount + _amount <= item.stackLimit)
             {
@@ -256,6 +261,10 @@ public class WeaponSlot : Slot
             PlayerWeapon.instance.Secondary.SetActive(false);
             PlayerWeapon.instance.Secondary = null;
         }
+        if(slotType == WeaponType.Throwable)
+        {
+            PlayerWeapon.instance.Grenade = null;
+        }
     }
 
     public void ReplacePrimary(GameObject clone)
@@ -291,6 +300,12 @@ public class WeaponSlot : Slot
         }
         PlayerWeapon.instance.Secondary = clone;
         PlayerWeapon.instance.ToggleSecondary();
+    }
+
+    public void ReplaceThrowable(GameObject clone)
+    {
+        // 
+        PlayerWeapon.instance.Grenade = clone;
     }
 }
 [System.Serializable]
@@ -366,7 +381,7 @@ public class AugSlot : Slot
     }
 }
 
-public abstract class Slot
+public abstract class Slot 
 {
     public ItemObject item;
     private int _amount = 0; // backing store
@@ -381,9 +396,10 @@ public abstract class Slot
                     _amount = item.stackLimit;
                 }
                 else { _amount = 0; }
+
+                if (value == 0){ item = null; }
             }
             else { _amount = 0; }
-            
         }
     }
     public void AddAmount(int value)

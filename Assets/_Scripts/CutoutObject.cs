@@ -15,29 +15,30 @@ public class CutoutObject : MonoBehaviour
 
     private void Awake()
     {
-        if(!mainCamera)
-        {
-            mainCamera = transform.root.parent.GetComponent<Camera>();
-        }
         
-        targetObject = this.transform;
+            mainCamera = transform.GetComponent<Camera>();
+        
+       // targetObject = this.transform;
     }
 
     private void Update()
     {
-        Vector3 offset = targetObject.position - transform.position;
-        RaycastHit[] hitObjects = Physics.RaycastAll(transform.position, offset, offset.magnitude, wallMask);
+        RaycastHit hit;
 
-        for (int i = 0; i < hitObjects.Length; ++i)
-        {
-           if(hitObjects[i].transform.tag == "spheremask") {
+        Vector3 offset = targetObject.position - transform.position;
+        if(Physics.Raycast(transform.position, offset.normalized, out hit, Mathf.Infinity, wallMask)){
+        
+           if(hit.collider.transform.tag == "spheremask") {
                targetObject.transform.localScale = new Vector3(0f, 0f, 0f);
+            //   Debug.Log("hit sphere");
            }
            else
            {
-               targetObject.transform.localScale = new Vector3(1f, 1f, 1f);
+              //  Debug.Log("enabling cutout");
+               targetObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
            }
 
+        
         }
     }
 }

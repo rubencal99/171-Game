@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/killplane.cs.meta
+guid: 6571c37d50553fc49a258e798c500f63
+========
 guid: 6827038fe8653be4fbb67121333ed43f
+>>>>>>>> 160e96633fd7119f0e775f9b65b6f90cad8de2fc:Assets/_Scripts/DataSO/AbtractWeaponDataSO.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

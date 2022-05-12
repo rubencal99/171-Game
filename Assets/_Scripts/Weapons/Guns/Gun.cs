@@ -78,6 +78,8 @@ public class Gun : MonoBehaviour, IWeapon
 
     public Sprite sprite;
 
+    public float reloadAnimMultiplier;
+
     protected void OnEnable()
     {
         swapTimer = swapTime;
@@ -98,6 +100,7 @@ public class Gun : MonoBehaviour, IWeapon
             passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
             infAmmo = weaponParent.InfAmmo;
         }
+         reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -168,7 +171,8 @@ public class Gun : MonoBehaviour, IWeapon
             if(isPlayer) {
                 Debug.Log("In Reload");
                 displayReloadProgressBar();
-                this.GetComponent<Animator>().SetFloat("reloadtime", ( 10.0f - (getReloadSpeed())) / 10.0f);
+                this.GetComponent<Animator>().SetFloat("reloadtime", reloadAnimMultiplier * 1 / (getReloadSpeed() / weaponData.ReloadSpeed));
+                
                 this.GetComponent<Animator>().Play("reload");
             }
             FinishReloading();
