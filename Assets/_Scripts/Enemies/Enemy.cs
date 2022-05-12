@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             PlayerSignaler.usePredator = false;
             timer = 0;
         }
+        DeadOrAlive();
     }
 
     public virtual void GetHit(float damage, GameObject damageDealer)
@@ -173,11 +174,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         }
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
-    }
-
-    void Update()
-    {
-        DeadOrAlive();
     }
 
     public void DeadOrAlive()
