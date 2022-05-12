@@ -27,6 +27,7 @@ TagManager:
   - BAS
   - Tilemap
   - spheremask
+  - MoneyReduceText
   layers:
   - Default
   - TransparentFX
@@ -45,7 +46,7 @@ TagManager:
   - MouseCollider
   - Throwables
   - Base Floor
-  - 
+  - Cutout
   - 
   - 
   - 

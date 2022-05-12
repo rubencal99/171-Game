@@ -22,7 +22,15 @@ public class EntryCollider : MonoBehaviour
     public TileBase normal_tile;
     public TileBase barrier_tile;
 
+    [SerializeField]
+    public List<MinimapIcons> room_icons;
 
+     [System.Serializable]
+    public class MinimapIcons
+    {
+        public Sprite icon;
+        public string name;
+    }
     
     // Start is called before the first frame update
     public void Start() {
@@ -35,7 +43,7 @@ public class EntryCollider : MonoBehaviour
 
         //GameObject[] tilesArray =  GameObject.FindGameObjectsWithTag("Tilemap");
        // Tilemap tiles = tilesArray[0].GetComponent<Tilemap>();
-        this.gameObject.transform.localScale = new Vector3((float)room.length, 3f, (float)room.width);
+        this.gameObject.transform.localScale = new Vector3((float)room.length - 2.5f, 2.5f, (float)room.width - 2.5f);
         
         minPosition = room.bottomLeftCorner;
         minPosition.x -= boundsOffset; minPosition.y -= boundsOffset;
@@ -43,13 +51,40 @@ public class EntryCollider : MonoBehaviour
         maxPosition.x += boundsOffset; maxPosition.y += boundsOffset;
 
         var spr = this.GetComponentInChildren<SpriteRenderer>();
-        if(room.RoomType == "Boss" || room.RoomType == "Key") spr.color = Color.yellow;
-        if(room.RoomType == "Shop") spr.color = Color.green;
-        //if(room.RoomType == "Reward") spr.color = Color.cyan;
-        if(room.RoomType == "Door") spr.color = Color.magenta;
-        if(room.RoomType == "Auxiliary") spr.color = Color.red;
-        if(room.RoomType == "Normal" || room.RoomType == "Large" || room.RoomType == "Reward") spr.enabled = false;  
+        foreach(var icon in room_icons) {
        
+            switch(icon.name) {
+                case "boss":
+                    if(room.RoomType == "Boss" ) spr.sprite = icon.icon;
+                    break;
+                case "key":
+                    if(room.RoomType == "Key" ) spr.sprite = icon.icon;
+                    break;
+                case "shop":
+                    if(room.RoomType == "Shop" ) spr.sprite = icon.icon;
+                    break;
+                case "door":
+                    if(room.RoomType == "Door" ) spr.sprite = icon.icon;
+                    break;
+                 case "aux":
+                    if(room.RoomType == "Auxiliary" ) spr.sprite = icon.icon;
+                    break;
+                 case "reward":
+                    if(room.RoomType == "Reward" ) spr.sprite = icon.icon;
+                    break;
+                 
+            }
+
+             if(room.RoomType == "Normal" || room.RoomType == "Large") spr.enabled = false;  
+
+        // if(room.RoomType == "Boss" )
+        // ( room.RoomType == "Key") spr.color = Color.yellow;
+        // if(room.RoomType == "Shop") spr.color = Color.green;
+        // //if(room.RoomType == "Reward") spr.color = Color.cyan;
+        // if(room.RoomType == "Door") spr.color = Color.magenta;
+        // if(room.RoomType == "Auxiliary") spr.color = Color.red;
+       
+         }
     }
 
 
@@ -65,7 +100,7 @@ public class EntryCollider : MonoBehaviour
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.1f);
         UpdateTiles(tile);
     }
 

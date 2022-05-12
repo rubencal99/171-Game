@@ -19,6 +19,8 @@ public class PlayerRunGunState : PlayerBaseState
     [SerializeField]
     public float DodgeTimer;
 
+    private float standTime;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -36,6 +38,7 @@ public class PlayerRunGunState : PlayerBaseState
         dodging = false;
         TimeManager.RevertSlowMotion();
         Player.transform.Find("shadow").gameObject.SetActive(true);
+        standTime = playerInput.PlayerMovement.MovementData.standingDelay;
     }
 
     public override void UpdateState(PlayerStateManager Player)
@@ -51,7 +54,8 @@ public class PlayerRunGunState : PlayerBaseState
         GetDodgeInput();
         GetTabInput();
         GetInteractInput();
-        if (dodging)
+        CalculateStandTime();
+        if (dodging && standTime <= 0)
         {
             Debug.Log("Switching to Dive State");
             Player.SwitchState(Player.DiveState);
@@ -251,6 +255,14 @@ public class PlayerRunGunState : PlayerBaseState
             {
                 shopping = false;
             }
+        }
+    }
+
+    private void CalculateStandTime()
+    {
+        if (standTime > 0)
+        {
+            standTime -= Time.deltaTime;
         }
     }
 

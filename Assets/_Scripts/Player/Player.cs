@@ -85,6 +85,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
      public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
     // private AgentInput w; // var to hold agent input
+
 // =======
 //     private AgentRenderer agentRender;
 // >>>>>>> master

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3227130039294860670}
   - component: {fileID: 1645225497004688467}
   - component: {fileID: 1957701704751158774}
-  - component: {fileID: 3648493867438136447}
+  - component: {fileID: 6004766295244074973}
   m_Layer: 0
   m_Name: StackableTest
   m_TagString: Untagged
@@ -135,7 +135,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9572681, y: 1.0563654, z: 0.35950673}
   m_Center: {x: 0, y: 0.22190718, z: 0}
---- !u!114 &3648493867438136447
+--- !u!114 &6004766295244074973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,8 +144,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3227130039294860668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e575490526b40219e913282480a0b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 53db7613086fb3847962958cf7b75fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupItem: {fileID: 11400000, guid: 68506b2dcd54d4d7c979597e27d9c2c4, type: 2}
-  pickupAmount: 12
+  FireArm: {fileID: 11400000, guid: 463b22a4a3ea2407687cb982240bd498, type: 2}
+  tag: 
+  pickupAmount: 1
+  name: 

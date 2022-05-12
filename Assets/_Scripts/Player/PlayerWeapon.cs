@@ -10,7 +10,7 @@ public class PlayerWeapon : AgentWeapon
     private float timeToReload = 0.0f;
 
     public GameObject selectedWeapon;
-    public int numGrenades = 5;
+    public bool throwPrepped;
     public GameObject Grenade;
 
     public GameObject Primary;
@@ -92,6 +92,7 @@ public class PlayerWeapon : AgentWeapon
     {
         WeaponSlot slot1 = itemInventory.WContainer[0];
         WeaponSlot slot2 = itemInventory.WContainer[1];
+        WeaponSlot slot3 = itemInventory.WContainer[2];
         if(slot1.item != null)
         {
             Debug.Log("Before instantiate item");
@@ -111,6 +112,15 @@ public class PlayerWeapon : AgentWeapon
         else if(useInventory)
         {
             Secondary = null;
+        }
+        if(slot3.item != null)
+        {
+            PlayerInventory.instance.InstantiateItem(slot3.item);
+            slot3.ReplaceThrowable(slot3.item.prefab);
+        }
+        else if(useInventory)
+        {
+            Grenade = null;
         }
 
     }
@@ -170,18 +180,28 @@ public class PlayerWeapon : AgentWeapon
 
     public void prepThrow()
     {
-        if (numGrenades > 0)
+        if (itemInventory.WContainer[2].amount > 0 && Grenade != null)
         {
             Debug.Log("throw prepped");
             SpawnItem(transform.position, transform.rotation);
+            itemInventory.WContainer[2].amount -= 1;
+            throwPrepped = true;
             //throwableArc.SetArcAngle(this.desiredAngle);
         }
     }
     public void ThrowItem()
     {
-            Debug.Log("Item Thrown");
-            itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
-            itemPrefab.GetComponent<_BaseThrowable>().addForce();
+            if (throwPrepped)
+            {
+                Debug.Log("Item Thrown");
+                itemPrefab.GetComponent<_BaseThrowable>().Thrown = true;
+                itemPrefab.GetComponent<_BaseThrowable>().addForce();
+                throwPrepped = false;
+            }
+            else
+            {
+                Debug.Log("No throwable prepped!");
+            }
             
     }
 

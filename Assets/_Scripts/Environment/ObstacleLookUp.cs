@@ -28,9 +28,18 @@ using UnityEngine;
         //Debug.Log("In spawn obstacle");
         if (ObstacleDictionary.ContainsKey(ObstacleName))
         {
+            if(ObstacleName == "t")
+            {
+                 GameObject drop1 = Object.Instantiate(
+                    ObstacleDictionary[ObstacleName],
+                    new Vector3(x, 1f, z), 
+                    ObstacleDictionary[ObstacleName].transform.rotation);
+                    return;
+            }
             GameObject drop = Object.Instantiate(
                 ObstacleDictionary[ObstacleName],
-                new Vector3(x, 1f, z), Quaternion.identity);
+                new Vector3(x, 0f, z), 
+                ObstacleDictionary[ObstacleName].transform.rotation);
         }
         else
         {
