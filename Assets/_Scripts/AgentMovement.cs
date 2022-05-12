@@ -33,6 +33,7 @@ public class AgentMovement : MonoBehaviour
     public Vector3 knockbackDirection;
 
 
+
     protected void Awake()
     {
         // Grabs RigidBody that the script is attached to
@@ -62,7 +63,7 @@ public class AgentMovement : MonoBehaviour
             movementDirection = Vector2.zero;
         }*/
         
-        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier;
+        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier * PlayerSignaler.SetMovementSpeed();;
         if(this.GetComponentInChildren<AgentAnimations>() != null)
              this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
     }

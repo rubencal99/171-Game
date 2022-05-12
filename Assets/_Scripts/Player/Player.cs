@@ -144,8 +144,6 @@ public class Player : MonoBehaviour, IAgent, IHittable
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
          }
-
-         PlayerSignaler.CallDrone();
     }
 
     public void setSpawnPoint(Vector3 spawn) {
@@ -200,8 +198,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
+        float d = PlayerSignaler.CallSecondSkin(damage);
         DamageType(damageDealer);
-        Health -= damage;
+        Health -= d;
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
@@ -340,5 +339,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void OnApplicationQuit()
     {
         inventory.ClearInventory();
+    }
+
+    public void SetSecondSkin(){
+
     }
 }

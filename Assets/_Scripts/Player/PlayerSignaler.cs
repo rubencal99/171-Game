@@ -105,16 +105,8 @@ public static class PlayerSignaler : object
         return curDamage;
     }
 
-    public static float CallCheetahSpeed(){
-        if(PlayerAugmentations.AugmentationList["CheetahSpeed"]){
-            return PlayerAugmentations.CSAmount;
-        }
-        return 2000f;
-        //return 1f;
-    }
-
     public static bool CallPredatoryInstinct(){
-        if(PlayerAugmentations.AugmentationList["PredatoryInstinct"]){
+        if(PlayerAugmentations.AugmentationList["Predator"]){
             return true;
         }
         return false;
