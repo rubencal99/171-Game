@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private ParticleSystem blood;
 
+    public float timer;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -54,6 +56,18 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         agentMovement = GetComponent<AgentMovement>();
         blood = transform.Find("EnemyBlood").GetComponent<ParticleSystem>();
         //blood = FindComponentInChildWithTag
+        timer = 0;
+    }
+
+    public void Update(){
+        if(PlayerSignaler.usePredator){
+           timer  += Time.deltaTime;
+        }
+        if(timer >= PlayerSignaler.predatorTotalTime){
+            PlayerSignaler.usePredator = false;
+            timer = 0;
+        }
+        DeadOrAlive();
     }
 
     public virtual void GetHit(float damage, GameObject damageDealer)
@@ -155,14 +169,11 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public void Die()
     {
-
+        if(PlayerAugmentations.AugmentationList["Predator"]){
+            PlayerSignaler.usePredator = true;
+        }
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
-    }
-
-    void Update()
-    {
-        DeadOrAlive();
     }
 
     public void DeadOrAlive()

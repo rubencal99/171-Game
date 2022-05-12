@@ -97,8 +97,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fire: {fileID: 8435042673591918058}
   rotation: 0
+  rotationSpeed: 5
   rotationDuration: 1.5
   timeElapsed: 0
+  normalizedTime: 0
 --- !u!1 &8960519738105143089
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3627eb193ab5ccf4990586ff40d038c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -231,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed40662a8243b14c8dcb3c11fdc01cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
   muzzle: {fileID: 8960519739286643315}
   passives: {fileID: 0}
   ammo: 0
@@ -244,7 +247,8 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
+  sprite: {fileID: 21300000, guid: 3627eb193ab5ccf4990586ff40d038c7, type: 3}
+  reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:

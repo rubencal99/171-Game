@@ -186,7 +186,7 @@ public class MapGenerator : MonoBehaviour
             bool successfulNormal = false;
             bool successfulReward = false;
             // This gives us larger rooms
-            if (!successfulLarge)
+            /*if (!successfulLarge)
             {
                 if (width > minLargeDim.x && height > minLargeDim.y)
                 {
@@ -223,20 +223,23 @@ public class MapGenerator : MonoBehaviour
                     }
                     successfulLarge = true;
                 }
-            }
+            }*/
             // This gives us normal rooms
             if (!successfulLarge)
             {
                 if (width > minNormalDim.x && height > minNormalDim.y)
                 {
+                    Debug.Log("In BSP Split normal");
+                    Debug.Log("Space Width: " + width);
+                    Debug.Log("Space Height: " + height);
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        if (height >= minRoomDim.y * 2)
+                        if (height >= minNormalDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
-                        else if (width >= minRoomDim.x * 2)
+                        else if (width >= minNormalDim.x * 2)
                         {
                             SplitVertical(space);
                         }
@@ -244,6 +247,7 @@ public class MapGenerator : MonoBehaviour
                         {
                             if(UnityEngine.Random.Range(0, 100) > auxiliaryPercent)
                             {
+                                Debug.Log("Decided to create room");
                                 roomsList.Enqueue(new Tuple<int[], string>(space, "Normal"));
                             }
                             else
@@ -254,11 +258,11 @@ public class MapGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (width >= minRoomDim.x * 2)
+                        if (width >= minNormalDim.x * 2)
                         {
                             SplitVertical(space);
                         }
-                        else if (height >= minRoomDim.y * 2)
+                        else if (height >= minNormalDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
@@ -266,6 +270,7 @@ public class MapGenerator : MonoBehaviour
                         {
                             if(UnityEngine.Random.Range(0, 100) > auxiliaryPercent)
                             {
+                                Debug.Log("Decided to create room");
                                 roomsList.Enqueue(new Tuple<int[], string>(space, "Normal"));
                             }
                             else
@@ -321,6 +326,7 @@ public class MapGenerator : MonoBehaviour
 
         // This is where we create the rooms
         int tempCount = 0;
+        Debug.Log("Room Count = " + roomsList.Count);
         while (roomsList.Count > 0)
         {
             (int[] room, string roomType) = roomsList.Dequeue();
@@ -350,6 +356,25 @@ public class MapGenerator : MonoBehaviour
                 var roomLength = tempString.GetLength(0);
                 // Array length
                 var roomWidth = tempString.GetLength(1);
+                Debug.Log("Allocated length: " + length);
+                Debug.Log("Allocated width: " + width);
+                Debug.Log("Normal room length: " + roomLength);
+                Debug.Log("Normal room width: " + roomWidth);
+                NewRoom.AddDimensions(roomLength, roomWidth);
+            }
+            else if(roomType == "Reward")
+            {
+                roomIndex = UnityEngine.Random.Range(0, RewardRooms.RoomList.Count);
+                //Debug.Log("RoomList count = " + NormalRooms.RoomList.Count);
+                //Debug.Log("Room index = " + roomIndex);
+                tempString = (string[,])RewardRooms.RoomList[roomIndex];
+                //Debug.Log("Temp string = " + tempString);
+                // Amount of arrays
+                var roomLength = tempString.GetLength(0);
+                // Array length
+                var roomWidth = tempString.GetLength(1);
+                Debug.Log("Allocated length: " + length);
+                Debug.Log("Allocated width: " + width);
                 Debug.Log("Normal room length: " + roomLength);
                 Debug.Log("Normal room width: " + roomWidth);
                 NewRoom.AddDimensions(roomLength, roomWidth);
@@ -381,7 +406,7 @@ public class MapGenerator : MonoBehaviour
             
             // Here we fill the negative space with empty space 
             // I.e. room creation
-            if(roomType == "Normal")
+            if(roomType == "Normal" || roomType == "Reward")
             {
                 //Debug.Log("Before 2f");
                 for(int i = 0; i < NewRoom.length; i++)
@@ -391,7 +416,7 @@ public class MapGenerator : MonoBehaviour
                         // Here is where we'd want to randomly choose from a static list
                         if(int.TryParse(tempString[i, j], out int result))
                         {   
-                            Debug.Log("Int result = " + result);
+                            //Debug.Log("Int result = " + result);
                             map[x1 + 1 + i, y1 + j + 1].value = result;
                             if(result == 1)
                             {
@@ -403,7 +428,7 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("String result = " + result);
+                            //Debug.Log("String result = " + result);
                             map[x1 + 1 + i, y1 + j + 1].value = 1;
                             map[x1 + 1 + i, y1 + j + 1].isObstacle = true;
                             map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
@@ -1144,7 +1169,8 @@ public class MapGenerator : MonoBehaviour
         var x2 = roomSpace[2];
         var y2 = roomSpace[3];
 
-        var ySplit = UnityEngine.Random.Range(y1 + 1, y2);
+        var buffer = (int)(y2 - y1)/3;
+        var ySplit = UnityEngine.Random.Range(y1 + 1 + buffer, y2 - buffer);
         var room1 = new int[] { x1, y1, x2, ySplit };
         var room2 = new int[] { x1, ySplit + 1, x2, y2 };
 
@@ -1167,7 +1193,9 @@ public class MapGenerator : MonoBehaviour
         var y1 = roomSpace[1];
         var x2 = roomSpace[2];
         var y2 = roomSpace[3];
-        var xSplit = UnityEngine.Random.Range(x1 + 1, x2);
+
+        var buffer = (int)(x2 - x1)/3;
+        var xSplit = UnityEngine.Random.Range(x1 + 1 + buffer, x2 - buffer);
         var room1 = new int[] { x1, y1, xSplit, y2 };
         var room2 = new int[] { xSplit + 1, y1, x2, y2 };
 
