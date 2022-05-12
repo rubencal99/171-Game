@@ -131,12 +131,12 @@ public class Gun : MonoBehaviour, IWeapon
     public virtual float getReloadSpeed() {
         return PlayerSignaler.CallGunnerGloves(this);
     }
-    public void TryShooting()
+    public virtual void TryShooting()
     {
         isShooting = true;
         //Debug.Log("Is shooting = " + isShooting);
     }
-    public void StopShooting()
+    public virtual void StopShooting()
     {
         isShooting = false;
     }

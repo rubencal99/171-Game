@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 // This script is responsible for firing bullets from the selected weapon
 public class Railgun : Gun
 {
-    public bool holding;
+    public bool holding = false;
     public float maxHold = 2f;
     public float holdTimer;
     protected override void Start()
