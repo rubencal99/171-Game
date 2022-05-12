@@ -35,7 +35,10 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////WHISKERS//////////////////////////////////////////
     public static bool Whiskers = false;
+    public static bool inWhiskers = false;
     public static float whiskersDist = 5f;
+    public static float whiskersTime = 2f;
+    public static float whiskersTimer = 2f;
 
     //////////////////////////////HOOKSHOT//////////////////////////////////////////
     public static bool HookShot = false;
