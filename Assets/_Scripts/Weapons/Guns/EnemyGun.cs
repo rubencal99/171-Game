@@ -21,6 +21,7 @@ public class EnemyGun : Gun
 
     protected override void UseWeapon()
     {
+        //Debug.Log("In Use Weapon");
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             Debug.Log("In Use Weapon");

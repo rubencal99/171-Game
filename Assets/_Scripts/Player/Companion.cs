@@ -7,6 +7,7 @@ public class Companion : Enemy
     public static Companion instance;
     public Enemy enemyTarget;
     public Player playerFollow;
+    public AgentWeapon weaponParent;
 
     public GameObject defaultWeapon;
     public GameObject upgradedWeapon;

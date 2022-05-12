@@ -27,12 +27,15 @@ public static class DroneSignaler : object
             {
                 Companion.instance.defaultWeapon.SetActive(true);
                 Companion.instance.upgradedWeapon.SetActive(false);
+                Companion.instance.weaponParent.AssignWeapon();
+
             }
         else if(PlayerAugmentations.AugmentationList["DroneBody"] && 
             Companion.instance.upgradedWeapon.activeSelf == false)
             {
                 Companion.instance.defaultWeapon.SetActive(false);
                 Companion.instance.upgradedWeapon.SetActive(true);
+                Companion.instance.weaponParent.AssignWeapon();
             }
     }
 

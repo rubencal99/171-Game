@@ -564,7 +564,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 89562
+  m_InstanceId: 107860
 --- !u!114 &4163365371028737556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,8 +1027,11 @@ MonoBehaviour:
   timer: 0
   enemyTarget: {fileID: 0}
   playerFollow: {fileID: 0}
+  weaponParent: {fileID: 5266775196005059141}
   defaultWeapon: {fileID: 8813092398223452868}
   upgradedWeapon: {fileID: 3476811339566054464}
+  ROFMultiplier: 1.4
+  SpeedMultiplier: 1.15
 --- !u!1 &6449755931129213410
 GameObject:
   m_ObjectHideFlags: 0
