@@ -134,6 +134,10 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             var weaponPosition = damageDealer.transform.parent.position;
             var direction = transform.position - weaponPosition;
             agentMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower, -direction);
+        }else if(damageDealer.GetComponent<Player>()){//Collider
+            Debug.Log("Should push back enemy on touching thorns collider");
+            var direction = transform.position - damageDealer.transform.parent.position;
+            agentMovement.Knockback(0.1f, 3, -direction);
         }
     }
 
@@ -206,6 +210,12 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
                 hasDied = false;
             }
             
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.CompareTag("Thorns")){
+            GetHit(PlayerAugmentations.ThornDam, collision.gameObject);
         }
     }
 

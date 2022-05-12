@@ -49,8 +49,9 @@ public static class PlayerAugmentations : object
     public static bool Drone = false;
     //////////////////////////////Thorns////////////////////////////////////////
     public static bool Thorns = false;
+    public static float ThornDam = 2f;
 
-    //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
+    //////////////////////////////DamageBuff/////////////////////////////////////
     public static bool DamageBuff = false;
     public static float BuffAmount = 0.25f;
     //////////////////////////////CheetahSpeed////////////////////////////////////////
@@ -64,6 +65,15 @@ public static class PlayerAugmentations : object
     //////////////////////////////SecondSkin////////////////////////////////////////
     public static bool SecondSkin = false;
     public static float SkinAmount = 0.5f;
+    //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
+
+    public static bool SonicWave = false;
+    //////////////////////////////DoomSlayer////////////////////////////////////////
+    public static bool DoomSlayer = false;
+    public static float DoomBuff = 0.5f;
+    public static float DoomHalfDam = 0.7f;
+    public static float DoomRecycle = 25f;
+    public static float DoomHealth = 10f;
 
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
@@ -82,7 +92,9 @@ public static class PlayerAugmentations : object
         {"Thorns", Thorns}, //passive
         {"CheetahSpeed", CheetahSpeed},
         {"Predator", Predator},
-        {"SecondSkin", SecondSkin}
+        {"SecondSkin", SecondSkin},
+        {"SonicWave", SonicWave},
+        {"DoomSlayer", DoomSlayer}
 
     };
 

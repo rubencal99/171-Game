@@ -64,10 +64,19 @@ public static class PlayerSignaler : object
 
     public static bool CallCasingRecycler(){
         if(PlayerAugmentations.AugmentationList["CasingRecycle"]){
-            Debug.Log("In casing recycle");
+            //Debug.Log("In casing recycle");
             var recycleChance = Random.Range(0, 100);
-            Debug.Log("Recycle percent = " + recycleChance);
+            //Debug.Log("Recycle percent = " + recycleChance);
             if(recycleChance <= PlayerAugmentations.CasingRecPer){
+                return true;
+            }
+            return false;
+        }
+        if(PlayerAugmentations.AugmentationList["DoomSlayer"]){
+            //Debug.Log("In casing recycle");
+            var recycleChance = Random.Range(0, 100);
+            //Debug.Log("Recycle percent = " + recycleChance);
+            if(recycleChance <= PlayerAugmentations.DoomRecycle){
                 return true;
             }
             return false;
@@ -94,6 +103,10 @@ public static class PlayerSignaler : object
         if(PlayerAugmentations.AugmentationList["DamageBuff"]){
             return curDamage + curDamage * PlayerAugmentations.BuffAmount;
         }
+        ////////////////////////////////Doom Buff///////////////////////
+        if(PlayerAugmentations.AugmentationList["DoomSlayer"]){
+            return curDamage + curDamage * PlayerAugmentations.DoomBuff;
+        }
         return curDamage;
     }
 
@@ -102,14 +115,11 @@ public static class PlayerSignaler : object
         if(PlayerAugmentations.AugmentationList["SecondSkin"]){
             return curDamage - curDamage * PlayerAugmentations.SkinAmount;
         }
-        return curDamage;
-    }
-
-    public static bool CallPredatoryInstinct(){
-        if(PlayerAugmentations.AugmentationList["Predator"]){
-            return true;
+        ////////////////////////////////Doom Half Damage///////////////////////
+        if(PlayerAugmentations.AugmentationList["DoomSlayer"]){
+            return curDamage + curDamage * PlayerAugmentations.DoomHalfDam;
         }
-        return false;
+        return curDamage;
     }
 
     public static float SetMovementSpeed(){
