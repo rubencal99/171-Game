@@ -22,7 +22,7 @@ public class BackgroundSoundManager : MonoBehaviour
     public string supportParam;
     public Vector3 shopPos;
     public float shopDist;
-    void Start()
+    void Awake()
     {
         detect = GetComponent<SphereCollider>();
         // instantite music
