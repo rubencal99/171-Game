@@ -73,8 +73,6 @@ public static class PlayerAugmentations : object
     //////////////////////////////SecondSkin////////////////////////////////////////
     public static bool SecondSkin = false;
     public static float SkinAmount = 0.5f;
-    //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
-
 
     //////////////////////////////DoomSlayer////////////////////////////////////////
     public static bool DoomSlayer = false;
@@ -85,6 +83,8 @@ public static class PlayerAugmentations : object
     //////////////////////////////ElephantStrength////////////////////////////////////////
     public static bool ElephantStrength = false;
     public static float EStrength = 0.2f;
+
+    //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
