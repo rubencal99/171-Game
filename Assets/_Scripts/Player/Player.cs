@@ -340,7 +340,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
     private void OnApplicationQuit()
     {
-        //inventory.ClearInventory();
+        inventory.ClearInventory();
     }
 
     public void SetSecondSkin(){
