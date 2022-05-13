@@ -191,11 +191,20 @@ public class PlayerRunGunState : PlayerBaseState
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Space")  > 0)
         {
-            if(PlayerAugmentations.AugmentationList["Whiskers"] && !PlayerAugmentations.AugmentationList["HookShot"]){ 
-                PlayerSignaler.CallWhiskers();
-            }else if(PlayerAugmentations.AugmentationList["HookShot"] && !PlayerAugmentations.AugmentationList["Whiskers"]){
+            if(PlayerAugmentations.AugmentationList["Whiskers"] && !PlayerAugmentations.AugmentationList["HookShot"])
+            {
+                if(PlayerAugmentations.inWhiskers == false)
+                {
+                    PlayerSignaler.CallWhiskers();
+                } 
+                
+            }
+            else if(PlayerAugmentations.AugmentationList["HookShot"] && !PlayerAugmentations.AugmentationList["Whiskers"])
+            {
                 Debug.Log("HookShot is manged by script");
-            }else{
+            }
+            else
+            {
                 if (playerInput.PlayerMovement.currentVelocity == 0)
                 {
                     return;
@@ -207,7 +216,8 @@ public class PlayerRunGunState : PlayerBaseState
                 }
             }
         }
-        else{
+        else
+        {
             if (dodging == true)
             {
                 dodging = false;

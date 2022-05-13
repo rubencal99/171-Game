@@ -10,7 +10,7 @@ public class EnemyGun : Gun
     {
         rateOfFireCoroutine = true;
         float delay = UnityEngine.Random.Range(weaponData.WeaponDelay, weaponData.WeaponDelay + weaponData.WeaponDelayRandomizer);
-        yield return new WaitForSeconds(delay);// / passives.ROFMultiplier);
+        yield return new WaitForSeconds(delay / passives.ROFMultiplier);// / passives.ROFMultiplier);
         rateOfFireCoroutine = false;
     }
 
@@ -21,6 +21,7 @@ public class EnemyGun : Gun
 
     protected override void UseWeapon()
     {
+        //Debug.Log("In Use Weapon");
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
             Debug.Log("In Use Weapon");

@@ -26,7 +26,7 @@ public class EnemySpanwer : MonoBehaviour
     public bool infiniteSpawn = false;
     public bool stopSpawn = false;
     public float spawnTime = 0.1f;
-    public float spawnDelay = 0.2f;
+    public float spawnDelay = 0.4f;
    // public int numToSpawn = 1;
 
     // public int enemyDensity = 20;

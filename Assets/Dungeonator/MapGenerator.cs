@@ -384,7 +384,7 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.AddDimensions(length, width);
             }
             
-            if (!HasEntry)
+            if (!HasEntry && roomType != "Reward")
             {
                 NewRoom.RoomType = "Start";
                 NewRoom.MaxNeighbors = 1;
@@ -435,7 +435,7 @@ public class MapGenerator : MonoBehaviour
                             roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
                             NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
                             NewRoom.tileCount++;
-                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1);
+                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1, NewRoom);
                         }
                         
                     }
@@ -1150,10 +1150,10 @@ public class MapGenerator : MonoBehaviour
 
     void AddLights(int x1, int y1, int x2, int y2, RoomNode room)
     {
-        var lightPrefab1 = Instantiate(LightPrefab, new Vector3(x1 + 4, 0, y1 + 4), Quaternion.identity);
-        var lightPrefab2 = Instantiate(LightPrefab, new Vector3(x1 + 4, 0, y2 - 4), Quaternion.identity);
-        var lightPrefab3 = Instantiate(LightPrefab, new Vector3(x2 - 4, 0, y1 + 4), Quaternion.identity);
-        var lightPrefab4 = Instantiate(LightPrefab, new Vector3(x2 - 4, 0, y2 - 4), Quaternion.identity);
+        var lightPrefab1 = Instantiate(LightPrefab, new Vector3(x1 + 8, 0, y1 + 8), Quaternion.identity);
+        var lightPrefab2 = Instantiate(LightPrefab, new Vector3(x1 + 8, 0, y2 - 8), Quaternion.identity);
+        var lightPrefab3 = Instantiate(LightPrefab, new Vector3(x2 - 8, 0, y1 + 8), Quaternion.identity);
+        var lightPrefab4 = Instantiate(LightPrefab, new Vector3(x2 - 8, 0, y2 - 8), Quaternion.identity);
 
         lightPrefab1.transform.parent = room.gameObject.transform;
         lightPrefab2.transform.parent = room.gameObject.transform;

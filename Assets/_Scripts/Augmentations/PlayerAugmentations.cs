@@ -35,7 +35,10 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////WHISKERS//////////////////////////////////////////
     public static bool Whiskers = false;
+    public static bool inWhiskers = false;
     public static float whiskersDist = 5f;
+    public static float whiskersTime = 2f;
+    public static float whiskersTimer = 2f;
 
     //////////////////////////////HOOKSHOT//////////////////////////////////////////
     public static bool HookShot = false;
@@ -47,10 +50,29 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////Drone////////////////////////////////////////
     public static bool Drone = false;
+    public static bool DroneHead = false;
+    public static bool DroneArms = false;
+    public static bool DroneBody = false;
+    public static bool DroneLegs = false;
+
+    //////////////////////////////Thorns////////////////////////////////////////
+    public static bool Thorns = false;
 
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
     public static bool DamageBuff = false;
     public static float BuffAmount = 0.25f;
+    //////////////////////////////CheetahSpeed////////////////////////////////////////
+    public static bool CheetahSpeed = false;
+    public static float CSAmount = 0.2f;
+    //////////////////////////////Predator////////////////////////////////////////
+    public static bool Predator = false;
+    public static float PredatoryAmount = 0.4f;
+    public static float predatorTimer = 0.3f;
+    public static float predatorTotalTime = 3f;
+    //////////////////////////////SecondSkin////////////////////////////////////////
+    public static bool SecondSkin = false;
+    public static float SkinAmount = 0.5f;
+
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
     {
@@ -64,7 +86,16 @@ public static class PlayerAugmentations : object
         {"HookShot", HookShot},
         {"AutoDoc", AutoDoc}, //passive
         {"DamageBuff", DamageBuff}, //passive
-        {"Drone", Drone} //passive
+        {"Drone", Drone}, //passive
+        {"DroneHead", DroneHead}, //passive
+        {"DroneArms", DroneArms}, //passive
+        {"DroneBody", DroneBody}, //passive
+        {"DroneLegs", DroneLegs}, //passive
+        {"Thorns", Thorns}, //passive
+        {"CheetahSpeed", CheetahSpeed},
+        {"Predator", Predator},
+        {"SecondSkin", SecondSkin}
+
     };
 
     public static void ResetAugmentations()
@@ -85,6 +116,14 @@ public static class PlayerAugmentations : object
         AutoDoc = false;
         AutoDocUsed = false;
         Drone = false;
+        DroneHead = false;
+        DroneArms = false;
+        DroneBody = false;
+        DroneLegs = false;
+        Thorns = false;
+        CheetahSpeed = false;
+        Predator = false;
+        SecondSkin = false;
     }
 
     public static void PrintDictionary()

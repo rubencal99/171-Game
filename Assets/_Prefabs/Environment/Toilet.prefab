@@ -861,7 +861,18 @@ MonoBehaviour:
   Key: {fileID: 694351568721799155}
   LeftButton: {fileID: 694351568695480403}
   RightButton: {fileID: 694351569344312266}
-  LeftSpawnItem: {fileID: 3997752655706308050, guid: 19a9a679d9b6894419ef53533c7321dd, type: 3}
-  RightSpawnItem: {fileID: 6436781124620589926, guid: 6e4fef45fb5b6234ab567bc3841b27f0, type: 3}
+  weaponList:
+  - {fileID: 6273300952984514769, guid: 71bacbaffa766af40b9fa8fe9303ee16, type: 3}
+  - {fileID: 3997752655706308050, guid: 19a9a679d9b6894419ef53533c7321dd, type: 3}
+  - {fileID: 298298334688827759, guid: df7a547b89de4bc49b04b634a1e7fd2f, type: 3}
+  - {fileID: 3227130039294860668, guid: ca3f7fbc9ebc7fc4c8c49d563c44056f, type: 3}
+  - {fileID: 4346734895893382118, guid: 481081ca2ae26dd4bafa78b8022ac8d2, type: 3}
+  - {fileID: 6273300952984514769, guid: d0e934cde3ecaac4abad3ad18b965bc3, type: 3}
+  - {fileID: 6273300952984514769, guid: 92018f86f421f3346839a27676f055bb, type: 3}
+  - {fileID: 6436781124620589926, guid: 6e4fef45fb5b6234ab567bc3841b27f0, type: 3}
+  - {fileID: 831301174554269326, guid: 812450d867f0e424f88b79c03209a563, type: 3}
+  - {fileID: 4346734895893382118, guid: 47faa55c571557c4fa4e401ae593ba33, type: 3}
+  LeftSpawnItem: {fileID: 0}
+  RightSpawnItem: {fileID: 0}
   used: 0
   displayTime: 0.3
