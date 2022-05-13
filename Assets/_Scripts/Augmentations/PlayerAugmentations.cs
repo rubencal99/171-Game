@@ -75,13 +75,16 @@ public static class PlayerAugmentations : object
     public static float SkinAmount = 0.5f;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
-    public static bool SonicWave = false;
+
     //////////////////////////////DoomSlayer////////////////////////////////////////
     public static bool DoomSlayer = false;
     public static float DoomBuff = 0.5f;
     public static float DoomHalfDam = 0.7f;
     public static float DoomRecycle = 25f;
     public static float DoomHealth = 10f;
+    //////////////////////////////ElephantStrength////////////////////////////////////////
+    public static bool ElephantStrength = false;
+    public static float EStrength = 0.2f;
 
 
     public static Dictionary<string, bool> AugmentationList = new Dictionary<string, bool>()
@@ -105,8 +108,8 @@ public static class PlayerAugmentations : object
         {"CheetahSpeed", CheetahSpeed},
         {"Predator", Predator},
         {"SecondSkin", SecondSkin},
-        {"SonicWave", SonicWave},
-        {"DoomSlayer", DoomSlayer}
+        {"DoomSlayer", DoomSlayer},
+        {"ElephantStrength", ElephantStrength}
 
     };
 
@@ -136,6 +139,7 @@ public static class PlayerAugmentations : object
         CheetahSpeed = false;
         Predator = false;
         SecondSkin = false;
+        ElephantStrength = false;
     }
 
     public static void PrintDictionary()

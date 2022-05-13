@@ -170,4 +170,11 @@ public static class PlayerSignaler : object
             Player.instance.DestroyDrone();
         }
     }
+    public static float CallElephantStrength(){
+        float strength = 1f;
+        if(PlayerAugmentations.AugmentationList["ElephantStrength"]){
+            strength = PlayerAugmentations.EStrength;
+        }
+        return strength;
+    }
 }
