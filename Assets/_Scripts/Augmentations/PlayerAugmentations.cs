@@ -35,7 +35,10 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////WHISKERS//////////////////////////////////////////
     public static bool Whiskers = false;
+    public static bool inWhiskers = false;
     public static float whiskersDist = 5f;
+    public static float whiskersTime = 2f;
+    public static float whiskersTimer = 2f;
 
     //////////////////////////////HOOKSHOT//////////////////////////////////////////
     public static bool HookShot = false;
@@ -47,6 +50,11 @@ public static class PlayerAugmentations : object
 
     //////////////////////////////Drone////////////////////////////////////////
     public static bool Drone = false;
+    public static bool DroneHead = false;
+    public static bool DroneArms = false;
+    public static bool DroneBody = false;
+    public static bool DroneLegs = false;
+
     //////////////////////////////Thorns////////////////////////////////////////
     public static bool Thorns = false;
     public static float ThornDam = 2f;
@@ -89,6 +97,10 @@ public static class PlayerAugmentations : object
         {"AutoDoc", AutoDoc}, //passive
         {"DamageBuff", DamageBuff}, //passive
         {"Drone", Drone}, //passive
+        {"DroneHead", DroneHead}, //passive
+        {"DroneArms", DroneArms}, //passive
+        {"DroneBody", DroneBody}, //passive
+        {"DroneLegs", DroneLegs}, //passive
         {"Thorns", Thorns}, //passive
         {"CheetahSpeed", CheetahSpeed},
         {"Predator", Predator},
@@ -116,6 +128,10 @@ public static class PlayerAugmentations : object
         AutoDoc = false;
         AutoDocUsed = false;
         Drone = false;
+        DroneHead = false;
+        DroneArms = false;
+        DroneBody = false;
+        DroneLegs = false;
         Thorns = false;
         CheetahSpeed = false;
         Predator = false;

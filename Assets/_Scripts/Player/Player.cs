@@ -145,6 +145,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
          }
+         PlayerSignaler.Update();
     }
 
     public void setSpawnPoint(Vector3 spawn) {

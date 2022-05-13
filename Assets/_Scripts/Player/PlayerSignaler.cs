@@ -22,6 +22,12 @@ public static class PlayerSignaler : object
         Player = obj.GetComponent<Player>();
         playerPassives = obj.GetComponent<PlayerPassives>();
     }*/
+
+    public static void Update()
+    {
+        CheckWhiskers();
+        CallDrone();
+    }
     
     public static void SetSignaler()
     {
@@ -85,8 +91,10 @@ public static class PlayerSignaler : object
     }
 
     public static void CallWhiskers(){
+        PlayerAugmentations.inWhiskers = true;
         var mousepos = playerWeapon.pointerPos;
         var direction = mousepos - Player.transform.position;
+        direction.y = 0;
         RaycastHit hit = new RaycastHit();
         var dist = PlayerAugmentations.whiskersDist;
         Physics.Raycast(Player.transform.position, direction, out hit, dist);
@@ -94,8 +102,27 @@ public static class PlayerSignaler : object
             //Player.transform.position += direction.normalized;
             Player.transform.position += direction.normalized * dist;
         }else if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Obstacles")){
-            Debug.Log("Teleport into obstacle");
+            Debug.Log("About to TP into obstacle");
+            Debug.Log("Current Position: " + Player.transform.position);
+            Debug.Log("Hit Position: " + hit.transform.position);
+            var point = hit.transform.position - direction.normalized * 2;
+            point.y = Player.transform.position.y;
+            Debug.Log("TP Point: " + point);
+            Player.transform.position = point;
         }  
+    }
+
+    public static void CheckWhiskers()
+    {
+        if(PlayerAugmentations.inWhiskers)
+        {
+            PlayerAugmentations.whiskersTimer -= Time.deltaTime;
+            if(PlayerAugmentations.whiskersTimer <= 0)
+            {
+                PlayerAugmentations.inWhiskers = false;
+                PlayerAugmentations.whiskersTimer = PlayerAugmentations.whiskersTime;
+            }
+        }
     }
 
     public static float CallDamageBuff(float damage){
