@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Floor 1 wall rules
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 21300000, guid: b8c5b298e343ffa42847d21f2d614de7, type: 3}
-  m_DefaultGameObject: {fileID: 4375279354470731089, guid: 661ae78e5e68f4742b61f3ed08dc6bec, type: 3}
+  m_DefaultGameObject: {fileID: 4375279354470731089, guid: 26a21d8068232a141a6970abd3cc51e7, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0

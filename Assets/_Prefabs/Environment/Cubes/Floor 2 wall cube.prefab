@@ -7,17 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1629562174052227504, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2720769402224597044, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2720769402224597044, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de876bfd4f1f78746b4e0ed532ffbe91, type: 2}
     - target: {fileID: 2720769402224597044, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: de876bfd4f1f78746b4e0ed532ffbe91, type: 2}
     - target: {fileID: 6491939475053275967, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_Name
-      value: Floor 2 wall cube 1
+      value: Floor 2 wall cube
       objectReference: {fileID: 0}
     - target: {fileID: 7531675905200870778, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_RootOrder
@@ -65,8 +73,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8113284888977127957, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8113284888977127957, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a134c79fc53ee2c418df77f8d14659a9, type: 2}
     - target: {fileID: 8113284888977127957, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
