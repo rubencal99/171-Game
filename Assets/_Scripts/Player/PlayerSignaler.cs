@@ -26,6 +26,7 @@ public static class PlayerSignaler : object
     public static void Update()
     {
         CheckWhiskers();
+        CallDrone();
     }
     
     public static void SetSignaler()
