@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8306247411282849290}
   - component: {fileID: 8306247411282849294}
   - component: {fileID: 5049166434557664346}
+  - component: {fileID: -5455654650676700872}
   m_Layer: 0
   m_Name: RoomKey
   m_TagString: Untagged
@@ -125,3 +126,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af362cb35b3012149990b082e70e5b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5455654650676700872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8306247411282849284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3eb2aac801017e40b38b37d2cd18f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <EnemyData>k__BackingField: {fileID: 0}
+  <Health>k__BackingField: 0
+  <tempHealth>k__BackingField: 0
+  <Damage>k__BackingField: 0
+  <Range>k__BackingField: 0
+  <OnGetHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnDie>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  <OnRevive>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  isDying: 0
+  hasDied: 0
+  deathTimer: 10
+  agentAnimations: {fileID: 0}
+  agentMovement: {fileID: 0}
+  knockback: 0
+  blood: {fileID: 0}
+  timer: 0
+  isDestructible: 0
