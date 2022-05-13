@@ -124,7 +124,7 @@ public class RegularBullet : Bullet
             Debug.Log("In trigger enter enemy");
             HitEnemy(collision);
             // This check is for bullets that go through enemies like snipers or lasers etc.
-            if (!BulletData.GoThroughHittable) {
+            if (!BulletData.GoThroughHittable || collision.gameObject.name == "Bodyguard 3D") {
                 animator.Play("bulletdestructionenemy");
                  StartCoroutine(destruction());
             }

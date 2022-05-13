@@ -836,7 +836,7 @@ public class MapGenerator : MonoBehaviour
         //---------------- DOOR ----------------
         if(!hasBoss)
         {
-            int doorIndex = UnityEngine.Random.Range(roomsList.Count / 3, roomsList.Count / 2);
+            /*int doorIndex = UnityEngine.Random.Range(roomsList.Count / 3, roomsList.Count / 2);
             if(doorIndex == shopIndex)
             {
                 doorIndex = 1;
@@ -845,6 +845,17 @@ public class MapGenerator : MonoBehaviour
             if(door == StartRoom)
             {
                 door = StartRoom.RoomsByDistance[doorIndex-1];
+            }*/
+            RoomNode door = null;
+            for(int i = 0; i < StartRoom.RoomsByDistance.Count; i++)
+            {
+                if(StartRoom.RoomsByDistance[i].RoomType != "Start" || 
+                    StartRoom.RoomsByDistance[i].RoomType != "Reward" ||
+                    StartRoom.RoomsByDistance[i].RoomType != "Shop" ||
+                    StartRoom.RoomsByDistance[i].RoomType != "Key")
+                    {
+                        door = StartRoom.RoomsByDistance[i];
+                    }
             }
             door.RoomType = "Door";
             DoorRoom = door;

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   Container:
-  - item: {fileID: 0}
-  - item: {fileID: 0}
+  - item: {fileID: 11400000, guid: c1f575d47d0ca674893c37c64fe4774f, type: 2}
+  - item: {fileID: 11400000, guid: 4733b70e2ebf7274b8b7fa83a4dbfad5, type: 2}
   - item: {fileID: 0}
   - item: {fileID: 0}
   - item: {fileID: 0}
