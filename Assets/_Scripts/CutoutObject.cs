@@ -29,7 +29,7 @@ public class CutoutObject : MonoBehaviour
         if(Physics.Raycast(transform.position, offset.normalized, out hit, Mathf.Infinity, wallMask)){
         
            if(hit.collider.transform.tag == "spheremask") {
-               targetObject.transform.localScale = new Vector3(0f, 0f, 0f);
+               targetObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             //   Debug.Log("hit sphere");
            }
            else

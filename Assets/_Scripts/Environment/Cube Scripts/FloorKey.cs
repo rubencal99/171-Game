@@ -10,7 +10,6 @@ public class FloorKey : MonoBehaviour
         {
             Debug.Log("Player has aquired key");
             Player.instance.hasKey = true;
-            KillAllEnemies();
             Destroy(gameObject);    
         }
     }
@@ -21,7 +20,6 @@ public class FloorKey : MonoBehaviour
         {
             Debug.Log("Player has aquired key");
             Player.instance.hasKey = true;
-            KillAllEnemies();
             Destroy(gameObject);    
         }
     }
