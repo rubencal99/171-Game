@@ -28,6 +28,8 @@ TagManager:
   - Tilemap
   - spheremask
   - MoneyReduceText
+  - minimaptracker
+  - minimapblocker
   layers:
   - Default
   - TransparentFX
