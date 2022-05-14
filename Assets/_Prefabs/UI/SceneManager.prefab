@@ -1197,13 +1197,20 @@ MonoBehaviour:
       Data3: -1640962931
       Data4: 564527079
     Path: event:/UI/Hover
-  clickItemSound:
+  clickItemEvent:
     Guid:
       Data1: -1637883616
       Data2: 1122049429
       Data3: 922599343
       Data4: 712667868
     Path: event:/UI/ClickItem
+  invOpenEvent:
+    Guid:
+      Data1: 1719686223
+      Data2: 1266804297
+      Data3: -1126271825
+      Data4: 1943778210
+    Path: event:/UI/OpenClose
 --- !u!1 &7096302333920699867
 GameObject:
   m_ObjectHideFlags: 0
