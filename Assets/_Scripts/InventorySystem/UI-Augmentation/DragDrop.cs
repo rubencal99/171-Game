@@ -42,6 +42,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup.blocksRaycasts = true;
         rectTransform.SetParent(parent.transform);
         rectTransform.anchoredPosition = Vector2.zero;
+        
     }
     public void OnDrop(PointerEventData eventData){
         // 
@@ -49,6 +50,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (eventData.pointerDrag.GetComponent<DragDrop>() != null && eventData.pointerDrag != this)
         {
             slotElement.inventory.MoveSwapCombine(eventData.pointerDrag.GetComponent<DragDrop>().slotElement.slot, slotElement.slot);
+            soundManager.PlayClickItemSound(slotElement.slot.item.type);
             slotElement.inventory.Print();
         }
     }
