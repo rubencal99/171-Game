@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Canvas canvas; 
     [SerializeField] public GameObject parent;
@@ -53,6 +53,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             soundManager.PlayClickItemSound(slotElement.slot.item.type);
             slotElement.inventory.Print();
         }
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        soundManager.PlayHoverSound();
+        // update InvToolTip
+        //toolTip.ShowToolTip(slotElement.slot.item);
+        //Debug.Log("OnPointerEnter " + slotElement.slot.item); 
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Update InvToolTip to null
+        //toolTip.HideToolTip();
+        //Debug.Log("OnPointerExit " + slotElement.slot.item); 
     }
 
     
