@@ -59,6 +59,9 @@ public static class PlayerAugmentations : object
     public static bool Thorns = false;
     public static float ThornDam = 2f;
 
+    public static float ThornKO = 0.1f;
+    public static float ThornPushAmount = 3f;
+
     //////////////////////////////DamageBuff/////////////////////////////////////
     public static bool DamageBuff = false;
     public static float BuffAmount = 0.25f;
@@ -68,7 +71,7 @@ public static class PlayerAugmentations : object
     //////////////////////////////Predator////////////////////////////////////////
     public static bool Predator = false;
     public static float PredatoryAmount = 0.4f;
-    public static float predatorTimer = 0.3f;
+    public static float predatorTimer = 0f;
     public static float predatorTotalTime = 3f;
     //////////////////////////////SecondSkin////////////////////////////////////////
     public static bool SecondSkin = false;
@@ -83,7 +86,10 @@ public static class PlayerAugmentations : object
     //////////////////////////////ElephantStrength////////////////////////////////////////
     public static bool ElephantStrength = false;
     public static float EStrength = 0.2f;
+    //////////////////////////////AngelsGrace////////////////////////////////////////
+    public static bool AngelsGrace = false;
 
+    public static float GracePeriod = 2f;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -109,7 +115,8 @@ public static class PlayerAugmentations : object
         {"Predator", Predator},
         {"SecondSkin", SecondSkin},
         {"DoomSlayer", DoomSlayer},
-        {"ElephantStrength", ElephantStrength}
+        {"ElephantStrength", ElephantStrength},
+        {"AngelsGrace",AngelsGrace}
 
     };
 
@@ -140,6 +147,7 @@ public static class PlayerAugmentations : object
         Predator = false;
         SecondSkin = false;
         ElephantStrength = false;
+        AngelsGrace = false;
     }
 
     public static void PrintDictionary()

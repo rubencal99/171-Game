@@ -159,6 +159,16 @@ public static class PlayerSignaler : object
         return speedScalar;
     }
 
+    public static void CheckPredator(){
+        if(PlayerSignaler.usePredator){
+           PlayerSignaler.predatorTimer  += Time.deltaTime;
+        }
+        if(PlayerSignaler.predatorTimer  >= PlayerSignaler.predatorTotalTime){
+            PlayerSignaler.usePredator = false;
+            PlayerSignaler.predatorTimer  = 0;
+        }
+    }
+
     public static void CallDrone()
     {
         if(PlayerAugmentations.AugmentationList["Drone"] && Player.instance.Drone == null)
@@ -176,5 +186,12 @@ public static class PlayerSignaler : object
             strength = PlayerAugmentations.EStrength;
         }
         return strength;
+    }
+
+    public static bool CallAngelsGrace(){
+        if(PlayerAugmentations.AugmentationList["AngelsGrace"]){
+            return true;
+        }
+        return false;
     }
 }
