@@ -93,6 +93,9 @@ public static class PlayerAugmentations : object
     //////////////////////////////HungryHippo/////////////////////////////////////
     public static bool HungryHippo = false;
     public static float HippoBuff = 2f;
+    //////////////////////////////xXx/////////////////////////////////////
+    public static bool xXx = false;
+    public static float xXxBuff = 2f;
 
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
@@ -121,7 +124,8 @@ public static class PlayerAugmentations : object
         {"DoomSlayer", DoomSlayer},
         {"ElephantStrength", ElephantStrength},
         {"AngelsGrace",AngelsGrace},
-        {"HungryHippo",HungryHippo}
+        {"HungryHippo",HungryHippo},
+        {"xXx",xXx}
 
     };
 

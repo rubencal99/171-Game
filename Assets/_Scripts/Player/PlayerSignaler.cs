@@ -128,11 +128,11 @@ public static class PlayerSignaler : object
     public static float CallDamageBuff(float damage){
         var curDamage = damage;
         if(PlayerAugmentations.AugmentationList["DamageBuff"]){
-            return curDamage + curDamage * PlayerAugmentations.BuffAmount;
+            return curDamage + curDamage * (PlayerAugmentations.BuffAmount * BuffDamBuff());
         }
         ////////////////////////////////Doom Buff///////////////////////
         if(PlayerAugmentations.AugmentationList["DoomSlayer"]){
-            return curDamage + curDamage * PlayerAugmentations.DoomBuff;
+            return curDamage + curDamage * (PlayerAugmentations.DoomBuff * BuffDamBuff());
         }
         return curDamage;
     }
@@ -193,5 +193,19 @@ public static class PlayerSignaler : object
             return true;
         }
         return false;
+    }
+
+    public static float BuffHippo(){
+        if(PlayerAugmentations.AugmentationList["HungryHippo"]){
+            return PlayerAugmentations.HippoBuff;
+        }
+        return 0;
+    }
+
+    public static float BuffDamBuff(){
+        if(PlayerAugmentations.AugmentationList["xXx"]){
+            return PlayerAugmentations.xXxBuff;
+        }
+        return 1;
     }
 }
