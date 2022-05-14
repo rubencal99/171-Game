@@ -7,6 +7,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     [SerializeField] private Canvas canvas; 
     [SerializeField] public GameObject parent;
+    public InventorySoundManager soundManager;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private InventorySlotElement slotElement;
@@ -15,9 +16,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         slotElement = parent.GetComponent<InventorySlotElement>();
+        soundManager = canvas.GetComponent<InventorySoundManager>();
     }
     public void OnPointerDown(PointerEventData eventData) {
         // Debug.Log("pointer do be down tho");
+        soundManager.PlayClickItemSound(slotElement.slot.item.type);
 
     }
 

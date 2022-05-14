@@ -8,11 +8,11 @@ public class BackgroundSoundManager : MonoBehaviour
     public SphereCollider detect;
     public FMODUnity.EventReference CombatMusicEvent;
     private FMOD.Studio.EventInstance CombatMusicInst;
-    [SerializeField]
+    //[SerializeField]
     private int prisonerCount = 0;
-    [SerializeField]
+    //[SerializeField]
     private int wardenCount = 0;
-    [SerializeField]
+    //[SerializeField]
     private int supportCount = 0;
     [ParamRef]
     public string prisonerParam;

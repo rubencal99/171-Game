@@ -1085,6 +1085,7 @@ GameObject:
   - component: {fileID: 7096302333870742885}
   - component: {fileID: 7096302333870742882}
   - component: {fileID: 7096302333870742883}
+  - component: {fileID: 4293683412695243462}
   m_Layer: 5
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -1177,6 +1178,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4293683412695243462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096302333870742881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949912b289c754c2486391453a84d4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEvent:
+    Guid:
+      Data1: -496083437
+      Data2: 1177563509
+      Data3: -1640962931
+      Data4: 564527079
+    Path: event:/UI/Hover
+  clickItemSound:
+    Guid:
+      Data1: -1637883616
+      Data2: 1122049429
+      Data3: 922599343
+      Data4: 712667868
+    Path: event:/UI/ClickItem
 --- !u!1 &7096302333920699867
 GameObject:
   m_ObjectHideFlags: 0
