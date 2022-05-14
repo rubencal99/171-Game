@@ -48,6 +48,14 @@ public class Toilet : MonoBehaviour
 
     void ChooseItems()
     {
+        if(LeftSpawnItem != null && RightSpawnItem != null)
+        {
+            LeftButton.interactable = false;
+            LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = LeftSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+            RightButton.interactable = false;
+            RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+            return;
+        }
         var index = UnityEngine.Random.Range(0, weaponList.Count);
         LeftSpawnItem = weaponList[index];
         RightSpawnItem = weaponList[index];
