@@ -320,12 +320,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
         PlayerAugmentations.HippoApplied = true;
         yield return null;
         setMaxHp(MaxHealth + PlayerAugmentations.HippoHealth);
-        Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied);
+        Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied + PlayerSignaler.BuffHippo());
     }
     public IEnumerator RemoveHippo(){
         PlayerAugmentations.HippoApplied = false;
         yield return null;
-        setMaxHp(MaxHealth - PlayerAugmentations.HippoHealth);
+        setMaxHp(MaxHealth - PlayerAugmentations.HippoHealth - PlayerSignaler.BuffHippo());
         Debug.Log("Hippo Removed from RemoveHippo: " + PlayerAugmentations.HippoApplied);
     }
 
@@ -355,7 +355,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         boxCollider.enabled = false;
         // remove object from inventory
         inventory.AContainer[1].Clear(); //could be an error
-        
+
         yield return new WaitForSeconds(PlayerAugmentations.GracePeriod);
         boxCollider.enabled = true;
     }

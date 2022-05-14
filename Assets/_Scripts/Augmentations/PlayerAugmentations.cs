@@ -90,6 +90,10 @@ public static class PlayerAugmentations : object
     public static bool AngelsGrace = false;
 
     public static float GracePeriod = 2f;
+    //////////////////////////////HungryHippo/////////////////////////////////////
+    public static bool HungryHippo = false;
+    public static float HippoBuff = 2f;
+
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -116,7 +120,8 @@ public static class PlayerAugmentations : object
         {"SecondSkin", SecondSkin},
         {"DoomSlayer", DoomSlayer},
         {"ElephantStrength", ElephantStrength},
-        {"AngelsGrace",AngelsGrace}
+        {"AngelsGrace",AngelsGrace},
+        {"HungryHippo",HungryHippo}
 
     };
 
@@ -148,6 +153,7 @@ public static class PlayerAugmentations : object
         SecondSkin = false;
         ElephantStrength = false;
         AngelsGrace = false;
+        HungryHippo = false;
     }
 
     public static void PrintDictionary()
