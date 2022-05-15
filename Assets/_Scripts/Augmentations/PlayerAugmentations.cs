@@ -100,7 +100,7 @@ public static class PlayerAugmentations : object
     public static bool MetalSkin = false;
     public static float MetalAmount = 1.5f;
     //////////////////////////////CaptainPlanet/////////////////////////////////////
-    public static bool CapPlanet = false;
+    public static bool CaptainPlanet = false;
     public static int CapRecycle = 2;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
@@ -131,7 +131,8 @@ public static class PlayerAugmentations : object
         {"AngelsGrace",AngelsGrace},
         {"HungryHippo",HungryHippo},
         {"xXx",xXx},
-        {"MetalSkin",MetalSkin}
+        {"MetalSkin",MetalSkin},
+        {"CaptainPlanet",CaptainPlanet}
 
     };
 
