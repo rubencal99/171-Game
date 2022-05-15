@@ -5,7 +5,6 @@ using UnityEngine;
 public enum ItemType{
     Augmentation, 
     Weapon,
-    Throwable,
     Default
 }
 
