@@ -362,20 +362,20 @@ MonoBehaviour:
   active: 0
   Properties:
     LiveUpdate:
-      Value: 1
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     LiveUpdatePort:
       Value: 0
       HasValue: 0
     Overlay:
-      Value: 1
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     Logging:
       Value: 0
       HasValue: 0
     SampleRate:
-      Value: 48000
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     BuildDirectory:
       Value: 
       HasValue: 0
@@ -383,11 +383,11 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     VirtualChannelCount:
-      Value: 1024
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     RealChannelCount:
-      Value: 256
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     DSPBufferLength:
       Value: 0
       HasValue: 0
@@ -429,8 +429,8 @@ MonoBehaviour:
       Value: 0
       HasValue: 0
     LiveUpdatePort:
-      Value: 9264
-      HasValue: 1
+      Value: 0
+      HasValue: 0
     Overlay:
       Value: 0
       HasValue: 0
@@ -460,10 +460,10 @@ MonoBehaviour:
       HasValue: 0
     Plugins:
       Value: []
-      HasValue: 1
+      HasValue: 0
     StaticPlugins:
       Value: []
-      HasValue: 1
+      HasValue: 0
     CallbackHandler:
       Value: {fileID: 0}
       HasValue: 0

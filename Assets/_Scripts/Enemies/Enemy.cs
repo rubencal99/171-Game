@@ -60,13 +60,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     public virtual void Update(){
-        if(PlayerSignaler.usePredator){
-           timer  += Time.deltaTime;
-        }
-        if(timer >= PlayerSignaler.predatorTotalTime){
-            PlayerSignaler.usePredator = false;
-            timer = 0;
-        }
         DeadOrAlive();
     }
 
@@ -140,8 +133,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
             agentMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower * KOStrength, -direction);
         }else if(damageDealer.GetComponent<Player>()){//Collider
             Debug.Log("Should push back enemy on touching thorns collider");
-            var direction = transform.position - damageDealer.transform.parent.position;
-            agentMovement.Knockback(0.1f, 3 * KOStrength, -direction); //This needs tweaking
+            var direction = transform.position - damageDealer.transform.position;
+            agentMovement.Knockback(PlayerAugmentations.ThornKO, PlayerAugmentations.ThornPushAmount * KOStrength, -direction); //This needs tweaking
         }
     }
 

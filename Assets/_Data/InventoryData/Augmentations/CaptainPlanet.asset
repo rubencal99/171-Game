@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
-  m_Name: HippoSkin 1
+  m_Name: CaptainPlanet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 4935955677991697403, guid: b8ae83f8b88b83740a287d1fecbd06e8, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 21300000, guid: a006e313869f7c4479b5e38ca85aa8fa, type: 3}
+  icon: {fileID: 21300000, guid: b570a10ad279d0b44ab8f9e6b657016e, type: 3}
   type: 0
-  itemType: 1
-  description: Test description
+  itemType: 2
+  description: 
   stackLimit: 1
-  Name: Whiskers
-  augType: 1
+  Name: CaptainPlanet
+  augType: 2

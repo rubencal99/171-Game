@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: BulletTime
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1897616300482775799, guid: eaa4fb5e3bf957e4a98ab64017d7badf, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 57393060e8430234bba90b3f2072693b, type: 3}
   type: 0
   itemType: 0
   description: 
   stackLimit: 1
-  Name: 
+  Name: BulletTime
   augType: 0
