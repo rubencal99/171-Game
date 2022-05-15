@@ -68,6 +68,7 @@ public class Railgun : Gun
             else
             {
                 isShooting = false;
+                holding = false;
                 OnShootNoAmmo?.Invoke();
                 // Reload();                 // Use this if we want to reload automatically
                 return;
