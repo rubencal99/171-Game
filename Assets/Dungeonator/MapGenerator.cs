@@ -426,6 +426,15 @@ public class MapGenerator : MonoBehaviour
                             NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
                             NewRoom.tileCount++;
                         }
+                        else if(tempString[i, j] == "e")
+                        {
+                            NewRoom.Entrances.Add(new Vector2Int(x1 + 1 + i, y1 + j + 1));
+                            map[x1 + 1 + i, y1 + j + 1].value = 1;
+                            map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
+                            roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
+                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            NewRoom.tileCount++;
+                        }
                         else
                         {
                             //Debug.Log("String result = " + result);

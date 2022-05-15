@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-  public static class ObstacleLookUp
+public static class ObstacleLookUp
 {
     // Dictionary to map a string to each Obstacle object.
     private static Dictionary<string, GameObject> ObstacleDictionary;
