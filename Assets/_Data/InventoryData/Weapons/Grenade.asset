@@ -18,6 +18,6 @@ MonoBehaviour:
   type: 1
   itemType: 2
   description: Gernude
-  stackLimit: 3
+  stackLimit: 5
   Name: Grenade
   weaponType: 2

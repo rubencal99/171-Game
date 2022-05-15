@@ -17,6 +17,8 @@ public class RoomNode : MonoBehaviour
     public Vector2Int topRightCorner;
 
     public Vector2Int topLeftCorner;
+
+    public List<Vector2Int> Entrances = new List<Vector2Int>();
     public int length;
     public int width;
     public int area;

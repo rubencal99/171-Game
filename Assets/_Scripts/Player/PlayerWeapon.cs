@@ -45,6 +45,29 @@ public class PlayerWeapon : AgentWeapon
         AssignWeapon();
     }
 
+    public override void AssignWeapon()
+    {
+        weaponRenderer = GetComponentInChildren<WeaponRenderer>();
+        if(GetComponentInChildren<Gun>())
+        {
+            gun = GetComponentInChildren<Gun>();
+            weapon = gun.gameObject;
+            melee = null;
+            gun.ForceReload();
+        }
+        else if(GetComponentInChildren<Melee>())
+        {
+            melee = GetComponentInChildren<Melee>();
+            weapon = melee.gameObject;
+            gun = null;
+        }
+
+        
+        xMax = gameObject.transform.position.x + 0.5f;
+        xMin = gameObject.transform.position.x - 0.5f;
+        flipY = false;
+    }
+
 
     /*private void Update()
     {
