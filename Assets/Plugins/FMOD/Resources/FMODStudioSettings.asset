@@ -316,6 +316,7 @@ MonoBehaviour:
   - BIO-S
   - LAS-H
   - LAS-L
+  - MEL
   - SHOP
   - UI
   BanksToLoad: []
