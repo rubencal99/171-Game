@@ -73,7 +73,7 @@ public static class PlayerSignaler : object
             //Debug.Log("In casing recycle");
             var recycleChance = Random.Range(0, 100);
             //Debug.Log("Recycle percent = " + recycleChance);
-            if(recycleChance <= PlayerAugmentations.CasingRecPer){
+            if(recycleChance <= (PlayerAugmentations.CasingRecPer * RecBuff())){
                 return true;
             }
             return false;
@@ -82,7 +82,7 @@ public static class PlayerSignaler : object
             //Debug.Log("In casing recycle");
             var recycleChance = Random.Range(0, 100);
             //Debug.Log("Recycle percent = " + recycleChance);
-            if(recycleChance <= PlayerAugmentations.DoomRecycle){
+            if(recycleChance <= (PlayerAugmentations.DoomRecycle * RecBuff())){
                 return true;
             }
             return false;
@@ -140,11 +140,11 @@ public static class PlayerSignaler : object
     public static float CallSecondSkin(float damage){
         var curDamage = damage;
         if(PlayerAugmentations.AugmentationList["SecondSkin"]){
-            return curDamage - curDamage * PlayerAugmentations.SkinAmount;
+            return curDamage - curDamage * (PlayerAugmentations.SkinAmount * SkinBuff());
         }
         ////////////////////////////////Doom Half Damage///////////////////////
         if(PlayerAugmentations.AugmentationList["DoomSlayer"]){
-            return curDamage + curDamage * PlayerAugmentations.DoomHalfDam;
+            return curDamage + curDamage * (PlayerAugmentations.DoomHalfDam * SkinBuff());
         }
         return curDamage;
     }
@@ -207,5 +207,20 @@ public static class PlayerSignaler : object
             return PlayerAugmentations.xXxBuff;
         }
         return 1;
+    }
+
+    public static float SkinBuff(){
+        if(PlayerAugmentations.AugmentationList["MetalSkin"]){
+            return PlayerAugmentations.MetalAmount;
+        }
+        return 1f;
+    }
+
+    public static int RecBuff(){
+        if(PlayerAugmentations.AugmentationList["CaptainPlanet"]){
+            return PlayerAugmentations.CapRecycle;
+        }
+        return 1;
+
     }
 }

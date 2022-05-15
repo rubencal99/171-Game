@@ -151,5 +151,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e575490526b40219e913282480a0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupItem: {fileID: 0}
+  pickupItem: {fileID: 11400000, guid: ffb5fdbcd56ffd140b8b4cf5d6249bde, type: 2}
   pickupAmount: 1

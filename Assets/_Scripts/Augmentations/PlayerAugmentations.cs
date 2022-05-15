@@ -96,7 +96,12 @@ public static class PlayerAugmentations : object
     //////////////////////////////xXx/////////////////////////////////////
     public static bool xXx = false;
     public static float xXxBuff = 2f;
-
+    //////////////////////////////MetalSkin/////////////////////////////////////
+    public static bool MetalSkin = false;
+    public static float MetalAmount = 1.5f;
+    //////////////////////////////CaptainPlanet/////////////////////////////////////
+    public static bool CapPlanet = false;
+    public static int CapRecycle = 2;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -125,7 +130,8 @@ public static class PlayerAugmentations : object
         {"ElephantStrength", ElephantStrength},
         {"AngelsGrace",AngelsGrace},
         {"HungryHippo",HungryHippo},
-        {"xXx",xXx}
+        {"xXx",xXx},
+        {"MetalSkin",MetalSkin}
 
     };
 
@@ -158,6 +164,7 @@ public static class PlayerAugmentations : object
         ElephantStrength = false;
         AngelsGrace = false;
         HungryHippo = false;
+        MetalSkin = false;
     }
 
     public static void PrintDictionary()
