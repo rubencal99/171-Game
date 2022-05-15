@@ -612,6 +612,7 @@ GameObject:
   - component: {fileID: 6670936986278233214}
   - component: {fileID: 428675094496743547}
   - component: {fileID: 6796076974841676731}
+  - component: {fileID: 8923218232831857787}
   m_Layer: 8
   m_Name: Inmate 3D
   m_TagString: Enemy
@@ -902,11 +903,24 @@ CapsuleCollider:
   m_GameObject: {fileID: 6454577251786558054}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.29
   m_Height: 1.6473112
   m_Direction: 1
   m_Center: {x: 0.028062064, y: 0, z: 0}
+--- !u!65 &8923218232831857787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6454577251786558054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.507463, y: 1, z: 0.82527226}
+  m_Center: {x: 0.016575754, y: 7.282822e-16, z: -0.15541494}
 --- !u!1 &6454577252901139937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1115,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3709464250471344649, guid: d9af8daa03ce62e4e989bd9a777d00be, type: 3}
+  m_Sprite: {fileID: -2830713479902866886, guid: bc47ca6ed4e6f4e4c90df996f2a77edd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 1045528080292102331}
   - component: {fileID: 1147769729908498483}
   - component: {fileID: 1147769729908498892}
+  - component: {fileID: 2358778477614710894}
   m_Layer: 8
   m_Name: _Base Warden 3D
   m_TagString: Enemy
@@ -892,11 +893,24 @@ CapsuleCollider:
   m_GameObject: {fileID: 5231308000031674636}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.2
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2358778477614710894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5231308000031674636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22260377, y: 0.67227495, z: 0.70835507}
+  m_Center: {x: 0.038975805, y: -0.027797852, z: -0.14582269}
 --- !u!1 &7487326687363922079
 GameObject:
   m_ObjectHideFlags: 0
