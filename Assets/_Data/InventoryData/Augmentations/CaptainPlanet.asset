@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: CaptainPlanet
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 4935955677991697403, guid: b8ae83f8b88b83740a287d1fecbd06e8, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b570a10ad279d0b44ab8f9e6b657016e, type: 3}
   type: 0
-  itemType: 0
+  itemType: 2
   description: 
   stackLimit: 1
-  Name: 
-  augType: 0
+  Name: CaptainPlanet
+  augType: 2

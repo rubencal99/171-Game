@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: MetalSkin
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 4282041819171577288, guid: 111504e1424bbf5469b58fbedc079d2b, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b7c6677ee79b49b4e8044ca15b9da787, type: 3}
   type: 0
-  itemType: 0
+  itemType: 1
   description: 
   stackLimit: 1
-  Name: 
-  augType: 0
+  Name: MetalSkin
+  augType: 1
