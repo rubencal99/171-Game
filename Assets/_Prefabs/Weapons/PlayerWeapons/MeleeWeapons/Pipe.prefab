@@ -74,6 +74,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7655484095604405663}
+  - {fileID: 1859723711313342035}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa64412ef4cb0544937059a7b8905d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
   attackPoint: {fileID: 0}
   attackRange: 0.15
   passives: {fileID: 0}
@@ -148,8 +150,84 @@ MonoBehaviour:
     m_Bits: 0
   meleeData: {fileID: 11400000, guid: 18efb5ab3e73f4cd0b691d1afd687daa, type: 2}
   isPlayer: 0
+  isMelee: 0
   meleeCoroutine: 0
   sprite: {fileID: 0}
+  comboCounter: 0
+  comboTime1: 0
+  comboTime2: 0
+  comboTimer: 0
+  swapTime: 0.5
+  swapTimer: 0
   <OnMelee>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1581855375507433253}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayShootSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &4004633300570557146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1859723711313342035}
+  - component: {fileID: 1581855375507433253}
+  m_Layer: 0
+  m_Name: WeaponAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1859723711313342035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004633300570557146}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6794053941427344110}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1581855375507433253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4004633300570557146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439acf8f38672e545a9baa47e32f69c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootBulletEvent:
+    Guid:
+      Data1: 972561173
+      Data2: 1235417411
+      Data3: 1049773453
+      Data4: 1198777007
+    Path: event:/WEP/MEL/L-Swing
+  outOfBulletsEvent:
+    Guid:
+      Data1: 1824021654
+      Data2: 1327393408
+      Data3: -713388392
+      Data4: -1272974844
+    Path: event:/WEP/Click
