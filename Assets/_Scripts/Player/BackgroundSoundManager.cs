@@ -8,11 +8,11 @@ public class BackgroundSoundManager : MonoBehaviour
     public SphereCollider detect;
     public FMODUnity.EventReference CombatMusicEvent;
     private FMOD.Studio.EventInstance CombatMusicInst;
-    [SerializeField]
+    //[SerializeField]
     private int prisonerCount = 0;
-    [SerializeField]
+    //[SerializeField]
     private int wardenCount = 0;
-    [SerializeField]
+    //[SerializeField]
     private int supportCount = 0;
     [ParamRef]
     public string prisonerParam;
@@ -22,7 +22,7 @@ public class BackgroundSoundManager : MonoBehaviour
     public string supportParam;
     public Vector3 shopPos;
     public float shopDist;
-    void Start()
+    void Awake()
     {
         detect = GetComponent<SphereCollider>();
         // instantite music
@@ -106,7 +106,7 @@ public class BackgroundSoundManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // if count > 0, increment relevant FMOD param by 0.1 until == 1
         // else, decrement relevant FMOD param by 0.1 until == 0 

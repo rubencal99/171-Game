@@ -594,6 +594,10 @@ PrefabInstance:
       propertyPath: DeathMenuUI
       value: 
       objectReference: {fileID: 772001599}
+    - target: {fileID: 5302321582215384576, guid: 3bd1e28265e07d24685f94030416ef92, type: 3}
+      propertyPath: <OnGetHit>k__BackingField.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5302321582215384588, guid: 3bd1e28265e07d24685f94030416ef92, type: 3}
       propertyPath: m_RootOrder
       value: 27

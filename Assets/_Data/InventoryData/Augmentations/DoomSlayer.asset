@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: DoomSlayer
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 9109989345796519565, guid: c31eb5a882f471f4aa9614e9169fd553, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9a8b81c29b2e68749821fda4895e9944, type: 3}
   type: 0
   itemType: 0
   description: 
   stackLimit: 1
-  Name: 
+  Name: DoomSlayer
   augType: 0

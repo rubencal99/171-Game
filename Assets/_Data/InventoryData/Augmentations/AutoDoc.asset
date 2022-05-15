@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: AutoDoc
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7539971197177632720, guid: 37561b8549852784598bb1ce7d4a7d39, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7db651966b022c140bdf67281d43f68f, type: 3}
   type: 0
-  itemType: 0
+  itemType: 1
   description: 
   stackLimit: 1
-  Name: 
-  augType: 0
+  Name: AutoDoc
+  augType: 1
