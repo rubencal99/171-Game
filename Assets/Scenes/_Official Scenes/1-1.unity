@@ -2603,8 +2603,8 @@ MonoBehaviour:
   wallVertical: {fileID: 8753675751577585064, guid: 76257fc4964cd484989e3a56a342b94e, type: 3}
   wallHorizontal: {fileID: 2983560248429768675, guid: 0b84e1940b269ca4fbec190d930348ae, type: 3}
   controls: {fileID: 0}
-  columns: 140
-  rows: 110
+  columns: 160
+  rows: 120
   minRoomDim: {x: 18, y: 18}
   minEntryDim: {x: 16, y: 16}
   maxEntryDim: {x: 0, y: 0}

@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 4730ae6f24ee0f14583e8abe0069ba7c, type: 2}
-  <Health>k__BackingField: 100
+  <Health>k__BackingField: 30
   <tempHealth>k__BackingField: 0
   <Damage>k__BackingField: 3
   <Range>k__BackingField: 0
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 218306
+  m_InstanceId: 1104194
 --- !u!114 &4102397892194668560
 MonoBehaviour:
   m_ObjectHideFlags: 0
