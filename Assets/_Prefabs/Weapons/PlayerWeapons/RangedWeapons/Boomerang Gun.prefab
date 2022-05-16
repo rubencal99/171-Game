@@ -4916,6 +4916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7888232ccf4874898aa046ebe1a5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0.7, y: -0.23, z: 0}
   muzzle: {fileID: 5516205167428529799}
   passives: {fileID: 0}
   ammo: 10
@@ -4923,11 +4924,14 @@ MonoBehaviour:
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: fedfad608cca4a4459557f443a5502bc, type: 2}
   isPlayer: 0
+  swapTime: 0.5
+  swapTimer: 0
   isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
   sprite: {fileID: 21300000, guid: 47460232db6006140b53875bca345191, type: 3}
+  reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:

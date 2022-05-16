@@ -112,18 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7888232ccf4874898aa046ebe1a5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0.21, y: -0.18, z: 0}
   muzzle: {fileID: 8960519739286643315}
   passives: {fileID: 0}
   ammo: 100
   totalAmmo: 0
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: b04eaefcbb20d69458fca1e64c60e738, type: 2}
-  weaponItem: {fileID: 11400000, guid: c6987e1975c244084b5621ab6d5af05d, type: 2}
   isPlayer: 0
+  swapTime: 0.5
+  swapTimer: 0
+  isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
   sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
+  reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -271,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8960519739286643315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.061, z: 0}
+  m_LocalPosition: {x: 0.755, y: 0.008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8960519738105143088}
@@ -976,7 +980,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0.95, y: 0, z: 0}
+    m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: -29.42}
     m_Scale: {x: 0.4, y: 0.31, z: 0.4}
     placementMode: 0
