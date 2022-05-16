@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public PlayerWeapon weaponParent;
     public ItemInventory inventory;
     public RoomNode currentRoom;
     [SerializeField]
@@ -86,6 +87,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
      public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
+
+    public bool grabbing = false;
+    public bool hasGrabbed = false;
+    public GameObject grabbedObject = null;
     // private AgentInput w; // var to hold agent input
 
 // =======
@@ -107,6 +112,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        weaponParent = GetComponentInChildren<PlayerWeapon>();
         playerMovement = GetComponent<PlayerMovement>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death
