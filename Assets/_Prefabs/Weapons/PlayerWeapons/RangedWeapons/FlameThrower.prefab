@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed40662a8243b14c8dcb3c11fdc01cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <startOffset>k__BackingField: {x: 0.71, y: -0.36, z: 0}
   muzzle: {fileID: 8960519739286643315}
   passives: {fileID: 0}
   ammo: 0
