@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 9136578218939879261}
     - target: {fileID: 3128835130343464155, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: stepEvent.Path
-      value: event:/BIO-S/S-Step
+      value: event:/Characters/BIO-S/STEP-Bare
       objectReference: {fileID: 0}
     - target: {fileID: 3128835130343464155, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: deathEvent.Path
@@ -125,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990098400911, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_InstanceId
-      value: -24112
+      value: -290572
       objectReference: {fileID: 0}
     - target: {fileID: 6638867990841983292, guid: 87d42acc54cfa974bbafd96b41aa0d8c, type: 3}
       propertyPath: m_Enabled
