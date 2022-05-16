@@ -48,6 +48,8 @@ MonoBehaviour:
   LootItems:
   - {fileID: 7810571008584226850, guid: 8fb8b324595d41c4ba7ef4e6b54f3714, type: 3}
   - {fileID: 9132335765561888777, guid: 9f874bd786b93a448a58e7b5d572f558, type: 3}
+  - {fileID: 7810571008584226850, guid: 1f4edeace51eddb42bb52d7e18f8dbed, type: 3}
+  - {fileID: 9132335765561888777, guid: 73192327b52cbb440956f9e78f194055, type: 3}
   LootWeapons:
   - {fileID: 3227130039294860668, guid: 819a14a6e520a214f8f0dbe647588e0b, type: 3}
   - {fileID: 6370446388226261164, guid: e2fe7097915e10e4fbecee626840f944, type: 3}

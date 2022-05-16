@@ -96,10 +96,10 @@ public class Gun : MonoBehaviour, IWeapon
         {
             weaponParent = transform.parent.GetComponent<AgentWeapon>();
         }
-        if(isPlayer) {           
-            passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
-            infAmmo = weaponParent.InfAmmo;
-        }
+        //if(isPlayer) {           
+        passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
+        infAmmo = weaponParent.InfAmmo;
+        //}
          reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
@@ -131,12 +131,12 @@ public class Gun : MonoBehaviour, IWeapon
     public virtual float getReloadSpeed() {
         return PlayerSignaler.CallGunnerGloves(this);
     }
-    public void TryShooting()
+    public virtual void TryShooting()
     {
         isShooting = true;
         //Debug.Log("Is shooting = " + isShooting);
     }
-    public void StopShooting()
+    public virtual void StopShooting()
     {
         isShooting = false;
     }
@@ -194,6 +194,11 @@ public class Gun : MonoBehaviour, IWeapon
     public void AmmoFill()
     {
         TotalAmmo = weaponData.MaxAmmoCapacity;
+    }
+
+    public void ReSupply()
+    {
+        TotalAmmo += (weaponData.MaxAmmoCapacity)/4;
     }
 
     protected virtual void UseWeapon()
@@ -357,9 +362,10 @@ public class Gun : MonoBehaviour, IWeapon
         //Debug.Log("Bullet rotation: " + rotation);
         //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
 
-        var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
+        var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, Quaternion.identity);
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
         bulletPrefab.GetComponent<Bullet>().direction = (bulletSpreadRotation * (weaponParent.aimDirection)).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
+        bulletPrefab.GetComponent<Bullet>().direction.y = 0;
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

@@ -67,7 +67,7 @@ public class EntryCollider : MonoBehaviour
                     if(room.RoomType == "Door" ) spr.sprite = icon.icon;
                     break;
                  case "aux":
-                    if(room.RoomType == "Auxiliary" ) spr.sprite = icon.icon;
+                    if(room.RoomType == "Auxilliary" ) spr.sprite = icon.icon;
                     break;
                  case "reward":
                     if(room.RoomType == "Reward" ) spr.sprite = icon.icon;
@@ -103,6 +103,7 @@ public class EntryCollider : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         UpdateTiles(tile);
     }
+
 
 
     void UpdateTiles(TileBase tile) {

@@ -42,7 +42,7 @@ public class AgentWeapon : MonoBehaviour
         AssignWeapon();
     }
 
-    public void AssignWeapon()
+    public virtual void AssignWeapon()
     {
         weaponRenderer = GetComponentInChildren<WeaponRenderer>();
         if(GetComponentInChildren<Gun>())
@@ -136,6 +136,11 @@ public class AgentWeapon : MonoBehaviour
     public void Fill()
     {
         gun.AmmoFill();
+    }
+
+    public void Supply()
+    {
+        gun.ReSupply();
     }
 
     public void Shoot()

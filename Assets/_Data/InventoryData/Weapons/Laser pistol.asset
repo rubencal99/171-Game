@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Laser pistol
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: a503b8afdabe9464e9b0782e2992a164, type: 3}
-  icon: {fileID: 21300000, guid: 24a3701659bae4d2a9c62100b76b5c6c, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: d7a805483f2bf6448b9c93bc5f46a385, type: 3}
   type: 1
+  itemType: 1
   description: 
-  stackable: 0
+  stackLimit: 1
+  Name: 
   weaponType: 1

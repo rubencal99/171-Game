@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     [SerializeField]
     private ParticleSystem blood;
 
+    public float timer;
+
     private void Start()
     {
         Health = EnemyData.MaxHealth;
@@ -54,6 +56,11 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         agentMovement = GetComponent<AgentMovement>();
         blood = transform.Find("EnemyBlood").GetComponent<ParticleSystem>();
         //blood = FindComponentInChildWithTag
+        timer = 0;
+    }
+
+    public virtual void Update(){
+        DeadOrAlive();
     }
 
     public virtual void GetHit(float damage, GameObject damageDealer)
@@ -112,17 +119,22 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
    public void DamageType(GameObject damageDealer)
     {
+        float KOStrength = PlayerSignaler.CallElephantStrength();
         if(damageDealer.GetComponent<Bullet>())
         {
             BulletDataSO bulletData = damageDealer.GetComponent<Bullet>().BulletData;
-            agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower, -damageDealer.GetComponent<Bullet>().direction);
+            agentMovement.Knockback(bulletData.KnockbackDuration, bulletData.KnockbackPower * KOStrength, -damageDealer.GetComponent<Bullet>().direction);
         }
         else if(damageDealer.GetComponent<Melee>())
         {
             MeleeDataSO meleeData = damageDealer.GetComponent<Melee>().meleeData;
             var weaponPosition = damageDealer.transform.parent.position;
             var direction = transform.position - weaponPosition;
-            agentMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower, -direction);
+            agentMovement.Knockback(meleeData.KnockbackDelay, meleeData.KnockbackPower * KOStrength, -direction);
+        }else if(damageDealer.GetComponent<Player>()){//Collider
+            Debug.Log("Should push back enemy on touching thorns collider");
+            var direction = transform.position - damageDealer.transform.position;
+            agentMovement.Knockback(PlayerAugmentations.ThornKO, PlayerAugmentations.ThornPushAmount * KOStrength, -direction); //This needs tweaking
         }
     }
 
@@ -155,14 +167,11 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     public void Die()
     {
-
+        if(PlayerAugmentations.AugmentationList["Predator"]){
+            PlayerSignaler.usePredator = true;
+        }
         PlayerSignaler.CallPlayerEpiBoost();
         Destroy(gameObject);
-    }
-
-    void Update()
-    {
-        DeadOrAlive();
     }
 
     public void DeadOrAlive()
@@ -196,6 +205,12 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
                 hasDied = false;
             }
             
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.CompareTag("Thorns")){
+            GetHit(PlayerAugmentations.ThornDam, collision.gameObject);
         }
     }
 

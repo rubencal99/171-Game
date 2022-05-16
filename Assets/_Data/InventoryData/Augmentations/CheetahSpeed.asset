@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
+  m_Name: CheetahSpeed
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5928805170258796552, guid: 11dd1d7c9a459e445a9a88756a77b3c2, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: 94ef2cbd135efa548b7e84e36473a8fe, type: 3}
+  type: 0
+  itemType: 3
+  description: 
+  stackLimit: 1
+  Name: CheetahSpeed
+  augType: 3

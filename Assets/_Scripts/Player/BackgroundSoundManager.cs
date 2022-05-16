@@ -8,11 +8,11 @@ public class BackgroundSoundManager : MonoBehaviour
     public SphereCollider detect;
     public FMODUnity.EventReference CombatMusicEvent;
     private FMOD.Studio.EventInstance CombatMusicInst;
-    [SerializeField]
+    //[SerializeField]
     private int prisonerCount = 0;
-    [SerializeField]
+    //[SerializeField]
     private int wardenCount = 0;
-    [SerializeField]
+    //[SerializeField]
     private int supportCount = 0;
     [ParamRef]
     public string prisonerParam;
@@ -20,9 +20,11 @@ public class BackgroundSoundManager : MonoBehaviour
     public string wardenParam;
     [ParamRef]
     public string supportParam;
+    [ParamRef]
+    public string bossParam;
     public Vector3 shopPos;
     public float shopDist;
-    void Start()
+    void Awake()
     {
         detect = GetComponent<SphereCollider>();
         // instantite music
@@ -61,6 +63,13 @@ public class BackgroundSoundManager : MonoBehaviour
             )
             {
                 supportCount += 1;
+            }
+            else if (
+                collider.gameObject.name == "Ratchet" ||
+                collider.gameObject.name == "OCTOBOSSY 3D 1"
+            )
+            {
+                RuntimeManager.StudioSystem.setParameterByName(bossParam, 1.0f);
             }
         }
 
@@ -103,10 +112,17 @@ public class BackgroundSoundManager : MonoBehaviour
             {
                 supportCount -= 1;
             }
+            else if (
+                collider.gameObject.name == "Ratchet" ||
+                collider.gameObject.name == "OCTOBOSSY 3D 1"
+            )
+            {
+                RuntimeManager.StudioSystem.setParameterByName(bossParam, 0.0f);
+            }
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // if count > 0, increment relevant FMOD param by 0.1 until == 1
         // else, decrement relevant FMOD param by 0.1 until == 0 

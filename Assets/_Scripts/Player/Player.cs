@@ -79,6 +79,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [SerializeField]
     private SphereCollider shield;
 
+    private BoxCollider boxCollider;
+
     private AgentRenderer agentRenderer;
     [SerializeField]
 
@@ -111,6 +113,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
         overlay = GameObject.Find("Overlay").GetComponent<Image>();
+
+        boxCollider = GetComponent<BoxCollider>();
 
         HitLastFiveSec = false;
         //shield = GameObject.Find("DeflectionShield").GetComponent<SphereCollider>();
@@ -145,8 +149,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
             InvokeRepeating("RunAutoDoc",1f,2f);
             StartCoroutine(AutoDocCoolDown());
          }
-
-         PlayerSignaler.CallDrone();
+         PlayerSignaler.Update();
     }
 
     public void setSpawnPoint(Vector3 spawn) {
@@ -201,8 +204,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
         if (PlayerState.DiveState.diving) {
             return;
         }
+        float d = PlayerSignaler.CallSecondSkin(damage);
         DamageType(damageDealer);
-        Health -= damage;
+        Health -= d;
         HitLastFiveSec = true;
         blood.Play();
         CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
@@ -212,6 +216,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
         else
         {
+            if(PlayerSignaler.CallAngelsGrace()){
+                UseGrace();
+            }
             OnDie?.Invoke();
             StartCoroutine(WaitToDie());
         }
@@ -313,12 +320,12 @@ public class Player : MonoBehaviour, IAgent, IHittable
         PlayerAugmentations.HippoApplied = true;
         yield return null;
         setMaxHp(MaxHealth + PlayerAugmentations.HippoHealth);
-        Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied);
+        Debug.Log("HippoApplied from applyHippo: " + PlayerAugmentations.HippoApplied + PlayerSignaler.BuffHippo());
     }
     public IEnumerator RemoveHippo(){
         PlayerAugmentations.HippoApplied = false;
         yield return null;
-        setMaxHp(MaxHealth - PlayerAugmentations.HippoHealth);
+        setMaxHp(MaxHealth - PlayerAugmentations.HippoHealth - PlayerSignaler.BuffHippo());
         Debug.Log("Hippo Removed from RemoveHippo: " + PlayerAugmentations.HippoApplied);
     }
 
@@ -341,5 +348,15 @@ public class Player : MonoBehaviour, IAgent, IHittable
     private void OnApplicationQuit()
     {
         inventory.ClearInventory();
+    }
+
+    public IEnumerator UseGrace(){
+        Heal(MaxHealth);
+        boxCollider.enabled = false;
+        // remove object from inventory
+        inventory.AContainer[1].Clear(); //could be an error
+
+        yield return new WaitForSeconds(PlayerAugmentations.GracePeriod);
+        boxCollider.enabled = true;
     }
 }

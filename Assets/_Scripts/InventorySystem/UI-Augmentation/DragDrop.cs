@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Canvas canvas; 
     [SerializeField] public GameObject parent;
+    public InventorySoundManager soundManager;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private InventorySlotElement slotElement;
@@ -15,9 +16,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         slotElement = parent.GetComponent<InventorySlotElement>();
+        soundManager = canvas.GetComponent<InventorySoundManager>();
     }
     public void OnPointerDown(PointerEventData eventData) {
         // Debug.Log("pointer do be down tho");
+        soundManager.PlayClickItemSound(slotElement.slot.item.type);
 
     }
 
@@ -39,6 +42,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvasGroup.blocksRaycasts = true;
         rectTransform.SetParent(parent.transform);
         rectTransform.anchoredPosition = Vector2.zero;
+        
     }
     public void OnDrop(PointerEventData eventData){
         // 
@@ -46,8 +50,22 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (eventData.pointerDrag.GetComponent<DragDrop>() != null && eventData.pointerDrag != this)
         {
             slotElement.inventory.MoveSwapCombine(eventData.pointerDrag.GetComponent<DragDrop>().slotElement.slot, slotElement.slot);
+            soundManager.PlayClickItemSound(slotElement.slot.item.type);
             slotElement.inventory.Print();
         }
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        soundManager.PlayHoverSound();
+        // update InvToolTip
+        //toolTip.ShowToolTip(slotElement.slot.item);
+        //Debug.Log("OnPointerEnter " + slotElement.slot.item); 
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Update InvToolTip to null
+        //toolTip.HideToolTip();
+        //Debug.Log("OnPointerExit " + slotElement.slot.item); 
     }
 
     

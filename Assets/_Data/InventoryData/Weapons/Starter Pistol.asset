@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Starter Pistol
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: c6a979ec739317145861e4d8bd0c8662, type: 3}
-  icon: {fileID: 21300000, guid: 0f7e86b1382dc46e2aa2865fce15d969, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: 611165802ea5c48f0a8acdfc30b955bf, type: 3}
   type: 1
   itemType: 1
   description: 
-  stackable: 0
+  stackLimit: 1
+  Name: 
   weaponType: 1

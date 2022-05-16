@@ -12,6 +12,11 @@ public class AgentAnimations : MonoBehaviour
         agentAnimator = GetComponent<Animator>();
     }
 
+    public void SetIdleAnimation()
+    {
+        agentAnimator.SetTrigger("Idle");
+    }
+
     public void SetWalkAnimation(bool val)
     {
         agentAnimator.SetBool("Walk", val);
