@@ -2195,6 +2195,7 @@ MonoBehaviour:
   prisonerParam: Prisoner
   wardenParam: Warden
   supportParam: Support
+  bossParam: Boss
   shopPos: {x: 0, y: 0, z: 0}
   shopDist: 0
 --- !u!1001 &92019285546056905
