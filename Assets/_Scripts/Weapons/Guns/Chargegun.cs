@@ -50,6 +50,14 @@ public class Chargegun : Railgun
        }
     }
 
+    public override void TryReloading()
+    {
+        if(Ammo < weaponData.MagazineCapacity)
+            holding = false;
+            holdTimer = 0;
+            isReloading = true;
+    }
+
     public override void TryShooting()
     {
         holding = true;
@@ -111,7 +119,11 @@ public class Chargegun : Railgun
 
     void CheckAnimation()
     {
-        if(holding && holdTimer < maxHold)
+        if(isReloading)
+        {
+            animator.SetFloat("Charge", -2);
+        }
+        else if(holding && holdTimer < maxHold)
         {
             animator.SetFloat("Charge", 1);
         }

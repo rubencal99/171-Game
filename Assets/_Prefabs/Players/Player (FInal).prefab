@@ -600,7 +600,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 120342
+  m_InstanceId: 247240
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,6 +1057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145f9f634b5d579488525203ac936218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponParent: {fileID: 0}
   inventory: {fileID: 11400000, guid: 8c3978625738743df9ac7de2f78e3db7, type: 2}
   currentRoom: {fileID: 0}
   DronePrefab: {fileID: 0}
@@ -1160,6 +1161,9 @@ MonoBehaviour:
   shield: {fileID: 0}
   respawnPoint: {x: 0, y: 0, z: 0}
   PlayerState: {fileID: 0}
+  grabbing: 0
+  hasGrabbed: 0
+  grabbedObject: {fileID: 0}
 --- !u!114 &7719071730893520264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2298,7 +2302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6486481589214470738, guid: 8372e9ee3d2bc2245a4162f8f9e72eb3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6486481589214470749, guid: 8372e9ee3d2bc2245a4162f8f9e72eb3, type: 3}
       propertyPath: m_RootOrder

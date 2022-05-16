@@ -362,6 +362,23 @@ public class MapGenerator : MonoBehaviour
                 Debug.Log("Normal room width: " + roomWidth);
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
+            else if(roomType == "Auxiliary")
+            {
+                roomIndex = UnityEngine.Random.Range(0, AuxiliaryRooms.RoomList.Count);
+                //Debug.Log("RoomList count = " + NormalRooms.RoomList.Count);
+                //Debug.Log("Room index = " + roomIndex);
+                tempString = (string[,])AuxiliaryRooms.RoomList[roomIndex];
+                //Debug.Log("Temp string = " + tempString);
+                // Amount of arrays
+                var roomLength = tempString.GetLength(0);
+                // Array length
+                var roomWidth = tempString.GetLength(1);
+                Debug.Log("Allocated length: " + length);
+                Debug.Log("Allocated width: " + width);
+                Debug.Log("Normal room length: " + roomLength);
+                Debug.Log("Normal room width: " + roomWidth);
+                NewRoom.AddDimensions(roomLength, roomWidth);
+            }
             else if(roomType == "Reward")
             {
                 roomIndex = UnityEngine.Random.Range(0, RewardRooms.RoomList.Count);
@@ -406,7 +423,7 @@ public class MapGenerator : MonoBehaviour
             
             // Here we fill the negative space with empty space 
             // I.e. room creation
-            if(roomType == "Normal" || roomType == "Reward")
+            if(roomType == "Normal" || roomType == "Reward" || roomType == "Auxiliary")
             {
                 //Debug.Log("Before 2f");
                 for(int i = 0; i < NewRoom.length; i++)
@@ -635,6 +652,7 @@ public class MapGenerator : MonoBehaviour
                 spawnedObject = Instantiate(PuzzleSpawner, pos1, Quaternion.identity);
                 //GameObject lk = Instantiate(PuzzleSpawner, pos1, Quaternion.identity);
                 //lk.transform.parent = room.transform;
+                //continue;
             }
             else if(room.RoomType == "Large")
             {

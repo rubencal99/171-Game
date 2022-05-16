@@ -141,7 +141,7 @@ public class Gun : MonoBehaviour, IWeapon
         isShooting = false;
     }
 
-    public void TryReloading()
+    public virtual void TryReloading()
     {
         if(Ammo < weaponData.MagazineCapacity)
             isReloading = true;
