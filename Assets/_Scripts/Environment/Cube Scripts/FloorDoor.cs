@@ -17,12 +17,14 @@ public class FloorDoor : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collider)
+    void OnCollisionEnter(Collider collider)
     {
-        if(Player.instance.hasKey && collider.gameObject.tag == "Player")
+        if(collider.tag == "Player")
         {
-            Debug.Log("Player can continue to next floor");
-            FloorExit.instance.GetComponent<FloorExit>().CallLoadScene();
+            if(collider.GetComponent<Player>().hasKey) {
+                Debug.Log("Player can continue to next floor");
+                FloorExit.instance.GetComponent<FloorExit>().CallLoadScene();
+            }
         }
         else
         {
