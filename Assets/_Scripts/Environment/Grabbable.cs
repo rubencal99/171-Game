@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Grabbable : MonoBehaviour
 {
+    [SerializeField]
+    public float velocity;
     public float mass;
     public bool isGrabbed;
     Rigidbody rigidbody;
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,7 @@ public class Grabbable : MonoBehaviour
         isGrabbed = true;
         Player.instance.grabbing = true;
         Player.instance.grabbedObject = gameObject;
+        offset = transform.position - Player.instance.transform.position;
     }
 
     public void LetGoObject()
@@ -38,6 +42,12 @@ public class Grabbable : MonoBehaviour
     public void AdjustSpeed(Vector3 speed)
     {
         rigidbody.velocity = speed;
+        //velocity = speed;
+    }
+
+    public void AdjustPosition()
+    {
+        transform.position = Player.instance.transform.position + offset;
     }
     
 }

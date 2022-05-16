@@ -117,7 +117,7 @@ public class PlayerMovement : AgentMovement
         }
         if(Player.instance.grabbedObject != null)
         {
-            Player.instance.grabbedObject.GetComponent<Rigidbody>().velocity = rigidbody.velocity;
+            Player.instance.grabbedObject.GetComponent<Grabbable>().AdjustPosition();
         }
     }
 
