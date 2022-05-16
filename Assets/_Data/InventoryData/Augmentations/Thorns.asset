@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: Thorns
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 7348523487529537869, guid: 1cbc49323b0276f4e9521c7d85feb9e4, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: ce00c9590d7065d43b45ad9089ebf363, type: 3}
   type: 0
-  itemType: 0
+  itemType: 1
   description: 
   stackLimit: 1
-  Name: 
-  augType: 0
+  Name: Thorns
+  augType: 1

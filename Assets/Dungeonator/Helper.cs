@@ -7,16 +7,12 @@ using System.Linq;
 public static class Helper
 {
     public static int passageSize = 2;
-
-    public static void ConnectClosestRooms(ref List<RoomNode> allRooms, ref TileNode[,] map)
-    {
-
-    }
     public static CorridorNode CreateCorridor(RoomNode roomA, RoomNode roomB, TileNode tileA, TileNode tileB, ref TileNode[,] map)
     {
         TileNode meetPoint;
-        Vector2Int currentRoomCenter = roomA.roomCenter;
-        Vector2Int destination = roomB.roomCenter;
+        Tuple<Vector2Int, Vector2Int> entrances = FindClosestEntrances(roomA, roomB);
+        Vector2Int currentRoomCenter = entrances.Item1;
+        Vector2Int destination = entrances.Item2;
         var position = currentRoomCenter;
         CorridorNode corridor = new CorridorNode();
         CorridorNode c1;
@@ -57,6 +53,31 @@ public static class Helper
         return c1;
         
 
+    }
+
+    public static Tuple<Vector2Int, Vector2Int> FindClosestEntrances(RoomNode roomA, RoomNode roomB)
+    {
+        Tuple<Vector2Int, Vector2Int> result = Tuple.Create(roomA.roomCenter, roomB.roomCenter);
+
+        if(roomA.Entrances.Count == 0 || roomB.Entrances.Count == 0)
+        {
+            return result;
+        }
+
+        float distance = Vector2.Distance(roomA.roomCenter, roomB.roomCenter);
+        foreach(Vector2Int e1 in roomA.Entrances)
+        {
+            foreach(Vector2Int e2 in roomB.Entrances)
+            {
+                float d = Vector2.Distance(e1, e2);
+                if(d < distance)
+                {
+                    distance = d;
+                    result = Tuple.Create(e1, e2);
+                }
+            }
+        }
+        return result;
     }
 
     public static void NullifyTwoCorridors(CorridorNode c1, CorridorNode c2)

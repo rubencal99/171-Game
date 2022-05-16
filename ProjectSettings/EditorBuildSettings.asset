@@ -14,15 +14,27 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DillonProcedural 1_Profiles/dillon test 1-1.unity
     guid: 76f941f66d41fb048ad3c503b0539c08
+  - enabled: 0
+    path: Assets/Scenes/Old scenes/1-2.unity
+    guid: 1e961b9eb451a2b4386ff49509dd368e
   - enabled: 1
     path: Assets/Scenes/_Official Scenes/StartScene.unity
     guid: 96ba6a957b5bfc449bbd2d8ef996fb62
+  - enabled: 1
+    path: Assets/Scenes/_Official Scenes/TutorialScene.unity
+    guid: 2ca6be922d31183448a614beca3b6d90
   - enabled: 1
     path: Assets/Scenes/_Official Scenes/1-1.unity
     guid: c9a0d83c6d5516c4d86ef1fb87cbbcc0
   - enabled: 1
     path: Assets/Scenes/_Official Scenes/1-2.unity
-    guid: 1e961b9eb451a2b4386ff49509dd368e
+    guid: e5e25ab99d2d77f4196de3052b58831e
+  - enabled: 1
+    path: Assets/Scenes/_Official Scenes/2-1.unity
+    guid: 24753c3165b8a7e43a627f91f7ae7237
+  - enabled: 1
+    path: Assets/Scenes/_Official Scenes/2-2.unity
+    guid: 0f7c13b5f815f4e4c8048d683c2cd8dc
   - enabled: 1
     path: Assets/Scenes/CreditsScene.unity
     guid: 591e38310e423194bab6a02ccbf5b742

@@ -398,6 +398,8 @@ GameObject:
   - component: {fileID: 7096302332738980856}
   - component: {fileID: 7096302332738980859}
   - component: {fileID: 7096302332738980858}
+  - component: {fileID: 8766142960164336497}
+  - component: {fileID: 596504895}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -472,6 +474,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95706ca8cf4bef045b36df2a22df3b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8766142960164336497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096302332738980807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2050ec8ffa514e845a2bf770aa4eb6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &596504895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096302332738980807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f34fab38a49fe4a833906e9ea872fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 1-2
+  oldMainCamera: {fileID: 0}
+  oldScene:
+    m_Handle: 0
 --- !u!1 &7096302333058288102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,6 +1115,7 @@ GameObject:
   - component: {fileID: 7096302333870742885}
   - component: {fileID: 7096302333870742882}
   - component: {fileID: 7096302333870742883}
+  - component: {fileID: 4293683412695243462}
   m_Layer: 5
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -1177,6 +1208,39 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4293683412695243462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096302333870742881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949912b289c754c2486391453a84d4dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEvent:
+    Guid:
+      Data1: -496083437
+      Data2: 1177563509
+      Data3: -1640962931
+      Data4: 564527079
+    Path: event:/UI/Hover
+  clickItemEvent:
+    Guid:
+      Data1: -1637883616
+      Data2: 1122049429
+      Data3: 922599343
+      Data4: 712667868
+    Path: event:/UI/ClickItem
+  invOpenEvent:
+    Guid:
+      Data1: 1719686223
+      Data2: 1266804297
+      Data3: -1126271825
+      Data4: 1943778210
+    Path: event:/UI/OpenClose
 --- !u!1 &7096302333920699867
 GameObject:
   m_ObjectHideFlags: 0

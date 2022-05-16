@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: SecondSkin
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 5381475926440216405, guid: ea510c8f064a010439d7e6126f1a06ad, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7c8e294a1b8a4d74e8416199db167d66, type: 3}
   type: 0
-  itemType: 0
+  itemType: 1
   description: 
   stackLimit: 1
-  Name: 
-  augType: 0
+  Name: SecondSkin
+  augType: 1
