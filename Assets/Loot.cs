@@ -35,7 +35,7 @@ public class Loot : MonoBehaviour
         int pK = Random.Range(0, 1);
         thisLoot = Instantiate(LootSup[pK]) as GameObject;
         thisLoot.transform.position = Dead.transform.position;
-        Destroy()
+        Destroy(gameObject);
 
     }
 
