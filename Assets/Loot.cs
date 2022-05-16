@@ -6,6 +6,7 @@ public class Loot : MonoBehaviour
 {   
     public static Loot instance;
     public GameObject[] LootOp;
+    public GameObject[] LootSup;
 
     private void Awake()
     {
@@ -15,9 +16,32 @@ public class Loot : MonoBehaviour
     public void Pick(GameObject Dead)
     {
         int item;
-        GameObject thisLoot;
+        
         item = Random.Range(0, 3);
-        thisLoot = Instantiate(LootOp[item]) as GameObject;
+        if (item == 2 || item == 3)
+        {
+            PickSup(Dead);
+        }
+        if (item == 1)
+        {
+            PickPwr(Dead);
+        }
+        
+    }
+
+    public void PickSup(GameObject Dead)
+    {
+        GameObject thisLoot;
+        int pK = Random.Range(0, 1);
+        thisLoot = Instantiate(LootSup[pK]) as GameObject;
+        thisLoot.transform.position = Dead.transform.position;
+    }
+
+    public void PickPwr(GameObject Dead)
+    {
+        GameObject thisLoot;
+        int pK = Random.Range(0, 3);
+        thisLoot = Instantiate(LootOp[pK]) as GameObject;
         thisLoot.transform.position = Dead.transform.position;
     }
 

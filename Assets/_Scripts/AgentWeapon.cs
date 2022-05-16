@@ -138,6 +138,11 @@ public class AgentWeapon : MonoBehaviour
         gun.AmmoFill();
     }
 
+    public void Supply()
+    {
+        gun.ReSupply();
+    }
+
     public void Shoot()
     {
         if (gun != null)
