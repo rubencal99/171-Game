@@ -26,7 +26,14 @@ public class DisplayAmmoPrimary : MonoBehaviour
             totalAmmo = weap.TotalAmmo;
             AmmoText.text = ammo.ToString() + " | " + totalAmmo.ToString();
             AmmoText.enabled = true;
+
+            
+            if(ammo <= 0 && totalAmmo <= 0)
+                this.GetComponentInChildren<Image>().enabled = true;
+            else
+                this.GetComponentInChildren<Image>().enabled = false;
         }
         else AmmoText.enabled = false;
+
     }
 }

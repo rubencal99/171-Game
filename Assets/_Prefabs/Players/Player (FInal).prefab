@@ -185,9 +185,10 @@ GameObject:
   m_Component:
   - component: {fileID: 655668696714573155}
   - component: {fileID: 5579053473500414983}
+  - component: {fileID: 1374146814}
   m_Layer: 12
   m_Name: Minimap Tracker
-  m_TagString: Untagged
+  m_TagString: minimaptracker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,6 +258,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &1374146814
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834563270894810020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.0000002, z: 0.20000005}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3110817275448445789
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +600,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32004
+  m_InstanceId: 120342
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,7 +720,7 @@ MonoBehaviour:
   Secondary: {fileID: 0}
   throwableArc: {fileID: 2579900480822998317}
   mousePos: {x: 0, y: 0, z: 0}
-  useInventory: 1
+  useInventory: 0
 --- !u!212 &3265718702522262477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2410,6 +2424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
+--- !u!4 &2579900480822998319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3781322767427240897, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
+  m_PrefabInstance: {fileID: 1708079031465375470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2579900480822998317 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3781322767427240899, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
@@ -2421,11 +2440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8e89a2c0f705c41889d70e8920c6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2579900480822998319 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3781322767427240897, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
-  m_PrefabInstance: {fileID: 1708079031465375470}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2579900480822998315 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3781322767427240901, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}

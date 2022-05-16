@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7533168769265335039}
   - component: {fileID: 7533168769265335032}
   - component: {fileID: -2197775594757052663}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FloorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
