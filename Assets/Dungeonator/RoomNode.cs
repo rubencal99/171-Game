@@ -140,7 +140,7 @@ public class RoomNode : MonoBehaviour
         //Debug.Log("Room Center: " + roomCenter);
         //Debug.Log("Tile location: " + r);
         TileNode tile = FindTileByPoint(r.x, r.y);
-        while(tile == null || tile.value != 1)
+        while(tile == null || (tile.value != 1 && !tile.isObstacle))
         {
             if(count >= 20)
             {

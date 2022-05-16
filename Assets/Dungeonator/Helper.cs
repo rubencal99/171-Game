@@ -144,7 +144,7 @@ public static class Helper
                 {
                     int drawX = c.x + x;
                     int drawY = c.y + y;
-                    if (IsInMapRange(drawX, drawY, ref map) && map[drawX, drawY].value == 0)
+                    if (IsInMapRange(drawX, drawY, ref map) && map[drawX, drawY].value == 0 && !IsMapBorder(drawX, drawY, ref map))
                     {
                         map[drawX, drawY].value = 2;
                         tileList.Add(map[drawX, drawY]);
@@ -160,6 +160,13 @@ public static class Helper
         int columns = map.GetLength(0);
         int rows = map.GetLength(1);
         return x >= 0 && x < columns && y >= 0 && y < rows;
+    }
+
+    public static bool IsMapBorder(int x, int y, ref TileNode[,] map)
+    {
+        int columns = map.GetLength(0);
+        int rows = map.GetLength(1);
+        return x == 0 || x == columns || y == 0 || y == rows;
     }
 
     public static List<TileNode> GetLine(TileNode from, TileNode to, ref TileNode[,] map)

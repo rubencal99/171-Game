@@ -30,10 +30,13 @@ public class CorridorNode
             {
                 for(int y = -1; y <= 1; y++)
                 {   
-                    TileNode check = MapGenerator.map[tile.x + x, tile.y + y];
-                    if(check.value == 1 && check.room != TargetRoomList[0] && check.room != TargetRoomList[1])
+                    if(Helper.IsInMapRange(tile.x + x, tile.y + y, ref MapGenerator.map))
                     {
-                        return true;
+                        TileNode check = MapGenerator.map[tile.x + x, tile.y + y];
+                        if(check.value == 1 && check.room != TargetRoomList[0] && check.room != TargetRoomList[1])
+                        {
+                            return true;
+                        }
                     }
                 }
             }

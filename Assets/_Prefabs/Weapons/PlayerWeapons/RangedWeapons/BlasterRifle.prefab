@@ -4935,7 +4935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4cfd2244bae96488afc18dfd503b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <startOffset>k__BackingField: {x: 0.79, y: -0.27, z: 0}
   muzzle: {fileID: 5516205167428529799}
   passives: {fileID: 0}
   ammo: 0
@@ -4963,6 +4963,7 @@ MonoBehaviour:
   holding: 0
   maxHold: 2
   holdTimer: 0
+  animator: {fileID: 0}
 --- !u!1 &5516205167903583921
 GameObject:
   m_ObjectHideFlags: 0
