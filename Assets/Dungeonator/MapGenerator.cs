@@ -706,7 +706,7 @@ public class MapGenerator : MonoBehaviour
            // Player.GetComponent<Player>() = PlayerProgressManager.currentPlayerState;
            // Player.GetComponentInChildren<PlayerWeapon>() = PlayerProgressManager.currentPlayerWeaponState;
              }
-        controls.SetPosition(Player.transform.position);
+       // controls.SetPosition(Player.transform.position);
         Vector3 weaponSpawn = new Vector3(spawnPosition.x - 3, spawnPosition.y, spawnPosition.z);
         GameObject spawnWeapon = Instantiate(SpawnWeapon, weaponSpawn, Quaternion.identity);
     }

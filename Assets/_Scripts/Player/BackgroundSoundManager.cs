@@ -20,6 +20,8 @@ public class BackgroundSoundManager : MonoBehaviour
     public string wardenParam;
     [ParamRef]
     public string supportParam;
+    [ParamRef]
+    public string bossParam;
     public Vector3 shopPos;
     public float shopDist;
     void Awake()
@@ -62,6 +64,13 @@ public class BackgroundSoundManager : MonoBehaviour
             {
                 supportCount += 1;
             }
+            else if (
+                collider.gameObject.name == "Ratchet" ||
+                collider.gameObject.name == "OCTOBOSSY 3D 1"
+            )
+            {
+                RuntimeManager.StudioSystem.setParameterByName(bossParam, 1.0f);
+            }
         }
 
         if (collider.gameObject.name == "ShopKeeper")
@@ -102,6 +111,13 @@ public class BackgroundSoundManager : MonoBehaviour
             )
             {
                 supportCount -= 1;
+            }
+            else if (
+                collider.gameObject.name == "Ratchet" ||
+                collider.gameObject.name == "OCTOBOSSY 3D 1"
+            )
+            {
+                RuntimeManager.StudioSystem.setParameterByName(bossParam, 0.0f);
             }
         }
     }
