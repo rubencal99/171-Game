@@ -586,7 +586,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 201896
+  m_InstanceId: 32004
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2181,6 +2181,7 @@ MonoBehaviour:
   prisonerParam: Prisoner
   wardenParam: Warden
   supportParam: Support
+  bossParam: Boss
   shopPos: {x: 0, y: 0, z: 0}
   shopDist: 0
 --- !u!1001 &92019285546056905
