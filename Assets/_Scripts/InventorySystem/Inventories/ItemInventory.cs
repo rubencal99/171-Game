@@ -381,7 +381,7 @@ public class AugSlot : Slot
     }
 }
 
-public abstract class Slot 
+public abstract class Slot : MonoBehaviour
 {
     public ItemObject item;
     private int _amount = 0; // backing store
@@ -427,6 +427,26 @@ public abstract class Slot
             }
         }
         
+    }
+
+    public void DropItem(Vector3 _pos)
+    {
+        // Instantiates item.pickup in world, then clears slot
+        
+        if (item.type == ItemType.Weapon)
+        {
+            GameObject pickupClone;
+            pickupClone = Instantiate(item.pickup, _pos, Quaternion.identity);
+            pickupClone.GetComponent<WeaponPickup>().pickupAmount = amount;
+        }
+        else 
+        {
+            GameObject pickupClone;
+            pickupClone = Instantiate(item.pickup, _pos, Quaternion.identity);
+            pickupClone.GetComponent<GenericPickup>().pickupAmount = amount;
+        }
+        
+        Clear();
     }
 
     public virtual bool VerifyItem(ItemObject _item)

@@ -10,7 +10,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public InventorySoundManager soundManager;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private InventorySlotElement slotElement;
+    public InventorySlotElement slotElement;
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
