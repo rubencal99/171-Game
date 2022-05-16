@@ -398,6 +398,8 @@ GameObject:
   - component: {fileID: 7096302332738980856}
   - component: {fileID: 7096302332738980859}
   - component: {fileID: 7096302332738980858}
+  - component: {fileID: 8766142960164336497}
+  - component: {fileID: 596504895}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -472,6 +474,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95706ca8cf4bef045b36df2a22df3b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8766142960164336497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096302332738980807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2050ec8ffa514e845a2bf770aa4eb6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &596504895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096302332738980807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f34fab38a49fe4a833906e9ea872fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 1-2
+  oldMainCamera: {fileID: 0}
+  oldScene:
+    m_Handle: 0
 --- !u!1 &7096302333058288102
 GameObject:
   m_ObjectHideFlags: 0
