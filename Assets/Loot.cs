@@ -35,12 +35,14 @@ public class Loot : MonoBehaviour
         int pK = Random.Range(0, 1);
         thisLoot = Instantiate(LootSup[pK]) as GameObject;
         thisLoot.transform.position = Dead.transform.position;
+        Destroy()
+
     }
 
     public void PickPwr(GameObject Dead)
     {
         GameObject thisLoot;
-        int pK = Random.Range(0, 3);
+        int pK = Random.Range(0, 2);
         thisLoot = Instantiate(LootOp[pK]) as GameObject;
         thisLoot.transform.position = Dead.transform.position;
     }
