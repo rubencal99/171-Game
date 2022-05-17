@@ -117,6 +117,20 @@ public class Chargegun : Railgun
         }
     }
 
+    protected override void FinishShooting()
+    {
+        if(!weaponData.AutomaticFire)
+        {
+            //holdTimer = 0;
+            holding = false;
+        }
+        StartCoroutine(DelayNextShootCoroutine());
+        if (weaponData.AutomaticFire == false)
+        {
+            isShooting = false;
+        }
+    }
+
     void CheckAnimation()
     {
         if(isReloading)
