@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 1648441835
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d7a805483f2bf6448b9c93bc5f46a385, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 656576fd3d76e894499e33dcafa13456, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireArm: {fileID: 11400000, guid: 276da2751f32f284cb3e4ff4e9cbce1e, type: 2}
   tag: 
+  pickupAmount: 1
   name: Magnum
 --- !u!114 &8365223114590856189
 MonoBehaviour:

@@ -223,4 +223,13 @@ public static class PlayerSignaler : object
         return 1;
 
     }
+
+    public static float CallQuickdraw()
+    {
+        if(PlayerAugmentations.AugmentationList["Quickdraw"])
+        {
+            return PlayerAugmentations.DrawTime;
+        }
+        return 1;
+    }
 }

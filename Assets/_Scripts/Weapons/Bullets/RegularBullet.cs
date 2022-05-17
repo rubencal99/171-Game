@@ -84,7 +84,7 @@ public class RegularBullet : Bullet
 
     protected void LateUpdate()
     {
-        transform.LookAt(camera.transform);
+        //transform.LookAt(camera.transform);
     }
 
     public void FixedUpdate()

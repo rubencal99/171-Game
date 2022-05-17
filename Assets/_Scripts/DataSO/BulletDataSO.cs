@@ -17,7 +17,7 @@ public class BulletDataSO : ScriptableObject
     public int Damage { get; set; } = 1;
 
     [field: SerializeField]
-    [field: Range(0, 100)]
+    [field: Range(0, 200)]
     public float Friction { get; internal set; } = 0;
 
     [field: SerializeField]

@@ -5,6 +5,11 @@ using UnityEngine;
 // Contains functions and overrides specific to enemy guns
 public class EnemyGun : Gun
 {
+    protected override void OnEnable()
+    {
+        // Do nothing
+    }
+
     // Overriding this function to add randomness to enemy firing patterns
     protected override IEnumerator DelayNextShootCoroutine()
     {

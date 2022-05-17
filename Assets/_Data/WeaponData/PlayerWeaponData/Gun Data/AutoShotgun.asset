@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
+  m_Name: AutoShotgun
+  m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 65816c44df616384993a0cfff2b7b345, type: 2}
+  <MagazineCapacity>k__BackingField: 7
+  <MaxAmmoCapacity>k__BackingField: 28
+  <AutomaticFire>k__BackingField: 1
+  <WeaponDelay>k__BackingField: 0.15
+  <WeaponDelayRandomizer>k__BackingField: 0.1
+  <ReloadSpeed>k__BackingField: 1.3
+  <SpreadAngle>k__BackingField: 12.1
+  multiBulletShot: 1
+  bulletCount: 5
+  recoilIntensity: 11.3
+  recoilFrequency: 6
+  recoilTime: 0.1
