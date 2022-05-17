@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
+  m_Name: DamageBuff
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6839124025152028082, guid: 3a791f0d00adb1646aee10e121c2cf9f, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: 17198c628d74f2a4a882775f3e9df696, type: 3}
+  type: 0
+  itemType: 2
+  description: 
+  stackLimit: 1
+  Name: DamageBuff
+  augType: 2

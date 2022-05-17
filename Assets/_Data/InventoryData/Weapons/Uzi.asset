@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Uzi
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: bdc9b26cfd89de342a5e8b182819766f, type: 3}
-  icon: {fileID: 21300000, guid: dec68cc3c259b4ddb8ed8373d2f36268, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4828fc75aff534c48922067f63023103, type: 3}
   type: 1
+  itemType: 0
   description: 
-  stackable: 0
+  stackLimit: 1
+  Name: 
   weaponType: 0

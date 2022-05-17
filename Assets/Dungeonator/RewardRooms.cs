@@ -9,6 +9,7 @@ public static class RewardRooms
 
     static RewardRooms()
     {
+        // Basic Reward Room 15 x 15
         RoomList.Add(RoomInjector.Rotate(new string[,]{
             {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"},
             {"0", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "0"},

@@ -28,11 +28,13 @@ TagManager:
   - Tilemap
   - spheremask
   - MoneyReduceText
+  - minimaptracker
+  - minimapblocker
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Tiles
   - Water
   - UI
   - Bullets

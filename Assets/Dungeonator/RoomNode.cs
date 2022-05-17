@@ -17,6 +17,8 @@ public class RoomNode : MonoBehaviour
     public Vector2Int topRightCorner;
 
     public Vector2Int topLeftCorner;
+
+    public List<Vector2Int> Entrances = new List<Vector2Int>();
     public int length;
     public int width;
     public int area;
@@ -156,9 +158,9 @@ public class RoomNode : MonoBehaviour
 
     public TileNode FindTileByPoint(int x, int y)
     {
-        for(int i = 0; i < length - 1; i++)
+        for(int i = 4; i < length - 5; i++)
         {
-            for(int j = 0; j < width - 1; j++)
+            for(int j = 4; j < width - 5; j++)
             {
                 if(tileList[i, j].x == x && tileList[i, j].y == y)
                 {

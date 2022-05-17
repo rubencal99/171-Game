@@ -105,6 +105,7 @@ public class EntryCollider : MonoBehaviour
     }
 
 
+
     void UpdateTiles(TileBase tile) {
         var firstTile = room.tileList[0, 0];
         TileNode check = MapGenerator.map[0, 0];

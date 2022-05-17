@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: BoltActionSniper
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: cefd8c049e5ea4593b5ab6e789a66661, type: 3}
-  icon: {fileID: 21300000, guid: 2bc12f14843c6454590e84064d16d4f1, type: 3}
+  prefabClone: {fileID: 0}
+  icon: {fileID: 21300000, guid: bcc02275be09b45438adc0d062085f53, type: 3}
   type: 1
+  itemType: 0
   description: 
-  stackable: 0
+  stackLimit: 1
+  Name: 
   weaponType: 0

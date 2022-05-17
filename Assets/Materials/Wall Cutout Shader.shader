@@ -1,15 +1,18 @@
 Shader "Custom/Wall Cutout Shader"
 {
-    // The _BaseMap variable is visible in the Material's Inspector, as a field
+    // The _MainTex variable is visible in the Material's Inspector, as a field
     // called Base Map.
+
     Properties
     {
-        [MainTexture] _BaseMap("Base Map", 2D) = "white"
+        [MainTexture] _MainTex("Base Map", 2D) = "white"
+
     }
 
     SubShader
     {
-        Tags { "RenderType" = "Opaque" "RenderPipeline" = "UniversalPipeline" }
+        Tags { "RenderType" = "Opaque" 
+                            "RenderPipeline" = "UniversalPipeline" }
 
         Pass
         {
@@ -43,16 +46,16 @@ Shader "Custom/Wall Cutout Shader"
                 float2 uv           : TEXCOORD0;
             };
 
-            // This macro declares _BaseMap as a Texture2D object.
-            TEXTURE2D(_BaseMap);
-            // This macro declares the sampler for the _BaseMap texture.
-            SAMPLER(sampler_BaseMap);
+            // This macro declares _MainTex as a Texture2D object.
+            TEXTURE2D(_MainTex);
+            // This macro declares the sampler for the _MainTex texture.
+            SAMPLER(sampler_MainTex);
 
             CBUFFER_START(UnityPerMaterial)
-                // The following line declares the _BaseMap_ST variable, so that you
-                // can use the _BaseMap variable in the fragment shader. The _ST
+                // The following line declares the _MainTex_ST variable, so that you
+                // can use the _MainTex variable in the fragment shader. The _ST
                 // suffix is necessary for the tiling and offset function to work.
-                float4 _BaseMap_ST;
+                float4 _MainTex_ST;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
@@ -61,7 +64,7 @@ Shader "Custom/Wall Cutout Shader"
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
                 // The TRANSFORM_TEX macro performs the tiling and offset
                 // transformation.
-                OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
+                OUT.uv = TRANSFORM_TEX(IN.uv, _MainTex);
                 return OUT;
             }
 
@@ -69,10 +72,12 @@ Shader "Custom/Wall Cutout Shader"
             {
                 // The SAMPLE_TEXTURE2D marco samples the texture with the given
                 // sampler.
-                half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
+                half4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
                 return color;
             }
             ENDHLSL
         }
-    }
+
+    } 
+    
 }
