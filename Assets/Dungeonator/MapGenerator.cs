@@ -99,8 +99,23 @@ public class MapGenerator : MonoBehaviour
         //Grid.transform.Rotate(Vector3.right * 90);
         //Debug.Log("Grid rotation = " + Grid.transform.localRotation);
 
-        FillMap();
-        BinarySpace();
+        int count = 0;
+        while(count < 3)
+        {
+            try
+            {
+                FillMap();
+                BinarySpace();
+                break;
+            }
+            catch(System.IndexOutOfRangeException exception)
+            {
+                Debug.Log("Exception in map generation: " + exception);
+                count++;
+            }
+            
+        }
+        
 
         DrawMap();
         AstarPath.active.Scan();
@@ -375,8 +390,8 @@ public class MapGenerator : MonoBehaviour
                 var roomWidth = tempString.GetLength(1);
                 Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
-                Debug.Log("Normal room length: " + roomLength);
-                Debug.Log("Normal room width: " + roomWidth);
+                Debug.Log("Auxiliary room length: " + roomLength);
+                Debug.Log("Auxiliary room width: " + roomWidth);
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else if(roomType == "Reward")
@@ -392,8 +407,8 @@ public class MapGenerator : MonoBehaviour
                 var roomWidth = tempString.GetLength(1);
                 Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
-                Debug.Log("Normal room length: " + roomLength);
-                Debug.Log("Normal room width: " + roomWidth);
+                Debug.Log("Reward room length: " + roomLength);
+                Debug.Log("Reward room width: " + roomWidth);
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else
@@ -425,7 +440,7 @@ public class MapGenerator : MonoBehaviour
             // I.e. room creation
             if(roomType == "Normal" || roomType == "Reward" || roomType == "Auxiliary")
             {
-                //Debug.Log("Before 2f");
+                Debug.Log("RoomType = " + roomType);
                 for(int i = 0; i < NewRoom.length; i++)
                 {
                     for (int j = 0; j < NewRoom.width; j++)

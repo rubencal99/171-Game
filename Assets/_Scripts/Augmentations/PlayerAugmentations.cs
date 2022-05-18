@@ -106,6 +106,10 @@ public static class PlayerAugmentations : object
     //////////////////////////////Quickdraw/////////////////////////////////////
     public static bool Quickdraw = false;
     public static float DrawTime = 0.5f;
+
+    //////////////////////////////TriggerHappy/////////////////////////////////////
+    public static bool TriggerHappy = false;
+    public static float TriggerMultiplier = 1.4f;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -137,7 +141,8 @@ public static class PlayerAugmentations : object
         {"xXx",xXx},
         {"MetalSkin",MetalSkin},
         {"CaptainPlanet",CaptainPlanet},
-        {"Quickdraw", Quickdraw}
+        {"Quickdraw", Quickdraw},
+        {"TriggerHappy", TriggerHappy}
 
     };
 
@@ -171,6 +176,8 @@ public static class PlayerAugmentations : object
         AngelsGrace = false;
         HungryHippo = false;
         MetalSkin = false;
+        Quickdraw = false;
+        TriggerHappy = false;
     }
 
     public static void PrintDictionary()
