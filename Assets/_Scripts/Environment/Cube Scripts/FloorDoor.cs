@@ -6,15 +6,15 @@ public class FloorDoor : MonoBehaviour
 {
     // void OnTriggerEnter(Collider collider)
     // {
-        void OnTriggerEnter(Collider collider)
-    {
-        if(collider.tag == "Player")
-        {
-            Debug.Log("Player has aquired key");
-            Player.instance.hasKey = true;
-            Destroy(gameObject);    
-        }
-    }
+    //     void OnTriggerEnter(Collider collider)
+    // {
+    //     if(collider.tag == "Player")
+    //     {
+    //         Debug.Log("Player has aquired key");
+    //         Player.instance.hasKey = true;
+    //         Destroy(gameObject);    
+    //     }
+    // }
 
     void OnCollisionEnter(Collision collider)
     {
