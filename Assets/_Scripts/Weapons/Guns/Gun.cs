@@ -300,7 +300,7 @@ public class Gun : MonoBehaviour, IWeapon
     protected virtual IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
-        yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
+        yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier / PlayerSignaler.CallTriggerHappy());
         rateOfFireCoroutine = false;
     }
 
