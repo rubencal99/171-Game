@@ -12,6 +12,8 @@ public class PlayerRunGunState : PlayerBaseState
     private bool secondaryButtonDown = false;
     private bool tabButtonDown = false;
 
+    private bool mapButtonDown = false;
+
     public bool dodging = false; // bool to check if dodging
     public bool shopping = false; // bool to check if dodging
     //public bool grabbing = false;
@@ -55,6 +57,7 @@ public class PlayerRunGunState : PlayerBaseState
         //GetRespawnInput();
         GetDodgeInput();
         GetTabInput();
+        GetMapInput();
         GetInteractInput();
         CalculateStandTime();
         if (dodging && standTime <= 0)
@@ -119,6 +122,30 @@ public class PlayerRunGunState : PlayerBaseState
                  Debug.Log("throw released");
                 throwButtonDown = false;
                  playerInput.OnThrowButtonReleased?.Invoke();
+            }
+        }
+    }
+
+     private void GetMapInput()
+    {
+        //Debug.Log("MapButtonDown = " + MapButtonDown);
+        //Debug.Log("Map Input = " + Input.GetAxisRaw("Map"));
+        if (Input.GetAxisRaw("Map") > 0)
+        {
+            if (mapButtonDown == false)
+            {
+                Debug.Log("Map pressed");
+                mapButtonDown = true;
+                playerInput.OnMapButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (mapButtonDown == true)
+            {
+                 Debug.Log("Map released");
+                mapButtonDown = false;
+                 playerInput.OnMapButtonReleased?.Invoke();
             }
         }
     }

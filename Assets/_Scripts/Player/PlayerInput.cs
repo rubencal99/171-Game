@@ -90,4 +90,11 @@ public class PlayerInput : MonoBehaviour
     
     [field: SerializeField]
     public UnityEvent OnTabKeyPressed { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnMapButtonPressed { get; set; }
+
+     [field: SerializeField]
+    public UnityEvent OnMapButtonReleased { get; set; }
+
 }
