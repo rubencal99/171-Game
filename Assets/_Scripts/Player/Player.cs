@@ -354,7 +354,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         Heal(MaxHealth);
         boxCollider.enabled = false;
         // remove object from inventory
-        inventory.AContainer[1].Clear(); //could be an error
+        //inventory.AContainer[1].Clear(); //could be an error
 
         yield return new WaitForSeconds(PlayerAugmentations.GracePeriod);
         boxCollider.enabled = true;

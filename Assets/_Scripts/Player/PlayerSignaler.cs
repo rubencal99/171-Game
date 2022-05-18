@@ -223,4 +223,11 @@ public static class PlayerSignaler : object
         return 1;
 
     }
+
+    public static int CallDoubleMag(){
+        if(PlayerAugmentations.AugmentationList["DoubleMag"]){
+            return  PlayerAugmentations.MagAmount;
+        }
+        return 1;
+    }
 }

@@ -371,9 +371,12 @@ public class AugSlot : Slot
     }
 
     public override void Clear(){
+        Debug.Log("At Start: Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
         if(item)
         {
-            amount = 0;
+            Debug.Log("In Loop: Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
+            //amount = 0;
+            Debug.Log("After Amount: Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
             PlayerAugmentations.AugmentationList[item.Name] = false;
             Debug.Log("Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
             item = null;

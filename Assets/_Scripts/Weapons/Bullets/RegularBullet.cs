@@ -156,7 +156,7 @@ public class RegularBullet : Bullet
 
             }
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))//&& aug pen != true
         {
             HitEnemy(collision);
             // This check is for bullets that go through enemies like snipers or lasers etc.

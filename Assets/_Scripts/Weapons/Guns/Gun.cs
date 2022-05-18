@@ -26,6 +26,8 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public int totalAmmo;
 
+    public int OriginalAmmo;
+
     [SerializeField]
     public bool infAmmo;
 
@@ -53,11 +55,11 @@ public class Gun : MonoBehaviour, IWeapon
     {
         get { return totalAmmo; }
         set {
-            totalAmmo = Mathf.Clamp(value, 0, weaponData.MaxAmmoCapacity);
+            totalAmmo = Mathf.Clamp(value, 0, weaponData.MaxAmmoCapacity * PlayerSignaler.CallDoubleMag());//multiplier
         }
     }
 
-    // Returns true if ammo full
+    // Returns true if ammo full1
     public bool AmmoFull { get => Ammo >= weaponData.MagazineCapacity; }
 
     public bool isShooting = false;
@@ -83,6 +85,8 @@ public class Gun : MonoBehaviour, IWeapon
     protected void OnEnable()
     {
         swapTimer = swapTime;
+        //adjust capacity
+        //totalAmmo();
     }
 
     protected virtual void Start()
@@ -115,6 +119,12 @@ public class Gun : MonoBehaviour, IWeapon
        // infAmmo = weaponParent.InfAmmo;
     }
 
+    public void CheckAmmo(){
+        //int tempAmmo = PlayerSignaler.CallDoubleMag(TotalAmmo);
+        //OriginalAmmo = totalAmmo;
+        //totalAmmo = tempAmmo;
+
+    }
 
     [field: SerializeField]
     public UnityEvent OnShoot { get; set; }

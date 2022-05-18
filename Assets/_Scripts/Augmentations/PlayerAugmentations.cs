@@ -67,7 +67,7 @@ public static class PlayerAugmentations : object
     public static float BuffAmount = 0.25f;
     //////////////////////////////CheetahSpeed////////////////////////////////////////
     public static bool CheetahSpeed = false;
-    public static float CSAmount = 0.2f;
+    public static float CSAmount = 3f;
     //////////////////////////////Predator////////////////////////////////////////
     public static bool Predator = false;
     public static float PredatoryAmount = 0.4f;
@@ -102,6 +102,10 @@ public static class PlayerAugmentations : object
     //////////////////////////////CaptainPlanet/////////////////////////////////////
     public static bool CaptainPlanet = false;
     public static int CapRecycle = 2;
+    //////////////////////////////DoubleMag/////////////////////////////////////
+    public static bool DoubleMag = false;
+    public static int MagAmount = 2;
+
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -132,7 +136,8 @@ public static class PlayerAugmentations : object
         {"HungryHippo",HungryHippo},
         {"xXx",xXx},
         {"MetalSkin",MetalSkin},
-        {"CaptainPlanet",CaptainPlanet}
+        {"CaptainPlanet",CaptainPlanet},
+        {"DoubleMag", DoubleMag}
 
     };
 
