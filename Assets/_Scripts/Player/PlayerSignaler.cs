@@ -232,4 +232,13 @@ public static class PlayerSignaler : object
         }
         return 1;
     }
+
+    public static float CallTriggerHappy()
+    {
+        if(PlayerAugmentations.AugmentationList["TriggerHappy"])
+        {
+            return PlayerAugmentations.TriggerMultiplier;
+        }
+        return 1;
+    }
 }

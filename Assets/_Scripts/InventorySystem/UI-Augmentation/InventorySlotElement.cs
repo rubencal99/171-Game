@@ -11,15 +11,12 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
     private Sprite defaultBG;
     [SerializeField]
     private Sprite hasItemBG;
-    [SerializeField]
-    private Sprite hasAugBG;
-    [SerializeField]
-    private Sprite hasWepBG;
     private Sprite current;
     public Image background;
     public Image itemDisplay;
     public GameObject amountDisplay;
     private TMP_Text amountText;
+    private int amountCheck;
     public ItemInventory inventory;
     public SlotType slotType;
     [SerializeField]
@@ -28,10 +25,20 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
     
     public void Awake()
     {
+        GetSlot();
+        
         current = null;
         amountText = amountDisplay.GetComponent<TMP_Text>();
     }
     void OnValidate()
+    {
+        GetSlot();
+
+        background.sprite = defaultBG;
+        itemDisplay.sprite = current;
+    }
+
+    private void GetSlot()
     {
         if (slotType == SlotType.Inventory)
         {
@@ -45,9 +52,6 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
         {
             slot = inventory.WContainer[slotIndex];
         }
-
-        background.sprite = defaultBG;
-        itemDisplay.sprite = current;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -76,19 +80,8 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
             current = slot.item.icon;
             itemDisplay.sprite = current;
             itemDisplay.color = new Color (255, 255, 255, 1);
-
-            if (slot.item.GetType() == typeof(AugmentationItemSO))
-            {
-                background.sprite = hasAugBG;
-            }
-            else if (slot.item.GetType() == typeof(WeaponItemSO))
-            {
-                background.sprite = hasWepBG;
-            }
-            else 
-            {
-                background.sprite = hasItemBG;
-            }
+            
+            background.sprite = hasItemBG;
             
         }
         else if (slot.item == null && itemDisplay.sprite != null)
@@ -109,20 +102,11 @@ public class InventorySlotElement : MonoBehaviour, IPointerDownHandler, IDropHan
             amountDisplay.SetActive(true);
         }
 
-        if (slot.amount != int.Parse(amountText.text))
+        if (slot.amount != amountCheck)
         {
+            amountCheck = slot.amount;
             amountText.text = slot.amount.ToString();
         }
     }
     
-}
-
-public class WeaponSlotElement : MonoBehaviour
-{
-    // 
-}
-
-public class AugSlotElement : MonoBehaviour
-{
-    // 
 }

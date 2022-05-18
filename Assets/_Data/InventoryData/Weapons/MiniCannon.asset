@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1fea048e8a747eb8c468f944f6c509, type: 3}
   m_Name: MiniCannon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8960519738105143089, guid: 8549409d2ff20314f801db95c7971ab6, type: 3}
+  prefab: {fileID: 8960519738105143089, guid: 2c10784d4cd41db44b5be15f407e773c, type: 3}
   prefabClone: {fileID: 0}
-  icon: {fileID: 21300000, guid: c6e9bd109dd8bf5439b599dd7f09a897, type: 3}
+  icon: {fileID: 21300000, guid: 8a81b274e4397eb4994a178b4df88151, type: 3}
   type: 1
   itemType: 1
   description: 

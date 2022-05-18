@@ -2897,6 +2897,10 @@ PrefabInstance:
       propertyPath: sceneName
       value: CreditsScene
       objectReference: {fileID: 0}
+    - target: {fileID: 7096302332388957936, guid: 4c70b547443101d419396819002321c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7096302332738980807, guid: 4c70b547443101d419396819002321c6, type: 3}
       propertyPath: m_Name
       value: SceneManager
@@ -3192,7 +3196,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1490677896
+--- !u!43 &1462153400
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

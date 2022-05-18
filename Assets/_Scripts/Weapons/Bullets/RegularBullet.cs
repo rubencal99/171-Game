@@ -13,6 +13,7 @@ public class RegularBullet : Bullet
     protected Animator animator;
     protected int bounce;
     protected float speed;
+    protected float damage;
     protected GameObject camera;
     protected bool hasRebounded = false;
 
@@ -29,11 +30,12 @@ public class RegularBullet : Bullet
             decay = BulletData.decayTime;
             bounce = BulletData.Bounce;
             speed = BulletData.BulletSpeed;
+            damage = BulletData.Damage;
         }
     }
 
     public virtual void Start() {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         camera = CameraShake.Instance.gameObject;
     }
 
@@ -136,7 +138,7 @@ public class RegularBullet : Bullet
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.GetComponent<IHittable>();
-        hittable?.GetHit(BulletData.Damage, gameObject);
+        hittable?.GetHit(damage, gameObject);
         
     }
 
@@ -198,7 +200,7 @@ public class RegularBullet : Bullet
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.gameObject.GetComponent<IHittable>();
-        hittable?.GetHit(BulletData.Damage, gameObject);
+        hittable?.GetHit(damage, gameObject);
     }
 
     public void HitObstacle()

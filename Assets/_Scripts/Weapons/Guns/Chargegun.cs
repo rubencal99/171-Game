@@ -46,7 +46,7 @@ public class Chargegun : Railgun
         Reload();
        // infAmmo = weaponParent.InfAmmo;
        if(holding && holdTimer < maxHold){
-           holdTimer += Time.deltaTime;
+           holdTimer += Time.deltaTime * PlayerSignaler.CallTriggerHappy();
        }
     }
 
@@ -139,7 +139,7 @@ public class Chargegun : Railgun
         }
         else if(holding && holdTimer < maxHold)
         {
-            animator.SetFloat("Charge", 1);
+            animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
         }
         else if(!holding && holdTimer > 0)
         {
