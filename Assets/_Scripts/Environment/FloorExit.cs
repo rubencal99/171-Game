@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FloorExit : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class FloorExit : MonoBehaviour
     public Camera oldMainCamera;
 
     public Scene oldScene;
+
+    public GameObject loadScreen;
+
+    public Image loadBar;
 
 
 
@@ -35,12 +40,18 @@ IEnumerator loadScene(string index)
     scene.allowSceneActivation = false;
     sceneAsync = scene;
     PlayerProgressManager.SavePlayer(Player.instance.GetComponentInChildren<PlayerWeapon>(), Player.instance.GetComponent<Player>());
-
+    loadScreen.SetActive(true);
+    loadBar.fillAmount = 0.0f;
     //Wait until we are done loading the scene
     while (scene.progress < 0.90f)
     {
         Debug.Log("Loading scene " + " [][] Progress: " + scene.progress);
-        yield return null;
+        var fillAmount = Mathf.Clamp((float)scene.progress / 1.0f, 0.0f, 1.0f);
+        Debug.Log("fill amount: " + fillAmount);
+    	
+
+   		loadBar.fillAmount = fillAmount;
+
     }
      scene.allowSceneActivation = true;
     //  Wait until the asynchronous scene fully loads
@@ -79,6 +90,7 @@ void enableScene()
 
 void OnFinishedLoadingAllScene()
 {
+     loadScreen.SetActive(false);
     Debug.Log("Done Loading Scene");
     enableScene();
     //Debug.Log("Scene Activated!");
@@ -99,4 +111,8 @@ public void CallLoadScene() {
     //         }
     //  //   }
     // }
+
+
 }
+
+

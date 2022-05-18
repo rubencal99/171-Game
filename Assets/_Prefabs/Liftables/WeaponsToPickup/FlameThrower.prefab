@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1645225497004688467}
   - component: {fileID: 1957701704751158774}
   - component: {fileID: -3287163755104639317}
+  - component: {fileID: 4371595157457801256}
   m_Layer: 0
   m_Name: FlameThrower
   m_TagString: Untagged
@@ -101,7 +102,10 @@ MonoBehaviour:
   FireArm: {fileID: 11400000, guid: 675a1b532289c514a8c73b7394a9b9ae, type: 2}
   tag: 
   pickupAmount: 1
+  pickupDistance: 3
+  inDistance: 0
   name: FlameThrower
+  Key: {fileID: 0}
 --- !u!114 &1645225497004688467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +172,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4371595157457801256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227130039294860668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}

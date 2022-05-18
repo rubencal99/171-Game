@@ -102,6 +102,10 @@ public static class PlayerAugmentations : object
     //////////////////////////////CaptainPlanet/////////////////////////////////////
     public static bool CaptainPlanet = false;
     public static int CapRecycle = 2;
+
+    //////////////////////////////Quickdraw/////////////////////////////////////
+    public static bool Quickdraw = false;
+    public static float DrawTime = 0.5f;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -132,7 +136,8 @@ public static class PlayerAugmentations : object
         {"HungryHippo",HungryHippo},
         {"xXx",xXx},
         {"MetalSkin",MetalSkin},
-        {"CaptainPlanet",CaptainPlanet}
+        {"CaptainPlanet",CaptainPlanet},
+        {"Quickdraw", Quickdraw}
 
     };
 

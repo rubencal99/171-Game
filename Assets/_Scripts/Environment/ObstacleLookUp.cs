@@ -28,21 +28,25 @@ public static class ObstacleLookUp
         //Debug.Log("In spawn obstacle");
         if (ObstacleDictionary.ContainsKey(ObstacleName))
         {
-            if(ObstacleName == "t")
+            GameObject drop = null;
+            if(ObstacleName == "t" || ObstacleName == "K" || ObstacleName == "D")
             {
-                 GameObject drop1 = Object.Instantiate(
+                drop = Object.Instantiate(
                     ObstacleDictionary[ObstacleName],
                     new Vector3(x, 1f, z), 
                     ObstacleDictionary[ObstacleName].transform.rotation);
-                    return;
             }
-            GameObject drop = Object.Instantiate(
-                ObstacleDictionary[ObstacleName],
-                new Vector3(x, 0f, z), 
-                ObstacleDictionary[ObstacleName].transform.rotation);
+            else
+            {
+                drop = Object.Instantiate(
+                    ObstacleDictionary[ObstacleName],
+                    new Vector3(x, 0f, z), 
+                    ObstacleDictionary[ObstacleName].transform.rotation);
+            }
+            
             if(room != null)
             {
-                drop.transform.parent = room.transform.parent;
+                drop.transform.parent = room.transform;
             }
         }
         else

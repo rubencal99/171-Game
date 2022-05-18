@@ -27,7 +27,7 @@ public class LootClear : MonoBehaviour
         {
             PickDoor(room);
         }
-        else if (odds == 1)
+        else if (odds >= 1 && odds <= 2)
         {
             PickWeapon(room);
         } 
@@ -55,6 +55,7 @@ public class LootClear : MonoBehaviour
         item = Random.Range(0, 1);
         thisItemLoot = Instantiate(LootItems[item]) as GameObject;
         thisItemLoot.transform.position = CalculateSpawn(room);
+        Destroy(thisItemLoot, 5);
         Debug.Log("CLEAR Item");
     }
 

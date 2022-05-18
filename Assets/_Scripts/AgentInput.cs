@@ -14,6 +14,8 @@ public class AgentInput : MonoBehaviour, IAgentInput
     private bool meleeButtonDown = false;
     private bool reloadButtonDown = false;
 
+     private bool mapButtonDown = false;
+
     public bool dodging = false; // bool to check if dodging
     
     [SerializeField]
@@ -55,6 +57,11 @@ public class AgentInput : MonoBehaviour, IAgentInput
      [field: SerializeField]
     public UnityEvent OnThrowButtonReleased { get; set; }
 
+    [field: SerializeField]
+    public UnityEvent OnMapButtonPressed { get; set; }
+     [field: SerializeField]
+    public UnityEvent OnMapButtonReleased { get; set; }
+
 
     // Calls SceneManager.RestartScene
     [field: SerializeField]
@@ -85,8 +92,10 @@ public class AgentInput : MonoBehaviour, IAgentInput
         GetThrowInput();
         GetMeleeInput();
         GetReloadInput();
+         GetMapInput();
         // GetRestartInput();
         GetRespawnInput();
+        
         // GetDodgeInput();
     }
 
@@ -146,6 +155,27 @@ public class AgentInput : MonoBehaviour, IAgentInput
             {
                 throwButtonDown = false;
                 OnThrowButtonReleased?.Invoke();
+            }
+        }
+    }
+
+    private void GetMapInput()
+    {
+        if (Input.GetAxisRaw("Map") > 0)
+        {
+            Debug.Log("In map");
+            if (mapButtonDown == false)
+            {
+                mapButtonDown = true;
+                OnMapButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (mapButtonDown == true)
+            {
+                mapButtonDown = false;
+                OnMapButtonReleased?.Invoke();
             }
         }
     }

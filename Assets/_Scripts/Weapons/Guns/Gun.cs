@@ -36,6 +36,7 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool isPlayer;
 
+    protected float baseSwapTime = 0.5f;
     [SerializeField]
     protected float swapTime = 0.5f;
     [SerializeField]
@@ -80,8 +81,9 @@ public class Gun : MonoBehaviour, IWeapon
 
     public float reloadAnimMultiplier;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
+        swapTime = baseSwapTime * PlayerSignaler.CallQuickdraw();
         swapTimer = swapTime;
     }
 
@@ -141,7 +143,7 @@ public class Gun : MonoBehaviour, IWeapon
         isShooting = false;
     }
 
-    public void TryReloading()
+    public virtual void TryReloading()
     {
         if(Ammo < weaponData.MagazineCapacity)
             isReloading = true;
@@ -194,6 +196,11 @@ public class Gun : MonoBehaviour, IWeapon
     public void AmmoFill()
     {
         TotalAmmo = weaponData.MaxAmmoCapacity;
+    }
+
+    public void ReSupply()
+    {
+        TotalAmmo += (weaponData.MaxAmmoCapacity)/4;
     }
 
     protected virtual void UseWeapon()
@@ -361,6 +368,7 @@ public class Gun : MonoBehaviour, IWeapon
         bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
         bulletPrefab.GetComponent<Bullet>().direction = (bulletSpreadRotation * (weaponParent.aimDirection)).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
         bulletPrefab.GetComponent<Bullet>().direction.y = 0;
+        bulletPrefab.GetComponent<Bullet>().transform.right = bulletPrefab.GetComponent<Bullet>().direction;
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

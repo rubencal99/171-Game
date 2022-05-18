@@ -1,0 +1,255 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2-3 map settings
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: e35fc38ceba38d04cb4d8a17f24aeef7, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Grid
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: hasBoss
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: AutoTiler
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: LightPrefab
+    value: 
+    objectReference: {fileID: 2098239701316472060, guid: bf78a89ec07a90c4f9f3e89c4acbd8f1, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ShopKeeper
+    value: 
+    objectReference: {fileID: 6638867989798731449, guid: 8f91563d5f7c589499134d8ed31be76f, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.data[0]
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 47b51a9f3be104adab716db7f7dbc9ac, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.data[1]
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 89ed10eafba0545f8b554cbb08bf4f34, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.data[2]
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 8b3a1036e01c7462d8f4aa3341ac6394, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.data[3]
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 07734b22532f6456fb3d5aab1bf61044, type: 3}
+  - target: {fileID: 0}
+    propertyPath: BossSpawner
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: b127c873162ba2a4eb8213eb7e880e78, type: 3}
+  - target: {fileID: 0}
+    propertyPath: ShopKeeperSpawner
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 8e1687d02d98a5f40b6da9c1c0263692, type: 3}
+  - target: {fileID: 0}
+    propertyPath: PuzzleSpawner
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 91c491f49b26329479a4cacfded2b17e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: EntryCollider
+    value: 
+    objectReference: {fileID: 7688404469582539259, guid: 519c8bf5880934aaa9e4ea760408912b, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Exit
+    value: 
+    objectReference: {fileID: 6561165705246468781, guid: 283b59b6fed28f847b61afcd6a78628f, type: 3}
+  - target: {fileID: 0}
+    propertyPath: SpawnWeapon
+    value: 
+    objectReference: {fileID: 8960519738105143089, guid: c6a979ec739317145861e4d8bd0c8662, type: 3}
+  - target: {fileID: 0}
+    propertyPath: wallVertical
+    value: 
+    objectReference: {fileID: 8753675751577585064, guid: 76257fc4964cd484989e3a56a342b94e, type: 3}
+  - target: {fileID: 0}
+    propertyPath: wallHorizontal
+    value: 
+    objectReference: {fileID: 2983560248429768675, guid: 0b84e1940b269ca4fbec190d930348ae, type: 3}
+  - target: {fileID: 0}
+    propertyPath: controls
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: columns
+    value: 300
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: rows
+    value: 220
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minRoomDim.x
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minRoomDim.y
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minEntryDim.x
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minEntryDim.y
+    value: 16
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxEntryDim.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxEntryDim.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minNormalDim.x
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minNormalDim.y
+    value: 22
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxNormalDim.x
+    value: 26
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxNormalDim.y
+    value: 26
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minLargeDim.x
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minLargeDim.y
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxLargeDim.x
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxLargeDim.y
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minRewardDim.x
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minRewardDim.y
+    value: 15
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxRewardDim.x
+    value: 26
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxRewardDim.y
+    value: 26
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: rewardPercent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: auxiliaryPercent
+    value: 100
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minBossDim.x
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: minBossDim.y
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxBossDim.x
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxBossDim.y
+    value: 40
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: UseCellular
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Seed
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: useRandomSeed
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallPercent
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallCount
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Iterations
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: HasEntry
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: HasBoss
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: numLargeRooms
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: NumBossRooms
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: NumNormalRooms
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: overgrownRooms
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
