@@ -9,12 +9,17 @@ public class GenericPickup : MonoBehaviour
 
     public SpriteRenderer Key;
 
+    private bool interacted;
+
     //public GameObject Player;
 
     void Start() {
         
         Key = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
+    }
+    void Awake() {
+        interacted = false;
     }
 
    private void OnTriggerStay(Collider collision)
@@ -23,11 +28,12 @@ public class GenericPickup : MonoBehaviour
         {
             Debug.Log("Player entered zone");
             Key.enabled = true;
-           if (Input.GetAxisRaw("Interact") > 0) {
-          //Debug.Log("Collided with object " + col.tag);
-        
-            Player.instance.inventory.AddItemToInventory(pickupItem, pickupAmount);
-            Destroy(gameObject);
+            if (Input.GetAxisRaw("Interact") > 0 && !interacted) {
+                interacted = true;
+                Debug.Log("Interacted with object");
+            
+                Player.instance.inventory.AddItemToInventory(pickupItem, pickupAmount);
+                Destroy(gameObject);
             }
         }
     }
