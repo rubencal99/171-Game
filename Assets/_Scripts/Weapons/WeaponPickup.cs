@@ -17,12 +17,17 @@ public class WeaponPickup : MonoBehaviour
 
     public SpriteRenderer Key;
 
+    private bool interacted;
+
     //public GameObject Player;
 
     void Start() {
         
         Key = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
+    }
+    void Awake(){
+        interacted = false;
     }
     //  public void CheckDistance()
     // {
@@ -56,8 +61,10 @@ public class WeaponPickup : MonoBehaviour
         {
             Debug.Log("Player entered zone");
             Key.enabled = true;
-           if (Input.GetAxisRaw("Interact") > 0) {
+           if (Input.GetAxisRaw("Interact") > 0 && !interacted) {
                  
+                interacted = true;
+                Debug.Log("Interacted with object");
                 GameObject weaParent = GameObject.Find("WeaponParent");
                 GameObject weap = FindDupe(weaParent, tag);
 
