@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SniperMovementData
   m_EditorClassIdentifier: 
   maxDodgeSpeed: 4.8
-  maxRunSpeed: 3
+  maxRunSpeed: 1.7
+  maxProneSpeed: 3
   acceleration: 90
   decceleration: 52
   standingDelay: 0
