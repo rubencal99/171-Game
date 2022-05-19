@@ -11,6 +11,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GameObject Grid;
     [SerializeField]
+    private bool debug;
+    [SerializeField]
     private bool hasBoss;
     [SerializeField]
     private TileSpritePlacer AutoTiler;
@@ -116,8 +118,11 @@ public class MapGenerator : MonoBehaviour
             
         }
         
-
-        DrawMap();
+        if(!debug)
+        {
+            DrawMap();
+        }
+        
         AstarPath.active.Scan();
         //Debug.Log("After draw map");
         Grid.transform.Rotate(Vector3.right * 90);
@@ -242,7 +247,7 @@ public class MapGenerator : MonoBehaviour
             // This gives us normal rooms
             if (!successfulLarge)
             {
-                if (width > minNormalDim.x && height > minNormalDim.y)
+                if (width > maxNormalDim.x && height > maxNormalDim.y)
                 {
                     Debug.Log("In BSP Split normal");
                     Debug.Log("Space Width: " + width);
@@ -250,11 +255,11 @@ public class MapGenerator : MonoBehaviour
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        if (height >= minNormalDim.y * 2)
+                        if (height >= maxNormalDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
-                        else if (width >= minNormalDim.x * 2)
+                        else if (width >= maxNormalDim.x * 2)
                         {
                             SplitVertical(space);
                         }
@@ -273,11 +278,11 @@ public class MapGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (width >= minNormalDim.x * 2)
+                        if (width >= maxNormalDim.x * 2)
                         {
                             SplitVertical(space);
                         }
-                        else if (height >= minNormalDim.y * 2)
+                        else if (height >= maxNormalDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
@@ -301,16 +306,16 @@ public class MapGenerator : MonoBehaviour
 
             if(!successfulLarge && !successfulNormal)
             {
-                if (width > minRewardDim.x && height > minRewardDim.y)
+                if (width > maxRewardDim.x && height > maxRewardDim.y)
                 {
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        if (height >= minRewardDim.y * 2)
+                        if (height >= maxRewardDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
-                        else if (width >= minRewardDim.x * 2)
+                        else if (width >= maxRewardDim.x * 2)
                         {
                             SplitVertical(space);
                         }
@@ -321,11 +326,11 @@ public class MapGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (width >= minRewardDim.x * 2)
+                        if (width >= maxRewardDim.x * 2)
                         {
                             SplitVertical(space);
                         }
-                        else if (height >= minRewardDim.y * 2)
+                        else if (height >= maxRewardDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
@@ -441,6 +446,7 @@ public class MapGenerator : MonoBehaviour
             if(roomType == "Normal" || roomType == "Reward" || roomType == "Auxiliary")
             {
                 Debug.Log("RoomType = " + roomType);
+                Debug.Log("From (" + x1 + ", " + y1 + ") to (" + (x1+NewRoom.length) + ", " + (y1+NewRoom.width) + ")");
                 for(int i = 0; i < NewRoom.length; i++)
                 {
                     for (int j = 0; j < NewRoom.width; j++)
@@ -449,34 +455,34 @@ public class MapGenerator : MonoBehaviour
                         if(int.TryParse(tempString[i, j], out int result))
                         {   
                             //Debug.Log("Int result = " + result);
-                            map[x1 + 1 + i, y1 + j + 1].value = result;
+                            map[x1 + i, y1 + j].value = result;
                             if(result == 1)
                             {
-                                map[x1 + 1 + i, y1 +j + 1].room = NewRoom;
-                                roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
+                                map[x1 + i, y1 + j].room = NewRoom;
+                                roomTiles.Add(map[x1 + i, y1 + j]);
                             }
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
                         }
                         else if(tempString[i, j] == "e")
                         {
-                            NewRoom.Entrances.Add(new Vector2Int(x1 + 1 + i, y1 + j + 1));
-                            map[x1 + 1 + i, y1 + j + 1].value = 1;
-                            map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
-                            roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            NewRoom.Entrances.Add(new Vector2Int(x1 + i, y1 + j));
+                            map[x1 + i, y1 + j].value = 1;
+                            map[x1 + i, y1 + j].room = NewRoom;
+                            roomTiles.Add(map[x1 + i, y1 + j]);
+                            NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
                         }
                         else
                         {
                             //Debug.Log("String result = " + result);
-                            map[x1 + 1 + i, y1 + j + 1].value = 1;
-                            map[x1 + 1 + i, y1 + j + 1].isObstacle = true;
-                            map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
-                            roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            map[x1 + i, y1 + j].value = 1;
+                            map[x1 + i, y1 + j].isObstacle = true;
+                            map[x1 + i, y1 + j].room = NewRoom;
+                            roomTiles.Add(map[x1 + i, y1 + j]);
+                            NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
-                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1, NewRoom);
+                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + i, y1 + j, NewRoom);
                         }
                         
                     }
@@ -516,6 +522,10 @@ public class MapGenerator : MonoBehaviour
         AddCorridors();
         Debug.Log("After corrider creation");
         AddEndRoom();
+        if(debug)
+        {
+            return;
+        }
         AddEntryColliders();
         AddSpawners();
         for(int i = 0; i < 1; i++)
@@ -862,15 +872,26 @@ public class MapGenerator : MonoBehaviour
         //ShopRoom = shop;*/
 
         //---------------- SHOP ----------------
-        int shopIndex = UnityEngine.Random.Range(1, 4);
+        /*int shopIndex = UnityEngine.Random.Range(1, 4);
         if(shopIndex >= EndRoom.RoomsByDistance.Count)
         {
             shopIndex = 1;
-        }
-        RoomNode shop = EndRoom.RoomsByDistance[shopIndex];
-        if(shop == StartRoom)
+        }*/
+        RoomNode shop = null;
+        /*if(shop == StartRoom)
         {
             shop = EndRoom.RoomsByDistance[shopIndex-1];
+        }*/
+        foreach(RoomNode room in Rooms)
+        {
+            if(room.DistanceFromStart > 2 &&
+                room.RoomType != "Reward" &&
+                room.RoomType != "Key" &&
+                room.RoomType != "Boss" &&
+                room.RoomType != "Door")
+                {
+                    shop = room;
+                }
         }
         shop.RoomType = "Shop";
         ShopRoom = shop;
@@ -891,9 +912,9 @@ public class MapGenerator : MonoBehaviour
             RoomNode door = null;
             for(int i = 0; i < StartRoom.RoomsByDistance.Count; i++)
             {
-                if(StartRoom.RoomsByDistance[i].RoomType != "Start" || 
-                    StartRoom.RoomsByDistance[i].RoomType != "Reward" ||
-                    StartRoom.RoomsByDistance[i].RoomType != "Shop" ||
+                if(StartRoom.RoomsByDistance[i].RoomType != "Start" && 
+                    StartRoom.RoomsByDistance[i].RoomType != "Reward" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Shop" &&
                     StartRoom.RoomsByDistance[i].RoomType != "Key")
                     {
                         door = StartRoom.RoomsByDistance[i];
@@ -1227,6 +1248,8 @@ public class MapGenerator : MonoBehaviour
         var room1 = new int[] { x1, y1, x2, ySplit };
         var room2 = new int[] { x1, ySplit + 1, x2, y2 };
 
+        Debug.DrawLine(new Vector3(x1, 1, ySplit), new Vector3(x2, 1, ySplit), Color.green, 20);
+
         if (UnityEngine.Random.Range(0, 100) < 50)
         {
             queue.Add(room1);
@@ -1251,6 +1274,8 @@ public class MapGenerator : MonoBehaviour
         var xSplit = UnityEngine.Random.Range(x1 + 1 + buffer, x2 - buffer);
         var room1 = new int[] { x1, y1, xSplit, y2 };
         var room2 = new int[] { xSplit + 1, y1, x2, y2 };
+
+        Debug.DrawLine(new Vector3(xSplit, 1, y1), new Vector3(xSplit, 1, y2), Color.green, 20);
 
         // print("In vertical.");
         if (UnityEngine.Random.Range(0, 100) < 50)
