@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fa2a64b2730335f4aab7441ebdf87da4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,19 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7888232ccf4874898aa046ebe1a5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
   muzzle: {fileID: 8960519739286643315}
   passives: {fileID: 0}
   ammo: 100
   totalAmmo: 0
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: 7d0e4ae64404ae94ba6050f33b8f4d5b, type: 2}
-  swordData: {fileID: 11400000, guid: 36206c669af236549a8ec4c87b6714f6, type: 2}
   isPlayer: 0
+  swapTime: 0.5
+  swapTimer: 0
+  isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  name: Lazer Rifle
   sprite: {fileID: 431852216664804413, guid: b62ddda33fa718b47932cf51f6de2545, type: 3}
+  reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -152,9 +155,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  <OnMelee>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls:
