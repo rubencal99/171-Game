@@ -230,4 +230,11 @@ public static class PlayerSignaler : object
         }
         return 1;
     }
+
+    public static bool CallDoubleShot(){
+        if(PlayerAugmentations.AugmentationList["DoubleShot"]){
+            return true;
+        }
+        return false;
+    }
 }

@@ -105,6 +105,8 @@ public static class PlayerAugmentations : object
     //////////////////////////////DoubleMag/////////////////////////////////////
     public static bool DoubleMag = false;
     public static int MagAmount = 2;
+    //////////////////////////////DoubleMag/////////////////////////////////////
+    public static bool DoubleShot = false;
 
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
@@ -137,7 +139,9 @@ public static class PlayerAugmentations : object
         {"xXx",xXx},
         {"MetalSkin",MetalSkin},
         {"CaptainPlanet",CaptainPlanet},
-        {"DoubleMag", DoubleMag}
+        {"DoubleMag", DoubleMag},
+        {"DoubleShot", DoubleShot}
+
 
     };
 
