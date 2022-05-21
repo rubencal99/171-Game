@@ -9,8 +9,8 @@ public static class RoomInjector
                                                 //[5, 7] becomes
                                                 //[7, 5]
         string[,] newArray = new string[array.GetLength(1), array.GetLength(0)];
-        Debug.Log("Old array dim: (" + array.GetLength(0) + ", " + array.GetLength(1) + ")");
-        Debug.Log("New array dim: (" + newArray.GetLength(0) + ", " + newArray.GetLength(1) + ")");
+        //Debug.Log("Old array dim: (" + array.GetLength(0) + ", " + array.GetLength(1) + ")");
+        //Debug.Log("New array dim: (" + newArray.GetLength(0) + ", " + newArray.GetLength(1) + ")");
         int newColumn, newRow = 0;
                                                     //5
         for(int oldColumn = 0; oldColumn < array.GetLength(0); oldColumn++)
