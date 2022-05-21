@@ -132,6 +132,7 @@ MonoBehaviour:
   <startOffset>k__BackingField: {x: 0.85, y: -0.24, z: 0}
   attackPoint: {fileID: 7655484095604405663}
   attackRange: 1.4
+  animator: {fileID: 4641309339460782718}
   passives: {fileID: 0}
   enemyLayers:
     serializedVersion: 2
