@@ -5,7 +5,6 @@ using UnityEngine;
 using System.Linq;
 using Random=UnityEngine.Random;
 
-
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField]
@@ -14,6 +13,12 @@ public class MapGenerator : MonoBehaviour
     private bool debug;
     [SerializeField]
     private bool forceEntry = false;
+    [SerializeField]
+    private bool extraRooms = false;
+    [SerializeField]
+    private int numExtraRooms = 0;
+    [SerializeField]
+    private int maxExtraRooms = 4;
     [SerializeField]
     private bool hasBoss;
     [SerializeField]
@@ -255,9 +260,9 @@ public class MapGenerator : MonoBehaviour
             {
                 if (width > maxNormalDim.x && height > maxNormalDim.y)
                 {
-                    Debug.Log("In BSP Split normal");
-                    Debug.Log("Space Width: " + width);
-                    Debug.Log("Space Height: " + height);
+                    //Debug.Log("In BSP Split normal");
+                    //Debug.Log("Space Width: " + width);
+                    //Debug.Log("Space Height: " + height);
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
                     {
@@ -312,7 +317,7 @@ public class MapGenerator : MonoBehaviour
 
             if(!successfulLarge && !successfulNormal)
             {
-                if (width > maxRewardDim.x && height > maxRewardDim.y)
+                if (width > maxRewardDim.x && height > maxRewardDim.y && NumRewardRooms < MaxRewardRooms)
                 {
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
@@ -325,7 +330,7 @@ public class MapGenerator : MonoBehaviour
                         {
                             SplitVertical(space);
                         }
-                        else if(UnityEngine.Random.Range(0, 100) < rewardPercent && NumRewardRooms < MaxRewardRooms)
+                        else if(UnityEngine.Random.Range(0, 100) < rewardPercent)
                         {
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
                             NumRewardRooms++;
@@ -341,12 +346,23 @@ public class MapGenerator : MonoBehaviour
                         {
                             SplitHorizontal(space);
                         }
-                        else if(UnityEngine.Random.Range(0, 100) < rewardPercent && NumRewardRooms < MaxRewardRooms)
+                        else if(UnityEngine.Random.Range(0, 100) < rewardPercent)
                         {
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
                             NumRewardRooms++;
                         }
                     }
+                    successfulReward = true;
+                }
+            }
+            // This is where extra rooms are made
+            if(!successfulReward && !successfulNormal)
+            {
+                if(extraRooms && numExtraRooms < maxExtraRooms)
+                {
+                    Debug.Log("In Extra room creation");
+                    roomsList.Enqueue(new Tuple<int[], string>(space, "Extra"));
+                    numExtraRooms++;
                 }
             }
             count++;
@@ -384,10 +400,10 @@ public class MapGenerator : MonoBehaviour
                 var roomLength = tempString.GetLength(0);
                 // Array length
                 var roomWidth = tempString.GetLength(1);
-                Debug.Log("Allocated length: " + length);
+                /*Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
                 Debug.Log("Normal room length: " + roomLength);
-                Debug.Log("Normal room width: " + roomWidth);
+                Debug.Log("Normal room width: " + roomWidth);*/
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else if(roomType == "Auxiliary")
@@ -401,10 +417,10 @@ public class MapGenerator : MonoBehaviour
                 var roomLength = tempString.GetLength(0);
                 // Array length
                 var roomWidth = tempString.GetLength(1);
-                Debug.Log("Allocated length: " + length);
+                /*Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
                 Debug.Log("Auxiliary room length: " + roomLength);
-                Debug.Log("Auxiliary room width: " + roomWidth);
+                Debug.Log("Auxiliary room width: " + roomWidth);*/
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else if(roomType == "Reward")
@@ -418,10 +434,10 @@ public class MapGenerator : MonoBehaviour
                 var roomLength = tempString.GetLength(0);
                 // Array length
                 var roomWidth = tempString.GetLength(1);
-                Debug.Log("Allocated length: " + length);
+                /*Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
                 Debug.Log("Reward room length: " + roomLength);
-                Debug.Log("Reward room width: " + roomWidth);
+                Debug.Log("Reward room width: " + roomWidth);*/
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else
@@ -429,7 +445,9 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.AddDimensions(length, width);
             }
             
-            if (!HasEntry && roomType != "Reward" && roomType != "Auxiliary")
+            if (!HasEntry && 
+                roomType != "Reward" && 
+                roomType != "Auxiliary")
             {
                 NewRoom.RoomType = "Start";
                 NewRoom.MaxNeighbors = 1;
@@ -449,13 +467,12 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.MaxNeighbors = 3;
             }
 
-            
             // Here we fill the negative space with empty space 
             // I.e. room creation
             if(roomType == "Normal" || roomType == "Reward" || roomType == "Auxiliary")
             {
-                Debug.Log("RoomType = " + roomType);
-                Debug.Log("From (" + x1 + ", " + y1 + ") to (" + (x1+NewRoom.length) + ", " + (y1+NewRoom.width) + ")");
+                //Debug.Log("RoomType = " + roomType);
+                //Debug.Log("From (" + x1 + ", " + y1 + ") to (" + (x1+NewRoom.length) + ", " + (y1+NewRoom.width) + ")");
                 for(int i = 0; i < NewRoom.length; i++)
                 {
                     for (int j = 0; j < NewRoom.width; j++)
@@ -486,14 +503,15 @@ public class MapGenerator : MonoBehaviour
                         {
                             //Debug.Log("String result = " + result);
                             map[x1 + i, y1 + j].value = 1;
+                            map[x1 + i, y1 + j].obstacleValue = tempString[i, j];
                             map[x1 + i, y1 + j].isObstacle = true;
                             map[x1 + i, y1 + j].room = NewRoom;
                             roomTiles.Add(map[x1 + i, y1 + j]);
                             NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
-                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + i, y1 + j, NewRoom);
+                            NewRoom.obstacleTileList.Add(map[x1 + i, y1 + j]);
+                            
                         }
-                        
                     }
                 }
                 //Debug.Log("Before Add Lights");
@@ -526,22 +544,36 @@ public class MapGenerator : MonoBehaviour
             tempCount++;
         }
         Debug.Log("After Room Creation");
+        Debug.Log("Before Sort Rooms");
         SortRooms();
         Debug.Log("Before Corridor creation");
         AddCorridors();
         Debug.Log("After corrider creation");
         AddEndRoom();
+        Debug.Log("After Add End Room");
         if(debug)
         {
             return;
         }
+        SpawnObstacles();
         AddEntryColliders();
         AddSpawners();
-        for(int i = 0; i < 1; i++)
-            AddObstacles();
+        /*for(int i = 0; i < 1; i++)
+            AddObstacles();*/
        // AddWalls();
     }
-    void AddWalls()
+
+    void SpawnObstacles()
+    {
+        foreach(RoomNode room in Rooms)
+        {
+            foreach(TileNode tile in room.obstacleTileList)
+            {
+                ObstacleLookUp.SpawnObstacle(tile.obstacleValue, tile.x, tile.y, room);
+            }
+        }
+    }
+    /*void AddWalls()
     {
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
@@ -573,10 +605,10 @@ public class MapGenerator : MonoBehaviour
             CreateWall(wallParent, wallPosition, wallVertical);
         }
 
-    }
+    }*/
 
     //Function to add Corridor wall positions to list
-    void  PopulateWallLists(List<Vector3Int> doorVertPos, List<Vector3Int> doorHorPos,
+    /*void  PopulateWallLists(List<Vector3Int> doorVertPos, List<Vector3Int> doorHorPos,
                                  List<Vector3Int> wallHorPos, List<Vector3Int> wallVertPos, CorridorNode corr)
         {
             
@@ -614,7 +646,7 @@ public class MapGenerator : MonoBehaviour
             var wallPosition = new Vector3(room.bottomRightCorner.x,1f, col);
             AddWallPositionToList(wallPosition, wallVertPos, doorVertPos);
         }
-    }
+    }*/
 
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
     {
@@ -629,7 +661,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject Wall)
+    /*private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject Wall)
     {
         Instantiate(Wall, wallPosition, Quaternion.identity, wallParent.transform);
     }
@@ -651,7 +683,7 @@ public class MapGenerator : MonoBehaviour
             //ObstacleInjector.PlaceObstacles(room);
             ObstacleInjector.PlacePillars(room);
         }
-    }
+    }*/
 
     void AddSpawners()
     {
@@ -838,7 +870,9 @@ public class MapGenerator : MonoBehaviour
         RoomNode end = new RoomNode();
         foreach(RoomNode room in Rooms)
         {
-            if(room.DistanceFromStart > distance && room.RoomType != "Reward" && room.RoomType != "Auxiliary")
+            if(room.DistanceFromStart > distance && 
+                room.RoomType != "Reward" &&
+                room.RoomType != "Extra")
             {
                 distance = room.DistanceFromStart;
                 end = room;
@@ -854,6 +888,7 @@ public class MapGenerator : MonoBehaviour
         {
             EndRoom.RoomType = "Key";
         }
+        EndRoom.RepurposeRoom(ref map);
         /*Debug.Log("Boss distance: " + BossRoom.DistanceFromStart);
         int r = Random.Range(1, 4);
         if(r >= BossRoom.RoomsByDistance.Count)
@@ -896,7 +931,6 @@ public class MapGenerator : MonoBehaviour
             if(!forceEntry && room.DistanceFromStart > 2 &&
                 room.RoomType != "Reward" &&
                 room.RoomType != "Key" &&
-                room.RoomType != "Auxiliary" &&
                 room.RoomType != "Boss" &&
                 room.RoomType != "Door")
                 {
@@ -904,7 +938,6 @@ public class MapGenerator : MonoBehaviour
                 }
             else if(room.RoomType != "Reward" &&
                 room.RoomType != "Key" &&
-                room.RoomType != "Auxiliary" &&
                 room.RoomType != "Boss" &&
                 room.RoomType != "Door")
                 {
@@ -913,7 +946,7 @@ public class MapGenerator : MonoBehaviour
         }
         shop.RoomType = "Shop";
         ShopRoom = shop;
-
+        ShopRoom.RepurposeRoom(ref map);
         //---------------- DOOR ----------------
         if(!hasBoss)
         {
@@ -932,15 +965,17 @@ public class MapGenerator : MonoBehaviour
             {
                 if(StartRoom.RoomsByDistance[i].RoomType != "Start" && 
                     StartRoom.RoomsByDistance[i].RoomType != "Reward" &&
-                    StartRoom.RoomsByDistance[i].RoomType != "Auxiliary" &&
                     StartRoom.RoomsByDistance[i].RoomType != "Shop" &&
-                    StartRoom.RoomsByDistance[i].RoomType != "Key")
+                    StartRoom.RoomsByDistance[i].RoomType != "Boss" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Key" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Extra")
                     {
                         door = StartRoom.RoomsByDistance[i];
                     }
             }
             door.RoomType = "Door";
             DoorRoom = door;
+            DoorRoom.RepurposeRoom(ref map);
         }
     }
 
@@ -1348,7 +1383,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     Gizmos.color = new Color(0, 0, 0, 1f);
                 }
-                else if (map[x, y].value == 1)
+                else if (map[x, y].value == 1 && map[x, y].room != null)
                 {
                     if (map[x, y].room.RoomType == "Start")
                     {
