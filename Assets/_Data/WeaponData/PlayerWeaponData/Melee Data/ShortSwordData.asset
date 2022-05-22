@@ -16,6 +16,6 @@ MonoBehaviour:
   <Damage>k__BackingField: 3
   <RecoveryLength>k__BackingField: 0.6
   <ComboWindow>k__BackingField: 0.3
-  <ComboLength>k__BackingField: 3
+  <ComboLength>k__BackingField: 2
   <KnockbackPower>k__BackingField: 5.72
   <KnockbackDelay>k__BackingField: 0.1
