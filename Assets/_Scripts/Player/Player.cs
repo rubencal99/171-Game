@@ -91,6 +91,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     public bool grabbing = false;
     public bool hasGrabbed = false;
     public GameObject grabbedObject = null;
+    public bool inWeaponZone = false;
     // private AgentInput w; // var to hold agent input
 
 // =======
