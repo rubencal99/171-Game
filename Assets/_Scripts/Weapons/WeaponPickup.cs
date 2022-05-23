@@ -61,13 +61,14 @@ public class WeaponPickup : MonoBehaviour
         {
             Debug.Log("Player entered zone");
             Key.enabled = true;
-           if (Input.GetAxisRaw("Interact") > 0 && !interacted) {
+            Player.instance.inWeaponZone = true;
+           if (Input.GetAxisRaw("Interact") > 0 && !interacted && PlayerStateManager.instance.currentState != PlayerStateManager.instance.ShopState) {
                  
                 interacted = true;
                 Debug.Log("Interacted with object");
                 GameObject weaParent = GameObject.Find("WeaponParent");
                 GameObject weap = FindDupe(weaParent, tag);
-
+                Player.instance.inWeaponZone = false;
                 if (weap != null)
                 {
               
@@ -105,7 +106,7 @@ public class WeaponPickup : MonoBehaviour
         if (collision.tag == "Player")
         {
             Key.enabled = false;
-            
+            Player.instance.inWeaponZone = false;
         }
     }
 
