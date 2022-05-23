@@ -13,6 +13,7 @@ public class Chargegun : Railgun
     public bool singleAnim = true;
     protected override void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if(animator == null)
         {
             animator = GetComponent<Animator>();
@@ -31,6 +32,7 @@ public class Chargegun : Railgun
             infAmmo = weaponParent.InfAmmo;
         }
         holdTimer = 0;
+        reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: AssaultRifleWeaponData
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <BulletData>k__BackingField: {fileID: 11400000, guid: 69c7bb5fd8905ad4aba93c6b52b94fe9, type: 2}
   <MagazineCapacity>k__BackingField: 30
   <MaxAmmoCapacity>k__BackingField: 300
@@ -22,6 +23,6 @@ MonoBehaviour:
   <SpreadAngle>k__BackingField: 0.1
   multiBulletShot: 0
   bulletCount: 1
-  recoilIntensity: 0
-  recoilFrequency: 0
-  recoilTime: 0
+  recoilIntensity: 4
+  recoilFrequency: 4
+  recoilTime: 1

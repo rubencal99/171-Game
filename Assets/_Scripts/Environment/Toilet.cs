@@ -15,6 +15,8 @@ public class Toilet : MonoBehaviour
     public Button LeftButton;
     public Button RightButton;
     public List<GameObject> weaponList;
+    public List<GameObject> augmentList;
+    public GameObject currencySpawn;
     public GameObject LeftSpawnItem;
     public GameObject RightSpawnItem;
     public bool used;
@@ -48,7 +50,7 @@ public class Toilet : MonoBehaviour
 
     void ChooseItems()
     {
-        if(weaponList.Count == 0)
+        /*if(weaponList.Count == 0)
         {
             if(LeftSpawnItem != null)
             {
@@ -61,20 +63,63 @@ public class Toilet : MonoBehaviour
                 RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
             }
             return;
-        }
+        }*/
         var index = UnityEngine.Random.Range(0, weaponList.Count);
-        LeftSpawnItem = weaponList[index];
-        RightSpawnItem = weaponList[index];
+        LeftSpawnItem = LeftChoose();
+        RightSpawnItem = RightChoose();
         while(LeftSpawnItem == RightSpawnItem)
         {
-            index = UnityEngine.Random.Range(0, weaponList.Count);
-            RightSpawnItem = weaponList[index];
+            RightSpawnItem = RightChoose();
         }
 
         LeftButton.interactable = false;
-        LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = LeftSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
         RightButton.interactable = false;
-        RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = RightSpawnItem.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+    }
+
+    GameObject LeftChoose()
+    {
+        int r = UnityEngine.Random.Range(0, 75);
+        if(r <= 45)
+        {
+            var index = UnityEngine.Random.Range(0, weaponList.Count);
+            GameObject weapon = weaponList[index];
+            LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = weapon.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+            return weapon;
+        }
+        else if(r <= 75)
+        {
+            var index = UnityEngine.Random.Range(0, augmentList.Count);
+            GameObject augment = augmentList[index];
+            LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = augment.GetComponent<SpriteRenderer>().sprite;
+            return augment;
+        }
+        else
+        {
+            return currencySpawn;
+        }
+    }
+
+    GameObject RightChoose()
+    {
+        int r = UnityEngine.Random.Range(0, 75);
+        if(r <= 35)
+        {
+            var index = UnityEngine.Random.Range(0, weaponList.Count);
+            GameObject weapon = weaponList[index];
+            RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = weapon.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
+            return weapon;
+        }
+        else if(r <= 75)
+        {
+            var index = UnityEngine.Random.Range(0, augmentList.Count);
+            GameObject augment = augmentList[index];
+            RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = augment.GetComponent<SpriteRenderer>().sprite;
+            return augment;
+        }
+        else
+        {
+            return currencySpawn;
+        }
     }
 
     void GetInteractInput()
