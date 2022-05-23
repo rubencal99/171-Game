@@ -41,7 +41,6 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float frequency, float time)
     {
-        /*
         originalCameraPos = transform.localPosition;
         
 
@@ -52,7 +51,6 @@ public class CameraShake : MonoBehaviour
         shakeTimer = time;
         shakeTimerTotal = time;
         //originalCameraPos = this.transform.localPosition;
-        */
     }
 }
  

@@ -309,7 +309,7 @@ public class PlayerRunGunState : PlayerBaseState
                 Player.instance.grabbedObject = null;
             }
 
-            else if (shopping == false && playerInput.ShopKeeper.inDistance)
+            else if (playerInput.ShopKeeper && shopping == false && playerInput.ShopKeeper.inDistance)
             {
                 Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -7443044167869260998}
   - component: {fileID: -1092081608696805414}
   - component: {fileID: 587807140986700129}
+  - component: {fileID: -6296041820614248793}
   m_Layer: 0
   m_Name: CheetahSpeed
   m_TagString: Untagged
@@ -135,7 +136,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5928805170258796552}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
@@ -155,6 +156,22 @@ MonoBehaviour:
   pickupItem: {fileID: 11400000, guid: 6839bc17be440274b87e40d15b3ad9d5, type: 2}
   pickupAmount: 1
   Key: {fileID: 0}
+--- !u!54 &-6296041820614248793
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5928805170258796552}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &5993601934885146153
 PrefabInstance:
   m_ObjectHideFlags: 0

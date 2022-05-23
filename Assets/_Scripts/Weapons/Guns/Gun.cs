@@ -77,6 +77,7 @@ public class Gun : MonoBehaviour, IWeapon
     /*[SerializeField]
     public string name;*/
 
+    public SpriteRenderer spriteRenderer;
     public Sprite sprite;
 
     public float reloadAnimMultiplier;
@@ -94,6 +95,10 @@ public class Gun : MonoBehaviour, IWeapon
         }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
+        if(spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
         if(transform.parent.GetComponent<AgentWeapon>())
         {
             weaponParent = transform.parent.GetComponent<AgentWeapon>();
@@ -102,7 +107,9 @@ public class Gun : MonoBehaviour, IWeapon
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
         //}
+        Debug.Log("Weapon Reload Speed: " + weaponData.ReloadSpeed);
          reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
+         Debug.Log("reloadAnimMultiplier: " + reloadAnimMultiplier);
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -186,7 +193,7 @@ public class Gun : MonoBehaviour, IWeapon
         Debug.Log("In Force Reload");
         reloadCoroutine = false;
         rateOfFireCoroutine = false;
-        GetComponent<SpriteRenderer>().sprite = sprite;
+        spriteRenderer.sprite = sprite;
         if(isPlayer)
         {
             GetComponent<Animator>().Play("idle");
@@ -223,6 +230,7 @@ public class Gun : MonoBehaviour, IWeapon
                 if (infAmmo)
                     Ammo++;
                 OnShoot?.Invoke();
+                CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
                     
@@ -265,6 +273,7 @@ public class Gun : MonoBehaviour, IWeapon
             if (infAmmo)
                 Ammo++;
             OnShoot?.Invoke();
+            CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
             for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
             {
                 
