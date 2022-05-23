@@ -573,7 +573,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 320338
+  m_InstanceId: 247402
 --- !u!114 &4599146443566265198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1748,52 +1748,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 79434371187426031}
     m_Modifications:
-    - target: {fileID: 3031914705613278144, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278144, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: RotationModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278144, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: InheritVelocityModule.m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278144, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: RotationBySpeedModule.enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278144, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 2.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278145, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278145, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: m_ReflectionProbeUsage
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3031914705613278157, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
       propertyPath: m_Name
       value: BloodSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278157, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3031914705613278158, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278158, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3031914705613278158, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3031914705613278158, guid: e98c8c54d22d23a42be2549b46178ec1, type: 3}
