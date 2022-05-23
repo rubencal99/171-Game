@@ -13,12 +13,12 @@ public class SplashBullet : RegularBullet
         lifetime = BulletData.decayTime;
     }
 
-    public void FixedUpdate() {
+    /*public void FixedUpdate() {
        // if(lifetime < 0.0f)
        //     splash();//Destroy(gameObject);
         
       //  lifetime -= Time.fixedDeltaTime;
-    }
+    }*/
 
     public void OnTriggerEnter(Collider collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Obstacles") ||

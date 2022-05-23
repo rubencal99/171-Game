@@ -12,6 +12,8 @@ public class Melee : MonoBehaviour, IWeapon
     public Transform attackPoint;
     public float attackRange = 0.15f;
     protected AgentWeapon weaponParent;
+    [field: SerializeField]
+    protected Animator animator;
 
     [SerializeField]
     public PlayerPassives passives;
@@ -130,6 +132,7 @@ public class Melee : MonoBehaviour, IWeapon
         {
             comboCounter = 0;
             comboTimer = 0;
+            animator.SetTrigger("Reset");
             return;
         }
         if(comboCounter > 0)
@@ -138,6 +141,8 @@ public class Melee : MonoBehaviour, IWeapon
         }
         if(comboCounter >= meleeData.ComboLength)
         {
+            comboCounter = 0;
+            comboTimer = 0;
             return;
         }
         // If we have pressed the melee key during the combo window

@@ -2841,6 +2841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grid: {fileID: 1583841520}
   debug: 0
+  forceEntry: 0
   hasBoss: 1
   AutoTiler: {fileID: 1445245178}
   LightPrefab: {fileID: 2098239701316472060, guid: bf78a89ec07a90c4f9f3e89c4acbd8f1, type: 3}
@@ -2849,42 +2850,37 @@ MonoBehaviour:
   - {fileID: 5694068309932514625, guid: 88c1a386ce412584ea28dc2b9375b6fe, type: 3}
   - {fileID: 5694068309932514625, guid: baa364635192d6c4ea0fad08606fce0b, type: 3}
   - {fileID: 5694068309932514625, guid: 91c491f49b26329479a4cacfded2b17e, type: 3}
-  BossSpawner: {fileID: 5694068309932514625, guid: b127c873162ba2a4eb8213eb7e880e78, type: 3}
+  BossSpawner: {fileID: 5694068309932514625, guid: f1352fd7c0903c8449ec5a0e5e051af7, type: 3}
   ShopKeeperSpawner: {fileID: 5694068309932514625, guid: 839d0383b11d1784182f427b70440491, type: 3}
-  PuzzleSpawner: {fileID: 0}
+  PuzzleSpawner: {fileID: 5694068309932514625, guid: 91c491f49b26329479a4cacfded2b17e, type: 3}
   EntryCollider: {fileID: 7688404469582539259, guid: 519c8bf5880934aaa9e4ea760408912b, type: 3}
   Exit: {fileID: 6561165705246468781, guid: 283b59b6fed28f847b61afcd6a78628f, type: 3}
   SpawnWeapon: {fileID: 4346734895893382118, guid: b5efb6263440c8843ba3f4aa627e61c4, type: 3}
   wallVertical: {fileID: 8753675751577585064, guid: 76257fc4964cd484989e3a56a342b94e, type: 3}
   wallHorizontal: {fileID: 2983560248429768675, guid: 0b84e1940b269ca4fbec190d930348ae, type: 3}
   controls: {fileID: 0}
-  columns: 120
-  rows: 100
+  columns: 160
+  rows: 120
   minRoomDim: {x: 18, y: 18}
   minEntryDim: {x: 16, y: 16}
   maxEntryDim: {x: 0, y: 0}
   minNormalDim: {x: 22, y: 22}
-  maxNormalDim: {x: 26, y: 26}
+  maxNormalDim: {x: 27, y: 27}
   minLargeDim: {x: 30, y: 30}
   maxLargeDim: {x: 0, y: 0}
-  minRewardDim: {x: 22, y: 22}
-  maxRewardDim: {x: 26, y: 26}
-  rewardPercent: 30
-  auxiliaryPercent: 0
+  minRewardDim: {x: 15, y: 15}
+  maxRewardDim: {x: 18, y: 18}
+  rewardPercent: 100
+  auxiliaryPercent: 20
   minBossDim: {x: 30, y: 30}
   maxBossDim: {x: 40, y: 40}
-  UseCellular: 0
-  Seed: 
-  useRandomSeed: 0
-  wallPercent: 0
-  wallCount: 0
-  Iterations: 0
   HasEntry: 0
   HasBoss: 0
   numLargeRooms: 0
   NumBossRooms: 1
   NumNormalRooms: 0
-  overgrownRooms: 0
+  NumRewardRooms: 0
+  MaxRewardRooms: 8
 --- !u!114 &1304768978
 MonoBehaviour:
   m_ObjectHideFlags: 0
