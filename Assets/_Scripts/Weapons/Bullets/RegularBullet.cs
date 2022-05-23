@@ -9,12 +9,15 @@ public class RegularBullet : Bullet
     protected Rigidbody rigidbody;
 
     protected float decay;
+    [SerializeField]
+    protected Transform SpriteTransform;
 
     protected Animator animator;
     protected int bounce;
     protected float speed;
     protected float damage;
     protected GameObject camera;
+    protected Camera camera1;
     protected bool hasRebounded = false;
 
     public override BulletDataSO BulletData
@@ -36,7 +39,8 @@ public class RegularBullet : Bullet
 
     public virtual void Start() {
         animator = GetComponentInChildren<Animator>();
-        camera = CameraShake.Instance.gameObject;
+        //camera = CameraShake.Instance.gameObject;
+        camera1 = Camera.main;
     }
 
     public virtual void Update()
@@ -86,7 +90,8 @@ public class RegularBullet : Bullet
 
     protected void LateUpdate()
     {
-        //transform.LookAt(camera.transform);
+        //SpriteTransform.LookAt(camera1.transform);
+        //SpriteTransform.right = direction;
     }
 
     public void FixedUpdate()

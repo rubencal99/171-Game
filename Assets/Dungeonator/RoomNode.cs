@@ -7,6 +7,8 @@ public class RoomNode : MonoBehaviour
 {
     // public List<TileNode> tileList= new List<TileNode>();
     public TileNode[,] tileList;
+    public List<TileNode> obstacleTileList;
+    public TileNode[,] totalTileList;
     public int tileCount = 0;
     public TileNode CenterTile;
     public Vector2Int roomCenter;
@@ -73,6 +75,8 @@ public class RoomNode : MonoBehaviour
         length = l;
         width = w;
         tileList = new TileNode[length, width];
+        obstacleTileList = new List<TileNode>();
+        totalTileList = new TileNode[length, width];
         DistanceFromStart = -1;
     }
 
@@ -214,6 +218,30 @@ public class RoomNode : MonoBehaviour
             room2.ConnectedRooms = room2.ConnectedRooms.Union<RoomNode>(roomA.ConnectedRooms).ToList<RoomNode>();
         }
     }
+
+    public void RepurposeRoom(ref TileNode[,] map)
+    {
+        /*foreach(TileNode tile in obstacleTileList)
+        {
+            tile.isObstacle = false;
+            tile.obstacleValue = "";
+            tile.value = 1;
+        }*/
+
+        for(int i = 1; i < length - 1; i++)
+        {
+            for(int j = 1; j < width - 1; j++)
+            {
+                TileNode tile = tileList[i, j];
+                tile.isObstacle = false;
+                tile.obstacleValue = "";
+                tile.value = 1;
+                map[tile.x, tile.y].value = 1;
+                map[tile.x, tile.y].room = this;
+            }
+        }
+    }
+
 
     public bool IsConnected(RoomNode otherRoom)
     {
