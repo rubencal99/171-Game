@@ -216,7 +216,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         Health -= d;
         HitLastFiveSec = true;
         blood.Play();
-        CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
+        //CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         if (Health > 0) {
             OnGetHit?.Invoke();
             StartCoroutine(iframes_damage());
