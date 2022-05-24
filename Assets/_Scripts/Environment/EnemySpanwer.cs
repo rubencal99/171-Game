@@ -52,6 +52,8 @@ public class EnemySpanwer : MonoBehaviour
 
     public bool justEntered = false;
 
+    public int density = 200;
+
 
     // Start is called before the first frame update
     protected void Start()
@@ -114,7 +116,8 @@ public class EnemySpanwer : MonoBehaviour
         // Invoke("SpawnObject", spawnTime);
         // canSpawn = true;
        foreach(var order in e) {
-           for(int i = 0; i < order.SpawnCount; i++) {
+           for(int i = 0; i < (order.SpawnCount * (thisroom.area / density)); i++) {
+
                 StartCoroutine(SpawnObject(order.Enemy));
               // Debug.Log("enemy spawned");
                yield return new WaitForSeconds(spawnDelay);
