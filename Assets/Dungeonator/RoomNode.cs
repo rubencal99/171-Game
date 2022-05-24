@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Random=UnityEngine.Random;
 
 public class RoomNode : MonoBehaviour
 {
     // public List<TileNode> tileList= new List<TileNode>();
     public TileNode[,] tileList;
+    public List<TileNode> obstacleTileList;
+    public List<TileNode> validTileList;
+    public TileNode[,] totalTileList;
     public int tileCount = 0;
     public TileNode CenterTile;
     public Vector2Int roomCenter;
@@ -73,6 +77,9 @@ public class RoomNode : MonoBehaviour
         length = l;
         width = w;
         tileList = new TileNode[length, width];
+        obstacleTileList = new List<TileNode>();
+        validTileList = new List<TileNode>();
+        totalTileList = new TileNode[length, width];
         DistanceFromStart = -1;
     }
 
@@ -133,14 +140,14 @@ public class RoomNode : MonoBehaviour
 
     public TileNode GrabValidTile()
     {
-        Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - ((width /2) + 2), roomCenter.x + ((width /2) - 2)),
+        /*Vector2Int r = new Vector2Int(Random.Range(roomCenter.x - ((width /2) + 2), roomCenter.x + ((width /2) - 2)),
                                         Random.Range(roomCenter.y - ((length /3) + 2), roomCenter.y + ((length /3) - 2)));
 
         var count = 0;
         //Debug.Log("Room Center: " + roomCenter);
         //Debug.Log("Tile location: " + r);
         TileNode tile = FindTileByPoint(r.x, r.y);
-        while(tile == null || (tile.value != 1 && !tile.isObstacle))
+        while(tile == null || tile.value == 0 || tile.isObstacle)
         {
             if(count >= 20)
             {
@@ -152,8 +159,47 @@ public class RoomNode : MonoBehaviour
                                 Random.Range(roomCenter.y - ((length /3) + 2), roomCenter.y + ((length /3) - 2)));
             tile = FindTileByPoint(r.x, r.y);
             count++;
-        }
+        }*/
+        int index = Random.Range(0, validTileList.Count);
+        TileNode tile = validTileList[index];
+        /*while(!isValid(tile))
+        {
+            index = Random.Range(0, validTileList.Count);
+            tile = validTileList[index];
+        }*/
+        Debug.Log("Spawn tile value = " + tile.value);
         return tile;
+    }
+
+    public void ValidateTiles(int x, int y, ref TileNode[,] map)
+    {
+        for(int i = 0; i < length; i++)
+        {
+            for(int j = 0; j < width; j++)
+            {
+                TileNode tile = map[x + i, y + j];
+                if(tile.value == 1 && !tile.isObstacle)
+                {
+                    ValidateTile(x, y, tile, ref map);
+                }
+                
+            }
+        }
+    }
+
+    public void ValidateTile(int x, int y, TileNode tile, ref TileNode[,] map)
+    {
+        for(int i = -1; i <= 1; i++)
+        {
+            for(int j = -1; j <= 1; j++)
+            {
+                if(!Helper.IsInMapRange(x + i, y + j, ref map) || map[x + i, y + j].value != 1 || map[x + i, y + j].isObstacle)
+                {
+                    return;
+                }
+            }
+        }
+        validTileList.Add(tile);
     }
 
     public TileNode FindTileByPoint(int x, int y)
@@ -214,6 +260,31 @@ public class RoomNode : MonoBehaviour
             room2.ConnectedRooms = room2.ConnectedRooms.Union<RoomNode>(roomA.ConnectedRooms).ToList<RoomNode>();
         }
     }
+
+    public void RepurposeRoom(ref TileNode[,] map)
+    {
+        /*foreach(TileNode tile in obstacleTileList)
+        {
+            tile.isObstacle = false;
+            tile.obstacleValue = "";
+            tile.value = 1;
+        }*/
+        validTileList.Clear();
+        for(int i = 1; i < length - 1; i++)
+        {
+            for(int j = 1; j < width - 1; j++)
+            {
+                TileNode tile = tileList[i, j];
+                tile.isObstacle = false;
+                tile.obstacleValue = "";
+                tile.value = 1;
+                map[tile.x, tile.y].value = 1;
+                map[tile.x, tile.y].room = this;
+                validTileList.Add(tile);
+            }
+        }
+    }
+
 
     public bool IsConnected(RoomNode otherRoom)
     {

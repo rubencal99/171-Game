@@ -9,8 +9,11 @@ using Random = UnityEngine.Random;
 public class Chargegun : Railgun
 {
     public Animator animator;
+    public bool linearAnim = true;
+    public bool singleAnim = true;
     protected override void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if(animator == null)
         {
             animator = GetComponent<Animator>();
@@ -29,6 +32,7 @@ public class Chargegun : Railgun
             infAmmo = weaponParent.InfAmmo;
         }
         holdTimer = 0;
+        reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -133,21 +137,102 @@ public class Chargegun : Railgun
 
     void CheckAnimation()
     {
-        if(isReloading)
+
+        if(singleAnim)
         {
-            animator.SetFloat("Charge", -2);
-        }
-        else if(holding && holdTimer < maxHold)
-        {
-            animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
-        }
-        else if(!holding && holdTimer > 0)
-        {
-            animator.SetFloat("Charge", -1);
+            CheckSingleAnim();
         }
         else
         {
+            CheckDoubleAnim();
+        }
+    }
+
+    void CheckSingleAnim()
+    {
+        if(holdTimer <= 0)
+        {
+            Debug.Log("Single Anim Reset");
+            Debug.Log("holdTimer = " + holdTimer);
+            animator.SetTrigger("Reset");
             animator.SetFloat("Charge", 0);
+        }
+        else if(isReloading)
+        {
+            if(linearAnim)
+            {
+                animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
+            }
+            else
+            {
+                animator.SetFloat("Charge", holdTimer * PlayerSignaler.CallTriggerHappy());
+            }
+        }
+        else if(!holding && holdTimer > 0)
+        {
+            if(linearAnim)
+            {
+                animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
+            }
+            else
+            {
+                animator.SetFloat("Charge", holdTimer * PlayerSignaler.CallTriggerHappy());
+            }
+        }
+        else
+        {
+            animator.SetTrigger("Attack");
+            if(linearAnim)
+            {
+                animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
+            }
+            else
+            {
+                animator.SetFloat("Charge", holdTimer * PlayerSignaler.CallTriggerHappy());
+            }
+        }
+    }
+
+    void CheckDoubleAnim()
+    {
+        if(holdTimer <= 0)
+        {
+            animator.SetTrigger("Reset");
+            animator.SetFloat("Charge", 0);
+        }
+        else if(isReloading)
+        {
+            if(linearAnim)
+            {
+                animator.SetFloat("Charge", -1 * PlayerSignaler.CallTriggerHappy() * 2);
+            }
+            else
+            {
+                animator.SetFloat("Charge", -holdTimer * PlayerSignaler.CallTriggerHappy() * 2);
+            }
+        }
+        else if(!holding && holdTimer > 0)
+        {
+            if(linearAnim)
+            {
+                animator.SetFloat("Charge", -1 * PlayerSignaler.CallTriggerHappy());
+            }
+            else
+            {
+                animator.SetFloat("Charge", -holdTimer * PlayerSignaler.CallTriggerHappy());
+            }
+        }
+        else
+        {
+            animator.SetTrigger("Attack");
+            if(linearAnim)
+            {
+                animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
+            }
+            else
+            {
+                animator.SetFloat("Charge", holdTimer * PlayerSignaler.CallTriggerHappy());
+            }
         }
     }
 

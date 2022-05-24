@@ -282,6 +282,12 @@ public class PlayerRunGunState : PlayerBaseState
         if (Input.GetAxisRaw("Interact") > 0)
         {
             Debug.Log("Interact key pressed");
+            // This checks if we're about to pick up a weapon
+            if(Player.instance.inWeaponZone)
+            {
+                Debug.Log("In Weapon zone can't interact");
+                return;
+            }
 
             if(!Player.instance.grabbing && !Player.instance.hasGrabbed)
             {
@@ -303,7 +309,7 @@ public class PlayerRunGunState : PlayerBaseState
                 Player.instance.grabbedObject = null;
             }
 
-            if (shopping == false && playerInput.ShopKeeper.inDistance)
+            else if (playerInput.ShopKeeper && shopping == false && playerInput.ShopKeeper.inDistance)
             {
                 Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;

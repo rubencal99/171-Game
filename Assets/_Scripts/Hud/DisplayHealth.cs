@@ -42,7 +42,7 @@ public class DisplayHealth : MonoBehaviour
      public IEnumerator UpdateHealthBar() {
     	HealthBar = this.transform.GetChild(0).GetChild(0).GetComponent<Image>();
     	var fillAmount = Mathf.Clamp((float)p1.Health / (float)p1.MaxHealth, 0.0f, 1.0f);
-    	Debug.Log("in UpdateHealthBar");
+    	//Debug.Log("in UpdateHealthBar");
     	
 
     	for(float t = 0.0f; t < 1.0f; t += Time.deltaTime){
