@@ -57,10 +57,11 @@ public static class ObstacleLookUp
                 drop.transform.parent = room.transform;
             }
         }
-        else
+        else//
         {
             Debug.LogError("Obstacle with " + ObstacleName + " could not be " +
                 "found and spawned.");
+            Debug.LogError("RoomType: " + room.RoomType);
         }
     }
 }

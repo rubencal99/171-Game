@@ -444,7 +444,8 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
-                NewRoom.AddDimensions(length, width);
+                // The -2 is to give a buffer of 1 tile on all sides of space
+                NewRoom.AddDimensions(length-2, width-2);
             }
             
             if (!HasEntry && 
@@ -522,16 +523,16 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < NewRoom.length; i++)
                 {
-                    for (int j = 0; j < width; j++)
+                    for (int j = 0; j < NewRoom.width; j++)
                     {
-                        map[x1 + i, y1 + j].value = 1;
-                        map[x1 + i, y1 + j].room = NewRoom;
-                        roomTiles.Add(map[x1 + i, y1 + j]);
-                        NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
+                        map[x1 + i + 1, y1 + j + 1].value = 1;
+                        map[x1 + i + 1, y1 + j + 1].room = NewRoom;
+                        roomTiles.Add(map[x1 + i + 1, y1 + j + 1]);
+                        NewRoom.tileList[i, j] = map[x1 + i + 1, y1 + j + 1];
                         NewRoom.tileCount++;
-                        NewRoom.validTileList.Add(map[x1 + i, y1 + j]);
+                        NewRoom.validTileList.Add(map[x1 + i + 1, y1 + j + 1]);
                     }
                 }
                 AddLights(x1, y1, x2, y2, NewRoom);
