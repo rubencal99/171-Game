@@ -27,11 +27,9 @@ public class EnemySpanwer : MonoBehaviour
     public bool stopSpawn = false;
     public float spawnTime = 0.1f;
     public float spawnDelay = 0.4f;
+   // public int numToSpawn = 1;
 
-    public LayerMask layerMask;
-    public int numToSpawn = 10;
-
-    public int enemyDensity = 20;
+    // public int enemyDensity = 20;
 
 
     public float offset = 1.0f;
@@ -59,29 +57,14 @@ public class EnemySpanwer : MonoBehaviour
     protected void Start()
     {
         thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
-        numToSpawn = thisroom.validTileList.Count / enemyDensity;
-        int numEnemiesPerWave = (int)(numToSpawn / Waves.Count);
-        Debug.Log("Room tile count: " + thisroom.validTileList.Count);
-        Debug.Log("Total number of enemies to spawn: " + numToSpawn);
-        Debug.Log("Number of enemies per wave: " + numEnemiesPerWave);
         foreach(var wave in Waves)
-        {
-            int waveCount = 0;
             foreach(var order in wave.Enemies) {
                 for(int i = 0; i < order.SpawnCount; i++) {
                 // wave.enemyCount++;
                     enemyCount++;
-                    waveCount++;
                     if(wave == Waves[0])
                         curEnemies++;
-                    if(waveCount >= numEnemiesPerWave)
-                    {
-                        Debug.Log("Enemy count for wave exceeded");
-                        break;
-                    }
                 }
-        }
-            
         }
         curWave = Waves[0];
 
@@ -155,17 +138,6 @@ public class EnemySpanwer : MonoBehaviour
         TileNode spawnTile = room.GrabValidTile();
 
         Vector3 offsetPosition = new Vector3(spawnTile.x, 1f, spawnTile.y);
-
-        Collider[] colliders = Physics.OverlapSphere(offsetPosition, 1f, layerMask);
-
-        int count = 0;
-        while(colliders.Length > 0 && count < 5)
-        {
-            spawnTile = room.GrabValidTile();
-            offsetPosition = new Vector3(spawnTile.x, 1f, spawnTile.y);
-            colliders = Physics.OverlapSphere(offsetPosition, 1f, layerMask);
-            count++;
-        }
 
         //var source = Enemies[Random.Range(0, Enemies.Length)];
         var clone = Instantiate(source, offsetPosition, source.transform.rotation);

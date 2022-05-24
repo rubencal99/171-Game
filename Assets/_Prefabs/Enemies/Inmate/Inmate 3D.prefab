@@ -628,7 +628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6454577251786558054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
   - {fileID: 6454577253633417812}
@@ -745,7 +745,6 @@ MonoBehaviour:
   agentAnimations: {fileID: 0}
   agentMovement: {fileID: 0}
   knockback: 0
-  hasProtector: 0
   blood: {fileID: 8596853736701161183}
   timer: 0
 --- !u!114 &2614159520647023149

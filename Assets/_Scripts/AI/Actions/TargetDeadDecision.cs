@@ -9,7 +9,7 @@ public class TargetDeadDecision : AIDecision
         if (enemyBrain.Target == null || enemyBrain.Target == Player.instance.gameObject)
         {
             return true;
-        }   
+        }
         return false;
     }
 
