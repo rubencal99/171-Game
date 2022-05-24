@@ -118,7 +118,7 @@ public class EntryCollider : MonoBehaviour
            var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
         //    Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
            //tilePosition.y = 0;
-           if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+           if( MapGenerator.map[tilePosition.x, tilePosition.y].value == 2)
                 tilemap.SetTile(tilePosition, tile);
             
         }
@@ -128,7 +128,7 @@ public class EntryCollider : MonoBehaviour
             var tilePos = new Vector3Int(row, 0, room.topLeftCorner.y);
              var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
             //    Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
-             if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+             if( MapGenerator.map[tilePosition.x, tilePosition.y].value == 2)
                 tilemap.SetTile(tilePosition, tile);
             
         }
@@ -140,7 +140,7 @@ public class EntryCollider : MonoBehaviour
               
              var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
             //  Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
-             if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+             if( MapGenerator.map[tilePosition.x, tilePosition.y].value == 2)
                 tilemap.SetTile(tilePosition, tile);
         }
         for (int col = (int)room.bottomRightCorner.y; col <= (int)room.topRightCorner.y; col++)
@@ -150,7 +150,7 @@ public class EntryCollider : MonoBehaviour
               
               var tilePosition = tilemap.WorldToCell((Vector3)tilePos);
             //   Debug.Log("tilepos = " + MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value);
-              if( MapGenerator.map[tilePosition.x + 1, tilePosition.y - 4].value == 2)
+              if( MapGenerator.map[tilePosition.x, tilePosition.y].value == 2)
                     tilemap.SetTile(tilePosition, tile);
         }
     }
