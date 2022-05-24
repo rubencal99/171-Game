@@ -30,6 +30,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private List<GameObject> Spawner;
     [SerializeField]
+    private GameObject CQCSpawner;
+    [SerializeField]
     private GameObject BossSpawner;
     [SerializeField]
     private GameObject ShopKeeperSpawner;
@@ -133,7 +135,7 @@ public class MapGenerator : MonoBehaviour
         {
             DrawMap();
         }
-        
+        //DrawMap();
         AstarPath.active.Scan();
         //Debug.Log("After draw map");
         Grid.transform.Rotate(Vector3.right * 90);
@@ -486,6 +488,7 @@ public class MapGenerator : MonoBehaviour
                             {
                                 map[x1 + i, y1 + j].room = NewRoom;
                                 roomTiles.Add(map[x1 + i, y1 + j]);
+                                NewRoom.validTileList.Add(map[x1 + i, y1 + j]);
                             }
                             NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
@@ -523,11 +526,12 @@ public class MapGenerator : MonoBehaviour
                 {
                     for (int j = 0; j < width; j++)
                     {
-                        map[x1 + 1 + i, y1 + 1 + j].value = 1;
-                        map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
-                        roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
-                        NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                        map[x1 + i, y1 + j].value = 1;
+                        map[x1 + i, y1 + j].room = NewRoom;
+                        roomTiles.Add(map[x1 + i, y1 + j]);
+                        NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                         NewRoom.tileCount++;
+                        NewRoom.validTileList.Add(map[x1 + i, y1 + j]);
                     }
                 }
                 AddLights(x1, y1, x2, y2, NewRoom);
@@ -723,6 +727,10 @@ public class MapGenerator : MonoBehaviour
             else if(room.RoomType == "Large")
             {
                 spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 2)], pos1, Quaternion.identity);
+            }
+            else if(room.RoomType == "Extra")
+            {
+                spawnedObject = Instantiate(CQCSpawner, pos1, Quaternion.identity);
             }
             else
             {
@@ -1408,6 +1416,10 @@ public class MapGenerator : MonoBehaviour
                     else if(map[x, y].room.RoomType == "Auxiliary")
                     {
                         Gizmos.color = new Color(130/255f, 115/255f, 150/255f, 1f);
+                    }
+                    else if(map[x, y].room.RoomType == "Extra")
+                    {
+                        Gizmos.color = new Color(150/255f, 150/255f, 0, 1f);
                     }
                     else
                     {
