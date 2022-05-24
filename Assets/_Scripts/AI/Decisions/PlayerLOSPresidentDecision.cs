@@ -41,11 +41,6 @@ public class PlayerLOSPresidentDecision : AIDecision
             collision = hit.point;
             return false;
         }
-        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") && hit.transform.gameObject == enemyBrain.gameObject){
-            Debug.Log("Protecting president");
-            collision = hit.point;
-            return false;
-        }
         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player")){
             // Debug.Log("LOS Hitting Player");
             collision = hit.point;

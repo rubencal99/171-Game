@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 640
 --- !u!1 &1618101430878034637
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +986,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867989798731449}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.37, y: 1.994, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1023,18 +1023,6 @@ MonoBehaviour:
       - m_Target: {fileID: 3128835130343464155}
         m_TargetAssemblyTypeName: AgentAudioPlayer, Assembly-CSharp
         m_MethodName: PlayDamageSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1373310465}
-        m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
-        m_MethodName: SetTakeDamageAnimation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1083,18 +1071,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1373310465}
-        m_TargetAssemblyTypeName: AgentAnimations, Assembly-CSharp
-        m_MethodName: SetDeathAnimation
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   <OnRevive>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -1104,7 +1080,6 @@ MonoBehaviour:
   agentAnimations: {fileID: 0}
   agentMovement: {fileID: 0}
   knockback: 0
-  hasProtector: 0
   blood: {fileID: 8389336572025734190}
   timer: 0
 --- !u!114 &2447108988747857650
@@ -1448,7 +1423,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 541924
+  m_InstanceId: 737394
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,7 +1514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6638867990160967630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.68, z: 0.72}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6638867989798731445}
@@ -1586,7 +1561,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: 1
+    value: 2
 --- !u!1 &6638867990841983294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,8 +1895,6 @@ GameObject:
   - component: {fileID: 7086851104239242987}
   - component: {fileID: 6932574753163038890}
   - component: {fileID: 7799556252228208274}
-  - component: {fileID: 8100307701619677035}
-  - component: {fileID: 8126557512545333352}
   m_Layer: 0
   m_Name: FindPresident
   m_TagString: Untagged
@@ -1972,9 +1945,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a49344c59f94e346b4e664fb4a80352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &8100307701619677035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,14 +2141,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
---- !u!198 &8389336572025734190 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6243083664929031266, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
-  m_PrefabInstance: {fileID: 2508235259706474572}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9127911756068644260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6657395350745081320, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
+  m_PrefabInstance: {fileID: 2508235259706474572}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8389336572025734190 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6243083664929031266, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
   m_PrefabInstance: {fileID: 2508235259706474572}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4264454473853344938
@@ -2250,6 +2220,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27d8877b83a323943981414369d59a63, type: 3}
+--- !u!1 &4677583588797873314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8918393634435686408, guid: 27d8877b83a323943981414369d59a63, type: 3}
+  m_PrefabInstance: {fileID: 4264454473853344938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5168845988146048927 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8977095406529770293, guid: 27d8877b83a323943981414369d59a63, type: 3}

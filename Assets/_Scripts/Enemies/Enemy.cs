@@ -39,7 +39,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
 
     private bool DontFreeze = false;
     public bool knockback;
-    public bool hasProtector = false;
 
     [SerializeField]
     private ParticleSystem blood;
@@ -213,12 +212,6 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
         if(collision.gameObject.CompareTag("Thorns")){
             GetHit(PlayerAugmentations.ThornDam, collision.gameObject);
         }
-    }
-
-    // This is only used by BodyGuards
-    public void ResetProtector()
-    {
-        enemyBrain.Target.GetComponent<Enemy>().hasProtector = false;
     }
 
 }

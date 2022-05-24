@@ -10,10 +10,6 @@ public static class ObstacleLookUp
     // We'll build our dictionary in the static constructor.
     static ObstacleLookUp()
     {
-        if(ObstacleDictionary != null)
-        {
-            ObstacleDictionary.Clear();
-        }
         // We can load all the Obstacles from that folder.
         var Obstacles = Resources.LoadAll<GameObject>("Obstacles");
         //Debug.Log("Obstacles length: " + Obstacles.Length);
@@ -22,10 +18,6 @@ public static class ObstacleLookUp
 
         foreach (GameObject Obstacle in Obstacles)
         {
-            if(ObstacleDictionary.ContainsKey(Obstacle.name))
-            {
-                ObstacleDictionary.Remove(Obstacle.name);
-            }
             ObstacleDictionary.Add(Obstacle.name, Obstacle);
         }
         //Debug.Log("Obstacles Dictionary: " + ObstacleDictionary);

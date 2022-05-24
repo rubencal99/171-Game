@@ -107,9 +107,9 @@ public class Gun : MonoBehaviour, IWeapon
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
         //}
-        //Debug.Log("Weapon Reload Speed: " + weaponData.ReloadSpeed);
+        Debug.Log("Weapon Reload Speed: " + weaponData.ReloadSpeed);
          reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
-         //Debug.Log("reloadAnimMultiplier: " + reloadAnimMultiplier);
+         Debug.Log("reloadAnimMultiplier: " + reloadAnimMultiplier);
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -178,7 +178,7 @@ public class Gun : MonoBehaviour, IWeapon
             Ammo += neededAmmo;
             TotalAmmo -= neededAmmo;
             if(isPlayer) {
-                //Debug.Log("In Reload");
+                Debug.Log("In Reload");
                 displayReloadProgressBar();
                 this.GetComponent<Animator>().SetFloat("reloadtime", reloadAnimMultiplier * 1 / (getReloadSpeed() / weaponData.ReloadSpeed));
                 
