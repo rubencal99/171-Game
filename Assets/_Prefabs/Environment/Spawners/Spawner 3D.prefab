@@ -57,6 +57,11 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  numToSpawn: 10
+  enemyDensity: 30
   offset: 1
   spawned: 0
   enemyCount: 0

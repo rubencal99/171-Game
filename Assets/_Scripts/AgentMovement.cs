@@ -86,7 +86,7 @@ public class AgentMovement : MonoBehaviour
 
     public void Knockback(float duration, float power, Vector3 direction)
     {
-        Debug.Log("In knockback");
+        //Debug.Log("In knockback");
         knockback = true;
         // Vector2 direction = (bullet.direction).normalized;
         knockbackPower = power;

@@ -86,16 +86,12 @@ public class Toilet : MonoBehaviour
             LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = weapon.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
             return weapon;
         }
-        else if(r <= 75)
+        else
         {
             var index = UnityEngine.Random.Range(0, augmentList.Count);
             GameObject augment = augmentList[index];
             LeftButton.transform.Find("Sprite").GetComponent<Image>().sprite = augment.GetComponent<SpriteRenderer>().sprite;
             return augment;
-        }
-        else
-        {
-            return currencySpawn;
         }
     }
 
@@ -109,16 +105,12 @@ public class Toilet : MonoBehaviour
             RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = weapon.GetComponent<WeaponPickup>().FireArm.prefab.GetComponent<SpriteRenderer>().sprite;
             return weapon;
         }
-        else if(r <= 75)
+        else
         {
             var index = UnityEngine.Random.Range(0, augmentList.Count);
             GameObject augment = augmentList[index];
             RightButton.transform.Find("Sprite").GetComponent<Image>().sprite = augment.GetComponent<SpriteRenderer>().sprite;
             return augment;
-        }
-        else
-        {
-            return currencySpawn;
         }
     }
 
