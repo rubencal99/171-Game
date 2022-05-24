@@ -9,6 +9,8 @@ public class Grabbable : MonoBehaviour
     public float mass;
     public bool isGrabbed;
     Rigidbody rigidbody;
+
+    BoxCollider trigger;
     public Vector3 offset;
 
     // Start is called before the first frame update
@@ -17,12 +19,26 @@ public class Grabbable : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         mass = rigidbody.mass;
         isGrabbed = false;
+        trigger = gameObject.AddComponent<BoxCollider>();
+        trigger.isTrigger = true;
+        trigger.size = new Vector3(2.0f, 2.0f, 2.0f);
     }
 
     /*void Update()
     {
 
     }*/
+    public void OnTriggerEnter(Collider other) {
+        if(other.tag == "Player") {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    public void OnTriggerExit(Collider other) {
+        if(other.tag == "Player") {
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 
     public void GrabObject()
     {
@@ -30,6 +46,7 @@ public class Grabbable : MonoBehaviour
         Player.instance.grabbing = true;
         Player.instance.grabbedObject = gameObject;
         offset = transform.position - Player.instance.transform.position;
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void LetGoObject()
