@@ -25,4 +25,4 @@ MonoBehaviour:
   bulletCount: 10
   recoilIntensity: 11.3
   recoilFrequency: 6
-  recoilTime: 0.1
+  recoilTime: 0.08

@@ -59,9 +59,9 @@ public class AgentMovement : MonoBehaviour
             //Debug.Log("Movement input: " + movementInput);
             movementDirection = movementInput.normalized;
         }
-        /*else{
+        else{
             movementDirection = Vector2.zero;
-        }*/
+        }
         
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier * PlayerSignaler.SetMovementSpeed();
         if(this.GetComponentInChildren<AgentAnimations>() != null)
