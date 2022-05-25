@@ -29,7 +29,7 @@ public class EnemyGun : Gun
         //Debug.Log("In Use Weapon");
         if (isShooting && !rateOfFireCoroutine && !reloadCoroutine)         // micro-optimization would be to replace relaodCoroutine with ROFCoroutine but I keep it for legibility
         {
-            Debug.Log("In Use Weapon");
+            //Debug.Log("In Use Weapon");
             if (Ammo > 0)
             {
                 Ammo--;
@@ -47,7 +47,7 @@ public class EnemyGun : Gun
             {
                 isShooting = false;
                 OnShootNoAmmo?.Invoke();
-                Debug.Log("About to reload");
+                //Debug.Log("About to reload");
                 TryReloading();                 // Use this if we want to reload automatically
                 return;
             }
