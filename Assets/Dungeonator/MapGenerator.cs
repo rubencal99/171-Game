@@ -897,7 +897,7 @@ public class MapGenerator : MonoBehaviour
         {
             EndRoom.RoomType = "Key";
         }
-        EndRoom.RepurposeRoom(ref map);
+        EndRoom.RepurposeRoom(ref map, ref roomTiles);
         /*Debug.Log("Boss distance: " + BossRoom.DistanceFromStart);
         int r = Random.Range(1, 4);
         if(r >= BossRoom.RoomsByDistance.Count)
@@ -955,7 +955,7 @@ public class MapGenerator : MonoBehaviour
         }
         shop.RoomType = "Shop";
         ShopRoom = shop;
-        ShopRoom.RepurposeRoom(ref map);
+        ShopRoom.RepurposeRoom(ref map, ref roomTiles);
         //---------------- DOOR ----------------
         if(!hasBoss)
         {
@@ -984,7 +984,7 @@ public class MapGenerator : MonoBehaviour
             }
             door.RoomType = "Door";
             DoorRoom = door;
-            DoorRoom.RepurposeRoom(ref map);
+            DoorRoom.RepurposeRoom(ref map, ref roomTiles);
         }
     }
 
