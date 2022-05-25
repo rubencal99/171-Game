@@ -26,7 +26,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData) {
         //Debug.Log("you have started to drag me"); 
-        soundManager.PlayClickItemSound(slotElement.slot.item.type, 1);
+        soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 1);
         canvasGroup.alpha = .7f;
         canvasGroup.blocksRaycasts = false;
         transform.SetParent(canvas.transform);
@@ -48,10 +48,27 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnDrop(PointerEventData eventData){
         // 
         Debug.Log("OnDrop called on item");
-        if (eventData.pointerDrag.GetComponent<DragDrop>() != null && eventData.pointerDrag != this)
+        DragDrop droppedItem = eventData.pointerDrag.GetComponent<DragDrop>();
+        if (droppedItem == null || eventData.pointerDrag == this)
         {
-            slotElement.inventory.MoveSwapCombine(eventData.pointerDrag.GetComponent<DragDrop>().slotElement.slot, slotElement.slot);
-            soundManager.PlayClickItemSound(slotElement.slot.item.type, 0);
+            return;
+        }
+        else
+        {
+            slotElement.inventory.MoveSwapCombine(droppedItem.slotElement.slot, slotElement.slot);
+            //soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 0);
+            if (
+                slotElement.inventory.MoveQuery(droppedItem.slotElement.slot, slotElement.slot) ||
+                slotElement.inventory.CombineQuery(droppedItem.slotElement.slot, slotElement.slot) ||
+                slotElement.inventory.SwapQuery(droppedItem.slotElement.slot, slotElement.slot)){
+                    soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 0);
+                    Debug.Log("play clickitemsound for " + slotElement.slot.item.type);
+                }
+            else{
+                soundManager.PlayClickItemSound(4.0f, 0);
+                Debug.Log("play clickitemsound failure");
+            }
+            
             slotElement.inventory.Print();
         }
     }
