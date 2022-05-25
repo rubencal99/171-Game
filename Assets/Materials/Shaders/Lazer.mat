@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_435c4e74e1544539b336a64cfc22fd8a:
-        m_Texture: {fileID: 2800000, guid: b6f138cb8d393714093a59193965e2d2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_6fe6e842f0c84e77baecdc9d869cc3ea:
@@ -92,12 +92,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_158613eab85b42159fcffeace3b4947a: 2
+    - Vector1_158613eab85b42159fcffeace3b4947a: 0.85
     - Vector1_17049ecb95574d7bbffffc5f7ee561cb: 8.5
     - Vector1_7a4467a5f09f46f285484e50af2a06f3: 0.17
-    - Vector1_af1bf8e03b4a4d7cb4f1cffaef5e93b3: 198.02
+    - Vector1_af1bf8e03b4a4d7cb4f1cffaef5e93b3: 96.4
     - Vector1_b6c0ce14babd4900baf2451fa6cad1d0: 1
-    - Vector1_d548cd40c43c468eb162a984ffdb511b: 7.58
+    - Vector1_d548cd40c43c468eb162a984ffdb511b: 8.99
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -125,8 +125,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0a61abf30cae4a94bf63bb2d496579a1: {r: 6.807844, g: 0.5702906, b: 3.920748, a: 0}
-    - Vector2_2a7cdf8dffc342bf8311c80044cf57b4: {r: -0.5, g: 1, b: 0, a: 0}
+    - Color_0a61abf30cae4a94bf63bb2d496579a1: {r: 2, g: 2, b: 2, a: 0}
+    - Vector2_2a7cdf8dffc342bf8311c80044cf57b4: {r: -0.5, g: 0, b: 0, a: 0}
     - Vector2_4ea11085b4a540d49f3161c3892372a0: {r: -0.5, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
