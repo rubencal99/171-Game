@@ -15,7 +15,7 @@ public class PatchUp : MonoBehaviour
            popup popup = FindObjectOfType<popup>();
            if(popup)
            {
-               popup.SetText("2 health");
+               popup.SetText("Patch Up");
                popup.ShowText();
            }
 
@@ -35,7 +35,7 @@ public class PatchUp : MonoBehaviour
            popup popup = FindObjectOfType<popup>();
            if(popup)
            {
-               popup.SetText("2 health");
+               popup.SetText("Patch Up");
                popup.ShowText();
            }
             Destroy(gameObject);
