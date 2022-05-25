@@ -7,6 +7,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5291584734148042294, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.000000030908623
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291584734148042294, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.000000030908623
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291584734148042294, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291584734148042294, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
     - target: {fileID: 6491939475053275967, guid: 453da8a93a25adf4b8ab126eb8b107e8, type: 3}
       propertyPath: m_Name
       value: Floor 1 wall cube corner
