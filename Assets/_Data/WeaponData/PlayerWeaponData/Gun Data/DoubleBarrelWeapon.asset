@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: DoubleBarrelWeapon
   m_EditorClassIdentifier: 
   <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 24ab3708c23abfc4da715d7c46dc365c, type: 2}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 9a355470471d4534286590ee3c366533, type: 2}
   <MagazineCapacity>k__BackingField: 2
   <MaxAmmoCapacity>k__BackingField: 60
   <AutomaticFire>k__BackingField: 0
   <WeaponDelay>k__BackingField: 0.1
   <WeaponDelayRandomizer>k__BackingField: 0.1
   <ReloadSpeed>k__BackingField: 1.3
-  <SpreadAngle>k__BackingField: 12.1
+  <SpreadAngle>k__BackingField: 25
   multiBulletShot: 1
   bulletCount: 10
   recoilIntensity: 11.3
   recoilFrequency: 6
-  recoilTime: 0.1
+  recoilTime: 0.08

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8419298486965915610}
-  - component: {fileID: 8669803059790126849}
+  - component: {fileID: 4241441608128532686}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Loot
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8669803059790126849
+--- !u!114 &4241441608128532686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LootOp:
-  - {fileID: 4886039924621977508, guid: 0c78a39aee27cc9418107a3638504dd6, type: 3}
-  - {fileID: 4886039924621977508, guid: 86900d2ec4010294baea004a3ddcc0ef, type: 3}
   - {fileID: 4886039924621977508, guid: 66891a86299fce9448233aafd28d4162, type: 3}
   - {fileID: 4886039924621977508, guid: 47804f6db650bc349b8ac8ee92dd2bd7, type: 3}
+  - {fileID: 4886039924621977508, guid: 0c78a39aee27cc9418107a3638504dd6, type: 3}
+  LootSup:
+  - {fileID: 9132335765561888777, guid: 73192327b52cbb440956f9e78f194055, type: 3}
+  - {fileID: 7810571008584226850, guid: 1f4edeace51eddb42bb52d7e18f8dbed, type: 3}

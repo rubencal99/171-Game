@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5087463274387040076}
-  - component: {fileID: -2395509352196115120}
   - component: {fileID: 3392075588759141863}
+  - component: {fileID: 8420859480262126965}
   m_Layer: 8
   m_Name: ShopkeeperSpawner
   m_TagString: Spawner
@@ -32,30 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2395509352196115120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5694068309932514625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e15142566744244ca8596e47bf8697c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Waves:
-  - Enemies:
-    - Enemy: {fileID: 6638867989798731449, guid: 8f91563d5f7c589499134d8ed31be76f, type: 3}
-      SpawnCount: 1
-    waveDelay: 0
-  infiniteSpawn: 0
-  stopSpawn: 0
-  spawnTime: 0.1
-  spawnDelay: 0.2
-  offset: 1
-  spawned: 0
-  enemyCount: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -107,3 +83,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8420859480262126965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5694068309932514625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d68d7e0f150ab46a26e080087b6485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Waves:
+  - Enemies:
+    - Enemy: {fileID: 6638867989798731449, guid: 8f91563d5f7c589499134d8ed31be76f, type: 3}
+      SpawnCount: 0
+    waveDelay: 0
+  infiniteSpawn: 0
+  stopSpawn: 0
+  spawnTime: 0.1
+  spawnDelay: 0.4
+  offset: 1
+  spawned: 0
+  enemyCount: 0
+  justEntered: 0

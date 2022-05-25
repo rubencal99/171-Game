@@ -9,11 +9,15 @@ public class RegularBullet : Bullet
     protected Rigidbody rigidbody;
 
     protected float decay;
+    [SerializeField]
+    protected Transform SpriteTransform;
 
     protected Animator animator;
     protected int bounce;
     protected float speed;
+    protected float damage;
     protected GameObject camera;
+    protected Camera camera1;
     protected bool hasRebounded = false;
 
     public override BulletDataSO BulletData
@@ -29,12 +33,14 @@ public class RegularBullet : Bullet
             decay = BulletData.decayTime;
             bounce = BulletData.Bounce;
             speed = BulletData.BulletSpeed;
+            damage = BulletData.Damage;
         }
     }
 
     public virtual void Start() {
-        animator = GetComponent<Animator>();
-        camera = CameraShake.Instance.gameObject;
+        animator = GetComponentInChildren<Animator>();
+        //camera = CameraShake.Instance.gameObject;
+        camera1 = Camera.main;
     }
 
     public virtual void Update()
@@ -84,7 +90,8 @@ public class RegularBullet : Bullet
 
     protected void LateUpdate()
     {
-        transform.LookAt(camera.transform);
+        //SpriteTransform.LookAt(camera1.transform);
+        //SpriteTransform.right = direction;
     }
 
     public void FixedUpdate()
@@ -136,7 +143,7 @@ public class RegularBullet : Bullet
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.GetComponent<IHittable>();
-        hittable?.GetHit(BulletData.Damage, gameObject);
+        hittable?.GetHit(damage, gameObject);
         
     }
 
@@ -179,6 +186,7 @@ public class RegularBullet : Bullet
         Vector3 newDirection = Vector3.Reflect(direction, inNormal);
         //Debug.Log("In Bounce Bullet");
         //Debug.Log("CURRENT Direction: " + direction);
+        
         newDirection.y = 0;
         //Debug.Log("New Direction: " + newDirection);
         //Debug.Log("CURRENT Rotation: " + transform.rotation);
@@ -192,13 +200,14 @@ public class RegularBullet : Bullet
         }*/
         //Debug.Log("New Rotation: " + transform.rotation);
         direction = newDirection;
+        transform.right = newDirection;
     }
 
     public void HitEnemy(Collision collision)
     {
         // This drops enemy health / destroys enemy
         var hittable = collision.gameObject.GetComponent<IHittable>();
-        hittable?.GetHit(BulletData.Damage, gameObject);
+        hittable?.GetHit(damage, gameObject);
     }
 
     public void HitObstacle()

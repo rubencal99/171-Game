@@ -17,12 +17,12 @@ MonoBehaviour:
   <MagazineCapacity>k__BackingField: 40
   <MaxAmmoCapacity>k__BackingField: 200
   <AutomaticFire>k__BackingField: 1
-  <WeaponDelay>k__BackingField: 0.407
+  <WeaponDelay>k__BackingField: 0.15
   <WeaponDelayRandomizer>k__BackingField: 0
-  <ReloadSpeed>k__BackingField: 1.2
+  <ReloadSpeed>k__BackingField: 1.45
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
   bulletCount: 1
-  recoilIntensity: 0
-  recoilFrequency: 0
-  recoilTime: 0
+  recoilIntensity: 0.5
+  recoilFrequency: 0.3
+  recoilTime: 0.05

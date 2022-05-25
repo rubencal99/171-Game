@@ -4859,7 +4859,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fa2a64b2730335f4aab7441ebdf87da4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4935,7 +4935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4cfd2244bae96488afc18dfd503b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <startOffset>k__BackingField: {x: 0.79, y: -0.27, z: 0}
   muzzle: {fileID: 5516205167428529799}
   passives: {fileID: 0}
   ammo: 0
@@ -4949,6 +4949,7 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
+  spriteRenderer: {fileID: 5516205167494534617}
   sprite: {fileID: -6206914631862919072, guid: 96863e54ddc91994e8a4baec67a2b236, type: 3}
   reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
@@ -4961,8 +4962,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   holding: 0
-  maxHold: 2
+  maxHold: 1.2
   holdTimer: 0
+  animator: {fileID: 0}
+  linearAnim: 1
+  singleAnim: 0
 --- !u!1 &5516205167903583921
 GameObject:
   m_ObjectHideFlags: 0

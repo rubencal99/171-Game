@@ -87,7 +87,7 @@ public class AgentMovement : MonoBehaviour
 
     public void Knockback(float duration, float power, Vector3 direction)
     {
-        Debug.Log("In knockback");
+        //Debug.Log("In knockback");
         knockback = true;
         // Vector2 direction = (bullet.direction).normalized;
         knockbackPower = power;
@@ -121,7 +121,7 @@ public class AgentMovement : MonoBehaviour
         OnVelocityChange?.Invoke(currentVelocity);
         if(rigidbody != null && !knockback) {
          rigidbody.velocity = currentVelocity * movementDirection.normalized;
-         rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3 (1f, 1f, 1.65f));
+         rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3 (1f, 1f, 1.3f));
         }
     }
 }

@@ -47,17 +47,21 @@ MonoBehaviour:
   Waves:
   - Enemies:
     - Enemy: {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      SpawnCount: 3
+      SpawnCount: 8
     - Enemy: {fileID: 8532199391070295224, guid: 08ee38fc5a35f8242b952741acae73d2, type: 3}
-      SpawnCount: 2
+      SpawnCount: 5
     waveDelay: 0.3
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
   offset: 1
   spawned: 0
   enemyCount: 0
+  justEntered: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0

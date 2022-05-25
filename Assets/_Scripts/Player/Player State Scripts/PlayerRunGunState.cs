@@ -12,8 +12,12 @@ public class PlayerRunGunState : PlayerBaseState
     private bool secondaryButtonDown = false;
     private bool tabButtonDown = false;
 
+    private bool mapButtonDown = false;
+
     public bool dodging = false; // bool to check if dodging
     public bool shopping = false; // bool to check if dodging
+    //public bool grabbing = false;
+
 
     public PlayerInput playerInput;
     [SerializeField]
@@ -53,6 +57,7 @@ public class PlayerRunGunState : PlayerBaseState
         //GetRespawnInput();
         GetDodgeInput();
         GetTabInput();
+        GetMapInput();
         GetInteractInput();
         CalculateStandTime();
         if (dodging && standTime <= 0)
@@ -117,6 +122,30 @@ public class PlayerRunGunState : PlayerBaseState
                  Debug.Log("throw released");
                 throwButtonDown = false;
                  playerInput.OnThrowButtonReleased?.Invoke();
+            }
+        }
+    }
+
+     private void GetMapInput()
+    {
+        //Debug.Log("MapButtonDown = " + MapButtonDown);
+        //Debug.Log("Map Input = " + Input.GetAxisRaw("Map"));
+        if (Input.GetAxisRaw("Map") > 0)
+        {
+            if (mapButtonDown == false)
+            {
+                Debug.Log("Map pressed");
+                mapButtonDown = true;
+                playerInput.OnMapButtonPressed?.Invoke();
+            }
+        }
+        else
+        {
+            if (mapButtonDown == true)
+            {
+                 Debug.Log("Map released");
+                mapButtonDown = false;
+                 playerInput.OnMapButtonReleased?.Invoke();
             }
         }
     }
@@ -253,7 +282,35 @@ public class PlayerRunGunState : PlayerBaseState
         if (Input.GetAxisRaw("Interact") > 0)
         {
             Debug.Log("Interact key pressed");
-            if (shopping == false && playerInput.ShopKeeper.inDistance)
+            // This checks if we're about to pick up a weapon
+            if(Player.instance.inWeaponZone)
+            {
+                Debug.Log("In Weapon zone can't interact");
+                return;
+            }
+
+            if(!Player.instance.grabbing && !Player.instance.hasGrabbed)
+            {
+                //RaycastHit hit = new RaycastHit();
+                //Physics.Raycast(Player.instance.transform.position, Player.instance.weaponParent.aimDirection, out hit, 3f);
+                Collider[] hits = Physics.OverlapSphere(Player.instance.transform.position, 3.0f);
+                foreach(Collider hit in hits)
+                {
+                    if(hit.transform.gameObject.GetComponent<Grabbable>())
+                    {
+                        Player.instance.grabbing = true;
+                        hit.transform.gameObject.GetComponent<Grabbable>().GrabObject();
+                        return;
+                    }
+                }
+            }
+            if(Player.instance.grabbing && Player.instance.hasGrabbed)
+            {
+                Player.instance.grabbing = false;
+                Player.instance.grabbedObject = null;
+            }
+
+            else if (playerInput.ShopKeeper && shopping == false && playerInput.ShopKeeper.inDistance)
             {
                 Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;
@@ -261,6 +318,14 @@ public class PlayerRunGunState : PlayerBaseState
             }
         }
         else{
+            if(Player.instance.grabbing)
+            {
+                Player.instance.hasGrabbed = true;
+            }
+            else
+            {
+                Player.instance.hasGrabbed = false;
+            }
             if (shopping == true)
             {
                 shopping = false;

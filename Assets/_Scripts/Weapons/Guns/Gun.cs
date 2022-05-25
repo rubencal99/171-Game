@@ -38,6 +38,7 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     public bool isPlayer;
 
+    protected float baseSwapTime = 0.5f;
     [SerializeField]
     protected float swapTime = 0.5f;
     [SerializeField]
@@ -78,12 +79,14 @@ public class Gun : MonoBehaviour, IWeapon
     /*[SerializeField]
     public string name;*/
 
+    public SpriteRenderer spriteRenderer;
     public Sprite sprite;
 
     public float reloadAnimMultiplier;
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
+        swapTime = baseSwapTime * PlayerSignaler.CallQuickdraw();
         swapTimer = swapTime;
         //adjust capacity
         //totalAmmo();
@@ -96,6 +99,10 @@ public class Gun : MonoBehaviour, IWeapon
         }
         Ammo = weaponData.MagazineCapacity;
         TotalAmmo = weaponData.MaxAmmoCapacity;
+        if(spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
         if(transform.parent.GetComponent<AgentWeapon>())
         {
             weaponParent = transform.parent.GetComponent<AgentWeapon>();
@@ -104,7 +111,9 @@ public class Gun : MonoBehaviour, IWeapon
         passives = weaponParent.transform.parent.GetComponent<PlayerPassives>();
         infAmmo = weaponParent.InfAmmo;
         //}
+        //Debug.Log("Weapon Reload Speed: " + weaponData.ReloadSpeed);
          reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
+         //Debug.Log("reloadAnimMultiplier: " + reloadAnimMultiplier);
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -151,7 +160,7 @@ public class Gun : MonoBehaviour, IWeapon
         isShooting = false;
     }
 
-    public void TryReloading()
+    public virtual void TryReloading()
     {
         if(Ammo < weaponData.MagazineCapacity)
             isReloading = true;
@@ -179,7 +188,7 @@ public class Gun : MonoBehaviour, IWeapon
             Ammo += neededAmmo;
             TotalAmmo -= neededAmmo;
             if(isPlayer) {
-                Debug.Log("In Reload");
+                //Debug.Log("In Reload");
                 displayReloadProgressBar();
                 this.GetComponent<Animator>().SetFloat("reloadtime", reloadAnimMultiplier * 1 / (getReloadSpeed() / weaponData.ReloadSpeed));
                 
@@ -194,7 +203,7 @@ public class Gun : MonoBehaviour, IWeapon
         Debug.Log("In Force Reload");
         reloadCoroutine = false;
         rateOfFireCoroutine = false;
-        GetComponent<SpriteRenderer>().sprite = sprite;
+        spriteRenderer.sprite = sprite;
         if(isPlayer)
         {
             GetComponent<Animator>().Play("idle");
@@ -204,6 +213,11 @@ public class Gun : MonoBehaviour, IWeapon
     public void AmmoFill()
     {
         TotalAmmo = weaponData.MaxAmmoCapacity;
+    }
+
+    public void ReSupply()
+    {
+        TotalAmmo += (weaponData.MaxAmmoCapacity)/4;
     }
 
     protected virtual void UseWeapon()
@@ -226,6 +240,7 @@ public class Gun : MonoBehaviour, IWeapon
                 if (infAmmo)
                     Ammo++;
                 OnShoot?.Invoke();
+                CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
                     
@@ -268,6 +283,7 @@ public class Gun : MonoBehaviour, IWeapon
             if (infAmmo)
                 Ammo++;
             OnShoot?.Invoke();
+            CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
             for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
             {
                 
@@ -303,7 +319,7 @@ public class Gun : MonoBehaviour, IWeapon
     protected virtual IEnumerator DelayNextShootCoroutine()
     {
         rateOfFireCoroutine = true;
-        yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier);
+        yield return new WaitForSeconds(weaponData.WeaponDelay / passives.ROFMultiplier / PlayerSignaler.CallTriggerHappy());
         rateOfFireCoroutine = false;
     }
 
@@ -368,9 +384,12 @@ public class Gun : MonoBehaviour, IWeapon
         //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
 
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, Quaternion.identity);
-        bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = (bulletSpreadRotation * (weaponParent.aimDirection)).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
-        bulletPrefab.GetComponent<Bullet>().direction.y = 0;
+        RegularBullet bullet = bulletPrefab.GetComponent<RegularBullet>();
+        bullet.BulletData = weaponData.BulletData;
+        bullet.direction = (bulletSpreadRotation * (weaponParent.aimDirection)).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
+        bullet.direction.y = 0;
+        bullet.transform.right = bullet.direction;
+        //bulletPrefab.SpriteTransform.
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

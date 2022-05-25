@@ -19,7 +19,7 @@ public class bloodparticles : MonoBehaviour
     }
 
     private IEnumerator DespawnAfterDelay() {
-        yield return new WaitForSeconds(90);
-        Destroy(this);
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
     }
 }

@@ -53,9 +53,9 @@ public class TileSpritePlacer : MonoBehaviour
     private void CheckForwalls(TileNode[,] grid, Vector2Int position)
     {
         Vector2Int wallPosition = Vector2Int.zero;
-        for(int i = position.x - 1; i <= position.x + 1; i++)
+        for(int i = Mathf.Max(position.x - 1, 0); i <= Mathf.Min(position.x + 1, grid.GetLength(0)); i++)
         {
-            for (int j = position.y - 1; j <= position.y + 1; j++)
+            for (int j = Mathf.Max(position.y - 1, 0); j <= Mathf.Min(position.y + 1, grid.GetLength(1)); j++)
             {
                 TileNode potentialWall = grid[i, j];
                 if(potentialWall.value == 0 && !potentialWall.isObstacle)

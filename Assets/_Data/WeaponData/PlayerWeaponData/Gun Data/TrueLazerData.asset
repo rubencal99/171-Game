@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: TrueLazerData
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <BulletData>k__BackingField: {fileID: 11400000, guid: 69c7bb5fd8905ad4aba93c6b52b94fe9, type: 2}
-  <MagazineCapacity>k__BackingField: 40
-  <MaxAmmoCapacity>k__BackingField: 400
+  <MagazineCapacity>k__BackingField: 100
+  <MaxAmmoCapacity>k__BackingField: 1000
   <AutomaticFire>k__BackingField: 1
   <WeaponDelay>k__BackingField: 0.253
   <WeaponDelayRandomizer>k__BackingField: 0.1

@@ -12,6 +12,7 @@ public class TileNode
     // 1 = room
     // 2 = corridor
     public int value;
+    public string obstacleValue;
     // Gym, lab, lobby, rec, cafeterti, etc.
     public string roomType;
     // Gym: weights, more weights
@@ -28,6 +29,7 @@ public class TileNode
     public TileNode()
     {
         value = 0;
+        obstacleValue = "";
     }
 
     public TileNode(int tileX, int tileY)

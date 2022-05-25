@@ -231,10 +231,27 @@ public static class PlayerSignaler : object
         return 1;
     }
 
+    public static float CallQuickdraw()
+    {
+        if(PlayerAugmentations.AugmentationList["Quickdraw"])
+        {
+            return PlayerAugmentations.DrawTime;
+        }
+        return 1;
+    }
+
     public static bool CallDoubleShot(){
         if(PlayerAugmentations.AugmentationList["DoubleShot"]){
             return true;
         }
         return false;
+    }
+    public static float CallTriggerHappy()
+    {
+        if(PlayerAugmentations.AugmentationList["TriggerHappy"])
+        {
+            return PlayerAugmentations.TriggerMultiplier;
+        }
+        return 1;
     }
 }

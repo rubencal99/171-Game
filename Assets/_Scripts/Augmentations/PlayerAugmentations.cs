@@ -108,6 +108,14 @@ public static class PlayerAugmentations : object
     //////////////////////////////DoubleMag/////////////////////////////////////
     public static bool DoubleShot = false;
 
+
+    //////////////////////////////Quickdraw/////////////////////////////////////
+    public static bool Quickdraw = false;
+    public static float DrawTime = 0.5f;
+
+    //////////////////////////////TriggerHappy/////////////////////////////////////
+    public static bool TriggerHappy = false;
+    public static float TriggerMultiplier = 1.4f;
     //////////////////////////////UNIMPLEMENTED/////////////////////////////////////
 
 
@@ -140,8 +148,9 @@ public static class PlayerAugmentations : object
         {"MetalSkin",MetalSkin},
         {"CaptainPlanet",CaptainPlanet},
         {"DoubleMag", DoubleMag},
-        {"DoubleShot", DoubleShot}
-
+        {"DoubleShot", DoubleShot},
+        {"Quickdraw", Quickdraw},
+        {"TriggerHappy", TriggerHappy}
 
     };
 
@@ -175,6 +184,8 @@ public static class PlayerAugmentations : object
         AngelsGrace = false;
         HungryHippo = false;
         MetalSkin = false;
+        Quickdraw = false;
+        TriggerHappy = false;
     }
 
     public static void PrintDictionary()

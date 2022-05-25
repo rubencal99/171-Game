@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778427c1d310e1e4398f4143f2616f86, type: 3}
   m_Name: PipeData
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 2
-  <RecoveryLength>k__BackingField: 0.31
+  <StartOffset>k__BackingField: {x: 0.85, y: 0, z: 0}
+  <Damage>k__BackingField: 1
+  <RecoveryLength>k__BackingField: 0.8
+  <ComboWindow>k__BackingField: 0.2
+  <ComboLength>k__BackingField: 1
   <KnockbackPower>k__BackingField: 12.9
   <KnockbackDelay>k__BackingField: 1

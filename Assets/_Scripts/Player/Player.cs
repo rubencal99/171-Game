@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour, IAgent, IHittable
 {
     public static Player instance;
+    public PlayerWeapon weaponParent;
     public ItemInventory inventory;
     public RoomNode currentRoom;
     [SerializeField]
@@ -86,6 +87,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
      public Vector3 respawnPoint;
     public PlayerStateManager PlayerState; // game odject for agent input
+
+    public bool grabbing = false;
+    public bool hasGrabbed = false;
+    public GameObject grabbedObject = null;
+    public bool inWeaponZone = false;
     // private AgentInput w; // var to hold agent input
 
 // =======
@@ -107,6 +113,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         SpawnPosition = transform.position;
         PlayerState = GetComponent<PlayerStateManager>();
         agentRenderer = GetComponentInChildren<AgentRenderer>();
+        weaponParent = GetComponentInChildren<PlayerWeapon>();
         playerMovement = GetComponent<PlayerMovement>();
         //DeathMenuUI.SetActive(false);
         isDead = false;                                         //Debuging death
@@ -209,7 +216,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         Health -= d;
         HitLastFiveSec = true;
         blood.Play();
-        CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
+        //CameraShake.Instance.ShakeCamera((float)damage * getHitIntensity, getHitFrequency, getHitTime);
         if (Health > 0) {
             OnGetHit?.Invoke();
             StartCoroutine(iframes_damage());

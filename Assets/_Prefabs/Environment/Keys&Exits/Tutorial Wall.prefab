@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2690181587978013395}
   - component: {fileID: 2690181587978013394}
   - component: {fileID: 2690181587978013393}
-  - component: {fileID: 2690181587978013392}
   - component: {fileID: 2690181587978013397}
+  - component: {fileID: 9028762224155423820}
   m_Layer: 0
   m_Name: Tutorial Wall
   m_TagString: Untagged
@@ -98,18 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2690181587978013392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2690181587978013407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b4f646d9cdc3104fa87ece89207a982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2690181587978013397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,3 +114,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9028762224155423820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690181587978013407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ff650d18b742a4f961dedec04ee084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

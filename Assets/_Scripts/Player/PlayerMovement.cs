@@ -21,6 +21,28 @@ public class PlayerMovement : AgentMovement
         //oriCollider = collider.size;
     }
 
+    public virtual void MoveAgent(Vector3 movementInput)
+    {
+        // rigidbody2D.velocity = movementInput.normalized * currentVelocity;
+        if (movementInput.magnitude > 0)
+        {
+            /* // Use this if we want car-like deceleration
+            if (Vector2.Dot(movementInput.normalized, movementDirection) < 0)
+                currentVelocity = 0;
+            */
+            //Debug.Log("Movement input: " + movementInput);
+            movementDirection = movementInput.normalized;
+        }
+        else{
+            movementDirection = Vector2.zero;
+        }
+        
+        currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier * PlayerSignaler.SetMovementSpeed();
+        
+        //Debug.Log("Current velocity: " + currentVelocity);
+        if(this.GetComponentInChildren<AgentAnimations>() != null)
+             this.GetComponentInChildren<AgentAnimations>().SetWalkAnimation(movementInput.magnitude > 0);
+    }
 
     // this function integrates acceleration
     protected override float calculateSpeed(Vector3 movementInput)
@@ -47,9 +69,11 @@ public class PlayerMovement : AgentMovement
         {
             return Mathf.Clamp((currentVelocity), 0, MovementData.maxProneSpeed);
         }
-        // if(PlayerState.DiveState.diving == false) {
-        //  drag = 0;
-        // }s 
+        if(Player.instance.grabbing && Player.instance.grabbedObject != null)
+        {
+            Player.instance.grabbedObject.GetComponent<Grabbable>().AdjustSpeed(rigidbody.velocity);
+            return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed / Player.instance.grabbedObject.GetComponent<Grabbable>().mass);
+        }
         // Returns velocity between 0 and maxSpeed
         return Mathf.Clamp(currentVelocity, 0, MovementData.maxRunSpeed);
     }
@@ -70,6 +94,31 @@ public class PlayerMovement : AgentMovement
         //Debug.Log("Collider size: " + collider.size);
         //Debug.Log("Original height and width:" + oriCollider);
         //collider.size = oriCollider;
+    }
+
+    protected virtual void FixedUpdate()
+    {   
+        if(knockback)
+        {
+            knockbackTimer -= Time.deltaTime;
+            if(knockbackTimer <= 0)
+            {
+                knockback = false;
+            }
+            // Vector2 k = -knockbackDirection * knockbackPower;
+            // rigidbody2D.AddForce(k, ForceMode2D.Impulse);
+            //rigidbody2D.velocity += k;
+            return;
+        }
+        OnVelocityChange?.Invoke(currentVelocity);
+        if(rigidbody != null && !knockback) {
+         rigidbody.velocity = currentVelocity * movementDirection.normalized;
+         rigidbody.velocity = Vector3.Scale(rigidbody.velocity, new Vector3 (1f, 1f, 1.65f));
+        }
+        if(Player.instance.grabbedObject != null)
+        {
+            Player.instance.grabbedObject.GetComponent<Grabbable>().AdjustPosition();
+        }
     }
 
     public void CollisionsOff() {

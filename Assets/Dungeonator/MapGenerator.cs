@@ -5,11 +5,20 @@ using UnityEngine;
 using System.Linq;
 using Random=UnityEngine.Random;
 
-
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField]
     private GameObject Grid;
+    [SerializeField]
+    private bool debug;
+    [SerializeField]
+    private bool forceEntry = false;
+    [SerializeField]
+    private bool extraRooms = false;
+    [SerializeField]
+    private int numExtraRooms = 0;
+    [SerializeField]
+    private int maxExtraRooms = 4;
     [SerializeField]
     private bool hasBoss;
     [SerializeField]
@@ -20,6 +29,8 @@ public class MapGenerator : MonoBehaviour
     private GameObject ShopKeeper;
     [SerializeField]
     private List<GameObject> Spawner;
+    [SerializeField]
+    private GameObject CQCSpawner;
     [SerializeField]
     private GameObject BossSpawner;
     [SerializeField]
@@ -62,7 +73,7 @@ public class MapGenerator : MonoBehaviour
     public Vector2Int minBossDim;
     public Vector2Int maxBossDim;
 
-    public bool UseCellular;
+    /*public bool UseCellular;
     public string Seed;
     public bool useRandomSeed;
     [Range(0, 100)]
@@ -70,13 +81,17 @@ public class MapGenerator : MonoBehaviour
     public int wallCount;
     
     public int Iterations;
+    public int overgrownRooms;
+    */
 
     public bool HasEntry = false;
     public bool HasBoss = false;
     public int numLargeRooms;
     public int NumBossRooms = 1;
     public int NumNormalRooms;
-    public int overgrownRooms;
+    public int NumRewardRooms = 0;
+    public int MaxRewardRooms = 8;
+
 
     // Queues for the BSP algorithm
     private List<int[]> queue = new List<int[]>();
@@ -99,10 +114,28 @@ public class MapGenerator : MonoBehaviour
         //Grid.transform.Rotate(Vector3.right * 90);
         //Debug.Log("Grid rotation = " + Grid.transform.localRotation);
 
-        FillMap();
-        BinarySpace();
-
-        DrawMap();
+        int count = 0;
+        while(count < 3)
+        {
+            try
+            {
+                FillMap();
+                BinarySpace();
+                break;
+            }
+            catch(System.IndexOutOfRangeException exception)
+            {
+                Debug.Log("Exception in map generation: " + exception);
+                count++;
+            }
+            
+        }
+        
+        if(!debug)
+        {
+            DrawMap();
+        }
+        //DrawMap();
         AstarPath.active.Scan();
         //Debug.Log("After draw map");
         Grid.transform.Rotate(Vector3.right * 90);
@@ -227,19 +260,19 @@ public class MapGenerator : MonoBehaviour
             // This gives us normal rooms
             if (!successfulLarge)
             {
-                if (width > minNormalDim.x && height > minNormalDim.y)
+                if (width > maxNormalDim.x && height > maxNormalDim.y)
                 {
-                    Debug.Log("In BSP Split normal");
-                    Debug.Log("Space Width: " + width);
-                    Debug.Log("Space Height: " + height);
+                    //Debug.Log("In BSP Split normal");
+                    //Debug.Log("Space Width: " + width);
+                    //Debug.Log("Space Height: " + height);
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        if (height >= minNormalDim.y * 2)
+                        if (height >= maxNormalDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
-                        else if (width >= minNormalDim.x * 2)
+                        else if (width >= maxNormalDim.x * 2)
                         {
                             SplitVertical(space);
                         }
@@ -258,11 +291,11 @@ public class MapGenerator : MonoBehaviour
                     }
                     else
                     {
-                        if (width >= minNormalDim.x * 2)
+                        if (width >= maxNormalDim.x * 2)
                         {
                             SplitVertical(space);
                         }
-                        else if (height >= minNormalDim.y * 2)
+                        else if (height >= maxNormalDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
@@ -286,39 +319,52 @@ public class MapGenerator : MonoBehaviour
 
             if(!successfulLarge && !successfulNormal)
             {
-                if (width > minRewardDim.x && height > minRewardDim.y)
+                if (width > maxRewardDim.x && height > maxRewardDim.y && NumRewardRooms < MaxRewardRooms)
                 {
                     // Randomly choose which split we prefer
                     if (UnityEngine.Random.Range(0, 100) < 50)
                     {
-                        if (height >= minRewardDim.y * 2)
+                        if (height >= maxRewardDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
-                        else if (width >= minRewardDim.x * 2)
+                        else if (width >= maxRewardDim.x * 2)
                         {
                             SplitVertical(space);
                         }
                         else if(UnityEngine.Random.Range(0, 100) < rewardPercent)
                         {
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
+                            NumRewardRooms++;
                         }
                     }
                     else
                     {
-                        if (width >= minRewardDim.x * 2)
+                        if (width >= maxRewardDim.x * 2)
                         {
                             SplitVertical(space);
                         }
-                        else if (height >= minRewardDim.y * 2)
+                        else if (height >= maxRewardDim.y * 2)
                         {
                             SplitHorizontal(space);
                         }
                         else if(UnityEngine.Random.Range(0, 100) < rewardPercent)
                         {
                             roomsList.Enqueue(new Tuple<int[], string>(space, "Reward"));
+                            NumRewardRooms++;
                         }
                     }
+                    successfulReward = true;
+                }
+            }
+            // This is where extra rooms are made
+            if(!successfulReward && !successfulNormal)
+            {
+                if(extraRooms && numExtraRooms < maxExtraRooms)
+                {
+                    Debug.Log("In Extra room creation");
+                    roomsList.Enqueue(new Tuple<int[], string>(space, "Extra"));
+                    numExtraRooms++;
                 }
             }
             count++;
@@ -356,10 +402,27 @@ public class MapGenerator : MonoBehaviour
                 var roomLength = tempString.GetLength(0);
                 // Array length
                 var roomWidth = tempString.GetLength(1);
-                Debug.Log("Allocated length: " + length);
+                /*Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
                 Debug.Log("Normal room length: " + roomLength);
-                Debug.Log("Normal room width: " + roomWidth);
+                Debug.Log("Normal room width: " + roomWidth);*/
+                NewRoom.AddDimensions(roomLength, roomWidth);
+            }
+            else if(roomType == "Auxiliary")
+            {
+                roomIndex = UnityEngine.Random.Range(0, AuxiliaryRooms.RoomList.Count);
+                //Debug.Log("RoomList count = " + NormalRooms.RoomList.Count);
+                //Debug.Log("Room index = " + roomIndex);
+                tempString = (string[,])AuxiliaryRooms.RoomList[roomIndex];
+                //Debug.Log("Temp string = " + tempString);
+                // Amount of arrays
+                var roomLength = tempString.GetLength(0);
+                // Array length
+                var roomWidth = tempString.GetLength(1);
+                /*Debug.Log("Allocated length: " + length);
+                Debug.Log("Allocated width: " + width);
+                Debug.Log("Auxiliary room length: " + roomLength);
+                Debug.Log("Auxiliary room width: " + roomWidth);*/
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else if(roomType == "Reward")
@@ -373,23 +436,27 @@ public class MapGenerator : MonoBehaviour
                 var roomLength = tempString.GetLength(0);
                 // Array length
                 var roomWidth = tempString.GetLength(1);
-                Debug.Log("Allocated length: " + length);
+                /*Debug.Log("Allocated length: " + length);
                 Debug.Log("Allocated width: " + width);
-                Debug.Log("Normal room length: " + roomLength);
-                Debug.Log("Normal room width: " + roomWidth);
+                Debug.Log("Reward room length: " + roomLength);
+                Debug.Log("Reward room width: " + roomWidth);*/
                 NewRoom.AddDimensions(roomLength, roomWidth);
             }
             else
             {
-                NewRoom.AddDimensions(length, width);
+                // The -2 is to give a buffer of 1 tile on all sides of space
+                NewRoom.AddDimensions(length-2, width-2);
             }
             
-            if (!HasEntry && roomType != "Reward")
+            if (!HasEntry && 
+                roomType != "Reward" && 
+                roomType != "Auxiliary")
             {
                 NewRoom.RoomType = "Start";
                 NewRoom.MaxNeighbors = 1;
                 HasEntry = true;
                 StartRoom = NewRoom;
+                NewRoom.SetAccessibleFromStart();
             }
             /*else if (!HasBoss && roomsList.Count == 0)
             {
@@ -403,12 +470,12 @@ public class MapGenerator : MonoBehaviour
                 NewRoom.MaxNeighbors = 3;
             }
 
-            
             // Here we fill the negative space with empty space 
             // I.e. room creation
-            if(roomType == "Normal" || roomType == "Reward")
+            if(roomType == "Normal" || roomType == "Reward" || roomType == "Auxiliary")
             {
-                //Debug.Log("Before 2f");
+                //Debug.Log("RoomType = " + roomType);
+                //Debug.Log("From (" + x1 + ", " + y1 + ") to (" + (x1+NewRoom.length) + ", " + (y1+NewRoom.width) + ")");
                 for(int i = 0; i < NewRoom.length; i++)
                 {
                     for (int j = 0; j < NewRoom.width; j++)
@@ -417,36 +484,38 @@ public class MapGenerator : MonoBehaviour
                         if(int.TryParse(tempString[i, j], out int result))
                         {   
                             //Debug.Log("Int result = " + result);
-                            map[x1 + 1 + i, y1 + j + 1].value = result;
+                            map[x1 + i, y1 + j].value = result;
                             if(result == 1)
                             {
-                                map[x1 + 1 + i, y1 +j + 1].room = NewRoom;
-                                roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
+                                map[x1 + i, y1 + j].room = NewRoom;
+                                roomTiles.Add(map[x1 + i, y1 + j]);
+                                NewRoom.validTileList.Add(map[x1 + i, y1 + j]);
                             }
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
                         }
                         else if(tempString[i, j] == "e")
                         {
-                            NewRoom.Entrances.Add(new Vector2Int(x1 + 1 + i, y1 + j + 1));
-                            map[x1 + 1 + i, y1 + j + 1].value = 1;
-                            map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
-                            roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            NewRoom.Entrances.Add(new Vector2Int(x1 + i, y1 + j));
+                            map[x1 + i, y1 + j].value = 1;
+                            map[x1 + i, y1 + j].room = NewRoom;
+                            roomTiles.Add(map[x1 + i, y1 + j]);
+                            NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
                         }
                         else
                         {
                             //Debug.Log("String result = " + result);
-                            map[x1 + 1 + i, y1 + j + 1].value = 1;
-                            map[x1 + 1 + i, y1 + j + 1].isObstacle = true;
-                            map[x1 + 1 + i, y1 + j + 1].room = NewRoom;
-                            roomTiles.Add(map[x1 + 1 + i, y1 + j + 1]);
-                            NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + j + 1];
+                            map[x1 + i, y1 + j].value = 1;
+                            map[x1 + i, y1 + j].obstacleValue = tempString[i, j];
+                            map[x1 + i, y1 + j].isObstacle = true;
+                            map[x1 + i, y1 + j].room = NewRoom;
+                            roomTiles.Add(map[x1 + i, y1 + j]);
+                            NewRoom.tileList[i, j] = map[x1 + i, y1 + j];
                             NewRoom.tileCount++;
-                            ObstacleLookUp.SpawnObstacle(tempString[i, j], x1 + 1 + i, y1 + j + 1, NewRoom);
+                            NewRoom.obstacleTileList.Add(map[x1 + i, y1 + j]);
+                            
                         }
-                        
                     }
                 }
                 //Debug.Log("Before Add Lights");
@@ -454,15 +523,16 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < length; i++)
+                for (int i = 0; i < NewRoom.length; i++)
                 {
-                    for (int j = 0; j < width; j++)
+                    for (int j = 0; j < NewRoom.width; j++)
                     {
-                        map[x1 + 1 + i, y1 + 1 + j].value = 1;
-                        map[x1 + 1 + i, y1 + 1 + j].room = NewRoom;
-                        roomTiles.Add(map[x1 + 1 + i, y1 + 1 + j]);
-                        NewRoom.tileList[i, j] = map[x1 + 1 + i, y1 + 1 + j];
+                        map[x1 + i + 1, y1 + j + 1].value = 1;
+                        map[x1 + i + 1, y1 + j + 1].room = NewRoom;
+                        roomTiles.Add(map[x1 + i + 1, y1 + j + 1]);
+                        NewRoom.tileList[i, j] = map[x1 + i + 1, y1 + j + 1];
                         NewRoom.tileCount++;
+                        NewRoom.validTileList.Add(map[x1 + i + 1, y1 + j + 1]);
                     }
                 }
                 AddLights(x1, y1, x2, y2, NewRoom);
@@ -479,18 +549,36 @@ public class MapGenerator : MonoBehaviour
             tempCount++;
         }
         Debug.Log("After Room Creation");
+        Debug.Log("Before Sort Rooms");
         SortRooms();
         Debug.Log("Before Corridor creation");
         AddCorridors();
         Debug.Log("After corrider creation");
         AddEndRoom();
+        Debug.Log("After Add End Room");
+        if(debug)
+        {
+            return;
+        }
+        SpawnObstacles();
         AddEntryColliders();
         AddSpawners();
-        for(int i = 0; i < 1; i++)
-            AddObstacles();
+        /*for(int i = 0; i < 1; i++)
+            AddObstacles();*/
        // AddWalls();
     }
-    void AddWalls()
+
+    void SpawnObstacles()
+    {
+        foreach(RoomNode room in Rooms)
+        {
+            foreach(TileNode tile in room.obstacleTileList)
+            {
+                ObstacleLookUp.SpawnObstacle(tile.obstacleValue, tile.x, tile.y, room);
+            }
+        }
+    }
+    /*void AddWalls()
     {
         GameObject wallParent = new GameObject("WallParent");
         wallParent.transform.parent = transform;
@@ -522,10 +610,10 @@ public class MapGenerator : MonoBehaviour
             CreateWall(wallParent, wallPosition, wallVertical);
         }
 
-    }
+    }*/
 
     //Function to add Corridor wall positions to list
-    void  PopulateWallLists(List<Vector3Int> doorVertPos, List<Vector3Int> doorHorPos,
+    /*void  PopulateWallLists(List<Vector3Int> doorVertPos, List<Vector3Int> doorHorPos,
                                  List<Vector3Int> wallHorPos, List<Vector3Int> wallVertPos, CorridorNode corr)
         {
             
@@ -563,7 +651,7 @@ public class MapGenerator : MonoBehaviour
             var wallPosition = new Vector3(room.bottomRightCorner.x,1f, col);
             AddWallPositionToList(wallPosition, wallVertPos, doorVertPos);
         }
-    }
+    }*/
 
     private void AddWallPositionToList(Vector3 wallPosition, List<Vector3Int> wallList, List<Vector3Int> doorList)
     {
@@ -578,7 +666,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject Wall)
+    /*private void CreateWall(GameObject wallParent, Vector3Int wallPosition, GameObject Wall)
     {
         Instantiate(Wall, wallPosition, Quaternion.identity, wallParent.transform);
     }
@@ -600,7 +688,7 @@ public class MapGenerator : MonoBehaviour
             //ObstacleInjector.PlaceObstacles(room);
             ObstacleInjector.PlacePillars(room);
         }
-    }
+    }*/
 
     void AddSpawners()
     {
@@ -635,10 +723,15 @@ public class MapGenerator : MonoBehaviour
                 spawnedObject = Instantiate(PuzzleSpawner, pos1, Quaternion.identity);
                 //GameObject lk = Instantiate(PuzzleSpawner, pos1, Quaternion.identity);
                 //lk.transform.parent = room.transform;
+                //continue;
             }
             else if(room.RoomType == "Large")
             {
                 spawnedObject = Instantiate(Spawner[Random.Range(0, Spawner.Count - 2)], pos1, Quaternion.identity);
+            }
+            else if(room.RoomType == "Extra")
+            {
+                spawnedObject = Instantiate(CQCSpawner, pos1, Quaternion.identity);
             }
             else
             {
@@ -697,7 +790,7 @@ public class MapGenerator : MonoBehaviour
     void SpawnPlayer(RoomNode SpawnRoom)
     {
         var Player = GameObject.FindGameObjectWithTag("Player");
-        Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 1.2f, SpawnRoom.roomCenter.y);
+        Vector3 spawnPosition = new Vector3(SpawnRoom.roomCenter.x, 3f, SpawnRoom.roomCenter.y);
         Player.transform.position = spawnPosition;
         Player.GetComponent<Player>().setSpawnPoint(spawnPosition);
          if(PlayerProgressManager.hasData) {
@@ -706,7 +799,7 @@ public class MapGenerator : MonoBehaviour
            // Player.GetComponent<Player>() = PlayerProgressManager.currentPlayerState;
            // Player.GetComponentInChildren<PlayerWeapon>() = PlayerProgressManager.currentPlayerWeaponState;
              }
-        controls.SetPosition(Player.transform.position);
+       // controls.SetPosition(Player.transform.position);
         Vector3 weaponSpawn = new Vector3(spawnPosition.x - 3, spawnPosition.y, spawnPosition.z);
         GameObject spawnWeapon = Instantiate(SpawnWeapon, weaponSpawn, Quaternion.identity);
     }
@@ -786,7 +879,9 @@ public class MapGenerator : MonoBehaviour
         RoomNode end = new RoomNode();
         foreach(RoomNode room in Rooms)
         {
-            if(room.DistanceFromStart > distance && room.RoomType != "Reward")
+            if(room.DistanceFromStart > distance && 
+                room.RoomType != "Reward" &&
+                room.RoomType != "Extra")
             {
                 distance = room.DistanceFromStart;
                 end = room;
@@ -802,6 +897,7 @@ public class MapGenerator : MonoBehaviour
         {
             EndRoom.RoomType = "Key";
         }
+        EndRoom.RepurposeRoom(ref map);
         /*Debug.Log("Boss distance: " + BossRoom.DistanceFromStart);
         int r = Random.Range(1, 4);
         if(r >= BossRoom.RoomsByDistance.Count)
@@ -829,19 +925,37 @@ public class MapGenerator : MonoBehaviour
         //ShopRoom = shop;*/
 
         //---------------- SHOP ----------------
-        int shopIndex = UnityEngine.Random.Range(1, 4);
+        /*int shopIndex = UnityEngine.Random.Range(1, 4);
         if(shopIndex >= EndRoom.RoomsByDistance.Count)
         {
             shopIndex = 1;
-        }
-        RoomNode shop = EndRoom.RoomsByDistance[shopIndex];
-        if(shop == StartRoom)
+        }*/
+        RoomNode shop = null;
+        /*if(shop == StartRoom)
         {
             shop = EndRoom.RoomsByDistance[shopIndex-1];
+        }*/
+        foreach(RoomNode room in Rooms)
+        {
+            if(!forceEntry && room.DistanceFromStart > 2 &&
+                room.RoomType != "Reward" &&
+                room.RoomType != "Key" &&
+                room.RoomType != "Boss" &&
+                room.RoomType != "Door")
+                {
+                    shop = room;
+                }
+            else if(room.RoomType != "Reward" &&
+                room.RoomType != "Key" &&
+                room.RoomType != "Boss" &&
+                room.RoomType != "Door")
+                {
+                    shop = room;
+                }
         }
         shop.RoomType = "Shop";
         ShopRoom = shop;
-
+        ShopRoom.RepurposeRoom(ref map);
         //---------------- DOOR ----------------
         if(!hasBoss)
         {
@@ -858,16 +972,19 @@ public class MapGenerator : MonoBehaviour
             RoomNode door = null;
             for(int i = 0; i < StartRoom.RoomsByDistance.Count; i++)
             {
-                if(StartRoom.RoomsByDistance[i].RoomType != "Start" || 
-                    StartRoom.RoomsByDistance[i].RoomType != "Reward" ||
-                    StartRoom.RoomsByDistance[i].RoomType != "Shop" ||
-                    StartRoom.RoomsByDistance[i].RoomType != "Key")
+                if(StartRoom.RoomsByDistance[i].RoomType != "Start" && 
+                    StartRoom.RoomsByDistance[i].RoomType != "Reward" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Shop" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Boss" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Key" &&
+                    StartRoom.RoomsByDistance[i].RoomType != "Extra")
                     {
                         door = StartRoom.RoomsByDistance[i];
                     }
             }
             door.RoomType = "Door";
             DoorRoom = door;
+            DoorRoom.RepurposeRoom(ref map);
         }
     }
 
@@ -902,9 +1019,23 @@ public class MapGenerator : MonoBehaviour
         {
             foreach (RoomNode neighbor in room.RoomsByDistance)
             {
-                ConnectRooms(room, neighbor);
+                ConnectRooms(room, neighbor, forceEntry);
             }
         }
+
+        // Second pass in case rooms or sections aren't accessible from start
+        foreach(RoomNode room in StartRoom.RoomsByDistance)
+        {
+            if(room.isAccessibleFromStart)
+            {
+                continue;
+            }
+            foreach(RoomNode neighbor in room.RoomsByDistance)
+            {
+                ConnectRooms(room, neighbor, true);
+            }
+        }
+        
         AddDistanceFromStart();
     }
 
@@ -944,19 +1075,22 @@ public class MapGenerator : MonoBehaviour
         }
         return false;
     }
-    void ConnectRooms(RoomNode room, RoomNode neighbor)
+    void ConnectRooms(RoomNode room, RoomNode neighbor, bool forcedEntry = false)
     {
         if(RoomsIncompatible(room, neighbor))
         {
             return;
         }
-        if (room.NeighborCount >= room.MaxNeighbors)
+        if(!forcedEntry)
         {
-            return;
-        }
-        if (neighbor.NeighborCount >= neighbor.MaxNeighbors)
-        {
-            return;
+            if (room.NeighborCount >= room.MaxNeighbors)
+            {
+                return;
+            }
+            if (neighbor.NeighborCount >= neighbor.MaxNeighbors)
+            {
+                return;
+            }
         }
         //CorridorNode corridor = CreateCorridor(room, neighbor);
         CorridorNode corridor = Helper.CreateCorridor(room, neighbor, room.CenterTile, neighbor.CenterTile, ref map);
@@ -1194,6 +1328,8 @@ public class MapGenerator : MonoBehaviour
         var room1 = new int[] { x1, y1, x2, ySplit };
         var room2 = new int[] { x1, ySplit + 1, x2, y2 };
 
+        Debug.DrawLine(new Vector3(x1, 1, ySplit), new Vector3(x2, 1, ySplit), Color.green, 20);
+
         if (UnityEngine.Random.Range(0, 100) < 50)
         {
             queue.Add(room1);
@@ -1218,6 +1354,8 @@ public class MapGenerator : MonoBehaviour
         var xSplit = UnityEngine.Random.Range(x1 + 1 + buffer, x2 - buffer);
         var room1 = new int[] { x1, y1, xSplit, y2 };
         var room2 = new int[] { xSplit + 1, y1, x2, y2 };
+
+        Debug.DrawLine(new Vector3(xSplit, 1, y1), new Vector3(xSplit, 1, y2), Color.green, 20);
 
         // print("In vertical.");
         if (UnityEngine.Random.Range(0, 100) < 50)
@@ -1254,7 +1392,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     Gizmos.color = new Color(0, 0, 0, 1f);
                 }
-                else if (map[x, y].value == 1)
+                else if (map[x, y].value == 1 && map[x, y].room != null)
                 {
                     if (map[x, y].room.RoomType == "Start")
                     {
@@ -1279,6 +1417,10 @@ public class MapGenerator : MonoBehaviour
                     else if(map[x, y].room.RoomType == "Auxiliary")
                     {
                         Gizmos.color = new Color(130/255f, 115/255f, 150/255f, 1f);
+                    }
+                    else if(map[x, y].room.RoomType == "Extra")
+                    {
+                        Gizmos.color = new Color(150/255f, 150/255f, 0, 1f);
                     }
                     else
                     {

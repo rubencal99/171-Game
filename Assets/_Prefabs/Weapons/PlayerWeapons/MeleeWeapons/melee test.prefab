@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fa2a64b2730335f4aab7441ebdf87da4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 470539697
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -111,16 +111,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7888232ccf4874898aa046ebe1a5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
   muzzle: {fileID: 8960519739286643315}
   passives: {fileID: 0}
   ammo: 0
   totalAmmo: 0
   infAmmo: 1
   weaponData: {fileID: 11400000, guid: 3bbaafdcb9414fb4ab6cca259b4c2314, type: 2}
-  swordData: {fileID: 11400000, guid: 36206c669af236549a8ec4c87b6714f6, type: 2}
+  isPlayer: 0
+  swapTime: 0.5
+  swapTimer: 0
+  isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
+  sprite: {fileID: 0}
+  reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -136,9 +142,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  <OnMelee>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls:
@@ -154,6 +157,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnReload>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8960519738536017281
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,9 +300,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439acf8f38672e545a9baa47e32f69c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchRandomness: 0.05
-  shootBulletClip: {fileID: 8300000, guid: 1a475093b88a02d4dac2fa975738761f, type: 3}
-  outOfBulletsClip: {fileID: 8300000, guid: 037ccb8647fa01145bb18b4967c50c5f, type: 3}
+  shootBulletEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  outOfBulletsEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &8960519739286643315
 GameObject:
   m_ObjectHideFlags: 0

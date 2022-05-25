@@ -4859,7 +4859,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fa2a64b2730335f4aab7441ebdf87da4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4914,7 +4914,7 @@ Animator:
   m_GameObject: {fileID: 5516205167494534619}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6372ef89bddb6a4a94bb4a457f09cbd, type: 2}
+  m_Controller: {fileID: 22100000, guid: acab4fe90f638a048aa566e10d484726, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4935,6 +4935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d65547e529a4b4e8c535f1d5955114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <startOffset>k__BackingField: {x: 0.34, y: -0.41, z: 0}
   muzzle: {fileID: 5516205167428529799}
   passives: {fileID: 0}
   ammo: 0
@@ -4942,11 +4943,15 @@ MonoBehaviour:
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: 7227fb84eef6f924bbba21a425139443, type: 2}
   isPlayer: 0
+  swapTime: 0.5
+  swapTimer: 0
   isShooting: 0
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
+  spriteRenderer: {fileID: 5516205167494534617}
   sprite: {fileID: 21300000, guid: 2ecba64f6355d5a4aa96ce9091ca5ba8, type: 3}
+  reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
       m_Calls:
