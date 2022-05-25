@@ -9,12 +9,11 @@ public class InventorySoundManager : MonoBehaviour
     public FMODUnity.EventReference clickItemEvent;
     public FMODUnity.EventReference invOpenEvent;
 
-    public void PlayClickItemSound(ItemType _itemType, int _downUp)
+    public void PlayClickItemSound(float _itemType, int _downUp)
     {
         Debug.Log("ClickItemSound type " + _itemType);
-        float _typeFloat = (float)_itemType;
         float _downUpFloat = (float)_downUp;
-        AudioHelper.PlayOneShotWithParam(clickItemEvent, Vector3.zero, ("ClickReleaseType", _typeFloat), ("downUp", _downUpFloat));
+        AudioHelper.PlayOneShotWithParam(clickItemEvent, Vector3.zero, ("ClickReleaseType", _itemType), ("downUp", _downUpFloat));
     }
     public void PlayWepSwitchSound()
     {
