@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: CompanionWeaponData
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <BulletData>k__BackingField: {fileID: 11400000, guid: c45caa0c42ffb10488343ef3060b35cc, type: 2}
   <MagazineCapacity>k__BackingField: 3
   <MaxAmmoCapacity>k__BackingField: 400
@@ -22,6 +23,6 @@ MonoBehaviour:
   <SpreadAngle>k__BackingField: 8
   multiBulletShot: 0
   bulletCount: 1
-  recoilIntensity: 2.58
-  recoilFrequency: 3.12
-  recoilTime: 0.1
+  recoilIntensity: 0
+  recoilFrequency: 0
+  recoilTime: 0

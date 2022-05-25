@@ -4930,6 +4930,7 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
+  spriteRenderer: {fileID: 5516205167494534617}
   sprite: {fileID: 21300000, guid: 8027fde5f661e5b4f9f5f552c4f95003, type: 3}
   reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
@@ -4987,7 +4988,7 @@ Animator:
   m_GameObject: {fileID: 5516205167494534619}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6372ef89bddb6a4a94bb4a457f09cbd, type: 2}
+  m_Controller: {fileID: 22100000, guid: 00f4ebbc4b7cb3a44bc3eacbc354336c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

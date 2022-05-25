@@ -17,10 +17,88 @@ public class ItemInventory : ScriptableObject
     public  List<AugSlot> AContainer = new List<AugSlot>();
     public  Slot tempSlot;
     
-
+public bool MoveQuery(Slot _fromslot, Slot _toslot)
+{
+    if (_fromslot == _toslot || !_toslot.VerifyItem(_fromslot.item)){
+        return false;
+    }
+    if (_toslot.item == null){
+        // ready to move
+        return true;
+    }
+    else{ 
+        return false; 
+    }
+}
+public bool CombineQuery(Slot _fromslot, Slot _toslot)
+{
+    if (_fromslot == _toslot || !_toslot.VerifyItem(_fromslot.item)){
+        return false;
+    }
+    if (_fromslot.item == _toslot.item && (_fromslot.amount + _toslot.amount <= _toslot.item.stackLimit || (_fromslot.amount + _toslot.amount > _toslot.item.stackLimit && _toslot.amount < _toslot.item.stackLimit))){
+        // ready to combine 
+        return true;
+    }
+    else{ 
+        return false; 
+    }
+}
+public bool SwapQuery(Slot _fromslot, Slot _toslot)
+{
+    if (_fromslot == _toslot || !_toslot.VerifyItem(_fromslot.item) || !_fromslot.VerifyItem(_toslot.item)){
+        return false;
+    }
+    if (_fromslot.item != _toslot.item || 
+        (_fromslot.item == _toslot.item && (_fromslot.amount + _toslot.amount > _toslot.item.stackLimit || _toslot.amount + _fromslot.amount > _fromslot.item.stackLimit))){
+            // ready to swap
+            return true;
+        }
+    else{
+        return false;
+    }
+}
     public void MoveSwapCombine(Slot _fromslot, Slot _toslot)
     {
         // facilitates the movement of items between slots
+        if (MoveQuery(_fromslot, _toslot))
+        {
+            // case 1 - Move 
+            _toslot.AddItemToSlot(_fromslot.item, _fromslot.amount);
+            _fromslot.Clear();
+        }
+        else if (CombineQuery(_fromslot, _toslot))
+        {
+            // case 2 - Combine 
+            int toamount = _toslot.amount;
+
+            _toslot.AddAmount(_fromslot.amount);
+            _fromslot.AddAmount(toamount - _toslot.item.stackLimit);
+        }
+        else if (SwapQuery(_fromslot, _toslot))
+        {
+            // case 3 - Swap
+            ItemObject toitem = _toslot.item;
+            int toamount = _toslot.amount;
+            ItemObject fromitem = _fromslot.item;
+            int fromamount = _fromslot.amount;
+
+            if(CheckEdgeCases(_fromslot, _toslot))
+            {
+                return;
+            }
+            
+            _toslot.Clear();
+            _fromslot.Clear();
+
+            _fromslot.AddItemToSlot(toitem, toamount);
+            _toslot.AddItemToSlot(fromitem, fromamount);
+        }
+        else 
+        {
+            Debug.Log("MoveSwapCombine failed!");
+        }
+        
+        /*
         if (_fromslot != _toslot && _toslot.VerifyItem(_fromslot.item))
         {
             // if items are the same or _toslot is empty, just add item and amount to _toslot
@@ -58,7 +136,7 @@ public class ItemInventory : ScriptableObject
         {
             Debug.Log("MoveSwapCombine failed");
         }
-        
+        */
     }
     bool CheckEdgeCases(Slot from, Slot to)
     {

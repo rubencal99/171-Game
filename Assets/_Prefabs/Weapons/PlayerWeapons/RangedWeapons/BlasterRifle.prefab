@@ -4949,6 +4949,7 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
+  spriteRenderer: {fileID: 5516205167494534617}
   sprite: {fileID: -6206914631862919072, guid: 96863e54ddc91994e8a4baec67a2b236, type: 3}
   reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
@@ -4961,9 +4962,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   holding: 0
-  maxHold: 2
+  maxHold: 1.2
   holdTimer: 0
   animator: {fileID: 0}
+  linearAnim: 1
+  singleAnim: 0
 --- !u!1 &5516205167903583921
 GameObject:
   m_ObjectHideFlags: 0

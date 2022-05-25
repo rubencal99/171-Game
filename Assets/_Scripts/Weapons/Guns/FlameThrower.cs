@@ -37,6 +37,7 @@ public class FlameThrower : Gun
                     Ammo = (int)trueAmmo;
                 }
                 OnShoot?.Invoke();
+                CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
                 ShootFlame();
             }
             else

@@ -59,9 +59,9 @@ public class AgentMovement : MonoBehaviour
             //Debug.Log("Movement input: " + movementInput);
             movementDirection = movementInput.normalized;
         }
-        /*else{
+        else{
             movementDirection = Vector2.zero;
-        }*/
+        }
         
         currentVelocity = calculateSpeed(movementInput) * Passives.SpeedMultiplier * PlayerSignaler.SetMovementSpeed();
         if(this.GetComponentInChildren<AgentAnimations>() != null)
@@ -86,7 +86,7 @@ public class AgentMovement : MonoBehaviour
 
     public void Knockback(float duration, float power, Vector3 direction)
     {
-        Debug.Log("In knockback");
+        //Debug.Log("In knockback");
         knockback = true;
         // Vector2 direction = (bullet.direction).normalized;
         knockbackPower = power;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4739459057092744824}
   - component: {fileID: 4739459057092744825}
   - component: {fileID: 496251001}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4739459057287946261}
   - component: {fileID: 4739459057287946260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: avatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

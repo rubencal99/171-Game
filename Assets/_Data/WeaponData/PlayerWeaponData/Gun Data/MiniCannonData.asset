@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: MiniCannonData
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 24ab3708c23abfc4da715d7c46dc365c, type: 2}
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 29ec634b57ed6d84dad99320dd131d8a, type: 2}
   <MagazineCapacity>k__BackingField: 7
   <MaxAmmoCapacity>k__BackingField: 400
   <AutomaticFire>k__BackingField: 0
