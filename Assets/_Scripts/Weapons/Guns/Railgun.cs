@@ -80,6 +80,7 @@ public class Railgun : Gun
         else if((!isShooting && holdTimer > 0) || holdTimer >= maxHold)
         {
             OnShoot?.Invoke();
+            CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
             for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
             {
                 

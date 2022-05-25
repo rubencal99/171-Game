@@ -93,9 +93,11 @@ public class EntryCollider : MonoBehaviour
             if(other.tag == "Player") {
                 this.transform.parent.GetComponent<RoomClearCheck>().setRoomActive();
                 Player.instance.currentRoom = room;
-                if(transform.parent.gameObject.GetComponentInChildren<EnemySpanwer>().Waves.Count > 1 || room.RoomType == "Boss" || room.RoomType == "Auxiliary")
+                Debug.Log("Room type = " + Player.instance.currentRoom.RoomType);
+                if(!(Player.instance.currentRoom.RoomType == "Reward" || Player.instance.currentRoom.RoomType == "Shop")) {
+                    Debug.Log("Room type = " + Player.instance.currentRoom.RoomType);
                     StartCoroutine(WaitToUpdateTiles(barrier_tile));
-               
+                }
             }
     }
 

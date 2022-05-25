@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: BoltActionSniper
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <BulletData>k__BackingField: {fileID: 11400000, guid: 482d2b2cd73bc4a32be4d1cbb2d44a45, type: 2}
   <MagazineCapacity>k__BackingField: 1
   <MaxAmmoCapacity>k__BackingField: 102
   <AutomaticFire>k__BackingField: 0
   <WeaponDelay>k__BackingField: 0.05
+  <WeaponDelayRandomizer>k__BackingField: 0.1
   <ReloadSpeed>k__BackingField: 2.45
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
   bulletCount: 0
   recoilIntensity: 5
   recoilFrequency: 1
-  recoilTime: 0.1
+  recoilTime: 0.5
