@@ -13,6 +13,7 @@ public class Chargegun : Railgun
     public bool singleAnim = true;
     protected override void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         if(animator == null)
         {
             animator = GetComponent<Animator>();
@@ -31,6 +32,7 @@ public class Chargegun : Railgun
             infAmmo = weaponParent.InfAmmo;
         }
         holdTimer = 0;
+        reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -98,6 +100,7 @@ public class Chargegun : Railgun
                 if (infAmmo)
                     Ammo++;
                 OnShoot?.Invoke();
+                CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
                 for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
                 {
                     
@@ -193,9 +196,10 @@ public class Chargegun : Railgun
 
     void CheckDoubleAnim()
     {
-        if(holdTimer <= 0)
+        if(holdTimer <= 0 && animator.GetFloat("Charge") != 0)
         {
             animator.SetTrigger("Reset");
+            animator.SetBool("Attack1", false);
             animator.SetFloat("Charge", 0);
         }
         else if(isReloading)
@@ -220,9 +224,15 @@ public class Chargegun : Railgun
                 animator.SetFloat("Charge", -holdTimer * PlayerSignaler.CallTriggerHappy());
             }
         }
-        else
+        else if(holding && holdTimer >= maxHold)
+        {
+            animator.SetBool("Attack1", true);
+            animator.SetFloat("Charge", 0);
+        }
+        else if(holding)
         {
             animator.SetTrigger("Attack");
+            animator.SetBool("Attack1", true);
             if(linearAnim)
             {
                 animator.SetFloat("Charge", 1 * PlayerSignaler.CallTriggerHappy());
@@ -276,19 +286,21 @@ public class Chargegun : Railgun
         float spread = Random.Range(-weaponData.SpreadAngle, weaponData.SpreadAngle);
         Quaternion bulletSpreadRotation = Quaternion.Euler(new Vector3(0, spread, 0));
         Quaternion rotation = weaponParent.transform.localRotation * bulletSpreadRotation;
-        Debug.Log("weaponParent.transform.localRotation: " + weaponParent.transform.localRotation);
-        Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
+        //Debug.Log("weaponParent.transform.localRotation: " + weaponParent.transform.localRotation);
+        //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
        // Debug.Log("Rotation: " + rotation);
         //rotation.y = rotation.z;
         //rotation.z = 0;
-        Debug.Log("Bullet rotation: " + rotation);
-        Debug.Log("");
+        //Debug.Log("Bullet rotation: " + rotation);
+        //Debug.Log("");
 
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, Quaternion.identity);
         //bulletPrefab.transform.localScale = new Vector3(0.2f + holdTimer, 0.2f + holdTimer, 1);
-        bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = bulletSpreadRotation * (weaponParent.aimDirection).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
-        bulletPrefab.transform.forward = bulletPrefab.GetComponent<Bullet>().direction;
+        RegularBullet bullet = bulletPrefab.GetComponent<RegularBullet>();
+        bullet.BulletData = weaponData.BulletData;
+        bullet.direction = (bulletSpreadRotation * (weaponParent.aimDirection)).normalized;//bulletSpreadRotation * (weaponParent.aimDirection);
+        bullet.direction.y = 0;
+        bullet.transform.right = bullet.direction;
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

@@ -95,7 +95,7 @@ public class Melee : MonoBehaviour, IWeapon
     public void ForceReload() {
         meleeCoroutine = false;
         GetComponent<SpriteRenderer>().sprite = sprite;
-        //GetComponent<Animator>().Play("idle");
+        GetComponent<Animator>().Play("idle");
     }
 
     protected void Update()

@@ -291,9 +291,10 @@ public class PlayerRunGunState : PlayerBaseState
 
             if(!Player.instance.grabbing && !Player.instance.hasGrabbed)
             {
-                RaycastHit hit = new RaycastHit();
-                Physics.Raycast(Player.instance.transform.position, Player.instance.weaponParent.aimDirection, out hit, 1f);
-                if(hit.transform != null)
+                //RaycastHit hit = new RaycastHit();
+                //Physics.Raycast(Player.instance.transform.position, Player.instance.weaponParent.aimDirection, out hit, 3f);
+                Collider[] hits = Physics.OverlapSphere(Player.instance.transform.position, 3.0f);
+                foreach(Collider hit in hits)
                 {
                     if(hit.transform.gameObject.GetComponent<Grabbable>())
                     {
@@ -309,7 +310,7 @@ public class PlayerRunGunState : PlayerBaseState
                 Player.instance.grabbedObject = null;
             }
 
-            else if (shopping == false && playerInput.ShopKeeper.inDistance)
+            else if (playerInput.ShopKeeper && shopping == false && playerInput.ShopKeeper.inDistance)
             {
                 Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;

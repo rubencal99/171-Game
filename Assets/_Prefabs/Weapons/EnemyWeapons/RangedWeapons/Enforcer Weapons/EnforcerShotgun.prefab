@@ -4986,7 +4986,8 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  sprite: {fileID: 0}
+  spriteRenderer: {fileID: 8979388240249039164}
+  sprite: {fileID: 21300000, guid: 8027fde5f661e5b4f9f5f552c4f95003, type: 3}
   reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:

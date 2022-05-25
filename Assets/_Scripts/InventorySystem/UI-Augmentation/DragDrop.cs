@@ -20,12 +20,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
     public void OnPointerDown(PointerEventData eventData) {
         // Debug.Log("pointer do be down tho");
-        soundManager.PlayClickItemSound(slotElement.slot.item.type);
+        
 
     }
 
     public void OnBeginDrag(PointerEventData eventData) {
         //Debug.Log("you have started to drag me"); 
+        soundManager.PlayClickItemSound(slotElement.slot.item.type, 1);
         canvasGroup.alpha = .7f;
         canvasGroup.blocksRaycasts = false;
         transform.SetParent(canvas.transform);
@@ -50,7 +51,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (eventData.pointerDrag.GetComponent<DragDrop>() != null && eventData.pointerDrag != this)
         {
             slotElement.inventory.MoveSwapCombine(eventData.pointerDrag.GetComponent<DragDrop>().slotElement.slot, slotElement.slot);
-            soundManager.PlayClickItemSound(slotElement.slot.item.type);
+            soundManager.PlayClickItemSound(slotElement.slot.item.type, 0);
             slotElement.inventory.Print();
         }
     }
