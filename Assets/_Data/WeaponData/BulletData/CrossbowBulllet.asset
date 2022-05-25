@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CrossbowBulllet
   m_EditorClassIdentifier: 
   <BulletPrefab>k__BackingField: {fileID: 7916410930458580671, guid: 5a1fc8788bfd03d449b9e5dc154147fa, type: 3}
-  <BulletSpeed>k__BackingField: 7
+  <BulletSpeed>k__BackingField: 24
   <Damage>k__BackingField: 1
   <Friction>k__BackingField: 0
   <Rebound>k__BackingField: 0
-  <Bounce>k__BackingField: 0
+  <Bounce>k__BackingField: 1
   <GoThroughHittable>k__BackingField: 0
   <IsRaycast>k__BackingField: 0
   <ImpactObstaclePrefab>k__BackingField: {fileID: 0}

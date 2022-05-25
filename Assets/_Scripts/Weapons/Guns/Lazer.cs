@@ -16,7 +16,11 @@ public class Lazer : Gun
     private void Awake()
     {
         m_transform = GetComponent<Transform>();
-        m_lineRenderer = GetComponent<LineRenderer>();
+        if(m_lineRenderer == null)
+        {
+            m_lineRenderer = GetComponent<LineRenderer>();
+        }
+        
     }
 
     protected override void UseWeapon()
