@@ -10,7 +10,8 @@ public class PatchUp : MonoBehaviour
       {
           
            Player player = Player.instance;
-           player?.Heal(1);
+           int healRand = Random.Range(1, 3);
+           player?.Heal(healRand);
            popup popup = FindObjectOfType<popup>();
            if(popup)
            {
@@ -29,7 +30,8 @@ public class PatchUp : MonoBehaviour
       {
           
            Player player = Player.instance;
-           player?.Heal(1);
+           int healRand = Random.Range(1, 3);
+           player?.Heal(healRand);
            popup popup = FindObjectOfType<popup>();
            if(popup)
            {
