@@ -61,14 +61,15 @@ public class WeaponPickup : MonoBehaviour
         {
             Debug.Log("Player entered zone");
             Key.enabled = true;
-            Player.instance.inWeaponZone = true;
+            collision.gameObject.GetComponent<Player>().inWeaponZone = true;
            if (Input.GetAxisRaw("Interact") > 0 && !interacted && PlayerStateManager.instance.currentState != PlayerStateManager.instance.ShopState) {
                  
+                collision.gameObject.GetComponent<Player>().inWeaponZone = false;
                 interacted = true;
                 Debug.Log("Interacted with object");
                 GameObject weaParent = GameObject.Find("WeaponParent");
                 GameObject weap = FindDupe(weaParent, tag);
-                Player.instance.inWeaponZone = false;
+                
                 if (weap != null)
                 {
               
@@ -83,7 +84,7 @@ public class WeaponPickup : MonoBehaviour
                 else {
                     Debug.Log("GUN_Acquired");
                     GameObject thisFireArm = Instantiate(FireArm.prefab) as GameObject;
-                    
+                    Player.instance.inWeaponZone = false;
                     
                     thisFireArm.transform.parent = GameObject.Find("InventoryParent").transform;
                     thisFireArm.transform.localPosition = new Vector3(0f, -0.25f, 0f);
@@ -108,6 +109,10 @@ public class WeaponPickup : MonoBehaviour
             Key.enabled = false;
             Player.instance.inWeaponZone = false;
         }
+    }
+
+    private void OnDestroy() {
+        Player.instance.inWeaponZone = false;
     }
 
     // private void OnCollisionEnter(Collision collision)

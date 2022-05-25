@@ -186,6 +186,7 @@ public class RegularBullet : Bullet
         Vector3 newDirection = Vector3.Reflect(direction, inNormal);
         //Debug.Log("In Bounce Bullet");
         //Debug.Log("CURRENT Direction: " + direction);
+        
         newDirection.y = 0;
         //Debug.Log("New Direction: " + newDirection);
         //Debug.Log("CURRENT Rotation: " + transform.rotation);
@@ -199,6 +200,7 @@ public class RegularBullet : Bullet
         }*/
         //Debug.Log("New Rotation: " + transform.rotation);
         direction = newDirection;
+        transform.right = newDirection;
     }
 
     public void HitEnemy(Collision collision)

@@ -35,7 +35,7 @@ public class CameraShake : MonoBehaviour
         else
         {
             this.transform.localPosition = originalCameraPos;
-
+            CameraPerlin.m_FrequencyGain = 0;
         }
     }
 
@@ -46,7 +46,7 @@ public class CameraShake : MonoBehaviour
 
         // CameraPerlin.m_AmplitudeGain = intensity;
         startingIntensity = intensity;
-        // CameraPerlin.m_FrequencyGain = frequency;
+        CameraPerlin.m_FrequencyGain = frequency;
         startingFrequency = frequency;
         shakeTimer = time;
         shakeTimerTotal = time;
