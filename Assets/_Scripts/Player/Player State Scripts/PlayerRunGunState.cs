@@ -293,7 +293,7 @@ public class PlayerRunGunState : PlayerBaseState
             {
                 //RaycastHit hit = new RaycastHit();
                 //Physics.Raycast(Player.instance.transform.position, Player.instance.weaponParent.aimDirection, out hit, 3f);
-                Collider[] hits = Physics.OverlapSphere(Player.instance.transform.position, 3.0f);
+                Collider[] hits = Physics.OverlapSphere(Player.instance.transform.position, 1.0f);
                 foreach(Collider hit in hits)
                 {
                     if(hit.transform.gameObject.GetComponent<Grabbable>())

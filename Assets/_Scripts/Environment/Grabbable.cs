@@ -21,7 +21,7 @@ public class Grabbable : MonoBehaviour
         isGrabbed = false;
         trigger = gameObject.AddComponent<BoxCollider>();
         trigger.isTrigger = true;
-        trigger.size = new Vector3(2.0f, 2.0f, 2.0f);
+        trigger.size = new Vector3(1.0f, 1.0f, 1.0f);
     }
 
     /*void Update()
