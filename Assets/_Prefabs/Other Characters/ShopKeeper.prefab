@@ -388,7 +388,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d42e9a76e049344faa03f135bba490a, type: 2}
   - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
   - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
 --- !u!1 &998572966970590020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1567,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40274
+  m_InstanceId: 254824
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2272,7 +2271,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40322
+  m_InstanceId: 254872
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0

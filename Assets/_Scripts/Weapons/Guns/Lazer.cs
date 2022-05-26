@@ -11,12 +11,16 @@ public class Lazer : Gun
     [SerializeField]
     private float defDistanceRay = 100f;
     public LineRenderer m_lineRenderer;
-    Transform m_transform;
+    Transform m_transform ;
 
     private void Awake()
     {
         m_transform = GetComponent<Transform>();
-        m_lineRenderer = GetComponent<LineRenderer>();
+        if(m_lineRenderer == null)
+        {
+            m_lineRenderer = GetComponent<LineRenderer>();
+        }
+        
     }
 
     protected override void UseWeapon()

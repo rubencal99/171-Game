@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7888232ccf4874898aa046ebe1a5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <startOffset>k__BackingField: {x: 0.12, y: -0.24, z: 0}
+  <startOffset>k__BackingField: {x: 0.97, y: -0.33, z: 0}
   muzzle: {fileID: 8960519739286643315}
   passives: {fileID: 0}
   ammo: 120
@@ -126,7 +126,8 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
+  spriteRenderer: {fileID: 8960519738105143101}
+  sprite: {fileID: 21300000, guid: 03b198aadc3524c488f044a8691afbcf, type: 3}
   reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:
     m_PersistentCalls:
@@ -183,7 +184,7 @@ Animator:
   m_GameObject: {fileID: 8960519738105143089}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a6372ef89bddb6a4a94bb4a457f09cbd, type: 2}
+  m_Controller: {fileID: 22100000, guid: 451d4a8853b1c6546a81bdd16e6da238, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

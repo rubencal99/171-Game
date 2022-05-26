@@ -22,6 +22,11 @@ public class AgentAnimations : MonoBehaviour
         agentAnimator.SetBool("Walk", val);
     }
 
+    public void SetAttackAnimation()
+    {
+        agentAnimator.SetTrigger("Attack");
+    }
+
     public void SetDodgeAnimation()
     {
         agentAnimator.SetTrigger("dodge");

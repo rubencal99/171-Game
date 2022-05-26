@@ -13,7 +13,8 @@ public class Railgun : Gun
     public float holdTimer;
     protected override void Start()
     {
-        if (transform.root.gameObject.tag == "Player"){
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (transform.parent.parent.gameObject.tag == "Player"){
             isPlayer = true;
         }
         Ammo = weaponData.MagazineCapacity;
@@ -27,6 +28,7 @@ public class Railgun : Gun
             infAmmo = weaponParent.InfAmmo;
         }
         holdTimer = 0;
+        reloadAnimMultiplier = 1f / weaponData.ReloadSpeed;
        // sprite = GetComponent<SpriteRenderer>().sprite;
 
        //weaponItem.prefab = transform.gameObject;
@@ -78,6 +80,7 @@ public class Railgun : Gun
         else if((!isShooting && holdTimer > 0) || holdTimer >= maxHold)
         {
             OnShoot?.Invoke();
+            CameraShake.Instance.ShakeCamera(weaponData.recoilIntensity, weaponData.recoilFrequency, weaponData.recoilTime);
             for(int i = 0; i < weaponData.GetBulletCountToSpawn(); i++)
             {
                 
@@ -136,9 +139,12 @@ public class Railgun : Gun
         //Debug.Log("Bullet spread rotation: " + bulletSpreadRotation);
 
         var bulletPrefab = Instantiate(weaponData.BulletData.BulletPrefab, position, rotation);
-        bulletPrefab.transform.localScale = new Vector3(0.2f + holdTimer, 0.2f + holdTimer, 1);
-        bulletPrefab.GetComponent<Bullet>().BulletData = weaponData.BulletData;
-        bulletPrefab.GetComponent<Bullet>().direction = bulletSpreadRotation * (weaponParent.aimDirection);//bulletSpreadRotation * (weaponParent.aimDirection);
+        bulletPrefab.transform.localScale = new Vector3(0.2f + holdTimer, 0.2f + holdTimer, 0.2f + holdTimer);
+        RegularBullet bullet = bulletPrefab.GetComponent<RegularBullet>();
+        bullet.BulletData = weaponData.BulletData;
+        bullet.direction = bulletSpreadRotation * (weaponParent.aimDirection);//bulletSpreadRotation * (weaponParent.aimDirection);
+        bullet.direction.y = 0;
+        bullet.transform.right = bullet.direction;
      //   Debug.Log("Bullet Direction: " + bulletPrefab.GetComponent<Bullet>().direction);
       //  Debug.Log("Bullet Rotation: " + bulletPrefab.GetComponent<Bullet>().transform.rotation);
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: SniperWeaponData
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <BulletData>k__BackingField: {fileID: 11400000, guid: be63eabfb0056264384defbe65ab29b0, type: 2}
   <MagazineCapacity>k__BackingField: 4
   <MaxAmmoCapacity>k__BackingField: 40
@@ -22,6 +23,6 @@ MonoBehaviour:
   <SpreadAngle>k__BackingField: 0
   multiBulletShot: 0
   bulletCount: 1
-  recoilIntensity: 4
+  recoilIntensity: 5
   recoilFrequency: 1
-  recoilTime: 0.1
+  recoilTime: 0.13
