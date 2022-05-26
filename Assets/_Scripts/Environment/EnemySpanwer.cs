@@ -54,7 +54,7 @@ public class EnemySpanwer : MonoBehaviour
 
     public bool justEntered = false;
 
-    public int density = 400;
+    public int density = 500;
 
     public int numEnemiesPerWave = 0;
 
