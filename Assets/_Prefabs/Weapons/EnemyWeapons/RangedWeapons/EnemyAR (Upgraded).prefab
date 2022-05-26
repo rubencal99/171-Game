@@ -16,6 +16,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2728cb34d68bc85459c3b7d80b4b2110, type: 2}
     - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256470858328599626, guid: 27d8877b83a323943981414369d59a63, type: 3}
       propertyPath: <OnShoot>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1923720740166604007}
