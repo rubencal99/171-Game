@@ -31,7 +31,9 @@ public class DisplayAmmoSecondary : MonoBehaviour
                 this.GetComponentInChildren<Image>().enabled = true;
             else
                 this.GetComponentInChildren<Image>().enabled = false;
-        }else
+        }else{
             AmmoText.enabled = false;
+            this.GetComponentInChildren<Image>().enabled = false;
+        } 
     }
 }
