@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - Enemies:
-    - Enemy: {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+    - Enemy: {fileID: 7059413844855994229, guid: 3eedac259108143fca0479a3bda67bcb, type: 3}
       SpawnCount: 3
     - Enemy: {fileID: 6638867989798731449, guid: 6df31cb9faaa769439cd5b8ecda2b68f, type: 3}
       SpawnCount: 3
@@ -64,6 +64,7 @@ MonoBehaviour:
   spawned: 0
   enemyCount: 0
   justEntered: 0
+  density: 200
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0

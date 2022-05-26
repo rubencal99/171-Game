@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97eb241cb84bb3645bfac872b8ea3c37, type: 3}
   m_Name: EnemyAR 3D
   m_EditorClassIdentifier: 
+  <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
   <BulletData>k__BackingField: {fileID: 11400000, guid: b86301112fb7f4b4aa15b071377958c3, type: 2}
   <MagazineCapacity>k__BackingField: 12
   <MaxAmmoCapacity>k__BackingField: 400

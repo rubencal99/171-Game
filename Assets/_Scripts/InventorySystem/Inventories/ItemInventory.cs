@@ -291,8 +291,13 @@ public class WeaponSlot : Slot
     public override bool VerifyItem(ItemObject _item)
     {
         // checks item for type, then checks for augType or weaponType
+        if (_item == null)
+        {
+            return true;
+        }
         if (_item.GetType() == typeof(WeaponItemSO))
         {
+            
             if (_item.itemType == Convert.ToInt32(slotType) || (slotType == WeaponType.Primary && _item.itemType == 1))
             {
                 return true;
@@ -400,6 +405,11 @@ public class AugSlot : Slot
     public override bool VerifyItem(ItemObject _item)
     {
         // checks item for type, then checks for augType or weaponType
+        //Debug.Log("Verifying item " + _item.Name);
+        if (_item == null)
+        {
+            return true;
+        }
         if (_item.GetType() == typeof(AugmentationItemSO))
         {
             if (slotType == AugType.Aux)
@@ -452,11 +462,10 @@ public class AugSlot : Slot
         Debug.Log("At Start: Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
         if(item)
         {
-            Debug.Log("In Loop: Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
-            //amount = 0;
-            Debug.Log("After Amount: Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
+            
             PlayerAugmentations.AugmentationList[item.Name] = false;
             Debug.Log("Aug " + item.Name + " set to " + PlayerAugmentations.AugmentationList[item.Name]);
+            amount = 0;
             item = null;
         }
     }

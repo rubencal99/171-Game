@@ -384,11 +384,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShopInventory:
-  - {fileID: 11400000, guid: 07af80be4025e4744a37c00ba1ed47dd, type: 2}
-  - {fileID: 11400000, guid: 5d42e9a76e049344faa03f135bba490a, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
-  - {fileID: 11400000, guid: 8125630541886434a89716e3387d874b, type: 2}
+  - {fileID: 11400000, guid: ab8e184c0501643ceb51eee6734936f1, type: 2}
+  - {fileID: 11400000, guid: aa0f4779b199144ecb6341bd8db5bf0c, type: 2}
+  - {fileID: 11400000, guid: 2266788222eb64a8cba06543f8a8c21c, type: 2}
+  - {fileID: 11400000, guid: 7ca00bbd95eb6490082070bd9940503b, type: 2}
+  - {fileID: 11400000, guid: a381857b654f4450491528fdf4ff2938, type: 2}
+  - {fileID: 11400000, guid: 667221becca88405c9e3680f4304383a, type: 2}
+  - {fileID: 11400000, guid: 788e980d28f5f43a5bb82dcc265e5b0f, type: 2}
+  - {fileID: 11400000, guid: 8bc6cfd99a5dc491d912ef8435c79d29, type: 2}
+  - {fileID: 11400000, guid: d5754ecfb5e2149f0a6d95ca56ae3ad9, type: 2}
+  - {fileID: 11400000, guid: 8f1af94b04c6a4fee908967d4d8ce103, type: 2}
+  - {fileID: 11400000, guid: 178f6d6fd5d4a4956af6e089ed51b199, type: 2}
+  - {fileID: 11400000, guid: 71eb8d9e09d174fa993b945f45ad8507, type: 2}
+  - {fileID: 11400000, guid: 38d8e87fcc512437c8d8a71eac3274ec, type: 2}
+  - {fileID: 11400000, guid: bed0b95a2c7904ec98bb9861758d6994, type: 2}
+  - {fileID: 11400000, guid: 9bef1b389428c417c84e676d3f93c88a, type: 2}
+  - {fileID: 11400000, guid: cb5ee0e525456421582cde49974a1e38, type: 2}
+  - {fileID: 11400000, guid: ae3c99f099a73400ebfea210261a2fc0, type: 2}
+  - {fileID: 11400000, guid: 222be1f45a15149908a528ea8267bc8b, type: 2}
+  - {fileID: 11400000, guid: 09c22b0476483487caed1eabf9f6a420, type: 2}
+  - {fileID: 11400000, guid: 45afa5ef8c187440ebd47cd71806a5b8, type: 2}
+  - {fileID: 11400000, guid: 95d376595fe6546ce84bbe2ad6c321ee, type: 2}
+  - {fileID: 11400000, guid: e614217c3ce4d4b688ea46cc88edc479, type: 2}
+  - {fileID: 11400000, guid: 6de84505dc4b7481eb465c2c37d613fe, type: 2}
+  - {fileID: 11400000, guid: 56f9ba40262e54b0fb7efc30bf1b51f6, type: 2}
+  - {fileID: 11400000, guid: c995d0e5f54c242a8a714acac8264832, type: 2}
+  - {fileID: 11400000, guid: f31b2eb4e5d8a47d2b3475f28c98e795, type: 2}
+  - {fileID: 11400000, guid: 96a061087c01e411999eb8af7c985053, type: 2}
+  - {fileID: 11400000, guid: 3fb0db3ef7e324e36b96113153931d18, type: 2}
+  - {fileID: 11400000, guid: ad9efc6222ab44900984bcc70c46bb75, type: 2}
+  - {fileID: 11400000, guid: f15c4ea714c5640aebd5124edc849314, type: 2}
+  - {fileID: 11400000, guid: b2b604f27a3934ed09883aa78a89e645, type: 2}
 --- !u!1 &998572966970590020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1558,7 @@ MonoBehaviour:
   baseColor2: {r: 1, g: 1, b: 1, a: 0}
   generatedColor: {r: 1, g: 1, b: 1, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &5120870802441351631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1568,7 +1594,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40274
+  m_InstanceId: 319978
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2236,7 +2262,7 @@ MonoBehaviour:
   baseColor2: {r: 0, g: 0, b: 0, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &6638867990098400911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,7 +2298,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 40322
+  m_InstanceId: 320026
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0

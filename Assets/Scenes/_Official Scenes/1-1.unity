@@ -620,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f794985335060834fb5b93f4e9d26821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &448732832
+--- !u!43 &405651263
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2817,8 +2817,8 @@ MonoBehaviour:
   maxLargeDim: {x: 35, y: 35}
   minRewardDim: {x: 15, y: 15}
   maxRewardDim: {x: 18, y: 18}
-  rewardPercent: 0
-  auxiliaryPercent: 100
+  rewardPercent: 80
+  auxiliaryPercent: 29
   minBossDim: {x: 30, y: 30}
   maxBossDim: {x: 0, y: 0}
   HasEntry: 0

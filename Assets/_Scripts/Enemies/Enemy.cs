@@ -95,10 +95,10 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     
-     public void GetHit(int damage) {
+     public void GetHit(float damage) {
          Health -= damage;
         blood.Play();
-       
+        
         //Debug.Log("After Enemy Knockback");
         //Debug.Log("Health = " + Health);
         if (Health > 0)

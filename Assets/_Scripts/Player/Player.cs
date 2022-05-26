@@ -201,7 +201,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
     }
 
 
-    public void GetHit(float damage, GameObject damageDealer)
+    public void GetHit(float damage, GameObject damageDealer = null)
     {   
         if(invincible)
         {
@@ -212,7 +212,10 @@ public class Player : MonoBehaviour, IAgent, IHittable
             return;
         }
         float d = PlayerSignaler.CallSecondSkin(damage);
-        DamageType(damageDealer);
+
+        if(damageDealer != null)
+            DamageType(damageDealer);
+
         Health -= d;
         HitLastFiveSec = true;
         blood.Play();
