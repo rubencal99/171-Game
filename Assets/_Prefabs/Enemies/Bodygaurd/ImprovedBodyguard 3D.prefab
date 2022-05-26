@@ -1013,7 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d3986392302e14f9448dab89cc4937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EnemyData>k__BackingField: {fileID: 11400000, guid: eadec01b6958cf04db0958abb557949c, type: 2}
+  <EnemyData>k__BackingField: {fileID: 11400000, guid: c0030240b746b4d70bc70ff3d8c66fef, type: 2}
   <Health>k__BackingField: 4
   <tempHealth>k__BackingField: 0
   <Damage>k__BackingField: 0
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
-  <MovementData>k__BackingField: {fileID: 11400000, guid: d18af5c2740834543b97592195d16bf2, type: 2}
+  <MovementData>k__BackingField: {fileID: 11400000, guid: 3bc02c5f2c8974a14be5b62175f3bf67, type: 2}
   currentVelocity: 0
   movementDirection: {x: 0, y: 0, z: 0}
   <OnVelocityChange>k__BackingField:

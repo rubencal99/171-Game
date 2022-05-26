@@ -1,5 +1,5 @@
 %YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
+%TAG !u! tag:unity3d.com,2011
 --- !u!1 &1514293568
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 177706
+  m_InstanceId: 215158
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 3265718703716215714}
   - component: {fileID: 7122953195349981725}
   - component: {fileID: 7122953195349981715}
+  - component: {fileID: 3489591409007551988}
   m_Layer: 7
   m_Name: Player (FInal)
   m_TagString: Player
@@ -1533,11 +1534,24 @@ CapsuleCollider:
   m_GameObject: {fileID: 5302321582215384589}
   m_Material: {fileID: 13400000, guid: f07ac2af3a64aec4abb242c9cd189587, type: 2}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.4
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &3489591409007551988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302321582215384589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3902243, z: 1.502608}
+  m_Center: {x: 0, y: -0.014159441, z: -0.25130403}
 --- !u!1 &5302321582686459627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2558,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8e89a2c0f705c41889d70e8920c6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2579900480822998319 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3781322767427240897, guid: da0385e4547303a4b9bb4c1c872fd0e1, type: 3}
+  m_PrefabInstance: {fileID: 1708079031465375470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3249417762811576234
 PrefabInstance:
   m_ObjectHideFlags: 0
