@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8851896452097073320, guid: 08996a0dbd829be419768ec1e9ce1d1c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8851896452097073320, guid: 08996a0dbd829be419768ec1e9ce1d1c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,8 +82,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5290292571384506949, guid: da4956b77813a0549ab86311545a253c, type: 3}
       propertyPath: m_InstanceId
-      value: -43288
+      value: -22263846
       objectReference: {fileID: 0}
+    - target: {fileID: 5290292571384506950, guid: da4956b77813a0549ab86311545a253c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fa2a64b2730335f4aab7441ebdf87da4, type: 2}
     - target: {fileID: 5290292573299933810, guid: da4956b77813a0549ab86311545a253c, type: 3}
       propertyPath: <Damage>k__BackingField
       value: 2
@@ -201,20 +205,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 65731948965220752, guid: da4956b77813a0549ab86311545a253c, type: 3}
   m_PrefabInstance: {fileID: 4540353229998954187}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &3738965932838213300
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8532199391070295224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.19
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2746311802949658794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,6 +221,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &3738965932838213300
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8532199391070295224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.19
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7511410186027506688
 MonoBehaviour:
   m_ObjectHideFlags: 0
