@@ -54,7 +54,9 @@ public class EnemySpanwer : MonoBehaviour
 
     public bool justEntered = false;
 
-    public int density = 200;
+    public int density = 500;
+
+    public int numEnemiesPerWave = 0;
 
 
     // Start is called before the first frame update
@@ -62,7 +64,9 @@ public class EnemySpanwer : MonoBehaviour
     {
         thisroom = transform.parent.gameObject.GetComponent<RoomNode>();
         numToSpawn = thisroom.validTileList.Count / enemyDensity;
-        int numEnemiesPerWave = (int)(numToSpawn / Waves.Count);
+        if(Waves.Count != 0)
+            numEnemiesPerWave = (int)(numToSpawn / Waves.Count);
+        
         Debug.Log("Room tile count: " + thisroom.validTileList.Count);
         Debug.Log("Total number of enemies to spawn: " + numToSpawn);
         Debug.Log("Number of enemies per wave: " + numEnemiesPerWave);

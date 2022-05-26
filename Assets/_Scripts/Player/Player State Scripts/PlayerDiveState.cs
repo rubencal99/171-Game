@@ -13,7 +13,7 @@ public class PlayerDiveState : PlayerBaseState
     private bool fireButtonDown = false;
     public bool diving;
     [SerializeField]
-    private float DiveTimer = 0.6f;
+    private float DiveTimer = 0.65f;
 
     public float drag = 1f;
     private float diveTime;
@@ -29,17 +29,18 @@ public class PlayerDiveState : PlayerBaseState
         diveTime = DiveTimer;
         playerInput = Player.playerInput;
         collider = playerInput.Collider;
+        
          // Player.GetComponent<Rigidbody>().drag = 0f;
        // Debug.Log("Current collider size:" + collider.size);
         Player.GetComponentInChildren<AgentAnimations>().SetDodgeAnimation();
         //collider.enabled = false;
+        GetMovementInput();
         PlayerSignaler.CallBulletTime();
     }
 
     public override void UpdateState(PlayerStateManager Player)
     {
         CalculateDiveTime();
-        GetMovementInput();
         GetPointerInput();
         GetFireInput();
         GetReloadInput();

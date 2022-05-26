@@ -33,13 +33,13 @@ public class AgentRenderer : MonoBehaviour
     private Color originalColor;
     private Color deathColor;
     public Color currentColor;
-    public Light2D light2D;
+    public Light Light;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         material = GetComponent<SpriteRenderer>().material;
-        light2D = transform.parent.GetComponentInChildren<Light2D>();
+        Light = transform.parent.GetComponentInChildren<Light>();
         SetSkinTone();
         originalColor = spriteRenderer.color;
         // Debug.Log("Original Color: " + originalColor);
@@ -82,22 +82,30 @@ public class AgentRenderer : MonoBehaviour
     public void Enrage()
     {
         spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.red, 0.1f);
-        light2D.intensity = Mathf.Lerp(light2D.intensity, 1, 0.1f);
-        light2D.color = Color.Lerp(light2D.color, Color.red, 0.1f);
+        Light.intensity = Mathf.Lerp(Light.intensity, 1, 0.1f);
+        Light.color = Color.Lerp(Light.color, Color.red, 0.1f);
     }
 
     public void Buff()
     {
-        //spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 0.1f);
-        light2D.intensity = Mathf.Lerp(light2D.intensity, 10, 0.1f);
-        light2D.color = Color.Lerp(light2D.color, Color.green, 0.1f);
+        spriteRenderer.color = Color.Lerp(spriteRenderer.color, Color.green, 1f);
+        if(!Light.enabled)
+        {
+            Light.enabled = true;
+        }
+        Light.intensity = Mathf.Lerp(Light.intensity, 1, 0.1f);
+        Light.color = Color.Lerp(Light.color, Color.green, 0.1f);
     }
 
     public void Normal()
     {
         spriteRenderer.color = Color.Lerp(spriteRenderer.color, originalColor, 0.1f);
-        light2D.intensity = Mathf.Lerp(light2D.intensity, 0, 0.1f);
-        //light.color = Color.Lerp(light.color, Color.red, 0.1f);
+        if(Light.enabled)
+        {
+            Light.enabled = false;
+        }
+        //Light.intensity = Mathf.Lerp(Light.intensity, 0, 0.1f);
+        //Light.color = Color.Lerp(Light.color, Color.red, 0.1f);
     }
 
     void SetSkinTone()
