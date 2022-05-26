@@ -1172,6 +1172,7 @@ MonoBehaviour:
   grabbing: 0
   hasGrabbed: 0
   grabbedObject: {fileID: 0}
+  inWeaponZone: 0
 --- !u!114 &7719071730893520264
 MonoBehaviour:
   m_ObjectHideFlags: 0

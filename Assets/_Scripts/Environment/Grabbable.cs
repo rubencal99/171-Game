@@ -30,13 +30,15 @@ public class Grabbable : MonoBehaviour
     }*/
     public void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            if(this.gameObject.transform.GetChild(0).tag == "key")
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
     public void OnTriggerExit(Collider other) {
         if(other.tag == "Player") {
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            if(this.gameObject.transform.GetChild(0).tag == "key")
+                this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -46,7 +48,8 @@ public class Grabbable : MonoBehaviour
         Player.instance.grabbing = true;
         Player.instance.grabbedObject = gameObject;
         offset = transform.position - Player.instance.transform.position;
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+         if(this.gameObject.transform.GetChild(0).tag == "key")
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void LetGoObject()
