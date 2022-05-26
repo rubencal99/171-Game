@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d5deabd2f57704888ad05783997677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0
+  waitTime: 0.71
 --- !u!114 &3891256490504684753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +719,7 @@ MonoBehaviour:
   agentAnimations: {fileID: 0}
   agentMovement: {fileID: 0}
   knockback: 0
+  hasProtector: 0
   blood: {fileID: 9039126233135027407}
   timer: 0
 --- !u!114 &3348454625874112573
@@ -1142,7 +1143,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 743406
+  m_InstanceId: -6683738
 --- !u!114 &2658852128434737684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1483,7 +1484,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3660560908095944344, guid: ddf14c2feaaeed942bd650d457bd9a07, type: 3}
       propertyPath: lifetime
-      value: 0.1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3660560908095944344, guid: ddf14c2feaaeed942bd650d457bd9a07, type: 3}
       propertyPath: m_Enabled

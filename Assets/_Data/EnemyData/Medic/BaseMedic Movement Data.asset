@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseMedic Movement Data
   m_EditorClassIdentifier: 
   maxDodgeSpeed: 4.8
-  maxRunSpeed: 1.8
+  maxRunSpeed: 5
   maxProneSpeed: 3
   acceleration: 90
   decceleration: 52
