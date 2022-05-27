@@ -2541,7 +2541,7 @@ MonoBehaviour:
   baseColor2: {r: 0, g: 0, b: 0, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &6479340912761779959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2577,7 +2577,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 360916
+  m_InstanceId: -3963030
 --- !u!114 &3359997038526102691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2941,7 +2941,6 @@ MonoBehaviour:
   enemyCount: 0
   justEntered: 0
   density: 200
-  numEnemiesPerWave: 0
 --- !u!54 &5048367533477685611
 Rigidbody:
   m_ObjectHideFlags: 0

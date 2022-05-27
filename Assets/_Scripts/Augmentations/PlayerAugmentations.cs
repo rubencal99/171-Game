@@ -13,7 +13,7 @@ public static class PlayerAugmentations : object
     public static float EpinephrineBoost = 1f;
     //////////////////////////////BULLETTIME/////////////////////////////////////
     public static bool BulletTime = false;
-    public static float BulletTT = 0.5f;
+    public static float BulletTT = 0.2f;
     public static float BulletTimeIntensity = 0.5f;
 
     //////////////////////////////GUNNERGLOVE/////////////////////////////////////
