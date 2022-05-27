@@ -17,9 +17,9 @@ public class TimeManager : MonoBehaviour
         Instance = this;
     }
 
-    public static void DoSlowMotion()
+    public static void DoSlowMotion(float factor = 0.5f)
     {
-        Time.timeScale = slowDownFactor;
+        Time.timeScale = factor;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
