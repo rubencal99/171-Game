@@ -17,7 +17,6 @@ public class InventoryTrash : MonoBehaviour, IDropHandler
     }
     public void OnDrop(PointerEventData eventData)
     {
-        // call DropItem
         DragDrop _dragdrop = eventData.pointerDrag.GetComponent<DragDrop>();
         soundManager.PlayClickItemSound((float)_dragdrop.slotElement.slot.item.type, 0);
         CreateDrop(_dragdrop.slotElement.slot);
@@ -25,7 +24,7 @@ public class InventoryTrash : MonoBehaviour, IDropHandler
     }
     void CreateDrop(Slot _slot)
     {
-        // instantiates _item.pickup
+        // makes an item drop in front of the player and clears the relevant slot
         Instantiate(_slot.item.pickup, p.transform.position + (Vector3.back*2), Quaternion.identity, null);
         _slot.Clear();
     }
