@@ -13,7 +13,7 @@ public class PlayerDiveState : PlayerBaseState
     private bool fireButtonDown = false;
     public bool diving;
     [SerializeField]
-    private float DiveTimer = 0.65f;
+    private float DiveTimer = 0.35f;
 
     public float drag = 1f;
     private float diveTime;
@@ -58,11 +58,21 @@ public class PlayerDiveState : PlayerBaseState
 
     private void GetPointerInput()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = mainCamera.nearClipPlane;
-        var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        FindMousePOS();
+        Vector3 mousePos = playerInput.MousePos;
+        //mousePos.z = mainCamera.nearClipPlane;
+        //var mouseInWorldSpace = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         // This invokes AgentRenderer.FaceDirection and PlayerWeapon.AimWeapon
-        playerInput.OnPointerPositionChange?.Invoke(mouseInWorldSpace);
+        playerInput.OnPointerPositionChange?.Invoke(mousePos);
+    }
+
+    private void FindMousePOS()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, playerInput.mouseColliderLayerMask))
+        {
+            playerInput.MousePos = raycastHit.point;
+        }
     }
 
     private void GetFireInput()
