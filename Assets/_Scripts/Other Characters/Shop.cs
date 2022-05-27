@@ -9,10 +9,15 @@ public class Shop : MonoBehaviour
     public Transform ShopUI;
     public float ShopDistance;
     public bool inDistance = false;
-    public GameObject Player;
+    public GameObject player;
     public SpriteRenderer ShopKeeper;
     public bool inShop;
     public GameObject Key;
+
+    public float shopTimer = 0.5f;
+    public float shopTime = 0.5f;
+    public bool canShop = true;
+
     void Awake()
     {
         instance = this;
@@ -20,8 +25,8 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        Player.GetComponent<PlayerInput>().ShopKeeper = this;
+        player = Player.instance.gameObject;
+        player.GetComponent<PlayerInput>().ShopKeeper = this;
         ShopKeeper = transform.Find("avatar").GetComponent<SpriteRenderer>();
         ShopKeeper.color = new Color(175, 175, 175, 1);
         //Debug.Log("Shopkeeper color on Start: " + ShopKeeper.color);
@@ -30,10 +35,11 @@ public class Shop : MonoBehaviour
         CloseShop();
         inShop = false;
 
-        RoomNode spawnRoom = transform.parent.GetComponent<RoomNode>();
-        if(spawnRoom)
+        RoomNode spawnRoom;
+        if(transform.parent != null)
         {
-            transform.position = new Vector3(spawnRoom.roomCenter.x, 1, spawnRoom.roomCenter.y);
+            spawnRoom = transform.parent.GetComponent<RoomNode>();
+            transform.position = new Vector3(spawnRoom.roomCenter.x, 0, spawnRoom.roomCenter.y);
         }
         
     }
@@ -41,7 +47,7 @@ public class Shop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckDistance();
+        //CheckDistance();
         //Debug.Log("Shopkeeper color: " + ShopKeeper.color);
         if (inShop == true){
             if (Input.GetKeyDown(KeyCode.Escape)){
@@ -49,6 +55,17 @@ public class Shop : MonoBehaviour
                 CloseShop();   
             }
         }
+
+        if(!canShop)
+        {
+            shopTimer -= Time.deltaTime;
+            if(shopTimer <= 0)
+            {
+                canShop = true;
+                shopTimer = shopTime;
+            }
+        }
+
     }
 
 
@@ -64,6 +81,10 @@ public class Shop : MonoBehaviour
     // This function when invoked will display the Shop UI
     public void DisplayShop()
     {
+        if(!canShop)
+        {
+            return;
+        }
         ShopUI.gameObject.SetActive(true);
         inShop = true;
     }
@@ -71,8 +92,12 @@ public class Shop : MonoBehaviour
     // This function when invoked disables the Shop UI
     public void CloseShop()
     {
+        PlayerStateManager.instance.InteractKeyPressed = true;
         ShopUI.gameObject.SetActive(false);
+        PlayerStateManager sm = player.GetComponent<PlayerStateManager>();
+        sm.SwitchState(sm.RunGunState);
         StartCoroutine(closingShop());
+        canShop = false;
     }
 
     IEnumerator closingShop()
@@ -84,7 +109,7 @@ public class Shop : MonoBehaviour
 
     public void CheckDistance()
     {
-        if(Vector2.Distance(Player.transform.position, transform.position) <= ShopDistance)
+        if(Vector2.Distance(player.transform.position, transform.position) <= ShopDistance)
         {
             // Debug.Log("In Distance of Shopkeeper");
             if(inDistance == false)
@@ -105,6 +130,46 @@ public class Shop : MonoBehaviour
                 var popUp = Key.GetComponent<SpriteRenderer>();
                 popUp.enabled = !popUp.enabled;
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        
+        if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Debug.Log("In shop trigger enter");
+            inDistance = true;
+            Key.SetActive(true);
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        
+        if(collider.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Debug.Log("In shop trigger exit");  
+            inDistance = false;
+            Key.SetActive(false);
+        }
+    }
+
+    void OnCollisionEnter(Collision collider)
+    {
+        if(collider.gameObject.layer == LayerMask.NameToLayer("player"))
+        {
+            inDistance = true;
+            Key.SetActive(true);
+        }
+    }
+
+    void OnCollisionExit(Collision collider)
+    {
+        if(collider.gameObject.layer == LayerMask.NameToLayer("player"))
+        {
+            inDistance = false;
+            Key.SetActive(false);
         }
     }
 }
