@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8960519738105143089, guid: edb236018f4a54972b230c3300211bc7, type: 3}
   prefabClone: {fileID: 0}
+  pickup: {fileID: 3227130039294860668, guid: 649e447b05507a44c9671569cda02638, type: 3}
   icon: {fileID: 21300000, guid: 6ebe4f8245e854b819870801df2d699c, type: 3}
   type: 1
   itemType: 1

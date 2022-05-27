@@ -7,16 +7,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     [SerializeField] private Canvas canvas; 
     [SerializeField] public GameObject parent;
+    public InventoryUIParent UIParent;
     public InventorySoundManager soundManager;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private InventorySlotElement slotElement;
+    public InventorySlotElement slotElement;
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         slotElement = parent.GetComponent<InventorySlotElement>();
         soundManager = canvas.GetComponent<InventorySoundManager>();
+        UIParent = canvas.GetComponent<InventoryUIParent>();
+
     }
     public void OnPointerDown(PointerEventData eventData) {
         // Debug.Log("pointer do be down tho");
@@ -26,10 +29,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData) {
         //Debug.Log("you have started to drag me"); 
-        soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 1);
-        canvasGroup.alpha = .7f;
-        canvasGroup.blocksRaycasts = false;
-        transform.SetParent(canvas.transform);
+        if (slotElement.slot.item != null)
+        {
+            soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 1);
+            canvasGroup.alpha = .7f;
+            canvasGroup.blocksRaycasts = false;
+            transform.SetParent(canvas.transform);
+        }
+        
     }
     
     public void OnDrag(PointerEventData eventData) {
