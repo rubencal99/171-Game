@@ -12,6 +12,10 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerShopState ShopState = new PlayerShopState();
     public PlayerTabState TabState = new PlayerTabState();
 
+    public float interactKeyTimer = 0.5f;
+    public float interactKeyTime = 0.5f;
+    public bool InteractKeyPressed = false;
+
 
     void Awake()
     {
@@ -30,6 +34,7 @@ public class PlayerStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateInteractTimer();
         if(!Player.instance.isDead)
         {
             currentState.UpdateState(this);
@@ -40,5 +45,18 @@ public class PlayerStateManager : MonoBehaviour
     {
         currentState = state;
         currentState.EnterState(this);
+    }
+
+    void UpdateInteractTimer()
+    {
+        if(InteractKeyPressed)
+        {
+            interactKeyTimer -= Time.deltaTime;
+            if(interactKeyTimer <= 0)
+            {
+                interactKeyTimer = interactKeyTime;
+                InteractKeyPressed = false;
+            }
+        }
     }
 }

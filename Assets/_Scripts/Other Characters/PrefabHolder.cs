@@ -53,7 +53,7 @@ public class PrefabHolder : MonoBehaviour
             //{
             Debug.Log("Purchased weapon");
             //weaponParent = FindObjectOfType<PlayerWeapon>();
-            var pos = transform.parent.parent.parent.transform.position + Vector3.forward * 4;
+            var pos = FindSpawnPosition();
             var weapon = Instantiate(prefab, pos, Quaternion.identity);
             weapon.transform.parent = transform.root;
             
@@ -85,5 +85,12 @@ public class PrefabHolder : MonoBehaviour
             popup.ShowText();
             Debug.Log("Cannot afford " + itemData.name);
         }
+    }
+
+    Vector3 FindSpawnPosition()
+    {
+        var pos = transform.parent.parent.parent.transform.position + Vector3.right * 5;
+        var offset = new Vector3(UnityEngine.Random.Range(-1, 1), 1, UnityEngine.Random.Range(-1, 1));
+        return pos + offset;
     }
 }

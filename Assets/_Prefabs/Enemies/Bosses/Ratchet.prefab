@@ -2291,7 +2291,7 @@ MonoBehaviour:
   baseColor2: {r: 0, g: 0, b: 0, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &6479340912761779959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2327,7 +2327,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -43350
+  m_InstanceId: -3963030
 --- !u!114 &3359997038526102691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2501,6 +2501,7 @@ MonoBehaviour:
   agentAnimations: {fileID: 0}
   agentMovement: {fileID: 0}
   knockback: 0
+  hasProtector: 0
   blood: {fileID: 7722103790083232488}
   timer: 0
 --- !u!114 &6479340913603567298
@@ -2679,10 +2680,16 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  numToSpawn: 10
+  enemyDensity: 20
   offset: 1
   spawned: 0
   enemyCount: 0
   justEntered: 0
+  density: 200
 --- !u!54 &5048367533477685611
 Rigidbody:
   m_ObjectHideFlags: 0
