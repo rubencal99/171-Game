@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4749110423052994011, guid: fbd6cbaab64c87343b44244e56518638, type: 3}
   prefabClone: {fileID: 0}
+  pickup: {fileID: 4346734895893382118, guid: d91c64f0f3f244777bc9cc38cf7e7fc0, type: 3}
   icon: {fileID: -1200360167124240629, guid: cd51eb7beb222fa47828f05ce60c3922, type: 3}
   type: 1
   itemType: 2
   description: Gernude
-  stackLimit: 3
+  stackLimit: 1
   Name: Grenade
   weaponType: 2
