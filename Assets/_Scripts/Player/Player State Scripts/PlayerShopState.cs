@@ -20,6 +20,7 @@ public class PlayerShopState : PlayerBaseState
     {
         Debug.Log("Entered Shop State");
         playerInput = Player.playerInput;
+        playerInput.OnMovementKeyPressed?.Invoke(Vector2.zero);
         mainCamera = Camera.main;
         running = false;
         playerInput.ShopKeeper.DisplayShop();
@@ -27,11 +28,11 @@ public class PlayerShopState : PlayerBaseState
 
     public override void UpdateState(PlayerStateManager Player)
     {
-        GetMovementInput();
-        GetPointerInput();
-        GetFireInput();
+        //GetMovementInput();
+        //GetPointerInput();
+        //GetFireInput();
         GetTabInput();
-        // GetInteractInput();
+        GetInteractInput();
         if(!playerInput.ShopKeeper.inDistance)
         {
             running = true;
@@ -76,7 +77,7 @@ public class PlayerShopState : PlayerBaseState
 
     private void GetMovementInput()
     {
-        playerInput.OnMovementKeyPressed?.Invoke(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+        playerInput.OnMovementKeyPressed?.Invoke(Vector2.zero);
     }
 
     private void GetTabInput()
@@ -107,14 +108,16 @@ public class PlayerShopState : PlayerBaseState
         // Create new Vector2 when dodge button (left shift) pressed
         if (Input.GetAxisRaw("Interact") > 0) 
         {
-            if (running == false)
+            if (running == false && !PlayerStateManager.instance.InteractKeyPressed)
             {
                 running = true;
                 playerInput.ShopKeeper.CloseShop();
-                playerInput.OnInteractKeyPressed?.Invoke();
+                //playerInput.OnInteractKeyPressed?.Invoke();
             }  
+            PlayerStateManager.instance.InteractKeyPressed = true;
         }
         else{
+            //PlayerStateManager.instance.InteractKeyPressed = false;
             if (running == true)
             {
                 running = false;
