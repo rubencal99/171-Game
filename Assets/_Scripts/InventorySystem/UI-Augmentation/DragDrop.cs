@@ -26,10 +26,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData) {
         //Debug.Log("you have started to drag me"); 
-        soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 1);
-        canvasGroup.alpha = .7f;
-        canvasGroup.blocksRaycasts = false;
-        transform.SetParent(canvas.transform);
+        if (slotElement.slot.item != null)
+        {
+            soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 1);
+            canvasGroup.alpha = .7f;
+            canvasGroup.blocksRaycasts = false;
+            transform.SetParent(canvas.transform);
+        }
+        
     }
     
     public void OnDrag(PointerEventData eventData) {
