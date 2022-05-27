@@ -600,7 +600,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 531038
+  m_InstanceId: -3404654
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,6 +1578,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 0}
+  interactKeyTimer: 0.5
+  interactKeyTime: 0.5
+  InteractKeyPressed: 0
 --- !u!114 &3265718703716215714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1940,7 +1943,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 25
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

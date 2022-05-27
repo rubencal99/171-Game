@@ -121,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
-        m_MethodName: doExitGame
+      - m_Target: {fileID: 8766142960164336497, guid: 4c70b547443101d419396819002321c6, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7096302332738980806, guid: 4c70b547443101d419396819002321c6, type: 3}
         m_TargetAssemblyTypeName: SceneRestart, Assembly-CSharp
         m_MethodName: RestartScene
         m_Mode: 1
