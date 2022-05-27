@@ -63,6 +63,7 @@ public class RoomClearCheck : MonoBehaviour
         LootClear thisLoot = LootClear.Instance;
         thisLoot?.Pick(room);
         Debug.Log("room cleared");
+        Destroy(this);
  
     }
 

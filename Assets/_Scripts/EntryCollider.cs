@@ -77,7 +77,7 @@ public class EntryCollider : MonoBehaviour
                  
             }
 
-             if(room.RoomType == "Normal" || room.RoomType == "Large") spr.enabled = false;  
+             if(room.RoomType == "Normal" || room.RoomType == "Large" ||  room.RoomType == "Extra") spr.enabled = false;  
 
         // if(room.RoomType == "Boss" )
         // ( room.RoomType == "Key") spr.color = Color.yellow;

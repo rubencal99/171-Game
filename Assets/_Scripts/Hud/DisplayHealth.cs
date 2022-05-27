@@ -17,6 +17,7 @@ public class DisplayHealth : MonoBehaviour
     {
         p1 = obj.GetComponent<Player>(); // Get Player class from player object
         lastHealth = p1.Health;
+        ForceUpdateHealthBar();
     }
 
     // Update is called once per frame
@@ -37,6 +38,12 @@ public class DisplayHealth : MonoBehaviour
 
     public void CallUpdateHealthBar() {
         StartCoroutine(UpdateHealthBar());
+    }
+
+    public void ForceUpdateHealthBar() {
+        HealthBar = this.transform.GetChild(0).GetChild(0).GetComponent<Image>();
+    	var fillAmount = Mathf.Clamp((float)p1.Health / (float)p1.MaxHealth, 0.0f, 1.0f);
+        HealthBar.fillAmount = fillAmount;
     }
 
      public IEnumerator UpdateHealthBar() {
