@@ -181,7 +181,7 @@ MonoBehaviour:
   baseColor2: {r: 0, g: 0, b: 0, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &572603608035170064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 588764
+  m_InstanceId: 143836
 --- !u!114 &8122363185936162116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
   agentMovement: {fileID: 0}
   knockback: 0
   hasProtector: 0
-  blood: {fileID: 3440571548795422129}
+  blood: {fileID: 2290734329022344739, guid: fab491dcaa53ebd4390cd267e977b177, type: 3}
   timer: 0
 --- !u!114 &8801814988805570413
 MonoBehaviour:
@@ -5619,6 +5619,7 @@ MonoBehaviour:
   passives: {fileID: 0}
   ammo: 0
   totalAmmo: 0
+  OriginalAmmo: 0
   infAmmo: 0
   weaponData: {fileID: 11400000, guid: 809542db9f29afd4ca27f5bc6ca2d35c, type: 2}
   isPlayer: 0
@@ -6671,10 +6672,5 @@ PrefabInstance:
 --- !u!4 &2702001243728421947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6657395350745081320, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
-  m_PrefabInstance: {fileID: 8727059206100206035}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3440571548795422129 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6243083664929031266, guid: 20dffdd5d908dca428406565f3c008c1, type: 3}
   m_PrefabInstance: {fileID: 8727059206100206035}
   m_PrefabAsset: {fileID: 0}
