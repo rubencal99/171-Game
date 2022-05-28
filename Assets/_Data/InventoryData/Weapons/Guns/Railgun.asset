@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 5516205167494534619, guid: cb571bae8fa220f4dae186320673e9f3, type: 3}
   prefabClone: {fileID: 0}
   pickup: {fileID: 6273300952984514769, guid: 92018f86f421f3346839a27676f055bb, type: 3}
-  icon: {fileID: 21300000, guid: 2ecba64f6355d5a4aa96ce9091ca5ba8, type: 3}
+  icon: {fileID: 21300000, guid: aaad43874100b4ab9bc208323244b788, type: 3}
   type: 1
   itemType: 0
   description: 
