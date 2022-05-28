@@ -188,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7777022906886386671}
   - component: {fileID: 1384828979184368464}
+  - component: {fileID: 2987057654424859105}
   m_Layer: 9
   m_Name: Point Light
   m_TagString: Untagged
@@ -223,8 +224,8 @@ Light:
   m_Color: {r: 0.68235296, g: 0.44011766, b: 0.44011766, a: 1}
   m_Intensity: 162.1
   m_Range: 48.7
-  m_SpotAngle: 128.31525
-  m_InnerSpotAngle: 46.54724
+  m_SpotAngle: 67.286644
+  m_InnerSpotAngle: 50.684772
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -263,7 +264,7 @@ Light:
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 199.8
+  m_BounceIntensity: 74.9
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 4.358036e+27, z: 2.1271245e-19, w: 266.34106}
@@ -271,6 +272,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &2987057654424859105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465384347770964594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UsePipelineSettings: 1
 --- !u!1 &6615118631977220724
 GameObject:
   m_ObjectHideFlags: 0
