@@ -200,10 +200,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5499641283937231650}
   - component: {fileID: 8423950975547273570}
-  - component: {fileID: 7490548728684222030}
+  - component: {fileID: 1894866948}
   m_Layer: 5
   m_Name: ReduceNotice
-  m_TagString: Untagged
+  m_TagString: MoneyReduceText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -225,7 +225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.5, y: 24.37}
+  m_AnchoredPosition: {x: 20, y: 20}
   m_SizeDelta: {x: 57.99, y: 33.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8423950975547273570
@@ -236,7 +236,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945498038829831365}
   m_CullTransparentMesh: 1
---- !u!114 &7490548728684222030
+--- !u!114 &1894866948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,27 +245,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 945498038829831365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4afd89789964231478c149275fec7abd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &985814368476063901
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2336522138358982710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -386,7 +368,7 @@ MonoBehaviour:
   ShopInventory:
   - {fileID: 11400000, guid: ab8e184c0501643ceb51eee6734936f1, type: 2}
   - {fileID: 11400000, guid: aa0f4779b199144ecb6341bd8db5bf0c, type: 2}
-  - {fileID: 11400000, guid: 2266788222eb64a8cba06543f8a8c21c, type: 2}
+  - {fileID: 11400000, guid: 5d42e9a76e049344faa03f135bba490a, type: 2}
   - {fileID: 11400000, guid: 7ca00bbd95eb6490082070bd9940503b, type: 2}
   - {fileID: 11400000, guid: a381857b654f4450491528fdf4ff2938, type: 2}
   - {fileID: 11400000, guid: ccc149569a0fe4f3986c6a91ab4f10a5, type: 2}
@@ -618,7 +600,7 @@ GameObject:
   - component: {fileID: 5206905529314912518}
   - component: {fileID: 6522872295993170752}
   m_Layer: 5
-  m_Name: Text
+  m_Name: reduceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,10 +620,10 @@ RectTransform:
   m_Father: {fileID: 5499641283937231650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 58, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5206905529314912518
 CanvasRenderer:
@@ -684,9 +666,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '-100
-
-'
+  m_Text: 
 --- !u!1 &2289999641662597928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +997,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920.24, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3423806440538705489
 CanvasRenderer:
@@ -1609,7 +1589,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 763422
+  m_InstanceId: -6018
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -1899,7 +1879,7 @@ MonoBehaviour:
   augmentationUI: {fileID: 0}
   Player: {fileID: 0}
   MoneyReducePopUp: {fileID: 0}
-  moneyreduce: {fileID: 0}
+  moneyreduce: {fileID: 6522872295993170752}
 --- !u!114 &1062795966460544887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2143,6 +2123,9 @@ MonoBehaviour:
   ShopKeeper: {fileID: 2489636180351665501}
   inShop: 0
   Key: {fileID: 295850234816966257}
+  shopTimer: 0.5
+  shopTime: 0.5
+  canShop: 1
 --- !u!65 &860942055159133905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2312,7 +2295,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 763466
+  m_InstanceId: -6006
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
