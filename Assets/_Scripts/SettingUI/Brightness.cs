@@ -8,7 +8,7 @@ public class Brightness : MonoBehaviour
 
     [SerializeField] private Slider brightSlider = null;
     [SerializeField] private Text brightTextUI = null;
-    public GameObject bright;
+    public Light screenlight;
 
     private void start(){
         LoadValue();
@@ -16,8 +16,13 @@ public class Brightness : MonoBehaviour
 
     public void BrightSlider(float bright)
     {
-        brightTextUI.text = (bright*100).ToString("");
+        brightTextUI.text = (bright*20).ToString("");
     }
+
+    void Update(){
+        screenlight.intensity = brightSlider.value;
+    }
+
 
     public void Savebutton()
     {
