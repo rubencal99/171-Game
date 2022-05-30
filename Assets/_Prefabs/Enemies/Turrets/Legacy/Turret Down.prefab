@@ -135,7 +135,9 @@ MonoBehaviour:
   agentAnimations: {fileID: 0}
   agentMovement: {fileID: 0}
   knockback: 0
+  hasProtector: 0
   blood: {fileID: 3255531888924175646}
+  timer: 0
 --- !u!114 &6981939979686345836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +461,7 @@ SpriteRenderer:
   m_SortingLayerID: 470539697
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7124621374147906806, guid: aae5977d1af33b54d99e49711753c497, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 159ad235c44caa240b547ca312a38f25, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -489,7 +491,7 @@ MonoBehaviour:
   baseColor2: {r: 0.7803922, g: 0.7803922, b: 0.7803922, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &2103403680713708561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +527,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: -462342
+  m_InstanceId: 579412
 --- !u!114 &7672707951128534597
 MonoBehaviour:
   m_ObjectHideFlags: 0

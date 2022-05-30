@@ -1511,8 +1511,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4276430013774585464}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 2
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 763422
+  m_InstanceId: 51314
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2143,6 +2143,9 @@ MonoBehaviour:
   ShopKeeper: {fileID: 2489636180351665501}
   inShop: 0
   Key: {fileID: 295850234816966257}
+  shopTimer: 0.5
+  shopTime: 0.5
+  canShop: 1
 --- !u!65 &860942055159133905
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2312,7 +2315,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 763466
+  m_InstanceId: 51358
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,8 +2542,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7642134344873383751}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 2
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
