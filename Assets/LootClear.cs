@@ -32,7 +32,7 @@ public class LootClear : MonoBehaviour
         {
             PickWeapon(room);
         } 
-        else if (odds == 5)
+        else if (odds >= 5 && odds <=6)
         {
             PickAug(room);
         }
