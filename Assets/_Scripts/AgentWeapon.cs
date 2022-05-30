@@ -138,9 +138,9 @@ public class AgentWeapon : MonoBehaviour
         gun.AmmoFill();
     }
 
-    public void Supply()
+    public void Supply(int frac)
     {
-        gun.ReSupply();
+        gun.ReSupply(frac);
     }
 
     public void Shoot()

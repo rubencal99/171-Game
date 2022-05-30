@@ -13,12 +13,12 @@ public class StockUp : MonoBehaviour
     {   
         if(collision.tag == "Player")
         {
-           
+            int partSup = Random.Range(2, 4);
             Player player = FindObjectOfType<Player>();
             weapon = player.gameObject.GetComponentInChildren<PlayerWeapon>();
             if (weapon != null)
             {
-                weapon.Supply();
+                weapon.Supply(partSup);
             }
             popup popup = FindObjectOfType<popup>();
             popup.SetText("ammo stock up");
@@ -31,12 +31,12 @@ public class StockUp : MonoBehaviour
     {   
         if(collision.gameObject.tag == "Player")
         {
-           
+            int partSup = Random.Range(2, 4);
             Player player = FindObjectOfType<Player>();
             weapon = player.gameObject.GetComponentInChildren<PlayerWeapon>();
             if (weapon != null)
             {
-                weapon.Supply();
+                weapon.Supply(partSup);
             }
             popup popup = FindObjectOfType<popup>();
             popup.SetText("ammo stock up");
