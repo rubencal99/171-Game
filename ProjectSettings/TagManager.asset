@@ -30,6 +30,7 @@ TagManager:
   - MoneyReduceText
   - minimaptracker
   - minimapblocker
+  - key
   layers:
   - Default
   - TransparentFX

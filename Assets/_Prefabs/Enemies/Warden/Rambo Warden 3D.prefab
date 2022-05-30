@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: <Distance>k__BackingField
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1147769729908498483, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+      propertyPath: m_Mass
+      value: 1.9
+      objectReference: {fileID: 0}
     - target: {fileID: 1189324570292967604, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: <Distance>k__BackingField
       value: 3.6

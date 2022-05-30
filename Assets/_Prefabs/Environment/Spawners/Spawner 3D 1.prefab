@@ -58,10 +58,13 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 512
+  numToSpawn: 10
+  enemyDensity: 20
   offset: 1
   spawned: 0
   enemyCount: 0
   justEntered: 0
+  density: 300
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0

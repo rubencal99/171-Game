@@ -84,7 +84,6 @@ public class PlayerMovement : AgentMovement
         //collider.size = new Vector2(1.1f, 0.6f);
         drag = PlayerState.DiveState.CalculateDrag();
         Vector3 dodge_dir = dodgeDirection;
-        dodge_dir.y += 1.0f;
         Debug.Log("Dodge Dir: " + dodge_dir * dodgeVelocity);
         rigidbody.velocity = Vector3.zero; // set speed to zero
         rigidbody.velocity += (Vector3)(dodge_dir * dodgeVelocity); // create dodge

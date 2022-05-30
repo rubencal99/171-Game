@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c455c146d1691460b88ec2b7379ea834, type: 3}
   m_Name: DroneHeadAugment
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3227130039294860668, guid: 2b4d573602b13bb478cef085f31dc31b, type: 3}
+  prefab: {fileID: 3227130039294860668, guid: 0675cbf2816661447aa51781f3dc08cc, type: 3}
   prefabClone: {fileID: 0}
+  pickup: {fileID: 3227130039294860668, guid: 0675cbf2816661447aa51781f3dc08cc, type: 3}
   icon: {fileID: 21300000, guid: 7429591cfddfc6b4eafba9ae2d003960, type: 3}
   type: 0
   itemType: 0

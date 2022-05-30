@@ -7,16 +7,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     [SerializeField] private Canvas canvas; 
     [SerializeField] public GameObject parent;
+    public InventoryUIParent UIParent;
     public InventorySoundManager soundManager;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private InventorySlotElement slotElement;
+    public InventorySlotElement slotElement;
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         slotElement = parent.GetComponent<InventorySlotElement>();
         soundManager = canvas.GetComponent<InventorySoundManager>();
+        UIParent = canvas.GetComponent<InventoryUIParent>();
+
     }
     public void OnPointerDown(PointerEventData eventData) {
         // Debug.Log("pointer do be down tho");
@@ -26,10 +29,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData) {
         //Debug.Log("you have started to drag me"); 
-        soundManager.PlayClickItemSound(slotElement.slot.item.type, 1);
-        canvasGroup.alpha = .7f;
-        canvasGroup.blocksRaycasts = false;
-        transform.SetParent(canvas.transform);
+        if (slotElement.slot.item != null)
+        {
+            soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 1);
+            canvasGroup.alpha = .7f;
+            canvasGroup.blocksRaycasts = false;
+            transform.SetParent(canvas.transform);
+        }
+        
     }
     
     public void OnDrag(PointerEventData eventData) {
@@ -48,10 +55,27 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnDrop(PointerEventData eventData){
         // 
         Debug.Log("OnDrop called on item");
-        if (eventData.pointerDrag.GetComponent<DragDrop>() != null && eventData.pointerDrag != this)
+        DragDrop droppedItem = eventData.pointerDrag.GetComponent<DragDrop>();
+        if (droppedItem == null || eventData.pointerDrag == this)
         {
-            slotElement.inventory.MoveSwapCombine(eventData.pointerDrag.GetComponent<DragDrop>().slotElement.slot, slotElement.slot);
-            soundManager.PlayClickItemSound(slotElement.slot.item.type, 0);
+            return;
+        }
+        else
+        {
+            slotElement.inventory.MoveSwapCombine(droppedItem.slotElement.slot, slotElement.slot);
+            //soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 0);
+            if (
+                slotElement.inventory.MoveQuery(droppedItem.slotElement.slot, slotElement.slot) ||
+                slotElement.inventory.CombineQuery(droppedItem.slotElement.slot, slotElement.slot) ||
+                slotElement.inventory.SwapQuery(droppedItem.slotElement.slot, slotElement.slot)){
+                    soundManager.PlayClickItemSound((float)slotElement.slot.item.type, 0);
+                    Debug.Log("play clickitemsound for " + slotElement.slot.item.type);
+                }
+            else{
+                soundManager.PlayClickItemSound(4.0f, 0);
+                Debug.Log("play clickitemsound failure");
+            }
+            
             slotElement.inventory.Print();
         }
     }

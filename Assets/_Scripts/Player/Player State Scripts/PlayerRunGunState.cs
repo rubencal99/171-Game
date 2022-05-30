@@ -18,6 +18,9 @@ public class PlayerRunGunState : PlayerBaseState
     public bool shopping = false; // bool to check if dodging
     //public bool grabbing = false;
 
+    public float shopTimer = 1f;
+    public float shopTime = 1f;
+    public bool canShop = false;
 
     public PlayerInput playerInput;
     [SerializeField]
@@ -42,11 +45,23 @@ public class PlayerRunGunState : PlayerBaseState
         dodging = false;
         TimeManager.RevertSlowMotion();
         Player.transform.Find("shadow").gameObject.SetActive(true);
-        standTime = playerInput.PlayerMovement.MovementData.standingDelay;
+        canShop = false;
+        //standTime = playerInput.PlayerMovement.MovementData.standingDelay;
     }
 
     public override void UpdateState(PlayerStateManager Player)
     {
+
+        if (!canShop)
+        {
+            shopTimer -= Time.deltaTime;
+            if (shopTimer <= 0)
+            {
+                shopTimer = shopTime;
+                canShop = true;
+            }
+        }
+
         GetMovementInput();
         GetPointerInput();
         GetPrimaryInput();
@@ -293,7 +308,7 @@ public class PlayerRunGunState : PlayerBaseState
             {
                 //RaycastHit hit = new RaycastHit();
                 //Physics.Raycast(Player.instance.transform.position, Player.instance.weaponParent.aimDirection, out hit, 3f);
-                Collider[] hits = Physics.OverlapSphere(Player.instance.transform.position, 3.0f);
+                Collider[] hits = Physics.OverlapSphere(Player.instance.transform.position, 1.0f);
                 foreach(Collider hit in hits)
                 {
                     if(hit.transform.gameObject.GetComponent<Grabbable>())
@@ -312,10 +327,15 @@ public class PlayerRunGunState : PlayerBaseState
 
             else if (playerInput.ShopKeeper && shopping == false && playerInput.ShopKeeper.inDistance)
             {
+                if(!playerInput.ShopKeeper.canShop)
+                {
+                    return;
+                }
                 Debug.Log("Interact key pressed in distance of Shopkeeper");
                 shopping = true;
                 playerInput.OnInteractKeyPressed?.Invoke();
             }
+            PlayerStateManager.instance.InteractKeyPressed = true;
         }
         else{
             if(Player.instance.grabbing)

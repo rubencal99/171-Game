@@ -14,7 +14,7 @@ public class WeaponRenderer : MonoBehaviour
     private void Awake()
     {
         weaponRenderer = GetComponent<SpriteRenderer>();
-        camera = CameraShake.Instance.gameObject;
+        //camera = CameraShake.Instance.gameObject;
     }
 
     /*void Update()

@@ -261,7 +261,7 @@ public class RoomNode : MonoBehaviour
         }
     }
 
-    public void RepurposeRoom(ref TileNode[,] map)
+    public void RepurposeRoom(ref TileNode[,] map, ref List<TileNode> roomTiles)
     {
         /*foreach(TileNode tile in obstacleTileList)
         {
@@ -270,6 +270,7 @@ public class RoomNode : MonoBehaviour
             tile.value = 1;
         }*/
         validTileList.Clear();
+        obstacleTileList.Clear();
         for(int i = 1; i < length - 1; i++)
         {
             for(int j = 1; j < width - 1; j++)
@@ -281,6 +282,10 @@ public class RoomNode : MonoBehaviour
                 map[tile.x, tile.y].value = 1;
                 map[tile.x, tile.y].room = this;
                 validTileList.Add(tile);
+                if(!roomTiles.Contains(tile))
+                {
+                    roomTiles.Add(tile);
+                }
             }
         }
     }
