@@ -10,6 +10,8 @@ public class RoomKey : MonoBehaviour
         {
             // Clear room
             Debug.Log("Puzzle complete");
+            if( this.GetComponent<DestructibleBox>() != null)
+            this.GetComponent<DestructibleBox>().OnDie?.Invoke();
             Destroy(gameObject);
         }
     }
