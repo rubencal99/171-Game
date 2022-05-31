@@ -803,7 +803,9 @@ public class MapGenerator : MonoBehaviour
              }
        // controls.SetPosition(Player.transform.position);
         Vector3 weaponSpawn = new Vector3(spawnPosition.x - 3, spawnPosition.y, spawnPosition.z);
-        GameObject spawnWeapon = Instantiate(SpawnWeapon, weaponSpawn, Quaternion.identity);
+         GameObject spawnWeapon = null;
+        if(SpawnWeapon != null)
+          spawnWeapon  = Instantiate(SpawnWeapon, weaponSpawn, Quaternion.identity);
     }
 
     /* RoomNode CreateRoom(int x1, int y1, int x2, int y2)

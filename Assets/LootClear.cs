@@ -9,6 +9,7 @@ public class LootClear : MonoBehaviour
     public GameObject Door;
     public GameObject[] LootItems;
     public GameObject[] LootWeapons;
+    public GameObject[] LootAugs;
     public static LootClear Instance;
 
     private void Awake()
@@ -18,7 +19,7 @@ public class LootClear : MonoBehaviour
 
     public void Pick(RoomNode room)
     {
-        int odds = Random.Range(1, 5);
+        int odds = Random.Range(1, 10);
         if(room.RoomType == "Key")
         {
             PickKey(room);
@@ -27,10 +28,14 @@ public class LootClear : MonoBehaviour
         {
             PickDoor(room);
         }
-        else if (odds >= 1 && odds <= 2)
+        else if (odds >= 1 && odds <= 3)
         {
             PickWeapon(room);
         } 
+        else if (odds >= 5 && odds <=6)
+        {
+            PickAug(room);
+        }
         else
         {
             PickItem(room);
@@ -67,6 +72,15 @@ public class LootClear : MonoBehaviour
         thisWeapLoot.transform.position = CalculateSpawn(room);
         Debug.Log("CLEAR Weap");
 
+    }
+
+    private void PickAug(RoomNode room)
+    {
+        int aug;
+        aug = Random.Range(0, 25);
+        GameObject thisAugLoot = Instantiate(LootAugs[aug]) as GameObject;
+        thisAugLoot.transform.position = CalculateSpawn(room);
+        Debug.Log("CLEAR Weap");
     }
 
     private Vector3 CalculateSpawn(RoomNode room)
