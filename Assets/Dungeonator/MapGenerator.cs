@@ -12,6 +12,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private bool debug;
     [SerializeField]
+    private bool debugPartition;
+    [SerializeField]
     private bool forceEntry = false;
     [SerializeField]
     private bool extraRooms = false;
@@ -1328,7 +1330,8 @@ public class MapGenerator : MonoBehaviour
         var room1 = new int[] { x1, y1, x2, ySplit };
         var room2 = new int[] { x1, ySplit + 1, x2, y2 };
 
-        Debug.DrawLine(new Vector3(x1, 1, ySplit), new Vector3(x2, 1, ySplit), Color.green, 20);
+        if(debugPartition)
+            Debug.DrawLine(new Vector3(x1, 1, ySplit), new Vector3(x2, 1, ySplit), Color.green, 20);
 
         if (UnityEngine.Random.Range(0, 100) < 50)
         {
@@ -1355,7 +1358,8 @@ public class MapGenerator : MonoBehaviour
         var room1 = new int[] { x1, y1, xSplit, y2 };
         var room2 = new int[] { xSplit + 1, y1, x2, y2 };
 
-        Debug.DrawLine(new Vector3(xSplit, 1, y1), new Vector3(xSplit, 1, y2), Color.green, 20);
+        if(debugPartition)
+            Debug.DrawLine(new Vector3(xSplit, 1, y1), new Vector3(xSplit, 1, y2), Color.green, 20);
 
         // print("In vertical.");
         if (UnityEngine.Random.Range(0, 100) < 50)
