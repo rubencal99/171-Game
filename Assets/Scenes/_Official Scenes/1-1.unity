@@ -406,7 +406,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6016513918435281386, guid: 2ca24bf65e4a21048a783d2d4ff01343, type: 3}
   m_PrefabInstance: {fileID: 6016513918332210766}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &159681031
+--- !u!43 &143761108
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -656,6 +656,10 @@ PrefabInstance:
       propertyPath: Door
       value: 
       objectReference: {fileID: 7533168769265335026, guid: 104f43611209b284eab1c8dfe83f4771, type: 3}
+    - target: {fileID: -1840531134177470650, guid: b43a8265c84835748ab6da9bbfa442fb, type: 3}
+      propertyPath: LootAugs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 110108056729843572, guid: b43a8265c84835748ab6da9bbfa442fb, type: 3}
       propertyPath: m_Name
       value: LootClear
