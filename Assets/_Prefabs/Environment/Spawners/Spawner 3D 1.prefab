@@ -64,7 +64,8 @@ MonoBehaviour:
   spawned: 0
   enemyCount: 0
   justEntered: 0
-  density: 300
+  density: 600
+  numEnemiesPerWave: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0
