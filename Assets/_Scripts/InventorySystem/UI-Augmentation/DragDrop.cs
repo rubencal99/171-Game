@@ -12,6 +12,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     public InventorySlotElement slotElement;
+    public InvToolTip toolTip;
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
@@ -19,6 +20,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         slotElement = parent.GetComponent<InventorySlotElement>();
         soundManager = canvas.GetComponent<InventorySoundManager>();
         UIParent = canvas.GetComponent<InventoryUIParent>();
+        toolTip = canvas.GetComponentInChildren<InvToolTip>();
 
     }
     public void OnPointerDown(PointerEventData eventData) {
@@ -83,13 +85,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         soundManager.PlayHoverSound();
         // update InvToolTip
-        //toolTip.ShowToolTip(slotElement.slot.item);
+        toolTip.ShowToolTip(slotElement.slot.item);
         //Debug.Log("OnPointerEnter " + slotElement.slot.item); 
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         // Update InvToolTip to null
-        //toolTip.HideToolTip();
+        toolTip.HideToolTip();
         //Debug.Log("OnPointerExit " + slotElement.slot.item); 
     }
 
