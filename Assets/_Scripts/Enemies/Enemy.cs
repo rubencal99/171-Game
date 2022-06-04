@@ -189,7 +189,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
                     enemyBrain.Move(Vector3.zero);
                 agentMovement.currentVelocity = 0;
                 agentRenderer.isDying = true;
-                GetComponent<CapsuleCollider>().direction = 0;
+                //GetComponent<CapsuleCollider>().direction = 0;
                 hasDied = true;
             }
         }
@@ -200,7 +200,7 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
                 gameObject.layer = 8;
                 agentRenderer.isDying = false;
                 OnRevive?.Invoke();
-                GetComponent<CapsuleCollider>().direction = 1;
+                //GetComponent<CapsuleCollider>().direction = 1;
                 if(enemyBrain != null)
                     enemyBrain.enabled = true;
                 hasDied = false;

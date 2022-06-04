@@ -10,7 +10,10 @@ public class GoToCenterAction : AIAction
 
     void Start()
     {
-        room = enemyBrain.transform.parent.GetComponent<RoomNode>();
+        if(enemyBrain.transform.parent)
+        {
+            room = enemyBrain.transform.parent.GetComponent<RoomNode>();
+        }
     }
 
     public override void TakeAction()
