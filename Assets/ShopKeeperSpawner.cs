@@ -27,7 +27,7 @@ public class ShopKeeperSpawner : EnemySpanwer
         offsetPosition.y += Random.Range(-offset, offset);
 
         var source = Waves[0].Enemies[0].Enemy;
-        var clone = Instantiate(source, offsetPosition, Quaternion.identity);
+        var clone = Instantiate(source, offsetPosition, source.transform.rotation);
         clone.name = source.name;
         clone.transform.parent = this.gameObject.transform.parent.transform;
 

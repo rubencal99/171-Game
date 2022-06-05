@@ -41,6 +41,7 @@ IEnumerator loadScene(string index)
     sceneAsync = scene;
     PlayerProgressManager.SavePlayer(Player.instance.GetComponentInChildren<PlayerWeapon>(), Player.instance.GetComponent<Player>());
     loadScreen.SetActive(true);
+    loadScreen.GetComponentInChildren<Animator>().Play("loadingscreen");
     loadBar.fillAmount = 0.0f;
     //Wait until we are done loading the scene
     while (scene.progress < 0.90f)

@@ -8,7 +8,7 @@ public class RatchetBossDecisionAction : AIAction
   {
       //SquidBoss.inDecision = true;
       //RatchetBoss.inDecision = true;
-      int r = Random.Range(0, 100);
+      int r = Random.Range(60, 100);
       Debug.Log("In Ratchet Boss decision action");
       Debug.Log("Random number = " + r);
       if(r < 30)
