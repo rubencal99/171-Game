@@ -8,9 +8,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7444666617544520841, guid: a6fa2f5d4f160094d9b0edd8d19918f5, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 00e94a5ff78b06949a2a5c3c837a002e, type: 2}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7504975507811502558, guid: a6fa2f5d4f160094d9b0edd8d19918f5, type: 3}
       propertyPath: m_Name
       value: EnemyBlood

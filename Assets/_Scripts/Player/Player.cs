@@ -14,7 +14,8 @@ public class Player : MonoBehaviour, IAgent, IHittable
     [SerializeField]
     GameObject DronePrefab;
     public GameObject Drone;
-
+    
+    public GameObject DamageDisplay;
 
     public bool invincible = false;
 
@@ -119,7 +120,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         isDead = false;                                         //Debuging death
         hasKey = false;
         blood = GameObject.Find("PlayerBlood").GetComponent<ParticleSystem>();
-        overlay = GameObject.Find("Overlay").GetComponent<Image>();
+       // overlay = GameObject.Find("Overlay").GetComponent<Image>();
 
         boxCollider = GetComponent<BoxCollider>();
 
@@ -215,6 +216,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
 
         if(damageDealer != null)
             DamageType(damageDealer);
+
+        //Damagedisplaying
+        GameObject ds = Instantiate(DamageDisplay,transform.position,Quaternion.identity)as GameObject;
+        ds.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        //
 
         Health -= d;
         HitLastFiveSec = true;

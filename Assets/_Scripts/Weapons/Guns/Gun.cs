@@ -215,9 +215,9 @@ public class Gun : MonoBehaviour, IWeapon
         TotalAmmo = weaponData.MaxAmmoCapacity;
     }
 
-    public void ReSupply()
+    public void ReSupply(int frac)
     {
-        TotalAmmo += (weaponData.MaxAmmoCapacity)/4;
+        TotalAmmo += (weaponData.MaxAmmoCapacity)/frac;
     }
 
     protected virtual void UseWeapon()

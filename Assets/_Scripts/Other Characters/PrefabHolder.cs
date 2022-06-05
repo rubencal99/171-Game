@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PrefabHolder : MonoBehaviour
@@ -13,7 +14,7 @@ public class PrefabHolder : MonoBehaviour
     public AugmentationUI augmentationUI;
     public GameObject Player;
     public GameObject MoneyReducePopUp;
-    public GameObject moneyreduce;
+    public Text moneyreduce;
 
     public void Start()
     {
@@ -29,6 +30,13 @@ public class PrefabHolder : MonoBehaviour
         {
             // Debug.Log(prefab.name + " = " + "true");
             playerInfo.Purchase(augData.Cost);
+
+            //money reduce display
+            MoneyReducePopUp.SetActive(true);
+            var reduce = itemData.Cost;
+            Debug.Log("cost is "+ reduce.ToString());
+            moneyreduce.text = "-"+ reduce.ToString();
+
             PlayerAugmentations.AugmentationList[augData.name] = true;
             PlayerAugmentations.PrintDictionary();
         }
@@ -53,6 +61,15 @@ public class PrefabHolder : MonoBehaviour
             //{
             Debug.Log("Purchased weapon");
             //weaponParent = FindObjectOfType<PlayerWeapon>();
+
+            //money reduce
+            MoneyReducePopUp.SetActive(true);
+            var reduce = itemData.Cost;
+            Debug.Log("cost is "+ reduce.ToString());
+            moneyreduce.text = "-"+ reduce.ToString();
+
+            //
+
             var pos = FindSpawnPosition();
             var weapon = Instantiate(prefab, pos, Quaternion.identity);
             weapon.transform.parent = transform.root;

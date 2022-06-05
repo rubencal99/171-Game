@@ -15,9 +15,11 @@ D - Move Right
 
 
 
-Right Click / Space - Dive, Stand Up
+Space - Slide
 
-Left Click - Fire Weapon
+Left Click - Fire Primary
+
+Right Click - Fire Secondary
 
 R - Reload
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SuicideAction : AIAction
 {
+  public float delayTime;
   public float waitTime;
   public float radius;
   public LayerMask layerMask;
@@ -21,12 +22,21 @@ public class SuicideAction : AIAction
     {
       hasAttacked = true;
       Debug.Log("In Suicide");
-      enemyBrain.Attack();
-      particles();
-      splash();
-      Invoke("WaitToDestroy", waitTime);
+      StartCoroutine(Delay());
     }
     
+  }
+
+  public IEnumerator Delay()
+  {
+    Debug.Log("In Delay");
+    enemyBrain.Attack();
+    yield return new WaitForSeconds(delayTime);
+    Debug.Log("After Delay");
+    
+    particles();
+    splash();
+    Invoke("WaitToDestroy", waitTime);
   }
 
   protected void splash() 

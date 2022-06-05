@@ -22,7 +22,7 @@ public class InventorySoundManager : MonoBehaviour
     public void PlayInvOpenSound()
     {
         float _active = 0.0f;
-        if (gameObject.activeSelf){ _active = 1.0f; }
+        if (!gameObject.activeSelf){ _active = 1.0f; }
         AudioHelper.PlayOneShotWithParam(invOpenEvent, Vector3.zero, ("isOpen", _active));
     }
     public void PlayHoverSound()
