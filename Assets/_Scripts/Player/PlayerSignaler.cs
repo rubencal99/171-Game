@@ -53,7 +53,7 @@ public static class PlayerSignaler : object
     {
         if(PlayerAugmentations.AugmentationList["BulletTime"] == true)
         {
-            TimeManager.DoSlowMotion();
+            TimeManager.DoSlowMotion(PlayerAugmentations.BulletTT);
         }
     }
 

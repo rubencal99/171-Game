@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class PrefabHolder : MonoBehaviour
@@ -13,7 +14,7 @@ public class PrefabHolder : MonoBehaviour
     public AugmentationUI augmentationUI;
     public GameObject Player;
     public GameObject MoneyReducePopUp;
-    public GameObject moneyreduce;
+    public Text moneyreduce;
 
     public void Start()
     {
@@ -29,6 +30,13 @@ public class PrefabHolder : MonoBehaviour
         {
             // Debug.Log(prefab.name + " = " + "true");
             playerInfo.Purchase(augData.Cost);
+
+            //money reduce display
+            MoneyReducePopUp.SetActive(true);
+            var reduce = itemData.Cost;
+            Debug.Log("cost is "+ reduce.ToString());
+            moneyreduce.text = "-"+ reduce.ToString();
+
             PlayerAugmentations.AugmentationList[augData.name] = true;
             PlayerAugmentations.PrintDictionary();
         }
@@ -53,7 +61,16 @@ public class PrefabHolder : MonoBehaviour
             //{
             Debug.Log("Purchased weapon");
             //weaponParent = FindObjectOfType<PlayerWeapon>();
-            var pos = transform.parent.parent.parent.transform.position + Vector3.forward * 4;
+
+            //money reduce
+            MoneyReducePopUp.SetActive(true);
+            var reduce = itemData.Cost;
+            Debug.Log("cost is "+ reduce.ToString());
+            moneyreduce.text = "-"+ reduce.ToString();
+
+            //
+
+            var pos = FindSpawnPosition();
             var weapon = Instantiate(prefab, pos, Quaternion.identity);
             weapon.transform.parent = transform.root;
             
@@ -85,5 +102,12 @@ public class PrefabHolder : MonoBehaviour
             popup.ShowText();
             Debug.Log("Cannot afford " + itemData.name);
         }
+    }
+
+    Vector3 FindSpawnPosition()
+    {
+        var pos = transform.parent.parent.parent.transform.position + Vector3.right * 5;
+        var offset = new Vector3(UnityEngine.Random.Range(-1, 1), 1, UnityEngine.Random.Range(-1, 1));
+        return pos + offset;
     }
 }

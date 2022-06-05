@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AssaultRifleWeaponData
   m_EditorClassIdentifier: 
   <StartOffset>k__BackingField: {x: 0, y: 0, z: 0}
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 69c7bb5fd8905ad4aba93c6b52b94fe9, type: 2}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: 713f662e2eb6e1e4eb6e0a32394fa5e0, type: 2}
   <MagazineCapacity>k__BackingField: 30
   <MaxAmmoCapacity>k__BackingField: 300
   <AutomaticFire>k__BackingField: 1
@@ -23,6 +23,6 @@ MonoBehaviour:
   <SpreadAngle>k__BackingField: 0.1
   multiBulletShot: 0
   bulletCount: 1
-  recoilIntensity: 4
-  recoilFrequency: 4
-  recoilTime: 1
+  recoilIntensity: 1
+  recoilFrequency: 0
+  recoilTime: 0.1
