@@ -18,7 +18,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e1ab1bf0631d59e40a1d6a3e147c9a18, type: 3}
   type: 0
   itemType: 2
-  description: Test description
+  description: "Small chance not to consume ammo. \n\"Hey all you planeteers at home,
+    remember to turn off the faucet between usage and recycle those casings.\""
   stackLimit: 1
   Name: CasingRecycler
   augType: 2

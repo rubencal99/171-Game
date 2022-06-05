@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: aaad43874100b4ab9bc208323244b788, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: 'Large if you charge. '
   stackLimit: 1
-  Name: 
+  Name: Railgun
   weaponType: 0

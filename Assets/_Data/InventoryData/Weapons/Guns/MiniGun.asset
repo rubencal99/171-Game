@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 85a24d6998afd438baccafc7ff7787ba, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: 'Nothing ''mini'' about it. '
   stackLimit: 1
-  Name: 
+  Name: Minigun
   weaponType: 0

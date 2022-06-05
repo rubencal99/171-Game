@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 37da570766074b74384e860d9ed2b8ec, type: 3}
   type: 0
   itemType: 0
-  description: 
+  description: "Protects the player from death once. \n"
   stackLimit: 1
   Name: AngelsGrace
   augType: 0

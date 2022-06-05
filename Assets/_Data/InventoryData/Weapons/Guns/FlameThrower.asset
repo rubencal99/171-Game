@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e4cf6e403622b47e2971209bb553a655, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: 'Set their hearts ablaze. '
   stackLimit: 1
-  Name: 
+  Name: Flamethrower
   weaponType: 0

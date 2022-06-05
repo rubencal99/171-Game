@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 9460845c133d24388b38679fc31bb394, type: 3}
   type: 1
   itemType: 1
-  description: 
+  description: 'We all gotta start somewhere. '
   stackLimit: 1
-  Name: 
+  Name: Plasma Pistol
   weaponType: 1

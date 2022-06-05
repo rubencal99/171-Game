@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 58b5048e2527f41b19e78b289645843c, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: This one's a duzi!
   stackLimit: 1
-  Name: 
+  Name: Uzi
   weaponType: 0

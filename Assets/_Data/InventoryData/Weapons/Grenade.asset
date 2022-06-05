@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: -1200360167124240629, guid: cd51eb7beb222fa47828f05ce60c3922, type: 3}
   type: 1
   itemType: 2
-  description: Gernude
+  description: Cook me!
   stackLimit: 1
   Name: Grenade
   weaponType: 2

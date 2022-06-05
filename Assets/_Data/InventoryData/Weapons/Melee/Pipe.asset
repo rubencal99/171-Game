@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 22b926853c0554920aaa11f9e81dd1c9, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: 'Literally just a pipe ripped from the cell toilet. '
   stackLimit: 1
-  Name: 
+  Name: Pipe
   weaponType: 0

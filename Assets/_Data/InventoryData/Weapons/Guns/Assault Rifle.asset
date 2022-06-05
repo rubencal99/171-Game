@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d10c833080fd94dae877b0601e0e8b36, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: Some things never change...
   stackLimit: 1
-  Name: 
+  Name: Assault Rifle
   weaponType: 0
