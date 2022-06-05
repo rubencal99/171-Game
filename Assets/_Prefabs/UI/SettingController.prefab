@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2791512453673454312}
   - component: {fileID: 3790953330469727926}
   - component: {fileID: 3694494932569434459}
+  m_Layer: 0
   m_Name: SettingController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
