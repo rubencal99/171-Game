@@ -112,7 +112,8 @@ public class EnemySpanwer : MonoBehaviour
                           
 
             if(Waves[0].waveDelay <= 0.0f) {
-                StartSpawn(Waves[0].Enemies);
+                if(Waves[0].Enemies.Count > 0)
+                    StartSpawn(Waves[0].Enemies);
                 //Waves[0] = Waves[0];
                 Waves.Remove(Waves[0]);
                 checkTimer = spawnTime + spawnDelay + 0.1f;
@@ -136,14 +137,17 @@ public class EnemySpanwer : MonoBehaviour
         // yield return new WaitForSeconds(spawnTime);
         // Invoke("SpawnObject", spawnTime);
         // canSpawn = true;
-       foreach(var order in e) {
-           for(int i = 0; i < (order.SpawnCount * (thisroom.area / density)); i++) {
-
-                StartCoroutine(SpawnObject(order.Enemy));
-              // Debug.Log("enemy spawned");
-               yield return new WaitForSeconds(spawnDelay);
-           }
-       }
+        if(e != null)
+            foreach(var order in e) {
+                if(order != null && thisroom != null)
+                    for(int i = 0; i < (order.SpawnCount * (thisroom.area / density)); i++) {
+                        
+                        if(order.Enemy != null)
+                            StartCoroutine(SpawnObject(order.Enemy));
+                    // Debug.Log("enemy spawned");
+                        yield return new WaitForSeconds(spawnDelay);
+                    }
+            }
        
          spawned = true;
         // for(int i = 0; i < Random.Range(); i++) {
