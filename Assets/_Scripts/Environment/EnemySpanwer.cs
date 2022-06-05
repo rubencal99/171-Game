@@ -27,6 +27,7 @@ public class EnemySpanwer : MonoBehaviour
     public bool stopSpawn = false;
     public float spawnTime = 0.1f;
     public float spawnDelay = 0.4f;
+    public float offsetY = 1f;
 
     public LayerMask layerMask;
     public int numToSpawn = 10;
@@ -161,7 +162,7 @@ public class EnemySpanwer : MonoBehaviour
 
         TileNode spawnTile = room.GrabValidTile();
 
-        Vector3 offsetPosition = new Vector3(spawnTile.x, 1f, spawnTile.y);
+        Vector3 offsetPosition = new Vector3(spawnTile.x, offsetY, spawnTile.y);
 
         Collider[] colliders = Physics.OverlapSphere(offsetPosition, 1f, layerMask);
 
@@ -169,7 +170,7 @@ public class EnemySpanwer : MonoBehaviour
         while(colliders.Length > 0 && count < 5)
         {
             spawnTile = room.GrabValidTile();
-            offsetPosition = new Vector3(spawnTile.x, 1f, spawnTile.y);
+            offsetPosition = new Vector3(spawnTile.x, offsetY, spawnTile.y);
             colliders = Physics.OverlapSphere(offsetPosition, 1f, layerMask);
             count++;
         }
