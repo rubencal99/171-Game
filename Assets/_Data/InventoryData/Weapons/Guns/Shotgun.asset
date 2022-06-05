@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3342b393de6194fa1b3af2e4595b4b51, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: 'Ol'' Reliable. '
   stackLimit: 1
-  Name: 
+  Name: Shotgun
   weaponType: 0

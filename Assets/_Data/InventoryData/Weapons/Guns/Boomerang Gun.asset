@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 61ce24f89e40d44a3ae90cf7ba8c898e, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: Get the angle on 'em.
   stackLimit: 1
-  Name: 
+  Name: Boomerang Gun
   weaponType: 0

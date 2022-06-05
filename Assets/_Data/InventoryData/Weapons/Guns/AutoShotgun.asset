@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 524be78ac214f4fa1a8794f4ef6373bf, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: Fires a lot-gun!
   stackLimit: 1
-  Name: 
+  Name: Auto-Shotgun
   weaponType: 0

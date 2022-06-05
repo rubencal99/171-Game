@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 48d880152b5c84178aba230fc4baff4a, type: 3}
   type: 1
   itemType: 1
-  description: 
+  description: 'Play for blood. '
   stackLimit: 1
-  Name: 
+  Name: Magnum
   weaponType: 1

@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ceb574c54870c4d449af51e7099ffb01, type: 3}
   type: 1
   itemType: 1
-  description: 
+  description: 'A relic of the space age. '
   stackLimit: 1
-  Name: 
+  Name: Laser Pistol
   weaponType: 1

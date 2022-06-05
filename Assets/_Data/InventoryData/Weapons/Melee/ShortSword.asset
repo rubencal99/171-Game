@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: d402d16b05673464fbdff18ecc4a7b41, type: 3}
   type: 1
   itemType: 1
-  description: 
+  description: 'It''s about how you use it. '
   stackLimit: 1
-  Name: 
+  Name: Shortsword
   weaponType: 1
