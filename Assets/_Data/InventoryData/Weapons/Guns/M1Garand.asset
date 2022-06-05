@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e528d62905a9a40f49626ab92a2a74d5, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: Pting!
   stackLimit: 1
   Name: M1 Garand
   weaponType: 0

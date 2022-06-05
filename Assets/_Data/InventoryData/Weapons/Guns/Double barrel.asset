@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ff50a994880ad4c8bb3547d9b1e7261f, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: 'Two''s a party. '
   stackLimit: 1
-  Name: 
+  Name: Double-Barrel Shotgun
   weaponType: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b6e141cef4427400bbc64fc173c95e23, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: How did something like this end up here of all places?
   stackLimit: 1
-  Name: 
+  Name: Sword
   weaponType: 0

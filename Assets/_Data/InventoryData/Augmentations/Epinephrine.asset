@@ -18,7 +18,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 53e92261ede9de64a89ece9bcd835f94, type: 3}
   type: 0
   itemType: 2
-  description: Test description
+  description: "On kill, restore a small portion of health. \nLess for thee, more
+    for me!"
   stackLimit: 1
   Name: Epinephrine
   augType: 2

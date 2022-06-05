@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: -6206914631862919072, guid: 96863e54ddc91994e8a4baec67a2b236, type: 3}
   type: 1
   itemType: 0
-  description: 
+  description: Photoplasmic fury!
   stackLimit: 1
-  Name: 
+  Name: Blaster Rifle
   weaponType: 0

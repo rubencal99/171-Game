@@ -18,7 +18,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 94ef2cbd135efa548b7e84e36473a8fe, type: 3}
   type: 0
   itemType: 3
-  description: 
+  description: "Increases movement speed. \n\"Gotta go fast!\""
   stackLimit: 1
   Name: CheetahSpeed
   augType: 3
