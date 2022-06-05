@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8663ac341ed0174586ca02db77cfaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BulletData>k__BackingField: {fileID: 11400000, guid: 39f01955759013c40a6d7762a7ef106a, type: 2}
+  <BulletData>k__BackingField: {fileID: 11400000, guid: b86301112fb7f4b4aa15b071377958c3, type: 2}
   direction: {x: 0, y: 0, z: 0}
   SpriteTransform: {fileID: 7572314792398233873}
 --- !u!114 &-4525825636214258528

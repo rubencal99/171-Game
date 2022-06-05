@@ -53,9 +53,18 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
+  offsetY: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  numToSpawn: 10
+  enemyDensity: 20
   offset: 0
   spawned: 0
   enemyCount: 0
+  justEntered: 0
+  density: 500
+  numEnemiesPerWave: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public class LandAction : AIAction
 {
   public bool landed = true;
+  public EnemyGun jumpSlam;
+
   public override void TakeAction()
   {
     Debug.Log("In land action");
@@ -22,7 +24,7 @@ public class LandAction : AIAction
     if(other.gameObject.layer == LayerMask.NameToLayer("Base Floor"))
     {
       Debug.Log("About to attack");
-      enemyBrain.Weapon.ForceShoot();
+      jumpSlam.ForceShoot();
       RatchetBoss.inAir = false;
       landed = true;
     }
@@ -35,7 +37,7 @@ public class LandAction : AIAction
     if(other.gameObject.layer == LayerMask.NameToLayer("Base Floor"))
     {
       Debug.Log("About to attack");
-      enemyBrain.Weapon.ForceShoot();
+      jumpSlam.ForceShoot();
       RatchetBoss.inAir = false;
       landed = true;
     }

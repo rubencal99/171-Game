@@ -42,13 +42,11 @@ public class SquidBoss : _BaseBoss
     public static float chaseTimer;
     public float ChaseTimer;
 
-
     public static bool inSpawn = false;
     public bool InSpawn;
     public static float spawnDuration = 3f;
     public static float spawnTimer;
     public float SpawnTimer;
-
 
 
     public BossMovement bossMovement;
@@ -59,6 +57,7 @@ public class SquidBoss : _BaseBoss
     public AgentWeapon WeaponParent;
     public GameObject Melee;
     public GameObject Spray;
+    public Rigidbody rb;
 
     public void Start()
     {
@@ -159,6 +158,7 @@ public class SquidBoss : _BaseBoss
             if(movementCollider.enabled)
             {
                 movementCollider.enabled = false;
+                rb.useGravity = false;
             }
             bossAnimator.SetCycloneAnimation(!atCycloneDest);
 
@@ -180,6 +180,7 @@ public class SquidBoss : _BaseBoss
             if(!movementCollider.enabled)
             {
                 movementCollider.enabled = true;
+                rb.useGravity = true;
             }
             bossAnimator.SetCycloneAnimation(false);
         }
