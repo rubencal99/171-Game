@@ -29,6 +29,30 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: debug
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: debugPartition
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: forceEntry
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: extraRooms
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: numExtraRooms
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: maxExtraRooms
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: hasBoss
     value: 0
     objectReference: {fileID: 0}
@@ -46,7 +70,7 @@ Preset:
     objectReference: {fileID: 6638867989798731449, guid: 8f91563d5f7c589499134d8ed31be76f, type: 3}
   - target: {fileID: 0}
     propertyPath: Spawner.Array.size
-    value: 4
+    value: 6
     objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: Spawner.Array.data[0]
@@ -64,6 +88,18 @@ Preset:
     propertyPath: Spawner.Array.data[3]
     value: 
     objectReference: {fileID: 5694068309932514625, guid: 07734b22532f6456fb3d5aab1bf61044, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.data[4]
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 454bbf6e540db4822a6036d91ba47aad, type: 3}
+  - target: {fileID: 0}
+    propertyPath: Spawner.Array.data[5]
+    value: 
+    objectReference: {fileID: 5694068309932514625, guid: 2e638b0f42ef34f3490959284f1f6eb9, type: 3}
+  - target: {fileID: 0}
+    propertyPath: CQCSpawner
+    value: 
+    objectReference: {fileID: 0}
   - target: {fileID: 0}
     propertyPath: BossSpawner
     value: 
@@ -205,30 +241,6 @@ Preset:
     value: 40
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: UseCellular
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: Seed
-    value: 
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: useRandomSeed
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: wallPercent
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: wallCount
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
-    propertyPath: Iterations
-    value: 0
-    objectReference: {fileID: 0}
-  - target: {fileID: 0}
     propertyPath: HasEntry
     value: 0
     objectReference: {fileID: 0}
@@ -249,7 +261,11 @@ Preset:
     value: 0
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: overgrownRooms
+    propertyPath: NumRewardRooms
     value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: MaxRewardRooms
+    value: 8
     objectReference: {fileID: 0}
   m_ExcludedProperties: []
