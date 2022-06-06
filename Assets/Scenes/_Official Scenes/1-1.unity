@@ -3835,7 +3835,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0.689
+  weight: 0.106
   sharedProfile: {fileID: 11400000, guid: 04958ee076e2be4419ba8a12fde007bc, type: 2}
 --- !u!4 &1556735711
 Transform:
@@ -3943,7 +3943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad032aadbc3d0e2429c52d96f54f7552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!43 &1761366918
+--- !u!43 &1735350178
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

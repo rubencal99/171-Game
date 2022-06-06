@@ -210,9 +210,9 @@ public class Enemy : MonoBehaviour, IHittable, IAgent
     }
 
     public void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.CompareTag("Thorns")){
-            GetHit(PlayerAugmentations.ThornDam, collision.gameObject);
-        }
+        // if(collision.gameObject.CompareTag("Thorns")){
+        //     GetHit(PlayerAugmentations.ThornDam, collision.gameObject);
+        // }
     }
 
     // This is only used by BodyGuards
