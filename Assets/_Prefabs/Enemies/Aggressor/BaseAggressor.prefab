@@ -191,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2722112374460301275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5520754178682815368}
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   baseColor2: {r: 0.7803922, g: 0.7803922, b: 0.7803922, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &7059413844152639299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 201610
+  m_InstanceId: 916160
 --- !u!114 &1635429843742299415
 MonoBehaviour:
   m_ObjectHideFlags: 0
