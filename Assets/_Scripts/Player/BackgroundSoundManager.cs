@@ -9,6 +9,7 @@ public class BackgroundSoundManager : MonoBehaviour
     public SphereCollider detect;
     public FMODUnity.EventReference CombatMusicEvent;
     private FMOD.Studio.EventInstance CombatMusicInst;
+    private Dictionary<GameObject, string> roomDict = new Dictionary<GameObject, string>();
     //[SerializeField]
     private int prisonerCount;
     private Dictionary<string, int> pDict = new Dictionary<string, int>(){
@@ -77,75 +78,92 @@ public class BackgroundSoundManager : MonoBehaviour
         }
 
         // +1 to relevant enemy counter
-        if (collider.tag != "Enemy")
-        {
+        if (collider.tag != "Enemy"){
             return;
         }
-        if (pDict.ContainsKey(_name)){
-            pDict[_name] += 1;
-            prisonerCount = pDict.Sum(x => x.Value);
+        if (roomDict.ContainsKey(collider.gameObject)){
+            return;
         }
-        else if (wDict.ContainsKey(_name)){
-            wDict[_name] += 1;
-            wardenCount = wDict.Sum(x => x.Value);
+        Enemy _enemy = collider.GetComponent<Enemy>();
+        if (_enemy == null){
+            return;
         }
-        else if (sDict.ContainsKey(_name)){
-            sDict[_name] += 1;
-            supportCount = sDict.Sum(x => x.Value);
-        }
-    }
 
+        if (!_enemy.hasDied)
+        {
+            roomDict.Add(collider.gameObject, _name);
+            UpdateDicts();
+        }  
+    }
     void OnTriggerStay(Collider collider)
     {
-        // If an enemy dies in range, -1 from its count
-
-        if (collider.tag != "Enemy")
-        {
+        // check for dead guys, remove them from roomDict
+        if (collider.tag != "Enemy"){
             return;
         }
-        Enemy enemy = collider.GetComponent<Enemy>();
-        if (enemy == null)
-        {
+        if (!roomDict.ContainsKey(collider.gameObject)){
             return;
+        }
+        Enemy _enemy = collider.GetComponent<Enemy>();
+        if (_enemy == null){
+            return;
+        }
+        if (_enemy.hasDied)
+        {
+            roomDict.Remove(collider.gameObject);
+            UpdateDicts(collider.gameObject.name);
         }
     }
     void OnTriggerExit(Collider collider)
     {
         // -1 from relevant enemyCounter 
-
-        string _name = collider.gameObject.name;
-        if (collider.tag != "Enemy")
-        {
+        if (collider.tag != "Enemy"){
             return;
         }
-        if (pDict.ContainsKey(_name)){
-            pDict[_name] -= 1;
-            prisonerCount = pDict.Sum(x => x.Value);
-        }
-        else if (wDict.ContainsKey(_name)){
-            wDict[_name] -= 1;
-            wardenCount = wDict.Sum(x => x.Value);
-        }
-        else if (sDict.ContainsKey(_name)){
-            sDict[_name] -= 1;
-            supportCount = sDict.Sum(x => x.Value);
-        }
-    }
 
-    private bool PrisonerCheck(GameObject _eCollider)
-    {
-        // iterate through dict of melee enemies, check if _enemy is in there)
-        return false;
+        if (roomDict.ContainsKey(collider.gameObject))
+        {
+            roomDict.Remove(collider.gameObject);
+            UpdateDicts(collider.gameObject.name);
+        }
     }
-    private bool WardenCheck(GameObject _eCollider)
+    private void UpdateDicts(string zeroKey = null)
     {
-        // iterate through dict of ranged enemies, check if _enemy is in there)
-        return false;
-    }
-    private bool SupportCheck(GameObject _eCollider)
-    {
-        // iterate through dict of support enemies, check if _enemy is in there)
-        return false;
+        // Updates pDict, wDict, and sDict based on the contents of roomDict
+        Dictionary<string, int> _headcountD = new Dictionary<string, int>();
+        foreach (KeyValuePair<GameObject, string> e in roomDict)
+        {
+            if (!_headcountD.ContainsKey(e.Value)){
+                _headcountD.Add(e.Value, 0);  
+            }
+            _headcountD[e.Value] += 1;
+        }
+        if (zeroKey != null){
+            if (pDict.ContainsKey(zeroKey) && pDict[zeroKey] == 1){
+                pDict[zeroKey] = 0;
+            }
+            if (wDict.ContainsKey(zeroKey) && wDict[zeroKey] == 1){
+                wDict[zeroKey] = 0;
+            }
+            if (sDict.ContainsKey(zeroKey) && sDict[zeroKey] == 1){
+                sDict[zeroKey] = 0;
+            }
+        }
+        foreach (KeyValuePair<string, int> i in _headcountD)
+        {
+            if (pDict.ContainsKey(i.Key)){
+                pDict[i.Key] = _headcountD[i.Key];
+            }
+            else if (wDict.ContainsKey(i.Key)){
+                wDict[i.Key] = _headcountD[i.Key];
+            }
+            else if (sDict.ContainsKey(i.Key)){
+                sDict[i.Key] = _headcountD[i.Key];
+            }
+        }
+        prisonerCount = pDict.Sum(x => x.Value);
+        wardenCount = wDict.Sum(x => x.Value);
+        supportCount = sDict.Sum(x => x.Value);
     }
 
     void FixedUpdate()
