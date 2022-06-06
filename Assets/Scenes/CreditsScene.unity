@@ -195,6 +195,24 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Matthew Tajima
 
+    Jonathan Tsai
+
+    Jose Lechuga
+
+    Charles Cafe
+
+    Alice
+    Park
+
+    Charles Kenneth Romero
+
+    Lance Cammagay
+
+    Bryan Powell
+
+    Nanxiang
+    "Winnie" Wang
+
 '
 --- !u!222 &3484375
 CanvasRenderer:
@@ -385,7 +403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -229.95, y: -341.3}
+  m_AnchoredPosition: {x: -237, y: -341.3}
   m_SizeDelta: {x: 459.9066, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &170951701
@@ -421,8 +439,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Tech Art: Alex Rugama\n\t      Dillon Ney\n                 Alejandro
-    Silva\n\n"
+  m_Text: 'Tech Art: Dillon Ney
+
+
+'
 --- !u!222 &170951702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1402,7 +1422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -214.7, y: -391.7}
+  m_AnchoredPosition: {x: -214.7, y: -360}
   m_SizeDelta: {x: 459.9066, y: 80.3563}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &815111561
@@ -1438,7 +1458,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "UI: Zhifeng Lu\n        Asher Lachoff"
+  m_Text: "UI: Dillon Ney \n    Zhifeng Lu\n        Asher Lachoff"
 --- !u!222 &815111562
 CanvasRenderer:
   m_ObjectHideFlags: 0
