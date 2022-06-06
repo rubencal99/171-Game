@@ -105,7 +105,7 @@ public class EntryCollider : MonoBehaviour
     }
 
     public IEnumerator WaitToUpdateTiles(TileBase tile) {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         UpdateTiles(tile);
     }
 
