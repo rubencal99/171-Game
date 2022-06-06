@@ -78,21 +78,37 @@ public class BackgroundSoundManager : MonoBehaviour
         }
 
         // +1 to relevant enemy counter
-        if (collider.tag != "Enemy")
-        {
+        if (collider.tag != "Enemy"){
             return;
         }
         roomDict.Add(collider.gameObject, _name);
         UpdateDicts();
     }
+    void OnTriggerStay(Collider collider)
+    {
+        // check for dead guys, remove them from roomDict
+        if (collider.tag != "Enemy"){
+            return;
+        }
+        if (!roomDict.ContainsKey(collider.gameObject)){
+            return;
+        }
+        Enemy _enemy = collider.GetComponent<Enemy>();
+        if (_enemy == null){
+            return;
+        }
+        if (_enemy.hasDied)
+        {
+            roomDict.Remove(collider.gameObject);
+            UpdateDicts();
+        }
+    }
     void OnTriggerExit(Collider collider)
     {
         // -1 from relevant enemyCounter 
-        if (collider.tag != "Enemy")
-        {
+        if (collider.tag != "Enemy"){
             return;
         }
-        string _name = collider.gameObject.name;
         roomDict.Remove(collider.gameObject);
         UpdateDicts();
     }
