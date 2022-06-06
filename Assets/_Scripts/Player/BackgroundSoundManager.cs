@@ -81,8 +81,19 @@ public class BackgroundSoundManager : MonoBehaviour
         if (collider.tag != "Enemy"){
             return;
         }
-        roomDict.Add(collider.gameObject, _name);
-        UpdateDicts();
+        if (roomDict.ContainsKey(collider.gameObject)){
+            return;
+        }
+        Enemy _enemy = collider.GetComponent<Enemy>();
+        if (_enemy == null){
+            return;
+        }
+
+        if (!_enemy.hasDied)
+        {
+            roomDict.Add(collider.gameObject, _name);
+            UpdateDicts();
+        }  
     }
     void OnTriggerStay(Collider collider)
     {
@@ -100,7 +111,7 @@ public class BackgroundSoundManager : MonoBehaviour
         if (_enemy.hasDied)
         {
             roomDict.Remove(collider.gameObject);
-            UpdateDicts();
+            UpdateDicts(collider.gameObject.name);
         }
     }
     void OnTriggerExit(Collider collider)
@@ -109,37 +120,50 @@ public class BackgroundSoundManager : MonoBehaviour
         if (collider.tag != "Enemy"){
             return;
         }
-        roomDict.Remove(collider.gameObject);
-        UpdateDicts();
+
+        if (roomDict.ContainsKey(collider.gameObject))
+        {
+            roomDict.Remove(collider.gameObject);
+            UpdateDicts(collider.gameObject.name);
+        }
     }
-    private void UpdateDicts()
+    private void UpdateDicts(string zeroKey = null)
     {
         // Updates pDict, wDict, and sDict based on the contents of roomDict
         Dictionary<string, int> _headcountD = new Dictionary<string, int>();
         foreach (KeyValuePair<GameObject, string> e in roomDict)
         {
-            if (_headcountD.ContainsKey(e.Value)){
-                _headcountD[e.Value] += 1;
+            if (!_headcountD.ContainsKey(e.Value)){
+                _headcountD.Add(e.Value, 0);  
             }
-            else {
-                _headcountD.Add(e.Value, 1);
+            _headcountD[e.Value] += 1;
+        }
+        if (zeroKey != null){
+            if (pDict.ContainsKey(zeroKey) && pDict[zeroKey] == 1){
+                pDict[zeroKey] = 0;
+            }
+            if (wDict.ContainsKey(zeroKey) && wDict[zeroKey] == 1){
+                wDict[zeroKey] = 0;
+            }
+            if (sDict.ContainsKey(zeroKey) && sDict[zeroKey] == 1){
+                sDict[zeroKey] = 0;
             }
         }
         foreach (KeyValuePair<string, int> i in _headcountD)
         {
             if (pDict.ContainsKey(i.Key)){
                 pDict[i.Key] = _headcountD[i.Key];
-                prisonerCount = pDict.Sum(x => x.Value);
             }
             else if (wDict.ContainsKey(i.Key)){
                 wDict[i.Key] = _headcountD[i.Key];
-                wardenCount = wDict.Sum(x => x.Value);
             }
             else if (sDict.ContainsKey(i.Key)){
                 sDict[i.Key] = _headcountD[i.Key];
-                supportCount = sDict.Sum(x => x.Value);
             }
         }
+        prisonerCount = pDict.Sum(x => x.Value);
+        wardenCount = wDict.Sum(x => x.Value);
+        supportCount = sDict.Sum(x => x.Value);
     }
 
     void FixedUpdate()
