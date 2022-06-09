@@ -545,7 +545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &683039989404827214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1609,7 +1609,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 51314
+  m_InstanceId: 99958
 --- !u!95 &2235190157123494255
 Animator:
   serializedVersion: 3
@@ -2315,7 +2315,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 51358
+  m_InstanceId: 100002
 --- !u!114 &3128835130343464155
 MonoBehaviour:
   m_ObjectHideFlags: 0

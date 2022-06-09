@@ -32,8 +32,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f3b31781f68e83b47b6e8b560c9a29a9, type: 2}
     - target: {fileID: 5231307999731054906, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231307999731054906, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: m_InstanceId
-      value: -3649248
+      value: -78146
       objectReference: {fileID: 0}
     - target: {fileID: 5231307999731054910, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -54,22 +58,6 @@ PrefabInstance:
     - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5231308000031674624, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -121,10 +109,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3581736998621073915}
     m_Modifications:
-    - target: {fileID: 4256470858328599626, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
-      propertyPath: weaponData
-      value: 
-      objectReference: {fileID: 11400000, guid: e802bf367db175a419629ba46b7c2f66, type: 2}
     - target: {fileID: 8918393634435686408, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
       propertyPath: m_Name
       value: WardenRamboPistol
@@ -132,18 +116,6 @@ PrefabInstance:
     - target: {fileID: 8977095406529770293, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977095406529770293, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.574
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977095406529770293, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8977095406529770293, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8977095406529770293, guid: 74bd9543b25a7b14ea118a7d5e93b2d3, type: 3}
       propertyPath: m_LocalRotation.w

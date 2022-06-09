@@ -4888,7 +4888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8918393634435686408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.574, y: 0, z: 0}
+  m_LocalPosition: {x: 0.574, y: -0.409, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 2689852374677622063}
@@ -4972,7 +4972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadac6ccc5448864e90aa06c7ac32d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <startOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <startOffset>k__BackingField: {x: 0.574, y: -0.409, z: 0}
   muzzle: {fileID: 8120652600635110448}
   passives: {fileID: 0}
   ammo: 0
@@ -4986,7 +4986,7 @@ MonoBehaviour:
   rateOfFireCoroutine: 0
   reloadCoroutine: 0
   meleeCoroutine: 0
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 8979388240249039164}
   sprite: {fileID: 21300000, guid: ea6394e742a8e994f8c90e1d1ae4c99e, type: 3}
   reloadAnimMultiplier: 0
   <OnShoot>k__BackingField:

@@ -234,7 +234,7 @@ MonoBehaviour:
   baseColor2: {r: 0, g: 0, b: 0, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  light2D: {fileID: 0}
+  Light: {fileID: 0}
 --- !u!114 &2328509939710562081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 213064
+  m_InstanceId: 50438
 --- !u!114 &6276508036476323189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 7371169535158335136}
   - component: {fileID: -1687104091100142080}
   - component: {fileID: 6144019141507909406}
+  - component: {fileID: 5133114665241040857}
   m_Layer: 8
   m_Name: ImprovedMedic 3D
   m_TagString: Enemy
@@ -510,7 +511,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2328509941553751831}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1.7, y: 2.2, z: 1}
   m_Children:
@@ -524,7 +525,7 @@ Transform:
   - {fileID: 1261390842539113602}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &2328509941553751830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +830,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &5133114665241040857
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2328509941553751831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7649154, y: 1.0410515, z: 2.2591212}
+  m_Center: {x: 0.0140694305, y: 0.020524967, z: -0.5556451}
 --- !u!1 &2527798205697536512
 GameObject:
   m_ObjectHideFlags: 0

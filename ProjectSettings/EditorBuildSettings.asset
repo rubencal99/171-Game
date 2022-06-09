@@ -17,10 +17,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Old scenes/1-2.unity
     guid: 1e961b9eb451a2b4386ff49509dd368e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/_Official Scenes/StartScene.unity
     guid: 96ba6a957b5bfc449bbd2d8ef996fb62
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/_Official Scenes/TutorialScene.unity
     guid: 2ca6be922d31183448a614beca3b6d90
   - enabled: 1

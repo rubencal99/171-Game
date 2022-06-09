@@ -1048,7 +1048,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 916526
+  m_InstanceId: 34462
 --- !u!114 &1635429843742299415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 2874197794461083330}
   - component: {fileID: 2777867652003382858}
   - component: {fileID: 2777867652003383221}
-  - component: {fileID: 710817855005681175}
+  - component: {fileID: 7100525460354251208}
   m_Layer: 8
   m_Name: ImprovedAggressor
   m_TagString: Enemy
@@ -1524,7 +1524,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &710817855005681175
+--- !u!65 &7100525460354251208
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1535,8 +1535,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.22260377, y: 0.67227495, z: 0.70835507}
-  m_Center: {x: 0.038975805, y: -0.027797852, z: -0.14582269}
+  m_Size: {x: 0.7281533, y: 0.99224424, z: 1.4849035}
+  m_Center: {x: -0.025764853, y: -0.14524515, z: -0.30153582}
 --- !u!1001 &524321330194702894
 PrefabInstance:
   m_ObjectHideFlags: 0

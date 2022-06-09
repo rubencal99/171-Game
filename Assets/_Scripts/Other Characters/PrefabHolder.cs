@@ -59,11 +59,11 @@ public class PrefabHolder : MonoBehaviour
         {
             //if (prefab.GetComponent<Gun>())
             //{
-            Debug.Log("Purchased weapon");
+            Debug.Log("Purchased item");
             //weaponParent = FindObjectOfType<PlayerWeapon>();
 
             //money reduce
-            MoneyReducePopUp.SetActive(true);
+            //MoneyReducePopUp.SetActive(true);
             var reduce = itemData.Cost;
             Debug.Log("cost is "+ reduce.ToString());
             moneyreduce.text = "-"+ reduce.ToString();
