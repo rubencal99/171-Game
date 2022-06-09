@@ -19,6 +19,8 @@ public class FloorExit : MonoBehaviour
 
     public Image loadBar;
 
+    private FMOD.Studio.Bus masterBus;
+
 
 
     public SceneManager SceneManager;
@@ -28,6 +30,7 @@ void Awake()
 {
    instance = this;
    oldScene = SceneManager.GetActiveScene();
+   masterBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
 }
 
 void Start() {
@@ -100,6 +103,7 @@ void OnFinishedLoadingAllScene()
 public void CallLoadScene() {
      StartCoroutine(loadScene(sceneName));
      Debug.Log("Begin Scene load: " + sceneName);
+     masterBus.stopAllEvents(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 }
     // void OnTriggerEnter(Collider other) {
     //    // if(!guarded) {
