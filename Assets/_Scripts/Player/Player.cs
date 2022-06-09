@@ -137,7 +137,7 @@ public class Player : MonoBehaviour, IAgent, IHittable
         }
 
         if(HitLastFiveSec){
-            StartCoroutine(fadeOverlay());
+           // StartCoroutine(fadeOverlay());
         }
 
          //raise defelction shield

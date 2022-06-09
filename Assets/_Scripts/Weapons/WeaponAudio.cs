@@ -6,6 +6,7 @@ public class WeaponAudio : MonoBehaviour
 {
     public FMODUnity.EventReference shootBulletEvent; 
     public FMODUnity.EventReference outOfBulletsEvent;
+    //private FMODUnity.EventInstance shootInstance;
 
     public void PlayShootSound()
     {

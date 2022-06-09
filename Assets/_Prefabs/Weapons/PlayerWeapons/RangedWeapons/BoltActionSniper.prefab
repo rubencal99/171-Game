@@ -226,18 +226,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootBulletEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 226928896
+      Data2: 1152122889
+      Data3: -1883703369
+      Data4: 313060228
+    Path: event:/WEP/BAL/RF-Fire
   outOfBulletsEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1824021654
+      Data2: 1327393408
+      Data3: -713388392
+      Data4: -1272974844
+    Path: event:/WEP/Click
 --- !u!1 &8960519739286643315
 GameObject:
   m_ObjectHideFlags: 0

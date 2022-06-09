@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using FMODUnity;
 
@@ -8,12 +9,42 @@ public class BackgroundSoundManager : MonoBehaviour
     public SphereCollider detect;
     public FMODUnity.EventReference CombatMusicEvent;
     private FMOD.Studio.EventInstance CombatMusicInst;
+    private Dictionary<GameObject, string> roomDict = new Dictionary<GameObject, string>();
     //[SerializeField]
-    private int prisonerCount = 0;
+    private int prisonerCount;
+    private Dictionary<string, int> pDict = new Dictionary<string, int>(){
+        {"Advanced Inmate", 0}, 
+        {"Base Inmate 3D", 0},
+        {"Improved Inmate 3D", 0},
+        {"Inmate 3D", 0},
+        {"Inmate", 0}, 
+        {"Mutated Inmate", 0},
+        {"Suicide Bomber 1", 0}
+    };
     //[SerializeField]
-    private int wardenCount = 0;
+    private int wardenCount;
+    private Dictionary<string, int> wDict = new Dictionary<string, int>(){
+        {"BaseAggressor", 0},
+        {"ImprovedAggressor", 0},
+        {"_Base Warden 3D", 0},
+        {"Rambo Warden 3D", 0},
+        {"SharpShooter Warden", 0},
+        {"_Base Roomba", 0},
+        {"Advanced Roomba", 0},
+        {"Upgraded Roomba", 0},
+        {"Upgraded Roomba Variant 1", 0},
+        {"Upgraded Roomba Variant 2", 0}
+    };
     //[SerializeField]
-    private int supportCount = 0;
+    private int supportCount;
+    private Dictionary<string, int> sDict = new Dictionary<string, int>(){
+        {"BufferEnemy 3D", 0},
+        {"BaseBodyguard 3D", 0},
+        {"ImprovedBodyguard 3D", 0},
+        {"Base Medic 3D", 0},
+        {"ImprovedMedic 3D", 0},
+        {"MedicEnemy", 0}
+    };
     [ParamRef]
     public string prisonerParam;
     [ParamRef]
@@ -27,6 +58,10 @@ public class BackgroundSoundManager : MonoBehaviour
     void Awake()
     {
         detect = GetComponent<SphereCollider>();
+
+        prisonerCount = pDict.Sum(x => x.Value);
+        wardenCount = wDict.Sum(x => x.Value);
+        supportCount = sDict.Sum(x => x.Value); 
         // instantite music
         CombatMusicInst = FMODUnity.RuntimeManager.CreateInstance(CombatMusicEvent);
         CombatMusicInst.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject.transform));
@@ -34,92 +69,101 @@ public class BackgroundSoundManager : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider)
     {
-        // Read enemy type from collider, increment corresponding variable
-        if (collider.gameObject.CompareTag("Enemy")){
-            // Debug.Log(collider.gameObject.name + " detected");
-
-            // this is probably the most scuffed way possible to do this, 
-            // pls add enemy classes
-            if (
-                collider.gameObject.name == "Inmate 3D" 
-            )
-            {
-                prisonerCount += 1;
-            }
-            else if (
-                collider.gameObject.name == "Warden 3D" ||
-                collider.gameObject.name == "Warden (Veteran) 3D" ||
-                collider.gameObject.name == "SharpShooter Warden 3D" ||
-                collider.gameObject.name == "SharpShooter Warden (Veteran) 3D" ||
-                collider.gameObject.name == "Rambo Warden 3D" ||
-                collider.gameObject.name == "_Base Warden 3D"
-            )
-            {
-                wardenCount += 1;
-            }
-            else if(
-                collider.gameObject.name == "MedicEnemy 3D" ||
-                collider.gameObject.name == "BufferEnemy 3D"
-            )
-            {
-                supportCount += 1;
-            }
-            else if (
-                collider.gameObject.name == "Ratchet" ||
-                collider.gameObject.name == "OCTOBOSSY 3D 1"
-            )
-            {
-                RuntimeManager.StudioSystem.setParameterByName(bossParam, 1.0f);
-            }
-        }
-
-        if (collider.gameObject.name == "ShopKeeper")
+        string _name = collider.gameObject.name;
+        // check for shopkeeper
+        if (_name == "ShopKeeper")
         {
             shopPos = collider.gameObject.transform.position;
             // Debug.Log("shopkeeper at " + shopPos); 
         }
-    }
 
+        // +1 to relevant enemy counter
+        if (collider.tag != "Enemy"){
+            return;
+        }
+        if (roomDict.ContainsKey(collider.gameObject)){
+            return;
+        }
+        Enemy _enemy = collider.GetComponent<Enemy>();
+        if (_enemy == null){
+            return;
+        }
+
+        if (!_enemy.hasDied)
+        {
+            roomDict.Add(collider.gameObject, _name);
+            UpdateDicts();
+        }  
+    }
+    void OnTriggerStay(Collider collider)
+    {
+        // check for dead guys, remove them from roomDict
+        if (collider.tag != "Enemy"){
+            return;
+        }
+        if (!roomDict.ContainsKey(collider.gameObject)){
+            return;
+        }
+        Enemy _enemy = collider.GetComponent<Enemy>();
+        if (_enemy == null){
+            return;
+        }
+        if (_enemy.hasDied)
+        {
+            roomDict.Remove(collider.gameObject);
+            UpdateDicts(collider.gameObject.name);
+        }
+    }
     void OnTriggerExit(Collider collider)
     {
-        // Read enemy type from collider, decriment corresponding variable
-        if (collider.gameObject.CompareTag("Enemy")){
-            // Debug.Log(collider.gameObject.name + " lost");
+        // -1 from relevant enemyCounter 
+        if (collider.tag != "Enemy"){
+            return;
+        }
 
-            // this is probably the most scuffed way possible to do this, 
-            // pls add enemy classes
-            if (
-                collider.gameObject.name == "Inmate 3D" 
-            )
-            {
-                prisonerCount -= 1;
+        if (roomDict.ContainsKey(collider.gameObject))
+        {
+            roomDict.Remove(collider.gameObject);
+            UpdateDicts(collider.gameObject.name);
+        }
+    }
+    private void UpdateDicts(string zeroKey = null)
+    {
+        // Updates pDict, wDict, and sDict based on the contents of roomDict
+        Dictionary<string, int> _headcountD = new Dictionary<string, int>();
+        foreach (KeyValuePair<GameObject, string> e in roomDict)
+        {
+            if (!_headcountD.ContainsKey(e.Value)){
+                _headcountD.Add(e.Value, 0);  
             }
-            else if (
-                collider.gameObject.name == "Warden 3D" ||
-                collider.gameObject.name == "Warden (Veteran) 3D" ||
-                collider.gameObject.name == "SharpShooter Warden 3D" ||
-                collider.gameObject.name == "SharpShooter Warden (Veteran) 3D" ||
-                collider.gameObject.name == "Rambo Warden 3D" ||
-                collider.gameObject.name == "_Base Warden 3D"
-            )
-            {
-                wardenCount -= 1;
+            _headcountD[e.Value] += 1;
+        }
+        if (zeroKey != null){
+            if (pDict.ContainsKey(zeroKey) && pDict[zeroKey] == 1){
+                pDict[zeroKey] = 0;
             }
-            else if(
-                collider.gameObject.name == "MedicEnemy 3D" ||
-                collider.gameObject.name == "BufferEnemy 3D"
-            )
-            {
-                supportCount -= 1;
+            if (wDict.ContainsKey(zeroKey) && wDict[zeroKey] == 1){
+                wDict[zeroKey] = 0;
             }
-            else if (
-                collider.gameObject.name == "Ratchet" ||
-                collider.gameObject.name == "OCTOBOSSY 3D 1"
-            )
-            {
-                RuntimeManager.StudioSystem.setParameterByName(bossParam, 0.0f);
+            if (sDict.ContainsKey(zeroKey) && sDict[zeroKey] == 1){
+                sDict[zeroKey] = 0;
             }
         }
+        foreach (KeyValuePair<string, int> i in _headcountD)
+        {
+            if (pDict.ContainsKey(i.Key)){
+                pDict[i.Key] = _headcountD[i.Key];
+            }
+            else if (wDict.ContainsKey(i.Key)){
+                wDict[i.Key] = _headcountD[i.Key];
+            }
+            else if (sDict.ContainsKey(i.Key)){
+                sDict[i.Key] = _headcountD[i.Key];
+            }
+        }
+        prisonerCount = pDict.Sum(x => x.Value);
+        wardenCount = wDict.Sum(x => x.Value);
+        supportCount = sDict.Sum(x => x.Value);
     }
 
     void FixedUpdate()
