@@ -4967,6 +4967,18 @@ MonoBehaviour:
           m_StringArgument: Attack
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3517939016733372174}
+        m_TargetAssemblyTypeName: WeaponAudio, Assembly-CSharp
+        m_MethodName: PlayShootSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <OnShootNoAmmo>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
@@ -5024,11 +5036,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootBulletEvent:
     Guid:
-      Data1: -544381401
-      Data2: 1250596031
-      Data3: -1019178603
-      Data4: -1628109676
-    Path: event:/WEP/BAL/SG-Fire
+      Data1: 1712402006
+      Data2: 1209254003
+      Data3: 81901976
+      Data4: -670718148
+    Path: event:/WEP/BAL/AR-Fire
   outOfBulletsEvent:
     Guid:
       Data1: 1824021654
