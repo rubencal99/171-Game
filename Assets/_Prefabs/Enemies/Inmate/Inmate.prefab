@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8e299d4c3c89e47a5eeb6009568205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Direction>k__BackingField: {x: 0, y: 0}
-  <PointOfInterest>k__BackingField: {x: 0, y: 0}
-  <PointerPosition>k__BackingField: {x: 0, y: 0}
+  <Direction>k__BackingField: {x: 0, y: 0, z: 0}
+  <PointOfInterest>k__BackingField: {x: 0, y: 0, z: 0}
+  <PointerPosition>k__BackingField: {x: 0, y: 0, z: 0}
 --- !u!114 &592007125973130552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,7 +525,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb0d48a571107b4b82d9020bc7cc41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimDirection: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  startingRotation: {x: 0, y: 0, z: 0, w: 0}
+  desiredAngle: 0
+  pointerPos: {x: 0, y: 0, z: 0}
   weaponRenderer: {fileID: 0}
+  gun: {fileID: 0}
+  melee: {fileID: 0}
   weapon: {fileID: 0}
   InfAmmo: 0
 --- !u!1 &4989787881182142944
@@ -618,7 +625,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6454577251786558054}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 4.37, y: 1.994, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children:
@@ -631,7 +638,7 @@ Transform:
   - {fileID: 9047197994978578261}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!50 &6454577251786558057
 Rigidbody2D:
   serializedVersion: 4
@@ -683,6 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EnemyData>k__BackingField: {fileID: 11400000, guid: 9c3f0a6b8c5773448b0e0127ede40fa8, type: 2}
   <Health>k__BackingField: 5
+  <tempHealth>k__BackingField: 0
   <Damage>k__BackingField: 1
   <Range>k__BackingField: 0
   <OnGetHit>k__BackingField:
@@ -751,11 +759,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <OnRevive>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
   isDying: 0
+  hasDied: 0
   deathTimer: 10
   agentAnimations: {fileID: 0}
+  agentMovement: {fileID: 0}
   knockback: 0
+  hasProtector: 0
   blood: {fileID: 8596853736701161183}
+  timer: 0
 --- !u!114 &2614159520647023149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,17 +783,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79bb40e9182e9904aa5baf88dd79372e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 0}
+  rigidbody: {fileID: 0}
   <MovementData>k__BackingField: {fileID: 11400000, guid: d18af5c2740834543b97592195d16bf2, type: 2}
   currentVelocity: 0
-  movementDirection: {x: 0, y: 0}
+  movementDirection: {x: 0, y: 0, z: 0}
   <OnVelocityChange>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
   knockback: 0
   knockbackPower: 0
   knockbackTimer: 0
-  knockbackDirection: {x: 0, y: 0}
+  knockbackDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1671337732273487805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,6 +1127,7 @@ MonoBehaviour:
   baseColor2: {r: 0.7803922, g: 0.7803922, b: 0.7803922, a: 0}
   generatedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
+  Light: {fileID: 0}
 --- !u!114 &6454577253633417808
 MonoBehaviour:
   m_ObjectHideFlags: 0
