@@ -50,7 +50,7 @@ MonoBehaviour:
       SpawnCount: 3
     - Enemy: {fileID: 7059413844855994229, guid: 3eedac259108143fca0479a3bda67bcb, type: 3}
       SpawnCount: 2
-    waveDelay: 0.3
+    waveDelay: 0
   - Enemies:
     - Enemy: {fileID: 6029200967779250294, guid: 208dbc873afc25244a4cf59c5fc077eb, type: 3}
       SpawnCount: 2
@@ -61,6 +61,7 @@ MonoBehaviour:
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
+  offsetY: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 0

@@ -50,14 +50,25 @@ MonoBehaviour:
       SpawnCount: 3
     - Enemy: {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
       SpawnCount: 2
-    waveDelay: 0.3
+    waveDelay: 0
+  - Enemies: []
+    waveDelay: 0
   infiniteSpawn: 0
   stopSpawn: 0
   spawnTime: 1
   spawnDelay: 1
+  offsetY: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  numToSpawn: 10
+  enemyDensity: 20
   offset: 1
   spawned: 0
   enemyCount: 0
+  justEntered: 0
+  density: 500
+  numEnemiesPerWave: 0
 --- !u!212 &3392075588759141863
 SpriteRenderer:
   m_ObjectHideFlags: 0

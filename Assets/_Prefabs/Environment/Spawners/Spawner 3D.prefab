@@ -47,15 +47,15 @@ MonoBehaviour:
   Waves:
   - Enemies:
     - Enemy: {fileID: 5231308000031674636, guid: 9ba6c3470f34f91408f11a9cfe08bea4, type: 3}
-      SpawnCount: 6
+      SpawnCount: 2
     waveDelay: 0.3
   - Enemies:
     - Enemy: {fileID: 6309178418320721147, guid: de40eedd5dcf99c4c82edbb76fdaf3b9, type: 3}
-      SpawnCount: 8
+      SpawnCount: 4
     waveDelay: 0.6
   - Enemies:
     - Enemy: {fileID: 6454577251786558054, guid: 68fce20d2a41e2d4dbeb5dd16f9fe849, type: 3}
-      SpawnCount: 8
+      SpawnCount: 5
     waveDelay: 2
   infiniteSpawn: 0
   stopSpawn: 0

@@ -136,9 +136,9 @@ public class Player : MonoBehaviour, IAgent, IHittable
              StartCoroutine(WaitToDie());
         }
 
-        if(HitLastFiveSec){
-           // StartCoroutine(fadeOverlay());
-        }
+        // if(HitLastFiveSec){
+        //    // StartCoroutine(fadeOverlay());
+        // }
 
          //raise defelction shield
         if(!ShieldActivated && Input.GetButton("Deflection Shield") && PlayerAugmentations.AugmentationList["DeflectionShield"] == true){
@@ -218,9 +218,11 @@ public class Player : MonoBehaviour, IAgent, IHittable
             DamageType(damageDealer);
 
         //Damagedisplaying
-        GameObject ds = Instantiate(DamageDisplay,transform.position,Quaternion.identity)as GameObject;
-        ds.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
-        //
+        GameObject ds = null;
+        if(DamageDisplay != null) {
+            ds = Instantiate(DamageDisplay,transform.position,Quaternion.identity)as GameObject;
+            ds.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
+        }
 
         Health -= d;
         HitLastFiveSec = true;

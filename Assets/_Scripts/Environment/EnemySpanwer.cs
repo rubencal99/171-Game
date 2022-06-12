@@ -92,7 +92,7 @@ public class EnemySpanwer : MonoBehaviour
         }
         curWave = Waves[0];
 
-         //Debug.Log("initial Enemy count = " + Waves.Count);
+         Debug.Log("initial Enemy count = " + Waves.Count);
        // Enemies = Resources.LoadAll<GameObject>("_Prefabs/Enemies");
 
 
@@ -106,14 +106,15 @@ public class EnemySpanwer : MonoBehaviour
     }
 
     public virtual void Update() {
-        //Debug.Log("Wave count = " + Waves.Count + "curEnemies = " + curEnemies);
+        Debug.Log("Wave count = " + Waves.Count + "curEnemies = " + curEnemies);
         if(Waves.Count > 0) {
             if(curEnemies <= 0)
                 Waves[0].waveDelay -= Time.deltaTime;
                           
 
             if(Waves[0].waveDelay <= 0.0f) {
-                if(Waves[0].Enemies.Count > 0)
+                //if(Waves[0].Enemies.Count > 0)
+                Debug.Log(Waves[0].Enemies);
                     StartSpawn(Waves[0].Enemies);
                 //Waves[0] = Waves[0];
                 Waves.Remove(Waves[0]);
@@ -138,12 +139,12 @@ public class EnemySpanwer : MonoBehaviour
         // yield return new WaitForSeconds(spawnTime);
         // Invoke("SpawnObject", spawnTime);
         // canSpawn = true;
-        if(e != null)
+        //if(e != null)
             foreach(var order in e) {
-                if(order != null && thisroom != null)
+                //if(order != null && thisroom != null)
                     for(int i = 0; i < (order.SpawnCount * (thisroom.area / density)); i++) {
                         
-                        if(order.Enemy != null)
+                        //if(order.Enemy != null)
                             StartCoroutine(SpawnObject(order.Enemy));
                     // Debug.Log("enemy spawned");
                         yield return new WaitForSeconds(spawnDelay);

@@ -519,7 +519,7 @@ MonoBehaviour:
   - {x: -0.27898735, y: 0.36646008, z: 0}
   m_ShapePathHash: 1614014639
   m_Mesh: {fileID: 0}
-  m_InstanceId: 45244
+  m_InstanceId: 519824
 --- !u!114 &5302321582063947852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ MonoBehaviour:
   currentRoom: {fileID: 0}
   DronePrefab: {fileID: 0}
   Drone: {fileID: 0}
-  DamageDisplay: {fileID: 0}
+  DamageDisplay: {fileID: 843517029444982614, guid: 901cfdad5edb93045badcc9c7e549f2c, type: 3}
   invincible: 0
   damage_iframes: 20
   <Health>k__BackingField: 25

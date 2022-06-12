@@ -50,7 +50,7 @@ MonoBehaviour:
       SpawnCount: 8
     - Enemy: {fileID: 8532199391070295224, guid: 08ee38fc5a35f8242b952741acae73d2, type: 3}
       SpawnCount: 5
-    waveDelay: 0.3
+    waveDelay: 0
   - Enemies:
     - Enemy: {fileID: 7059413844855994229, guid: 3eedac259108143fca0479a3bda67bcb, type: 3}
       SpawnCount: 4
