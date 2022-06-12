@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootBulletEvent:
     Guid:
-      Data1: 1712402006
-      Data2: 1209254003
-      Data3: 81901976
-      Data4: -670718148
-    Path: event:/WEP/BAL/AR-Fire
+      Data1: -544381401
+      Data2: 1250596031
+      Data3: -1019178603
+      Data4: -1628109676
+    Path: event:/WEP/BAL/SG-Fire
   outOfBulletsEvent:
     Guid:
       Data1: 1824021654
